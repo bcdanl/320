@@ -12,7 +12,7 @@
 
   <meta name="author" content="Byeong-Hak Choe">
   <meta name="dcterms.date" content="2025-01-22">
-  <title>Home - Lecture 1</title>
+  <title>Home - Lecture 2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -322,24 +387,13 @@
       margin-right: 0; 
     }
   </style>
-  
-  <link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-  <script src="../site_libs/htmlwidgets-1.6.3/htmlwidgets.js"></script>
-  <link href="../site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-  <script src="../site_libs/datatables-binding-0.33/datatables.js"></script>
-  <script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link href="../site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
-  <script src="../site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
-  <link href="../site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
-  <script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Lecture 1</h1>
+  <h1 class="title">Lecture 2</h1>
   <p class="subtitle">Syllabus, Course Outline, and DANL Career</p>
 
 <div class="quarto-title-authors">
@@ -359,616 +413,304 @@ Byeong-Hak Choe
   <p class="date">January 22, 2025</p>
 </section>
 <section>
-<section id="instructor" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1>Instructor</h1>
+<section id="getting-started-with-quarto" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Getting Started with Quarto</h1>
 
 </section>
-<section id="instructor-1" class="slide level2">
-<h2>Instructor</h2>
-<h3 id="current-appointment-education">Current Appointment &amp; Education</h3>
+<section id="building-a-personal-website-on-github" class="slide level2">
+<h2>Building a Personal Website on GitHub</h2>
 <ul>
-<li class="fragment"><p>Name: Byeong-Hak Choe.</p></li>
-<li class="fragment"><p>Assistant Professor of Data Analytics and Economics, School of Business at SUNY Geneseo.</p></li>
-<li class="fragment"><p>Ph.D.&nbsp;in Economics from University of Wyoming.</p></li>
-<li class="fragment"><p>M.S. in Economics from Arizona State University.</p></li>
-<li class="fragment"><p>M.A.&nbsp;in Economics from SUNY Stony Brook.</p></li>
-<li class="fragment"><p>B.A. in Economics &amp; B.S. in Applied Mathematics from Hanyang University at Ansan, South Korea.</p>
+<li class="fragment">Follow steps described in <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-01.html">Classwork 1</a>.</li>
+</ul>
+</section>
+<section id="lets-practice-markdown" class="slide level2">
+<h2>Let’s Practice Markdown!</h2>
 <ul>
-<li class="fragment">Minor in Business Administration.</li>
-<li class="fragment">Concentration in Finance.</li>
+<li class="fragment"><p>Jupyter Notebook, Quarto, and GitHub-based Discussion Boards use <strong>markdown</strong> as its underlying document syntax.</p></li>
+<li class="fragment"><p>Let’s do <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-02.html">Classwork 2</a>.</p></li>
+</ul>
+</section>
+<section id="getting-started-with-quarto-1" class="slide level2">
+<h2>Getting Started with Quarto</h2>
+<h3 id="yaml">YAML</h3>
+<div class="columns">
+<div class="column" style="width:25%;">
+<p><img data-src="https://bcdanl.github.io/lec_figs/quarto-yml-engine.jpg" style="width:75.0%"></p>
+</div><div class="column" style="width:70%;">
+<div>
+<ul>
+<li class="fragment">An YAML (yet another markup language) header surrounded by <code>---</code>.
+<ul>
+<li class="fragment">It is commonly used for document configuration (e.g., title, author, date, style, …).</li>
+</ul></li>
+<li class="fragment">Chunks of Python/R code surrounded by three backticks, <span class="math inline">\(\text{```}\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-started-with-quarto-2" class="slide level2">
+<h2>Getting Started with Quarto</h2>
+<h3 id="knitting-rendering">Knitting / Rendering</h3>
+<ul>
+<li class="fragment"><p>When we knit the document, Quarto sends the <code>.qmd</code> file to <strong>jupyter</strong>/<strong>knitr</strong>, which executes all of the code chunks and creates a new markdown (<code>.md</code>) document which includes the code and its output.</p></li>
+<li class="fragment"><p>The markdown file (<code>*.md</code>) generated by <strong>jupyter</strong>/<strong>knitr</strong> is then processed by <strong>pandoc</strong>, which is responsible for creating the output file.</p></li>
+</ul>
+
+<img data-src="https://bcdanl.github.io/lec_figs/quarto-flow.png" class="r-stretch"></section>
+<section id="getting-started-with-quarto-3" class="slide level2">
+<h2>Getting Started with Quarto</h2>
+<h3 id="markdown-quarto-and-html">Markdown, Quarto, and HTML</h3>
+<ul>
+<li class="fragment">The very original version of <strong>Markdown</strong> was invented mainly to write HTML content more easily.
+<ul>
+<li class="fragment">For example, <code>- SOME_TEXT</code> in “<em>.md” is equivalent to <code>&lt;ul&gt;&lt;li&gt; SOME_TEXT &lt;/li&gt;</code> in ”</em>.html”</li>
+</ul></li>
+<li class="fragment">Pandoc makes it possible to convert a Markdown document to a large variety of output formats, such as HTML.</li>
+</ul>
+</section>
+<section id="getting-started-with-quarto-and-html" class="slide level2">
+<h2>Getting Started with Quarto and HTML</h2>
+<h3 id="markdown-quarto-and-html-1">Markdown, Quarto, and HTML</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ex">title:</span> <span class="st">"Habits"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ex">author:</span> YOUR_NAME</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ex">date:</span> January 30, 2024</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="ex">format:</span> </span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="ex">html</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="ex">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment"><p>To create an HTML document from Quarto, we specify the <code>html</code> output format in the YAML metadata of our document.</p>
+<ul>
+<li class="fragment">By default, <code>format: html</code> is set.</li>
+</ul></li>
+<li class="fragment"><p>In RStudio, we can create a new Quarto file from the menu, File -&gt; New File -&gt; Quarto Document.</p></li>
+<li class="fragment"><p>Open an empty Quarto file.</p>
+<ul>
+<li class="fragment">Type the following YAML metadata to the empty Quarto file.</li>
 </ul></li>
 </ul>
 </section>
-<section id="instructor-2" class="slide level2">
-<h2>Instructor</h2>
-<h3 id="economics-and-data-science">Economics and Data Science</h3>
+<section id="getting-started-with-quarto-4" class="slide level2">
+<h2>Getting Started with Quarto</h2>
+<h3 id="quarto-basics">Quarto Basics</h3>
 <ul>
-<li class="fragment">Choe, B.H., Newbold, S. and James, A., “Estimating the Value of Statistical Life through Big Data”
-<ul>
-<li class="fragment">Question: How much is the society willing to pay to reduce the likelihood of fatality?</li>
-</ul></li>
-<li class="fragment">Choe, B.H., “Social Media Campaigns, Lobbying and Legislation: Evidence from #climatechange and Energy Lobbies.”
-<ul>
-<li class="fragment">Question: To what extent do social media campaigns compete with fossil fuel lobbying on climate change legislation?</li>
-</ul></li>
-<li class="fragment">Choe, B.H. and Ore-Monago, T., 2024. “Governance and Climate Finance in the Developing World”
-<ul>
-<li class="fragment">Question: In what ways and through what forms does poor governance act as a significant barrier to reducing greenhouse gas emissions in developing countries?</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
-<section id="syllabus" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1>Syllabus</h1>
-
-</section>
-<section id="syllabus-1" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="email-class-office-hours">Email, Class &amp; Office Hours</h3>
-<ul>
-<li class="fragment"><p>Email: <a href="bchoe@geneseo.edu">bchoe@geneseo.edu</a></p></li>
-<li class="fragment"><p>Class Homepage:</p>
-<ol type="i">
-<li class="fragment"><a href="https://brightspace.geneseo.edu/" target="_blank">https://brightspace.geneseo.edu/</a></li>
-<li class="fragment"><a href="http://bcdanl.github.io/320/" target="_blank">http://bcdanl.github.io/320/</a></li>
-</ol></li>
-<li class="fragment"><p>Office: South Hall 227B</p></li>
-<li class="fragment"><p>Office Hours:</p>
+<li class="fragment">In RStudio, close the project <code>USERNAME.github.io.Rporj</code> if it is on.
 <ol type="1">
-<li class="fragment">Mondays 5:00 P.M. – 6:30 P.M.<br>
-</li>
-<li class="fragment">Wednesdays 5:00 P.M. – 6:30 P.M.</li>
+<li class="fragment">Click <code>USERNAME.github.io.Rporj</code> at the top-right corner.</li>
+<li class="fragment">Click <em>Close Project</em>.</li>
 </ol></li>
+<li class="fragment">Download the Quarto file, <code>danl-320-quarto-r.qmd</code> from Brightspace, and open it from RStudio.</li>
 </ul>
 </section>
-<section id="syllabus-2" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="course-description">Course Description</h3>
+<section id="getting-started-with-quarto-5" class="slide level2">
+<h2>Getting Started with Quarto</h2>
+<h3 id="quarto-basics-1">Quarto Basics</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">---</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ex">title:</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">subtitle:</span> </span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="ex">author:</span> </span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="ex">date:</span> last-modified</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="ex">format:</span> </span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="ex">html:</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  </span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="ex">execute:</span> </span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="ex">echo:</span> true</span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="ex">eval:</span> true</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="ex">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><p>This course teaches you how to analyze big data sets, and this course is specifically designed to bring you up to speed on one of the best technologies for this task, Apache Spark!</p></li>
-<li class="fragment"><p>The top technology companies like Google, Facebook, Netflix, Airbnb, 3 Amazon, and many more are all using Spark to solve their big data problems!</p></li>
-<li class="fragment"><p>With the Spark 3.0 DataFrame framework, it can perform up to 100x faster than Hadoop MapReduce.</p></li>
-</ul>
-</section>
-<section id="syllabus-3" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="course-description-1">Course Description</h3>
+<li class="fragment">The following syntax is part of YAML metadata in <code>danl-320-quarto-r.qmd</code>.
 <ul>
-<li class="fragment"><p>This course will review the basics in Python, continuing on to learning how to use Spark DataFrame API with the latest Spark 3.0 syntax!</p></li>
-<li class="fragment"><p>In addition, you will learn how to perform supervised an unsupervised machine learning on massive datasets using the Machine Learning Library (MLlib).</p></li>
-<li class="fragment"><p>You will also gain hands-on experience using PySpark within the Jupyter Notebook environment. This course also covers the latest Spark technologies, like Spark SQL, Spark Streaming, and advanced data analytics modeling methodologies.</p></li>
-</ul>
-</section>
-<section id="syllabus-4" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="required-materials">Required Materials</h3>
-<ul>
-<li class="fragment"><p><a href="https://pedropark99.github.io/Introd-pyspark/"><strong>Introduction to <code>pyspark</code></strong></a> by Pedro Duarte Faria</p>
-<ul>
-<li class="fragment">A free online version of this book is available.</li>
+<li class="fragment">In YAML, indentation really matters!</li>
+<li class="fragment"><strong>tab</strong> (or four spaces) defines a level in YAML.</li>
 </ul></li>
 </ul>
-</section>
-<section id="syllabus-5" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="reference-materials---pyspark">Reference Materials - PySpark</h3>
-<ul>
-<li class="fragment"><p><a href="https://sparkbyexamples.com"><strong>Spark by Examples</strong></a></p></li>
-<li class="fragment"><p><a href="https://spark.apache.org/docs/latest/api/python/index.html"><strong>Apache PySpark - PySpark Documentation</strong></a></p></li>
-</ul>
-</section>
-<section id="syllabus-6" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="reference-materials---sports-data">Reference Materials - Sports Data</h3>
-<ul>
-<li class="fragment"><strong>Introduction to Sports Analytics Using R</strong> by Ryan Elmore and Andrew Urbaczewski
-<ul>
-<li class="fragment">An eBook version of this book is available at:
-<ul>
-<li class="fragment"><a href="https://www.vitalsource.com/products/introduction-to-sports-analytics-using-r-ryan-elmore-andrew-v9781958303061?term=9781958303061"><strong>VitalSource</strong></a></li>
-<li class="fragment"><a href="https://redshelf.com/app/ecom/book/2688913"><strong>RedShelf</strong></a></li>
-</ul></li>
-</ul></li>
-</ul>
-</section>
-<section id="syllabus-7" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="reference-materials---python">Reference Materials - Python</h3>
-<ul>
-<li class="fragment"><p><a href="https://wesmckinney.com/book"><strong>Python for Data Analysis</strong> (3rd Edition)</a> by <a href="https://wesmckinney.com/">Wes McKinney</a></p></li>
-<li class="fragment"><p><a href="https://ipython-books.github.io">IPython Interactive Computing and Visualization Cookbook</a></p></li>
-<li class="fragment"><p><a href="https://www.tomasbeuzen.com/python-programming-for-data-science">Python Programming for Data Science</a> by Tomas Beuzen</p></li>
-<li class="fragment"><p><a href="https://aeturrell.github.io/coding-for-economists">Coding for Economists</a> by Arthur Turrell</p></li>
-<li class="fragment"><p><a href="https://pyecon.org/lecture/%7D%7Bhttps://pyecon.org/lecture/">Python for Econometrics in Economics</a> by Fabian H. C. Raters</p></li>
-<li class="fragment"><p><a href="https://datascience.quantecon.org/python_fundamentals/index.html">QuantEcon DataScience - Python Fundamentals</a> by Chase Coleman, Spencer Lyon, and Jesse Perla</p></li>
-<li class="fragment"><p><a href="https://datascience.quantecon.org/pandas/index.html">QuantEcon DataScience - pandas</a> by Chase Coleman, Spencer Lyon, and Jesse Perla</p></li>
-</ul>
-</section>
-<section id="syllabus-8" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="reference-materials---website">Reference Materials - Website</h3>
-<ul>
-<li class="fragment"><a href="https://quarto.org/docs/guide">Guide for Quarto</a></li>
-</ul>
-</section>
-<section id="syllabus-9" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="course-requirements">Course Requirements</h3>
-<ul>
-<li class="fragment"><p><strong>Laptop</strong>: You should bring your own laptop (<strong>Mac</strong> or <strong>Windows</strong>) to the classroom.</p>
-<ul>
-<li class="fragment">The minimum specification for your laptop in this course is 2+ core CPU, 4+ GB RAM, and 500+ GB disk storage.</li>
-</ul></li>
-<li class="fragment"><p><strong>Homework</strong>: There will be six homework assignments.</p></li>
-<li class="fragment"><p><strong>Project</strong>: There will be one project on a <em>personal website</em>.</p></li>
-<li class="fragment"><p><strong>Exams</strong>: There will be one Midterm Exam.</p></li>
-<li class="fragment"><p><strong>Participation</strong>: You are encouraged to participate in GitHub-based online discussions and class discussion, and office hours.</p>
-<ul>
-<li class="fragment">Checkout the netiquette policy in the syllabus.</li>
-</ul></li>
-</ul>
-</section>
-<section id="syllabus-10" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="personal-website">Personal Website</h3>
-<ul>
-<li class="fragment"><p>You will create your own website using Quarto, R Studio, and Git.</p></li>
-<li class="fragment"><p>You will publish your homework assignments and team project on your website.</p></li>
-<li class="fragment"><p>Your website will be hosted in <a href="https://www.github.com">GitHub</a>.</p></li>
-<li class="fragment"><p>The basics in Markdown will be discussed.</p></li>
-<li class="fragment"><p>References:</p>
-<ul>
-<li class="fragment"><a href="https://quarto.org/docs/guide">Quarto Guide</a></li>
-</ul></li>
-</ul>
-</section>
-<section id="syllabus-11" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="team-project">Team Project</h3>
-<ul>
-<li class="fragment"><p>Team formation is scheduled for early April.</p>
-<ul>
-<li class="fragment">Each team must have one to two students.</li>
-</ul></li>
-<li class="fragment"><p>For the team project, a team must choose data related to business or socioeconomic issues.</p></li>
-<li class="fragment"><p>The project report should include both (1) exploratory data analysis using summary statistics, visual representations, and data wrangling, and (2) machine learning analysis.</p></li>
-<li class="fragment"><p>The document for the team project must be published in each member’s website.</p></li>
-<li class="fragment"><p>Any changes to team composition require approval from Byeong-Hak Choe.</p></li>
-</ul>
-</section>
-<section id="syllabus-12" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="class-schedule-and-exams">Class Schedule and Exams</h3>
-<ul>
-<li class="fragment"><p>There will be tentatively 28 class sessions.</p></li>
-<li class="fragment"><p>The Midterm Exam is scheduled on March 31, 2025, Wednesday, during the class time.</p></li>
-<li class="fragment"><p>The Project Presentation is scheduled on May 9, 2025, Friday, 3:30 P.M.-5:30 P.M.</p></li>
-<li class="fragment"><p>The due for the Project write-up is May 16, 2024, Friday.</p></li>
-</ul>
-</section>
-<section id="syllabus-13" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="course-contents">Course Contents</h3>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-eaca0eb52b2275b2d50a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-eaca0eb52b2275b2d50a">{"x":{"filter":"none","vertical":false,"data":[["1-2","2","3-5","6","7","8","9","10"],["Course Outlines; Installing the Tools; Building a Website","Python Basics; PySpark Introduction","PySpark DataFrame","PySpark Machine Learning with MLib","Linear Regression","Logistic Regression","Regularization","Tree-based Methods"],["","","HW 1","","","HW 2","HW 3","HW 4, Midterm Exam"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Week<\/th>\n      <th>Contents<\/th>\n      <th>HW.Exam<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"name":"Week","targets":0},{"name":"Contents","targets":1},{"name":"HW.Exam","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="syllabus-14" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="course-contents-1">Course Contents</h3>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-
-<div class="datatables html-widget html-fill-item" id="htmlwidget-bc4a04cab47bab8c86bf" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-bc4a04cab47bab8c86bf">{"x":{"filter":"none","vertical":false,"data":[["11","12","13","14","15"],["Classification","Clustering","Association Rules","Text Analysis","Deep Learning"],["","","HW 5","","HW 6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Week<\/th>\n      <th>Contents<\/th>\n      <th>HW.Exam<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","paging":false,"columnDefs":[{"targets":"_all","orderable":false},{"name":"Week","targets":0},{"name":"Contents","targets":1},{"name":"HW.Exam","targets":2}],"order":[],"autoWidth":false,"orderClasses":false},"callback":"function(table) {\n\n  // Change header background and text color\n  $('thead th').css('background-color', '#1c4982');\n  $('thead th').css('color', 'white');\n\n  // Loop through each row and alternate background color\n  $('tbody tr').each(function(index) {\n    if (index % 2 == 0) {\n      $(this).css('background-color', '#d1dae6'); // Light color for even rows\n    } else {\n      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows\n    }\n  });\n\n  // Set text color for all rows\n  $('tbody tr').css('color', 'black');\n\n  // Add hover effect\n  $('tbody tr').hover(\n    function() {\n      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row\n    }, \n    function() {\n      var index = $(this).index();\n      if (index % 2 == 0) {\n        $(this).css('background-color', '#d1dae6'); // Restore even row color\n      } else {\n        $(this).css('background-color', '#9fb2cb'); // Restore odd row color\n      }\n    }\n  );\n\n}","selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":["callback"],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="syllabus-15" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="grading">Grading</h3>
-<p><span class="math display">\[
-\begin{align}
-(\text{Total Percentage Grade}) =&amp;\quad\;\, 0.05\times(\text{Total Attendance Score})\notag\\
-&amp;\,+\, 0.05\times(\text{Total Participation Score})\notag\\
-&amp;\,+\, 0.10\times(\text{Website Score})\notag\\
-&amp;\,+\, 0.30\times(\text{Total Homework Score})\notag\\
-&amp;\,+\, 0.50\times(\text{Total Exam and Project Score}).\notag
-\end{align}
-\]</span></p>
-</section>
-<section id="syllabus-16" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="grading-1">Grading</h3>
-<ul>
-<li class="fragment"><p>You are allowed up to 2 absences without penalty.</p>
-<ul>
-<li class="fragment">Send me an email if you have standard excused reasons (illness, family emergency, transportation problems, etc.).</li>
-</ul></li>
-<li class="fragment"><p>For each absence beyond the initial two, there will be a deduction of 1% from the Total Percentage Grade.</p></li>
-<li class="fragment"><p>Participation will be evaluated by quantity and quality of GitHub-based online discussions and in-person discussion.</p></li>
-<li class="fragment"><p>The single lowest homework score will be dropped when calculating the total homework score.</p></li>
-</ul>
-</section>
-<section id="syllabus-17" class="slide level2">
-<h2>Syllabus</h2>
-<h3 id="make-up-policy">Make-up Policy</h3>
-<ul>
-<li class="fragment"><p>Make-up exams will not be given unless you have either a medically verified excuse or an absence excused by the University.</p></li>
-<li class="fragment"><p>If you cannot take exams because of religious obligations, notify me by email at least two weeks in advance so that an alternative exam time may be set.</p></li>
-<li class="fragment"><p>A missed exam without an excused absence earns a grade of zero.</p></li>
-<li class="fragment"><p>Late submissions for homework assignment will be accepted with a penalty.</p></li>
-<li class="fragment"><p>A zero will be recorded for a missed assignment.</p></li>
-</ul>
-<p>:::</p>
 </section></section>
 <section>
-<section id="danl-career-session" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1>DANL Career Session</h1>
+<section id="managing-a-website-with-quarto-and-jupyter-notebook" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Managing a Website with Quarto (and Jupyter Notebook)</h1>
 
 </section>
-<section id="danl-career-session-1" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="introduction-share-your-background-and-experience">Introduction: Share Your Background and Experience</h3>
-<p><a href="https://drive.google.com/file/d/1YTMSKh8KI1o6HgK2PcIrVmc64ghHZIP6/view?usp=share_link"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1TopEaASYnxiB_wPKb_1Yb4EweqKOSdlE/view?usp=share_link"><strong>Jaehyung Lee (Andy), Class of 2022</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1WgPqwOvZ7uBQ678HHbTs5T8f0qUMLFb1/view?usp=share_link"><strong>Jason Rappazzo, Class of 2023 - Part 1</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1Il32T2-cbRfpP061Vm_AgcrXcD_JQE2H/view?usp=share_link"><strong>Jason Rappazzo, Class of 2023 - Part 2</strong></a></p>
-</section>
-<section id="danl-career-session-2" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="q.-what-challenges-have-you-encountered-in-your-role-at-the-workplace">Q. What challenges have you encountered in your role at the workplace?</h3>
-<p><a href="https://drive.google.com/file/d/1fA6Wb8pTyx8poKdCp-EyuTlyg3zImSzb/view?usp=share_link"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1APSLYyWAkI_cD7k66mONipYoJ9pWgcAq/view?usp=share_link"><strong>Jason Rappazzo, Class of 2023</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1cLevKuXPsn8ji44wuHKIBb-GruArjjcI/view?usp=share_link"><strong>Jaehyung Lee (Andy), Class of 2022</strong></a></p>
-</section>
-<section id="danl-career-session-3" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="q.-how-do-you-envision-the-future-of-ai">Q. How do you envision the future of AI?</h3>
-<p><a href="https://drive.google.com/file/d/1zFGqdBSGE7FEBVSpHAQ0uBb72bNrv4b_/view?usp=share_link"><strong>Jaehyung Lee (Andy), Class of 2022</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1NQ__s8mbqVOLAIBryYlYFkxR_Ku9ivG9/view?usp=share_link"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-</section>
-<section id="danl-career-session-4" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="q.-how-does-working-at-a-large-company-like-meta-compare-to-your-previous-experiences">Q. How does working at a large company like Meta compare to your previous experiences?</h3>
-<p><a href="https://drive.google.com/file/d/1IHrK-OCUjmyRCMlhsfyliAPyZ974qqjL/view?usp=sharing"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-</section>
-<section id="danl-career-session-5" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="q.-what-has-been-the-most-fulfilling-aspect-of-your-work">Q. What has been the most fulfilling aspect of your work?</h3>
-<p><a href="https://drive.google.com/file/d/1rLykv2qA2n8Qp3Z_9e4FaTacHiv4I2aD/view?usp=share_link"><strong>Jason Rappazzo, Class of 2023</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1wXnH96hLKcS9G3a4H0YHZZWDRQ5kWBkW/view?usp=share_link"><strong>Jaehyung Lee (Andy), Class of 2022</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1Au52S8yUKS_Wq06GRHZDVpMeSEFvQtZz/view?usp=share_link"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-</section>
-<section id="danl-career-session-6" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="q.-can-you-share-advice-for-students-who-are-preparing-for-internships-or-job-applications">Q. Can you share advice for students who are preparing for internships or job applications?</h3>
-<p><a href="https://drive.google.com/file/d/1EgpdBul2H3oGRW9OZvsi_LTPPJflJNZ0/view?usp=share_link"><strong>Marcie Hogan, Class of 2023</strong></a></p>
-<p><a href="https://drive.google.com/file/d/1jfdJOdxTDFXZJTJD3buu2XNXQS0gSB-2/view?usp=share_link"><strong>Jaehyung Lee (Andy), Class of 2022</strong></a></p>
-</section></section>
-<section>
-<section id="danl-career-session-7" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1>DANL Career Session</h1>
-
-</section>
-<section id="danl-career-session---1.-marcie-hogan" class="slide level2">
-<h2>DANL Career Session - 1. Marcie Hogan</h2>
+<section id="quarto-websites" class="slide level2">
+<h2>Quarto Websites</h2>
 <ul>
-<li class="fragment"><strong>Background</strong>
-<ul>
-<li class="fragment">Graduated from SUNY Geneseo in 2023 with a degree in Geography and minors in Mathematics and Physics.</li>
-<li class="fragment">Took several data analytics courses and was a tutor in the Data Analytics Lab.</li>
-<li class="fragment">Initially worked at Crown Castle as a Geospatial Data Analyst, including an internship, totaling about two years.</li>
-</ul></li>
-<li class="fragment"><strong>Career Path</strong>
-<ul>
-<li class="fragment">At Crown Castle, Marcie managed database operations for spatial data, frequently working with Python and spatial packages.</li>
-<li class="fragment">In July 2024, she began a new role at Meta as a <strong>Community Project Manager</strong> within the Maps Organization, working on a contract basis.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---1.-marcie-hogan-1" class="slide level2">
-<h2>DANL Career Session - 1. Marcie Hogan</h2>
-<ul>
-<li class="fragment"><strong>Role at Meta</strong>
-<ul>
-<li class="fragment">Works extensively on Mapillary, an open-source street-level imagery hosting platform acquired by Meta.</li>
-<li class="fragment">Conducts analytics to understand the user community and guide product development.</li>
-<li class="fragment">While her job title doesn’t explicitly mention data, <strong>data analytics</strong> is heavily integrated into her role.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---2.-jaehyung-lee-andy" class="slide level2">
-<h2>DANL Career Session - 2. Jaehyung Lee (Andy)</h2>
-<ul>
-<li class="fragment"><strong>Background</strong>
-<ul>
-<li class="fragment">Graduated from SUNY Geneseo in 2022 with a major in Mathematics and a concentration in Data Analytics.</li>
-<li class="fragment">Served in the South Korean military for two years before resuming his academic and professional pursuits.</li>
-<li class="fragment">Took several data analytics courses and was a tutor in the Data Analytics Lab.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---2.-jaehyung-lee-andy-1" class="slide level2">
-<h2>DANL Career Session - 2. Jaehyung Lee (Andy)</h2>
-<ul>
-<li class="fragment"><strong>Invisible Technologies</strong>
-<ul>
-<li class="fragment">Works as <strong>Analytics Associate</strong> at Invisible Technologies, a fast-growing startup that partners with leading AI platforms like OpenAI, Cohere, Google, and Character.AI.</li>
-<li class="fragment">The company specializes in refining AI models through techniques like <strong>Reinforcement Learning</strong> from Human Feedback (RLHF) and Supervised Fine-Tuning (SFT).</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---2.-jaehyung-lee-andy-2" class="slide level2">
-<h2>DANL Career Session - 2. Jaehyung Lee (Andy)</h2>
-<ul>
-<li class="fragment"><strong>Role at Invisible Technologies</strong>
-<ul>
-<li class="fragment">Holds monthly business reviews for executives.</li>
-<li class="fragment">Provides visibility on departmental targets for hiring, people operations, and client services.</li>
-<li class="fragment">Analyzes client data to ensure targets are met, particularly for clients like OpenAI.</li>
-<li class="fragment">Creates numerous data pipelines using <strong>Python</strong> and develops data models with <strong>SQL</strong>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---2.-jaehyung-lee-andy-3" class="slide level2">
-<h2>DANL Career Session - 2. Jaehyung Lee (Andy)</h2>
-<ul>
-<li class="fragment"><strong>Projects</strong>
-<ul>
-<li class="fragment"><strong>Self-Evaluation Project</strong>: Tracked over 20 personal metrics daily for two years to improve his lifestyle and productivity, such as wake-up times, tasks completed, reading, and meditation.</li>
-<li class="fragment">Used this project to enhance his coding skills and had valuable discussions during job interviews.</li>
-<li class="fragment">Emphasized the importance of personal projects in learning and <strong>showcasing skills</strong>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---2.-jaehyung-lee-andy-4" class="slide level2">
-<h2>DANL Career Session - 2. Jaehyung Lee (Andy)</h2>
-<ul>
-<li class="fragment"><strong>Impact of Academic Courses</strong>
-<ul>
-<li class="fragment">Took courses like Data Analytics 100, 200, 210, and 310, which helped him build a meaningful relationship with data.</li>
-<li class="fragment">Learned programming languages like <strong>R</strong> and <strong>Python</strong>, and developed skills in <strong>data visualization and presentation</strong>.</li>
-<li class="fragment">Created <strong>interactive dashboards</strong> using <strong>Shiny</strong>, which impressed interviewers and aided in job acquisition.</li>
-<li class="fragment">Stressed the applicability of classroom knowledge to real-world scenarios.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---3.-jason-rappazzo" class="slide level2">
-<h2>DANL Career Session - 3. Jason Rappazzo</h2>
-<ul>
-<li class="fragment"><strong>Background</strong>
-<ul>
-<li class="fragment">Graduated from SUNY Geneseo in 2023 with a major in Economics and a minor in Data Analytics.</li>
-<li class="fragment">Served as a tutor in the Data Analytics Lab and was part of the track team alongside Marcie.</li>
-</ul></li>
-<li class="fragment"><strong>Role at Momentive</strong>
-<ul>
-<li class="fragment">Works as a <strong>data analyst</strong> in the Global IT Automation and Reporting at Momentive, a chemical manufacturing company.</li>
-<li class="fragment">The company produces a wide array of products found in everyday items, from tires to mattresses and aerospace components.</li>
-<li class="fragment">Responsible for automating manual business processes and turning complex data into actionable insights.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---3.-jason-rappazzo-1" class="slide level2">
-<h2>DANL Career Session - 3. Jason Rappazzo</h2>
-<ul>
-<li class="fragment"><strong>Technologies Used</strong>
-<ul>
-<li class="fragment"><strong>Alteryx</strong>: For data extraction and consolidating data from various company sources.</li>
-<li class="fragment"><strong>Snowflake</strong>: Serves as the <strong>data warehouse</strong> where data is <strong>transformed</strong> and <strong>prepared</strong>.</li>
-<li class="fragment"><strong>Tableau</strong>: Used to create <strong>dashboards</strong> and <strong>visualizations</strong> for different departments.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---3.-jason-rappazzo-2" class="slide level2">
-<h2>DANL Career Session - 3. Jason Rappazzo</h2>
-<ul>
-<li class="fragment"><strong>Insights on Learning</strong>
-<ul>
-<li class="fragment">Emphasized the importance of adaptability and the ability to <strong>learn new technologies</strong> in a rapidly changing tech landscape.</li>
-<li class="fragment">Encouraged <strong>persistence in coding</strong>, highlighting that <strong>overcoming errors and frustrations is part of the learning process</strong>.</li>
-<li class="fragment">Believes that <strong>proficiency in one programming language</strong> can facilitate learning others.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session---3.-jason-rappazzo-3" class="slide level2">
-<h2>DANL Career Session - 3. Jason Rappazzo</h2>
-<ul>
-<li class="fragment"><strong>Projects</strong>
-<ul>
-<li class="fragment"><strong>SG&amp;A Dashboard</strong>: Acted as the project manager for a dashboard visualizing the company’s Selling, General, and Administrative expenses.</li>
-<li class="fragment"><strong>Digital Growth Dashboard</strong>: Visualizes online sales data and tracks the company’s shift toward automated online product sales.</li>
-<li class="fragment">Regularly combines data from various ERP-related tables into coherent views for analysis and presentation.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-8" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="challenges-faced">Challenges Faced</h3>
-<ul>
-<li class="fragment"><strong>Marcie</strong>
-<ul>
-<li class="fragment">Experienced <strong>corporate instability</strong> at Crown Castle, witnessing four rounds of <strong>layoffs</strong>, a <strong>CEO change</strong>, and <strong>office closures</strong>.</li>
-<li class="fragment">Had to make an earlier-than-expected career move due to the company’s uncertain future.</li>
-<li class="fragment">Adjusted to Meta’s faster-paced environment and the need to <strong>learn new internal tools and processes</strong>.</li>
-<li class="fragment">Navigated strict <strong>data privacy</strong> and <strong>legal considerations</strong> at Meta, a shift from her previous role.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-9" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="challenges-faced-1">Challenges Faced</h3>
-<ul>
-<li class="fragment"><strong>Andy</strong>
-<ul>
-<li class="fragment">Initially believed data analytics was primarily technical but realized the importance of <strong>interpersonal skills</strong>.</li>
-<li class="fragment">Learned to <strong>communicate effectively with stakeholders</strong> to meet their needs and deliver valuable insights.</li>
-<li class="fragment">Continues to work on improving <strong>communication and presentation skills</strong>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-10" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="challenges-faced-2">Challenges Faced</h3>
-<ul>
-<li class="fragment"><strong>Jason</strong>
-<ul>
-<li class="fragment">Faced a learning curve due to a limited <strong>background in finance</strong>, necessitating on-the-job learning of financial data analysis.</li>
-<li class="fragment">Recognized the importance of understanding data context to create <strong>meaningful visualizations for stakeholders</strong>.</li>
-<li class="fragment">Learned that <strong>real-world data is often messy and inconsistent</strong>, requiring significant data preparation and cleaning.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-11" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="insights-on-ai">Insights on AI</h3>
-<ul>
-<li class="fragment"><strong>Marcie</strong>
-<ul>
-<li class="fragment">Observed Meta’s significant investment in <strong>AI technologies</strong>, such as open-source models like <strong>Llama 3</strong>.</li>
-<li class="fragment">Believes <strong>AI applications will expand across various sectors</strong>, including geospatial data and map-making.</li>
-<li class="fragment">Emphasized <strong>the importance of having industry-specific knowledge</strong> to optimize AI models effectively.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-12" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="insights-on-ai-1">Insights on AI</h3>
-<ul>
-<li class="fragment"><strong>Andy</strong>
-<ul>
-<li class="fragment">Acknowledged <strong>the hype surrounding AI</strong> and the possibility of an AI bubble.</li>
-<li class="fragment">Mentioned that his company is preparing by <strong>diversifying into other industries beyond AI</strong>.</li>
-<li class="fragment">Believes <strong>AI will become more prominent across all businesses</strong>, requiring <strong>adaptability</strong> and <strong>broader skill sets</strong>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-13" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="most-fulfilling-aspects">Most Fulfilling Aspects</h3>
-<ul>
-<li class="fragment"><strong>Marcie</strong>
-<ul>
-<li class="fragment">Finds fulfillment when <strong>her work aligns with her passions</strong>, particularly in geospatial data and map-making.</li>
-<li class="fragment">Enjoys seeing the <strong>direct impact of her insights on public-facing products and contributing to an interconnected world</strong>.</li>
-<li class="fragment">Prefers roles where she can witness the end results and user impact of her work.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-14" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="most-fulfilling-aspects-1">Most Fulfilling Aspects</h3>
-<ul>
-<li class="fragment"><strong>Andy</strong>
-<ul>
-<li class="fragment">Derives <strong>satisfaction from building solutions</strong> from scratch and <strong>seeing them positively impact stakeholders</strong>.</li>
-<li class="fragment">Values moments when <strong>his work translates into tangible benefits</strong> for the company and receives appreciation.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-15" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="most-fulfilling-aspects-2">Most Fulfilling Aspects</h3>
-<ul>
-<li class="fragment"><strong>Jason</strong>
-<ul>
-<li class="fragment">Finds it rewarding when <strong>code runs flawlessly</strong> and <strong>data is accurately prepared</strong>.</li>
-<li class="fragment">Enjoys <strong>impressing stakeholders with the final product</strong>, especially when <strong>it simplifies their work</strong>.</li>
-<li class="fragment">Values making a <strong>tangible impact on colleagues’ efficiency and effectiveness</strong>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-16" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="advice-to-students-who-are-looking-for-a-job">Advice to Students Who Are Looking for a Job</h3>
-<ul>
-<li class="fragment"><strong>Marcie</strong>
-<ul>
-<li class="fragment">Encouraged students to <strong>leverage opportunities at Geneseo</strong> to build their resumes, such as <strong>tutoring</strong>, <strong>research</strong>, and <strong>extracurricular activities</strong>.</li>
-<li class="fragment">Highlighted <strong>the competitive job market</strong> and <strong>the necessity of relevant experience to secure internships and jobs</strong>.</li>
-<li class="fragment">Advised students to <strong>combine their data analytics skills with industries they are passionate about</strong> for a more fulfilling career.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-17" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="advice-to-students-who-are-looking-for-a-job-1">Advice to Students Who Are Looking for a Job</h3>
-<ul>
-<li class="fragment"><strong>Andy</strong>
-<ul>
-<li class="fragment">Emphasized <strong>the significance of working on personal projects</strong> to deepen coding and data science expertise.</li>
-<li class="fragment">Recommended <strong>mastering Python, R, and SQL</strong> as essential tools for data-related jobs.</li>
-<li class="fragment">Advised students to have <strong>one or two significant projects</strong> to discuss during interviews.</li>
-<li class="fragment">Encouraged <strong>networking with professionals in the field</strong> to gain insights and collaboration opportunities.</li>
-<li class="fragment">Highlighted that <strong>exploring various projects</strong> builds confidence and aids in transitioning from academia to industry.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-18" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="advice-to-students-who-are-looking-for-a-job-2">Advice to Students Who Are Looking for a Job</h3>
-<ul>
-<li class="fragment"><strong>Jason</strong>
-<ul>
-<li class="fragment">Recommended learning <strong>basic finance and accounting concepts</strong> to better understand and meet business needs.</li>
-<li class="fragment">Advised developing <strong>strong interpersonal and communication skills</strong> to effectively <strong>collaborate with non-technical stakeholders</strong>.</li>
-<li class="fragment">Encouraged being open to <strong>learning new tools and technologies</strong> to stay relevant in the field.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career-session-19" class="slide level2">
-<h2>DANL Career Session</h2>
-<h3 id="summary">Summary</h3>
-<ul>
-<li class="fragment">The speakers highlighted the importance of:
-<ul>
-<li class="fragment"><strong>Technical Skills</strong>: Proficiency in programming languages like Python, R, and SQL is crucial.</li>
-<li class="fragment"><strong>Continuous Learning</strong>: Staying adaptable and willing to learn new technologies and methodologies.</li>
-<li class="fragment"><strong>Interpersonal Skills</strong>: Effective communication with stakeholders and team members is essential.</li>
-<li class="fragment"><strong>Passion Alignment</strong>: Combining data analytics skills with personal interests leads to a more fulfilling career.</li>
-<li class="fragment"><strong>Practical Experience</strong>: Engaging in projects, internships, and leveraging academic opportunities enhances employability.</li>
-</ul></li>
-</ul>
-</section>
-<section id="danl-career" class="slide level2">
-<h2>DANL Career</h2>
-<h3 id="useful-skills-for-danl-students">Useful Skills for DANL Students</h3>
-<ul>
-<li class="fragment">Data Analysis with Python and R</li>
-<li class="fragment">Data Science with Python and R</li>
-<li class="fragment">Programming Languages for databases such as SQL</li>
-<li class="fragment">Business Intelligence Software such as Power BI and/or Tableau</li>
-<li class="fragment">Version Control with Git and GitHub</li>
-<li class="fragment">Data Analytics/Science Portfolio with a Capstone Project on GitHub</li>
-<li class="fragment">Prompt Engineering in Generative AI</li>
-</ul>
-</section>
-<section id="danl-career-1" class="slide level2">
-<h2>DANL Career</h2>
-<h3 id="data-analytics-related-certificates-on-coursera">Data Analytics-related Certificates on <a href="https://www.coursera.org">Coursera</a></h3>
+<li class="fragment">In RStudio, open the project <code>USERNAME.github.io.Rporj</code>.
 <ol type="1">
-<li class="fragment">General Data Analytics, SQL, and Business Intelligence
+<li class="fragment">Click <code>Project: (None)</code> at the top-right corner.</li>
+<li class="fragment">Click <code>USERNAME.github.io.Rporj</code>.</li>
+</ol></li>
+<li class="fragment">Your website has a <code>_quarto.yml</code> configuration file.
 <ul>
-<li class="fragment"><a href="https://www.coursera.org/professional-certificates/google-data-analytics">Google Data Analytics Professional Certificate</a></li>
-<li class="fragment"><a href="https://www.coursera.org/learn/sql-data-science">IBM Databases and SQL for Data Science with Python</a></li>
-<li class="fragment"><a href="https://www.coursera.org/professional-certificates/tableau-business-intelligence-analyst">Tableau Business Intelligence Analyst Professional Certificate</a></li>
-<li class="fragment"><a href="https://www.coursera.org/professional-certificates/microsoft-power-bi-data-analyst">Microsoft Power BI Data Analyst Professional Certificate</a></li>
+<li class="fragment">This file provides options for HTML documents within the website.</li>
 </ul></li>
-<li class="fragment">Data Science
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">---</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="ex">project:</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="ex">type:</span> website</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ex">website:</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="ex">title:</span> <span class="st">"YOUR NAME"</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="ex">navbar:</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="ex">left:</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>      <span class="ex">-</span> text: Project</span>
+<span id="cb3-10"><a href="#cb3-10"></a>        <span class="ex">href:</span> project.qmd</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      <span class="ex">-</span> text: Blog</span>
+<span id="cb3-12"><a href="#cb3-12"></a>        <span class="ex">href:</span> blog-listing.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">format:</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="ex">html:</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="ex">theme:</span> cosmo</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    <span class="ex">css:</span> styles.css</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="ex">toc:</span> false</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="ex">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><a href="https://www.coursera.org/professional-certificates/ibm-data-science">IBM Data Science Professional Certificate</a></li>
-</ul></li>
-<li class="fragment">Generative AI
+<li class="fragment"><p>The <code>_quarto.yml</code> file configures the website settings.</p></li>
+<li class="fragment"><p>Indentation matters!</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="quarto-websites-1" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="custom-css">Custom CSS</h3>
 <ul>
-<li class="fragment"><a href="https://www.coursera.org/learn/google-ai-essentials/">Google AI Essentials</a></li>
-<li class="fragment"><a href="https://www.coursera.org/learn/generative-ai-prompt-engineering-for-everyone">IBM Generative AI: Prompt Engineering Basics</a></li>
+<li class="fragment"><p>Cascading Style Sheets (CSS) is used to format the layout of a webpage (color, font, text size, background, display, etc.).</p>
+<ul>
+<li class="fragment"><p>HTML will format the architecture of the house.</p></li>
+<li class="fragment"><p>CSS will be the carpet and walls to decorate the house.</p></li>
+<li class="fragment"><p>JavaScript adds interactive elements in the house, such as opening doors and lighting.</p></li>
 </ul></li>
-</ol>
+<li class="fragment"><p>We are not front-end web developers.</p>
+<ul>
+<li class="fragment">We will not cover the use of CSS and JavaScript.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-2" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="rendering">Rendering</h3>
+<ul>
+<li class="fragment"><p>The <strong>Render</strong> button (<strong>command/Ctrl + shift + K</strong>) renders a single Quarto file.</p></li>
+<li class="fragment"><p><code>quarto render</code> from Terminal renders all Quarto/Jupyter Notebook files in your local working directory:</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="ex">quarto</span> render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment"><p>We should use <code>quarto render</code> when we have changes in <code>_quarto.yml</code>.</p></li>
+<li class="fragment"><p>Make changes only from your local laptop.</p>
+<ul>
+<li class="fragment">Do not make any change from the GitHub repo webpage.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-3" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="adding-.ipynb-to-quarto-websites">Adding <code>*.ipynb</code> to Quarto websites</h3>
+<ul>
+<li class="fragment"><p>By default, <code>quarto render</code> doesn’t execute any code in <code>.ipynb</code> notebooks.</p></li>
+<li class="fragment"><p><code>quarto render</code> renders <code>.ipynb</code> notebooks, so that corresponding <code>html</code> files are rendered.</p>
+<ul>
+<li class="fragment">If we need to update cell outputs in <code>*.ipynb</code>, run that <code>*.ipynb</code> on Google Colab, and save the notebook.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-4" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="appearance-and-style">Appearance and Style</h3>
+<ul>
+<li class="fragment"><code>theme</code> specifies the Bootstrap theme to use for the page (themes are drawn from the <a href="https://bootswatch.com">Bootswatch</a> theme library).
+<ul>
+<li class="fragment">Valid themes include <code>default</code>, <code>bootstrap</code>, <code>cerulean</code>, <code>cosmo</code>, <code>darkly</code>, <code>flatly</code>, <code>journal</code>, <code>lumen</code>, <code>paper</code>, <code>readable</code>, <code>sandstone</code>, <code>simplex</code>, <code>spacelab</code>, <code>united</code>, and <code>yeti</code>.</li>
+</ul></li>
+<li class="fragment"><code>highlight-style</code> specifies the code highlighting style.
+<ul>
+<li class="fragment">Supported styles include <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, <code>breezedark</code>, and <code>textmate</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-5" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="about">About</h3>
+<ul>
+<li class="fragment">Your <code>index.qmd</code> sets a page about you.
+<ul>
+<li class="fragment">Details in about pages are available here:</li>
+<li class="fragment"><a href="https://quarto.org/docs/websites/website-about.html">https://quarto.org/docs/websites/website-about.html</a>.</li>
+</ul></li>
+<li class="fragment">Quarto includes 5 built in templates:
+<ul>
+<li class="fragment"><code>jolla</code></li>
+<li class="fragment"><code>trestles</code></li>
+<li class="fragment"><code>solana</code></li>
+<li class="fragment"><code>marquee</code></li>
+<li class="fragment"><code>broadside</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-6" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="icons-and-emojis">Icons and Emojis</h3>
+<ul>
+<li class="fragment">A ton of Bootstrap icons are available here:
+<ul>
+<li class="fragment"><a href="https://icons.getbootstrap.com">https://icons.getbootstrap.com</a>.</li>
+</ul></li>
+<li class="fragment">A ton of markdown emojis are available here 😄:
+<ul>
+<li class="fragment"><a href="https://github.com/ikatyang/emoji-cheat-sheet">https://github.com/ikatyang/emoji-cheat-sheet</a></li>
+<li class="fragment"><a href="https://gist.github.com/rxaviers/7360908">https://gist.github.com/rxaviers/7360908</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-7" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="naviation-and-adding-pages">Naviation and Adding Pages</h3>
+<ul>
+<li class="fragment">We can add a new page to the website through <code>navbar</code> in <code>_quarto.yml</code></li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="ex">left:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="ex">-</span> text: Project</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="ex">href:</span> project.qmd</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="ex">-</span> text: Blog</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="ex">href:</span> blog-listing.qmd</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="ex">-</span> text: Homeowrk</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="ex">href:</span> hw.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="quarto-websites-8" class="slide level2">
+<h2>Quarto Websites</h2>
+<h3 id="naviation-and-adding-pages-1">Naviation and Adding Pages</h3>
+<ul>
+<li class="fragment">We can also create a navigation bar menu by including a <code>menu</code></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">left:</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="ex">-</span> text: <span class="st">"Projects"</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="ex">menu:</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>      <span class="ex">-</span> project_1.qmd</span>
+<span id="cb7-5"><a href="#cb7-5"></a>      <span class="ex">-</span> project_2.qmd </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">More details about navbar are available here:
+<ul>
+<li class="fragment"><a href="https://quarto.org/docs/websites/website-navigation.html">https://quarto.org/docs/websites/website-navigation.html</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-websites-9" class="slide level2" data-background-color="#6497b1">
+<h2>Quarto Websites</h2>
+<h3 id="colors">Colors</h3>
+<ul>
+<li class="fragment">A ton of hex codes for colors are available here:
+<ul>
+<li class="fragment"><a href="https://www.color-hex.com">https://www.color-hex.com</a></li>
+</ul></li>
+</ul>
+</section>
+<section id="quarto-website-basics" class="slide level2">
+<h2>Quarto Website Basics</h2>
+<ul>
+<li class="fragment">Let’s do <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-03.html">Classwork 3</a>.</li>
+</ul>
 
 <div class="footer footer-default">
 
