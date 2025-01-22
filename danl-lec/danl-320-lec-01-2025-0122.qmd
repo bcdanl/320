@@ -74,18 +74,24 @@ theme_set(theme_fivethirtyeight()+
   
 
 
+
 ## Instructor
 ### Economics and Data Science
 
-- Choe, B.H. "Estimating the Value of Statistical Life through Big Data" (with Newbold, S. and James, A.)
 
-- Question: How much is the society willing to pay to reduce the likelihood of fatality?
+- Choe, B.H., Newbold, S. and James, A., "Estimating the Value of Statistical Life through Big Data"
+  - Question: How much is the society willing to pay to reduce the likelihood of fatality?
 
-- Data Sources:
-  - Google Maps
-  - National Highway Traffic Safety Administration
   
-  
+- Choe, B.H., "Social Media Campaigns, Lobbying and Legislation: Evidence from #climatechange and Energy Lobbies."
+  - Question: To what extent do social media campaigns compete with fossil fuel lobbying on climate change legislation?
+
+
+- Choe, B.H. and Ore-Monago, T., 2024. "Governance and Climate Finance in the Developing World"
+  - Question: In what ways and through what forms does poor governance act as a significant barrier to reducing greenhouse gas emissions in developing countries?
+
+
+
   
 # Syllabus {background-color="#1c4982"}
 
@@ -138,6 +144,21 @@ theme_set(theme_fivethirtyeight()+
   - A free online version of this book is available.
 
 
+## Syllabus
+### Reference Materials - PySpark
+
+- [**Spark by Examples**](https://sparkbyexamples.com)
+
+- [**Apache PySpark - PySpark Documentation**](https://spark.apache.org/docs/latest/api/python/index.html)
+
+
+## Syllabus
+### Reference Materials - Sports Data
+
+- **Introduction to Sports Analytics Using R** by Ryan Elmore and Andrew Urbaczewski
+  - An eBook version of this book is available at:
+    - [**VitalSource**](https://www.vitalsource.com/products/introduction-to-sports-analytics-using-r-ryan-elmore-andrew-v9781958303061?term=9781958303061)
+    - [**RedShelf**](https://redshelf.com/app/ecom/book/2688913)
 
 
 ## Syllabus
@@ -179,28 +200,9 @@ theme_set(theme_fivethirtyeight()+
 
 - **Exams**: There will be one Midterm Exam.
 
-- **Discussions**: You are encouraged to participate in GitHub-based online discussions and class discussion, and office hours.
+- **Participation**: You are encouraged to participate in GitHub-based online discussions and class discussion, and office hours.
   - Checkout the netiquette policy in the syllabus.
 
-
-
-
-<!-- ## Syllabus -->
-<!-- ### Netiquette Policy for Online Discussions -->
-
-<!-- - Before posting your question to a discussion board, check if anyone has asked it already and received a reply. Just as you would not repeat a topic of discussion right after it happened in real life, do not do that in discussion boards either. -->
-<!-- - Stay on topic - Do not post irrelevant inks. comments, thoughts, or pictures. -->
-<!-- - Do not type in all capital letters. If you do, it will look like you are screaming. -->
-<!-- - Do not write anything that sounds angry or sarcastic, even as a joke, because without hearing your tone of voice, your peers might not realize you are joking. -->
-<!-- - Always remember to say "Please" and "Thank you" when soliciting help from your peers or an instructor. -->
-<!-- - Respect the opinions of your classmates. If you feel the need to disagree, do so respectfully and acknowledge the valid points in your peers' arguments. Acknowledge that others are entitled to have their own perspective on the issue. -->
-<!-- - If you reply to a question from a peer, make sure your answer is accurate! If you are not 100% when the homework is due, do not guess. Otherwise, you could really mess things up for your peers and they will not appreciate it. -->
-<!-- - Be brief. If you write a long dissertation in response to a simple question, it is unlikely that anyone will spend the time to read through it all. -->
-<!-- - If you ask a question and many people respond, summarize all answers and post that summary to benefit your whole class. -->
-<!-- - Do not badmouth others or call them stupid. You may disagree with their ideas, but do not mock the person. -->
-<!-- - If you refer to something your peers said earlier in the discussion, quote just a few key lines from their post so that others wont have to go back and figure out which post you re referring to. -->
-<!-- - Be forgiving. If your peer makes a mistake, do not badger him or her for it. Just let it go - it happens to the best of us. -->
-<!-- - Run a spelling and grammar check before posting anything to the discussion board. It only takes a minute, and can make the difference between sounding like a fool and sounding knowledgeable. -->
 
 
 ## Syllabus
@@ -244,11 +246,11 @@ theme_set(theme_fivethirtyeight()+
 
 - There will be tentatively 28 class sessions.
 
-- The Midterm Exam is scheduled on March 12, 2025, Wednesday, during the class time.
+- The Midterm Exam is scheduled on March 31, 2025, Wednesday, during the class time.
 
-- The Final Exam is scheduled on May 9, 2025, Friday, 3:30 P.M.-5:30 P.M.
+- The Project Presentation is scheduled on May 9, 2025, Friday, 3:30 P.M.-5:30 P.M.
 
-- The due for the team project is May 16, 2024, Thursday.
+- The due for the Project write-up is May 16, 2024, Friday.
 
 
 
@@ -256,19 +258,27 @@ theme_set(theme_fivethirtyeight()+
 ## Syllabus
 ### Course Contents
 
-- The first half of the course covers fundamentals of data visualization:
 ```{r, out.width='100%', fig.align='center'}
 #| eval: true
 #| echo: false
 text_tbl <- data.frame(
-  Week = c("1-2", "3", "4-5", "6", "7-8", "9"),
-  Contents = c("Course Outlines; Installing the Tools; Building a Website",
-"Healy Ch 3. Make a Plot",
-"Healy Ch 4. Show the Right Numbers",
-"Healy Ch 5. Graph Tables, Add Labels, Make Notes",
-"Healy Ch 8. Refine Your Plots",
-""),
-  `HW Exam` = c("", "HW 1", "", "HW 2", "", "HW 3, Midterm")
+  Week = c("1-2", "2", 
+           "3-5", "6", 
+           "7", "8", 
+           "9", "10"),
+  Contents = c(
+    "Course Outlines; Installing the Tools; Building a Website",
+    "Python Basics; PySpark Introduction",
+    "PySpark DataFrame",
+    "PySpark Machine Learning with MLib",
+    "Linear Regression",
+    "Logistic Regression",
+    "Regularization",
+    "Tree-based Methods"),
+  `HW Exam` = c("", "", 
+                "HW 1", "", 
+                "", "HW 2", 
+                "HW 3", "HW 4, Midterm Exam")
   )
 
 
@@ -323,19 +333,19 @@ DT::datatable(text_tbl, rownames = FALSE,
 ## Syllabus
 ### Course Contents
 
-- The second half of the course covers advanced data visualization and Shiny apps:
 ```{r, out.width='100%', fig.align='center'}
 #| eval: true
 #| echo: false
 text_tbl <- data.frame(
-  Week = c("10", "11", "12-13", "14-15"),
+  Week = c("11", "12", "13", "14", "15"),
   Contents = c(
-"Healy Ch 7. Maps with Geographic Data",
-"Interactive and Animation Plots",
-"Shiny Web Apps",
-"Shiny Dashboards and Project"
+"Classification",
+"Clustering",
+"Association Rules",
+"Text Analysis",
+"Deep Learning"
 ),
-  `HW Exam` = c("", "HW 4", "HW 5", "HW 6")
+  `HW Exam` = c("", "", "HW 5", "", "HW 6")
   )
 
 
@@ -761,88 +771,6 @@ $$
    - [IBM Generative AI: Prompt Engineering Basics](https://www.coursera.org/learn/generative-ai-prompt-engineering-for-everyone)
    
 
-
-# DANL Tools {background-color="#1c4982"}
-
-
-## What is Git?
-
-:::: {.columns}
-
-::: {.column width="45%"}
-![](https://bcdanl.github.io/lec_figs/git-version.png)
-:::
-
-::: {.column width="55%"}
-
-$\quad$
-
-- **Git** is the most popular **version control** tool for any software development.
-  - It tracks changes in a series of snapshots of the project, allowing developers to revert to previous versions, compare changes, and merge different versions. 
-  - It is the industry standard and ubiquitous for coding collaboration.
-  
-:::
-
-::::
-
-
-
-
-## What is GitHub?
-
-- [GitHub](https://github.com/){target="_blank"} is a web-based hosting platform for Git repositories to store, manage, and share code. 
-
-- Out class website is hosted on a GitHub repository.
-
-- Course contents will be posted not only in Brightspace but also in our GitHub repositories ("repos") and websites.
-
-- Github is useful for many reasons, but the main reason is how user friendly it makes uploading and sharing code.
-
-
-
-
-## What is GitHub?
-
-{{< video https://www.youtube.com/watch?v=pBy1zgt0XPc width="100%" height="100%">}}
-
-
-
-## What is RStudio?
-
-- **RStudio** is an integrated development environment (IDE) mainly for R programming. 
-  - An IDE is a software application that provides comprehensive facilities (e.g., text code editor, graphical user interface (GUI)) to computer programmers for software development. 
-
-- RStudio is a user-friendly interface that makes using R easier and more interactive. 
-  - It provides a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging, and workspace management.
-
-
-
-
-## What is Python?
-
-- **Python** is a versatile programming language known for its simplicity and readability.
-
-- Python has become a dominant tool in various fields including data analysis, machine learning, and web development.
-  - It is widely used among developers, data scientists, and researchers for building applications and performing data-driven tasks.
-  - Python is open source and has a vast ecosystem of libraries and frameworks.
-
-
-
-## What is Jupyter?
-
-- **Jupyter** is an open-source IDE primarily for Python, though it supports many other languages.
-  - Jupyter provides a notebook interface that allows users to write and execute code in a more interactive and visual format.
-
-- Jupyter Notebook (`*.ipynb`) is a user-friendly environment that enhances coding, data analysis, and visualization.
-  - It offers a web-based interface that combines live code, equations, visualizations, and narrative text.
-  - Jupyter Notebook is widely used for data science, machine learning, and research, enabling easy sharing and collaboration.
-
-- We will use a free cloud version of Jupyter, which is [**Google Colab**](https://colab.research.google.com).
-
-
-
-
-
 # Installing the Tools {background-color="#1c4982"}
 
 ## Installing the Tools
@@ -1073,21 +1001,6 @@ install.packages("reticulate")
 ::::
 
 
-
-## Building a Personal Website on GitHub
-
-- Follow steps described in [Classwork 1](https://bcdanl.github.io/320/danl-cw/danl-320-cw-01.html).
-
-
-## Let's Practice Markdown!
-
-- Jupyter Notebook, Quarto, and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
-
-- Let's do [Classwork 2](https://bcdanl.github.io/320/danl-cw/danl-320-cw-02.html).
-
-
-
-
 ## RStudio Workflow
 ### Shortcuts for RStudio and RScript
 
@@ -1127,6 +1040,21 @@ install.packages("reticulate")
 - You can also click the menu button at the top-right corner, and go to a specific slide.
  
  - **Ctrl + Shift + F** to search.
+
+
+
+## Building a Personal Website on GitHub
+
+- Follow steps described in [Classwork 1](https://bcdanl.github.io/320/danl-cw/danl-320-cw-01.html).
+
+
+## Let's Practice Markdown!
+
+- Jupyter Notebook, Quarto, and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
+
+- Let's do [Classwork 2](https://bcdanl.github.io/320/danl-cw/danl-320-cw-02.html).
+
+
 
 
 
@@ -1452,615 +1380,5 @@ left:
 - Let's do [Classwork 3](https://bcdanl.github.io/320/danl-cw/danl-320-cw-03.html).
 
 
-
-
-
-
-# Installing the Tools {background-color="#1c4982"}
-
-## Installing the Tools
-### Anaconda
-
-- To install Anaconda, go to the following download page:
-  - [https://www.anaconda.com/products/distribution](https://www.anaconda.com/products/distribution){target="_blank"}.
-  - Click the "Download" button.
-
-
-## Installing the Tools
-### R programming
-
-- The R language is available as a free download from the R Project website at:
-  - Windows: [https://cran.r-project.org/bin/windows/base/](https://cran.r-project.org/bin/windows/base/){target="_blank"}
-  - Mac: [https://cran.r-project.org/bin/macosx/](https://cran.r-project.org/bin/macosx/){target="_blank"}
-  - Download the file of R that corresponds to your Mac OS (Big Sur, Apple silicon arm64, High Sierra, El Capitan, Mavericks, etc.)
-
-
-
-
-## Installing the Tools
-### R Studio
-
-- The RStudio Desktop is available as a free download from the following webpage:
-    - [https://www.rstudio.com/products/rstudio/download/#download](https://www.rstudio.com/products/rstudio/download/#download){target="_blank"}
-    
-
-:::: {.columns}
-
-::: {.column width="50%"}
-- For **Mac** users, try the following steps:
-  1. Run **`RStudio-*.dmg`** file.
-  2. From the Pop-up menu, click the RStudio icon.
-  3. While clicking the RStudio icon, drag it to the **Applications** directory.
-
-:::
-
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/rstudio-mac-install.gif)
-:::
-::::
-
-
-## Installing the Tools
-### RStudio Environment
-:::: {.columns}
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/rstudio_env.png)
-:::
-
-::: {.column width="50%"}
-
-
-- **Script Pane** is where you write R commands in a script file that you can save.
-
-  - An R script is simply a text file containing R commands. 
-  - RStudio will color-code different elements of your code to make it easier to read.
-  
-:::
-::::
-
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-- To open an R script, 
-  - File $>$ New File  $>$ R Script
-
-
-:::
-
-::: {.column width="50%"}
-
-- To save the R script, 
-  - File $>$ Save
-
-:::
-
-::::
-
-## Installing the Tools
-### RStudio Environment
-:::: {.columns}
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/rstudio_env.png)
-:::
-
-::: {.column width="50%"}
-- **Console Pane** allows you to interact directly with the R interpreter and type commands where R will immediately execute them.
-:::
-::::
-
-## Installing the Tools
-### RStudio Environment
-:::: {.columns}
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/rstudio_env.png)
-:::
-
-::: {.column width="50%"}
-- **Environment Pane** is where you can see the values of variables, data frames, and other objects that are currently stored in memory.
-
-- Type below in the Console Pane, and then hit *Enter*:
-```{.r}
-a <- 1
-```
-
-:::
-::::
-
-## Installing the Tools
-### RStudio Environment
-
-:::: {.columns}
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/rstudio_env.png)
-:::
-
-::: {.column width="50%"}
-- **Plots Pane** contains any graphics that you generate from your R code.
-
-:::
-::::
-
-
-
-## Installing the Tools
-### R Packages and `tidyverse`
-
-- **R packages** are collections of R functions, compiled code, and data that are combined in a structured format.
-
-- The `tidyverse` is a collection of R packages designed for data science that share an underlying design philosophy, grammar, and data structures. 
-  - The `tidyverse` packages work harmoniously together to make data manipulation, exploration, and visualization more.
-  - We will use several R packages from `tidyverse` throughout the course. (e.g., `ggplot2`, `dplyr`, `tidyr`)
-
-
-
-## Installing the Tools
-### Installing R packages with `install.packages("packageName")`
-
-- R packages can be easily installed from within R using functions  `install.packages("packageName")`. 
-  - To install the R package `tidyverse`, type and run the following from R console:
-
-```{.r}
-install.packages("tidyverse")
-```
-
-
-- While running the above codes, you may encounter the question below from the R Console:
-
-
-:::: {.columns}
-::: {.column width="50%"}
-
-- **Mac**: *"Do you want to install from sources the packages which need compilation?"* from Console Pane.
-:::
-
-::: {.column width="50%"}
-
-- **Windows**: *"Would you like to use a personal library instead?"* from Pop-up message.
-:::
-::::
-
-- Type `no` in the R Console, and then hit *Enter*.
-
-
-
-## Installing the Tools
-### Loading R packages with `library(packageName)`
-
-- Once installed, a package is loaded into an R session using `library(packageName)` so that its functions and data can be used.
-  - To load the R package `tidyverse`, type and run the following command from a R script:
-
-```{.r}
-library(tidyverse)
-df_mpg <- mpg
-```
-
-
-- `mpg` is the data.frame provided by the R package `ggplot2`, one of the R pakcages in `tidyverse`.
-
-
-
-## Installing the Tools 
-### Python in RStudio
-
-::: {.panel-tabset}
-## Python Option 
-
-- We can run Python codes within RStudio.
-
-- Select Python interpreter in RStudio from **Tools** $>$ **Global Options** $>$ **Python**:
-
-![](https://bcdanl.github.io/lec_figs/rstudio-conda.gif){style="margin: auto; display: block;" width="45%"}
-
-## R package, `reticulate`
-
-- Install the R package, `reticulate`
-```{.r}
-install.packages("reticulate")
-```
-
-- This package allows `Quarto` to use Python and R objects interactively within one Quarto document.
-
-::: 
-
-
-
-## Installing the Tools
-### RStudio Options Setting
-
-:::: {.columns}
-::: {.column width="50%"}
-![](https://bcdanl.github.io/lec_figs/RStudio_options.png)
-:::
-
-::: {.column width="50%"}
-- This option menu is found by menus as follows:
-  - Tools $>$ Global Options
-
-- Check the boxes as in the left.
-- Choose the option __*Never*__ for <u> Save workspace to .RData on exit: </u>
-:::
-
-::::
-
-
-
-## Building a Personal Website on GitHub
-
-- Follow steps described in [Classwork 1](https://bcdanl.github.io/320/danl-cw/danl-310-cw-01.html).
-
-
-## Let's Practice Markdown!
-
-- Jupyter Notebook, Quarto, and GitHub-based Discussion Boards use **markdown** as its underlying document syntax.
-
-- Let's do [Classwork 2](https://bcdanl.github.io/320/danl-cw/danl-310-cw-02.html).
-
-
-
-
-## RStudio Workflow
-### Shortcuts for RStudio and RScript
-
-
-:::: {.columns}
-::: {.column width="50%"}
-**Mac**
-
-- **command + shift + N** opens a new RScript.
-- **command + return** runs a current line or selected lines.
-- **command + shift + C** is the shortcut for # (commenting).
-- **option + - ** is the shortcut for `<-`.
-
-:::
-
-::: {.column width="50%"}
-
-**Windows**
-
-- **Ctrl + Shift + N** opens a new RScript.
-- **Ctrl + return** runs a current line or selected lines.
-- **Ctrl + Shift + C** is the shortcut for # (commenting).
-- **Alt + - ** is the shortcut for `<-`.
-
-:::
-::::
-
-
-
-
-## Workflow
-### Shortcuts for Lecture Slides
-
-- **o** or **Esc** overviews lecture slides
-  - Use arrow keys to move around.
-  
-- You can also click the menu button at the top-right corner, and go to a specific slide.
- 
- - **Ctrl + Shift + F** to search.
-
-
-
-
-# Getting Started with Quarto {background-color="#1c4982"}
-
-
-## Getting Started with Quarto
-### YAML
-
-
-:::: {.columns}
-::: {.column width="25%"}
-![](https://bcdanl.github.io/lec_figs/quarto-yml-engine.jpg){width="75%"}
-:::
-
-
-::: {.column width="70%"}
-
-:::{}
-- An YAML (yet another markup language) header surrounded by `---`.
-  - It is commonly used for document configuration (e.g., title, author, date, style, ...).
-
-- Chunks of Python/R code surrounded by three backticks, $\text{```}$.
-
-:::
-
-:::
-::::
-
-
-
-## Getting Started with Quarto
-### Knitting / Rendering
-
-- When we knit the document, Quarto sends the `.qmd` file to **jupyter**/**knitr**, which executes all of the code chunks and creates a new markdown (`.md`) document which includes the code and its output. 
-
-- The markdown file (`*.md`) generated by **jupyter**/**knitr** is then processed by **pandoc**, which is responsible for creating the output file.
-
-![](https://bcdanl.github.io/lec_figs/quarto-flow.png)
-
-
-
-
-
-## Getting Started with Quarto
-### Markdown, Quarto, and HTML
-
-- The very original version of **Markdown** was invented mainly to write HTML content more easily.
-  - For example, `- SOME_TEXT` in "*.md" is equivalent to `<ul><li> SOME_TEXT </li>` in "*.html"
-  
-  
-- Pandoc makes it possible to convert a Markdown document to a large variety of output formats, such as HTML.
-
-
-
-## Getting Started with Quarto and HTML
-### Markdown, Quarto, and HTML
-
-
-```{.bash}
----
-title: "Habits"
-author: YOUR_NAME
-date: January 30, 2024
-format: 
-  html
----
-```
-
-
-
-
-- To create an HTML document from Quarto, we specify the `html` output format in the YAML metadata of our document.
-  - By default, `format: html` is set.
-
-- In RStudio, we can create a new Quarto file from the menu, File -> New File -> Quarto Document.
-
-- Open an empty Quarto file.
-  - Type the following YAML metadata to the empty Quarto file.
-
-
-
-
-
-## Getting Started with Quarto
-### Quarto Basics
-
-
-- In RStudio, close the project `USERNAME.github.io.Rporj` if it is on.
-  1. Click `USERNAME.github.io.Rporj` at the top-right corner.
-  2. Click *Close Project*.
-  
-
-- Download the Quarto file, `danl-310-quarto-r.qmd` from Brightspace, and open it from RStudio.
-
-
-
-
-## Getting Started with Quarto
-### Quarto Basics
-
-```{.bash}
----
-title: 
-subtitle: 
-author: 
-date: last-modified
-
-format: 
-  html:
-  
-execute: 
-  echo: true
-  eval: true
----
-```
-
-
-
-- The following syntax is part of YAML metadata in `danl-310-quarto-r.qmd`.
-  - In YAML, indentation really matters!
-  - **tab** (or four spaces) defines a level in YAML.
-
-
-# Managing a Website with Quarto (and Jupyter Notebook) {background-color="#1c4982"}
-
-## Quarto Websites
-
-
-- In RStudio, open the project `USERNAME.github.io.Rporj`.
-  1. Click `Project: (None)` at the top-right corner.
-  2. Click `USERNAME.github.io.Rporj`.
-
-
-- Your website has a `_quarto.yml` configuration file.
-  - This file provides options for HTML documents within the website.
-
-
-:::: {.columns}
-::: {.column width="50%"}
-```{.bash}
----
-project:
-  type: website
-
-website:
-  title: "YOUR NAME"
-  navbar:
-    left:
-      - text: Project
-        href: project.qmd
-      - text: Blog
-        href: blog-listing.qmd
-```
-
-:::
-
-::: {.column width="50%"}
-
-```{.bash}
-format:
-  html:
-    theme: cosmo
-    css: styles.css
-    toc: false
----
-```
-
-- The `_quarto.yml` file configures the website settings.
-
-- Indentation matters!
-
-:::
-
-::::
-
-
-
-## Quarto Websites
-### Custom CSS
-
-- Cascading Style Sheets (CSS) is used to format the layout of a webpage (color, font, text size, background, display, etc.). 
-
-  - HTML will format the architecture of the house.
-  
-  - CSS will be the carpet and walls to decorate the house.
-  
-  - JavaScript adds interactive elements in the house, such as opening doors and lighting.
-
-  
-- We are not front-end web developers. 
-
-  - We will not cover the use of CSS and JavaScript.
-
-
-
-## Quarto Websites
-### Rendering
-
-- The **Render** button (**command/Ctrl + shift + K**) renders a single Quarto file.
-
-- `quarto render` from Terminal renders all Quarto/Jupyter Notebook files in your local working directory:
-
-```{.bash}
-quarto render
-```
-
-- We should use `quarto render` when we have changes in `_quarto.yml`.
-
-- Make changes only from your local laptop. 
-  - Do not make any change from the GitHub repo webpage.
-
-
-
-
-## Quarto Websites
-### Adding `*.ipynb` to Quarto websites
-
-
-- By default, `quarto render` doesn’t execute any code in `.ipynb` notebooks. 
-
-- `quarto render` renders `.ipynb` notebooks, so that corresponding `html` files are rendered. 
-
-  - If we need to update cell outputs in `*.ipynb`, run that `*.ipynb` on Google Colab, and save the notebook.
-
-
-
-
-## Quarto Websites
-### Appearance and Style
-
-- `theme` specifies the Bootstrap theme to use for the page (themes are drawn from the [Bootswatch](https://bootswatch.com) theme library).
-  - Valid themes include `default`, `bootstrap`, `cerulean`, `cosmo`, `darkly`, `flatly`, `journal`, `lumen`, `paper`, `readable`, `sandstone`, `simplex`, `spacelab`, `united`, and `yeti`. 
-
-  
-- `highlight-style` specifies the code highlighting style. 
-  - Supported styles include `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, `breezedark`, and `textmate`. 
-
-
-
-## Quarto Websites
-### About
-
-- Your `index.qmd` sets a page about you.
-  - Details in about pages are available here:
-  - [https://quarto.org/docs/websites/website-about.html](https://quarto.org/docs/websites/website-about.html).
-
-
-- Quarto includes 5 built in templates:
-  - `jolla`
-  - `trestles`
-  - `solana`
-  - `marquee`
-  - `broadside`
-
-
-
-## Quarto Websites
-### Icons and Emojis
-
-- A ton of Bootstrap icons are available here:
-  - [https://icons.getbootstrap.com](https://icons.getbootstrap.com).
-
-
-- A ton of markdown emojis are available here `r emo::ji('smile')`:
-  - [https://github.com/ikatyang/emoji-cheat-sheet](https://github.com/ikatyang/emoji-cheat-sheet)
-  - [https://gist.github.com/rxaviers/7360908](https://gist.github.com/rxaviers/7360908)
-
-
-
-
-## Quarto Websites
-### Naviation and Adding Pages
-
-- We can add a new page to the website through `navbar` in `_quarto.yml`
-
-```{.bash}
-left:
-- text: Project
-  href: project.qmd
-- text: Blog
-  href: blog-listing.qmd
-- text: Homeowrk
-  href: hw.qmd
-```
-
-
-
-
-## Quarto Websites
-### Naviation and Adding Pages
-
-- We can also create a navigation bar menu by including a `menu`
-
-```{.bash}
-left:
-  - text: "Projects"
-    menu:
-      - project_1.qmd
-      - project_2.qmd 
-```
-
-
-- More details about navbar are available here:
-  - [https://quarto.org/docs/websites/website-navigation.html](https://quarto.org/docs/websites/website-navigation.html)
-
-
-
-
-## Quarto Websites  {background-color="#6497b1"}
-### Colors
-
-
-- A ton of hex codes for colors are available here:
-  - [https://www.color-hex.com](https://www.color-hex.com)
-
-
-
-
-## Quarto Website Basics
-
-- Let's do [Classwork 3](https://bcdanl.github.io/320/danl-cw/danl-310-cw-03.html).
 
 

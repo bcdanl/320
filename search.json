@@ -634,7 +634,7 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#instructor-2",
     "title": "Lecture 1",
     "section": "Instructor",
-    "text": "Instructor\nEconomics and Data Science\n\nChoe, B.H. “Estimating the Value of Statistical Life through Big Data” (with Newbold, S. and James, A.)\nQuestion: How much is the society willing to pay to reduce the likelihood of fatality?\nData Sources:\n\nGoogle Maps\nNational Highway Traffic Safety Administration"
+    "text": "Instructor\nEconomics and Data Science\n\nChoe, B.H., Newbold, S. and James, A., “Estimating the Value of Statistical Life through Big Data”\n\nQuestion: How much is the society willing to pay to reduce the likelihood of fatality?\n\nChoe, B.H., “Social Media Campaigns, Lobbying and Legislation: Evidence from #climatechange and Energy Lobbies.”\n\nQuestion: To what extent do social media campaigns compete with fossil fuel lobbying on climate change legislation?\n\nChoe, B.H. and Ore-Monago, T., 2024. “Governance and Climate Finance in the Developing World”\n\nQuestion: In what ways and through what forms does poor governance act as a significant barrier to reducing greenhouse gas emissions in developing countries?"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#instructor-3",
@@ -683,77 +683,77 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-5",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nReference Materials - Python\n\nPython for Data Analysis (3rd Edition) by Wes McKinney\nIPython Interactive Computing and Visualization Cookbook\nPython Programming for Data Science by Tomas Beuzen\nCoding for Economists by Arthur Turrell\nPython for Econometrics in Economics by Fabian H. C. Raters\nQuantEcon DataScience - Python Fundamentals by Chase Coleman, Spencer Lyon, and Jesse Perla\nQuantEcon DataScience - pandas by Chase Coleman, Spencer Lyon, and Jesse Perla"
+    "text": "Syllabus\nReference Materials - PySpark\n\nSpark by Examples\nApache PySpark - PySpark Documentation"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-6",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-6",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nReference Materials - Website\n\nGuide for Quarto"
+    "text": "Syllabus\nReference Materials - Sports Data\n\nIntroduction to Sports Analytics Using R by Ryan Elmore and Andrew Urbaczewski\n\nAn eBook version of this book is available at:\n\nVitalSource\nRedShelf"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-7",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-7",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nCourse Requirements\n\nLaptop: You should bring your own laptop (Mac or Windows) to the classroom.\n\nThe minimum specification for your laptop in this course is 2+ core CPU, 4+ GB RAM, and 500+ GB disk storage.\n\nHomework: There will be six homework assignments.\nProject: There will be one project on a personal website.\nExams: There will be one Midterm Exam.\nDiscussions: You are encouraged to participate in GitHub-based online discussions and class discussion, and office hours.\n\nCheckout the netiquette policy in the syllabus."
+    "text": "Syllabus\nReference Materials - Python\n\nPython for Data Analysis (3rd Edition) by Wes McKinney\nIPython Interactive Computing and Visualization Cookbook\nPython Programming for Data Science by Tomas Beuzen\nCoding for Economists by Arthur Turrell\nPython for Econometrics in Economics by Fabian H. C. Raters\nQuantEcon DataScience - Python Fundamentals by Chase Coleman, Spencer Lyon, and Jesse Perla\nQuantEcon DataScience - pandas by Chase Coleman, Spencer Lyon, and Jesse Perla"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-8",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-8",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nPersonal Website\n\nYou will create your own website using Quarto, R Studio, and Git.\nYou will publish your homework assignments and team project on your website.\nYour website will be hosted in GitHub.\nThe basics in Markdown will be discussed.\nReferences:\n\nQuarto Guide"
+    "text": "Syllabus\nReference Materials - Website\n\nGuide for Quarto"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-9",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-9",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nTeam Project\n\nTeam formation is scheduled for early April.\n\nEach team must have one to two students.\n\nFor the team project, a team must choose data related to business or socioeconomic issues.\nThe project report should include exploratory data analysis using summary statistics, visual representations, and data wrangling.\nThe document for the team project must be published in each member’s website.\nThe project for the team project must include a Shiny dashboard.\nAny changes to team composition require approval from Byeong-Hak Choe."
+    "text": "Syllabus\nCourse Requirements\n\nLaptop: You should bring your own laptop (Mac or Windows) to the classroom.\n\nThe minimum specification for your laptop in this course is 2+ core CPU, 4+ GB RAM, and 500+ GB disk storage.\n\nHomework: There will be six homework assignments.\nProject: There will be one project on a personal website.\nExams: There will be one Midterm Exam.\nParticipation: You are encouraged to participate in GitHub-based online discussions and class discussion, and office hours.\n\nCheckout the netiquette policy in the syllabus."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-10",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-10",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nClass Schedule and Exams\n\nThere will be tentatively 28 class sessions.\nThe Midterm Exam is scheduled on March 12, 2025, Wednesday, during the class time.\nThe Final Exam is scheduled on May 9, 2025, Friday, 3:30 P.M.-5:30 P.M.\nThe due for the team project is May 16, 2024, Thursday."
+    "text": "Syllabus\nPersonal Website\n\nYou will create your own website using Quarto, R Studio, and Git.\nYou will publish your homework assignments and team project on your website.\nYour website will be hosted in GitHub.\nThe basics in Markdown will be discussed.\nReferences:\n\nQuarto Guide"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-11",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-11",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nCourse Contents\n\nThe first half of the course covers fundamentals of data visualization:"
+    "text": "Syllabus\nTeam Project\n\nTeam formation is scheduled for early April.\n\nEach team must have one to two students.\n\nFor the team project, a team must choose data related to business or socioeconomic issues.\nThe project report should include exploratory data analysis using summary statistics, visual representations, and data wrangling.\nThe document for the team project must be published in each member’s website.\nThe project for the team project must include a Shiny dashboard.\nAny changes to team composition require approval from Byeong-Hak Choe."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-12",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-12",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nCourse Contents\n\nThe second half of the course covers advanced data visualization and Shiny apps:"
+    "text": "Syllabus\nClass Schedule and Exams\n\nThere will be tentatively 28 class sessions.\nThe Midterm Exam is scheduled on March 31, 2025, Wednesday, during the class time.\nThe Project Presentation is scheduled on May 9, 2025, Friday, 3:30 P.M.-5:30 P.M.\nThe due for the Project write-up is May 16, 2024, Friday."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-13",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-13",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nGrading\n\\[\n\\begin{align}\n(\\text{Total Percentage Grade}) =&\\quad\\;\\, 0.05\\times(\\text{Total Attendance Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Discussion Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Website Score})\\notag\\\\\n&\\,+\\, 0.15\\times(\\text{Team Project and Website Score})\\notag\\\\\n&\\,+\\, 0.20\\times(\\text{Total Homework Score})\\notag\\\\\n&\\,+\\, 0.50\\times(\\text{Total Exam Score}).\\notag\n\\end{align}\n\\]"
+    "text": "Syllabus\nCourse Contents"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-14",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-14",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nGrading\n\nYou are allowed up to 2 absences without penalty.\n\nSend me an email if you have standard excused reasons (illness, family emergency, transportation problems, etc.).\n\nFor each absence beyond the initial two, there will be a deduction of 1% from the Total Percentage Grade.\nParticipation will be evaluated by quantity and quality of GitHub-based online discussions and in-person discussion.\nThe single lowest homework score will be dropped when calculating the total homework score."
+    "text": "Syllabus\nCourse Contents"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-15",
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-15",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nMake-up Policy\n\nMake-up exams will not be given unless you have either a medically verified excuse or an absence excused by the University.\nIf you cannot take exams because of religious obligations, notify me by email at least two weeks in advance so that an alternative exam time may be set.\nA missed exam without an excused absence earns a grade of zero.\nLate submissions for homework assignment will be accepted with a penalty.\nA zero will be recorded for a missed assignment.\n\n:::"
+    "text": "Syllabus\nGrading\n\\[\n\\begin{align}\n(\\text{Total Percentage Grade}) =&\\quad\\;\\, 0.05\\times(\\text{Total Attendance Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Discussion Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Website Score})\\notag\\\\\n&\\,+\\, 0.15\\times(\\text{Team Project and Website Score})\\notag\\\\\n&\\,+\\, 0.20\\times(\\text{Total Homework Score})\\notag\\\\\n&\\,+\\, 0.50\\times(\\text{Total Exam Score}).\\notag\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#why-personal-website",
@@ -1608,5 +1608,19 @@
     "title": "Lecture 1",
     "section": "Quarto Website Basics",
     "text": "Quarto Website Basics\n\nLet’s do Classwork 3."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-16",
+    "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-16",
+    "title": "Lecture 1",
+    "section": "Syllabus",
+    "text": "Syllabus\nGrading\n\nYou are allowed up to 2 absences without penalty.\n\nSend me an email if you have standard excused reasons (illness, family emergency, transportation problems, etc.).\n\nFor each absence beyond the initial two, there will be a deduction of 1% from the Total Percentage Grade.\nParticipation will be evaluated by quantity and quality of GitHub-based online discussions and in-person discussion.\nThe single lowest homework score will be dropped when calculating the total homework score."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-17",
+    "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-17",
+    "title": "Lecture 1",
+    "section": "Syllabus",
+    "text": "Syllabus\nMake-up Policy\n\nMake-up exams will not be given unless you have either a medically verified excuse or an absence excused by the University.\nIf you cannot take exams because of religious obligations, notify me by email at least two weeks in advance so that an alternative exam time may be set.\nA missed exam without an excused absence earns a grade of zero.\nLate submissions for homework assignment will be accepted with a penalty.\nA zero will be recorded for a missed assignment.\n\n:::"
   }
 ]
