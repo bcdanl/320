@@ -230,11 +230,9 @@ theme_set(theme_fivethirtyeight()+
 
 - For the team project, a team must choose data related to business or socioeconomic issues. 
 
-- The project report should include exploratory data analysis using summary statistics, visual representations, and data wrangling. 
+- The project report should include both (1) exploratory data analysis using summary statistics, visual representations, and data wrangling, and (2) machine learning analysis. 
 
 - The document for the team project must be published in each member's website. 
-
-- The project for the team project must include a Shiny dashboard. 
 
 - Any changes to team composition require approval from Byeong-Hak Choe. 
 
@@ -403,11 +401,10 @@ DT::datatable(text_tbl, rownames = FALSE,
 $$
 \begin{align}
 (\text{Total Percentage Grade}) =&\quad\;\, 0.05\times(\text{Total Attendance Score})\notag\\
-&\,+\, 0.05\times(\text{Discussion Score})\notag\\ 
-&\,+\, 0.05\times(\text{Website Score})\notag\\ 
-&\,+\, 0.15\times(\text{Team Project and Website Score})\notag\\ 
-&\,+\, 0.20\times(\text{Total Homework Score})\notag\\ 
-&\,+\, 0.50\times(\text{Total Exam Score}).\notag
+&\,+\, 0.05\times(\text{Total Participation Score})\notag\\ 
+&\,+\, 0.10\times(\text{Website Score})\notag\\ 
+&\,+\, 0.30\times(\text{Total Homework Score})\notag\\ 
+&\,+\, 0.50\times(\text{Total Exam and Project Score}).\notag
 \end{align}
 $$
 

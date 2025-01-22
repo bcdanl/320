@@ -725,7 +725,7 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-11",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nTeam Project\n\nTeam formation is scheduled for early April.\n\nEach team must have one to two students.\n\nFor the team project, a team must choose data related to business or socioeconomic issues.\nThe project report should include exploratory data analysis using summary statistics, visual representations, and data wrangling.\nThe document for the team project must be published in each member’s website.\nThe project for the team project must include a Shiny dashboard.\nAny changes to team composition require approval from Byeong-Hak Choe."
+    "text": "Syllabus\nTeam Project\n\nTeam formation is scheduled for early April.\n\nEach team must have one to two students.\n\nFor the team project, a team must choose data related to business or socioeconomic issues.\nThe project report should include both (1) exploratory data analysis using summary statistics, visual representations, and data wrangling, and (2) machine learning analysis.\nThe document for the team project must be published in each member’s website.\nAny changes to team composition require approval from Byeong-Hak Choe."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-12",
@@ -753,7 +753,7 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#syllabus-15",
     "title": "Lecture 1",
     "section": "Syllabus",
-    "text": "Syllabus\nGrading\n\\[\n\\begin{align}\n(\\text{Total Percentage Grade}) =&\\quad\\;\\, 0.05\\times(\\text{Total Attendance Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Discussion Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Website Score})\\notag\\\\\n&\\,+\\, 0.15\\times(\\text{Team Project and Website Score})\\notag\\\\\n&\\,+\\, 0.20\\times(\\text{Total Homework Score})\\notag\\\\\n&\\,+\\, 0.50\\times(\\text{Total Exam Score}).\\notag\n\\end{align}\n\\]"
+    "text": "Syllabus\nGrading\n\\[\n\\begin{align}\n(\\text{Total Percentage Grade}) =&\\quad\\;\\, 0.05\\times(\\text{Total Attendance Score})\\notag\\\\\n&\\,+\\, 0.05\\times(\\text{Total Participation Score})\\notag\\\\\n&\\,+\\, 0.10\\times(\\text{Website Score})\\notag\\\\\n&\\,+\\, 0.30\\times(\\text{Total Homework Score})\\notag\\\\\n&\\,+\\, 0.50\\times(\\text{Total Exam and Project Score}).\\notag\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#why-personal-website",
