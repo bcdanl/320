@@ -949,7 +949,7 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#installing-the-tools-11",
     "title": "Lecture 1",
     "section": "Installing the Tools",
-    "text": "Installing the Tools\nPython in RStudio\n::: {.panel-tabset} ## Python Option\n\nWe can run Python codes within RStudio.\nSelect Python interpreter in RStudio from Tools \\(&gt;\\) Global Options \\(&gt;\\) Python:"
+    "text": "Installing the Tools\nPython in RStudio\n\nPython OptionR package, reticulate\n\n\n\nWe can run Python codes within RStudio.\nSelect Python interpreter in RStudio from Tools \\(&gt;\\) Global Options \\(&gt;\\) Python:\n\n\n\n\n\nInstall the R package, reticulate\n\ninstall.packages(\"reticulate\")\n\nThis package allows Quarto to use Python and R objects interactively within one Quarto document."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#installing-the-tools-12",
@@ -1446,7 +1446,7 @@
     "href": "danl-lec/danl-320-lec-01-2025-0122.html#installing-the-tools-24",
     "title": "Lecture 1",
     "section": "Installing the Tools",
-    "text": "Installing the Tools\nPython in RStudio\n::: {.panel-tabset} ## Python Option\n\nWe can run Python codes within RStudio.\nSelect Python interpreter in RStudio from Tools \\(&gt;\\) Global Options \\(&gt;\\) Python:"
+    "text": "Installing the Tools\nPython in RStudio\n\nPython OptionR package, reticulate\n\n\n\nWe can run Python codes within RStudio.\nSelect Python interpreter in RStudio from Tools \\(&gt;\\) Global Options \\(&gt;\\) Python:\n\n\n\n\n\nInstall the R package, reticulate\n\ninstall.packages(\"reticulate\")\n\nThis package allows Quarto to use Python and R objects interactively within one Quarto document."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#r-package-reticulate-1",

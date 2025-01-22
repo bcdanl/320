@@ -1050,7 +1050,7 @@ install.packages("reticulate")
 
 - This package allows `Quarto` to use Python and R objects interactively within one Quarto document.
 
-
+::: 
 
 
 
@@ -1662,7 +1662,7 @@ install.packages("reticulate")
 
 - This package allows `Quarto` to use Python and R objects interactively within one Quarto document.
 
-
+::: 
 
 
 
