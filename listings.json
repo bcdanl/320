@@ -1,0 +1,48 @@
+[
+  {
+    "listing": "/listing-danl-320-cw.html",
+    "items": [
+      "/danl-cw/danl-320-cw-02.html",
+      "/danl-cw/danl-320-cw-01.html",
+      "/danl-cw/danl-320-cw-03.html"
+    ]
+  },
+  {
+    "listing": "/blog-listing.html",
+    "items": [
+      "/posts/nba/nba.html",
+      "/posts/py-basic/blog-python-basics.html",
+      "/posts/beer-markets/beer-markets.html",
+      "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/listing-danl-320-qa.html",
+    "items": [
+      "/danl-qa/danl-320-qa.html"
+    ]
+  },
+  {
+    "listing": "/listing-danl-320-rw.html",
+    "items": []
+  },
+  {
+    "listing": "/listing-danl-320-hw.html",
+    "items": []
+  },
+  {
+    "listing": "/listing-danl-320-lec.html",
+    "items": [
+      "/danl-lec/danl-320-lec-01-2025-0122.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/danl-lec/danl-320-lec-01-2025-0122.html",
+      "/danl-cw/danl-320-cw-02.html",
+      "/danl-cw/danl-320-cw-01.html",
+      "/danl-cw/danl-320-cw-03.html"
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+---
+title: '<font style="font-family:Optima"><b>DANL 320 - Discussion and Q & A Board</b></font>'
+date: last-modified
+date-modified: "" 
+author: ""
+page-layout: full
+
+toc: false
+toc-title: ""
+toc-location: right
+# comments: false
+# css: front.css
+from: markdown+emoji
+fig-align: center
+
+format: 
+  html:
+    include-in-header:
+     text: |
+        <style>
+        #toc-welcome {
+              font-size: 1.67em;
+        }
+        #toc-bullet-lecture {
+              font-size: 1.67em;
+        }
+        #toc-bullet-classwork {
+              font-size: 1.67em;
+        }
+        #toc-bullet-homework {
+              font-size: 1.67em;
+        }
+        a {
+        text-decoration: none; /* This removes the underline */
+        padding: 5px 10px; /* Top & Bottom, Left & Right Padding */
+        border-radius: 5px; /* Rounds the corners */
+        }
+        </style>
+---
+
+<font size = "5">Welcome to our Discussion and Q & A Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the course materials.
+
+Whether you are looking to delve deeper into the slides, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions to Byeong-Hak (**@bcdanl**) or your classmates or need clarification on any points, don't hesitate to ask here. 
+
+Let's collaborate and learn from each other!
+
+Please note that all our comments are recorded in [here](https://github.com/bcdanl/320/discussions), regardless of whether comments are displayed in this page or not.
