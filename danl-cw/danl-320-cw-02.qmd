@@ -1,7 +1,7 @@
 ---
 title: Classwork 2
 subtitle: Markdown Basics
-date: 2025-01-24
+date: 2025-01-27
 from: markdown+emoji
 ---
 

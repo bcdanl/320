@@ -1,7 +1,7 @@
 ---
 title: Classwork 3
 subtitle: Quarto Website Basics
-date: 2025-01-22
+date: 2025-01-27
 from: markdown+emoji
 ---
 
