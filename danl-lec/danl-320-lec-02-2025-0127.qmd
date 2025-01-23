@@ -1,6 +1,6 @@
 ---
 title: Lecture 2
-subtitle: Syllabus, Course Outline, and DANL Career
+subtitle: Getting Started with Quarto
 format:
   clean-revealjs:
     self-contained: false
@@ -14,7 +14,7 @@ author:
   - name: Byeong-Hak Choe
     email: bchoe@geneseo.edu
     affiliations: SUNY Geneseo
-date: 2025-01-22
+date: 2025-01-27
 execute: 
   eval: true
   echo: true
