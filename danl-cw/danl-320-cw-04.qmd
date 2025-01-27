@@ -1,0 +1,125 @@
+---
+title: Classwork 4
+subtitle: Python Basics
+date: 2025-01-29
+execute: 
+  eval: false
+  echo: false
+  warning: false
+  message: false
+  
+from: markdown+emoji
+---
+
+```{r}
+#| echo: false
+
+reticulate::use_condaenv("/Users/bchoe/anaconda3", required = TRUE)
+```
+
+
+## Question 1
+Using Python operations only, calculate below:
+$$\frac{2^5}{7 \cdot (4 - 2^3)}$$
+
+
+*Answer*
+```{python}
+
+```
+
+<br><br><br>
+
+
+## Question 2
+
+For each expression below, what is the value of the expression? Explain thoroughly.
+
+```{python}
+#| echo: true
+20 == '20'
+```
+
+
+
+```{python}
+#| echo: true
+x = 4.0
+y = .5
+
+x < y or 3*y < x
+```
+
+
+*Answer*
+```{python}
+
+```
+
+<br><br><br>
+
+
+
+## Question 3
+
+
+```{python}
+#| echo: true
+fare = "$10.00"
+tip = "2.00$"
+tax = "$ 0.80"
+```
+
+
+Write a Python code that uses *slicing* and the `print()` function to print out the following message: 
+
+<div style="font-family:courier">The total trip cost is: $12.80</div>
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+<br><br><br>
+
+## Question 4
+
+```{python}
+#| echo: true
+list_variable = [100, 144, 169, 1000, 8]
+```
+
+
+Write a Python code that uses `print()` and `max()` functions to print out the largest value in the list, `list_variable`, as follows:
+
+<div style="font-family:courier">The largest value in the list is: 1000</div>
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+
+
+<br><br><br>
+
+
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 4 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 4.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 4 materials or need clarification on any points, don't hesitate to ask here. 
+
+Let's collaborate and learn from each other!
+
+

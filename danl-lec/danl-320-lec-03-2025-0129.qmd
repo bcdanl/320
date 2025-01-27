@@ -1,6 +1,6 @@
 ---
 title: Lecture 3
-subtitle: Big Data; Hadoop
+subtitle: Python Basics; Big Data; Hadoop
 format:
   clean-revealjs:
     self-contained: false
@@ -54,6 +54,1017 @@ theme_set(theme_fivethirtyeight()+
                 )
           )
 ```
+
+
+
+# Python Basics {background-color="#1c4982"}
+
+
+## Python Basics
+###  Variables Are Names, Not Places
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/py-basic-box.png">
+</p>
+
+- A **value** is datum (literal) such as a number or text. 
+
+- There are different types of values: 
+  - 352.3 is known as a float or double;
+  - 22 is an integer;
+  - "Hello World!" is a string.
+
+## Python Basics
+###  Values, Variables, and Types
+
+```{.python}
+a = 10
+print(a)
+```
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/int-py-fig2-3.png" width="400">
+</p>
+
+:::
+
+::: {.column width="50%"}
+
+
+- A **variable** is a name that refers to a value.
+  - We can think of a **variable** as a box that has a value, or multiple values, packed inside it.
+  
+- A **variable** is just a name!
+
+:::
+
+::::
+
+## Python Basics
+###  Values, Variables, and Types
+
+::: {}
+- Sometimes you will hear variables referred to as **objects**.
+
+- Everything that is not a *literal value*, such as `10`, is an **object**. 
+
+:::
+
+
+## Python Basics
+###  Assignment ( `=` )
+
+
+```{.python}
+# Here we assign the integer value 5 to the variable x.
+x = 5   
+
+# Now we can use the variable x in the next line.
+y = x + 12  
+y
+```
+
+- In Python, we use `=` to assign a value to a variable.
+
+- In math, `=` means *equality* of both sides.
+- In programs, `=` means **assignment**: *assign the value on the right side to the variable on the left side*.
+
+
+
+## Python Basics
+###  Code and comment style 
+- The two main principles for coding and managing data are:
+  - Make things easier for your future self.
+  - Don't trust your future self.
+
+- The `#` mark is Google Colab's comment character.
+  - The `#` character has many names: `hash`, `sharp`, `pound`, or `octothorpe`.
+  - `#` indicates that the rest of the line is to be ignored.
+  - Write comments before the line that you want the comment to apply to.
+
+- Consider adding more comments on code cells and their results using text cells.
+
+
+
+
+## Python Basics
+###  Assignment
+
+
+- In programming code, everything on the right side needs to have a value.
+  - The right side can be a literal value, or a variable that has already been assigned a value, or a combination.
+  
+- When Python reads `y = x + 12`, it does the following:
+  1. Sees the `=` in the middle.
+  2. Knows that this is an assignment.
+  3. Calculates the right side (gets the value of the object referred to by `x` and adds it to `12`).
+  4. Assigns the result to the left-side variable, `y`.
+
+
+
+
+
+
+## Python Basics
+###  Variables Are Names, Not Places
+
+```{.python}
+list_example = [10, 1.23, "like this", True, None]
+print(list_example)
+type(list_example)
+```
+
+
+- The most basic built-in data types that we'll need to know about are: 
+  - **integers** `10`
+  - **floats** `1.23`
+  - **strings** `"like this"`
+  - **booleans** `True`
+  - **nothing** `None`
+
+- Python also has a built-in type of data container called a **list** (e.g., `[10, 15, 20]`) that can *contain* anything, even different **types** 
+
+
+## Python Basics
+###  Types
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/int-py-tab2-1.png" width="600">
+</p>
+
+
+- The second column (Type) contains the Python name of that type. 
+
+- The third column (Mutable?) indicates whether the value can be changed after creation.
+
+
+
+## Python Basics
+###  Brackets
+
+::: {.nonincremental}
+
+- There are several kinds of brackets in Python, including `[]`, `{}`, and `()`. 
+
+
+::: {.panel-tabset}
+
+## `[]`
+
+
+```{.python}
+vector = ['a', 'b']
+vector[0]
+```
+
+- `[]` is used to denote a **list** or to signify accessing a *position* using an index.
+
+
+
+
+## `{}`
+
+
+```{.python}
+{'a', 'b'}  # set
+{'first_letter': 'a', 'second_letter': 'b'}  # dictionary
+```
+
+- `{}` is used to denote a **set** or a **dictionary** (with key-value pairs).
+
+
+## `()`
+
+```{.python}
+num_tup = (1, 2, 3)
+sum(num_tup)
+```
+
+- `()` is used to denote 
+  - a **tuple**, or 
+  - the *arguments* to a *function*, e.g., function(x) where x is the input passed to the function.
+
+
+:::
+
+::: 
+
+
+## Python Basics
+###  Operators
+
+```{.python}
+string_one = "This is an example "
+string_two = "of string concatenation"
+string_full = string_one + string_two
+print(string_full)
+```
+
+
+
+- All of the basic operators we see in mathematics are available to use:
+
+:::: {.columns}
+::: {.column width="33.3%"}
+
+  - `+` for addition
+  - `-` for subtraction 
+
+:::
+
+::: {.column width="33.4%"}
+
+  - `*` for multiplication
+  - `**` for powers
+
+:::
+
+::: {.column width="33.3%"}
+
+  - `/` for division
+  - `//` for integer division
+
+:::
+
+::::
+
+- These work as you'd expect on numbers. 
+- These operators are sometimes defined for other built-in data types too. 
+  - We can 'sum' strings (which really *concatenates* them).
+
+
+
+## Python Basics
+###  Operators
+:::: {.columns}
+::: {.column width="50%"}
+
+```{.python}
+list_one = ["apples", "oranges"]
+list_two = ["pears", "satsumas"]
+list_full = list_one + list_two
+print(list_full)
+```
+
+- It works for lists too:
+
+:::
+
+::: {.column width="50%"}
+
+```{.python}
+string = "apples, "
+print(string * 3)
+```
+
+- We can multiply strings!
+
+
+:::
+::::
+
+
+
+
+## Python Basics
+###  Operators
+
+**Q**. [Classwork 4.1](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-1){target="_blank"}
+
+Using Python operations only, calculate below:
+$$\frac{2^5}{7 \cdot (4 - 2^3)}$$ 
+
+
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+
+```{.python}
+10 == 20
+10 == '10'
+```
+
+- Boolean data have either `True` or `False` value.
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+```{r, eval = T, echo = F, out.width='100%', fig.align='center'}
+text_tbl <- data.frame(
+  Operator = c("x and y", "x or y", "not x"),
+  Description = c("Are x and y both True?",
+"Is at least one of x and y True?",
+"Is x False?")
+  )
+
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(text_tbl, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+```
+
+
+
+- Existing booleans can be combined, which create a boolean when executed.
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+Conditions are expressions that evaluate as booleans. 
+
+```{r, eval = T, echo = F, out.width='100%', fig.align='center'}
+text_tbl <- data.frame(
+  Operator = c("x == y", "x != y", "x > y", "x >= y", "x < y", "x <= y"),
+  Description = c("Is x equal to y?",
+"Is x greater than y?",
+"Is x greater than or equal to y?",
+"Is x greater than or equal to y?",
+"Is x less than y?",
+"Is x less than or equal to y?")
+)
+
+# Create a DT datatable without search box and 'Show entries' dropdown
+DT::datatable(text_tbl, rownames = FALSE,
+              options = list(
+  dom = 't', # This sets the DOM layout without the search box ('f') and 'Show entries' dropdown ('l')
+  paging = FALSE, # Disable pagination
+  columnDefs = list(list(
+    targets = "_all", # Applies to all columns
+    orderable = FALSE # Disables sorting
+  ))
+), callback = htmlwidgets::JS("
+  // Change header background and text color
+  $('thead th').css('background-color', '#1c4982');
+  $('thead th').css('color', 'white');
+
+  // Loop through each row and alternate background color
+  $('tbody tr').each(function(index) {
+    if (index % 2 == 0) {
+      $(this).css('background-color', '#d1dae6'); // Light color for even rows
+    } else {
+      $(this).css('background-color', '#9fb2cb'); // Dark color for odd rows
+    }
+  });
+
+  // Set text color for all rows
+  $('tbody tr').css('color', 'black');
+
+  // Add hover effect
+  $('tbody tr').hover(
+    function() {
+      $(this).css('background-color', '#607fa7'); // Color when mouse hovers over a row
+    }, 
+    function() {
+      var index = $(this).index();
+      if (index % 2 == 0) {
+        $(this).css('background-color', '#d1dae6'); // Restore even row color
+      } else {
+        $(this).css('background-color', '#9fb2cb'); // Restore odd row color
+      }
+    }
+  );
+")
+)
+
+
+```
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+
+```{.python}
+boolean_condition1 = 10 == 20
+print(boolean_condition1)
+
+boolean_condition2 = 10 == '10'
+print(boolean_condition2)
+```
+
+
+- The `==` is an operator that compares the objects on either side and returns `True` if they have the same values
+
+
+- **Q**. What does `not (not True)` evaluate to?
+
+- **Q**. [Classwork 4.2](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-2){target="_blank"}
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+
+```{.python}
+name = "Geneseo"
+score = 99
+
+if name == "Geneseo" and score > 90:
+    print("Geneseo, you achieved a high score.")
+
+if name == "Geneseo" or score > 90:
+    print("You could be called Geneseo or have a high score")
+
+if name != "Geneseo" and score > 90:
+    print("You are not called Geneseo and you have a high score")
+```
+
+- The real power of conditions comes when we start to use them in more complex examples, such as `if` statements.
+
+
+
+  
+## Python Basics
+###  Booleans and Conditions
+
+```{.python}
+name_list = ["Lovelace", "Smith", "Hopper", "Babbage"]
+
+print("Lovelace" in name_list)
+
+print("Bob" in name_list)
+```
+
+
+
+- One of the most useful conditional keywords is `in`. 
+  - This one must pop up ten times a day in most coders' lives because it can pick out a variable or make sure something is where it's supposed to be.
+
+
+- **Q**. Check if "a" is in the string "Sun Devil Arena" using `in`. Is "a" in "Anyone"?
+
+
+
+
+## Python Basics
+###  Booleans and Conditions
+
+
+```{.python}
+score = 98
+
+if score == 100:
+    print("Top marks!")
+elif score > 90 and score < 100:
+    print("High score!")
+elif score > 10 and score <= 90:
+    pass
+else:
+    print("Better luck next time.")
+```
+
+- One conditional construct we're bound to use at some point, is the `if-else` chain:
+
+
+
+
+
+
+
+
+## Python Basics
+###  Casting Variables
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+orig_number = 4.39898498
+type(orig_number)
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+mod_number = int(orig_number)
+mod_number
+type(mod_number)
+```
+:::
+::::
+
+
+- Sometimes we need to explicitly cast a value from one type to another. 
+
+  - We can do this using built-in functions like `str()`, `int()`, and `float()`. 
+  - If we try these, Python will do its best to interpret the input and convert it to the output type we'd like and, if they can't, the code will throw a great big error.
+  
+
+
+## Python Basics
+###  Tuples and (im)mutability
+::: {}
+
+- A tuple is an object that is defined by parentheses and entries that are separated by commas, for example `(15, 20, 32)`. (They are of type tuple.) 
+
+- Tuples are immutable, while lists are mutable.
+
+- Immutable objects, such as tuples and strings, can't have their elements changed, appended, extended, or removed. 
+  - Mutable objects, such as lists, can do all of these things. 
+
+- In everyday programming, we use **lists** and **dictionaries** more than *tuples*.
+
+:::
+
+
+## Python Basics
+###  Indentation
+
+- We have seen that certain parts of the code examples are indented. 
+
+- Code that is part of a function, a conditional clause, or loop is indented. 
+
+- Indention is actually what tells the Python interpreter that some code is to be executed as part of, say, a loop and not to executed after the loop is finished.
+
+
+
+
+## Python Basics
+###  Indentation
+
+
+```{.python}
+x = 10
+
+if x > 2:
+    print("x is greater than 2")
+```
+
+- Here's a basic example of indentation as part of an `if` statement.
+
+- The standard practice for indentation is that each sub-statement should be indented by 4 spaces.
+
+
+
+
+
+## Python Basics
+###  `for` Loops
+
+
+
+```{.python}
+name_list = ["Ben", "Chris", "Kate", "Mary"]
+
+for name in name_list:
+    print(name)
+```
+
+
+- A loop is a way of executing a similar piece of code over and over in a similar way. 
+  - The most useful loop is **for loops**.
+  
+- As long as our object is an iterable, then it can be used in this way in a *for loop*.
+
+- Lists, tuples, strings, and dictionaries are iterable.
+
+
+
+
+
+## Python Basics
+###  Dictionaries
+
+
+
+```{.python}
+cities_to_temps = {"Paris": 28, "London": 22, "Seville": 36, "Wellesley": 29}
+
+cities_to_temps.keys()
+cities_to_temps.values()
+cities_to_temps.items()
+```
+
+- Another built-in Python type that is enormously useful is the dictionary. 
+  - This provides a mapping one set of variables to another (either one-to-one or many-to-one). 
+  - If you need to create associations between objects, use a dictionary.
+  
+  
+- We can obtain keys, values, or key-value paris from dictionaries.
+
+
+
+
+## Python Basics
+###  Running on Empty
+
+- Being able to create empty containers is sometimes useful, especially when using loops. 
+
+- The commands to create empty lists, tuples, dictionaries, and sets are `lst = []`, `tup=()`, `dic={}`, and `st = set()` respectively.
+
+- **Q.** What is the type of an empty list?
+
+
+## Python Basics
+### Slicing Methods
+
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/python_string_index.png">
+</p>
+
+
+- With slicing methods, we can get subset of the data object.
+
+- Slicing methods can apply for strings, lists, arrays, and DataFrames.
+
+- The above example describes indexing in Python
+
+
+
+
+## Python Basics
+###  Strings
+
+
+
+```{.python}
+string = "cheesecake"
+print( string[-4:] )
+```
+
+- From strings, we can access the individual characters via slicing and indexing. 
+
+
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+string = "cheesecake"
+print("String has length:")
+print( len(string) )
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+list_of_numbers = range(1, 20)
+print("List of numbers has length:")
+print( len(list_of_numbers) )
+```
+:::
+::::
+
+- Both lists and strings will allow us to use the `len()` command to get their length:
+
+
+
+
+## Python Basics
+### Strings and Slicing
+
+- We can extract a substring (a part of a string) from a string by using a **slice**. 
+
+- We define a slice by using square brackets (`[]`), a *start* index, an *end* index, and an optional *step* count between them. 
+
+  - We can omit some of these. 
+
+- The slice will include characters from index *start* to one before *end*:
+
+
+
+
+
+## Python Basics
+### Get a Substring with a Slice
+
+
+::: {.panel-tabset}
+## `[:]`
+```{.python}
+letters = 'abcdefghij'
+letters[:]
+```
+- `[:]` extracts the entire sequence from start to end.
+
+
+## `[ start :]`
+```{.python}
+letters = 'abcdefghij'
+letters[4:]
+letters[2:]
+letters[-3:]
+letters[-50:]
+```
+- `[ start :]` specifies from the *start* index to the end.
+
+
+## `[: end ]`
+```{.python}
+letters = 'abcdefghij'
+letters[:3]
+letters[:-3]
+letters[:70]
+```
+- `[: end ]` specifies from the beginning to the *end* index minus 1.
+
+
+
+## `[ start : end ]`
+```{.python}
+letters = 'abcdefghij'
+letters[2:5]
+letters[-26:-24]
+letters[35:37]
+```
+- `[ start : end ]` indicates from the *start* index to the *end* index minus 1.
+
+
+## `[ start : end : step ]`
+```{.python}
+letters = 'abcdefghij'
+letters[2 : 6 : 2]   # From index 2 to 5, by steps of 2 characters
+letters[ : : 3]     # From the start to the end, in steps of 3 characters
+letters[ 6 : : 4 ]    # From index 19 to the end, by 4
+letters[ : 7 : 5 ]    # From the start to index 6 by 5:
+letters[-1 : : -1 ]   # Starts at the end and ends at the start
+letters[: : -1 ]
+```
+- `[ start : end : step ]` extracts from the *start* index to the *end* index minus 1, skipping characters by *step*.
+
+
+:::
+
+
+
+
+## Python Basics
+### Lists and Slicing
+
+- Python is 
+  - a zero-indexed language (things start counting from zero);
+  - left inclusive;
+  - right exclusive when we are specifying a range of values.
+
+
+
+
+## Python Basics
+### Lists and Slicing
+
+  
+```{.python}
+list_example = ['one', 'two', 'three']
+list_example[ 0 : 1 ]
+list_example[ 1 : 3 ]
+```
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/python-slicing-fence.png">
+</p>
+
+
+- We can think of items in a list-like object as being fenced in. 
+  - The index represents the fence post.
+
+## Python Basics
+### Lists and Slicing
+
+::: {.panel-tabset}
+## `[index]`
+### Get an Item by `[index]`
+```{.python}
+suny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', 
+        'Stony Brook', 'New Paltz'] 
+```
+
+- We can extract a single value from a list by specifying its index:
+
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+suny[0]
+suny[1]
+suny[2]
+suny[7]
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+suny[-1]
+suny[-2]
+suny[-3]
+suny[-7]
+```
+:::
+
+::::
+
+
+
+## slice
+### Get an Item with a Slice
+- We can extract a subsequence of a list by using a *slice*:
+```{.python}
+suny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', 
+        'Stony Brook', 'New Paltz'] 
+suny[0:2]    # A slice of a list is also a list.
+```
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+suny[ : : 2]
+suny[ : : -2]
+suny[ : : -1]
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+suny[4 : ]
+suny[-6 : ]
+suny[-6 : -2]
+suny[-6 : -4]
+```
+:::
+
+
+::::
+
+:::
+
+
+
+
+## Python Basics
+### Lists and Slicing
+
+- **Q**. [Classwork 4.3](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-3){target="_blank"}
+
+
+## Python Basics
+### Functions
+
+```{.python}
+int("20") 
+float("14.3")
+str(5)
+int("xyz")
+```
+
+
+- A function can take any number and type of input *parameters* and **return** any number and type of output *results*.
+
+- Python ships with more than 65 built-in functions. 
+
+- Python also allows a user to define a new function.
+
+- We will mostly use built-in functions. 
+
+
+
+## Python Basics
+### Functions, Arguments, and Parameters
+
+```{.python}
+print("Cherry", "Strawberry", "Key Lime")
+print("Cherry", "Strawberry", "Key Lime", sep = "!")
+print("Cherry", "Strawberry", "Key Lime", sep=" ")
+```
+
+
+- We invoke a function by entering its name and a pair of opening and closing parentheses. 
+
+- Much as a cooking recipe can accept ingredients, a function invocation can accept inputs called **arguments**. 
+
+- We pass arguments sequentially inside the parentheses (, separated by commas).
+
+- A **parameter** is a name given to an expected function argument.
+
+- A *default argument* is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one.
+
+
+## Python Basics
+### Functions, Arguments, and Parameters
+
+- **Q**. [Classwork 4.4](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-4){target="_blank"}
+
+
+
+
+
+
+## Python Basics
+### Importing Modules, Packages, and Libraries
+
+- Python is a general-purpose programming language and is not specialized for numerical or statistical computation.
+
+- The core libraries that enable Python to store and analyze data efficiently are:
+  - `pandas`
+  - `numpy`
+  - `matplotlib` and `seaborn`
+
+
+
+## Python Basics
+### Importing Modules, Packages, and Libraries
+
+:::{.nonincremental}
+::: {.panel-tabset}
+
+## `pandas`
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pandas-logo.png">
+</p>
+
+- `pandas` provides `Series` and `DataFrames` which are used to store data in an easy-to-use format.
+
+
+## `numpy`
+  
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/numpy-logo.png">
+</p>
+
+- `numpy`, numerical Python, provides the array block (`np.array()`) for doing fast and efficient computations;
+
+## `matplotlib` and `seaborn`
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/matplotlib-logo.png"><img src="https://bcdanl.github.io/lec_figs/seaborn-logo.png">
+</p>
+
+- `matplotlib` provides graphics. The most important submodule would be `matplotlib.pyplot`.
+- `seaborn` provides a general improvement in the default appearance of `matplotlib`-produced plots.
+
+
+:::
+:::
+
+## Python Basics
+### Importing Modules, Packages, and Libraries
+
+- A **module** is basically a bunch of related codes saved in a file with the extension `.py`.
+
+- A **package** is basically a directory of a collection of modules. 
+
+- A **library** is a collection of packages
+
+
+- We refer to code of other modules/pacakges/libraries by using the Python `import` statement. 
+  - This makes the code and variables in the imported module available to our programming codes.
+  - We can use the `as` *keyword* when importing the modules using their canonical names.
+
+- **Q**. [Classwork 4.5](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-5){target="_blank"}
 
 
 # Big Data {background-color="#1c4982"}
@@ -397,4 +1408,6 @@ Note: The asterisks (*) next to Brontobyte and Gegobyte in the original image ha
 
 :::
 ::::
+
+
 
