@@ -298,7 +298,7 @@ quarto render
   - [https://quarto.org/docs/websites/website-about.html](https://quarto.org/docs/websites/website-about.html).
 
 
-- Quarto includes 5 built in templates:
+- Quarto includes 5 built-in templates:
   - `jolla`
   - `trestles`
   - `solana`

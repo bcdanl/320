@@ -1838,7 +1838,7 @@
     "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-4",
     "title": "Lecture 2",
     "section": "Quarto Website",
-    "text": "Quarto Website\nAbout\n\nYour index.qmd sets a front page about you.\n\nDetails in about pages are available here:\nhttps://quarto.org/docs/websites/website-about.html.\n\nQuarto includes 5 built in templates:\n\njolla\ntrestles\nsolana\nmarquee\nbroadside"
+    "text": "Quarto Website\nAbout\n\nYour index.qmd sets a front page about you.\n\nDetails in about pages are available here:\nhttps://quarto.org/docs/websites/website-about.html.\n\nQuarto includes 5 built-in templates:\n\njolla\ntrestles\nsolana\nmarquee\nbroadside"
   },
   {
     "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-5",
