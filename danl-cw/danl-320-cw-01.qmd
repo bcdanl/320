@@ -140,7 +140,7 @@ usethis::create_github_token()
 
   - Then, click “Generate token” in the pop-upped web browser. 
 
-  - We can think of GitHub's personal access token as a password that expires. You can decide how long it remains valid. My recommendation is to set its expiration for May 31, 2024, or later.
+  - We can think of GitHub's personal access token as a password that expires. You can decide how long it remains valid. My recommendation is to set its expiration for May 31, 2025, or later.
 
 <p align="center" >
   <img src="https://bcdanl.github.io/lec_figs/github-token.gif" style="width: 67%;">

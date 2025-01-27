@@ -39,14 +39,14 @@
     "href": "danl-cw/danl-320-cw-02.html",
     "title": "Classwork 2",
     "section": "",
-    "text": "Markdown is a lightweight markup language with plain-text formatting syntax. Its main goal is to be readable and easy to write, even when viewed as plain text. Markdown is widely used for creating formatted text on the web and in various applications such as Quarto.\n\n\n\n\nHeadings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL)\n[DANL 210](https://bcdanl.github.io/210)\n\n\n\nImages are created using ![Alt Text](Image URL).\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)\n\n\n\n\n\n\n&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"string\"\n```\n```python\n# Python code block\nimport numpy as np\n```\n\n\n\n\n\nDo the following tasks on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes a Python code block, a blockquote, and an emoji.\n\n\n\n\n\n\nQuarto Markdown Basics\nStart writing on GitHub"
+    "text": "Markdown is a lightweight markup language with plain-text formatting syntax. Its main goal is to be readable and easy to write, even when viewed as plain text. Markdown is widely used for creating formatted text on the web and in various applications such as Quarto.\n\n\n\n\nHeadings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL)\n[DANL 320](https://bcdanl.github.io/320)\n\n\n\nImages are created using ![Alt Text](Image URL).\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)\n\n\n\n\n\n\n&gt; Be yourself. Everyone else is already taken. - Oscar Wilde.\n\n\n\n\nA ton of markdown emojis are available here 😄 (:smile:)\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\n\n\n\n\n\nCode blocks are created by using triple backticks (```). Optionally, you can specify the language for syntax highlighting.\n```\n\"string\"\n```\n```python\n# Python code block\nimport numpy as np\n```\n\n\n\n\n\nDo the following tasks on this Classwork 2 Discussion Board:\n\nBasic Syntax: Write a comment with a heading, an unordered list, an ordered list, a link, and an image.\nAdvanced Syntax: Write a comment that includes a Python code block, a blockquote, and an emoji.\n\n\n\n\n\n\nQuarto Markdown Basics\nStart writing on GitHub"
   },
   {
     "objectID": "danl-cw/danl-320-cw-02.html#basic-syntax",
     "href": "danl-cw/danl-320-cw-02.html#basic-syntax",
     "title": "Classwork 2",
     "section": "",
-    "text": "Headings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL)\n[DANL 210](https://bcdanl.github.io/210)\n\n\n\nImages are created using ![Alt Text](Image URL).\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)"
+    "text": "Headings are created by adding one or more # symbols before your heading text. The number of # symbols indicates the level of the heading.\n# Heading 1\n## Heading 2\n### Heading 3\n\n\n\nYou can make text bold by wrapping it with two asterisks **, and italic by using one asterisk *.\n*italic* or _italic_\n**bold** or __bold__\n\n\n\nUnordered lists are created using *, -, or +, while ordered lists are numbered.\n- Item 1\n- Item 2\n  - Subitem 2.1\n  - Subitem 2.2\n1. First item\n2. Second item\n\n\n\nLinks are created using [Link Text](URL)\n[DANL 320](https://bcdanl.github.io/320)\n\n\n\nImages are created using ![Alt Text](Image URL).\n![Geneseo Logo](https://bcdanl.github.io/img/geneseo-logo.gif)"
   },
   {
     "objectID": "danl-cw/danl-320-cw-02.html#advanced-syntax",
@@ -543,7 +543,7 @@
     "href": "danl-cw/danl-320-cw-01.html",
     "title": "Classwork 1",
     "section": "",
-    "text": "Getting a GitHub account\nStep 1. Create the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\nChoose your GitHub username carefully:\n\nhttps://USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\nIt is recommended to have a username with all lower cases.\n\n\n\n\n\nInstalling git if you do not have one.\nStep 2.\n\nCheck whether git is installed in your laptop.\n\n\nFrom the Console Pane in RStudio, click Terminal tab.\n\n\n\n\n\nFrom the Terminal, run the following command to check if your laptop has git installed.\n\ngit --version\n\nIf your computer has git installed, you will see the message below and you do not need to install git:\n\ngit version 2.xx\n\nIf your computer does not have git installed, you will see the message below and you need to install git:\n\n'git' is not recognized as an internal or external command\n\n\nInstall git if you do not have one. Move to the next step if you have git installed in your laptop.\n\n\n\n\nMac\n\nGo to http://git-scm.com/downloads, and download the file.\nClick “macOS”, scroll down the webpage, and then click “installer” from the Binary installer section.\nRun the downloaded file.\n\n\n\n\nWindows\n\nGo to https://gitforwindows.org, and download the file.\nRun the downloaded file.\n\n\n\n\n\nKeep clicking “Next” to complete the installation of git.\nAfter the git installation is done, close RStudio and re-open it.\n\n\nHow to open git installation file on Mac?\n\nRun the downloaded file.\nClick Okay\nGo to “Setting” &gt; “Privacy and Security”\nGo to “General” or scroll down\nClick “Open Anyway”\n\n\n\n\n\n\n\n\nSetting up GitHub Credential on your local Git.\nStep 3. In Terminal, run the following commands one by one:\ngit config --global user.email \"YOUR_EMAIL_ADDRESS\"\ngit config --global user.name \"YOUR_USERNAME\"\nFor example, the email address for my GitHub account is bchoe@geneseo.edu, and my GitHub username is bcdanl, so that I ran below:\ngit config --global user.email \"bchoe@geneseo.edu\"\ngit config --global user.name \"bcdanl\"\n\nStep 4. Obtain a personal access token (PAT) from GitHub.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"usethis\")\nusethis::create_github_token()\n\nThen, click “Generate token” in the pop-upped web browser.\nWe can think of GitHub’s personal access token as a password that expires. You can decide how long it remains valid. My recommendation is to set its expiration for May 31, 2024, or later.\n\n\n\n\n\nThen, copy the generated PAT, and paste it to your clipboard or R script.\n\n\nStep 5. Set the GitHub credential using the PAT.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou will be asked to provide your PAT.\nPaste your PAT to the RStudio Console, and then hit Enter.\n\n\n\n\n\n\n\nNote\n\n\n\n\nIt does not harm to create multiple PAT for one GitHub account.\nAfter the PAT expires, you should repeat the following if you want to update your GitHub website:\n\n\nCreate a new PAT:\n\nusethis::create_github_token()\n\nReplace the current PAT with the new PAT:\n\ngitcreds::gitcreds_set()\n\nSelect the option 2: Replace these credentials by typing 2 and hitting Enter on R Console.\n\n\n\n\n\n\nEstablishing the Connection between GitHub repo and your local Git\nStep 6. Login to your GitHib and make the repository.\n\nFrom https://github.com, click the plus [+] icon in the upper right corner and select “New repository”.\nName this repo USERNAME.github.io, which will be the domain for your website.\n\n\ne.g., If your GitHub username is abc9, the name of your repo should be abc9.github.io, not abc_9.github.io.\n\n\nThen, copy the web address of your GitHub repo, https://github.com/USERNAME/USERNAME.github.io\n\n\nFor example, the web address for Byeong-Hak’s GitHub repo is https://github.com/bcdanl/bcdanl.github.io.\n\n\nStep 7. Create a RStudio project with Version Control\n\n\n\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Version Control” &gt; “Git”\nPaste the web address of your GitHub repo to the Repository URL menu.\nClick “Browse” to select the parent directory for your local project directory (I recommend “Documents” folder.)\nClick “Create”\n\n\n\n\n\n\n\nNote\n\n\n\nIf Step 7 does not work on your laptop, try below Steps 7-1 and 7-2 instead. If Step 7 DOES work well, skip Steps 7-1 and 7-2.\n\n\nStep 7-1. Use git clone to establish the connection between GitHub repo and your local laptop:\n\nChange directory to “Documents” in Terminal using cd command.\n\ncd &lt;pathname of \"Documents\" directory&gt;\n\nHere, you need to know the pathname of “Documents” directory.\nFor example, LAPTOP_USERNAME below is not your GitHub username but one for your local laptop.\n\nMac\ncd /Users/LAPTOP_USERNAME/Documents\nWindows\ncd C:/Users/LAPTOP_USERNAME/Documents\n\nUse git clone to creates a local copy of the GitHub Repository.\n\ngit clone &lt;repository-url&gt;\n\nFor example,\n\ngit clone https://github.com/USERNAME/USERNAME.github.io\n\nStep 7-2. Create a RStudio project from Existing Directory\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Existing Directory”\nClick “Browse” to select the local copy of the GitHub Repository\nClick “Create Project”\n\n\n\n\nDownloading Website Template Files\nStep 8. Download the files of website template:\n\nGo to the following webpage: https://github.com/bcdanl/danl-website-template\nFrom the webpage above, click the green icon &lt; &gt; Code, and then click “Download Zip”\nExtract the Zip file you have downloaded\nIf there are the files, .gitignore, .DS_Store, or *.Rproj, in the folder, delete all of them.\nMove all the files that were compressed in the Zip file to your local project directory, USERNAME.github.io.\n\n\nSelect all the files in the danl-website-template folder (Tip: Ctrl + A (Windows) / command + A (Mac) selects all files in a directory).\nThen, Ctrl + C (Windows) / command + C (Mac) to copy them.\nThen, go to your local project directory USERNAME.github.io.\nThen, Ctrl + V (Windows) / command + V (Mac) to paste them to your local project directory USERNAME.github.io.\n\n\nRemove the danl-website-template directory from your local project directory, if you have one.\n\n\nAll the website files should be located at the same level with the R Project file (USERNAME.github.io.Rproj), shown below.\n\n\n\n\n\n\n\nPushing the Website Files to the GitHub repository\n\n\n\nStep 8. Push the files to your GitHub repository\n\nOn Terminal within RStudio, execute the following 3-step git commands, which will stage, commit, and push all the files in the local working directory to your GitHub repository:\n\n\ngit add . adds changes in your local working directory (e.g., edited files, new files, deleted files) to the staging area, which is a temporary area where you can prepare your next commit\n\ngit add .\n\ngit commit -m \"...\" records the changes in the staging area as a new snapshot in the local working directory, along with a message describing the changes.\n\ngit commit -m \"any message to describe the changes\"\n\ngit push uploads the local changes to the online repository in GitHub.\n\ngit push\n\nStep 9. Check whether the files are well uploaded.\n\nGo to the webpages of your GitHub repository and your website:\n\nhttps://github.com/USERNAME/USERNAME.github.io.git\nhttps://USERNAME.github.io\nRefresh the webpages (Ctrl + R for Windows users; cmd + R for Mac users)\n\nAdd a URL for your website (https://YOUR_GITHUB_USERNAME.github.io/) in About section in your GihtHub repository webpage by clicking the setting. Below describes how to do it:\n\n\n\n\nDiscussion\nWelcome to our Classwork 1 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Classwork 1.\nWhether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Classwork 1 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n\n Back to top"
+    "text": "Getting a GitHub account\nStep 1. Create the GitHub account with your Geneseo email.\n\nGo to GitHub.\nClick “Sign up for GitHub”.\n\n\nChoose your GitHub username carefully:\n\nhttps://USERNAME.github.io will be the address for your website.\nByeong-Hak’s GitHub username is bcdanl, so that Byeong-Hak owns the web address https://bcdanl.github.io.\n\nIt is recommended to have a username with all lower cases.\n\n\n\n\n\nInstalling git if you do not have one.\nStep 2.\n\nCheck whether git is installed in your laptop.\n\n\nFrom the Console Pane in RStudio, click Terminal tab.\n\n\n\n\n\nFrom the Terminal, run the following command to check if your laptop has git installed.\n\ngit --version\n\nIf your computer has git installed, you will see the message below and you do not need to install git:\n\ngit version 2.xx\n\nIf your computer does not have git installed, you will see the message below and you need to install git:\n\n'git' is not recognized as an internal or external command\n\n\nInstall git if you do not have one. Move to the next step if you have git installed in your laptop.\n\n\n\n\nMac\n\nGo to http://git-scm.com/downloads, and download the file.\nClick “macOS”, scroll down the webpage, and then click “installer” from the Binary installer section.\nRun the downloaded file.\n\n\n\n\nWindows\n\nGo to https://gitforwindows.org, and download the file.\nRun the downloaded file.\n\n\n\n\n\nKeep clicking “Next” to complete the installation of git.\nAfter the git installation is done, close RStudio and re-open it.\n\n\nHow to open git installation file on Mac?\n\nRun the downloaded file.\nClick Okay\nGo to “Setting” &gt; “Privacy and Security”\nGo to “General” or scroll down\nClick “Open Anyway”\n\n\n\n\n\n\n\n\nSetting up GitHub Credential on your local Git.\nStep 3. In Terminal, run the following commands one by one:\ngit config --global user.email \"YOUR_EMAIL_ADDRESS\"\ngit config --global user.name \"YOUR_USERNAME\"\nFor example, the email address for my GitHub account is bchoe@geneseo.edu, and my GitHub username is bcdanl, so that I ran below:\ngit config --global user.email \"bchoe@geneseo.edu\"\ngit config --global user.name \"bcdanl\"\n\nStep 4. Obtain a personal access token (PAT) from GitHub.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"usethis\")\nusethis::create_github_token()\n\nThen, click “Generate token” in the pop-upped web browser.\nWe can think of GitHub’s personal access token as a password that expires. You can decide how long it remains valid. My recommendation is to set its expiration for May 31, 2025, or later.\n\n\n\n\n\nThen, copy the generated PAT, and paste it to your clipboard or R script.\n\n\nStep 5. Set the GitHub credential using the PAT.\n\nIn RStudio Console, run the followings line by line:\n\ninstall.packages(\"gitcreds\")\ngitcreds::gitcreds_set()\n\nYou will be asked to provide your PAT.\nPaste your PAT to the RStudio Console, and then hit Enter.\n\n\n\n\n\n\n\nNote\n\n\n\n\nIt does not harm to create multiple PAT for one GitHub account.\nAfter the PAT expires, you should repeat the following if you want to update your GitHub website:\n\n\nCreate a new PAT:\n\nusethis::create_github_token()\n\nReplace the current PAT with the new PAT:\n\ngitcreds::gitcreds_set()\n\nSelect the option 2: Replace these credentials by typing 2 and hitting Enter on R Console.\n\n\n\n\n\n\nEstablishing the Connection between GitHub repo and your local Git\nStep 6. Login to your GitHib and make the repository.\n\nFrom https://github.com, click the plus [+] icon in the upper right corner and select “New repository”.\nName this repo USERNAME.github.io, which will be the domain for your website.\n\n\ne.g., If your GitHub username is abc9, the name of your repo should be abc9.github.io, not abc_9.github.io.\n\n\nThen, copy the web address of your GitHub repo, https://github.com/USERNAME/USERNAME.github.io\n\n\nFor example, the web address for Byeong-Hak’s GitHub repo is https://github.com/bcdanl/bcdanl.github.io.\n\n\nStep 7. Create a RStudio project with Version Control\n\n\n\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Version Control” &gt; “Git”\nPaste the web address of your GitHub repo to the Repository URL menu.\nClick “Browse” to select the parent directory for your local project directory (I recommend “Documents” folder.)\nClick “Create”\n\n\n\n\n\n\n\nNote\n\n\n\nIf Step 7 does not work on your laptop, try below Steps 7-1 and 7-2 instead. If Step 7 DOES work well, skip Steps 7-1 and 7-2.\n\n\nStep 7-1. Use git clone to establish the connection between GitHub repo and your local laptop:\n\nChange directory to “Documents” in Terminal using cd command.\n\ncd &lt;pathname of \"Documents\" directory&gt;\n\nHere, you need to know the pathname of “Documents” directory.\nFor example, LAPTOP_USERNAME below is not your GitHub username but one for your local laptop.\n\nMac\ncd /Users/LAPTOP_USERNAME/Documents\nWindows\ncd C:/Users/LAPTOP_USERNAME/Documents\n\nUse git clone to creates a local copy of the GitHub Repository.\n\ngit clone &lt;repository-url&gt;\n\nFor example,\n\ngit clone https://github.com/USERNAME/USERNAME.github.io\n\nStep 7-2. Create a RStudio project from Existing Directory\n\nClick “Project (None)” at the top-right corner in RStudio.\nClick “New Project” &gt; “Existing Directory”\nClick “Browse” to select the local copy of the GitHub Repository\nClick “Create Project”\n\n\n\n\nDownloading Website Template Files\nStep 8. Download the files of website template:\n\nGo to the following webpage: https://github.com/bcdanl/danl-website-template\nFrom the webpage above, click the green icon &lt; &gt; Code, and then click “Download Zip”\nExtract the Zip file you have downloaded\nIf there are the files, .gitignore, .DS_Store, or *.Rproj, in the folder, delete all of them.\nMove all the files that were compressed in the Zip file to your local project directory, USERNAME.github.io.\n\n\nSelect all the files in the danl-website-template folder (Tip: Ctrl + A (Windows) / command + A (Mac) selects all files in a directory).\nThen, Ctrl + C (Windows) / command + C (Mac) to copy them.\nThen, go to your local project directory USERNAME.github.io.\nThen, Ctrl + V (Windows) / command + V (Mac) to paste them to your local project directory USERNAME.github.io.\n\n\nRemove the danl-website-template directory from your local project directory, if you have one.\n\n\nAll the website files should be located at the same level with the R Project file (USERNAME.github.io.Rproj), shown below.\n\n\n\n\n\n\n\nPushing the Website Files to the GitHub repository\n\n\n\nStep 8. Push the files to your GitHub repository\n\nOn Terminal within RStudio, execute the following 3-step git commands, which will stage, commit, and push all the files in the local working directory to your GitHub repository:\n\n\ngit add . adds changes in your local working directory (e.g., edited files, new files, deleted files) to the staging area, which is a temporary area where you can prepare your next commit\n\ngit add .\n\ngit commit -m \"...\" records the changes in the staging area as a new snapshot in the local working directory, along with a message describing the changes.\n\ngit commit -m \"any message to describe the changes\"\n\ngit push uploads the local changes to the online repository in GitHub.\n\ngit push\n\nStep 9. Check whether the files are well uploaded.\n\nGo to the webpages of your GitHub repository and your website:\n\nhttps://github.com/USERNAME/USERNAME.github.io.git\nhttps://USERNAME.github.io\nRefresh the webpages (Ctrl + R for Windows users; cmd + R for Mac users)\n\nAdd a URL for your website (https://YOUR_GITHUB_USERNAME.github.io/) in About section in your GihtHub repository webpage by clicking the setting. Below describes how to do it:\n\n\n\n\nDiscussion\nWelcome to our Classwork 1 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Classwork 1.\nWhether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Classwork 1 materials or need clarification on any points, don’t hesitate to ask here.\nLet’s collaborate and learn from each other!\n\n\n\n\n Back to top"
   },
   {
     "objectID": "index.html",
@@ -557,7 +557,7 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-classwork",
@@ -585,7 +585,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Quarto\n\n\nJanuary 27, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nBig Data; Hadoop\n\n\nJanuary 29, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "econml.html",
@@ -991,28 +991,28 @@
     "href": "danl-cw/danl-320-cw-03.html",
     "title": "Classwork 3",
     "section": "",
-    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-399-cw-01.qmd, danl-399-cw-02.qmd, danl-399-cw-03.qmd.\n\n\n\n\n\n\n\nRules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.\n\n\n\n\n\n\n\nDecorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a link of page of “Python Basics” to the navigation bar using danl-320-quarto-py-only.qmd.\nUse the 3-step git commands (git add, git commit, and git push) to update your website.\n\n\n\n\n\n\nQuarto - Creating a Website\nQuarto - HTML Basics\nQuarto - HTML Code Blocks\nQuarto - HTML Theming\nQuarto - Creating a Blog"
+    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-320-cw-01.ipynb, danl-320-cw-02.ipynb, danl-320-cw-03.ipynb.\n\n\n\n\n\n\n\nRules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.ipynb (or *.qmd) file.\n\n\nPut all files for one blog post (e.g., *.ipynb (or *.qmd), *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file.\n\n\n\n\n\n\n\nDecorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a menu of “Project” to the navigation bar using danl_proj_nba.ipynb.\nAdd a drop-down menu of “Python Data Analysis” to the navigation bar.\n\n\nUnder the menu of “Python Data Analysis”, add links for the following webpage:\n\nPandas Basics using pandas_basic.ipynb\nSeaborn Basics using seaborn_basic.ipynb\n\n\n\nUse the 3-step git commands (git add, git commit, and git push) to update your website.\n\n\n\n\n\n\nQuarto - Creating a Website\nQuarto - HTML Basics\nQuarto - HTML Code Blocks\nQuarto - HTML Theming\nQuarto - Creating a Blog"
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html#website-files",
     "href": "danl-cw/danl-320-cw-03.html#website-files",
     "title": "Classwork 3",
     "section": "",
-    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-399-cw-01.qmd, danl-399-cw-02.qmd, danl-399-cw-03.qmd."
+    "text": "_quarto.yml configures the website:\n\nIt determines the structure of the website.\n\ne.g., Navigation bar, themes, HTML options, etc.\n\nIf _quarto.yml is edited, use quarto render to render all qmd and ipynb files.\n\nindex.qmd renders index.html, the front page of the website.\n\nDo not create Quarto files something like index2.qmd within the working directory.\n\nblog-listing.qmd configures the blog listing page.\nposts directory includes sub-directories of blog posts.\nimg directory can be used to store picture files.\n\n\n\n\nA file in the working directory can have its own web address.\n\nFor example, if you have resume-example.pdf in your working directory, it has the web address, https://USERNAME.github.io/resume-example.pdf.\n\nWhen naming a file in the website, do not have any space in a file name!\nBe systematic when naming a series of files in the website.\n\nE.g., danl-320-cw-01.ipynb, danl-320-cw-02.ipynb, danl-320-cw-03.ipynb."
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html#blogging",
     "href": "danl-cw/danl-320-cw-03.html#blogging",
     "title": "Classwork 3",
     "section": "",
-    "text": "Rules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.qmd file.\n\n\nPut all files for one blog post (e.g., *.qmd, *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file."
+    "text": "Rules\n\nOne blog post corresponds to:\n\n\nOne sub-directory in the posts directory.\nOne *.ipynb (or *.qmd) file.\n\n\nPut all files for one blog post (e.g., *.ipynb (or *.qmd), *.png) in one corresponding sub-directory in the posts directory.\nWhen inserting an image file to a blog post, use a relative path, i.e., a file name of the image file."
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html#practice-problems",
     "href": "danl-cw/danl-320-cw-03.html#practice-problems",
     "title": "Classwork 3",
     "section": "",
-    "text": "Decorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a link of page of “Python Basics” to the navigation bar using danl-320-quarto-py-only.qmd.\nUse the 3-step git commands (git add, git commit, and git push) to update your website."
+    "text": "Decorate your website:\n\n\nReplace YOUR NAME with your name in _quarto.yml and index.qmd.\nDescribe yourself in index.qmd.\nAdd the picture (png) file of your profile photo to img directory. Then correct img/profile.png in index.qmd accordingly.\nCorrect links for your resumé, linkedin, email, and social media.\n\n\nAdd a menu of “Project” to the navigation bar using danl_proj_nba.ipynb.\nAdd a drop-down menu of “Python Data Analysis” to the navigation bar.\n\n\nUnder the menu of “Python Data Analysis”, add links for the following webpage:\n\nPandas Basics using pandas_basic.ipynb\nSeaborn Basics using seaborn_basic.ipynb\n\n\n\nUse the 3-step git commands (git add, git commit, and git push) to update your website."
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html#references",
@@ -1755,5 +1755,264 @@
     "title": "Lecture 2",
     "section": "Quarto Website Basics",
     "text": "Quarto Website Basics\n\nLet’s do Classwork 3."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nYAML\n\n\n\n\n\n\nAn YAML (yet another markup language) header surrounded by ---.\n\nIt is commonly used for document configuration (e.g., title, author, date, style, …)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-1",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-1",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nKnitting / Rendering\n\n\nWhen we knit the document, Quarto sends the .qmd file to jupyter/knitr, which executes all of the code chunks and creates a new markdown (.md) document which includes the code and its output.\nThe markdown file (*.md) generated by jupyter/knitr is then processed by pandoc, which is responsible for creating the output file."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-2",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-2",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n\nThe very original version of Markdown was invented mainly to write HTML content more easily.\n\nFor example, - SOME_TEXT in “.md” is equivalent to &lt;ul&gt;&lt;li&gt; SOME_TEXT &lt;/li&gt; in ”.html”\n\nPandoc makes it possible to convert a Markdown document to a large variety of output formats, such as HTML."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-3",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-3",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n---\ntitle: \"Habits\"\nauthor: YOUR_NAME\ndate: January 27, 2025\nformat: \n  html\n---\n\nTo create an HTML document from Jupyter Notebook, we specify the html output format in the YAML metadata of our document.\n\nBy default, format: html is set.\n\nOpen an empty Jupyter Notebook file from Google Colab (or VSCode).\n\nCreate the first cell that is Text.\nType the above YAML metadata to the first Text cell."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-4",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-4",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n\nIn RStudio, close the project USERNAME.github.io.Rporj if it is on.\n\nClick USERNAME.github.io.Rporj at the top-right corner.\nClick Close Project.\n\nDownload the Jupyter Notebook file, danl-320-python-basic.ipynb from Brightspace, and open it from Google Colab (or VSCode if you prefer)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-5",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-5",
+    "title": "Lecture 2",
+    "section": "Getting Started with Jupyter Notebook and HTML",
+    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n---\ntitle: \"Python Basics\"\nauthor: YOUR_NAME\ndate: \"2025-01-27\"\n---\n\nThe above syntax is part of YAML metadata in danl-320-python-basic.ipynb.\n\nYAML should be always in the first cell, and the first cell should be text, not code.\n\nIn YAML, indentation really matters!\n\ntab (or four spaces) defines a level in YAML."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-_quarto.yml",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-_quarto.yml",
+    "title": "Lecture 2",
+    "section": "Quarto Website: _quarto.yml",
+    "text": "Quarto Website: _quarto.yml\n\n\n---\nproject:\n  type: website\n\nwebsite:\n  title: \"YOUR NAME\"\n  navbar:\n    left:\n      - text: Project\n        href: danl_proj_nba.ipynb\n      - text: Blog\n        href: blog-listing.qmd\n\nformat:\n  html:\n    theme: cosmo\n    css: styles.css\n    toc: false\n---\n\nThe _quarto.yml file configures the website settings.\nIndentation matters!\n\n\n\n\nIn RStudio, open the project USERNAME.github.io.Rporj.\n\nClick Project: (None) at the top-right corner.\nClick USERNAME.github.io.Rproj.\n\n_quarto.yml configures a website, and provides various options for HTML documents within the website."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nCustom CSS\n\nCascading Style Sheets (CSS) is used to format the layout of a webpage (color, font, text size, background, display, etc.).\n\nHTML will format the architecture of the house.\nCSS will be the carpet and walls to decorate the house.\nJavaScript adds interactive elements in the house, such as opening doors and lighting.\n\nWe are not front-end web developers.\n\nWe will not cover the use of CSS and JavaScript."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-1",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-1",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nRendering\n\n\nThe Render button (command/Ctrl + shift + K) renders a single Quarto document file (e.g., index.qmd) to create an output document.\nquarto render from Terminal renders ALL Quarto documents and Jupyter Notebook files in your local working directory:\n\nquarto render\n\nquarto render should be used if there is any change in _quarto.yml.\n\n\n\n\n\nTip\n\n\n\nEdit _quarto.yml, *.qmd, or *.ipynb files ONLY from your local laptop or Google Colab.\n\nDo not edit them from your GitHub repo for the website."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-2",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-2",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nAdding *.ipynb to a Quarto website\n\nBy default, quarto render doesn’t execute any code in .ipynb notebooks.\nquarto render renders .ipynb notebooks, so that corresponding html files are rendered.\n\nIf you need to update cell outputs in *.ipynb, run that *.ipynb on Google Colab, save the notebook, and download it to your local working directory."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-3",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-3",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nAppearance and Style\n\ntheme specifies the Bootstrap theme to use for the page (themes are drawn from the Bootswatch theme library).\n\nValid themes include default, bootstrap, cerulean, cosmo, darkly, flatly, journal, lumen, paper, readable, sandstone, simplex, spacelab, united, and yeti.\n\nhighlight-style specifies the code highlighting style.\n\nSupported styles include default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, breezedark, and textmate."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-4",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-4",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nAbout\n\nYour index.qmd sets a front page about you.\n\nDetails in about pages are available here:\nhttps://quarto.org/docs/websites/website-about.html.\n\nQuarto includes 5 built in templates:\n\njolla\ntrestles\nsolana\nmarquee\nbroadside"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-5",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-5",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nIcons and Emojis\n\nA ton of Bootstrap icons are available here:\n\nhttps://icons.getbootstrap.com.\n\nA ton of markdown emojis are available here 😄:\n\nhttps://github.com/ikatyang/emoji-cheat-sheet\nhttps://gist.github.com/rxaviers/7360908"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-6",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-6",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nNaviation and Adding Pages\nleft:\n- text: Project\n  href: project.ipynb\n- text: Blog\n  href: blog-listing.qmd\n- text: Homeowrk\n  href: hw.ipynb\n\nWe can add a new page to the website through navbar in _quarto.yml"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-7",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-7",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nNaviation and Adding Pages\nleft:\n  - text: \"Python Data Analysis\"\n    menu:\n      - pandas_basic.ipynb\n      - seaborn_basic.ipynb\n\nWe can also create a drop-down menu by including a menu\nMore details about navbar are available here:\n\nhttps://quarto.org/docs/websites/website-navigation.html"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-8",
+    "href": "danl-lec/danl-320-lec-02-2025-0127.html#quarto-website-8",
+    "title": "Lecture 2",
+    "section": "Quarto Website",
+    "text": "Quarto Website\nColors\n\nA ton of hex codes for colors are available here:\n\nhttps://www.color-hex.com"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-1",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data and analytics are likely to be significant components of future careers across various fields.\nBig data refers to enormous and complex data collections that traditional data management tools can’t handle effectively.\nFive key characteristics of big data (5 V’s):\n\nVolume\nVelocity\nValue\nVeracity\nVariety"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-2",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n1. Volume\n\nIn 2017, the digital universe contained an estimated 16.1 zettabytes of data.\nExpected to grow to 163 zettabytes by 2025.\nMuch new data will come from embedded systems in smart devices."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-3",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n1. Volume\n\n\n\n\n\nName\nSymbol\nValue\n\n\n\n\nKilobyte\nkB\n10³\n\n\nMegabyte\nMB\n10⁶\n\n\nGigabyte\nGB\n10⁹\n\n\nTerabyte\nTB\n10¹²\n\n\nPetabyte\nPB\n10¹⁵\n\n\nExabyte\nEB\n10¹⁸\n\n\nZettabyte\nZB\n10²¹\n\n\nYottabyte\nYB\n10²⁴\n\n\nBrontobyte*\nBB\n10²⁷\n\n\nGegobyte*\nGeB\n10³⁰\n\n\n\nNote: The asterisks (*) next to Brontobyte and Gegobyte in the original image have been preserved in this table. These likely indicate that these units are less commonly used or are proposed extensions to the standard system of byte units.\n\n\n\n\n\n\nIncrease in size of the global datasphere"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-4",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n2. Velocity\n\nRefers to the rate at which new data is generated.\nEstimated at 0.33 zetabytes each day (120 zetabytes annually).\n90% of the world’s data was generated in just the past two years."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-5",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n3. Value\n\nRefers to the worth of data in decision-making.\nEmphasizes the need to quickly identify and process relevant data.\nUsers may be able to find more patterns and interesting anomalies from “big” data than from “small” data."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-6",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n4. Veracity\n\nMeasures the quality of the data.\nConsiders accuracy, completeness, and currency of data.\nDetermines if the data can be trusted for good decision-making."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-7",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#big-data-7",
+    "title": "Lecture 3",
+    "section": "Big Data",
+    "text": "Big Data\n5. Variety\n\n\n\n\n\n\nData comes in various formats.\nStructured data: Has a predefined format, fits into traditional databases.\nUnstructured data: Not organized in a predefined manner, comes from sources like documents, social media, emails, photos, videos, etc."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#sources-of-an-organizations-data",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#sources-of-an-organizations-data",
+    "title": "Lecture 3",
+    "section": "Sources of an Organization’s Data",
+    "text": "Sources of an Organization’s Data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data",
+    "title": "Lecture 3",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nEconomics/Finance\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nBureau of Labor Statistics (BLS)\nProvides access to data on inflation and prices, wages and benefits, employment, spending and time use, productivity, and workplace injuries\nBLS\n\n\nFRED (Federal Reserve Economic Data)\nProvides access to a vast collection of U.S. economic data, including interest rates, GDP, inflation, employment, and more\nFRED\n\n\nYahoo Finance\nProvides comprehensive financial news, data, and analysis, including stock quotes, market data, and financial reports\nYahoo Finance\n\n\nIMF (International Monetary Fund)\nProvides access to a range of economic data and reports on countries’ economies\nIMF Data\n\n\nWorld Bank Open Data\nFree and open access to global development data, including world development indicators\nWorld Bank Open Data\n\n\nOECD Data\nProvides access to economic, environmental, and social data and indicators from OECD member countries\nOECD Data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-1",
+    "title": "Lecture 3",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nGovernment/Public Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nData.gov\nPortal providing access to over 186,000 government data sets, related to topics such as agriculture, education, health, and public safety\nData.gov\n\n\nCIA World Factbook\nPortal to information on the economy, government, history, infrastructure, military, and population of 267 countries\nCIA World Factbook\n\n\nU.S. Census Bureau\nPortal to a huge variety of government statistics and data relating to the U.S. economy and its population\nU.S. Census Bureau\n\n\nEuropean Union Open Data Portal\nProvides access to public data from EU institutions\nEU Open Data Portal\n\n\nNew York City Open Data\nProvides access to datasets from New York City, covering a wide range of topics such as public safety, transportation, and health\nNYC Open Data\n\n\nLos Angeles Open Data\nPortal for accessing public data from the City of Los Angeles, including transportation, public safety, and city services\nLA Open Data\n\n\nChicago Data Portal\nOffers access to datasets from the City of Chicago, including crime data, transportation, and health statistics\nChicago Data Portal"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-2",
+    "title": "Lecture 3",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nHealth, Climate/Environment, and Social Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nHealthdata.gov\nPortal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics\nHealthdata.gov\n\n\nWorld Health Organization (WHO)\nPortal to data and statistics on global health issues\nWHO Data\n\n\nNational Centers for Environmental Information (NOAA)\nPortal for accessing a variety of climate and weather data sets\nNCEI\n\n\nNOAA National Weather Service\nProvides weather, water, and climate data, forecasts and warnings\nNOAA NWS\n\n\nFAO (Food and Agriculture Organization)\nProvides access to data on food and agriculture, including data on production, trade, food security, and sustainability\nFAOSTAT\n\n\nPew Research Center Internet & Technology\nPortal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics\nPew Research\n\n\nData for Good from Facebook\nProvides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being\nFacebook Data for Good\n\n\nData for Good from Canada\nProvides open access to datasets that address pressing social challenges across Canada\nData for Good Canada"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#free-sources-of-useful-big-data-3",
+    "title": "Lecture 3",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nGeneral Data Repositories\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nAmazon Web Services (AWS) public data sets\nPortal to a huge repository of public data, including climate data, the million song dataset, and data from the 1000 Genomes project\nAWS Datasets\n\n\nGapminder\nPortal to data from the World Health Organization and World Bank on economic, medical, and social issues\nGapminder\n\n\nGoogle Dataset Search\nHelps find datasets stored across the web\nGoogle Dataset Search\n\n\nKaggle Datasets\nA community-driven platform with datasets from various fields, useful for machine learning and data science projects\nKaggle Datasets\n\n\nUCI Machine Learning Repository\nA collection of databases, domain theories, and datasets used for machine learning research\nUCI ML Repository\n\n\nUnited Nations Data\nProvides access to global statistical data compiled by the United Nations\nUN Data\n\n\nHumanitarian Data Exchange (HDX)\nProvides humanitarian data from the United Nations, NGOs, and other organizations\nHDX\n\n\nDemocratizing Data from data.org\nA platform providing access to high-impact datasets, tools, and resources aimed at solving critical global challenges\nDemocratizing Data\n\n\nJustia Federal District Court Opinions and Orders database\nA free searchable database of full-text opinions and orders from civil cases heard in U.S. Federal District Courts\nJustia"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-1",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nDefinition\n\nAn open-source software framework for storing and processing large data sets.\n\nComponents\n\nHadoop Distributed File System (HDFS): Distributed data storage.\nMapReduce: Data processing model."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-2",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nPurpose\n\nEnables distributed processing of large data sets across clusters of computers."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-3",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - HDFS\n\n\n\n\n\n\n\n\n\nHDFS\n\nDivides data into blocks and distributes them across different servers for processing.\nProvides a highly redundant computing environment\n\nAllows the application to keep running even if individual servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-4",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce\n\nMapReduce\n\nMap Phase: Filters and sorts data.\n\ne.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.\n\nReduce Phase: Summarizes and aggregates results.\n\ne.g., Counting the number of orders within each group, thereby determining the frequency of each product ID."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-5",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-6",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nHow Hadoop Works\n\nData Distribution\n\nLarge data sets are split into smaller blocks.\n\nData Storage\n\nBlocks are stored across multiple servers in the cluster.\n\nProcessing with MapReduce\n\nMap Tasks: Executed on servers where data resides, minimizing data movement.\nReduce Tasks: Combine results from map tasks to produce final output.\n\nFault Tolerance\n\nData replication ensures processing continues even if servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-7",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-7",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nExtending Hadoop for Real-Time Processing\n\nLimitation of Hadoop\n\nHadoop is originally designed for batch processing.\n\nBatch Processing: Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.\nResults come after the entire dataset is analyzed.\n\n\nReal-Time Processing Limitation:\n\nHadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)\n\nExtending Hadoop’s Capabilities\n\nBoth Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-8",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#hadoop-8",
+    "title": "Lecture 3",
+    "section": "Hadoop",
+    "text": "Hadoop\nApache Storm and Apache Spark\n\n\nApache Storm\n\nFunctionality:\n\nProcesses real-time data streams.\nHandles unbounded streams of data reliably and efficiently.\n\nUse Cases:\n\nReal-time analytics\nOnline machine learning\nContinuous computation\nReal-time data integration\n\n\n\nApache Spark\n\nFunctionality:\n\nProvides in-memory computations for increased speed.\nSupports both batch and streaming data processing through Spark Streaming.\n\nUse Cases:\n\nInteractive queries for quick, on-the-fly data analysis\nMachine learning"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#apache-storm-and-apache-spark-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#apache-storm-and-apache-spark-1",
+    "title": "Lecture 3",
+    "section": "Apache Storm and Apache Spark",
+    "text": "Apache Storm and Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
   }
 ]
