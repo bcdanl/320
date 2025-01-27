@@ -108,6 +108,89 @@ Write a Python code that uses `print()` and `max()` functions to print out the l
 <br><br><br>
 
 
+## Question 5
+- Use a `while` loop to print the values of the list [3, 2, 1, 0].
+- Use a `for` loop to print the values of the list [3, 2, 1, 0].
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+
+
+<br><br><br>
+## Question 6
+- Assign the value 7 to the variable `guess_me`, and the value 1 to the variable `number`. 
+
+- Write a `while` loop that compares `number` with `guess_me.` 
+  - Print 'too low' if `number` is less than guess me. 
+  - If `number` equals `guess_me`, print 'found it!' and then exit the loop. 
+  - If `number` is greater than `guess_me`, print 'oops' and then exit the loop. 
+  - Increment `number` at the end of the loop.
+
+- Write a `for` loop that compares `number` with `guess_me.` 
+  - Print 'too low' if `number` is less than guess me. 
+  - If `number` equals `guess_me`, print 'found it!' and then exit the loop. 
+  - If `number` is greater than `guess_me`, print 'oops' and then exit the loop. 
+  - Increment `number` at the end of the loop.
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+
+
+<br><br><br>
+
+
+# Question 7
+- You are given a variable value that contains a string. 
+
+```{.python}
+value = "320"
+```
+
+
+- Write a Python program to:
+	1.	Attempt to convert value to a floating-point number using `float()`.
+	2.	If the conversion is successful, print: "You entered: <number>".
+	3.	If the conversion fails (e.g., the value is not a valid number), print: "That's not a valid number!".
+
+- Use a try-except block to handle the potential error.
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+
+<br><br><br>
+
+# Question 8
+- Import the `pandas` library as `pd`.
+- Install the `itables` package.
+- From `itables`, import the functions `init_notebook_mode` and `show`.
+
+<br>
+
+*Answer*
+```{python}
+
+```
+
+
+
+<br><br><br>
+
+
 
 # Discussion
 

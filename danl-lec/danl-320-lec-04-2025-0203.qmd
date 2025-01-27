@@ -1,0 +1,404 @@
+---
+title: Lecture 4
+subtitle: Big Data; Hadoop; Spark
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: true
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-02-03
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+
+
+# Big Data {background-color="#1c4982"}
+
+
+## Big Data
+
+- Big data and analytics are likely to be significant components of future careers across various fields.
+
+- Big data refers to enormous and complex data collections that traditional data management tools can't handle effectively.
+
+- Five key characteristics of big data (5 V's):
+  1. Volume
+  2. Velocity
+  3. Value
+  4. Veracity
+  5. Variety
+
+
+## Big Data
+### 1. Volume
+  - In 2017, the digital universe contained an estimated 16.1 zettabytes of data.
+  - Expected to grow to 163 zettabytes by 2025.
+  - Much new data will come from embedded systems in smart devices.
+
+## Big Data
+### 1. Volume
+
+:::: {.columns}
+
+::: {.column width="42%"}
+
+| Name | Symbol | Value |
+|------|--------|-------|
+| Kilobyte | kB | 10³ |
+| Megabyte | MB | 10⁶ |
+| Gigabyte | GB | 10⁹ |
+| Terabyte | TB | 10¹² |
+| Petabyte | PB | 10¹⁵ |
+| Exabyte | EB | 10¹⁸ |
+| Zettabyte | ZB | 10²¹ |
+| Yottabyte | YB | 10²⁴ |
+| Brontobyte* | BB | 10²⁷ |
+| Gegobyte* | GeB | 10³⁰ |
+
+Note: The asterisks (*) next to Brontobyte and Gegobyte in the original image have been preserved in this table. These likely indicate that these units are less commonly used or are proposed extensions to the standard system of byte units.
+:::
+
+::: {.column width="3%"}
+:::
+
+::: {.column width="55%"}
+<div style="text-align: center; width: 100%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/big-data.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> Increase in size of the global datasphere</p>
+</div>
+
+:::
+::::
+
+
+## Big Data
+### 2. Velocity
+  - Refers to the rate at which new data is generated.
+  - Estimated at 0.33 zetabytes each day (120 zetabytes annually).
+  - 90% of the world's data was generated in just the past two years.
+
+## Big Data
+### 3. Value
+  - Refers to the *worth* of data in decision-making.
+  - Emphasizes the need to quickly identify and process relevant data.
+  - Users may be able to find more patterns and interesting anomalies from "big" data than from "small" data.
+
+
+
+
+## Big Data
+### 4. Veracity
+- Measures the *quality* of the data.
+- Considers accuracy, completeness, and currency of data.
+- Determines if the data can be *trusted* for good decision-making.
+
+
+
+## Big Data
+### 5. Variety
+
+<div style="text-align: center; width: 55%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/data-taxonomy.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+   - Data comes in various formats.
+   - **Structured data**: Has a predefined format, fits into traditional databases.
+   - **Unstructured data**: Not organized in a predefined manner, comes from sources like documents, social media, emails, photos, videos, etc.
+
+
+
+## Sources of an Organization's Data
+
+<div style="text-align: center; width: 85%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/data-source.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+
+## Free Sources of Useful (Big) Data
+### Economics/Finance
+<div style="font-size: 18px;">
+
+
+| Data Source                        | Description                                                                                                                                  | URL                                                |
+|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Bureau of Labor Statistics (BLS)   | Provides access to data on inflation and prices, wages and benefits, employment, spending and time use, productivity, and workplace injuries | [BLS](https://www.bls.gov)                        |
+| FRED (Federal Reserve Economic Data)| Provides access to a vast collection of U.S. economic data, including interest rates, GDP, inflation, employment, and more                   | [FRED](https://fred.stlouisfed.org)                |
+| Yahoo Finance                      | Provides comprehensive financial news, data, and analysis, including stock quotes, market data, and financial reports                        | [Yahoo Finance](https://finance.yahoo.com)        |
+| IMF (International Monetary Fund)  | Provides access to a range of economic data and reports on countries’ economies                                                              | [IMF Data](https://www.imf.org/en/Data)            |
+| World Bank Open Data               | Free and open access to global development data, including world development indicators                                                      | [World Bank Open Data](https://data.worldbank.org) |
+| OECD Data                          | Provides access to economic, environmental, and social data and indicators from OECD member countries                                        | [OECD Data](https://data.oecd.org)                 |
+</div>
+
+
+## Free Sources of Useful (Big) Data
+### Government/Public Data
+<div style="font-size: 18px;">
+
+| Data Source                        | Description                                                                                                                                  | URL                                                |
+|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Data.gov                           | Portal providing access to over 186,000 government data sets, related to topics such as agriculture, education, health, and public safety    | [Data.gov](http://data.gov)                       |
+| CIA World Factbook                 | Portal to information on the economy, government, history, infrastructure, military, and population of 267 countries                        | [CIA World Factbook](https://cia.gov/library/publications/the-world-factbook) |
+| U.S. Census Bureau                 | Portal to a huge variety of government statistics and data relating to the U.S. economy and its population                                   | [U.S. Census Bureau](https://www.census.gov/data.html) |
+| European Union Open Data Portal    | Provides access to public data from EU institutions                                                                                          | [EU Open Data Portal](https://data.europa.eu/euodp/en/data) |
+| New York City Open Data            | Provides access to datasets from New York City, covering a wide range of topics such as public safety, transportation, and health            | [NYC Open Data](https://opendata.cityofnewyork.us)|
+| Los Angeles Open Data              | Portal for accessing public data from the City of Los Angeles, including transportation, public safety, and city services                     | [LA Open Data](https://data.lacity.org)           |
+| Chicago Data Portal                | Offers access to datasets from the City of Chicago, including crime data, transportation, and health statistics                              | [Chicago Data Portal](https://data.cityofchicago.org) |
+</div>
+
+
+## Free Sources of Useful (Big) Data
+### Health, Climate/Environment, and Social Data
+<div style="font-size: 18px;">
+
+| Data Source                        | Description                                                                                                                                  | URL                                                |
+|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Healthdata.gov                     | Portal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics       | [Healthdata.gov](https://www.healthdata.gov)      |
+| World Health Organization (WHO)    | Portal to data and statistics on global health issues                                                                                        | [WHO Data](https://www.who.int/data)               |
+| National Centers for Environmental Information (NOAA) | Portal for accessing a variety of climate and weather data sets                                                                              | [NCEI](https://www.ncdc.noaa.gov/data-access/quick-links#loc-clim) |
+| NOAA National Weather Service      | Provides weather, water, and climate data, forecasts and warnings                                                                            | [NOAA NWS](https://www.weather.gov/data)           |
+| FAO (Food and Agriculture Organization) | Provides access to data on food and agriculture, including data on production, trade, food security, and sustainability                       | [FAOSTAT](http://www.fao.org/faostat/en/#data)    |
+| Pew Research Center Internet & Technology| Portal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics  | [Pew Research](https://www.pewresearch.org/internet/datasets/) |
+| Data for Good from Facebook        | Provides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being | [Facebook Data for Good](https://dataforgood.fb.com) |
+| Data for Good from Canada          | Provides open access to datasets that address pressing social challenges across Canada                                                       | [Data for Good Canada](https://dataforgood.ca)     |
+
+</div>
+
+
+
+## Free Sources of Useful (Big) Data
+### General Data Repositories
+
+<div style="font-size: 18px;">
+
+
+| Data Source                        | Description                                                                                                                                  | URL                                                |
+|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Amazon Web Services (AWS) public data sets | Portal to a huge repository of public data, including climate data, the million song dataset, and data from the 1000 Genomes project        | [AWS Datasets](http://aws.amazon.com/datasets)     |
+| Gapminder                          | Portal to data from the World Health Organization and World Bank on economic, medical, and social issues                                     | [Gapminder](https://www.gapminder.org/data)       |
+| Google Dataset Search              | Helps find datasets stored across the web                                                                                                    | [Google Dataset Search](https://datasetsearch.research.google.com) |
+| Kaggle Datasets                    | A community-driven platform with datasets from various fields, useful for machine learning and data science projects                         | [Kaggle Datasets](https://www.kaggle.com/datasets) |
+| UCI Machine Learning Repository    | A collection of databases, domain theories, and datasets used for machine learning research                                                  | [UCI ML Repository](https://archive.ics.uci.edu/ml/index.php) |
+| United Nations Data                | Provides access to global statistical data compiled by the United Nations                                                                    | [UN Data](http://data.un.org)                      |
+| Humanitarian Data Exchange (HDX)   | Provides humanitarian data from the United Nations, NGOs, and other organizations                                                            | [HDX](https://data.humdata.org)                    |
+| Democratizing Data from data.org   | A platform providing access to high-impact datasets, tools, and resources aimed at solving critical global challenges                        | [Democratizing Data](https://data.org/democratizing-data) |
+| Justia Federal District Court Opinions and Orders database | A free searchable database of full-text opinions and orders from civil cases heard in U.S. Federal District Courts                            | [Justia](http://law.justia.com/cases/federal/district-courts) |
+</div>
+
+
+
+
+# Hadoop {background-color="#1c4982"}
+
+
+## Hadoop
+### Introduction to Hadoop
+
+<div style="text-align: center; width: 55%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/hadoop.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+- **Definition**
+  - An open-source software framework for storing and processing large data sets.
+- **Components**
+  - **Hadoop Distributed File System (HDFS):** Distributed data storage.
+  - **MapReduce:** Data processing model.
+
+
+## Hadoop
+### Introduction to Hadoop
+
+<div style="text-align: center; width: 55%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/hadoop.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+- **Purpose**
+  - Enables distributed processing of large data sets across clusters of computers.
+
+
+
+## Hadoop
+### Hadoop Architecture - HDFS
+:::: {.columns}
+
+::: {.column width="50%"}
+
+<div style="text-align: center; width: 100%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/hadoop-env.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+:::
+
+::: {.column width="50%"}
+
+- **HDFS**
+  - Divides data into blocks and distributes them across different servers for processing.
+  - Provides a highly redundant computing environment
+    - Allows the application to keep running even if individual servers fail.
+
+
+:::
+::::
+
+
+## Hadoop
+### Hadoop Architecture - MapReduce
+
+- **MapReduce**
+  - **Map Phase:** Filters and sorts data.
+    - e.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.
+  - **Reduce Phase:** Summarizes and aggregates results.
+    - e.g., Counting the number of orders within each group, thereby determining the frequency of each product ID.
+  
+
+
+
+## Hadoop
+### Hadoop Architecture - MapReduce
+
+
+<div style="text-align: center; width: 100%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/map-reduce.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+## Hadoop
+### How Hadoop Works
+
+1. **Data Distribution**
+   - Large data sets are split into smaller blocks.
+2. **Data Storage**
+   - Blocks are stored across multiple servers in the cluster.
+3. **Processing with MapReduce**
+   - **Map Tasks:** Executed on servers where data resides, minimizing data movement.
+   - **Reduce Tasks:** Combine results from map tasks to produce final output.
+4. **Fault Tolerance**
+   - Data replication ensures processing continues even if servers fail.
+
+
+## Hadoop
+### Extending Hadoop for Real-Time Processing
+
+- **Limitation of Hadoop**
+  - Hadoop is originally designed for batch processing.
+    - **Batch Processing:** Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.
+    - Results come after the entire dataset is analyzed.
+
+- **Real-Time Processing Limitation:**
+  - Hadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)
+
+- **Extending Hadoop's Capabilities**
+  - Both Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage.
+
+## Hadoop
+### Apache Storm and Apache Spark
+
+:::: {.columns}
+::: {.column width="50%"}
+
+#### **Apache Storm**
+
+- **Functionality:**
+  - Processes real-time data streams.
+  - Handles unbounded streams of data reliably and efficiently.
+- **Use Cases:**
+  - Real-time analytics
+  - Online machine learning
+  - Continuous computation
+  - Real-time data integration
+
+:::
+
+::: {.column width="50%"}
+
+#### **Apache Spark**
+
+- **Functionality:**
+  - Provides *in-memory computations* for increased speed.
+  - Supports both batch and streaming data processing through Spark Streaming.
+- **Use Cases:**
+  - Interactive queries for quick, on-the-fly data analysis
+  - Machine learning
+
+:::
+::::
+
+
+## Apache Storm and Apache Spark
+### Medscape: Real-Time Medical News for Healthcare Professionals
+
+:::{.nonincremental}
+- A medical news app for smartphones and tablets designed to keep healthcare professionals informed.
+  - Provides up-to-date medical news and expert perspectives.
+
+:::
+
+:::: {.columns}
+::: {.column width="50%"}
+<div style="text-align: center; width: 100%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/mediscape.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+:::
+
+::: {.column width="50%"}
+
+- **Real-Time Updates:** 
+    - Uses Apache Storm to process about 500 million tweets per day.
+    - Automatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators.
+
+:::
+::::
+
+
+

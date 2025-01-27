@@ -88,6 +88,9 @@ theme_set(theme_fivethirtyeight()+
   - It is commonly used for document configuration (e.g., title, author, date, style, ...).
 
 
+- In YAML, **indentation** really matters!
+  - **tab** (or four spaces) defines a level in YAML.
+  
 :::
 
 :::
@@ -149,20 +152,6 @@ format:
 ## Getting Started with Jupyter Notebook and HTML
 ### Markdown, Jupyter Notebook, and HTML
 
-
-- In RStudio, close the project `USERNAME.github.io.Rporj` if it is on.
-  1. Click `USERNAME.github.io.Rporj` at the top-right corner.
-  2. Click *Close Project*.
-  
-
-- Download the Jupyter Notebook file, `danl-320-python-basic.ipynb` from Brightspace, and open it from Google Colab (or VSCode if you prefer).
-
-
-
-
-## Getting Started with Jupyter Notebook and HTML
-### Markdown, Jupyter Notebook, and HTML
-
 ```{.bash}
 ---
 title: "Python Basics"
@@ -171,12 +160,11 @@ date: "2025-01-27"
 ---
 ```
 
+- Download the Jupyter Notebook file, `danl-320-python-basic.ipynb` from Brightspace, and open it from Google Colab (or VSCode if you prefer).
 
 - The above syntax is part of YAML metadata in `danl-320-python-basic.ipynb`.
   - YAML should be always in the first cell, and the first cell should be **text**, not code.
 
-- In YAML, **indentation** really matters!
-  - **tab** (or four spaces) defines a level in YAML.
 
 
 # Managing a Website with Jupyter Notebook and Quarto {background-color="#1c4982"}

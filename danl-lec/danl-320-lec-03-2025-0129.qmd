@@ -1,6 +1,6 @@
 ---
 title: Lecture 3
-subtitle: Python Basics; Big Data; Hadoop
+subtitle: Python Basics
 format:
   clean-revealjs:
     self-contained: false
@@ -652,36 +652,12 @@ if x > 2:
 
 
 ## Python Basics
-###  `for` Loops
-
-
-
-```{.python}
-name_list = ["Ben", "Chris", "Kate", "Mary"]
-
-for name in name_list:
-    print(name)
-```
-
-
-- A loop is a way of executing a similar piece of code over and over in a similar way. 
-  - The most useful loop is **for loops**.
-  
-- As long as our object is an iterable, then it can be used in this way in a *for loop*.
-
-- Lists, tuples, strings, and dictionaries are iterable.
-
-
-
-
-
-## Python Basics
 ###  Dictionaries
 
 
 
 ```{.python}
-cities_to_temps = {"Paris": 28, "London": 22, "Seville": 36, "Wellesley": 29}
+cities_to_temps = {"Paris": 28, "London": 22, "New York": 36, "Seoul": 29}
 
 cities_to_temps.keys()
 cities_to_temps.values()
@@ -762,6 +738,42 @@ print( len(list_of_numbers) )
 - Both lists and strings will allow us to use the `len()` command to get their length:
 
 
+## Python Basics
+###  String-related Functions
+
+#### Dot operation
+
+- In Python, we can access attributes by using a dot notation (`.`).
+
+- Unlike `len()`, some functions use a dot to access to strings. 
+
+- To use those string functions, type (1) the name of the string, (2) a dot, (3) the name of the function, and (4) any arguments that the function needs: 
+
+  - `string_name.some_function(arguments)`.
+
+
+
+## Python Basics
+###  String-related Functions
+#### Split with `split()`
+- We can use the built-in string `split()` function to break a string into a list of smaller strings based on some *separator*.
+  - If we don’t specify a *separator*, `split()` uses any sequence of white space characters---newlines, spaces, and tabs:
+```{.python}
+tasks = 'get gloves,get mask,give cat vitamins,call ambulance'
+tasks.split(',')
+tasks.split()
+```
+
+
+## Python Basics
+###  String-related Functions
+### Combine by Using `join()`
+- `join()` collapses a *list* of strings into a single string.
+```{.python}
+crypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']
+crypto_string = ', '.join(crypto_list)
+print('Found and signing book deals:', crypto_string)
+```
 
 
 ## Python Basics
@@ -1002,56 +1014,377 @@ print("Cherry", "Strawberry", "Key Lime", sep=" ")
 
 
 
-## Python Basics
-### Importing Modules, Packages, and Libraries
-
-- Python is a general-purpose programming language and is not specialized for numerical or statistical computation.
-
-- The core libraries that enable Python to store and analyze data efficiently are:
-  - `pandas`
-  - `numpy`
-  - `matplotlib` and `seaborn`
+# Loop with `while` and `for` {background-color="#1c4982"}
 
 
+##  Repeat with `while`
 
-## Python Basics
-### Importing Modules, Packages, and Libraries
+:::: {.columns}
 
-:::{.nonincremental}
-::: {.panel-tabset}
+::: {.column width="50%"}
 
-## `pandas`
+```{.python}
+count = 1        
+while count <= 5:
+    print(count)
+    count += 1
+```
 
-<p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/pandas-logo.png">
-</p>
+:::
 
-- `pandas` provides `Series` and `DataFrames` which are used to store data in an easy-to-use format.
+::: {.column width="50%"}
 
 
-## `numpy`
+1. We first assigned the value 1 to `count`.
+2. The `while` loop compared the value of `count` to 5 and continued if `count` was less than or equal to 5.
+3. Inside the loop, we printed the value of `count` and then *incremented* its value by one with the statement `count += 1`.
+4. Python goes back to the top of the loop, and again compares `count` with 5.
+5. The value of `count` is now 2, so the contents of the `while` loop are again executed, and `count` is incremented to 3.
+6. This continues until `count` is incremented from 5 to 6 at the bottom of the loop.
+7. On the next trip to the top, `count <= 5` is now `False`, and the `while` loop ends.
+
+:::
+::::
+
+
+
+## Repeat with `while`
+###  Asking the user for input
   
-<p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/numpy-logo.png">
-</p>
 
-- `numpy`, numerical Python, provides the array block (`np.array()`) for doing fast and efficient computations;
+:::: {.columns}
 
-## `matplotlib` and `seaborn`
+::: {.column width="50%"}
 
-<p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/matplotlib-logo.png"><img src="https://bcdanl.github.io/lec_figs/seaborn-logo.png">
-</p>
+```{.python}
+stuff = input()
+# Type something and press Return/Enter on Console 
+# before running print(stuff)
+print(stuff)
+```
 
-- `matplotlib` provides graphics. The most important submodule would be `matplotlib.pyplot`.
-- `seaborn` provides a general improvement in the default appearance of `matplotlib`-produced plots.
+:::
+
+::: {.column width="50%"}
+
+
+- Sometimes we would like to take the value for a variable from the user via their keyboard. 
+  - The `input()` function gets *input* from the keyboard.
+  - When the `input()` is called, the program stops and waits for the user to type something on Console (interactive Python interpreter).
+  - When the user presses **Return** or **Enter** on Console, the program resumes and input returns what the user typed as a string.
+
+:::
+::::
+
+## Repeat with `while`
+###  Cancel with `break`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+while True:
+    user_input = input("Enter 'yes' to continue or 'no' to stop: ")
+    if user_input.lower() == 'no':
+        print("Exiting the loop. Goodbye!")
+        break
+    elif user_input.lower() == 'yes':
+        print("You chose to continue.")
+    else:
+        print("Invalid input, please enter 'yes' or 'no'.")
+```
+
+:::
+
+::: {.column width="50%"}
+
+- `While` loop is used to execute a block of code repeatedly until given boolean condition evaluated to `False`. 
+  - `while True` loop will run forever unless we write it with a `break` statement.
+
+- If we want to loop until something occurs, but we’re not sure when that might happen, we can use an infinite loop with a `break` statement. 
 
 
 :::
+::::
+
+
+## Repeat with `while`
+###  Skip Ahead with `continue`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+while True:
+    value = input("Integer, please [q to quit]: ")
+    if value == 'q': # quit
+        break
+    number = int(value)
+    if number % 2 == 0: # an even number
+        continue
+    print(number, "squared is", number*number)
+```
+
+:::
+::: {.column width="50%"}
+- Sometimes, we don’t want to break out of a loop but just want to skip ahead to the
+next iteration for some reason. 
+
+- The `continue` statement is used to skip the rest of the code inside a loop for the *current iteration* only. 
+
+:::
+::::
+
+
+
+##  Iterate with `for` and `in`
+
+- Sometimes we want to loop through a set of things such as a string of text, a list of words or a list of numbers.
+
+  - When we have a list of things to loop through, we can construct a `for` loop. 
+
+  - A `for` loop makes it possible for you to traverse data structures without knowing how large they are or how they are implemented. 
+  
+  <!-- - We can iterate over data that is created on the fly, allowing processing of data streams that would otherwise not fit in the computer’s memory all at once. -->
+
+
+<!-- - To do iteration, we need something like *strings*, *lists* and *tuples* or *dictionaries* to iterate over.  -->
+
+
+##  Iterate with `for` and `in`
+
+- Let's see two ways to walk through a string here:
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+word = 'thud'
+offset = 0
+while offset < len(word):
+    print(word[offset])
+    offset += 1
+```
 :::
 
-## Python Basics
-### Importing Modules, Packages, and Libraries
+::: {.column width="50%"}
+```{.python}
+word = 'thud'
+for letter in word:
+    print(letter)
+```
+:::
+::::
+
+- Which one do you prefer?
+
+
+## Iterate with `for` and `in`
+###  Cancel with `break`
+
+```{.python}
+word = 'thud'
+for letter in word:
+    if letter == 'u':
+        break
+    print(letter)
+```
+
+- A `break` in a `for` loop breaks out of the loop, as it does for a `while` loop:
+
+## Iterate with `for` and `in`
+###  Skip with `continue`
+
+```{.python}
+word = 'thud'
+for letter in word:
+    if letter == 'u':
+        continue
+    print(letter)
+```
+- Inserting a `continue` in a `for` loop jumps to the next iteration of the loop, as it does for a `while` loop.
+
+
+
+## Iterate with `for` and `in`
+### Generate Number Sequences with `range()`
+
+- The `range()` function returns a stream of numbers within a specified range, without
+first having to create and store a large data structure such as a *list* or *tuple*. 
+
+  - This lets us create huge ranges without using all the memory in our computers and crashing our program.
+  
+  - `range()` returns an iterable object, so we need to step through the values with `for` ... `in`, or convert the object to a sequence like a *list*. 
+
+
+## Iterate with `for` and `in`
+### `for` ... `in` `range()`
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+for x in range(0, 3):
+    print(x)
+list( range(0, 3) )
+```
+
+:::
+
+::: {.column width="50%"}
+- We use `range()` similar to how we use *slices*: `range( start, stop, step )`. 
+  - If we omit `start`, the `range` begins at 0. 
+  - The only required value is `stop`; as with *slices*, the last value created will be just before stop. 
+  - The default value of `step` is 1, but we can change it.
+
+:::
+
+::::
+
+
+
+## Loop with `while` and `for`
+###  Class Exercises
+
+- **Q**. [Classwork 4.5](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-5){target="_blank"}
+
+
+- **Q**. [Classwork 4.6](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-6){target="_blank"}
+
+
+
+
+
+
+
+
+
+
+# Handle Errors with `try` and `except` {background-color="#1c4982"}
+
+## Handle Errors with `try` and `except`
+### Exception handlers
+
+
+
+## Handle Errors with `try` and `except`
+### Exception handlers
+
+- In some languages, errors are indicated by special function return values. 
+  - Python uses *exceptions*: code that is executed when an associated error occurs.
+
+- When we run code that might fail under some circumstances, we also need appropriate *exception handlers* to intercept any potential errors.
+
+  - Accessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key.
+  
+
+## Handle Errors with `try` and `except`
+### Errors
+
+
+```{.python}
+short_list = [1, 2, 3]
+position = 5
+short_list[position]
+```
+- If we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:
+
+
+## Handle Errors with `try` and `except`
+
+
+```{.python}
+short_list = [1, 2, 3]
+position = 5
+
+try:
+    short_list[position]
+except:
+    print('Need a position between 0 and', len(short_list)-1, ' but got',
+    position)
+```
+
+- Rather than leaving things to chance, use `try` to wrap your code, and `except` to provide the error handling:
+
+## Handle Errors with `try` and `except`
+
+
+```{.python}
+short_list = [1, 2, 3]
+position = 5
+try:
+    short_list[position]
+except:
+    print('Need a position between 0 and', len(short_list)-1, ' but got',
+    position)
+```
+
+- The code inside the `try` block is run. 
+  - If there is an error, an exception is raised and the code inside the `except` block runs. 
+- If there are no errors, the `except` block is skipped.
+
+
+## Handle Errors with `try` and `except`
+### `except` type
+- Specifying a plain `except` with no arguments, as we did here, is a catchall for any exception type.
+
+- If more than one type of exception could occur, it’s best to provide a
+separate exception handler for each.
+
+- We get the full exception object in the variable name if we use the form:
+
+<div style="text-align: center; width: 100%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/int-py-ch9-exception.png" style="width: 90%; margin-bottom: -20px;">
+  <p style="font-style: bold;"></p>
+</div>
+
+
+## Handle Errors with `try` and `except`
+### `except` type
+```{.python}
+short_list = [1, 2, 3]
+while True:
+    value = input('Position [q to quit]? ')
+    if value == 'q':
+        break
+    try:
+        position = int(value)
+        print(short_list[position])
+    except IndexError as err:
+        print('Bad index:', position)
+    except Exception as other:
+        print('Something else broke:', other)
+```
+
+
+## Handle Errors with `try` and `except`
+### `except` type
+
+- The example looks for an `IndexError` first, because that’s the exception type raised when we provide an illegal position to a sequence. 
+- It saves an `IndexError` exception in the variable `err`, and any other exception in the variable `other`. 
+
+- The example prints everything stored in `other` to show what you get in that object.
+
+  - Inputting position `3` raised an `IndexError` as expected. 
+  - Entering `two` annoyed the `int()` function, which we handled in our second, catchall `except` code.
+
+
+
+
+
+## Handle Errors with `try` and `except`
+###  Class Exercises
+
+- **Q**. [Classwork 4.7](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-7){target="_blank"}
+
+
+
+
+# Importing Modules, Packages, and Libraries {background-color="#1c4982"}
+
+
+## Importing Modules, Packages, and Libraries
 
 - A **module** is basically a bunch of related codes saved in a file with the extension `.py`.
 
@@ -1064,350 +1397,4 @@ print("Cherry", "Strawberry", "Key Lime", sep=" ")
   - This makes the code and variables in the imported module available to our programming codes.
   - We can use the `as` *keyword* when importing the modules using their canonical names.
 
-- **Q**. [Classwork 4.5](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-5){target="_blank"}
-
-
-# Big Data {background-color="#1c4982"}
-
-
-## Big Data
-
-- Big data and analytics are likely to be significant components of future careers across various fields.
-
-- Big data refers to enormous and complex data collections that traditional data management tools can't handle effectively.
-
-- Five key characteristics of big data (5 V's):
-  1. Volume
-  2. Velocity
-  3. Value
-  4. Veracity
-  5. Variety
-
-
-## Big Data
-### 1. Volume
-  - In 2017, the digital universe contained an estimated 16.1 zettabytes of data.
-  - Expected to grow to 163 zettabytes by 2025.
-  - Much new data will come from embedded systems in smart devices.
-
-## Big Data
-### 1. Volume
-
-:::: {.columns}
-
-::: {.column width="42%"}
-
-| Name | Symbol | Value |
-|------|--------|-------|
-| Kilobyte | kB | 10³ |
-| Megabyte | MB | 10⁶ |
-| Gigabyte | GB | 10⁹ |
-| Terabyte | TB | 10¹² |
-| Petabyte | PB | 10¹⁵ |
-| Exabyte | EB | 10¹⁸ |
-| Zettabyte | ZB | 10²¹ |
-| Yottabyte | YB | 10²⁴ |
-| Brontobyte* | BB | 10²⁷ |
-| Gegobyte* | GeB | 10³⁰ |
-
-Note: The asterisks (*) next to Brontobyte and Gegobyte in the original image have been preserved in this table. These likely indicate that these units are less commonly used or are proposed extensions to the standard system of byte units.
-:::
-
-::: {.column width="3%"}
-:::
-
-::: {.column width="55%"}
-<div style="text-align: center; width: 100%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/big-data.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> Increase in size of the global datasphere</p>
-</div>
-
-:::
-::::
-
-
-## Big Data
-### 2. Velocity
-  - Refers to the rate at which new data is generated.
-  - Estimated at 0.33 zetabytes each day (120 zetabytes annually).
-  - 90% of the world's data was generated in just the past two years.
-
-## Big Data
-### 3. Value
-  - Refers to the *worth* of data in decision-making.
-  - Emphasizes the need to quickly identify and process relevant data.
-  - Users may be able to find more patterns and interesting anomalies from "big" data than from "small" data.
-
-
-
-
-## Big Data
-### 4. Veracity
-- Measures the *quality* of the data.
-- Considers accuracy, completeness, and currency of data.
-- Determines if the data can be *trusted* for good decision-making.
-
-
-
-## Big Data
-### 5. Variety
-
-<div style="text-align: center; width: 55%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/data-taxonomy.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-   - Data comes in various formats.
-   - **Structured data**: Has a predefined format, fits into traditional databases.
-   - **Unstructured data**: Not organized in a predefined manner, comes from sources like documents, social media, emails, photos, videos, etc.
-
-
-
-## Sources of an Organization's Data
-
-<div style="text-align: center; width: 85%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/data-source.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-
-## Free Sources of Useful (Big) Data
-### Economics/Finance
-<div style="font-size: 18px;">
-
-
-| Data Source                        | Description                                                                                                                                  | URL                                                |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Bureau of Labor Statistics (BLS)   | Provides access to data on inflation and prices, wages and benefits, employment, spending and time use, productivity, and workplace injuries | [BLS](https://www.bls.gov)                        |
-| FRED (Federal Reserve Economic Data)| Provides access to a vast collection of U.S. economic data, including interest rates, GDP, inflation, employment, and more                   | [FRED](https://fred.stlouisfed.org)                |
-| Yahoo Finance                      | Provides comprehensive financial news, data, and analysis, including stock quotes, market data, and financial reports                        | [Yahoo Finance](https://finance.yahoo.com)        |
-| IMF (International Monetary Fund)  | Provides access to a range of economic data and reports on countries’ economies                                                              | [IMF Data](https://www.imf.org/en/Data)            |
-| World Bank Open Data               | Free and open access to global development data, including world development indicators                                                      | [World Bank Open Data](https://data.worldbank.org) |
-| OECD Data                          | Provides access to economic, environmental, and social data and indicators from OECD member countries                                        | [OECD Data](https://data.oecd.org)                 |
-</div>
-
-
-## Free Sources of Useful (Big) Data
-### Government/Public Data
-<div style="font-size: 18px;">
-
-| Data Source                        | Description                                                                                                                                  | URL                                                |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Data.gov                           | Portal providing access to over 186,000 government data sets, related to topics such as agriculture, education, health, and public safety    | [Data.gov](http://data.gov)                       |
-| CIA World Factbook                 | Portal to information on the economy, government, history, infrastructure, military, and population of 267 countries                        | [CIA World Factbook](https://cia.gov/library/publications/the-world-factbook) |
-| U.S. Census Bureau                 | Portal to a huge variety of government statistics and data relating to the U.S. economy and its population                                   | [U.S. Census Bureau](https://www.census.gov/data.html) |
-| European Union Open Data Portal    | Provides access to public data from EU institutions                                                                                          | [EU Open Data Portal](https://data.europa.eu/euodp/en/data) |
-| New York City Open Data            | Provides access to datasets from New York City, covering a wide range of topics such as public safety, transportation, and health            | [NYC Open Data](https://opendata.cityofnewyork.us)|
-| Los Angeles Open Data              | Portal for accessing public data from the City of Los Angeles, including transportation, public safety, and city services                     | [LA Open Data](https://data.lacity.org)           |
-| Chicago Data Portal                | Offers access to datasets from the City of Chicago, including crime data, transportation, and health statistics                              | [Chicago Data Portal](https://data.cityofchicago.org) |
-</div>
-
-
-## Free Sources of Useful (Big) Data
-### Health, Climate/Environment, and Social Data
-<div style="font-size: 18px;">
-
-| Data Source                        | Description                                                                                                                                  | URL                                                |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Healthdata.gov                     | Portal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics       | [Healthdata.gov](https://www.healthdata.gov)      |
-| World Health Organization (WHO)    | Portal to data and statistics on global health issues                                                                                        | [WHO Data](https://www.who.int/data)               |
-| National Centers for Environmental Information (NOAA) | Portal for accessing a variety of climate and weather data sets                                                                              | [NCEI](https://www.ncdc.noaa.gov/data-access/quick-links#loc-clim) |
-| NOAA National Weather Service      | Provides weather, water, and climate data, forecasts and warnings                                                                            | [NOAA NWS](https://www.weather.gov/data)           |
-| FAO (Food and Agriculture Organization) | Provides access to data on food and agriculture, including data on production, trade, food security, and sustainability                       | [FAOSTAT](http://www.fao.org/faostat/en/#data)    |
-| Pew Research Center Internet & Technology| Portal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics  | [Pew Research](https://www.pewresearch.org/internet/datasets/) |
-| Data for Good from Facebook        | Provides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being | [Facebook Data for Good](https://dataforgood.fb.com) |
-| Data for Good from Canada          | Provides open access to datasets that address pressing social challenges across Canada                                                       | [Data for Good Canada](https://dataforgood.ca)     |
-
-</div>
-
-
-
-## Free Sources of Useful (Big) Data
-### General Data Repositories
-
-<div style="font-size: 18px;">
-
-
-| Data Source                        | Description                                                                                                                                  | URL                                                |
-|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
-| Amazon Web Services (AWS) public data sets | Portal to a huge repository of public data, including climate data, the million song dataset, and data from the 1000 Genomes project        | [AWS Datasets](http://aws.amazon.com/datasets)     |
-| Gapminder                          | Portal to data from the World Health Organization and World Bank on economic, medical, and social issues                                     | [Gapminder](https://www.gapminder.org/data)       |
-| Google Dataset Search              | Helps find datasets stored across the web                                                                                                    | [Google Dataset Search](https://datasetsearch.research.google.com) |
-| Kaggle Datasets                    | A community-driven platform with datasets from various fields, useful for machine learning and data science projects                         | [Kaggle Datasets](https://www.kaggle.com/datasets) |
-| UCI Machine Learning Repository    | A collection of databases, domain theories, and datasets used for machine learning research                                                  | [UCI ML Repository](https://archive.ics.uci.edu/ml/index.php) |
-| United Nations Data                | Provides access to global statistical data compiled by the United Nations                                                                    | [UN Data](http://data.un.org)                      |
-| Humanitarian Data Exchange (HDX)   | Provides humanitarian data from the United Nations, NGOs, and other organizations                                                            | [HDX](https://data.humdata.org)                    |
-| Democratizing Data from data.org   | A platform providing access to high-impact datasets, tools, and resources aimed at solving critical global challenges                        | [Democratizing Data](https://data.org/democratizing-data) |
-| Justia Federal District Court Opinions and Orders database | A free searchable database of full-text opinions and orders from civil cases heard in U.S. Federal District Courts                            | [Justia](http://law.justia.com/cases/federal/district-courts) |
-</div>
-
-
-
-
-# Hadoop {background-color="#1c4982"}
-
-
-## Hadoop
-### Introduction to Hadoop
-
-<div style="text-align: center; width: 55%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/hadoop.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-- **Definition**
-  - An open-source software framework for storing and processing large data sets.
-- **Components**
-  - **Hadoop Distributed File System (HDFS):** Distributed data storage.
-  - **MapReduce:** Data processing model.
-
-
-## Hadoop
-### Introduction to Hadoop
-
-<div style="text-align: center; width: 55%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/hadoop.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-- **Purpose**
-  - Enables distributed processing of large data sets across clusters of computers.
-
-
-
-## Hadoop
-### Hadoop Architecture - HDFS
-:::: {.columns}
-
-::: {.column width="50%"}
-
-<div style="text-align: center; width: 100%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/hadoop-env.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-:::
-
-::: {.column width="50%"}
-
-- **HDFS**
-  - Divides data into blocks and distributes them across different servers for processing.
-  - Provides a highly redundant computing environment
-    - Allows the application to keep running even if individual servers fail.
-
-
-:::
-::::
-
-
-## Hadoop
-### Hadoop Architecture - MapReduce
-
-- **MapReduce**
-  - **Map Phase:** Filters and sorts data.
-    - e.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.
-  - **Reduce Phase:** Summarizes and aggregates results.
-    - e.g., Counting the number of orders within each group, thereby determining the frequency of each product ID.
-  
-
-
-
-## Hadoop
-### Hadoop Architecture - MapReduce
-
-
-<div style="text-align: center; width: 100%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/map-reduce.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-## Hadoop
-### How Hadoop Works
-
-1. **Data Distribution**
-   - Large data sets are split into smaller blocks.
-2. **Data Storage**
-   - Blocks are stored across multiple servers in the cluster.
-3. **Processing with MapReduce**
-   - **Map Tasks:** Executed on servers where data resides, minimizing data movement.
-   - **Reduce Tasks:** Combine results from map tasks to produce final output.
-4. **Fault Tolerance**
-   - Data replication ensures processing continues even if servers fail.
-
-
-## Hadoop
-### Extending Hadoop for Real-Time Processing
-
-- **Limitation of Hadoop**
-  - Hadoop is originally designed for batch processing.
-    - **Batch Processing:** Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.
-    - Results come after the entire dataset is analyzed.
-
-- **Real-Time Processing Limitation:**
-  - Hadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)
-
-- **Extending Hadoop's Capabilities**
-  - Both Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage.
-
-## Hadoop
-### Apache Storm and Apache Spark
-
-:::: {.columns}
-::: {.column width="50%"}
-
-#### **Apache Storm**
-
-- **Functionality:**
-  - Processes real-time data streams.
-  - Handles unbounded streams of data reliably and efficiently.
-- **Use Cases:**
-  - Real-time analytics
-  - Online machine learning
-  - Continuous computation
-  - Real-time data integration
-
-:::
-
-::: {.column width="50%"}
-
-#### **Apache Spark**
-
-- **Functionality:**
-  - Provides *in-memory computations* for increased speed.
-  - Supports both batch and streaming data processing through Spark Streaming.
-- **Use Cases:**
-  - Interactive queries for quick, on-the-fly data analysis
-  - Machine learning
-
-:::
-::::
-
-
-## Apache Storm and Apache Spark
-### Medscape: Real-Time Medical News for Healthcare Professionals
-
-:::{.nonincremental}
-- A medical news app for smartphones and tablets designed to keep healthcare professionals informed.
-  - Provides up-to-date medical news and expert perspectives.
-
-:::
-
-:::: {.columns}
-::: {.column width="50%"}
-<div style="text-align: center; width: 100%; margin: auto;">
-  <img src="https://bcdanl.github.io/lec_figs/mediscape.png" style="width: 100%; margin-bottom: -20px;">
-  <p style="font-weight: bold;"> </p>
-</div>
-
-:::
-
-::: {.column width="50%"}
-
-- **Real-Time Updates:** 
-    - Uses Apache Storm to process about 500 million tweets per day.
-    - Automatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators.
-
-:::
-::::
-
-
-
+- **Q**. [Classwork 4.8](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-8){target="_blank"}

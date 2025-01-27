@@ -557,7 +557,7 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 4\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-classwork",
@@ -585,7 +585,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics; Big Data; Hadoop\n\n\nJanuary 29, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data; Hadoop; Spark\n\n\nFebruary 3, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "econml.html",
@@ -1761,7 +1761,7 @@
     "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html",
     "title": "Lecture 2",
     "section": "Getting Started with Jupyter Notebook and HTML",
-    "text": "Getting Started with Jupyter Notebook and HTML\nYAML\n\n\n\n\n\n\nAn YAML (yet another markup language) header surrounded by ---.\n\nIt is commonly used for document configuration (e.g., title, author, date, style, …)."
+    "text": "Getting Started with Jupyter Notebook and HTML\nYAML\n\n\n\n\n\n\nAn YAML (yet another markup language) header surrounded by ---.\n\nIt is commonly used for document configuration (e.g., title, author, date, style, …).\n\nIn YAML, indentation really matters!\n\ntab (or four spaces) defines a level in YAML."
   },
   {
     "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-1",
@@ -1789,7 +1789,7 @@
     "href": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-4",
     "title": "Lecture 2",
     "section": "Getting Started with Jupyter Notebook and HTML",
-    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n\nIn RStudio, close the project USERNAME.github.io.Rporj if it is on.\n\nClick USERNAME.github.io.Rporj at the top-right corner.\nClick Close Project.\n\nDownload the Jupyter Notebook file, danl-320-python-basic.ipynb from Brightspace, and open it from Google Colab (or VSCode if you prefer)."
+    "text": "Getting Started with Jupyter Notebook and HTML\nMarkdown, Jupyter Notebook, and HTML\n---\ntitle: \"Python Basics\"\nauthor: YOUR_NAME\ndate: \"2025-01-27\"\n---\n\nDownload the Jupyter Notebook file, danl-320-python-basic.ipynb from Brightspace, and open it from Google Colab (or VSCode if you prefer).\nThe above syntax is part of YAML metadata in danl-320-python-basic.ipynb.\n\nYAML should be always in the first cell, and the first cell should be text, not code."
   },
   {
     "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#getting-started-with-jupyter-notebook-and-html-5",
@@ -2181,119 +2181,119 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-24",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nfor Loops\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n\nA loop is a way of executing a similar piece of code over and over in a similar way.\n\nThe most useful loop is for loops.\n\nAs long as our object is an iterable, then it can be used in this way in a for loop.\nLists, tuples, strings, and dictionaries are iterable."
+    "text": "Python Basics\nDictionaries\ncities_to_temps = {\"Paris\": 28, \"London\": 22, \"New York\": 36, \"Seoul\": 29}\n\ncities_to_temps.keys()\ncities_to_temps.values()\ncities_to_temps.items()\n\nAnother built-in Python type that is enormously useful is the dictionary.\n\nThis provides a mapping one set of variables to another (either one-to-one or many-to-one).\nIf you need to create associations between objects, use a dictionary.\n\nWe can obtain keys, values, or key-value paris from dictionaries."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-25",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-25",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nDictionaries\ncities_to_temps = {\"Paris\": 28, \"London\": 22, \"Seville\": 36, \"Wellesley\": 29}\n\ncities_to_temps.keys()\ncities_to_temps.values()\ncities_to_temps.items()\n\nAnother built-in Python type that is enormously useful is the dictionary.\n\nThis provides a mapping one set of variables to another (either one-to-one or many-to-one).\nIf you need to create associations between objects, use a dictionary.\n\nWe can obtain keys, values, or key-value paris from dictionaries."
+    "text": "Python Basics\nRunning on Empty\n\nBeing able to create empty containers is sometimes useful, especially when using loops.\nThe commands to create empty lists, tuples, dictionaries, and sets are lst = [], tup=(), dic={}, and st = set() respectively.\nQ. What is the type of an empty list?"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-26",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-26",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nRunning on Empty\n\nBeing able to create empty containers is sometimes useful, especially when using loops.\nThe commands to create empty lists, tuples, dictionaries, and sets are lst = [], tup=(), dic={}, and st = set() respectively.\nQ. What is the type of an empty list?"
+    "text": "Python Basics\nSlicing Methods\n\n\n\n\nWith slicing methods, we can get subset of the data object.\nSlicing methods can apply for strings, lists, arrays, and DataFrames.\nThe above example describes indexing in Python"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-27",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-27",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nSlicing Methods\n\n\n\n\nWith slicing methods, we can get subset of the data object.\nSlicing methods can apply for strings, lists, arrays, and DataFrames.\nThe above example describes indexing in Python"
+    "text": "Python Basics\nStrings\nstring = \"cheesecake\"\nprint( string[-4:] )\n\nFrom strings, we can access the individual characters via slicing and indexing.\n\n\n\nstring = \"cheesecake\"\nprint(\"String has length:\")\nprint( len(string) )\n\nlist_of_numbers = range(1, 20)\nprint(\"List of numbers has length:\")\nprint( len(list_of_numbers) )\n\n\n\nBoth lists and strings will allow us to use the len() command to get their length:"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-28",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-28",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nStrings\nstring = \"cheesecake\"\nprint( string[-4:] )\n\nFrom strings, we can access the individual characters via slicing and indexing.\n\n\n\nstring = \"cheesecake\"\nprint(\"String has length:\")\nprint( len(string) )\n\nlist_of_numbers = range(1, 20)\nprint(\"List of numbers has length:\")\nprint( len(list_of_numbers) )\n\n\n\nBoth lists and strings will allow us to use the len() command to get their length:"
+    "text": "Python Basics\nString-related Functions\nDot operation\n\nIn Python, we can access attributes by using a dot notation (.).\nUnlike len(), some functions use a dot to access to strings.\nTo use those string functions, type (1) the name of the string, (2) a dot, (3) the name of the function, and (4) any arguments that the function needs:\n\nstring_name.some_function(arguments)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-29",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-29",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nStrings and Slicing\n\nWe can extract a substring (a part of a string) from a string by using a slice.\nWe define a slice by using square brackets ([]), a start index, an end index, and an optional step count between them.\n\nWe can omit some of these.\n\nThe slice will include characters from index start to one before end:"
+    "text": "Python Basics\nString-related Functions\nSplit with split()\n\nWe can use the built-in string split() function to break a string into a list of smaller strings based on some separator.\n\nIf we don’t specify a separator, split() uses any sequence of white space characters—newlines, spaces, and tabs:\n\ntasks = 'get gloves,get mask,give cat vitamins,call ambulance'\ntasks.split(',')\ntasks.split()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-30",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-30",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nGet a Substring with a Slice\n\n[:][ start :][: end ][ start : end ][ start : end : step ]\n\n\nletters = 'abcdefghij'\nletters[:]\n\n[:] extracts the entire sequence from start to end.\n\n\n\nletters = 'abcdefghij'\nletters[4:]\nletters[2:]\nletters[-3:]\nletters[-50:]\n\n[ start :] specifies from the start index to the end.\n\n\n\nletters = 'abcdefghij'\nletters[:3]\nletters[:-3]\nletters[:70]\n\n[: end ] specifies from the beginning to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2:5]\nletters[-26:-24]\nletters[35:37]\n\n[ start : end ] indicates from the start index to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2 : 6 : 2]   # From index 2 to 5, by steps of 2 characters\nletters[ : : 3]     # From the start to the end, in steps of 3 characters\nletters[ 6 : : 4 ]    # From index 19 to the end, by 4\nletters[ : 7 : 5 ]    # From the start to index 6 by 5:\nletters[-1 : : -1 ]   # Starts at the end and ends at the start\nletters[: : -1 ]\n\n[ start : end : step ] extracts from the start index to the end index minus 1, skipping characters by step."
+    "text": "Python Basics\nString-related Functions\nCombine by Using join()\n\njoin() collapses a list of strings into a single string.\n\ncrypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']\ncrypto_string = ', '.join(crypto_list)\nprint('Found and signing book deals:', crypto_string)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-31",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-31",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nLists and Slicing\n\nPython is\n\na zero-indexed language (things start counting from zero);\nleft inclusive;\nright exclusive when we are specifying a range of values."
+    "text": "Python Basics\nStrings and Slicing\n\nWe can extract a substring (a part of a string) from a string by using a slice.\nWe define a slice by using square brackets ([]), a start index, an end index, and an optional step count between them.\n\nWe can omit some of these.\n\nThe slice will include characters from index start to one before end:"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-32",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-32",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nLists and Slicing\nlist_example = ['one', 'two', 'three']\nlist_example[ 0 : 1 ]\nlist_example[ 1 : 3 ]\n\n\n\n\nWe can think of items in a list-like object as being fenced in.\n\nThe index represents the fence post."
+    "text": "Python Basics\nGet a Substring with a Slice\n\n[:][ start :][: end ][ start : end ][ start : end : step ]\n\n\nletters = 'abcdefghij'\nletters[:]\n\n[:] extracts the entire sequence from start to end.\n\n\n\nletters = 'abcdefghij'\nletters[4:]\nletters[2:]\nletters[-3:]\nletters[-50:]\n\n[ start :] specifies from the start index to the end.\n\n\n\nletters = 'abcdefghij'\nletters[:3]\nletters[:-3]\nletters[:70]\n\n[: end ] specifies from the beginning to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2:5]\nletters[-26:-24]\nletters[35:37]\n\n[ start : end ] indicates from the start index to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2 : 6 : 2]   # From index 2 to 5, by steps of 2 characters\nletters[ : : 3]     # From the start to the end, in steps of 3 characters\nletters[ 6 : : 4 ]    # From index 19 to the end, by 4\nletters[ : 7 : 5 ]    # From the start to index 6 by 5:\nletters[-1 : : -1 ]   # Starts at the end and ends at the start\nletters[: : -1 ]\n\n[ start : end : step ] extracts from the start index to the end index minus 1, skipping characters by step."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-33",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-33",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nLists and Slicing\n\n[index]slice\n\n\nGet an Item by [index]\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \n\nWe can extract a single value from a list by specifying its index:\n\n\n\nsuny[0]\nsuny[1]\nsuny[2]\nsuny[7]\n\nsuny[-1]\nsuny[-2]\nsuny[-3]\nsuny[-7]\n\n\n\n\nGet an Item with a Slice\n\nWe can extract a subsequence of a list by using a slice:\n\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \nsuny[0:2]    # A slice of a list is also a list.\n\n\nsuny[ : : 2]\nsuny[ : : -2]\nsuny[ : : -1]\n\nsuny[4 : ]\nsuny[-6 : ]\nsuny[-6 : -2]\nsuny[-6 : -4]"
+    "text": "Python Basics\nLists and Slicing\n\nPython is\n\na zero-indexed language (things start counting from zero);\nleft inclusive;\nright exclusive when we are specifying a range of values."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-34",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-34",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nLists and Slicing\n\nQ. Classwork 4.3"
+    "text": "Python Basics\nLists and Slicing\nlist_example = ['one', 'two', 'three']\nlist_example[ 0 : 1 ]\nlist_example[ 1 : 3 ]\n\n\n\n\nWe can think of items in a list-like object as being fenced in.\n\nThe index represents the fence post."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-35",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-35",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nFunctions\nint(\"20\") \nfloat(\"14.3\")\nstr(5)\nint(\"xyz\")\n\nA function can take any number and type of input parameters and return any number and type of output results.\nPython ships with more than 65 built-in functions.\nPython also allows a user to define a new function.\nWe will mostly use built-in functions."
+    "text": "Python Basics\nLists and Slicing\n\n[index]slice\n\n\nGet an Item by [index]\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \n\nWe can extract a single value from a list by specifying its index:\n\n\n\nsuny[0]\nsuny[1]\nsuny[2]\nsuny[7]\n\nsuny[-1]\nsuny[-2]\nsuny[-3]\nsuny[-7]\n\n\n\n\nGet an Item with a Slice\n\nWe can extract a subsequence of a list by using a slice:\n\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \nsuny[0:2]    # A slice of a list is also a list.\n\n\nsuny[ : : 2]\nsuny[ : : -2]\nsuny[ : : -1]\n\nsuny[4 : ]\nsuny[-6 : ]\nsuny[-6 : -2]\nsuny[-6 : -4]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-36",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-36",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nFunctions, Arguments, and Parameters\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep = \"!\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep=\" \")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nMuch as a cooking recipe can accept ingredients, a function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one."
+    "text": "Python Basics\nLists and Slicing\n\nQ. Classwork 4.3"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-37",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-37",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nFunctions, Arguments, and Parameters\n\nQ. Classwork 4.4"
+    "text": "Python Basics\nFunctions\nint(\"20\") \nfloat(\"14.3\")\nstr(5)\nint(\"xyz\")\n\nA function can take any number and type of input parameters and return any number and type of output results.\nPython ships with more than 65 built-in functions.\nPython also allows a user to define a new function.\nWe will mostly use built-in functions."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-38",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-38",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nImporting Modules, Packages, and Libraries\n\nPython is a general-purpose programming language and is not specialized for numerical or statistical computation.\nThe core libraries that enable Python to store and analyze data efficiently are:\n\npandas\nnumpy\nmatplotlib and seaborn"
+    "text": "Python Basics\nFunctions, Arguments, and Parameters\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep = \"!\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep=\" \")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nMuch as a cooking recipe can accept ingredients, a function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-39",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-39",
     "title": "Lecture 3",
     "section": "Python Basics",
-    "text": "Python Basics\nImporting Modules, Packages, and Libraries\n\n\npandasnumpymatplotlib and seaborn\n\n\n\n\n\n\npandas provides Series and DataFrames which are used to store data in an easy-to-use format.\n\n\n\n\n\n\n\nnumpy, numerical Python, provides the array block (np.array()) for doing fast and efficient computations;\n\n\n\n\n\n\n\nmatplotlib provides graphics. The most important submodule would be matplotlib.pyplot.\nseaborn provides a general improvement in the default appearance of matplotlib-produced plots."
+    "text": "Python Basics\nFunctions, Arguments, and Parameters\n\nQ. Classwork 4.4"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-40",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-40",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nImporting Modules, Packages, and Libraries\n\nA module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other modules/pacakges/libraries by using the Python import statement.\n\nThis makes the code and variables in the imported module available to our programming codes.\nWe can use the as keyword when importing the modules using their canonical names.\n\nQ. Classwork 4.5"
+    "section": "",
+    "text": "Q. Classwork 4.4"
   },
   {
     "objectID": "danl-cw/danl-320-cw-04.html",
@@ -2329,5 +2329,362 @@
     "title": "Classwork 4",
     "section": "Question 4",
     "text": "Question 4\n\nlist_variable = [100, 144, 169, 1000, 8]\n\nWrite a Python code that uses print() and max() functions to print out the largest value in the list, list_variable, as follows:\n\nThe largest value in the list is: 1000\n\n\nAnswer"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-41",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-41",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "Python is a general-purpose programming language and is not specialized for numerical or statistical computation.\nThe core libraries that enable Python to store and analyze data efficiently are:\n\npandas\nnumpy\nmatplotlib and seaborn"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-42",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-42",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "pandasnumpymatplotlib and seaborn\n\n\n\n\n\n\npandas provides Series and DataFrames which are used to store data in an easy-to-use format.\n\n\n\n\n\n\n\nnumpy, numerical Python, provides the array block (np.array()) for doing fast and efficient computations;\n\n\n\n\n\n\n\nmatplotlib provides graphics. The most important submodule would be matplotlib.pyplot.\nseaborn provides a general improvement in the default appearance of matplotlib-produced plots."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-43",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-43",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "A module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other modules/pacakges/libraries by using the Python import statement.\n\nThis makes the code and variables in the imported module available to our programming codes.\nWe can use the as keyword when importing the modules using their canonical names.\n\nQ. Classwork 4.5"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions",
+    "title": "Lecture 3",
+    "section": "Exceptions",
+    "text": "Exceptions\nException handlers\n\nIn some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions-1",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "In some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "Rather than leaving things to chance, use try to wrap your code, and except to provide the error handling:\n\nshort_list = [1, 2, 3]\nposition = 5\n\ntry:\n    short_list[position]\nexcept:\n    print('Need a position between 0 and', len(short_list)-1, ' but got',\n    position)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-1",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nException handlers"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-2",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nException handlers\n\nIn some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-3",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nErrors\nshort_list = [1, 2, 3]\nposition = 5\nshort_list[position]\n\nIf we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-4",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nshort_list = [1, 2, 3]\nposition = 5\n\ntry:\n    short_list[position]\nexcept:\n    print('Need a position between 0 and', len(short_list)-1, ' but got',\n    position)\n\nRather than leaving things to chance, use try to wrap your code, and except to provide the error handling:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-1",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n\nBig data and analytics are likely to be significant components of future careers across various fields.\nBig data refers to enormous and complex data collections that traditional data management tools can’t handle effectively.\nFive key characteristics of big data (5 V’s):\n\nVolume\nVelocity\nValue\nVeracity\nVariety"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-2",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-2",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n1. Volume\n\nIn 2017, the digital universe contained an estimated 16.1 zettabytes of data.\nExpected to grow to 163 zettabytes by 2025.\nMuch new data will come from embedded systems in smart devices."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-3",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-3",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n1. Volume\n\n\n\n\n\nName\nSymbol\nValue\n\n\n\n\nKilobyte\nkB\n10³\n\n\nMegabyte\nMB\n10⁶\n\n\nGigabyte\nGB\n10⁹\n\n\nTerabyte\nTB\n10¹²\n\n\nPetabyte\nPB\n10¹⁵\n\n\nExabyte\nEB\n10¹⁸\n\n\nZettabyte\nZB\n10²¹\n\n\nYottabyte\nYB\n10²⁴\n\n\nBrontobyte*\nBB\n10²⁷\n\n\nGegobyte*\nGeB\n10³⁰\n\n\n\nNote: The asterisks (*) next to Brontobyte and Gegobyte in the original image have been preserved in this table. These likely indicate that these units are less commonly used or are proposed extensions to the standard system of byte units.\n\n\n\n\n\n\nIncrease in size of the global datasphere"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-4",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-4",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n2. Velocity\n\nRefers to the rate at which new data is generated.\nEstimated at 0.33 zetabytes each day (120 zetabytes annually).\n90% of the world’s data was generated in just the past two years."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-5",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-5",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n3. Value\n\nRefers to the worth of data in decision-making.\nEmphasizes the need to quickly identify and process relevant data.\nUsers may be able to find more patterns and interesting anomalies from “big” data than from “small” data."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-6",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-6",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n4. Veracity\n\nMeasures the quality of the data.\nConsiders accuracy, completeness, and currency of data.\nDetermines if the data can be trusted for good decision-making."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-7",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#big-data-7",
+    "title": "Lecture 4",
+    "section": "Big Data",
+    "text": "Big Data\n5. Variety\n\n\n\n\n\n\nData comes in various formats.\nStructured data: Has a predefined format, fits into traditional databases.\nUnstructured data: Not organized in a predefined manner, comes from sources like documents, social media, emails, photos, videos, etc."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#sources-of-an-organizations-data",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#sources-of-an-organizations-data",
+    "title": "Lecture 4",
+    "section": "Sources of an Organization’s Data",
+    "text": "Sources of an Organization’s Data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data",
+    "title": "Lecture 4",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nEconomics/Finance\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nBureau of Labor Statistics (BLS)\nProvides access to data on inflation and prices, wages and benefits, employment, spending and time use, productivity, and workplace injuries\nBLS\n\n\nFRED (Federal Reserve Economic Data)\nProvides access to a vast collection of U.S. economic data, including interest rates, GDP, inflation, employment, and more\nFRED\n\n\nYahoo Finance\nProvides comprehensive financial news, data, and analysis, including stock quotes, market data, and financial reports\nYahoo Finance\n\n\nIMF (International Monetary Fund)\nProvides access to a range of economic data and reports on countries’ economies\nIMF Data\n\n\nWorld Bank Open Data\nFree and open access to global development data, including world development indicators\nWorld Bank Open Data\n\n\nOECD Data\nProvides access to economic, environmental, and social data and indicators from OECD member countries\nOECD Data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-1",
+    "title": "Lecture 4",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nGovernment/Public Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nData.gov\nPortal providing access to over 186,000 government data sets, related to topics such as agriculture, education, health, and public safety\nData.gov\n\n\nCIA World Factbook\nPortal to information on the economy, government, history, infrastructure, military, and population of 267 countries\nCIA World Factbook\n\n\nU.S. Census Bureau\nPortal to a huge variety of government statistics and data relating to the U.S. economy and its population\nU.S. Census Bureau\n\n\nEuropean Union Open Data Portal\nProvides access to public data from EU institutions\nEU Open Data Portal\n\n\nNew York City Open Data\nProvides access to datasets from New York City, covering a wide range of topics such as public safety, transportation, and health\nNYC Open Data\n\n\nLos Angeles Open Data\nPortal for accessing public data from the City of Los Angeles, including transportation, public safety, and city services\nLA Open Data\n\n\nChicago Data Portal\nOffers access to datasets from the City of Chicago, including crime data, transportation, and health statistics\nChicago Data Portal"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-2",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-2",
+    "title": "Lecture 4",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nHealth, Climate/Environment, and Social Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nHealthdata.gov\nPortal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics\nHealthdata.gov\n\n\nWorld Health Organization (WHO)\nPortal to data and statistics on global health issues\nWHO Data\n\n\nNational Centers for Environmental Information (NOAA)\nPortal for accessing a variety of climate and weather data sets\nNCEI\n\n\nNOAA National Weather Service\nProvides weather, water, and climate data, forecasts and warnings\nNOAA NWS\n\n\nFAO (Food and Agriculture Organization)\nProvides access to data on food and agriculture, including data on production, trade, food security, and sustainability\nFAOSTAT\n\n\nPew Research Center Internet & Technology\nPortal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics\nPew Research\n\n\nData for Good from Facebook\nProvides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being\nFacebook Data for Good\n\n\nData for Good from Canada\nProvides open access to datasets that address pressing social challenges across Canada\nData for Good Canada"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-3",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-3",
+    "title": "Lecture 4",
+    "section": "Free Sources of Useful (Big) Data",
+    "text": "Free Sources of Useful (Big) Data\nGeneral Data Repositories\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nAmazon Web Services (AWS) public data sets\nPortal to a huge repository of public data, including climate data, the million song dataset, and data from the 1000 Genomes project\nAWS Datasets\n\n\nGapminder\nPortal to data from the World Health Organization and World Bank on economic, medical, and social issues\nGapminder\n\n\nGoogle Dataset Search\nHelps find datasets stored across the web\nGoogle Dataset Search\n\n\nKaggle Datasets\nA community-driven platform with datasets from various fields, useful for machine learning and data science projects\nKaggle Datasets\n\n\nUCI Machine Learning Repository\nA collection of databases, domain theories, and datasets used for machine learning research\nUCI ML Repository\n\n\nUnited Nations Data\nProvides access to global statistical data compiled by the United Nations\nUN Data\n\n\nHumanitarian Data Exchange (HDX)\nProvides humanitarian data from the United Nations, NGOs, and other organizations\nHDX\n\n\nDemocratizing Data from data.org\nA platform providing access to high-impact datasets, tools, and resources aimed at solving critical global challenges\nDemocratizing Data\n\n\nJustia Federal District Court Opinions and Orders database\nA free searchable database of full-text opinions and orders from civil cases heard in U.S. Federal District Courts\nJustia"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-1",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nDefinition\n\nAn open-source software framework for storing and processing large data sets.\n\nComponents\n\nHadoop Distributed File System (HDFS): Distributed data storage.\nMapReduce: Data processing model."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-2",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-2",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nPurpose\n\nEnables distributed processing of large data sets across clusters of computers."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-3",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-3",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - HDFS\n\n\n\n\n\n\n\n\n\nHDFS\n\nDivides data into blocks and distributes them across different servers for processing.\nProvides a highly redundant computing environment\n\nAllows the application to keep running even if individual servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-4",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-4",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce\n\nMapReduce\n\nMap Phase: Filters and sorts data.\n\ne.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.\n\nReduce Phase: Summarizes and aggregates results.\n\ne.g., Counting the number of orders within each group, thereby determining the frequency of each product ID."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-5",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-5",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-6",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-6",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nHow Hadoop Works\n\nData Distribution\n\nLarge data sets are split into smaller blocks.\n\nData Storage\n\nBlocks are stored across multiple servers in the cluster.\n\nProcessing with MapReduce\n\nMap Tasks: Executed on servers where data resides, minimizing data movement.\nReduce Tasks: Combine results from map tasks to produce final output.\n\nFault Tolerance\n\nData replication ensures processing continues even if servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-7",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-7",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nExtending Hadoop for Real-Time Processing\n\nLimitation of Hadoop\n\nHadoop is originally designed for batch processing.\n\nBatch Processing: Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.\nResults come after the entire dataset is analyzed.\n\n\nReal-Time Processing Limitation:\n\nHadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)\n\nExtending Hadoop’s Capabilities\n\nBoth Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-8",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-8",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nApache Storm and Apache Spark\n\n\nApache Storm\n\nFunctionality:\n\nProcesses real-time data streams.\nHandles unbounded streams of data reliably and efficiently.\n\nUse Cases:\n\nReal-time analytics\nOnline machine learning\nContinuous computation\nReal-time data integration\n\n\n\nApache Spark\n\nFunctionality:\n\nProvides in-memory computations for increased speed.\nSupports both batch and streaming data processing through Spark Streaming.\n\nUse Cases:\n\nInteractive queries for quick, on-the-fly data analysis\nMachine learning"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#apache-storm-and-apache-spark-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#apache-storm-and-apache-spark-1",
+    "title": "Lecture 4",
+    "section": "Apache Storm and Apache Spark",
+    "text": "Apache Storm and Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-04.html#question-5",
+    "href": "danl-cw/danl-320-cw-04.html#question-5",
+    "title": "Classwork 4",
+    "section": "Question 5",
+    "text": "Question 5\n\nUse a while loop to print the values of the list [3, 2, 1, 0].\nUse a for loop to print the values of the list [3, 2, 1, 0].\n\n\nAnswer\n ## Question 6 - Assign the value 7 to the variable guess_me, and the value 1 to the variable number.\n\nWrite a while loop that compares number with guess_me.\n\nPrint ‘too low’ if number is less than guess me.\nIf number equals guess_me, print ‘found it!’ and then exit the loop.\nIf number is greater than guess_me, print ‘oops’ and then exit the loop.\nIncrement number at the end of the loop.\n\nWrite a for loop that compares number with guess_me.\n\nPrint ‘too low’ if number is less than guess me.\nIf number equals guess_me, print ‘found it!’ and then exit the loop.\nIf number is greater than guess_me, print ‘oops’ and then exit the loop.\nIncrement number at the end of the loop.\n\n\n\nAnswer"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "A value is datum (literal) such as a number or text.\nThere are different types of values:\n\n352.3 is known as a float or double;\n22 is an integer;\n“Hello World!” is a string.\n\n\n\n\n\n\n\n\na = 10\nprint(a)\n\n\n\n\n\n\n\nA variable is a name that refers to a value.\n\nWe can think of a variable as a box that has a value, or multiple values, packed inside it.\n\nA variable is just a name!\n\n\n\n\n\n\n\n\n\n\n\nSometimes you will hear variables referred to as objects.\nEverything that is not a literal value, such as 10, is an object.\n\n\n\n\n\n\n\n\n# Here we assign the integer value 5 to the variable x.\nx = 5   \n\n# Now we can use the variable x in the next line.\ny = x + 12  \ny\n\nIn Python, we use = to assign a value to a variable.\nIn math, = means equality of both sides.\nIn programs, = means assignment: assign the value on the right side to the variable on the left side.\n\n\n\n\n\n\n\n\nThe two main principles for coding and managing data are:\n\nMake things easier for your future self.\nDon’t trust your future self.\n\nThe # mark is Google Colab’s comment character.\n\nThe # character has many names: hash, sharp, pound, or octothorpe.\n# indicates that the rest of the line is to be ignored.\nWrite comments before the line that you want the comment to apply to.\n\nConsider adding more comments on code cells and their results using text cells.\n\n\n\n\n\n\n\n\nIn programming code, everything on the right side needs to have a value.\n\nThe right side can be a literal value, or a variable that has already been assigned a value, or a combination.\n\nWhen Python reads y = x + 12, it does the following:\n\nSees the = in the middle.\nKnows that this is an assignment.\nCalculates the right side (gets the value of the object referred to by x and adds it to 12).\nAssigns the result to the left-side variable, y.\n\n\n\n\n\n\n\n\nlist_example = [10, 1.23, \"like this\", True, None]\nprint(list_example)\ntype(list_example)\n\nThe most basic built-in data types that we’ll need to know about are:\n\nintegers 10\nfloats 1.23\nstrings \"like this\"\nbooleans True\nnothing None\n\nPython also has a built-in type of data container called a list (e.g., [10, 15, 20]) that can contain anything, even different types\n\n\n\n\n\n\n\n\n\n\n\nThe second column (Type) contains the Python name of that type.\nThe third column (Mutable?) indicates whether the value can be changed after creation.\n\n\n\n\n\n\n\n\n\nThere are several kinds of brackets in Python, including [], {}, and ().\n\n\n[]{}()\n\n\nvector = ['a', 'b']\nvector[0]\n\n[] is used to denote a list or to signify accessing a position using an index.\n\n\n\n{'a', 'b'}  # set\n{'first_letter': 'a', 'second_letter': 'b'}  # dictionary\n\n{} is used to denote a set or a dictionary (with key-value pairs).\n\n\n\nnum_tup = (1, 2, 3)\nsum(num_tup)\n\n() is used to denote\n\na tuple, or\nthe arguments to a function, e.g., function(x) where x is the input passed to the function.\n\n\n\n\n\n\n\n\n\n\n\n\nstring_one = \"This is an example \"\nstring_two = \"of string concatenation\"\nstring_full = string_one + string_two\nprint(string_full)\n\nAll of the basic operators we see in mathematics are available to use:\n\n\n\n\n+ for addition\n- for subtraction\n\n\n\n* for multiplication\n** for powers\n\n\n\n/ for division\n// for integer division\n\n\n\n\nThese work as you’d expect on numbers.\nThese operators are sometimes defined for other built-in data types too.\n\nWe can ‘sum’ strings (which really concatenates them).\n\n\n\n\n\n\n\n\n\n\nlist_one = [\"apples\", \"oranges\"]\nlist_two = [\"pears\", \"satsumas\"]\nlist_full = list_one + list_two\nprint(list_full)\n\nIt works for lists too:\n\n\nstring = \"apples, \"\nprint(string * 3)\n\nWe can multiply strings!\n\n\n\n\n\n\n\n\n\nQ. Classwork 4.1\nUsing Python operations only, calculate below: \\[\\frac{2^5}{7 \\cdot (4 - 2^3)}\\]\n\n\n\n\n\n\n10 == 20\n10 == '10'\n\nBoolean data have either True or False value.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExisting booleans can be combined, which create a boolean when executed.\n\n\n\n\n\n\n\nConditions are expressions that evaluate as booleans.\n\n\n\n\n\n\n\n\n\n\n\n\n\nboolean_condition1 = 10 == 20\nprint(boolean_condition1)\n\nboolean_condition2 = 10 == '10'\nprint(boolean_condition2)\n\nThe == is an operator that compares the objects on either side and returns True if they have the same values\nQ. What does not (not True) evaluate to?\nQ. Classwork 4.2\n\n\n\n\n\n\n\nname = \"Geneseo\"\nscore = 99\n\nif name == \"Geneseo\" and score &gt; 90:\n    print(\"Geneseo, you achieved a high score.\")\n\nif name == \"Geneseo\" or score &gt; 90:\n    print(\"You could be called Geneseo or have a high score\")\n\nif name != \"Geneseo\" and score &gt; 90:\n    print(\"You are not called Geneseo and you have a high score\")\n\nThe real power of conditions comes when we start to use them in more complex examples, such as if statements.\n\n\n\n\n\n\n\nname_list = [\"Lovelace\", \"Smith\", \"Hopper\", \"Babbage\"]\n\nprint(\"Lovelace\" in name_list)\n\nprint(\"Bob\" in name_list)\n\nOne of the most useful conditional keywords is in.\n\nThis one must pop up ten times a day in most coders’ lives because it can pick out a variable or make sure something is where it’s supposed to be.\n\nQ. Check if “a” is in the string “Sun Devil Arena” using in. Is “a” in “Anyone”?\n\n\n\n\n\n\n\nscore = 98\n\nif score == 100:\n    print(\"Top marks!\")\nelif score &gt; 90 and score &lt; 100:\n    print(\"High score!\")\nelif score &gt; 10 and score &lt;= 90:\n    pass\nelse:\n    print(\"Better luck next time.\")\n\nOne conditional construct we’re bound to use at some point, is the if-else chain:\n\n\n\n\n\n\n\n\n\norig_number = 4.39898498\ntype(orig_number)\n\nmod_number = int(orig_number)\nmod_number\ntype(mod_number)\n\n\n\nSometimes we need to explicitly cast a value from one type to another.\n\nWe can do this using built-in functions like str(), int(), and float().\nIf we try these, Python will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw a great big error.\n\n\n\n\n\n\n\n\n\n\nA tuple is an object that is defined by parentheses and entries that are separated by commas, for example (15, 20, 32). (They are of type tuple.)\nTuples are immutable, while lists are mutable.\nImmutable objects, such as tuples and strings, can’t have their elements changed, appended, extended, or removed.\n\nMutable objects, such as lists, can do all of these things.\n\nIn everyday programming, we use lists and dictionaries more than tuples.\n\n\n\n\n\n\n\n\n\nWe have seen that certain parts of the code examples are indented.\nCode that is part of a function, a conditional clause, or loop is indented.\nIndention is actually what tells the Python interpreter that some code is to be executed as part of, say, a loop and not to executed after the loop is finished.\n\n\n\n\n\n\n\nx = 10\n\nif x &gt; 2:\n    print(\"x is greater than 2\")\n\nHere’s a basic example of indentation as part of an if statement.\nThe standard practice for indentation is that each sub-statement should be indented by 4 spaces.\n\n\n\n\n\n\n\nname_list = [\"Ben\", \"Chris\", \"Kate\", \"Mary\"]\n\nfor name in name_list:\n    print(name)\n\nA loop is a way of executing a similar piece of code over and over in a similar way.\n\nThe most useful loop is for loops.\n\nAs long as our object is an iterable, then it can be used in this way in a for loop.\nLists, tuples, strings, and dictionaries are iterable.\n\n\n\n\n\n\n\ncities_to_temps = {\"Paris\": 28, \"London\": 22, \"New York\": 36, \"Seoul\": 29}\n\ncities_to_temps.keys()\ncities_to_temps.values()\ncities_to_temps.items()\n\nAnother built-in Python type that is enormously useful is the dictionary.\n\nThis provides a mapping one set of variables to another (either one-to-one or many-to-one).\nIf you need to create associations between objects, use a dictionary.\n\nWe can obtain keys, values, or key-value paris from dictionaries.\n\n\n\n\n\n\n\n\nBeing able to create empty containers is sometimes useful, especially when using loops.\nThe commands to create empty lists, tuples, dictionaries, and sets are lst = [], tup=(), dic={}, and st = set() respectively.\nQ. What is the type of an empty list?\n\n\n\n\n\n\n\n\n\n\n\nWith slicing methods, we can get subset of the data object.\nSlicing methods can apply for strings, lists, arrays, and DataFrames.\nThe above example describes indexing in Python\n\n\n\n\n\n\n\nstring = \"cheesecake\"\nprint( string[-4:] )\n\nFrom strings, we can access the individual characters via slicing and indexing.\n\n\n\nstring = \"cheesecake\"\nprint(\"String has length:\")\nprint( len(string) )\n\nlist_of_numbers = range(1, 20)\nprint(\"List of numbers has length:\")\nprint( len(list_of_numbers) )\n\n\n\nBoth lists and strings will allow us to use the len() command to get their length:\n\n\n\n\n\n\n\n\n\n\nIn Python, we can access attributes by using a dot notation (.).\nUnlike len(), some functions use a dot to access to strings.\nTo use those string functions, type (1) the name of the string, (2) a dot, (3) the name of the function, and (4) any arguments that the function needs:\n\nstring_name.some_function(arguments).\n\n\n\n\n\n\n\n\n\n\n\n\nWe can use the built-in string split() function to break a string into a list of smaller strings based on some separator.\n\nIf we don’t specify a separator, split() uses any sequence of white space characters—newlines, spaces, and tabs:\n\ntasks = 'get gloves,get mask,give cat vitamins,call ambulance'\ntasks.split(',')\ntasks.split()\n\n\n\n\n\n\n\n\n\n\n\n\njoin() collapses a list of strings into a single string.\n\ncrypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']\ncrypto_string = ', '.join(crypto_list)\nprint('Found and signing book deals:', crypto_string)\n\n\n\n\n\n\n\nWe can extract a substring (a part of a string) from a string by using a slice.\nWe define a slice by using square brackets ([]), a start index, an end index, and an optional step count between them.\n\nWe can omit some of these.\n\nThe slice will include characters from index start to one before end:\n\n\n\n\n\n\n\n\n[:][ start :][: end ][ start : end ][ start : end : step ]\n\n\nletters = 'abcdefghij'\nletters[:]\n\n[:] extracts the entire sequence from start to end.\n\n\n\nletters = 'abcdefghij'\nletters[4:]\nletters[2:]\nletters[-3:]\nletters[-50:]\n\n[ start :] specifies from the start index to the end.\n\n\n\nletters = 'abcdefghij'\nletters[:3]\nletters[:-3]\nletters[:70]\n\n[: end ] specifies from the beginning to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2:5]\nletters[-26:-24]\nletters[35:37]\n\n[ start : end ] indicates from the start index to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2 : 6 : 2]   # From index 2 to 5, by steps of 2 characters\nletters[ : : 3]     # From the start to the end, in steps of 3 characters\nletters[ 6 : : 4 ]    # From index 19 to the end, by 4\nletters[ : 7 : 5 ]    # From the start to index 6 by 5:\nletters[-1 : : -1 ]   # Starts at the end and ends at the start\nletters[: : -1 ]\n\n[ start : end : step ] extracts from the start index to the end index minus 1, skipping characters by step.\n\n\n\n\n\n\n\n\n\n\n\nPython is\n\na zero-indexed language (things start counting from zero);\nleft inclusive;\nright exclusive when we are specifying a range of values.\n\n\n\n\n\n\n\n\nlist_example = ['one', 'two', 'three']\nlist_example[ 0 : 1 ]\nlist_example[ 1 : 3 ]\n\n\n\n\nWe can think of items in a list-like object as being fenced in.\n\nThe index represents the fence post.\n\n\n\n\n\n\n\n\n\n[index]slice\n\n\n\n\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \n\nWe can extract a single value from a list by specifying its index:\n\n\n\nsuny[0]\nsuny[1]\nsuny[2]\nsuny[7]\n\nsuny[-1]\nsuny[-2]\nsuny[-3]\nsuny[-7]\n\n\n\n\n\n\n\n\nWe can extract a subsequence of a list by using a slice:\n\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \nsuny[0:2]    # A slice of a list is also a list.\n\n\nsuny[ : : 2]\nsuny[ : : -2]\nsuny[ : : -1]\n\nsuny[4 : ]\nsuny[-6 : ]\nsuny[-6 : -2]\nsuny[-6 : -4]\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ. Classwork 4.3\n\n\n\n\n\n\n\nint(\"20\") \nfloat(\"14.3\")\nstr(5)\nint(\"xyz\")\n\nA function can take any number and type of input parameters and return any number and type of output results.\nPython ships with more than 65 built-in functions.\nPython also allows a user to define a new function.\nWe will mostly use built-in functions.\n\n\n\n\n\n\n\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep = \"!\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep=\" \")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nMuch as a cooking recipe can accept ingredients, a function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one.\n\n\n\n\n\n\n\n\nQ. Classwork 4.4\n\n\n\n\n\n\n\n\nPython is a general-purpose programming language and is not specialized for numerical or statistical computation.\nThe core libraries that enable Python to store and analyze data efficiently are:\n\npandas\nnumpy\nmatplotlib and seaborn\n\n\n\n\n\n\n\n\n\n\npandasnumpymatplotlib and seaborn\n\n\n\n\n\n\npandas provides Series and DataFrames which are used to store data in an easy-to-use format.\n\n\n\n\n\n\n\nnumpy, numerical Python, provides the array block (np.array()) for doing fast and efficient computations;\n\n\n\n\n\n\n\nmatplotlib provides graphics. The most important submodule would be matplotlib.pyplot.\nseaborn provides a general improvement in the default appearance of matplotlib-produced plots.\n\n\n\n\n\n\n\n\n\n\n\n\nA module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other modules/pacakges/libraries by using the Python import statement.\n\nThis makes the code and variables in the imported module available to our programming codes.\nWe can use the as keyword when importing the modules using their canonical names.\n\nQ. Classwork 4.5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key.\n\n\n\n\n\n\n\n\n\nIf we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:\n\nshort_list = [1, 2, 3]\nposition = 5\nshort_list[position]\n\n\n\n\n\nRather than leaving things to chance, use try to wrap your code, and except to provide the error handling:\n\nshort_list = [1, 2, 3]\nposition = 5\n\ntry:\n    short_list[position]\nexcept:\n    print('Need a position between 0 and', len(short_list)-1, ' but got',\n    position)\n\n\n\nshort_list = [1, 2, 3]\nposition = 5\ntry:\n    short_list[position]\nexcept:\n    print('Need a position between 0 and', len(short_list)-1, ' but got',\n    position)\n\nThe code inside the try block is run.\n\nIf there is an error, an exception is raised and the code inside the except block runs.\n\nIf there are no errors, the except block is skipped.\n\n\n\n\n\n\n\nSpecifying a plain except with no arguments, as we did here, is a catchall for any exception type.\nIf more than one type of exception could occur, it’s best to provide a separate exception handler for each.\nWe get the full exception object in the variable name if we use the form:\n\n\n\n\n\n\n\n\n\n\n\n\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position)\n    except Exception as other:\n        print('Something else broke:', other)\n\n\n\n\n\n\n\nThe example looks for an IndexError first, because that’s the exception type raised when we provide an illegal position to a sequence.\nIt saves an IndexError exception in the variable err, and any other exception in the variable other.\nThe example prints everything stored in other to show what you get in that object.\n\nInputting position 3 raised an IndexError as expected.\nEntering two annoyed the int() function, which we handled in our second, catchall except code."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#exceptions-2",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "If we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:\n\nshort_list = [1, 2, 3]\nposition = 5\nshort_list[position]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while",
+    "title": "Lecture 3",
+    "section": "Repeat with while",
+    "text": "Repeat with while\n\n\ncount = 1        \nwhile count &lt;= 5:\n    print(count)\n    count += 1\n\n\nWe first assigned the value 1 to count.\nThe while loop compared the value of count to 5 and continued if count was less than or equal to 5.\nInside the loop, we printed the value of count and then incremented its value by one with the statement count += 1.\nPython goes back to the top of the loop, and again compares count with 5.\nThe value of count is now 2, so the contents of the while loop are again executed, and count is incremented to 3.\nThis continues until count is incremented from 5 to 6 at the bottom of the loop.\nOn the next trip to the top, count &lt;= 5 is now False, and the while loop ends."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-1",
+    "title": "Lecture 3",
+    "section": "Repeat with while",
+    "text": "Repeat with while\nAsking the user for input\n\n\nstuff = input()\n# Type something and press Return/Enter on Console \n# before running print(stuff)\nprint(stuff)\n\n\nSometimes we would like to take the value for a variable from the user via their keyboard.\n\nThe input() function gets input from the keyboard.\nWhen the input() is called, the program stops and waits for the user to type something on Console (interactive Python interpreter).\nWhen the user presses Return or Enter on Console, the program resumes and input returns what the user typed as a string."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-2",
+    "title": "Lecture 3",
+    "section": "Repeat with while",
+    "text": "Repeat with while\nCancel with break\n\n\nwhile True:\n    user_input = input(\"Enter 'yes' to continue or 'no' to stop: \")\n    if user_input.lower() == 'no':\n        print(\"Exiting the loop. Goodbye!\")\n        break\n    elif user_input.lower() == 'yes':\n        print(\"You chose to continue.\")\n    else:\n        print(\"Invalid input, please enter 'yes' or 'no'.\")\n\n\nWhile loop is used to execute a block of code repeatedly until given boolean condition evaluated to False.\n\nwhile True loop will run forever unless we write it with a break statement.\n\nIf we want to loop until something occurs, but we’re not sure when that might happen, we can use an infinite loop with a break statement."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-3",
+    "title": "Lecture 3",
+    "section": "Repeat with while",
+    "text": "Repeat with while\nSkip Ahead with continue\n\n\nwhile True:\n    value = input(\"Integer, please [q to quit]: \")\n    if value == 'q': # quit\n        break\n    number = int(value)\n    if number % 2 == 0: # an even number\n        continue\n    print(number, \"squared is\", number*number)\n\n\nSometimes, we don’t want to break out of a loop but just want to skip ahead to the next iteration for some reason.\nThe continue statement is used to skip the rest of the code inside a loop for the current iteration only."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\n\nSometimes we want to loop through a set of things such as a string of text, a list of words or a list of numbers.\n\nWhen we have a list of things to loop through, we can construct a for loop.\nA for loop makes it possible for you to traverse data structures without knowing how large they are or how they are implemented."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-1",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\n\nLet’s see two ways to walk through a string here:\n\n\n\nword = 'thud'\noffset = 0\nwhile offset &lt; len(word):\n    print(word[offset])\n    offset += 1\n\nword = 'thud'\nfor letter in word:\n    print(letter)\n\n\n\nWhich one do you prefer?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-2",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\nCancel with break\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        break\n    print(letter)\n\nA break in a for loop breaks out of the loop, as it does for a while loop:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-3",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\nSkip with continue\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        continue\n    print(letter)\n\nInserting a continue in a for loop jumps to the next iteration of the loop, as it does for a while loop."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-4",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\nGenerate Number Sequences with range()\n\nThe range() function returns a stream of numbers within a specified range, without first having to create and store a large data structure such as a list or tuple.\n\nThis lets us create huge ranges without using all the memory in our computers and crashing our program.\nrange() returns an iterable object, so we need to step through the values with for … in, or convert the object to a sequence like a list."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-5",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\nfor … in range()\n\n\nfor x in range(0, 3):\n    print(x)\nlist( range(0, 3) )\n\n\nWe use range() similar to how we use slices: range( start, stop, step ).\n\nIf we omit start, the range begins at 0.\nThe only required value is stop; as with slices, the last value created will be just before stop.\nThe default value of step is 1, but we can change it."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#loop-with-while-and-for-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#loop-with-while-and-for-1",
+    "title": "Lecture 3",
+    "section": "Loop with while and for",
+    "text": "Loop with while and for\nClass Exercises\n\nQ. Classwork 4.5\nQ. Classwork 4.6"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-5",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nshort_list = [1, 2, 3]\nposition = 5\ntry:\n    short_list[position]\nexcept:\n    print('Need a position between 0 and', len(short_list)-1, ' but got',\n    position)\n\nThe code inside the try block is run.\n\nIf there is an error, an exception is raised and the code inside the except block runs.\n\nIf there are no errors, the except block is skipped."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-6",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nexcept type\n\nSpecifying a plain except with no arguments, as we did here, is a catchall for any exception type.\nIf more than one type of exception could occur, it’s best to provide a separate exception handler for each.\nWe get the full exception object in the variable name if we use the form:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-7",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-7",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nexcept type\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position)\n    except Exception as other:\n        print('Something else broke:', other)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-8",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-8",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nexcept type\n\nThe example looks for an IndexError first, because that’s the exception type raised when we provide an illegal position to a sequence.\nIt saves an IndexError exception in the variable err, and any other exception in the variable other.\nThe example prints everything stored in other to show what you get in that object.\n\nInputting position 3 raised an IndexError as expected.\nEntering two annoyed the int() function, which we handled in our second, catchall except code."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-9",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-9",
+    "title": "Lecture 3",
+    "section": "Handle Errors with try and except",
+    "text": "Handle Errors with try and except\nClass Exercises\n\nQ. Classwork 4.7"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-1",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\n\nA module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other modules/pacakges/libraries by using the Python import statement.\n\nThis makes the code and variables in the imported module available to our programming codes.\nWe can use the as keyword when importing the modules using their canonical names.\n\nQ. Classwork 4.8"
   }
 ]
