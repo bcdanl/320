@@ -122,6 +122,7 @@ Write a Python code that uses `print()` and `max()` functions to print out the l
 
 
 <br><br><br>
+
 ## Question 6
 - Assign the value 7 to the variable `guess_me`, and the value 1 to the variable `number`. 
 

@@ -428,8 +428,8 @@ Conditions are expressions that evaluate as booleans.
 text_tbl <- data.frame(
   Operator = c("x == y", "x != y", "x > y", "x >= y", "x < y", "x <= y"),
   Description = c("Is x equal to y?",
+"Is x not equal to y?",
 "Is x greater than y?",
-"Is x greater than or equal to y?",
 "Is x greater than or equal to y?",
 "Is x less than y?",
 "Is x less than or equal to y?")

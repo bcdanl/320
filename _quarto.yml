@@ -18,10 +18,11 @@ website:
       #   href: danlml.qmd
       - text: Blog
         href: blog-listing.qmd
+      
       # - text: "Teaching {{< fa external-link >}}"
       #   href: https://bcdanl.github.io
       #   target: _blank
-      - icon: github
+      - text: Class Code
         href: https://github.com/bcdanl/320-code
         target: _blank
       - text: " "
