@@ -353,10 +353,10 @@ git push
 
 <br><br>
 
-### Discussion
+
+# Discussion
 
 <font size = "5">Welcome to our Classwork 1 Discussion Board! 👋 </font>
-
 
 This space is designed for you to engage with your classmates about the material covered in Classwork 1.
 
@@ -364,5 +364,6 @@ Whether you are looking to delve deeper into the content, share insights, or hav
 
 If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 1 materials or need clarification on any points, don't hesitate to ask here. 
 
-Let's collaborate and learn from each other!
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
 
+Let's collaborate and learn from each other!
