@@ -1136,6 +1136,28 @@ next iteration for some reason.
 ::::
 
 
+## Repeat with `while`
+### Check `break` Use with `else`
+
+- We can consider using `while` with `else` when we’ve coded a `while` loop to check for something, and `break`ing as soon as it’s found. 
+  <!-- - The `else` would be run if the `while` loop completed but the object was not found. -->
+  
+```{.python}
+numbers = [1, 3, 5]
+position = 0
+
+while position < len(numbers):
+    number = numbers[position]
+    if number > 4:  # Condition changed to checking if the number is greater than 4
+        print('Found a number greater than 4:', number)
+        break
+    position += 1
+else:  # break not called
+    print('No number greater than 4 found')
+```
+- Consider it a break checker.
+
+
 
 ##  Iterate with `for` and `in`
 
@@ -1243,6 +1265,22 @@ list( range(0, 3) )
 ::::
 
 
+## Iterate with `for` and `in`
+### Check `break` Use with `else`
+- Similar to `while`, `for` has an optional `else` that checks whether the `for` completed normally. 
+  - If `break` was not called, the `else` statement is run.
+
+```{.python}
+word = 'thud'
+for letter in word:
+    if letter == 'x':
+        print("Eek! An 'x'!")
+        break
+    print(letter)
+else:
+    print("No 'x' in there.")
+```
+
 
 ## Loop with `while` and `for`
 ###  Class Exercises
@@ -1251,11 +1289,6 @@ list( range(0, 3) )
 
 
 - **Q**. [Classwork 4.6](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-6){target="_blank"}
-
-
-
-
-
 
 
 

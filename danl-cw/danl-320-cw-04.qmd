@@ -115,8 +115,8 @@ Write a Python code that uses `print()` and `max()` functions to print out the l
 vals = [3, 2, 1, 0]
 ```
 
-- Use a `while` loop to print the values of the list [3, 2, 1, 0].
-- Use a `for` loop to print the values of the list [3, 2, 1, 0].
+- Use a `while` loop to print each value of the list [3, 2, 1, 0], one at a time.
+- Use a `for` loop to print each value of the list [3, 2, 1, 0], one at a time.
 
 <br>
 

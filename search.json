@@ -1264,7 +1264,7 @@
     "href": "danl-cw/danl-320-cw-04.html#question-5",
     "title": "Classwork 4",
     "section": "Question 5",
-    "text": "Question 5\n\nvals = [3, 2, 1, 0]\n\n\nUse a while loop to print the values of the list [3, 2, 1, 0].\nUse a for loop to print the values of the list [3, 2, 1, 0].\n\n\nAnswer"
+    "text": "Question 5\n\nvals = [3, 2, 1, 0]\n\n\nUse a while loop to print each value of the list [3, 2, 1, 0], one at a time.\nUse a for loop to print each value of the list [3, 2, 1, 0], one at a time.\n\n\nAnswer"
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html",
@@ -1384,5 +1384,19 @@
     "title": "Classwork 4",
     "section": "Question 6",
     "text": "Question 6\n\nAssign the value 7 to the variable guess_me, and the value 1 to the variable number.\nWrite a while loop that compares number with guess_me.\n\nPrint ‘too low’ if number is less than guess me.\nIf number equals guess_me, print ‘found it!’ and then exit the loop.\nIf number is greater than guess_me, print ‘oops’ and then exit the loop.\nIncrement number at the end of the loop.\n\nWrite a for loop that compares number with guess_me.\n\nPrint ‘too low’ if number is less than guess me.\nIf number equals guess_me, print ‘found it!’ and then exit the loop.\nIf number is greater than guess_me, print ‘oops’ and then exit the loop.\nIncrement number at the end of the loop.\n\n\n\nAnswer"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-4",
+    "title": "Lecture 3",
+    "section": "Repeat with while",
+    "text": "Repeat with while\nCheck break Use with else\n\nWe can consider using while with else when we’ve coded a while loop to check for something, and breaking as soon as it’s found. \n\nnumbers = [1, 3, 5]\nposition = 0\n\nwhile position &lt; len(numbers):\n    number = numbers[position]\n    if number &gt; 4:  # Condition changed to checking if the number is greater than 4\n        print('Found a number greater than 4:', number)\n        break\n    position += 1\nelse:  # break not called\n    print('No number greater than 4 found')\n\nConsider it a break checker."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-6",
+    "title": "Lecture 3",
+    "section": "Iterate with for and in",
+    "text": "Iterate with for and in\nCheck break Use with else\n\nSimilar to while, for has an optional else that checks whether the for completed normally.\n\nIf break was not called, the else statement is run.\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'x':\n        print(\"Eek! An 'x'!\")\n        break\n    print(letter)\nelse:\n    print(\"No 'x' in there.\")"
   }
 ]
