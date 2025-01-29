@@ -1264,7 +1264,7 @@
     "href": "danl-cw/danl-320-cw-04.html#question-5",
     "title": "Classwork 4",
     "section": "Question 5",
-    "text": "Question 5\n\nUse a while loop to print the values of the list [3, 2, 1, 0].\nUse a for loop to print the values of the list [3, 2, 1, 0].\n\n\nAnswer"
+    "text": "Question 5\n\nvals = [3, 2, 1, 0]\n\n\nUse a while loop to print the values of the list [3, 2, 1, 0].\nUse a for loop to print the values of the list [3, 2, 1, 0].\n\n\nAnswer"
   },
   {
     "objectID": "danl-cw/danl-320-cw-03.html",

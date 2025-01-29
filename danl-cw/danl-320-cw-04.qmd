@@ -109,6 +109,12 @@ Write a Python code that uses `print()` and `max()` functions to print out the l
 
 
 ## Question 5
+
+```{python}
+#| echo: true
+vals = [3, 2, 1, 0]
+```
+
 - Use a `while` loop to print the values of the list [3, 2, 1, 0].
 - Use a `for` loop to print the values of the list [3, 2, 1, 0].
 
