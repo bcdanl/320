@@ -492,9 +492,13 @@ Note: The asterisks (*) next to Brontobyte and Gegobyte in the original image ha
 
 ## Spark vs. Hadoop
 ### Complementary Use
-- Despite their design differences, organizations often use Hadoop and Spark together.
+- Many organizations store massive datasets in **HDFS** and utilize **Spark** for fast, interactive data processing.
+  - Spark can read data directly from HDFS, enabling seamless integration between storage and computation.
+  
 - **Hadoop** provides robust storage and processing capabilities.
 - **Spark** brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges.
+
+- **Use Case Example:** An e-commerce company might store historical sales data in **HDFS** while using **Spark** to analyze customer behavior in real time to recommend products or detect fraudulent transactions.
 
 
 

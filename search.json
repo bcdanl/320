@@ -1488,7 +1488,7 @@
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-3",
     "title": "Lecture 4",
     "section": "Spark vs. Hadoop",
-    "text": "Spark vs. Hadoop\nComplementary Use\n\nDespite their design differences, organizations often use Hadoop and Spark together.\nHadoop provides robust storage and processing capabilities.\nSpark brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges."
+    "text": "Spark vs. Hadoop\nComplementary Use\n\nMany organizations store massive datasets in HDFS and utilize Spark for fast, interactive data processing.\n\nSpark can read data directly from HDFS, enabling seamless integration between storage and computation.\n\nHadoop provides robust storage and processing capabilities.\nSpark brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges.\nUse Case Example: An e-commerce company might store historical sales data in HDFS while using Spark to analyze customer behavior in real time to recommend products or detect fraudulent transactions."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#apache-spark-1",
