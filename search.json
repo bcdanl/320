@@ -115,22 +115,22 @@
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-1",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-1",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nVariables Are Names, Not Places\n\n\n\n\nA value is datum (literal) such as a number or text.\nThere are different types of values:\n\n352.3 is known as a float or double;\n22 is an integer;\n“Hello World!” is a string."
+    "section": "",
+    "text": "A value is datum (literal) such as a number or text.\nThere are different types of values:\n\n352.3 is known as a float or double;\n22 is an integer;\n“Hello World!” is a string."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-2",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-2",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nValues, Variables, and Types\na = 10\nprint(a)\n\n\n\n\n\n\n\nA variable is a name that refers to a value.\n\nWe can think of a variable as a box that has a value, or multiple values, packed inside it.\n\nA variable is just a name!"
+    "section": "",
+    "text": "a = 10\nprint(a)\n\n\n\n\n\n\n\nA variable is a name that refers to a value.\n\nWe can think of a variable as a box that has a value, or multiple values, packed inside it.\n\nA variable is just a name!"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-3",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-3",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nValues, Variables, and Types\n\n\nSometimes you will hear variables referred to as objects.\nEverything that is not a literal value, such as 10, is an object."
+    "section": "",
+    "text": "Sometimes you will hear variables referred to as objects.\nEverything that is not a literal value, such as 10, is an object."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-4",
@@ -143,92 +143,92 @@
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-5",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-5",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nCode and comment style\n\nThe two main principles for coding and managing data are:\n\nMake things easier for your future self.\nDon’t trust your future self.\n\nThe # mark is Google Colab’s comment character.\n\nThe # character has many names: hash, sharp, pound, or octothorpe.\n# indicates that the rest of the line is to be ignored.\nWrite comments before the line that you want the comment to apply to.\n\nConsider adding more comments on code cells and their results using text cells."
+    "section": "",
+    "text": "# Here we assign the integer value 5 to the variable x.\nx = 5   \n\n# Now we can use the variable x in the next line.\ny = x + 12  \ny\n\nIn Python, we use = to assign a value to a variable.\nIn math, = means equality of both sides.\nIn programs, = means assignment: assign the value on the right side to the variable on the left side."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-6",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-6",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nAssignment\n\nIn programming code, everything on the right side needs to have a value.\n\nThe right side can be a literal value, or a variable that has already been assigned a value, or a combination.\n\nWhen Python reads y = x + 12, it does the following:\n\nSees the = in the middle.\nKnows that this is an assignment.\nCalculates the right side (gets the value of the object referred to by x and adds it to 12).\nAssigns the result to the left-side variable, y."
+    "section": "",
+    "text": "The two main principles for coding and managing data are:\n\nMake things easier for your future self.\nDon’t trust your future self.\n\nThe # mark is Google Colab’s comment character.\n\nThe # character has many names: hash, sharp, pound, or octothorpe.\n# indicates that the rest of the line is to be ignored.\nWrite comments before the line that you want the comment to apply to.\n\nConsider adding more comments on code cells and their results using text cells."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-7",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-7",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nVariables Are Names, Not Places\nlist_example = [10, 1.23, \"like this\", True, None]\nprint(list_example)\ntype(list_example)\n\nThe most basic built-in data types that we’ll need to know about are:\n\nintegers 10\nfloats 1.23\nstrings \"like this\"\nbooleans True\nnothing None\n\nPython also has a built-in type of data container called a list (e.g., [10, 15, 20]) that can contain anything, even different types"
+    "section": "",
+    "text": "In programming code, everything on the right side needs to have a value.\n\nThe right side can be a literal value, or a variable that has already been assigned a value, or a combination.\n\nWhen Python reads y = x + 12, it does the following:\n\nSees the = in the middle.\nKnows that this is an assignment.\nCalculates the right side (gets the value of the object referred to by x and adds it to 12).\nAssigns the result to the left-side variable, y."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-8",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-8",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nTypes\n\n\n\n\nThe second column (Type) contains the Python name of that type.\nThe third column (Mutable?) indicates whether the value can be changed after creation."
+    "section": "",
+    "text": "list_example = [10, 1.23, \"like this\", True, None]\nprint(list_example)\ntype(list_example)\n\nThe most basic built-in data types that we’ll need to know about are:\n\nintegers 10\nfloats 1.23\nstrings \"like this\"\nbooleans True\nnothing None\n\nPython also has a built-in type of data container called a list (e.g., [10, 15, 20]) that can contain anything, even different types"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-9",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-9",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBrackets\n\n\nThere are several kinds of brackets in Python, including [], {}, and ().\n\n\n[]{}()\n\n\nvector = ['a', 'b']\nvector[0]\n\n[] is used to denote a list or to signify accessing a position using an index.\n\n\n\n{'a', 'b'}  # set\n{'first_letter': 'a', 'second_letter': 'b'}  # dictionary\n\n{} is used to denote a set or a dictionary (with key-value pairs).\n\n\n\nnum_tup = (1, 2, 3)\nsum(num_tup)\n\n() is used to denote\n\na tuple, or\nthe arguments to a function, e.g., function(x) where x is the input passed to the function."
+    "section": "",
+    "text": "The second column (Type) contains the Python name of that type.\nThe third column (Mutable?) indicates whether the value can be changed after creation."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-10",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-10",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nOperators\nstring_one = \"This is an example \"\nstring_two = \"of string concatenation\"\nstring_full = string_one + string_two\nprint(string_full)\n\nAll of the basic operators we see in mathematics are available to use:\n\n\n\n\n+ for addition\n- for subtraction\n\n\n\n* for multiplication\n** for powers\n\n\n\n/ for division\n// for integer division\n\n\n\n\nThese work as you’d expect on numbers.\nThese operators are sometimes defined for other built-in data types too.\n\nWe can ‘sum’ strings (which really concatenates them)."
+    "section": "",
+    "text": "There are several kinds of brackets in Python, including [], {}, and ().\n\n\n[]{}()\n\n\nvector = ['a', 'b']\nvector[0]\n\n[] is used to denote a list or to signify accessing a position using an index.\n\n\n\n{'a', 'b'}  # set\n{'first_letter': 'a', 'second_letter': 'b'}  # dictionary\n\n{} is used to denote a set or a dictionary (with key-value pairs).\n\n\n\nnum_tup = (1, 2, 3)\nsum(num_tup)\n\n() is used to denote\n\na tuple, or\nthe arguments to a function, e.g., function(x) where x is the input passed to the function."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-11",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-11",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nOperators\n\n\nlist_one = [\"apples\", \"oranges\"]\nlist_two = [\"pears\", \"satsumas\"]\nlist_full = list_one + list_two\nprint(list_full)\n\nIt works for lists too:\n\n\nstring = \"apples, \"\nprint(string * 3)\n\nWe can multiply strings!"
+    "section": "",
+    "text": "string_one = \"This is an example \"\nstring_two = \"of string concatenation\"\nstring_full = string_one + string_two\nprint(string_full)\n\nAll of the basic operators we see in mathematics are available to use:\n\n\n\n\n+ for addition\n- for subtraction\n\n\n\n* for multiplication\n** for powers\n\n\n\n/ for division\n// for integer division\n\n\n\n\nThese work as you’d expect on numbers.\nThese operators are sometimes defined for other built-in data types too.\n\nWe can ‘sum’ strings (which really concatenates them)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-12",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-12",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nOperators\nQ. Classwork 4.1\nUsing Python operations only, calculate below: \\[\\frac{2^5}{7 \\cdot (4 - 2^3)}\\]"
+    "section": "",
+    "text": "list_one = [\"apples\", \"oranges\"]\nlist_two = [\"pears\", \"satsumas\"]\nlist_full = list_one + list_two\nprint(list_full)\n\nIt works for lists too:\n\n\nstring = \"apples, \"\nprint(string * 3)\n\nWe can multiply strings!"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-13",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-13",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBooleans and Conditions\n10 == 20\n10 == '10'\n\nBoolean data have either True or False value."
+    "section": "",
+    "text": "Q. Classwork 4.1\nUsing Python operations only, calculate below: \\[\\frac{2^5}{7 \\cdot (4 - 2^3)}\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-14",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-14",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBooleans and Conditions\n\n\n\n\n\n\n\n\nExisting booleans can be combined, which create a boolean when executed."
+    "section": "",
+    "text": "orig_number = 4.39898498\ntype(orig_number)\n\nmod_number = int(orig_number)\nmod_number\ntype(mod_number)\n\n\n\nSometimes we need to explicitly cast a value from one type to another.\n\nWe can do this using built-in functions like str(), int(), and float().\nIf we try these, Python will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw a great big error."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-15",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-15",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBooleans and Conditions\nConditions are expressions that evaluate as booleans."
+    "section": "",
+    "text": "A tuple is an object that is defined by parentheses and entries that are separated by commas, for example (15, 20, 32). (They are of type tuple.)\nTuples are immutable, while lists are mutable.\nImmutable objects, such as tuples and strings, can’t have their elements changed, appended, extended, or removed.\n\nMutable objects, such as lists, can do all of these things.\n\nIn everyday programming, we use lists and dictionaries more than tuples."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-16",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-16",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBooleans and Conditions\nboolean_condition1 = 10 == 20\nprint(boolean_condition1)\n\nboolean_condition2 = 10 == '10'\nprint(boolean_condition2)\n\nThe == is an operator that compares the objects on either side and returns True if they have the same values\nQ. What does not (not True) evaluate to?\nQ. Classwork 4.2"
+    "section": "",
+    "text": "cities_to_temps = {\"Paris\": 28, \"London\": 22, \"New York\": 36, \"Seoul\": 29}\n\ncities_to_temps.keys()\ncities_to_temps.values()\ncities_to_temps.items()\n\nAnother built-in Python type that is enormously useful is the dictionary.\n\nThis provides a mapping one set of variables to another (either one-to-one or many-to-one).\nIf you need to create associations between objects, use a dictionary.\n\nWe can obtain keys, values, or key-value paris from dictionaries."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-17",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-17",
     "title": "Lecture 3",
-    "section": "Python Basics",
-    "text": "Python Basics\nBooleans and Conditions\nname = \"Geneseo\"\nscore = 99\n\nif name == \"Geneseo\" and score &gt; 90:\n    print(\"Geneseo, you achieved a high score.\")\n\nif name == \"Geneseo\" or score &gt; 90:\n    print(\"You could be called Geneseo or have a high score\")\n\nif name != \"Geneseo\" and score &gt; 90:\n    print(\"You are not called Geneseo and you have a high score\")\n\nThe real power of conditions comes when we start to use them in more complex examples, such as if statements."
+    "section": "",
+    "text": "Being able to create empty containers is sometimes useful, especially when using loops.\nThe commands to create empty lists, tuples, dictionaries, and sets are lst = [], tup=(), dic={}, and st = set() respectively.\nQ. What is the type of an empty list?"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#python-basics-18",
@@ -396,21 +396,21 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-1",
     "title": "Lecture 3",
     "section": "Repeat with while",
-    "text": "Repeat with while\nAsking the user for input\n\n\nstuff = input()\n# Type something and press Return/Enter on Console \n# before running print(stuff)\nprint(stuff)\n\n\nSometimes we would like to take the value for a variable from the user via their keyboard.\n\nThe input() function gets input from the keyboard.\nWhen the input() is called, the program stops and waits for the user to type something on Console (interactive Python interpreter).\nWhen the user presses Return or Enter on Console, the program resumes and input returns what the user typed as a string."
+    "text": "Repeat with while\n\nAsking the user for input\n\n\nstuff = input()\n# Type something and press Return/Enter on Console \n# before running print(stuff)\nprint(stuff)\n\n\nSometimes we would like to take the value for a variable from the user via their keyboard.\n\nThe input() function gets input from the keyboard.\nWhen the input() is called, the program stops and waits for the user to type something on Console (interactive Python interpreter).\nWhen the user presses Return or Enter on Console, the program resumes and input returns what the user typed as a string."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-2",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-2",
     "title": "Lecture 3",
     "section": "Repeat with while",
-    "text": "Repeat with while\nCancel with break\n\n\nwhile True:\n    user_input = input(\"Enter 'yes' to continue or 'no' to stop: \")\n    if user_input.lower() == 'no':\n        print(\"Exiting the loop. Goodbye!\")\n        break\n    elif user_input.lower() == 'yes':\n        print(\"You chose to continue.\")\n    else:\n        print(\"Invalid input, please enter 'yes' or 'no'.\")\n\n\nWhile loop is used to execute a block of code repeatedly until given boolean condition evaluated to False.\n\nwhile True loop will run forever unless we write it with a break statement.\n\nIf we want to loop until something occurs, but we’re not sure when that might happen, we can use an infinite loop with a break statement."
+    "text": "Repeat with while\n\nCancel with break\n\n\nwhile True:\n    user_input = input(\"Enter 'yes' to continue or 'no' to stop: \")\n    if user_input.lower() == 'no':\n        print(\"Exiting the loop. Goodbye!\")\n        break\n    elif user_input.lower() == 'yes':\n        print(\"You chose to continue.\")\n    else:\n        print(\"Invalid input, please enter 'yes' or 'no'.\")\n\n\nWhile loop is used to execute a block of code repeatedly until given boolean condition evaluated to False.\n\nwhile True loop will run forever unless we write it with a break statement.\n\nIf we want to loop until something occurs, but we’re not sure when that might happen, we can use an infinite loop with a break statement."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-3",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-3",
     "title": "Lecture 3",
     "section": "Repeat with while",
-    "text": "Repeat with while\nSkip Ahead with continue\n\n\nwhile True:\n    value = input(\"Integer, please [q to quit]: \")\n    if value == 'q': # quit\n        break\n    number = int(value)\n    if number % 2 == 0: # an even number\n        continue\n    print(number, \"squared is\", number*number)\n\n\nSometimes, we don’t want to break out of a loop but just want to skip ahead to the next iteration for some reason.\nThe continue statement is used to skip the rest of the code inside a loop for the current iteration only."
+    "text": "Repeat with while\n\nSkip Ahead with continue\n\n\nwhile True:\n    value = input(\"Integer, please [q to quit]: \")\n    if value == 'q': # quit\n        break\n    number = int(value)\n    if number % 2 == 0: # an even number\n        continue\n    print(number, \"squared is\", number*number)\n\n\nSometimes, we don’t want to break out of a loop but just want to skip ahead to the next iteration for some reason.\nThe continue statement is used to skip the rest of the code inside a loop for the current iteration only."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in",
@@ -431,56 +431,56 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-2",
     "title": "Lecture 3",
     "section": "Iterate with for and in",
-    "text": "Iterate with for and in\nCancel with break\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        break\n    print(letter)\n\nA break in a for loop breaks out of the loop, as it does for a while loop:"
+    "text": "Iterate with for and in\n\nCancel with break\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        break\n    print(letter)\n\nA break in a for loop breaks out of the loop, as it does for a while loop:"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-3",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-3",
     "title": "Lecture 3",
     "section": "Iterate with for and in",
-    "text": "Iterate with for and in\nSkip with continue\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        continue\n    print(letter)\n\nInserting a continue in a for loop jumps to the next iteration of the loop, as it does for a while loop."
+    "text": "Iterate with for and in\n\nSkip with continue\nword = 'thud'\nfor letter in word:\n    if letter == 'u':\n        continue\n    print(letter)\n\nInserting a continue in a for loop jumps to the next iteration of the loop, as it does for a while loop."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-4",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-4",
     "title": "Lecture 3",
     "section": "Iterate with for and in",
-    "text": "Iterate with for and in\nGenerate Number Sequences with range()\n\nThe range() function returns a stream of numbers within a specified range, without first having to create and store a large data structure such as a list or tuple.\n\nThis lets us create huge ranges without using all the memory in our computers and crashing our program.\nrange() returns an iterable object, so we need to step through the values with for … in, or convert the object to a sequence like a list."
+    "text": "Iterate with for and in\n\nGenerate Number Sequences with range()\n\nThe range() function returns a stream of numbers within a specified range, without first having to create and store a large data structure such as a list or tuple.\n\nThis lets us create huge ranges without using all the memory in our computers and crashing our program.\nrange() returns an iterable object, so we need to step through the values with for … in, or convert the object to a sequence like a list."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-5",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-5",
     "title": "Lecture 3",
     "section": "Iterate with for and in",
-    "text": "Iterate with for and in\nfor … in range()\n\n\nfor x in range(0, 3):\n    print(x)\nlist( range(0, 3) )\n\n\nWe use range() similar to how we use slices: range( start, stop, step ).\n\nIf we omit start, the range begins at 0.\nThe only required value is stop; as with slices, the last value created will be just before stop.\nThe default value of step is 1, but we can change it."
+    "text": "Iterate with for and in\n\nfor … in range()\n\n\nfor x in range(0, 3):\n    print(x)\nlist( range(0, 3) )\n\n\nWe use range() similar to how we use slices: range( start, stop, step ).\n\nIf we omit start, the range begins at 0.\nThe only required value is stop; as with slices, the last value created will be just before stop.\nThe default value of step is 1, but we can change it."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#loop-with-while-and-for-1",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#loop-with-while-and-for-1",
     "title": "Lecture 3",
     "section": "Loop with while and for",
-    "text": "Loop with while and for\nClass Exercises\n\nQ. Classwork 4.5\nQ. Classwork 4.6"
+    "text": "Loop with while and for\n\nClass Exercises\n\nQ. Classwork 4.5\nQ. Classwork 4.6"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-1",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-1",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nException handlers"
+    "text": "Handle Errors with try and except\n\nException handlers"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-2",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-2",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nException handlers\n\nIn some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key."
+    "text": "Handle Errors with try and except\n\nException handlers\n\nIn some languages, errors are indicated by special function return values.\n\nPython uses exceptions: code that is executed when an associated error occurs.\n\nWhen we run code that might fail under some circumstances, we also need appropriate exception handlers to intercept any potential errors.\n\nAccessing a list or tuple with an out-of-range position, or a dictionary with a nonexistent key."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-3",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-3",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nErrors\nshort_list = [1, 2, 3]\nposition = 5\nshort_list[position]\n\nIf we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:"
+    "text": "Handle Errors with try and except\n\nErrors\nshort_list = [1, 2, 3]\nposition = 5\nshort_list[position]\n\nIf we don’t provide your own exception handler, Python prints an error message and some information about where the error occurred and then terminates the program:"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-4",
@@ -501,28 +501,28 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-6",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nexcept type\n\nSpecifying a plain except with no arguments, as we did here, is a catchall for any exception type.\nIf more than one type of exception could occur, it’s best to provide a separate exception handler for each.\nWe get the full exception object in the variable name if we use the form:"
+    "text": "Handle Errors with try and except\n\nexcept type\n\nSpecifying a plain except with no arguments, as we did here, is a catchall for any exception type.\nIf more than one type of exception could occur, it’s best to provide a separate exception handler for each.\nWe get the full exception object in the variable name if we use the form:"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-7",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-7",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nexcept type\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position)\n    except Exception as other:\n        print('Something else broke:', other)"
+    "text": "Handle Errors with try and except\n\nexcept type\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position)\n    except Exception as other:\n        print('Something else broke:', other)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-8",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-8",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nexcept type\n\nThe example looks for an IndexError first, because that’s the exception type raised when we provide an illegal position to a sequence.\nIt saves an IndexError exception in the variable err, and any other exception in the variable other.\nThe example prints everything stored in other to show what you get in that object.\n\nInputting position 3 raised an IndexError as expected.\nEntering two annoyed the int() function, which we handled in our second, catchall except code."
+    "text": "Handle Errors with try and except\n\nexcept type\n\nThe example looks for an IndexError first, because that’s the exception type raised when we provide an illegal position to a sequence.\nIt saves an IndexError exception in the variable err, and any other exception in the variable other.\nThe example prints everything stored in other to show what you get in that object.\n\nInputting position 3 raised an IndexError as expected.\nEntering two annoyed the int() function, which we handled in our second, catchall except code."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-9",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-9",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nClass Exercises\n\nQ. Classwork 4.7"
+    "text": "Handle Errors with try and except\n\nClass Exercises\n\nQ. Classwork 4.7"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-1",
@@ -1390,14 +1390,14 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#repeat-with-while-4",
     "title": "Lecture 3",
     "section": "Repeat with while",
-    "text": "Repeat with while\nCheck break Use with else\n\nWe can consider using while with else when we’ve coded a while loop to check for something, and breaking as soon as it’s found. \n\nnumbers = [1, 3, 5]\nposition = 0\n\nwhile position &lt; len(numbers):\n    number = numbers[position]\n    if number &gt; 4:  # Condition changed to checking if the number is greater than 4\n        print('Found a number greater than 4:', number)\n        break\n    position += 1\nelse:  # break not called\n    print('No number greater than 4 found')\n\nConsider it a break checker."
+    "text": "Repeat with while\n\nCheck break Use with else\n\nWe can consider using while with else when we’ve coded a while loop to check for something, and breaking as soon as it’s found. \n\nnumbers = [1, 3, 5]\nposition = 0\n\nwhile position &lt; len(numbers):\n    number = numbers[position]\n    if number &gt; 4:  # Condition changed to checking if the number is greater than 4\n        print('Found a number greater than 4:', number)\n        break\n    position += 1\nelse:  # break not called\n    print('No number greater than 4 found')\n\nConsider it a break checker."
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-6",
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#iterate-with-for-and-in-6",
     "title": "Lecture 3",
     "section": "Iterate with for and in",
-    "text": "Iterate with for and in\nCheck break Use with else\n\nSimilar to while, for has an optional else that checks whether the for completed normally.\n\nIf break was not called, the else statement is run.\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'x':\n        print(\"Eek! An 'x'!\")\n        break\n    print(letter)\nelse:\n    print(\"No 'x' in there.\")"
+    "text": "Iterate with for and in\n\nCheck break Use with else\n\nSimilar to while, for has an optional else that checks whether the for completed normally.\n\nIf break was not called, the else statement is run.\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'x':\n        print(\"Eek! An 'x'!\")\n        break\n    print(letter)\nelse:\n    print(\"No 'x' in there.\")"
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf",
@@ -1496,5 +1496,180 @@
     "title": "Lecture 4",
     "section": "Apache Spark",
     "text": "Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm/Spark to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "A value is datum (literal) such as a number or text.\nThere are different types of values:\n\n352.3 is known as a float or double;\n22 is an integer;\n“Hello World!” is a string.\n\n\n\n\n\n\n\n\na = 10\nprint(a)\n\n\n\n\n\n\n\nA variable is a name that refers to a value.\n\nWe can think of a variable as a box that has a value, or multiple values, packed inside it.\n\nA variable is just a name!\n\n\n\n\n\n\n\n\n\n\n\nSometimes you will hear variables referred to as objects.\nEverything that is not a literal value, such as 10, is an object.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDefinition: A data.frame is a table-like data structure used for storing data in a tabular format with rows and columns.\nStructure: Consists of:\n\nVariables (Columns)\nObservations (Rows)\nValues (Cells): Individual data points within each cell of the data.frame.\n\n\n\n\n\n\n\n# Here we assign the integer value 5 to the variable x.\nx = 5   \n\n# Now we can use the variable x in the next line.\ny = x + 12  \ny\n\nIn Python, we use = to assign a value to a variable.\nIn math, = means equality of both sides.\nIn programs, = means assignment: assign the value on the right side to the variable on the left side.\n\n\n\n\n\n\n\n\nThe two main principles for coding and managing data are:\n\nMake things easier for your future self.\nDon’t trust your future self.\n\nThe # mark is Google Colab’s comment character.\n\nThe # character has many names: hash, sharp, pound, or octothorpe.\n# indicates that the rest of the line is to be ignored.\nWrite comments before the line that you want the comment to apply to.\n\nConsider adding more comments on code cells and their results using text cells.\n\n\n\n\n\n\n\n\nIn programming code, everything on the right side needs to have a value.\n\nThe right side can be a literal value, or a variable that has already been assigned a value, or a combination.\n\nWhen Python reads y = x + 12, it does the following:\n\nSees the = in the middle.\nKnows that this is an assignment.\nCalculates the right side (gets the value of the object referred to by x and adds it to 12).\nAssigns the result to the left-side variable, y.\n\n\n\n\n\n\n\n\nlist_example = [10, 1.23, \"like this\", True, None]\nprint(list_example)\ntype(list_example)\n\nThe most basic built-in data types that we’ll need to know about are:\n\nintegers 10\nfloats 1.23\nstrings \"like this\"\nbooleans True\nnothing None\n\nPython also has a built-in type of data container called a list (e.g., [10, 15, 20]) that can contain anything, even different types\n\n\n\n\n\n\n\n\n\n\n\nThe second column (Type) contains the Python name of that type.\nThe third column (Mutable?) indicates whether the value can be changed after creation.\n\n\n\n\n\n\n\n\n\nThere are several kinds of brackets in Python, including [], {}, and ().\n\n\n[]{}()\n\n\nvector = ['a', 'b']\nvector[0]\n\n[] is used to denote a list or to signify accessing a position using an index.\n\n\n\n{'a', 'b'}  # set\n{'first_letter': 'a', 'second_letter': 'b'}  # dictionary\n\n{} is used to denote a set or a dictionary (with key-value pairs).\n\n\n\nnum_tup = (1, 2, 3)\nsum(num_tup)\n\n() is used to denote\n\na tuple, or\nthe arguments to a function, e.g., function(x) where x is the input passed to the function.\n\n\n\n\n\n\n\n\n\n\n\n\nstring_one = \"This is an example \"\nstring_two = \"of string concatenation\"\nstring_full = string_one + string_two\nprint(string_full)\n\nAll of the basic operators we see in mathematics are available to use:\n\n\n\n\n+ for addition\n- for subtraction\n\n\n\n* for multiplication\n** for powers\n\n\n\n/ for division\n// for integer division\n\n\n\n\nThese work as you’d expect on numbers.\nThese operators are sometimes defined for other built-in data types too.\n\nWe can ‘sum’ strings (which really concatenates them).\n\n\n\n\n\n\n\n\n\n\nlist_one = [\"apples\", \"oranges\"]\nlist_two = [\"pears\", \"satsumas\"]\nlist_full = list_one + list_two\nprint(list_full)\n\nIt works for lists too:\n\n\nstring = \"apples, \"\nprint(string * 3)\n\nWe can multiply strings!\n\n\n\n\n\n\n\n\n\nQ. Classwork 4.1\nUsing Python operations only, calculate below: \\[\\frac{2^5}{7 \\cdot (4 - 2^3)}\\]\n\n\n\n\n\n\n\n\norig_number = 4.39898498\ntype(orig_number)\n\nmod_number = int(orig_number)\nmod_number\ntype(mod_number)\n\n\n\nSometimes we need to explicitly cast a value from one type to another.\n\nWe can do this using built-in functions like str(), int(), and float().\nIf we try these, Python will do its best to interpret the input and convert it to the output type we’d like and, if they can’t, the code will throw a great big error.\n\n\n\n\n\n\n\n\n\n\nA tuple is an object that is defined by parentheses and entries that are separated by commas, for example (15, 20, 32). (They are of type tuple.)\nTuples are immutable, while lists are mutable.\nImmutable objects, such as tuples and strings, can’t have their elements changed, appended, extended, or removed.\n\nMutable objects, such as lists, can do all of these things.\n\nIn everyday programming, we use lists and dictionaries more than tuples.\n\n\n\n\n\n\n\n\ncities_to_temps = {\"Paris\": 28, \"London\": 22, \"New York\": 36, \"Seoul\": 29}\n\ncities_to_temps.keys()\ncities_to_temps.values()\ncities_to_temps.items()\n\nAnother built-in Python type that is enormously useful is the dictionary.\n\nThis provides a mapping one set of variables to another (either one-to-one or many-to-one).\nIf you need to create associations between objects, use a dictionary.\n\nWe can obtain keys, values, or key-value paris from dictionaries.\n\n\n\n\n\n\n\n\nBeing able to create empty containers is sometimes useful, especially when using loops.\nThe commands to create empty lists, tuples, dictionaries, and sets are lst = [], tup=(), dic={}, and st = set() respectively.\nQ. What is the type of an empty list?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#variable-in-data.frame",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#variable-in-data.frame",
+    "title": "Lecture 3",
+    "section": "",
+    "text": "Definition: A data.frame is a table-like data structure used for storing data in a tabular format with rows and columns.\nStructure: Consists of:\n\nVariables (Columns)\nObservations (Rows)\nValues (Cells): Individual data points within each cell of the data.frame."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-1",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\n10 == 20\n10 == '10'\n\nBoolean data have either True or False value."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-2",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\n\n\n\n\n\n\n\n\nExisting booleans can be combined, which create a boolean when executed."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-3",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\nConditions are expressions that evaluate as booleans."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-4",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\nboolean_condition1 = 10 == 20\nprint(boolean_condition1)\n\nboolean_condition2 = 10 == '10'\nprint(boolean_condition2)\n\nThe == is an operator that compares the objects on either side and returns True if they have the same values\nQ. What does not (not True) evaluate to?\nQ. Classwork 4.2"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-5",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\nname = \"Geneseo\"\nscore = 99\n\nif name == \"Geneseo\" and score &gt; 90:\n    print(\"Geneseo, you achieved a high score.\")\n\nif name == \"Geneseo\" or score &gt; 90:\n    print(\"You could be called Geneseo or have a high score\")\n\nif name != \"Geneseo\" and score &gt; 90:\n    print(\"You are not called Geneseo and you have a high score\")\n\nThe real power of conditions comes when we start to use them in more complex examples, such as if statements."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-6",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\nname_list = [\"Lovelace\", \"Smith\", \"Hopper\", \"Babbage\"]\n\nprint(\"Lovelace\" in name_list)\n\nprint(\"Bob\" in name_list)\n\nOne of the most useful conditional keywords is in.\n\nThis one must pop up ten times a day in most coders’ lives because it can pick out a variable or make sure something is where it’s supposed to be.\n\nQ. Check if “a” is in the string “Sun Devil Arena” using in. Is “a” in “Anyone”?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-7",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-7",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\nscore = 98\n\nif score == 100:\n    print(\"Top marks!\")\nelif score &gt; 90 and score &lt; 100:\n    print(\"High score!\")\nelif score &gt; 10 and score &lt;= 90:\n    pass\nelse:\n    print(\"Better luck next time.\")\n\nOne conditional construct we’re bound to use at some point, is the if-else chain:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-8",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-8",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\n\nIndentation\n\nWe have seen that certain parts of the code examples are indented.\nCode that is part of a function, a conditional clause, or loop is indented.\nIndention is actually what tells the Python interpreter that some code is to be executed as part of, say, a loop and not to executed after the loop is finished."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-9",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#booleans-conditions-and-if-statements-9",
+    "title": "Lecture 3",
+    "section": "Booleans, Conditions, and if Statements",
+    "text": "Booleans, Conditions, and if Statements\n\nIndentation\nx = 10\n\nif x &gt; 2:\n    print(\"x is greater than 2\")\n\nHere’s a basic example of indentation as part of an if statement.\nThe standard practice for indentation is that each sub-statement should be indented by 4 spaces."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\n\n\n\nWith slicing methods, we can get subset of the data object.\nSlicing methods can apply for strings, lists, arrays, and DataFrames.\nThe above example describes indexing in Python"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-1",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nStrings\nstring = \"cheesecake\"\nprint( string[-4:] )\n\nFrom strings, we can access the individual characters via slicing and indexing.\n\n\n\nstring = \"cheesecake\"\nprint(\"String has length:\")\nprint( len(string) )\n\nlist_of_numbers = range(1, 20)\nprint(\"List of numbers has length:\")\nprint( len(list_of_numbers) )\n\n\n\nBoth lists and strings will allow us to use the len() command to get their length:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-2",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nString-related Functions\n\nDot operation\n\nIn Python, we can access attributes by using a dot notation (.).\nUnlike len(), some functions use a dot to access to strings.\nTo use those string functions, type (1) the name of the string, (2) a dot, (3) the name of the function, and (4) any arguments that the function needs:\n\nstring_name.some_function(arguments)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-3",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nString-related Functions\n\nSplit with split()\n\nWe can use the built-in string split() function to break a string into a list of smaller strings based on some separator.\n\nIf we don’t specify a separator, split() uses any sequence of white space characters—newlines, spaces, and tabs:\n\ntasks = 'get gloves,get mask,give cat vitamins,call ambulance'\ntasks.split(',')\ntasks.split()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-4",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nString-related Functions\n\nCombine by Using join()\n\njoin() collapses a list of strings into a single string.\n\ncrypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']\ncrypto_string = ', '.join(crypto_list)\nprint('Found and signing book deals:', crypto_string)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-5",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nStrings and Slicing\n\nWe can extract a substring (a part of a string) from a string by using a slice.\nWe define a slice by using square brackets ([]), a start index, an end index, and an optional step count between them.\n\nWe can omit some of these.\n\nThe slice will include characters from index start to one before end:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-6",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-6",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nGet a Substring with a Slice\n\n[:][ start :][: end ][ start : end ][ start : end : step ]\n\n\nletters = 'abcdefghij'\nletters[:]\n\n[:] extracts the entire sequence from start to end.\n\n\n\nletters = 'abcdefghij'\nletters[4:]\nletters[2:]\nletters[-3:]\nletters[-50:]\n\n[ start :] specifies from the start index to the end.\n\n\n\nletters = 'abcdefghij'\nletters[:3]\nletters[:-3]\nletters[:70]\n\n[: end ] specifies from the beginning to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2:5]\nletters[-26:-24]\nletters[35:37]\n\n[ start : end ] indicates from the start index to the end index minus 1.\n\n\n\nletters = 'abcdefghij'\nletters[2 : 6 : 2]   # From index 2 to 5, by steps of 2 characters\nletters[ : : 3]     # From the start to the end, in steps of 3 characters\nletters[ 6 : : 4 ]    # From index 19 to the end, by 4\nletters[ : 7 : 5 ]    # From the start to index 6 by 5:\nletters[-1 : : -1 ]   # Starts at the end and ends at the start\nletters[: : -1 ]\n\n[ start : end : step ] extracts from the start index to the end index minus 1, skipping characters by step."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-7",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-7",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nLists\n\nPython is\n\na zero-indexed language (things start counting from zero);\nleft inclusive;\nright exclusive when we are specifying a range of values."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-8",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-8",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nLists\nlist_example = ['one', 'two', 'three']\nlist_example[ 0 : 1 ]\nlist_example[ 1 : 3 ]\n\n\n\n\nWe can think of items in a list-like object as being fenced in.\n\nThe index represents the fence post."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-9",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-9",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nLists\n\n[index]Slicing Methods\n\n\n\nGet an Item by [index]\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \n\nWe can extract a single value from a list by specifying its index:\n\n\n\nsuny[0]\nsuny[1]\nsuny[2]\nsuny[7]\n\nsuny[-1]\nsuny[-2]\nsuny[-3]\nsuny[-7]\n\n\n\n\n\n\nGet an Item with a Slice\n\nWe can extract a subsequence of a list by using a slice:\n\nsuny = ['Geneseo', 'Brockport', 'Oswego', 'Binghamton', \n        'Stony Brook', 'New Paltz'] \nsuny[0:2]    # A slice of a list is also a list.\n\n\nsuny[ : : 2]\nsuny[ : : -2]\nsuny[ : : -1]\n\nsuny[4 : ]\nsuny[-6 : ]\nsuny[-6 : -2]\nsuny[-6 : -4]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-11",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#slicing-methods-11",
+    "title": "Lecture 3",
+    "section": "Slicing Methods",
+    "text": "Slicing Methods\n\nQ. Classwork 4.3"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-1",
+    "title": "Lecture 3",
+    "section": "Functions, Arguments, and Parameters",
+    "text": "Functions, Arguments, and Parameters\n\nFunctions\nint(\"20\") \nfloat(\"14.3\")\nstr(5)\nint(\"xyz\")\n\nA function can take any number and type of input parameters and return any number and type of output results.\nPython ships with more than 65 built-in functions.\nPython also allows a user to define a new function.\nWe will mostly use built-in functions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-2",
+    "title": "Lecture 3",
+    "section": "Functions, Arguments, and Parameters",
+    "text": "Functions, Arguments, and Parameters\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep = \"!\")\nprint(\"Cherry\", \"Strawberry\", \"Key Lime\", sep=\" \")\n\nWe invoke a function by entering its name and a pair of opening and closing parentheses.\nMuch as a cooking recipe can accept ingredients, a function invocation can accept inputs called arguments.\nWe pass arguments sequentially inside the parentheses (, separated by commas).\nA parameter is a name given to an expected function argument.\nA default argument is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#functions-arguments-and-parameters-3",
+    "title": "Lecture 3",
+    "section": "Functions, Arguments, and Parameters",
+    "text": "Functions, Arguments, and Parameters\n\nQ. Classwork 4.4"
   }
 ]

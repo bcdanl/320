@@ -160,7 +160,7 @@ vals = [3, 2, 1, 0]
 - You are given a variable value that contains a string. 
 
 ```{.python}
-value = "320"
+value = "$320"
 ```
 
 
@@ -169,7 +169,7 @@ value = "320"
 	2.	If the conversion is successful, print: "You entered: `value`" (e.g., `"You entered: 320"`).
 	3.	If the conversion fails (e.g., the value is not a valid number), print: "That's not a valid number!".
 
-- Use a try-except block to handle the potential error.
+- Use a `try`-`except` block to handle the potential error.
 
 <br>
 
