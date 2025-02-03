@@ -1313,7 +1313,7 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 4\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 5\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 4\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-classwork",
@@ -1341,7 +1341,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data; Hadoop; Spark\n\n\nFebruary 3, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Hadoop; Spark\n\n\nFebruary 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "econml.html",
@@ -1678,5 +1678,138 @@
     "title": "Lecture 3",
     "section": "Google Colab Settings",
     "text": "Google Colab Settings\nTurn off AI Assistance\n\nOn Google Colab\n\nFrom the top-right corner, click ⚙️\nClick “AI Assistance” from the side menu.\nDisable all options."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\n\n\n\n\n\n\n\n\nMassive Jigsaw Puzzle:\n\nSolving alone takes forever.\nInvite friends to work on different sections simultaneously.\n\n\n\n\nDCF Role:\n\nActs like a team manager.\nSplits large problems into manageable tasks.\nCoordinates parallel work across multiple computers (nodes)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#how-dcf-works-the-process",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#how-dcf-works-the-process",
+    "title": "Lecture 5",
+    "section": "How DCF Works: The Process",
+    "text": "How DCF Works: The Process\n\nTask Distribution:\n\nBreaks problems into smaller tasks.\nAssigns tasks to different nodes in the network.\n\nParallel Processing:\n\nMultiple nodes work at the same time.\nLike an assembly line where different parts are built simultaneously.\n\nCommunication & Aggregation:\n\nEnsures nodes communicate effectively.\nGathers individual results into a final solution."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-1",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nReal-World Analogies\n\nFactory Manager:\n\nEach worker builds a part of a toy (arms, legs, wheels).\nThe manager (DCF) ensures all parts come together to form a complete toy.\n\nRace Organizer:\n\nDifferent computers have varying speeds and capabilities.\nTougher tasks are assigned to faster or more capable nodes."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-2",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nRobustness and Scalability\n\nFault Tolerance:\n\nHandles failures gracefully.\nIf a node fails, tasks are reassigned or retried (like a substitute worker in a factory).\n\nResource Allocation:\n\nDistributes tasks based on node capability.\nOptimizes efficiency across the network.\n\nScalability:\n\nEasily adds more computers to the network.\nMore helpers = faster puzzle solving."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-3",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-3",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\n\nDCF is the Conductor of the Orchestra:\n\nEvery musician (node) plays their part.\nThe conductor (DCF) synchronizes the performance to create a harmonious final result.\n\nKey Benefits:\n\nFaster problem-solving through parallelism.\nEfficient management of tasks and resources.\nResilient to failures and scalable for growing problems."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-4",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-4",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nReal-World Examples\n\nHadoop\nApache Spark"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nDefinition\n\nAn open-source software framework for storing and processing large data sets.\n\nComponents\n\nHadoop Distributed File System (HDFS): Distributed data storage.\nMapReduce: Data processing model."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-1",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nPurpose\n\nEnables distributed processing of large data sets across clusters of computers."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-2",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - HDFS\n\n\n\n\n\n\n\n\n\nHDFS\n\nDivides data into blocks and distributes them across different servers for processing.\nProvides a highly redundant computing environment\n\nAllows the application to keep running even if individual servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-3",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-3",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce\n\nMapReduce: Distributes the processing of big data files across a large cluster of machines.\n\nHigh performance is achieved by breaking the processing into small units of work that can be run in parallel across nodes in the cluster.\n\nMap Phase: Filters and sorts data.\n\ne.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.\n\nReduce Phase: Summarizes and aggregates results.\n\ne.g., Counting the number of orders within each group, thereby determining the frequency of each product ID."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-4",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-4",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nHadoop Architecture - MapReduce"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-5",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-5",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nHow Hadoop Works\n\nData Distribution\n\nLarge data sets are split into smaller blocks.\n\nData Storage\n\nBlocks are stored across multiple servers in the cluster.\n\nProcessing with MapReduce\n\nMap Tasks: Executed on servers where data resides, minimizing data movement.\nReduce Tasks: Combine results from map tasks to produce final output.\n\nFault Tolerance\n\nData replication ensures processing continues even if servers fail."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-6",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#hadoop-6",
+    "title": "Lecture 5",
+    "section": "Hadoop",
+    "text": "Hadoop\nExtending Hadoop for Real-Time Processing\n\nLimitation of Hadoop\n\nHadoop is originally designed for batch processing.\n\nBatch Processing: Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.\nResults come after the entire dataset is analyzed.\n\n\nReal-Time Processing Limitation:\n\nHadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)\n\nExtending Hadoop’s Capabilities\n\nBoth Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark",
+    "title": "Lecture 5",
+    "section": "Spark",
+    "text": "Spark\n\n\n\n\n\n\nApache Spark: distributed processing system used for big data workloads. a unified computing engine and computer clusters\n\nIt contains a set of libraries for parallel processing for data analysis, machine learning, graph analysis, and streaming live data."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop",
+    "title": "Lecture 5",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nHadoop MapReduce: The Challenge\n\nSequential Multi-Step Process:\n\nReads data from the cluster.\nProcesses data.\nWrites results back to HDFS.\n\nDisk Input/Output Latency:\n\nEach step requires disk read/write.\nResults in slower performance due to latency."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-1",
+    "title": "Lecture 5",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nApache Spark: The Solution\n\nIn-Memory Processing:\n\nLoads data into memory once.\nPerforms all operations in-memory.\n\nData Reuse:\n\nCaches data for reuse in multiple operations (ideal for iterative tasks like machine learning).\n\nFaster Execution:\n\nEliminates multiple disk I/O steps.\nDramatically reduces latency for interactive analytics and real-time processing."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-2",
+    "title": "Lecture 5",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\n\n\nApache Hadoop\n\nFramework Components:\n\nHDFS: Distributed storage system.\nMapReduce: Programming model for parallel processing.\n\nEcosystem:\n\nTypically integrates multiple execution engines (e.g., Spark) within a single deployment.\n\n\n\nSpark\n\nFocus Areas:\n\nInteractive queries, machine learning, and real-time analytics.\n\nStorage Agnostic:\n\nDoes not have its own storage system.\nOperates on data stored in systems like HDFS, etc.\n\nIntegration:\n\nCan run alongside Hadoop"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-3",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-vs.-hadoop-3",
+    "title": "Lecture 5",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nComplementary Use\n\nMany organizations store massive datasets in HDFS and utilize Spark for fast, interactive data processing.\n\nSpark can read data directly from HDFS, enabling seamless integration between storage and computation.\n\nHadoop provides robust storage and processing capabilities.\nSpark brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges.\nUse Case Example: An e-commerce company might store historical sales data in HDFS while using Spark to analyze customer behavior in real time to recommend products or detect fraudulent transactions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#apache-spark-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#apache-spark-1",
+    "title": "Lecture 5",
+    "section": "Apache Spark",
+    "text": "Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm/Spark to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
   }
 ]
