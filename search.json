@@ -956,7 +956,7 @@
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-2",
     "title": "Lecture 4",
     "section": "Free Sources of Useful (Big) Data",
-    "text": "Free Sources of Useful (Big) Data\nHealth, Climate/Environment, and Social Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nHealthdata.gov\nPortal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics\nHealthdata.gov\n\n\nWorld Health Organization (WHO)\nPortal to data and statistics on global health issues\nWHO Data\n\n\nNational Centers for Environmental Information (NOAA)\nPortal for accessing a variety of climate and weather data sets\nNCEI\n\n\nNOAA National Weather Service\nProvides weather, water, and climate data, forecasts and warnings\nNOAA NWS\n\n\nFAO (Food and Agriculture Organization)\nProvides access to data on food and agriculture, including data on production, trade, food security, and sustainability\nFAOSTAT\n\n\nPew Research Center Internet & Technology\nPortal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics\nPew Research\n\n\nData for Good from Facebook\nProvides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being\nFacebook Data for Good\n\n\nData for Good from Canada\nProvides open access to datasets that address pressing social challenges across Canada\nData for Good Canada"
+    "text": "Free Sources of Useful (Big) Data\nHealth, Climate/Environment, and Social Data\n\n\n\n\nData Source\nDescription\nURL\n\n\n\n\nHealthdata.gov\nPortal to 125 years of U.S. health care data, including national health care expenditures, claim-level Medicare data, and other topics\nHealthdata.gov\n\n\nCMS Open Payments\nCenters for Medicare & Medicaid Services (CMS) Open Payments houses a publicly accessible database of payments that reporting entities, including drug and medical device companies, make to covered recipients like physicians.\nCMS\n\n\nWorld Health Organization (WHO)\nPortal to data and statistics on global health issues\nWHO Data\n\n\nNational Centers for Environmental Information (NOAA)\nPortal for accessing a variety of climate and weather data sets\nNCEI\n\n\nNOAA National Weather Service\nProvides weather, water, and climate data, forecasts and warnings\nNOAA NWS\n\n\nFAO (Food and Agriculture Organization)\nProvides access to data on food and agriculture, including data on production, trade, food security, and sustainability\nFAOSTAT\n\n\nPew Research Center Internet & Technology\nPortal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics\nPew Research\n\n\nData for Good from Facebook\nProvides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being\nFacebook Data for Good\n\n\nData for Good from Canada\nProvides open access to datasets that address pressing social challenges across Canada\nData for Good Canada"
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#free-sources-of-useful-big-data-3",
@@ -970,49 +970,49 @@
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-1",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nDefinition\n\nAn open-source software framework for storing and processing large data sets.\n\nComponents\n\nHadoop Distributed File System (HDFS): Distributed data storage.\nMapReduce: Data processing model."
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nPurpose\n\nEnables distributed processing of large data sets across clusters of computers."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-2",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-2",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nPurpose\n\nEnables distributed processing of large data sets across clusters of computers."
+    "text": "Hadoop\nHadoop Architecture - HDFS\n\n\n\n\n\n\n\n\n\nHDFS\n\nDivides data into blocks and distributes them across different servers for processing.\nProvides a highly redundant computing environment\n\nAllows the application to keep running even if individual servers fail."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-3",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-3",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nHadoop Architecture - HDFS\n\n\n\n\n\n\n\n\n\nHDFS\n\nDivides data into blocks and distributes them across different servers for processing.\nProvides a highly redundant computing environment\n\nAllows the application to keep running even if individual servers fail."
+    "text": "Hadoop\nHadoop Architecture - MapReduce\n\nMapReduce: Distributes the processing of big data files across a large cluster of machines.\n\nHigh performance is achieved by breaking the processing into small units of work that can be run in parallel across nodes in the cluster.\n\nMap Phase: Filters and sorts data.\n\ne.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.\n\nReduce Phase: Summarizes and aggregates results.\n\ne.g., Counting the number of orders within each group, thereby determining the frequency of each product ID."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-4",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-4",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nHadoop Architecture - MapReduce\n\nMapReduce\n\nMap Phase: Filters and sorts data.\n\ne.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.\n\nReduce Phase: Summarizes and aggregates results.\n\ne.g., Counting the number of orders within each group, thereby determining the frequency of each product ID."
+    "text": "Hadoop\nHadoop Architecture - MapReduce"
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-5",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-5",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nHadoop Architecture - MapReduce"
+    "text": "Hadoop\nHow Hadoop Works\n\nData Distribution\n\nLarge data sets are split into smaller blocks.\n\nData Storage\n\nBlocks are stored across multiple servers in the cluster.\n\nProcessing with MapReduce\n\nMap Tasks: Executed on servers where data resides, minimizing data movement.\nReduce Tasks: Combine results from map tasks to produce final output.\n\nFault Tolerance\n\nData replication ensures processing continues even if servers fail."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-6",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-6",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nHow Hadoop Works\n\nData Distribution\n\nLarge data sets are split into smaller blocks.\n\nData Storage\n\nBlocks are stored across multiple servers in the cluster.\n\nProcessing with MapReduce\n\nMap Tasks: Executed on servers where data resides, minimizing data movement.\nReduce Tasks: Combine results from map tasks to produce final output.\n\nFault Tolerance\n\nData replication ensures processing continues even if servers fail."
+    "text": "Hadoop\nExtending Hadoop for Real-Time Processing\n\nLimitation of Hadoop\n\nHadoop is originally designed for batch processing.\n\nBatch Processing: Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.\nResults come after the entire dataset is analyzed.\n\n\nReal-Time Processing Limitation:\n\nHadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)\n\nExtending Hadoop’s Capabilities\n\nBoth Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage."
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-7",
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-7",
     "title": "Lecture 4",
     "section": "Hadoop",
-    "text": "Hadoop\nExtending Hadoop for Real-Time Processing\n\nLimitation of Hadoop\n\nHadoop is originally designed for batch processing.\n\nBatch Processing: Data or tasks are collected over a period of time and then processed all at once, typically at scheduled times or during periods of low activity.\nResults come after the entire dataset is analyzed.\n\n\nReal-Time Processing Limitation:\n\nHadoop cannot natively process real-time streaming data (e.g., stock prices flowing into stock exchanges, live sensor data)\n\nExtending Hadoop’s Capabilities\n\nBoth Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage."
+    "text": "Hadoop\nApache Storm and Apache Spark\n\n\nApache Storm\n\nFunctionality:\n\nProcesses real-time data streams.\nHandles unbounded streams of data reliably and efficiently.\n\nUse Cases:\n\nReal-time analytics\nOnline machine learning\nContinuous computation\nReal-time data integration\n\n\n\nApache Spark\n\nFunctionality:\n\nProvides in-memory computations for increased speed.\nSupports both batch and streaming data processing through Spark Streaming.\n\nUse Cases:\n\nInteractive queries for quick, on-the-fly data analysis\nMachine learning"
   },
   {
     "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop-8",
@@ -1026,7 +1026,7 @@
     "href": "danl-lec/danl-320-lec-04-2025-0203.html#apache-storm-and-apache-spark-1",
     "title": "Lecture 4",
     "section": "Apache Storm and Apache Spark",
-    "text": "Apache Storm and Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
+    "text": "Apache Storm and Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm/Spark to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
   },
   {
     "objectID": "danl-lec/danl-320-lec-02-2025-0127.html#building-a-personal-website-on-github",
@@ -1398,5 +1398,103 @@
     "title": "Lecture 3",
     "section": "Iterate with for and in",
     "text": "Iterate with for and in\nCheck break Use with else\n\nSimilar to while, for has an optional else that checks whether the for completed normally.\n\nIf break was not called, the else statement is run.\n\n\nword = 'thud'\nfor letter in word:\n    if letter == 'x':\n        print(\"Eek! An 'x'!\")\n        break\n    print(letter)\nelse:\n    print(\"No 'x' in there.\")"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf",
+    "title": "Lecture 4",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\n\n\n\n\n\n\n\n\nMassive Jigsaw Puzzle:\n\nSolving alone takes forever.\nInvite friends to work on different sections simultaneously.\n\n\n\n\nDCF Role:\n\nActs like a team manager.\nSplits large problems into manageable tasks.\nCoordinates parallel work across multiple computers (nodes)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#how-dcf-works-the-process",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#how-dcf-works-the-process",
+    "title": "Lecture 4",
+    "section": "How DCF Works: The Process",
+    "text": "How DCF Works: The Process\n\nTask Distribution:\n\nBreaks problems into smaller tasks.\nAssigns tasks to different nodes in the network.\n\nParallel Processing:\n\nMultiple nodes work at the same time.\nLike an assembly line where different parts are built simultaneously.\n\nCommunication & Aggregation:\n\nEnsures nodes communicate effectively.\nGathers individual results into a final solution."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-1",
+    "title": "Lecture 4",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nReal-World Analogies\n\nFactory Manager:\n\nEach worker builds a part of a toy (arms, legs, wheels).\nThe manager (DCF) ensures all parts come together to form a complete toy.\n\nRace Organizer:\n\nDifferent computers have varying speeds and capabilities.\nTougher tasks are assigned to faster or more capable nodes."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-2",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-2",
+    "title": "Lecture 4",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nRobustness and Scalability\n\nFault Tolerance:\n\nHandles failures gracefully.\nIf a node fails, tasks are reassigned or retried (like a substitute worker in a factory).\n\nResource Allocation:\n\nDistributes tasks based on node capability.\nOptimizes efficiency across the network.\n\nScalability:\n\nEasily adds more computers to the network.\nMore helpers = faster puzzle solving."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-3",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-3",
+    "title": "Lecture 4",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\n\nDCF is the Conductor of the Orchestra:\n\nEvery musician (node) plays their part.\nThe conductor (DCF) synchronizes the performance to create a harmonious final result.\n\nKey Benefits:\n\nFaster problem-solving through parallelism.\nEfficient management of tasks and resources.\nResilient to failures and scalable for growing problems."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-4",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#distributed-computing-framework-dcf-4",
+    "title": "Lecture 4",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nReal-World Examples\n\nHadoop\nApache Spark"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#hadoop",
+    "title": "Lecture 4",
+    "section": "Hadoop",
+    "text": "Hadoop\nIntroduction to Hadoop\n\n\n\n\n\n\nDefinition\n\nAn open-source software framework for storing and processing large data sets.\n\nComponents\n\nHadoop Distributed File System (HDFS): Distributed data storage.\nMapReduce: Data processing model."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#spark",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark",
+    "title": "Lecture 4",
+    "section": "Spark",
+    "text": "Spark\n\n\n\n\n\n\nApache Spark: distributed processing system used for big data workloads. a unified computing engine and computer clusters\n\nIt contains a set of libraries for parallel processing for data analysis, machine learning, graph analysis, and streaming live data."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#what-is-the-history-of-apache-spark",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#what-is-the-history-of-apache-spark",
+    "title": "Lecture 4",
+    "section": "What is the history of Apache Spark?",
+    "text": "What is the history of Apache Spark?\n\nApache Spark started in 2009 as a research project at UC Berkley’s AMPLab, a collaboration involving students, researchers, and faculty, focused on data-intensive application domains.\nThe goal of Spark was to create a new framework, optimized for fast iterative processing like machine learning, and interactive data analysis, while retaining the scalability, and fault tolerance of Hadoop MapReduce.\nThe first paper entitled, “Spark: Cluster Computing with Working Sets” was published in June 2010, and Spark was open sourced under a BSD license.\nIn June, 2013, Spark entered incubation status at the Apache Software Foundation (ASF), and established as an Apache Top-Level Project in February, 2014.\nSpark can run standalone, on Apache Mesos, or most frequently on Apache Hadoop."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop",
+    "title": "Lecture 4",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nHadoop MapReduce: The Challenge\n\nSequential Multi-Step Process:\n\nReads data from the cluster.\nProcesses data.\nWrites results back to HDFS.\n\nDisk Input/Output Latency:\n\nEach step requires disk read/write.\nResults in slower performance due to latency."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-1",
+    "title": "Lecture 4",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nApache Spark: The Solution\n\nIn-Memory Processing:\n\nLoads data into memory once.\nPerforms all operations in-memory.\n\nData Reuse:\n\nCaches data for reuse in multiple operations (ideal for iterative tasks like machine learning).\n\nFaster Execution:\n\nEliminates multiple disk I/O steps.\nDramatically reduces latency for interactive analytics and real-time processing."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-2",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-2",
+    "title": "Lecture 4",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\n\n\nApache Hadoop\n\nFramework Components:\n\nHDFS: Distributed storage system.\nMapReduce: Programming model for parallel processing.\n\nEcosystem:\n\nTypically integrates multiple execution engines (e.g., Spark) within a single deployment.\n\n\n\nSpark\n\nFocus Areas:\n\nInteractive queries, machine learning, and real-time analytics.\n\nStorage Agnostic:\n\nDoes not have its own storage system.\nOperates on data stored in systems like HDFS, etc.\n\nIntegration:\n\nCan run alongside Hadoop"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-3",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#spark-vs.-hadoop-3",
+    "title": "Lecture 4",
+    "section": "Spark vs. Hadoop",
+    "text": "Spark vs. Hadoop\nComplementary Use\n\nDespite their design differences, organizations often use Hadoop and Spark together.\nHadoop provides robust storage and processing capabilities.\nSpark brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-04-2025-0203.html#apache-spark-1",
+    "href": "danl-lec/danl-320-lec-04-2025-0203.html#apache-spark-1",
+    "title": "Lecture 4",
+    "section": "Apache Spark",
+    "text": "Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm/Spark to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
   }
 ]

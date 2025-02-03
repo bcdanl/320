@@ -117,6 +117,21 @@ print(a)
 
 
 ## Python Basics
+## Variable in `data.frame`
+
+<div style="text-align: center; width: 70%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/tidy-1.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"></p>
+</div>
+
+- **Definition**: A `data.frame` is a table-like data structure used for storing data in a tabular format with rows and columns.
+- **Structure**: Consists of:
+  - **Variables** (Columns)
+  - **Observations** (Rows)
+  - **Values** (Cells): Individual data points within each cell of the `data.frame`.
+
+
+## Python Basics
 ###  Assignment ( `=` )
 
 
@@ -342,10 +357,89 @@ $$\frac{2^5}{7 \cdot (4 - 2^3)}$$
 
 
 
+## Python Basics
+###  Casting Variables
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+orig_number = 4.39898498
+type(orig_number)
+```
+:::
+
+::: {.column width="50%"}
+```{.python}
+mod_number = int(orig_number)
+mod_number
+type(mod_number)
+```
+:::
+::::
+
+
+- Sometimes we need to explicitly cast a value from one type to another. 
+
+  - We can do this using built-in functions like `str()`, `int()`, and `float()`. 
+  - If we try these, Python will do its best to interpret the input and convert it to the output type we'd like and, if they can't, the code will throw a great big error.
+  
 
 
 ## Python Basics
-###  Booleans and Conditions
+###  Tuples and (im)mutability
+::: {}
+
+- A tuple is an object that is defined by parentheses and entries that are separated by commas, for example `(15, 20, 32)`. (They are of type tuple.) 
+
+- Tuples are immutable, while lists are mutable.
+
+- Immutable objects, such as tuples and strings, can't have their elements changed, appended, extended, or removed. 
+  - Mutable objects, such as lists, can do all of these things. 
+
+- In everyday programming, we use **lists** and **dictionaries** more than *tuples*.
+
+:::
+
+
+
+
+## Python Basics
+###  Dictionaries
+
+
+
+```{.python}
+cities_to_temps = {"Paris": 28, "London": 22, "New York": 36, "Seoul": 29}
+
+cities_to_temps.keys()
+cities_to_temps.values()
+cities_to_temps.items()
+```
+
+- Another built-in Python type that is enormously useful is the dictionary. 
+  - This provides a mapping one set of variables to another (either one-to-one or many-to-one). 
+  - If you need to create associations between objects, use a dictionary.
+  
+  
+- We can obtain keys, values, or key-value paris from dictionaries.
+
+
+
+
+## Python Basics
+###  Running on Empty
+
+- Being able to create empty containers is sometimes useful, especially when using loops. 
+
+- The commands to create empty lists, tuples, dictionaries, and sets are `lst = []`, `tup=()`, `dic={}`, and `st = set()` respectively.
+
+- **Q.** What is the type of an empty list?
+
+
+# Booleans, Conditions, and `if` Statements {background-color="#1c4982"}
+
+
+## Booleans, Conditions, and `if` Statements
 
 
 ```{.python}
@@ -357,8 +451,7 @@ $$\frac{2^5}{7 \cdot (4 - 2^3)}$$
 
 
 
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 ```{r, eval = T, echo = F, out.width='100%', fig.align='center'}
 text_tbl <- data.frame(
@@ -419,8 +512,7 @@ DT::datatable(text_tbl, rownames = FALSE,
 
 
 
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 Conditions are expressions that evaluate as booleans. 
 
@@ -483,8 +575,7 @@ DT::datatable(text_tbl, rownames = FALSE,
 
 
 
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 
 ```{.python}
@@ -505,8 +596,7 @@ print(boolean_condition2)
 
 
 
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 
 ```{.python}
@@ -528,8 +618,7 @@ if name != "Geneseo" and score > 90:
 
 
   
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 ```{.python}
 name_list = ["Lovelace", "Smith", "Hopper", "Babbage"]
@@ -550,8 +639,7 @@ print("Bob" in name_list)
 
 
 
-## Python Basics
-###  Booleans and Conditions
+##  Booleans, Conditions, and `if` Statements
 
 
 ```{.python}
@@ -570,57 +658,7 @@ else:
 - One conditional construct we're bound to use at some point, is the `if-else` chain:
 
 
-
-
-
-
-
-
-## Python Basics
-###  Casting Variables
-
-:::: {.columns}
-::: {.column width="50%"}
-```{.python}
-orig_number = 4.39898498
-type(orig_number)
-```
-:::
-
-::: {.column width="50%"}
-```{.python}
-mod_number = int(orig_number)
-mod_number
-type(mod_number)
-```
-:::
-::::
-
-
-- Sometimes we need to explicitly cast a value from one type to another. 
-
-  - We can do this using built-in functions like `str()`, `int()`, and `float()`. 
-  - If we try these, Python will do its best to interpret the input and convert it to the output type we'd like and, if they can't, the code will throw a great big error.
-  
-
-
-## Python Basics
-###  Tuples and (im)mutability
-::: {}
-
-- A tuple is an object that is defined by parentheses and entries that are separated by commas, for example `(15, 20, 32)`. (They are of type tuple.) 
-
-- Tuples are immutable, while lists are mutable.
-
-- Immutable objects, such as tuples and strings, can't have their elements changed, appended, extended, or removed. 
-  - Mutable objects, such as lists, can do all of these things. 
-
-- In everyday programming, we use **lists** and **dictionaries** more than *tuples*.
-
-:::
-
-
-## Python Basics
+##  Booleans, Conditions, and `if` Statements
 ###  Indentation
 
 - We have seen that certain parts of the code examples are indented. 
@@ -632,7 +670,7 @@ type(mod_number)
 
 
 
-## Python Basics
+##  Booleans, Conditions, and `if` Statements
 ###  Indentation
 
 
@@ -650,44 +688,10 @@ if x > 2:
 
 
 
-
-## Python Basics
-###  Dictionaries
+# Slicing Methods with Strings and Lists {background-color="#1c4982"}
 
 
-
-```{.python}
-cities_to_temps = {"Paris": 28, "London": 22, "New York": 36, "Seoul": 29}
-
-cities_to_temps.keys()
-cities_to_temps.values()
-cities_to_temps.items()
-```
-
-- Another built-in Python type that is enormously useful is the dictionary. 
-  - This provides a mapping one set of variables to another (either one-to-one or many-to-one). 
-  - If you need to create associations between objects, use a dictionary.
-  
-  
-- We can obtain keys, values, or key-value paris from dictionaries.
-
-
-
-
-## Python Basics
-###  Running on Empty
-
-- Being able to create empty containers is sometimes useful, especially when using loops. 
-
-- The commands to create empty lists, tuples, dictionaries, and sets are `lst = []`, `tup=()`, `dic={}`, and `st = set()` respectively.
-
-- **Q.** What is the type of an empty list?
-
-
-## Python Basics
-### Slicing Methods
-
-
+## Slicing Methods
 
 <p align="center">
   <img src="https://bcdanl.github.io/lec_figs/python_string_index.png">
@@ -701,12 +705,8 @@ cities_to_temps.items()
 - The above example describes indexing in Python
 
 
-
-
-## Python Basics
+## Slicing Methods
 ###  Strings
-
-
 
 ```{.python}
 string = "cheesecake"
@@ -738,7 +738,7 @@ print( len(list_of_numbers) )
 - Both lists and strings will allow us to use the `len()` command to get their length:
 
 
-## Python Basics
+## Slicing Methods
 ###  String-related Functions
 
 #### Dot operation
@@ -753,7 +753,7 @@ print( len(list_of_numbers) )
 
 
 
-## Python Basics
+## Slicing Methods
 ###  String-related Functions
 #### Split with `split()`
 - We can use the built-in string `split()` function to break a string into a list of smaller strings based on some *separator*.
@@ -765,9 +765,10 @@ tasks.split()
 ```
 
 
-## Python Basics
+## Slicing Methods
 ###  String-related Functions
-### Combine by Using `join()`
+
+#### Combine by Using `join()`
 - `join()` collapses a *list* of strings into a single string.
 ```{.python}
 crypto_list = ['Yeti', 'Bigfoot', 'Loch Ness Monster']
@@ -776,7 +777,7 @@ print('Found and signing book deals:', crypto_string)
 ```
 
 
-## Python Basics
+## Slicing Methods
 ### Strings and Slicing
 
 - We can extract a substring (a part of a string) from a string by using a **slice**. 
@@ -791,7 +792,7 @@ print('Found and signing book deals:', crypto_string)
 
 
 
-## Python Basics
+## Slicing Methods
 ### Get a Substring with a Slice
 
 
@@ -854,8 +855,8 @@ letters[: : -1 ]
 
 
 
-## Python Basics
-### Lists and Slicing
+## Slicing Methods
+### Lists
 
 - Python is 
   - a zero-indexed language (things start counting from zero);
@@ -865,8 +866,8 @@ letters[: : -1 ]
 
 
 
-## Python Basics
-### Lists and Slicing
+## Slicing Methods
+### Lists
 
   
 ```{.python}
@@ -884,8 +885,8 @@ list_example[ 1 : 3 ]
 - We can think of items in a list-like object as being fenced in. 
   - The index represents the fence post.
 
-## Python Basics
-### Lists and Slicing
+## Slicing Methods
+### Lists
 
 ::: {.panel-tabset}
 ## `[index]`
@@ -921,7 +922,7 @@ suny[-7]
 
 
 
-## slice
+## Slicing Methods
 ### Get an Item with a Slice
 - We can extract a subsequence of a list by using a *slice*:
 ```{.python}
@@ -956,13 +957,15 @@ suny[-6 : -4]
 
 
 
-## Python Basics
-### Lists and Slicing
+## Slicing Methods
 
 - **Q**. [Classwork 4.3](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-3){target="_blank"}
 
 
-## Python Basics
+
+# Functions, Arguments, and Parameters {background-color="#1c4982"}
+
+## Functions, Arguments, and Parameters
 ### Functions
 
 ```{.python}
@@ -983,8 +986,7 @@ int("xyz")
 
 
 
-## Python Basics
-### Functions, Arguments, and Parameters
+## Functions, Arguments, and Parameters
 
 ```{.python}
 print("Cherry", "Strawberry", "Key Lime")
@@ -1004,8 +1006,7 @@ print("Cherry", "Strawberry", "Key Lime", sep=" ")
 - A *default argument* is a fallback value that Python passes to a parameter if the function invocation does not explicitly provide one.
 
 
-## Python Basics
-### Functions, Arguments, and Parameters
+## Functions, Arguments, and Parameters
 
 - **Q**. [Classwork 4.4](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-4){target="_blank"}
 
@@ -1158,7 +1159,6 @@ else:  # break not called
 - Consider it a break checker.
 
 
-
 ##  Iterate with `for` and `in`
 
 - Sometimes we want to loop through a set of things such as a string of text, a list of words or a list of numbers.
@@ -1282,6 +1282,7 @@ else:
 ```
 
 
+
 ## Loop with `while` and `for`
 ###  Class Exercises
 
@@ -1289,6 +1290,7 @@ else:
 
 
 - **Q**. [Classwork 4.6](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-6){target="_blank"}
+
 
 
 
@@ -1431,3 +1433,6 @@ while True:
   - We can use the `as` *keyword* when importing the modules using their canonical names.
 
 - **Q**. [Classwork 4.8](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-8){target="_blank"}
+
+
+

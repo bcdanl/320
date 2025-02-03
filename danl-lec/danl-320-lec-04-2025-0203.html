@@ -572,7 +572,7 @@ Increase in size of the global datasphere
 <tr class="even">
 <td>CIA World Factbook</td>
 <td>Portal to information on the economy, government, history, infrastructure, military, and population of 267 countries</td>
-<td><a href="https://cia.gov/library/publications/the-world-factbook">CIA World Factbook</a></td>
+<td><a href="https://www.cia.gov/the-world-factbook/">CIA World Factbook</a></td>
 </tr>
 <tr class="odd">
 <td>U.S. Census Bureau</td>
@@ -622,36 +622,41 @@ Increase in size of the global datasphere
 <td><a href="https://www.healthdata.gov">Healthdata.gov</a></td>
 </tr>
 <tr class="even">
+<td>CMS Open Payments</td>
+<td>Centers for Medicare &amp; Medicaid Services (CMS) Open Payments houses a publicly accessible database of payments that reporting entities, including drug and medical device companies, make to covered recipients like physicians.</td>
+<td><a href="https://www.cms.gov/priorities/key-initiatives/open-payments/data">CMS</a></td>
+</tr>
+<tr class="odd">
 <td>World Health Organization (WHO)</td>
 <td>Portal to data and statistics on global health issues</td>
 <td><a href="https://www.who.int/data">WHO Data</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>National Centers for Environmental Information (NOAA)</td>
 <td>Portal for accessing a variety of climate and weather data sets</td>
 <td><a href="https://www.ncdc.noaa.gov/data-access/quick-links#loc-clim">NCEI</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>NOAA National Weather Service</td>
 <td>Provides weather, water, and climate data, forecasts and warnings</td>
 <td><a href="https://www.weather.gov/data">NOAA NWS</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>FAO (Food and Agriculture Organization)</td>
 <td>Provides access to data on food and agriculture, including data on production, trade, food security, and sustainability</td>
 <td><a href="http://www.fao.org/faostat/en/#data">FAOSTAT</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Pew Research Center Internet &amp; Technology</td>
 <td>Portal to research on U.S. politics, media and news, social trends, religion, Internet and technology, science, Hispanic, and global topics</td>
 <td><a href="https://www.pewresearch.org/internet/datasets/">Pew Research</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Data for Good from Facebook</td>
 <td>Provides access to anonymized data from Facebook to help non-profits and research communities with insights on crises, health, and well-being</td>
 <td><a href="https://dataforgood.fb.com">Facebook Data for Good</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data for Good from Canada</td>
 <td>Provides open access to datasets that address pressing social challenges across Canada</td>
 <td><a href="https://dataforgood.ca">Data for Good Canada</a></td>
@@ -723,11 +728,125 @@ Increase in size of the global datasphere
 </div>
 </section></section>
 <section>
-<section id="hadoop" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1>Hadoop</h1>
+<section id="distributed-computing-framework" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Distributed Computing Framework</h1>
 
 </section>
-<section id="hadoop-1" class="slide level2">
+<section id="distributed-computing-framework-dcf" class="slide level2">
+<h2>Distributed Computing Framework (DCF)</h2>
+<div style="text-align: center; width: 50%; margin: auto;">
+<img src="https://bcdanl.github.io/lec_figs/jigsaw-puzzle.png" style="width: 100%; margin-bottom: -20px;">
+<p style="font-weight: bold;">
+</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Massive Jigsaw Puzzle</strong>:
+<ul>
+<li class="fragment">Solving alone takes forever.</li>
+<li class="fragment">Invite friends to work on different sections simultaneously.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>DCF Role</strong>:
+<ul>
+<li class="fragment">Acts like a <strong>team manager</strong>.</li>
+<li class="fragment">Splits large problems into manageable tasks.</li>
+<li class="fragment">Coordinates parallel work across multiple computers (nodes).</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="how-dcf-works-the-process" class="slide level2">
+<h2>How DCF Works: The Process</h2>
+<ul>
+<li class="fragment"><strong>Task Distribution</strong>:
+<ul>
+<li class="fragment">Breaks problems into smaller tasks.</li>
+<li class="fragment">Assigns tasks to different nodes in the network.</li>
+</ul></li>
+<li class="fragment"><strong>Parallel Processing</strong>:
+<ul>
+<li class="fragment">Multiple nodes work at the same time.</li>
+<li class="fragment">Like an assembly line where different parts are built simultaneously.</li>
+</ul></li>
+<li class="fragment"><strong>Communication &amp; Aggregation</strong>:
+<ul>
+<li class="fragment">Ensures nodes communicate effectively.</li>
+<li class="fragment">Gathers individual results into a final solution.</li>
+</ul></li>
+</ul>
+</section>
+<section id="distributed-computing-framework-dcf-1" class="slide level2">
+<h2>Distributed Computing Framework (DCF)</h2>
+<h3 id="real-world-analogies">Real-World Analogies</h3>
+<ul>
+<li class="fragment"><strong>Factory Manager</strong>:
+<ul>
+<li class="fragment">Each worker builds a part of a toy (arms, legs, wheels).</li>
+<li class="fragment">The manager (DCF) ensures all parts come together to form a complete toy.</li>
+</ul></li>
+<li class="fragment"><strong>Race Organizer</strong>:
+<ul>
+<li class="fragment">Different computers have varying speeds and capabilities.</li>
+<li class="fragment">Tougher tasks are assigned to faster or more capable nodes.</li>
+</ul></li>
+</ul>
+</section>
+<section id="distributed-computing-framework-dcf-2" class="slide level2">
+<h2>Distributed Computing Framework (DCF)</h2>
+<h3 id="robustness-and-scalability">Robustness and Scalability</h3>
+<ul>
+<li class="fragment"><strong>Fault Tolerance</strong>:
+<ul>
+<li class="fragment">Handles failures gracefully.</li>
+<li class="fragment">If a node fails, tasks are reassigned or retried (like a substitute worker in a factory).</li>
+</ul></li>
+<li class="fragment"><strong>Resource Allocation</strong>:
+<ul>
+<li class="fragment">Distributes tasks based on node capability.</li>
+<li class="fragment">Optimizes efficiency across the network.</li>
+</ul></li>
+<li class="fragment"><strong>Scalability</strong>:
+<ul>
+<li class="fragment">Easily adds more computers to the network.</li>
+<li class="fragment">More helpers = faster puzzle solving.</li>
+</ul></li>
+</ul>
+</section>
+<section id="distributed-computing-framework-dcf-3" class="slide level2">
+<h2>Distributed Computing Framework (DCF)</h2>
+<ul>
+<li class="fragment"><strong>DCF is the Conductor of the Orchestra</strong>:
+<ul>
+<li class="fragment">Every musician (node) plays their part.</li>
+<li class="fragment">The conductor (DCF) synchronizes the performance to create a harmonious final result.</li>
+</ul></li>
+<li class="fragment"><strong>Key Benefits</strong>:
+<ul>
+<li class="fragment">Faster problem-solving through parallelism.</li>
+<li class="fragment">Efficient management of tasks and resources.</li>
+<li class="fragment">Resilient to failures and scalable for growing problems.</li>
+</ul></li>
+</ul>
+</section>
+<section id="distributed-computing-framework-dcf-4" class="slide level2">
+<h2>Distributed Computing Framework (DCF)</h2>
+<h3 id="real-world-examples">Real-World Examples</h3>
+<ul>
+<li class="fragment"><strong>Hadoop</strong></li>
+<li class="fragment"><strong>Apache Spark</strong></li>
+</ul>
+</section></section>
+<section>
+<section id="apache-hadoop" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Apache Hadoop</h1>
+
+</section>
+<section id="hadoop" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="introduction-to-hadoop">Introduction to Hadoop</h3>
 <div style="text-align: center; width: 55%; margin: auto;">
@@ -747,7 +866,7 @@ Increase in size of the global datasphere
 </ul></li>
 </ul>
 </section>
-<section id="hadoop-2" class="slide level2">
+<section id="hadoop-1" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="introduction-to-hadoop-1">Introduction to Hadoop</h3>
 <div style="text-align: center; width: 55%; margin: auto;">
@@ -762,7 +881,7 @@ Increase in size of the global datasphere
 </ul></li>
 </ul>
 </section>
-<section id="hadoop-3" class="slide level2">
+<section id="hadoop-2" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="hadoop-architecture---hdfs">Hadoop Architecture - HDFS</h3>
 <div class="columns">
@@ -786,12 +905,14 @@ Increase in size of the global datasphere
 </div>
 </div>
 </section>
-<section id="hadoop-4" class="slide level2">
+<section id="hadoop-3" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="hadoop-architecture---mapreduce">Hadoop Architecture - MapReduce</h3>
 <ul>
-<li class="fragment"><strong>MapReduce</strong>
+<li class="fragment"><strong>MapReduce</strong>: Distributes the processing of big data files across a large cluster of machines.
 <ul>
+<li class="fragment">High performance is achieved by breaking the processing into small units of work that can be run in parallel across nodes in the cluster.</li>
+</ul></li>
 <li class="fragment"><strong>Map Phase:</strong> Filters and sorts data.
 <ul>
 <li class="fragment">e.g., Sorting customer orders based on their product IDs, with each group corresponding to a specific product ID.</li>
@@ -800,10 +921,9 @@ Increase in size of the global datasphere
 <ul>
 <li class="fragment">e.g., Counting the number of orders within each group, thereby determining the frequency of each product ID.</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
-<section id="hadoop-5" class="slide level2">
+<section id="hadoop-4" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="hadoop-architecture---mapreduce-1">Hadoop Architecture - MapReduce</h3>
 <div style="text-align: center; width: 100%; margin: auto;">
@@ -812,7 +932,7 @@ Increase in size of the global datasphere
 </p>
 </div>
 </section>
-<section id="hadoop-6" class="slide level2">
+<section id="hadoop-5" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="how-hadoop-works">How Hadoop Works</h3>
 <ol type="1">
@@ -835,7 +955,7 @@ Increase in size of the global datasphere
 </ul></li>
 </ol>
 </section>
-<section id="hadoop-7" class="slide level2">
+<section id="hadoop-6" class="slide level2">
 <h2>Hadoop</h2>
 <h3 id="extending-hadoop-for-real-time-processing">Extending Hadoop for Real-Time Processing</h3>
 <ul>
@@ -853,49 +973,113 @@ Increase in size of the global datasphere
 </ul></li>
 <li class="fragment"><strong>Extending Hadoop’s Capabilities</strong>
 <ul>
-<li class="fragment">Both Apache Storm and Apache Spark can run on top of Hadoop clusters, utilizing HDFS for storage.</li>
+<li class="fragment">Both <strong>Apache Storm</strong> and <strong>Apache Spark</strong> can run on top of Hadoop clusters, utilizing HDFS for storage.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="apache-spark" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1>Apache Spark</h1>
+
+</section>
+<section id="spark" class="slide level2">
+<h2>Spark</h2>
+<div style="text-align: center; width: 75%; margin: auto;">
+<img src="https://bcdanl.github.io/lec_figs/apache-spark.png" style="width: 100%; margin-bottom: -20px;">
+<p style="font-weight: bold;">
+</p>
+</div>
+<ul>
+<li class="fragment"><strong>Apache Spark</strong>: distributed processing system used for big data workloads. a unified computing engine and computer clusters
+<ul>
+<li class="fragment">It contains a set of libraries for parallel processing for data analysis, machine learning, graph analysis, and streaming live data.</li>
 </ul></li>
 </ul>
 </section>
-<section id="hadoop-8" class="slide level2">
-<h2>Hadoop</h2>
-<h3 id="apache-storm-and-apache-spark">Apache Storm and Apache Spark</h3>
+<section id="spark-vs.-hadoop" class="slide level2">
+<h2>Spark vs.&nbsp;Hadoop</h2>
+<h3 id="hadoop-mapreduce-the-challenge">Hadoop MapReduce: The Challenge</h3>
+<ul>
+<li class="fragment"><strong>Sequential Multi-Step Process:</strong>
+<ul>
+<li class="fragment">Reads data from the cluster.</li>
+<li class="fragment">Processes data.</li>
+<li class="fragment">Writes results back to HDFS.</li>
+</ul></li>
+<li class="fragment"><strong>Disk Input/Output Latency:</strong>
+<ul>
+<li class="fragment">Each step requires disk read/write.</li>
+<li class="fragment">Results in slower performance due to latency.</li>
+</ul></li>
+</ul>
+</section>
+<section id="spark-vs.-hadoop-1" class="slide level2">
+<h2>Spark vs.&nbsp;Hadoop</h2>
+<h3 id="apache-spark-the-solution">Apache Spark: The Solution</h3>
+<ul>
+<li class="fragment"><strong>In-Memory Processing:</strong>
+<ul>
+<li class="fragment">Loads data into memory once.</li>
+<li class="fragment">Performs all operations in-memory.</li>
+</ul></li>
+<li class="fragment"><strong>Data Reuse:</strong>
+<ul>
+<li class="fragment">Caches data for reuse in multiple operations (ideal for iterative tasks like machine learning).</li>
+</ul></li>
+<li class="fragment"><strong>Faster Execution:</strong>
+<ul>
+<li class="fragment">Eliminates multiple disk I/O steps.</li>
+<li class="fragment">Dramatically reduces latency for interactive analytics and real-time processing.</li>
+</ul></li>
+</ul>
+</section>
+<section id="spark-vs.-hadoop-2" class="slide level2">
+<h2>Spark vs.&nbsp;Hadoop</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="apache-storm"><strong>Apache Storm</strong></h4>
+<h4 id="apache-hadoop-1">Apache Hadoop</h4>
 <ul>
-<li class="fragment"><strong>Functionality:</strong>
+<li class="fragment"><strong>Framework Components:</strong>
 <ul>
-<li class="fragment">Processes real-time data streams.</li>
-<li class="fragment">Handles unbounded streams of data reliably and efficiently.</li>
+<li class="fragment"><strong>HDFS:</strong> Distributed storage system.</li>
+<li class="fragment"><strong>MapReduce:</strong> Programming model for parallel processing.</li>
 </ul></li>
-<li class="fragment"><strong>Use Cases:</strong>
+<li class="fragment"><strong>Ecosystem:</strong>
 <ul>
-<li class="fragment">Real-time analytics</li>
-<li class="fragment">Online machine learning</li>
-<li class="fragment">Continuous computation</li>
-<li class="fragment">Real-time data integration</li>
+<li class="fragment">Typically integrates multiple execution engines (e.g., Spark) within a single deployment.</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h4 id="apache-spark"><strong>Apache Spark</strong></h4>
+<h4 id="spark-1">Spark</h4>
 <ul>
-<li class="fragment"><strong>Functionality:</strong>
+<li class="fragment"><strong>Focus Areas:</strong>
 <ul>
-<li class="fragment">Provides <em>in-memory computations</em> for increased speed.</li>
-<li class="fragment">Supports both batch and streaming data processing through Spark Streaming.</li>
+<li class="fragment">Interactive queries, machine learning, and real-time analytics.</li>
 </ul></li>
-<li class="fragment"><strong>Use Cases:</strong>
+<li class="fragment"><strong>Storage Agnostic:</strong>
 <ul>
-<li class="fragment">Interactive queries for quick, on-the-fly data analysis</li>
-<li class="fragment">Machine learning</li>
+<li class="fragment">Does not have its own storage system.</li>
+<li class="fragment">Operates on data stored in systems like HDFS, etc.</li>
+</ul></li>
+<li class="fragment"><strong>Integration:</strong>
+<ul>
+<li class="fragment">Can run alongside Hadoop</li>
 </ul></li>
 </ul>
 </div>
 </div>
 </section>
-<section id="apache-storm-and-apache-spark-1" class="slide level2">
-<h2>Apache Storm and Apache Spark</h2>
+<section id="spark-vs.-hadoop-3" class="slide level2">
+<h2>Spark vs.&nbsp;Hadoop</h2>
+<h3 id="complementary-use">Complementary Use</h3>
+<ul>
+<li class="fragment">Despite their design differences, organizations often use Hadoop and Spark together.</li>
+<li class="fragment"><strong>Hadoop</strong> provides robust storage and processing capabilities.</li>
+<li class="fragment"><strong>Spark</strong> brings speed and versatility to data analytics, making them a powerful combination for solving complex business challenges.</li>
+</ul>
+</section>
+<section id="apache-spark-1" class="slide level2">
+<h2>Apache Spark</h2>
 <h3 id="medscape-real-time-medical-news-for-healthcare-professionals">Medscape: Real-Time Medical News for Healthcare Professionals</h3>
 <div>
 <ul>
@@ -916,7 +1100,7 @@ Increase in size of the global datasphere
 <ul>
 <li class="fragment"><strong>Real-Time Updates:</strong>
 <ul>
-<li class="fragment">Uses Apache Storm to process about 500 million tweets per day.</li>
+<li class="fragment">Uses Apache Storm/Spark to process about 500 million tweets per day.</li>
 <li class="fragment">Automatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators.</li>
 </ul></li>
 </ul>
