@@ -1965,5 +1965,47 @@
     "title": "Lecture 5",
     "section": "Generating Descriptive Statistics with df.describe().show()",
     "text": "Generating Descriptive Statistics with df.describe().show()\ndf.describe().show()\n\ndf.describe() computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.\n.show() prints these statistics in a readable table format."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-variable-information-with-df.printschema-df.dtypes-and-df.columns",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-variable-information-with-df.printschema-df.dtypes-and-df.columns",
+    "title": "Lecture 5",
+    "section": "Displaying Variable Information with df.printSchema(), df.dtypes, and df.columns",
+    "text": "Displaying Variable Information with df.printSchema(), df.dtypes, and df.columns\ndf.printSchema()\ndf.dtypes\ndf.columns\n\ndf.printSchema() prints the DataFrame schema in a tree format.\n\nnullable = true means that a column can contain null values.\nWe may need to handle missing data appropriately.\n\ndf.dtypes returns a list of tuples representing each column’s name and data type.\ndf.columns returns a list of colunm names."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#generating-descriptive-statistics-with-df.describe.show-and-df.count",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#generating-descriptive-statistics-with-df.describe.show-and-df.count",
+    "title": "Lecture 5",
+    "section": "Generating Descriptive Statistics with df.describe().show() and df.count()",
+    "text": "Generating Descriptive Statistics with df.describe().show() and df.count()\ndf.describe().show()\ndf.count()\n\ndf.describe() computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.\n.show() prints these statistics in a readable table format.\ndf.count() returns the number of rows in df."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe",
+    "title": "Lecture 5",
+    "section": "Spark DataFrame vs. Pandas DataFrame",
+    "text": "Spark DataFrame vs. Pandas DataFrame\n\nWhat makes a Spark DataFrame different from other DataFrame?\n\nSpark DataFrames are designed for big data and distributed computing.\n\nSpark DataFrame:\n\nData is distributed across a cluster of machines.\nOperations are executed in parallel on multiple nodes.\nCan process datasets that exceed the memory of a single machine.\n\nOther DataFrames (e.g., Pandas):\n\nOperate on a single machine.\nEntire dataset must fit into memory.\nLimited by local system resources."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-1",
+    "title": "Lecture 5",
+    "section": "Spark DataFrame vs. Pandas DataFrame",
+    "text": "Spark DataFrame vs. Pandas DataFrame\nLazy Evaluation and Optimization\n\nSpark DataFrame:\n\nUses lazy evaluation: transformations are not computed until an action is called.\nOptimize query execution.\n\nOther DataFrames:\n\nOperations are evaluated eagerly (immediately).\nNo built-in query optimization across multiple operations."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-2",
+    "title": "Lecture 5",
+    "section": "Spark DataFrame vs. Pandas DataFrame",
+    "text": "Spark DataFrame vs. Pandas DataFrame\nFault Tolerance\n\nSpark DataFrame:\n\nBuilt on Resilient Distributed Datasets (RDDs).\nAutomatically recovers lost data if a node fails.\nEnsures high reliability in distributed environments.\n\nOther DataFrames:\n\nTypically lack built-in fault tolerance.\nFailures on a single machine can result in data loss."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-3",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-3",
+    "title": "Lecture 5",
+    "section": "Spark DataFrame vs. Pandas DataFrame",
+    "text": "Spark DataFrame vs. Pandas DataFrame\nScalability\n\nSpark DataFrame:\n\nDesigned to scale to petabytes of data.\nUtilizes distributed storage and computing resources.\nIdeal for large-scale data processing and analytics.\n\nOther DataFrames:\n\nBest suited for small to medium datasets.\nLimited by the hardware of a single computer."
   }
 ]

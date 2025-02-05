@@ -1004,25 +1004,102 @@ Byeong-Hak Choe
 <li class="fragment">Example: <code>df.show(vertical=True)</code></li>
 </ul>
 </section>
-<section id="displaying-variable-types-with-df.printschema-and-df.dtypes" class="slide level2">
-<h2>Displaying Variable Types with <code>df.printSchema()</code> and <code>df.dtypes</code></h2>
+<section id="displaying-variable-information-with-df.printschema-df.dtypes-and-df.columns" class="slide level2">
+<h2>Displaying Variable Information with <code>df.printSchema()</code>, <code>df.dtypes</code>, and <code>df.columns</code></h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.printSchema()</span>
-<span id="cb5-2"><a href="#cb5-2"></a>df.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2"></a>df.dtypes</span>
+<span id="cb5-3"><a href="#cb5-3"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><code>df.printSchema()</code> prints the <code>DataFrame</code> schema in a tree format.
+<li class="fragment"><p><code>df.printSchema()</code> prints the <code>DataFrame</code> schema in a tree format.</p>
 <ul>
 <li class="fragment"><strong>nullable = true</strong> means that a column can contain <strong>null</strong> values.</li>
 <li class="fragment">We may need to handle missing data appropriately.</li>
 </ul></li>
-<li class="fragment"><code>df.dtypes</code> returns a list of tuples representing each column’s name and data type.</li>
+<li class="fragment"><p><code>df.dtypes</code> returns a list of tuples representing each column’s name and data type.</p></li>
+<li class="fragment"><p><code>df.columns</code> returns a list of colunm names.</p></li>
 </ul>
 </section>
-<section id="generating-descriptive-statistics-with-df.describe.show" class="slide level2">
-<h2>Generating Descriptive Statistics with <code>df.describe().show()</code></h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.describe().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="generating-descriptive-statistics-with-df.describe.show-and-df.count" class="slide level2">
+<h2>Generating Descriptive Statistics with <code>df.describe().show()</code> and <code>df.count()</code></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.describe().show()</span>
+<span id="cb6-2"><a href="#cb6-2"></a>df.count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><code>df.describe()</code> computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.</li>
-<li class="fragment"><code>.show()</code> prints these statistics in a readable table format.</li>
+<li class="fragment"><p><code>df.describe()</code> computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.</p></li>
+<li class="fragment"><p><code>.show()</code> prints these statistics in a readable table format.</p></li>
+<li class="fragment"><p><code>df.count()</code> returns the number of rows in <code>df</code>.</p></li>
+</ul>
+</section>
+<section id="spark-dataframe-vs.-pandas-dataframe" class="slide level2">
+<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
+<ul>
+<li class="fragment">What makes a Spark DataFrame different from other DataFrame?
+<ul>
+<li class="fragment">Spark DataFrames are designed for big data and distributed computing.</li>
+</ul></li>
+<li class="fragment"><strong>Spark DataFrame:</strong>
+<ul>
+<li class="fragment">Data is distributed across a cluster of machines.</li>
+<li class="fragment">Operations are executed in parallel on multiple nodes.</li>
+<li class="fragment">Can process datasets that exceed the memory of a single machine.</li>
+</ul></li>
+<li class="fragment"><strong>Other DataFrames (e.g., Pandas):</strong>
+<ul>
+<li class="fragment">Operate on a single machine.</li>
+<li class="fragment">Entire dataset must fit into memory.</li>
+<li class="fragment">Limited by local system resources.</li>
+</ul></li>
+</ul>
+</section>
+<section id="spark-dataframe-vs.-pandas-dataframe-1" class="slide level2">
+<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
+<h3 id="lazy-evaluation-and-optimization">Lazy Evaluation and Optimization</h3>
+<ul>
+<li class="fragment"><strong>Spark DataFrame:</strong>
+<ul>
+<li class="fragment">Uses <strong>lazy evaluation</strong>: transformations are not computed until an action is called.</li>
+<li class="fragment">Optimize query execution.</li>
+</ul></li>
+<li class="fragment"><strong>Other DataFrames:</strong>
+<ul>
+<li class="fragment">Operations are evaluated <strong>eagerly</strong> (immediately).</li>
+<li class="fragment">No built-in query optimization across multiple operations.</li>
+</ul></li>
+</ul>
+<!-- slide: fault tolerance -->
+</section>
+<section id="spark-dataframe-vs.-pandas-dataframe-2" class="slide level2">
+<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
+<h3 id="fault-tolerance">Fault Tolerance</h3>
+<ul>
+<li class="fragment"><strong>Spark DataFrame:</strong>
+<ul>
+<li class="fragment">Built on Resilient Distributed Datasets (RDDs).</li>
+<li class="fragment">Automatically recovers lost data if a node fails.</li>
+<li class="fragment">Ensures high reliability in distributed environments.</li>
+</ul></li>
+<li class="fragment"><strong>Other DataFrames:</strong>
+<ul>
+<li class="fragment">Typically lack built-in fault tolerance.</li>
+<li class="fragment">Failures on a single machine can result in data loss.</li>
+</ul></li>
+</ul>
+<!-- slide: scalability -->
+</section>
+<section id="spark-dataframe-vs.-pandas-dataframe-3" class="slide level2">
+<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
+<h3 id="scalability">Scalability</h3>
+<ul>
+<li class="fragment"><strong>Spark DataFrame:</strong>
+<ul>
+<li class="fragment">Designed to scale to petabytes of data.</li>
+<li class="fragment">Utilizes distributed storage and computing resources.</li>
+<li class="fragment">Ideal for large-scale data processing and analytics.</li>
+</ul></li>
+<li class="fragment"><strong>Other DataFrames:</strong>
+<ul>
+<li class="fragment">Best suited for small to medium datasets.</li>
+<li class="fragment">Limited by the hardware of a single computer.</li>
+</ul></li>
 </ul>
 
 <div class="footer footer-default">

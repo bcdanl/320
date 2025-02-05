@@ -248,10 +248,6 @@ theme_set(theme_fivethirtyeight()+
 
 
 
-
-
-
-
 # Apache Spark {background-color="#1c4982"}
 
 
@@ -520,10 +516,11 @@ df.show()
 
 
 
-## Displaying Variable Types with `df.printSchema()` and `df.dtypes`
+## Displaying Variable Information with `df.printSchema()`, `df.dtypes`, and `df.columns`
 ```{.python}
 df.printSchema()
 df.dtypes
+df.columns
 ```
 
 - `df.printSchema()` prints the `DataFrame` schema in a tree format.
@@ -534,12 +531,79 @@ df.dtypes
 - `df.dtypes` returns a list of tuples representing each column's name and data type.
 
 
-## Generating Descriptive Statistics with `df.describe().show()`
+- `df.columns` returns a list of colunm names.
+
+## Generating Descriptive Statistics with `df.describe().show()` and `df.count()`
 
 ```{.python}
 df.describe().show()
+df.count()
 ```
 
 -	`df.describe()` computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.
 -	`.show()` prints these statistics in a readable table format.
+
+- `df.count()` returns the number of rows in `df`.
+
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+
+- What makes a Spark DataFrame different from other DataFrame? 
+  - Spark DataFrames are designed for big data and distributed computing.
+  
+- **Spark DataFrame:**
+  - Data is distributed across a cluster of machines.
+  - Operations are executed in parallel on multiple nodes.
+  - Can process datasets that exceed the memory of a single machine.
+
+- **Other DataFrames (e.g., Pandas):**
+  - Operate on a single machine.
+  - Entire dataset must fit into memory.
+  - Limited by local system resources.
+  
+  
+  
+  
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Lazy Evaluation and Optimization
+
+- **Spark DataFrame:**
+  - Uses **lazy evaluation**: transformations are not computed until an action is called.
+  - Optimize query execution.
+
+- **Other DataFrames:**
+  - Operations are evaluated **eagerly** (immediately).
+  - No built-in query optimization across multiple operations.
+
+
+
+<!-- slide: fault tolerance -->
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Fault Tolerance
+
+- **Spark DataFrame:**
+  - Built on Resilient Distributed Datasets (RDDs).
+  - Automatically recovers lost data if a node fails.
+  - Ensures high reliability in distributed environments.
+
+- **Other DataFrames:**
+  - Typically lack built-in fault tolerance.
+  - Failures on a single machine can result in data loss.
+
+
+
+<!-- slide: scalability -->
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Scalability
+
+- **Spark DataFrame:**
+  - Designed to scale to petabytes of data.
+  - Utilizes distributed storage and computing resources.
+  - Ideal for large-scale data processing and analytics.
+
+- **Other DataFrames:**
+  - Best suited for small to medium datasets.
+  - Limited by the hardware of a single computer.
+
 
