@@ -1341,7 +1341,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Hadoop; Spark\n\n\nFebruary 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Apache Hadoop and Spark; PySpark on Google Colab\n\n\nFebruary 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "econml.html",
@@ -1811,5 +1811,159 @@
     "title": "Lecture 5",
     "section": "Apache Spark",
     "text": "Apache Spark\nMedscape: Real-Time Medical News for Healthcare Professionals\n\n\nA medical news app for smartphones and tablets designed to keep healthcare professionals informed.\n\nProvides up-to-date medical news and expert perspectives.\n\n\n\n\n\n\n\n\n\n\n\n\nReal-Time Updates:\n\nUses Apache Storm/Spark to process about 500 million tweets per day.\nAutomatic Twitter feed integration helps users track important medical trends shared by physicians and medical commentators."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-5",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-5",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nSpark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nDriver Process\n\nCommunicates with the cluster manager to acquire worker nodes.\nBreaks the application into smaller tasks if resources are allocated."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-6",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-6",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nSpark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nCluster Manager\n\nDecides if Spark can use cluster resources (machines/nodes).\nAllocates necessary nodes to Spark applications."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-7",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#distributed-computing-framework-dcf-7",
+    "title": "Lecture 5",
+    "section": "Distributed Computing Framework (DCF)",
+    "text": "Distributed Computing Framework (DCF)\nSpark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nWorker Nodes \n\nExecute tasks assigned by the driver program.\nSend results back to the driver after execution.\nCan communicate with each other if needed during task execution."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers",
+    "title": "Lecture 5",
+    "section": "Spark Application Structure on a Cluster of Computers",
+    "text": "Spark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nDriver Process\n\nCommunicates with the cluster manager to acquire worker nodes.\nBreaks the application into smaller tasks if resources are allocated."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers-1",
+    "title": "Lecture 5",
+    "section": "Spark Application Structure on a Cluster of Computers",
+    "text": "Spark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nCluster Manager\n\nDecides if Spark can use cluster resources (machines/nodes).\nAllocates necessary nodes to Spark applications."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-application-structure-on-a-cluster-of-computers-2",
+    "title": "Lecture 5",
+    "section": "Spark Application Structure on a Cluster of Computers",
+    "text": "Spark Application Structure on a Cluster of Computers\n\n\n\n\n\n\nWorker Nodes \n\nExecute tasks assigned by the driver program.\nSend results back to the driver after execution.\nCan communicate with each other if needed during task execution."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#pyspark-on-google-colab",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#pyspark-on-google-colab",
+    "title": "Lecture 5",
+    "section": "PySpark on Google Colab",
+    "text": "PySpark on Google Colab\nPySpark = Spark + Python\n\npyspark is a Python API to Apache Spark.\n\nAPI: application programming interface, the set of functions, classes, and variables provided for you to interact with.\nSpark itself is coded in a different programming language, called Scala.\n\nWe can combine Python, pandas, and PySpark in one program.\n\nKoalas (now called pyspark.pandas) provides a pandas-like porcelain on top of PySpark."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#google-drive-on-google-colab",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#google-drive-on-google-colab",
+    "title": "Lecture 5",
+    "section": "Google Drive on Google Colab",
+    "text": "Google Drive on Google Colab\n\n\nfrom google.colab import drive, files\ndrive.mount('/content/drive')\nfiles.upload()\n\ndrive.mount('/content/drive')\n\nTo mount your Google Drive on Google colab:\n\nfiles.upload()\n\nTo initiate uploading a file on Google Drive:\n\n\n\n\nTo find a pathname of a CSV file in Google Drive:\n\nClick 📁 from the sidebar menu\ndrive ➡️ MyDrive …\nHover a mouse cursor on the CSV file\nClick the vertical dots\nClick “Copy path”"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#the-sparksession-entry-point",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#the-sparksession-entry-point",
+    "title": "Lecture 5",
+    "section": "The SparkSession Entry Point",
+    "text": "The SparkSession Entry Point\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\n\nThe SparkSession entry point provides the functionality for data transformation with data frames and SQL.\nfrom pyspark.sql import SparkSession\n\nImports the SparkSession class from PySpark’s SQL module.\n\nSparkSession.builder\n\nBegins the configuration of a new SparkSession.\n\n.master(\"local[*]\")\n\nConfigures Spark to run locally using all available CPU cores.\n\n.getOrCreate()\n\nRetrieves an existing SparkSession if one exists, or creates a new one otherwise."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework",
+    "title": "Lecture 5",
+    "section": "Reading a CSV file into the Spark Framework",
+    "text": "Reading a CSV file into the Spark Framework\npath = '/content/drive/MyDrive/lecture-data/cces.csv'\ndf = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\ndf.show()  # Displays the first 20 rows\n\nspark.read.csv(path, ...):\n\nRead a CSV file from the location specified by the path variable.\n\ninferSchema=True:\n\nWhen set to True, Spark will automatically detect (or “infer”) the data types of the columns in the CSV file.\n\nWithout this, Spark would treat all columns as strings by default.\n\nheader=True:\n\nThe first row of the CSV file contains the column headers, and will be used as names of the columns."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework-1",
+    "title": "Lecture 5",
+    "section": "Reading a CSV file into the Spark Framework",
+    "text": "Reading a CSV file into the Spark Framework\npath = 'https://bcdanl.github.io/data/dominick_oj.csv'\ndf = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\ndf.show()\n\nSpark’s spark.read.csv() function relies on the Hadoop FileSystem API to access files.\nBy default, Hadoop does not support reading files directly from HTTPS URLs.\n\nIt expects a local file system path, HDFS path, or another supported distributed file system.\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\nspark_df = spark.createDataFrame(pandas_df)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#reading-a-csv-file-into-the-spark-framework-2",
+    "title": "Lecture 5",
+    "section": "Reading a CSV file into the Spark Framework",
+    "text": "Reading a CSV file into the Spark Framework"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#df.show",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#df.show",
+    "title": "Lecture 5",
+    "section": "df.show()",
+    "text": "df.show()\nThree optional parameters\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#df.show-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#df.show-1",
+    "title": "Lecture 5",
+    "section": "df.show()",
+    "text": "df.show()\nThree optional parameters\n\ntruncate (bool or int):\n\n\nIf True (default), long strings are truncated to 20 characters.\nIf False, displays full column contents.\nIf an integer is provided, it specifies the maximum number of characters to display.\nExample: df.show(truncate=False), df.show(truncate=30)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#df.show-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#df.show-2",
+    "title": "Lecture 5",
+    "section": "df.show()",
+    "text": "df.show()\nThree optional parameters\n\nvertical (bool):\n\n\nIf True, displays each row vertically (useful for wide tables).\nExample: df.show(vertical=True)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#df.printschema-and-df.dtypes",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#df.printschema-and-df.dtypes",
+    "title": "Lecture 5",
+    "section": "df.printSchema() and df.dtypes",
+    "text": "df.printSchema() and df.dtypes\ndf.printSchema()\ndf.dtypes\n\ndf.printSchema() prints the DataFrame schema in a tree format.\n\nnullable = true means that a column can contain null values.\nWe may need to handle missing data appropriately.\n\ndf.dtypes returns a list of tuples representing each column’s name and data type."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#pyspark-on-google-colab-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#pyspark-on-google-colab-1",
+    "title": "Lecture 5",
+    "section": "PySpark on Google Colab",
+    "text": "PySpark on Google Colab\nPySpark = Spark + Python\n\npyspark is a Python API to Apache Spark.\n\nAPI: application programming interface, the set of functions, classes, and variables provided for you to interact with.\nSpark itself is coded in a different programming language, called Scala.\n\nWe can combine Python, pandas, and PySpark in one program.\n\nKoalas (now called pyspark.pandas) provides a pandas-like porcelain on top of PySpark."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show",
+    "title": "Lecture 5",
+    "section": "Displaying the First Rows with df.show()",
+    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show-1",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show-1",
+    "title": "Lecture 5",
+    "section": "Displaying the First Rows with df.show()",
+    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\n\ntruncate (bool or int):\n\n\nIf True (default), long strings are truncated to 20 characters.\nIf False, displays full column contents.\nIf an integer is provided, it specifies the maximum number of characters to display.\nExample: df.show(truncate=False), df.show(truncate=30)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show-2",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-the-first-rows-with-df.show-2",
+    "title": "Lecture 5",
+    "section": "Displaying the First Rows with df.show()",
+    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\n\nvertical (bool):\n\n\nIf True, displays each row vertically (useful for wide tables).\nExample: df.show(vertical=True)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-variable-types-with-df.printschema-and-df.dtypes",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#displaying-variable-types-with-df.printschema-and-df.dtypes",
+    "title": "Lecture 5",
+    "section": "Displaying Variable Types with df.printSchema() and df.dtypes",
+    "text": "Displaying Variable Types with df.printSchema() and df.dtypes\ndf.printSchema()\ndf.dtypes\n\ndf.printSchema() prints the DataFrame schema in a tree format.\n\nnullable = true means that a column can contain null values.\nWe may need to handle missing data appropriately.\n\ndf.dtypes returns a list of tuples representing each column’s name and data type."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#generating-descriptive-statistics-with-df.describe.show",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#generating-descriptive-statistics-with-df.describe.show",
+    "title": "Lecture 5",
+    "section": "Generating Descriptive Statistics with df.describe().show()",
+    "text": "Generating Descriptive Statistics with df.describe().show()\ndf.describe().show()\n\ndf.describe() computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.\n.show() prints these statistics in a readable table format."
   }
 ]

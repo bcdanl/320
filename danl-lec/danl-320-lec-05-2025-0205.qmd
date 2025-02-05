@@ -1,6 +1,6 @@
 ---
 title: Lecture 5
-subtitle: Distributed Computing Framework; Hadoop; Spark
+subtitle: Distributed Computing Framework; Apache Hadoop and Spark; PySpark on Google Colab
 format:
   clean-revealjs:
     self-contained: false
@@ -86,6 +86,8 @@ theme_set(theme_fivethirtyeight()+
 :::
 ::::
 
+
+
 ## How DCF Works: The Process
 - **Task Distribution**:
   - Breaks problems into smaller tasks.
@@ -134,6 +136,8 @@ theme_set(theme_fivethirtyeight()+
 ### Real-World Examples
 - **Hadoop**
 - **Apache Spark**
+
+
 
 
 # Apache Hadoop {background-color="#1c4982"}
@@ -262,6 +266,41 @@ theme_set(theme_fivethirtyeight()+
   - It contains a set of libraries for parallel processing for data analysis, machine learning, graph analysis, and streaming live data.
 
 
+## Spark Application Structure on a Cluster of Computers
+
+<div style="text-align: center; width: 65%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/spark-application.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+-	**Driver Process**
+    -	Communicates with the **cluster manager** to acquire worker nodes.
+    -	Breaks the application into smaller tasks if resources are allocated.
+
+## Spark Application Structure on a Cluster of Computers
+
+<div style="text-align: center; width: 65%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/spark-application.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+-	**Cluster Manager**
+    -	Decides if Spark can use cluster resources (machines/nodes).
+    -	Allocates necessary nodes to Spark applications.
+    
+
+## Spark Application Structure on a Cluster of Computers
+
+<div style="text-align: center; width: 65%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/spark-application.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+-	**Worker Nodes**
+    <!-- -	Run **executor processes** composed of multiple tasks. -->
+    -	Execute tasks assigned by the driver program.
+    -	Send results back to the driver after execution.
+    -	Can communicate with each other if needed during task execution.
 
 
 ## Spark vs. Hadoop
@@ -351,3 +390,156 @@ theme_set(theme_fivethirtyeight()+
 
 :::
 ::::
+
+
+# PySpark on Google Colab {background-color="#1c4982"}
+
+
+## PySpark on Google Colab
+### PySpark = Spark + Python
+
+- `pyspark` is a Python API to Apache Spark.
+  - API: application programming interface, the set of functions, classes, and variables provided for you to interact with.
+  - Spark itself is coded in a different programming language, called Scala.
+  
+- We can combine Python, pandas, and PySpark in one program.
+  - [Koalas (now called `pyspark.pandas`)](https://koalas.readthedocs.io/) provides a `pandas`-like porcelain on top of PySpark.
+
+
+## Google Drive on Google Colab
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+from google.colab import drive, files
+drive.mount('/content/drive')
+files.upload()
+```
+
+- `drive.mount('/content/drive')`
+  - To mount your Google Drive on Google colab:
+- `files.upload()`
+  - To initiate uploading a file on Google Drive:
+
+:::
+::: {.column width="50%"}
+- To find a pathname of a CSV file in Google Drive:
+  - Click :file_folder: from the sidebar menu
+  - `drive` :arrow_right: `MyDrive` ...
+  - Hover a mouse cursor on the CSV file
+  - Click the vertical dots
+  - Click **"Copy path"**
+
+:::
+::::
+
+## The `SparkSession` Entry Point
+
+```{.python}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+```
+
+- The `SparkSession` entry point provides the functionality for data transformation with **data frames** and **SQL**.
+
+- `from pyspark.sql import SparkSession`
+  - Imports the `SparkSession` class from PySpark's SQL module.
+- `SparkSession.builder`
+  - Begins the configuration of a new `SparkSession`.
+- `.master("local[*]")`
+  - Configures Spark to run locally using all available CPU cores.
+- `.getOrCreate()`
+  - Retrieves an existing `SparkSession` if one exists, or creates a new one otherwise.
+
+
+
+## Reading a CSV file into the Spark Framework
+
+```{.python}
+path = '/content/drive/MyDrive/lecture-data/cces.csv'
+df = spark.read.csv(path, 
+                    inferSchema=True,
+                    header=True)
+df.show()  # Displays the first 20 rows
+```
+
+-	`spark.read.csv(path, ...)`:
+    - Read a CSV file from the location specified by the path variable.
+
+-	`inferSchema=True`:
+    - When set to `True`, Spark will automatically detect (or "infer") the data types of the columns in the CSV file.     
+    - Without this, Spark would treat all columns as strings by default.
+  
+-	`header=True`:
+    - The first row of the CSV file contains the column headers, and will be used as names of the columns.
+
+## Reading a CSV file into the Spark Framework
+
+```{.python}
+path = 'https://bcdanl.github.io/data/dominick_oj.csv'
+df = spark.read.csv(path, 
+                    inferSchema=True,
+                    header=True)
+df.show()
+```
+- `Spark’s spark.read.csv()` function relies on the Hadoop FileSystem API to access files. 
+- By default, Hadoop does not support reading files directly from HTTPS URLs. 
+  - It expects a local file system path, HDFS path, or another supported distributed file system.
+
+- What should we do then?
+  - We can convert the Pandas `DataFrame` to a Spark `DataFrame`
+  - `spark_df = spark.createDataFrame(pandas_df)`
+
+
+# Exploring DataFrames with PySpark {background-color="#1c4982"}
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+- By default, displays the first 20 rows.
+
+- `df.show(n, truncate, vertical)` accepts three optional parameters:
+  1.  `n` (int): Number of rows to display.
+  - Example: `df.show(5)`
+
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+2.  `truncate` (bool or int):
+  - If `True` (default), long strings are truncated to 20 characters.
+  - If `False`, displays full column contents.
+  - If an integer is provided, it specifies the maximum number of characters to display.
+  - Example: `df.show(truncate=False)`, `df.show(truncate=30)`
+
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+3. `vertical` (bool):
+  - If `True`, displays each row vertically (useful for wide tables).
+  - Example: `df.show(vertical=True)`
+
+
+
+
+## Displaying Variable Types with `df.printSchema()` and `df.dtypes`
+```{.python}
+df.printSchema()
+df.dtypes
+```
+
+- `df.printSchema()` prints the `DataFrame` schema in a tree format.
+    - **nullable = true** means that a column can contain **null** values. 
+    - We may need to handle missing data appropriately.
+
+
+- `df.dtypes` returns a list of tuples representing each column's name and data type.
+
+
+## Generating Descriptive Statistics with `df.describe().show()`
+
+```{.python}
+df.describe().show()
+```
+
+-	`df.describe()` computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.
+-	`.show()` prints these statistics in a readable table format.
+
