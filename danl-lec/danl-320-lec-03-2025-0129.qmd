@@ -963,6 +963,7 @@ suny[-6 : -4]
 
 
 
+
 # Functions, Arguments, and Parameters {background-color="#1c4982"}
 
 ## Functions, Arguments, and Parameters
@@ -1282,16 +1283,6 @@ else:
 ```
 
 
-## Google Colab Settings
-### Turn off AI Assistance
-
-- On Google Colab
-  1. From the top-right corner, click :gear:
-  2. Click "AI Assistance" from the side menu.
-  3. Disable all options.
-
-
-
 
 ## Loop with `while` and `for`
 ###  Class Exercises
@@ -1301,6 +1292,120 @@ else:
 
 - **Q**. [**Classwork 4.6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-6){target="_blank"}
 
+
+# List and Dictionary Comprehensions {background-color="#1c4982"}
+
+## List Comprehension
+### What is List Comprehension?
+
+- A concise way to create or modify lists.
+- Syntax: `[expression for item in iterable if condition]`
+
+1. **Creating a List of Squares:**
+```{.python}
+squares = [x**2 for x in range(5)]
+```
+
+2. **Filtering Items:**
+```{.python}
+numbers = [1, 2, 3, 4, 5, 6]
+evens = [x for x in numbers if x != 2]
+```
+
+
+## Dictionary Comprehension
+
+### What is Dictionary Comprehension?
+
+- A concise way to create or modify dictionaries.
+- Syntax: `{key_expression: value_expression for item in iterable if condition}`
+
+1. **Creating a Dictionary of Squares:**
+```{.python}
+squares_dict = {x: x**2 for x in range(5)}
+```
+
+2. **Filtering Dictionary Items:**
+```{.python}
+   my_dict = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+   filtered_dict = {k: v for k, v in my_dict.items() if v != 2}
+```
+
+3. **Swapping Keys and Values:**
+```{.python}
+original_dict = {'a': 1, 'b': 2, 'c': 3}
+swapped_dict = {v: k for k, v in original_dict.items()}
+```
+
+
+
+# Modifying Lists and Dictionaries {background-color="#1c4982"}
+
+## Modifying a List
+### Adding Items
+
+- **`append()`**: Adds an item to the end of the list.
+  
+```{.python}
+my_list = [1, 2, 3]
+my_list.append(4)
+```
+  
+## Modifying a List
+### Deleting Items
+
+- **`remove()`**: Deletes the first occurrence of value in the list.
+  
+```{.python}
+my_list = [1, 2, 3, 4, 2]
+my_list.remove(2)
+```
+
+
+- **List Comprehension**: Removes items based on a condition.
+
+```{.python}
+my_list = [1, 2, 3, 4, 2]
+my_list = [x for x in my_list if x != 2]  
+```
+
+
+- **`del` statement**: Deletes an item by index or a slice of items.
+  
+```{.python}
+my_list = [1, 2, 3, 4]
+del my_list[1] 
+del my_list[1:3]
+```
+
+
+## Modifying a Dictionary
+### Adding/Updating Items
+
+- **`update()`**: Adds new key-value pairs or updates existing ones.
+  
+```{.python}
+my_dict = {'a': 1, 'b': 2}
+my_dict.update({'c': 3})  
+my_dict.update({'a': 10})  
+```
+  
+## Modifying a Dictionary
+### Deleting Items
+
+- **Dictionary Comprehension**: Removes items based on a condition.
+
+```{.python}
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+my_dict = {k: v for k, v in my_dict.items() if v != 2}  
+```
+
+- **`del` statement**: Deletes an item by key.
+  
+```{.python}
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+del my_dict['b']  
+```
 
 
 
@@ -1397,7 +1502,7 @@ while True:
         position = int(value)
         print(short_list[position])
     except IndexError as err:
-        print('Bad index:', position)
+        print('Bad index:', position, '-', err)
     except Exception as other:
         print('Something else broke:', other)
 ```
@@ -1426,11 +1531,51 @@ while True:
 
 
 
-# Importing Modules, Packages, and Libraries {background-color="#1c4982"}
-
+# Importing and Installing Modules, Packages, and Libraries {background-color="#1c4982"}
 
 ## Importing Modules, Packages, and Libraries
 
+- Python is a general-purpose programming language and is not specialized for numerical or statistical computation.
+
+- The core libraries that enable Python to store and analyze data efficiently are:
+  - `pandas`
+  - `numpy`
+  - `matplotlib` and `seaborn`
+
+
+
+## Importing Modules, Packages, and Libraries
+### `pandas`
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pandas-logo.png">
+</p>
+
+- `pandas` provides `Series` and `DataFrames` which are used to store data in an easy-to-use format.
+
+## Importing Modules, Packages, and Libraries
+### `numpy`
+  
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/numpy-logo.png">
+</p>
+
+- `numpy`, numerical Python, provides the array block (`np.array()`) for doing fast and efficient computations;
+
+
+## Importing Modules, Packages, and Libraries
+### `matplotlib` and `seaborn`
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/matplotlib-logo.png"><img src="https://bcdanl.github.io/lec_figs/seaborn-logo.png">
+</p>
+
+- `matplotlib` provides graphics. The most important submodule would be `matplotlib.pyplot`.
+- `seaborn` provides a general improvement in the default appearance of `matplotlib`-produced plots.
+
+
+## Importing Modules, Packages, and Libraries
+### `import` statement
 - A **module** is basically a bunch of related codes saved in a file with the extension `.py`.
 
 - A **package** is basically a directory of a collection of modules. 
@@ -1438,11 +1583,54 @@ while True:
 - A **library** is a collection of packages
 
 
-- We refer to code of other modules/pacakges/libraries by using the Python `import` statement. 
-  - This makes the code and variables in the imported module available to our programming codes.
-  - We can use the `as` *keyword* when importing the modules using their canonical names.
+- We refer to code of other module/package/library by using the Python `import` statement. 
+
+```{.python}
+import LIBRARY_NAME
+```  
+
+
+- This makes the code and variables in the imported module available to our programming codes.
+
+
+## Importing Modules, Packages, and Libraries
+### `import` statement
+
+
+:::: {.columns}
+::: {.column width="50%"}
+#### `as`
+
+- We can use the `as` *keyword* when importing the module/package/library using its canonical names.
+
+
+```{.python}
+import LIBRARY as SOMETHING_SHORT
+```   
+
+:::
+
+::: {.column width="50%"}
+#### `from`
+
+- We can use the `from` *keyword* when specifying Python module/package/library from which we want to `import` something.
+
+
+```{.python}
+from LIBRARY import FUNCTION, PACKAGE, MODULE
+```   
+
+:::
+::::
+
+## Installing Modules, Packages, and Libraries
+### `pip` tool
+
+- To install a library `LIBRARY` on your Google Colab or Anaconda Python, run the following:
+
+```{.python}
+pip install LIBRARY
+```
+
 
 - **Q**. [**Classwork 4.8**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-04.html#question-8){target="_blank"}
-
-
-

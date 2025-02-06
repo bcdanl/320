@@ -508,7 +508,7 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-7",
     "title": "Lecture 3",
     "section": "Handle Errors with try and except",
-    "text": "Handle Errors with try and except\nexcept type\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position)\n    except Exception as other:\n        print('Something else broke:', other)"
+    "text": "Handle Errors with try and except\nexcept type\nshort_list = [1, 2, 3]\nwhile True:\n    value = input('Position [q to quit]? ')\n    if value == 'q':\n        break\n    try:\n        position = int(value)\n        print(short_list[position])\n    except IndexError as err:\n        print('Bad index:', position, '-', err)\n    except Exception as other:\n        print('Something else broke:', other)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#handle-errors-with-try-and-except-8",
@@ -529,7 +529,7 @@
     "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-1",
     "title": "Lecture 3",
     "section": "Importing Modules, Packages, and Libraries",
-    "text": "Importing Modules, Packages, and Libraries\n\nA module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other modules/pacakges/libraries by using the Python import statement.\n\nThis makes the code and variables in the imported module available to our programming codes.\nWe can use the as keyword when importing the modules using their canonical names.\n\nQ. Classwork 4.8"
+    "text": "Importing Modules, Packages, and Libraries\npandas\n\n\n\n\npandas provides Series and DataFrames which are used to store data in an easy-to-use format."
   },
   {
     "objectID": "danl-lec/danl-320-lec-01-2025-0122.html#instructor-1",
@@ -2056,5 +2056,89 @@
     "title": "Homework 1",
     "section": "Question 5",
     "text": "Question 5\n\nImport the math library and calculate the square root of 81 using the sqrt() function provided by the math library."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#list-comprehension",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#list-comprehension",
+    "title": "Lecture 3",
+    "section": "List Comprehension",
+    "text": "List Comprehension\nWhat is List Comprehension?\n\nA concise way to create or modify lists.\nSyntax: [expression for item in iterable if condition]\n\n\nCreating a List of Squares:\n\nsquares = [x**2 for x in range(5)]\n\nFiltering Items:\n\nnumbers = [1, 2, 3, 4, 5, 6]\nevens = [x for x in numbers if x != 2]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#dictionary-comprehension",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#dictionary-comprehension",
+    "title": "Lecture 3",
+    "section": "Dictionary Comprehension",
+    "text": "Dictionary Comprehension\nWhat is Dictionary Comprehension?\n\nA concise way to create or modify dictionaries.\nSyntax: {key_expression: value_expression for item in iterable if condition}\n\n\nCreating a Dictionary of Squares:\n\nsquares_dict = {x: x**2 for x in range(5)}\n\nFiltering Dictionary Items:\n\n   my_dict = {'a': 1, 'b': 2, 'c': 3, 'd': 4}\n   filtered_dict = {k: v for k, v in my_dict.items() if v != 2}\n\nSwapping Keys and Values:\n\noriginal_dict = {'a': 1, 'b': 2, 'c': 3}\nswapped_dict = {v: k for k, v in original_dict.items()}"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-list",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-list",
+    "title": "Lecture 3",
+    "section": "Modifying a List",
+    "text": "Modifying a List\nAdding Items\n\nappend(): Adds an item to the end of the list.\n\nmy_list = [1, 2, 3]\nmy_list.append(4)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-list-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-list-1",
+    "title": "Lecture 3",
+    "section": "Modifying a List",
+    "text": "Modifying a List\nDeleting Items\n\nremove(): Deletes the first occurrence of value in the list.\n\nmy_list = [1, 2, 3, 4, 2]\nmy_list.remove(2)\n\nList Comprehension: Removes items based on a condition.\n\nmy_list = [1, 2, 3, 4, 2]\nmy_list = [x for x in my_list if x != 2]  \n\ndel statement: Deletes an item by index or a slice of items.\n\nmy_list = [1, 2, 3, 4]\ndel my_list[1] \ndel my_list[1:3]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-dictionary",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-dictionary",
+    "title": "Lecture 3",
+    "section": "Modifying a Dictionary",
+    "text": "Modifying a Dictionary\nAdding/Updating Items\n\nupdate(): Adds new key-value pairs or updates existing ones.\n\nmy_dict = {'a': 1, 'b': 2}\nmy_dict.update({'c': 3})  \nmy_dict.update({'a': 10})"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-dictionary-1",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#modifying-a-dictionary-1",
+    "title": "Lecture 3",
+    "section": "Modifying a Dictionary",
+    "text": "Modifying a Dictionary\nDeleting Items\n\nDictionary Comprehension: Removes items based on a condition.\n\nmy_dict = {'a': 1, 'b': 2, 'c': 3}\nmy_dict = {k: v for k, v in my_dict.items() if v != 2}  \n\ndel statement: Deletes an item by key.\n\nmy_dict = {'a': 1, 'b': 2, 'c': 3}\ndel my_dict['b']"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\n\nPython is a general-purpose programming language and is not specialized for numerical or statistical computation.\nThe core libraries that enable Python to store and analyze data efficiently are:\n\npandas\nnumpy\nmatplotlib and seaborn"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-2",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-2",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nnumpy\n\n\n\n\nnumpy, numerical Python, provides the array block (np.array()) for doing fast and efficient computations;"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-3",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-3",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nmatplotlib and seaborn\n\n\n\n\nmatplotlib provides graphics. The most important submodule would be matplotlib.pyplot.\nseaborn provides a general improvement in the default appearance of matplotlib-produced plots."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-4",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-4",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nimport statement\n\nA module is basically a bunch of related codes saved in a file with the extension .py.\nA package is basically a directory of a collection of modules.\nA library is a collection of packages\nWe refer to code of other module/package/library by using the Python import statement.\n\nimport LIBRARY_NAME\n\nThis makes the code and variables in the imported module available to our programming codes."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-5",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#importing-modules-packages-and-libraries-5",
+    "title": "Lecture 3",
+    "section": "Importing Modules, Packages, and Libraries",
+    "text": "Importing Modules, Packages, and Libraries\nimport statement\n\n\nas\n\nWe can use the as keyword when importing the module/package/library using its canonical names.\n\nimport LIBRARY as SOMETHING_SHORT\n\nfrom\n\nWe can use the from keyword when specifying Python module/package/library from which we want to import something.\n\nfrom LIBRARY import FUNCTION, PACKAGE, MODULE"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#installing-modules-packages-and-libraries",
+    "href": "danl-lec/danl-320-lec-03-2025-0129.html#installing-modules-packages-and-libraries",
+    "title": "Lecture 3",
+    "section": "Installing Modules, Packages, and Libraries",
+    "text": "Installing Modules, Packages, and Libraries\npip tool\n\nTo install a library LIBRARY on your Google Colab or Anaconda Python, run the following:\n\npip install LIBRARY\n\nQ. Classwork 4.8"
   }
 ]
