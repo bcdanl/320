@@ -5,7 +5,7 @@ format:
   clean-revealjs:
     self-contained: false
     chalkboard: true
-    incremental: true
+    incremental: false
     code-annotations: hover
     scrollable: false
 
