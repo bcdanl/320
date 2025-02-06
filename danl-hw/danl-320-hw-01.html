@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak Choe">
+<meta name="dcterms.date" content="2025-02-05">
 
-<title>DANL 320 - Homework | Byeong-Hak Choe</title>
+<title>Homework 1 | Byeong-Hak Choe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,30 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -65,61 +98,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-subtitle','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-<style>
-#toc-welcome {
-      font-size: 1.67em;
-}
-#toc-bullet-lecture {
-      font-size: 1.67em;
-}
-#toc-bullet-classwork {
-      font-size: 1.67em;
-}
-#toc-bullet-homework {
-      font-size: 1.67em;
-}
-a {
-text-decoration: none; /* This removes the underline */
-padding: 5px 10px; /* Top & Bottom, Left & Right Padding */
-border-radius: 5px; /* Rounds the corners */
-}
-</style>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="assets/css/font.css">
-<meta property="og:title" content="DANL 320 - Homework | Byeong-Hak Choe">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../assets/css/font.css">
+<meta property="og:title" content="Homework 1 | Byeong-Hak Choe">
+<meta property="og:description" content="Survey, Personal Website, and Python Basics">
 <meta property="og:image" content="/assets/img/posts.png">
 <meta property="og:site-name" content="Home">
 </head>
@@ -131,10 +115,10 @@ border-radius: 5px; /* Rounds the corners */
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./img/geneseo-logo-squared.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/geneseo-logo-squared.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Home</span>
     </a>
   </div>
@@ -145,7 +129,7 @@ border-radius: 5px; /* Rounds the corners */
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./blog-listing.html" rel="" target="">
+    <a class="nav-link" href="../blog-listing.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
@@ -166,19 +150,19 @@ border-radius: 5px; /* Rounds the corners */
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./listing-danl-320-hw.html"><font size="5"><b>- Homework </b></font><font size="5" color="#194493">{{&lt; fa solid level-up &gt;}}</font></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Homework 1</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./img/geneseo-logo-squared.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../img/geneseo-logo-squared.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -188,25 +172,25 @@ border-radius: 5px; /* Rounds the corners */
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./listing-danl-320-lec.html" class="sidebar-item-text sidebar-link">
+  <a href="../listing-danl-320-lec.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><font size="5"><b>- Lecture </b></font><font size="5" color="#194493"><i class="fa-solid fa-laptop" aria-label="laptop"></i></font></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./listing-danl-320-cw.html" class="sidebar-item-text sidebar-link">
+  <a href="../listing-danl-320-cw.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><font size="5"><b>- Classwork </b></font><font size="5" color="#194493"><i class="fa-solid fa-keyboard" aria-label="keyboard"></i></font></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./listing-danl-320-hw.html" class="sidebar-item-text sidebar-link active">
+  <a href="../listing-danl-320-hw.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><font size="5"><b>- Homework </b></font><font size="5" color="#194493"><i class="fa-solid fa-level-up" aria-label="level-up"></i></font></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./danl-qa/danl-320-qa.html" class="sidebar-item-text sidebar-link">
+  <a href="../danl-qa/danl-320-qa.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><font size="5"><b>- Q &amp; A </b></font><font size="5" color="#194493"><i class="fa-solid fa-commenting" aria-label="commenting"></i></font></span></a>
   </div>
 </li>
@@ -215,15 +199,50 @@ border-radius: 5px; /* Rounds the corners */
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#direction" id="toc-direction" class="nav-link active" data-scroll-target="#direction">Direction</a></li>
+  <li><a href="#part-1.-quarto-website" id="toc-part-1.-quarto-website" class="nav-link" data-scroll-target="#part-1.-quarto-website">Part 1. Quarto Website</a></li>
+  <li><a href="#part-2.-python-basics" id="toc-part-2.-python-basics" class="nav-link" data-scroll-target="#part-2.-python-basics">Part 2. Python Basics</a>
+  <ul>
+  <li><a href="#question-0" id="toc-question-0" class="nav-link" data-scroll-target="#question-0">Question 0</a></li>
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
+  <ul>
+  <li><a href="#q1a" id="toc-q1a" class="nav-link" data-scroll-target="#q1a">Q1a</a></li>
+  <li><a href="#q1b" id="toc-q1b" class="nav-link" data-scroll-target="#q1b">Q1b</a></li>
+  </ul></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a>
+  <ul>
+  <li><a href="#q2a" id="toc-q2a" class="nav-link" data-scroll-target="#q2a">Q2a</a></li>
+  <li><a href="#q2b" id="toc-q2b" class="nav-link" data-scroll-target="#q2b">Q2b</a></li>
+  </ul></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a>
+  <ul>
+  <li><a href="#q3a" id="toc-q3a" class="nav-link" data-scroll-target="#q3a">Q3a</a></li>
+  <li><a href="#q3b" id="toc-q3b" class="nav-link" data-scroll-target="#q3b">Q3b</a></li>
+  <li><a href="#q3c" id="toc-q3c" class="nav-link" data-scroll-target="#q3c">Q3c</a></li>
+  <li><a href="#q3d" id="toc-q3d" class="nav-link" data-scroll-target="#q3d">Q3d</a></li>
+  </ul></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a>
+  <ul>
+  <li><a href="#q4a" id="toc-q4a" class="nav-link" data-scroll-target="#q4a">Q4a</a></li>
+  <li><a href="#q4b" id="toc-q4b" class="nav-link" data-scroll-target="#q4b">Q4b</a></li>
+  </ul></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><font style="font-family:Optima"><b>DANL 320 - Homework</b></font></h1>
+<h1 class="title">Homework 1</h1>
+<p class="subtitle lead">Survey, Personal Website, and Python Basics</p>
 </div>
 
 
@@ -237,58 +256,241 @@ border-radius: 5px; /* Rounds the corners */
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 5, 2025</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">February 5, 2025</p>
+    </div>
+  </div>
     
   </div>
   
 
 </header>
 
+<section id="direction" class="level1">
+<h1>Direction</h1>
+<ul>
+<li><p>Please submit your <strong>Jupyter Notebook</strong> for <strong>Part 3 in Homework 1</strong> to Brightspace with the name below:</p>
+<ul>
+<li><code>danl-320-hw1-LASTNAME-FIRSTNAME.ipynb</code><br>
+( e.g., <code>danl-320-hw1-choe-byeonghak.ipynb</code> )</li>
+</ul></li>
+<li><p>The due is February 17, 2024, 3:30 P.M.</p></li>
+<li><p>Please send Byeong-Hak an email (<code>bchoe@geneseo.edu</code>) if you have any questions.</p></li>
+</ul>
+<p><br><br><br></p>
+</section>
+<section id="part-1.-quarto-website" class="level1">
+<h1>Part 1. Quarto Website</h1>
+<ol type="1">
+<li>Decorate your website:</li>
+</ol>
+<ul>
+<li>Replace <code>YOUR NAME</code> with your name in <code>_quarto.yml</code> and <code>index.qmd</code>.</li>
+<li>Describe yourself in <code>index.qmd</code>.</li>
+<li>Add the picture file (e.g., <code>png</code>) of your profile photo to <code>img</code> directory. Then correct <code>img/profile.png</code> in <code>index.qmd</code> accordingly.</li>
+<li>Add the PDF file of your resumé to the website working directory in your laptop.</li>
+<li>Correct links for your resumé, LinkedIn, email, and optionally social media.</li>
+<li>Make sure that you do not have any broken links in your website.</li>
+</ul>
+<ol start="2" type="1">
+<li>Add a menu of “Project” to the navigation bar using <code>danl_proj_nba.ipynb</code>.</li>
+</ol>
+<ul>
+<li><code>danl_proj_nba.ipynb</code> file is available from Brightspace.</li>
+</ul>
+<ol start="3" type="1">
+<li>Add a drop-down menu of “Python Data Analysis” to the navigation bar.</li>
+</ol>
+<ul>
+<li>Under the menu of “Python Data Analysis”, add links for the following webpage:
+<ul>
+<li><strong>Pandas Basics</strong> using <code>pandas_basic.ipynb</code></li>
+<li><strong>Seaborn Basics</strong> using <code>seaborn_basic.ipynb</code></li>
+<li><code>pandas_basic.ipynb</code> and <code>seaborn_basic.ipynb</code> files are available from Brightspace.</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>Add a “PySpark Basics” blog post to your blog using <strong>Jupyter Notebook</strong>.</li>
+</ol>
+<ul>
+<li>In your “PySpark Basics” blog post, briefly explain Apache Hadoop, Apache Spark, and PySpark <code>DataFrame</code> we discussed in <a href="https://bcdanl.github.io/320/danl-lec/danl-320-lec-05-2025-0205.html">Lecture 5</a> and <a href="https://bcdanl.github.io/320/danl-lec/danl-320-lec-06-2025-0210.html">Lecture 6</a></li>
+<li>Choose a proper image file for a thumbnail for a blog post.</li>
+<li>An YAML header template for a blog post can be found below, including an image option:</li>
+</ul>
+<pre class="{markdown}"><code>---
+title: BLOG_TITLE
+author: YOUR_NAME
+date: 2025-02-14
+categories: [tag_1, tag_2, tag_3] # tags for a blog post (e.g., spark, python)
+image: image.png 
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---</code></pre>
+<ol start="3" type="1">
+<li>Use the 3-step git commands (<code>git add .</code>, <code>git commit -m "MESSAGE"</code>, and <code>git push</code>) to update your online website.</li>
+</ol>
+<p><br><br><br></p>
+</section>
+<section id="part-2.-python-basics" class="level1">
+<h1>Part 2. Python Basics</h1>
+<section id="question-0" class="level2">
+<h2 class="anchored" data-anchor-id="question-0">Question 0</h2>
+<p>Provide your GitHub username.</p>
+<p><br><br></p>
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<section id="q1a" class="level3">
+<h3 class="anchored" data-anchor-id="q1a">Q1a</h3>
+<ul>
+<li>Create a list of integers from 1 to 10.</li>
+<li>Append the number <code>11</code> to the list and remove the number <code>5</code>.</li>
+</ul>
+<p><br></p>
+</section>
+<section id="q1b" class="level3">
+<h3 class="anchored" data-anchor-id="q1b">Q1b</h3>
+<ul>
+<li>Consider the following dictionary of three employees and their salaries:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dict_salaries <span class="op">=</span> {<span class="st">'Alice'</span>: <span class="dv">50000</span>, <span class="st">'Bob'</span>: <span class="dv">60000</span>, <span class="st">'Charlie'</span>: <span class="dv">70000</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Add a new employee <code>'Dana'</code> with a salary of <code>65000</code>.</li>
+<li>Update <code>'Alice'</code>’s salary to <code>55000</code>.</li>
+<li>Print all employee names and their salaries.</li>
+</ul>
+<p><br><br></p>
+</section>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<section id="q2a" class="level3">
+<h3 class="anchored" data-anchor-id="q2a">Q2a</h3>
+<ul>
+<li>Assign a variable <code>salary</code> to <code>75000</code>.</li>
+<li>Use an <code>if</code>-<code>elif</code>-<code>else</code> statement to print:
+<ul>
+<li><code>'Low'</code> if <code>salary</code> is less than <code>50,000</code></li>
+<li><code>'Medium'</code> if <code>salary</code> is between <code>50,000</code> and <code>99,999</code></li>
+<li><code>'High'</code> if <code>salary</code> is <code>100,000</code> or more</li>
+</ul></li>
+</ul>
+<p><br></p>
+</section>
+<section id="q2b" class="level3">
+<h3 class="anchored" data-anchor-id="q2b">Q2b</h3>
+<ul>
+<li><p>Assign two variables, <code>role</code> and <code>salary</code>, to <code>'Manager'</code> and <code>85000</code>, respectively.</p></li>
+<li><p>Use nested <code>if</code>-<code>else</code> statements to print:</p>
+<ul>
+<li><code>'Eligible for bonus'</code> if the <code>role</code> is <code>'Manager'</code> and the <code>salary</code> is greater than <code>80,000</code>.</li>
+<li><code>'Eligible for raise'</code> if the <code>role</code> is <code>'Analyst'</code> and the <code>salary</code> is less than <code>60,000</code>.</li>
+<li><code>'No action needed'</code> for all other cases.</li>
+</ul></li>
+</ul>
+<p><br><br></p>
+</section>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<section id="q3a" class="level3">
+<h3 class="anchored" data-anchor-id="q3a">Q3a</h3>
+<ul>
+<li>Consider the following list of salaries:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>list_salaries <span class="op">=</span> [<span class="dv">45000</span>, <span class="dv">60000</span>, <span class="dv">75000</span>, <span class="dv">120000</span>, <span class="dv">30000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Calculate the average salary.</li>
+<li>Use a <code>for</code> loop to print whether each salary is <code>'Above Average'</code> or <code>'Below Average'</code>.</li>
+</ul>
+<p><br></p>
+</section>
+<section id="q3b" class="level3">
+<h3 class="anchored" data-anchor-id="q3b">Q3b</h3>
+<ul>
+<li>Start with a <code>salary</code> of <code>50000</code>.</li>
+<li>Use a <code>while</code> loop to increase the salary by <code>5000</code> each year until it exceeds <code>80000</code>.</li>
+<li>Print the salary after each increment.</li>
+</ul>
+<p><br></p>
+</section>
+<section id="q3c" class="level3">
+<h3 class="anchored" data-anchor-id="q3c">Q3c</h3>
+<ul>
+<li>Consider the following dictionary of employee salaries:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> {<span class="st">'Alice'</span>: <span class="dv">50000</span>, <span class="st">'Bob'</span>: <span class="dv">60000</span>, <span class="st">'Charlie'</span>: <span class="dv">70000</span>, <span class="st">'Dana'</span>: <span class="dv">45000</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use a <code>for</code> loop to print the names of employees who earn more than <code>55000</code>.</li>
+</ul>
+<p><br></p>
+</section>
+<section id="q3d" class="level3">
+<h3 class="anchored" data-anchor-id="q3d">Q3d</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_list <span class="op">=</span> [<span class="dv">42</span>, <span class="fl">3.14</span>, <span class="st">'Data Analytics'</span>, <span class="va">True</span>, <span class="va">None</span>, [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], {<span class="st">'key'</span>: <span class="st">'value'</span>}, (<span class="dv">4</span>, <span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Given the list above, print the data type of each element using the <code>type()</code> function in a <code>for</code> loop. In the loop:
+<ul>
+<li>Convert the integer <code>42</code> to a string.</li>
+<li>Convert the float <code>3.14</code> to a string, then back to a float.</li>
+<li>Convert the boolean <code>True</code> to an integer.</li>
+</ul></li>
+</ul>
+<p><br><br></p>
+</section>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<section id="q4a" class="level3">
+<h3 class="anchored" data-anchor-id="q4a">Q4a</h3>
+<p>Consider the variables <code>a</code> and <code>b</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use a <code>try</code>-<code>except</code> block to print the result of <code>a / b</code>.
+<ul>
+<li>If there is an error, print <code>'Cannot divide by zero!'</code>.</li>
+</ul></li>
+</ul>
+<p><br></p>
+</section>
+<section id="q4b" class="level3">
+<h3 class="anchored" data-anchor-id="q4b">Q4b</h3>
+<ul>
+<li>Consider the following dictionary of salaries with some missing (<code>None</code>) values:</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>salaries <span class="op">=</span> {<span class="st">'Alice'</span>: <span class="dv">50000</span>, <span class="st">'Bob'</span>: <span class="va">None</span>, <span class="st">'Charlie'</span>: <span class="dv">70000</span>, <span class="st">'Dana'</span>: <span class="va">None</span>, <span class="st">'Eve'</span>: <span class="dv">80000</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Use a <code>for</code> loop with a <code>try</code>-<code>except</code> block to calculate the total of non-missing salaries.</li>
+</ul>
+<p><br><br></p>
+</section>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<ul>
+<li>Import the <code>math</code> library and calculate the square root of <code>81</code> using the <code>sqrt()</code> function provided by the <code>math</code> library.</li>
+</ul>
+<p><br><br></p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-table" id="listing-listing">
-<div class="listing-actions-group">
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-<th>
-Subtitle
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-date-sort="1738813017000" data-listing-file-modified-sort="1738813017296" data-listing-date-modified-sort="1738813017000" data-listing-reading-time-sort="4" data-listing-title-sort="Homework 1" data-listing-filename-sort="danl-320-hw-01.qmd">
-<td>
-<a href="./danl-hw/danl-320-hw-01.html" class="title listing-title">Homework 1</a>
-</td>
-<td>
-<span class="listing-subtitle">Survey, Personal Website, and Python Basics</span>
-</td>
-<td>
-<span class="listing-date">February 5, 2025</span>
-</td>
-</tr>
-</tbody>
-
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -664,8 +866,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <div id="scroll-padding"></div>
-<script src="./assets/js/site.js"></script>
-<script src="./assets/js/posts.js"></script>
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/posts.js"></script>
 
 
 

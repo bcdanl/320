@@ -1,0 +1,198 @@
+---
+title: Homework 1
+subtitle: Survey, Personal Website, and Python Basics
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Direction
+
+- Please submit your **Jupyter Notebook** for **Part 3 in Homework 1** to Brightspace with the name below:
+
+  - `danl-320-hw1-LASTNAME-FIRSTNAME.ipynb`\
+  ( e.g., `danl-320-hw1-choe-byeonghak.ipynb` )
+
+- The due is February 17, 2024, 3:30 P.M.
+
+- Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
+
+<br><br><br>
+
+
+# Part 1. Quarto Website
+
+1. Decorate your website:
+  - Replace `YOUR NAME` with your name in `_quarto.yml` and `index.qmd`.
+  - Describe yourself in `index.qmd`.
+  - Add the picture file (e.g., `png`) of your profile photo to `img` directory. Then correct `img/profile.png` in `index.qmd` accordingly.
+  - Add the PDF file of your resumé to the website working directory in your laptop.
+  - Correct links for your resumé, LinkedIn, email, and optionally social media.
+  - Make sure that you do not have any broken links in your website.
+
+2. Add a menu of "Project" to the navigation bar using `danl_proj_nba.ipynb`.
+  - `danl_proj_nba.ipynb` file is available from Brightspace.
+
+3. Add a drop-down menu of "Python Data Analysis" to the navigation bar.
+  - Under the menu of "Python Data Analysis", add links for the following webpage:
+    - **Pandas Basics** using `pandas_basic.ipynb`
+    - **Seaborn Basics** using `seaborn_basic.ipynb`
+    - `pandas_basic.ipynb` and `seaborn_basic.ipynb` files are available from Brightspace.
+
+4. Add a "PySpark Basics" blog post to your blog using **Jupyter Notebook**.
+  - In your "PySpark Basics" blog post, briefly explain Apache Hadoop, Apache Spark, and PySpark `DataFrame` we discussed in [Lecture 5](https://bcdanl.github.io/320/danl-lec/danl-320-lec-05-2025-0205.html) and [Lecture 6](https://bcdanl.github.io/320/danl-lec/danl-320-lec-06-2025-0210.html)
+  - Choose a proper image file for a thumbnail for a blog post.
+  - An YAML header template for a blog post can be found below, including an image option:
+  
+```{markdown}
+---
+title: BLOG_TITLE
+author: YOUR_NAME
+date: 2025-02-14
+categories: [tag_1, tag_2, tag_3] # tags for a blog post (e.g., spark, python)
+image: image.png 
+
+execute: 
+  warning: false
+  message: false
+  
+toc: true
+---
+```
+
+
+
+3. Use the 3-step git commands (`git add .`, `git commit -m "MESSAGE"`, and `git push`) to update your online website.
+
+
+<br><br><br>
+
+
+# Part 2. Python Basics
+
+
+## Question 0
+Provide your GitHub username.
+
+<br><br>
+
+
+## Question 1
+
+### Q1a
+- Create a list of integers from 1 to 10.
+- Append the number `11` to the list and remove the number `5`.
+
+<br>
+
+### Q1b
+- Consider the following dictionary of three employees and their salaries:
+
+```{.python}
+dict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}
+```
+
+- Add a new employee `'Dana'` with a salary of `65000`.
+- Update `'Alice'`'s salary to `55000`.
+- Print all employee names and their salaries.
+
+<br><br>
+
+## Question 2
+
+### Q2a
+- Assign a variable `salary` to `75000`.
+- Use an `if`-`elif`-`else` statement to print:
+  - `'Low'` if `salary` is less than `50,000`
+  - `'Medium'` if `salary` is between `50,000` and `99,999`
+  - `'High'` if `salary` is `100,000` or more
+
+<br>
+
+### Q2b
+- Assign two variables, `role` and `salary`, to `'Manager'` and `85000`, respectively.
+
+- Use nested `if`-`else` statements to print:
+  - `'Eligible for bonus'` if the `role` is `'Manager'` and the `salary` is greater than `80,000`.
+  - `'Eligible for raise'` if the `role` is `'Analyst'` and the `salary` is less than `60,000`.
+  - `'No action needed'` for all other cases.
+
+<br><br>
+
+## Question 3
+
+### Q3a
+- Consider the following list of salaries:
+
+```{.python}
+list_salaries = [45000, 60000, 75000, 120000, 30000]
+```
+
+- Calculate the average salary.
+- Use a `for` loop to print whether each salary is `'Above Average'` or `'Below Average'`.
+
+<br>
+
+### Q3b
+- Start with a `salary` of `50000`.
+- Use a `while` loop to increase the salary by `5000` each year until it exceeds `80000`.
+- Print the salary after each increment.
+
+<br>
+
+### Q3c
+- Consider the following dictionary of employee salaries:
+
+```{.python}
+salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}
+```
+
+- Use a `for` loop to print the names of employees who earn more than `55000`.
+
+
+<br>
+
+### Q3d
+```{.python}
+data_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}, (4, 5)]
+```
+
+- Given the list above, print the data type of each element using the `type()` function in a `for` loop. In the loop:
+  - Convert the integer `42` to a string.
+  - Convert the float `3.14` to a string, then back to a float.
+  - Convert the boolean `True` to an integer.
+
+<br><br>
+
+## Question 4
+
+### Q4a
+Consider the variables `a` and `b`:
+
+```{.python}
+a = 10
+b = 0
+```
+
+- Use a `try`-`except` block to print the result of `a / b`.
+  - If there is an error, print `'Cannot divide by zero!'`.
+
+<br>
+
+### Q4b
+- Consider the following dictionary of salaries with some missing (`None`) values:
+
+```{.python}
+salaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 80000}
+```
+
+- Use a `for` loop with a `try`-`except` block to calculate the total of non-missing salaries.
+
+<br><br>
+
+## Question 5
+
+- Import the `math` library and calculate the square root of `81` using the `sqrt()` function provided by the `math` library.
+
+<br><br>

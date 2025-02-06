@@ -29,7 +29,9 @@
   },
   {
     "listing": "/listing-danl-320-hw.html",
-    "items": []
+    "items": [
+      "/danl-hw/danl-320-hw-01.html"
+    ]
   },
   {
     "listing": "/listing-danl-320-lec.html",
@@ -52,7 +54,8 @@
       "/danl-cw/danl-320-cw-04.html",
       "/danl-cw/danl-320-cw-03.html",
       "/danl-cw/danl-320-cw-02.html",
-      "/danl-cw/danl-320-cw-01.html"
+      "/danl-cw/danl-320-cw-01.html",
+      "/danl-hw/danl-320-hw-01.html"
     ]
   }
 ]
