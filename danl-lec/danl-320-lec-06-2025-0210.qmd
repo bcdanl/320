@@ -1,0 +1,797 @@
+---
+title: Lecture 6
+subtitle: PySpark Basics
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: true
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-02-10
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+
+# **PySpark on Google Colab** {background-color="#1c4982"}
+
+
+## PySpark on Google Colab
+### PySpark = Spark + Python
+
+- `pyspark` is a Python API to Apache Spark.
+  - API: application programming interface, the set of functions, classes, and variables provided for you to interact with.
+  - Spark itself is coded in a different programming language, called Scala.
+  
+- We can combine Python, pandas, and PySpark in one program.
+  - [Koalas (now called `pyspark.pandas`)](https://koalas.readthedocs.io/) provides a `pandas`-like porcelain on top of PySpark.
+
+
+## Google Drive on Google Colab
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+from google.colab import drive, files
+drive.mount('/content/drive')
+files.upload()
+```
+
+- `drive.mount('/content/drive')`
+  - To mount your Google Drive on Google colab:
+- `files.upload()`
+  - To initiate uploading a file on Google Drive:
+
+:::
+::: {.column width="50%"}
+- To find a pathname of a CSV file in Google Drive:
+  - Click :file_folder: from the sidebar menu
+  - `drive` :arrow_right: `MyDrive` ...
+  - Hover a mouse cursor on the CSV file
+  - Click the vertical dots
+  - Click **"Copy path"**
+
+:::
+::::
+
+
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+
+- What makes a Spark DataFrame different from other DataFrame? 
+  - Spark DataFrames are designed for big data and distributed computing.
+  
+- **Spark DataFrame:**
+  - Data is distributed across a cluster of machines.
+  - Operations are executed in parallel on multiple nodes.
+  - Can process datasets that exceed the memory of a single machine.
+
+- **Other DataFrames (e.g., Pandas):**
+  - Operate on a single machine.
+  - Entire dataset must fit into memory.
+  - Limited by local system resources.
+  
+  
+  
+  
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Lazy Evaluation and Optimization
+
+- **Spark DataFrame:**
+  - Uses **lazy evaluation**: transformations are not computed until an action is called.
+  - Optimize query execution.
+
+- **Other DataFrames:**
+  - Operations are evaluated **eagerly** (immediately).
+  - No built-in query optimization across multiple operations.
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Scalability
+
+- **Spark DataFrame:**
+  - Designed to scale to petabytes of data.
+  - Utilizes distributed storage and computing resources.
+  - Ideal for large-scale data processing and analytics.
+
+- **Other DataFrames:**
+  - Best suited for small to medium datasets.
+  - Limited by the hardware of a single computer.
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Fault Tolerance
+
+- **Spark DataFrame:**
+  - Built on **Resilient Distributed Datasets (RDDs)**.
+  - Automatically recovers lost data if a node fails.
+  - Ensures high reliability in distributed environments.
+
+- **Other DataFrames:**
+  - Typically lack built-in fault tolerance.
+  - Failures on a single machine can result in data loss.
+
+
+
+
+# **PySpark Basics** {background-color="#1c4982"}
+
+## PySpark Basics
+### Learning Objectives
+
+-	Loading DataFrame with Spark’s read API (analogous to `read_csv()`)
+-	Getting a Summary with `printSchema()` and `describe()`
+-	Selecting and Reordering Variables with `select()`
+-	Counting Values with `groupBy().count()`, `countDistinct()`, and `count()`
+-	Sorting with `orderBy()`
+-	Adding a New Variable with `withColumn()`
+- Removing a Variable with `drop()`
+- Renaming a Variable with `withColumnRenamed()`
+-	Aggregation and Math Operations with `selectExpr()`
+
+
+## PySpark Basics
+### Learning Objectives
+
+-	Converting Data Types with `cast()`
+-	Filtering Observations with `filter()`
+-	Dealing with Missing Values (`na.drop()`, `na.fill()`, etc.)
+-	Dealing with Duplicates (`dropDuplicates()`)
+-	Reshaping DataFrames with PySpark’s melt-like or `pivot()` approach
+-	Joining DataFrames with `join()`
+-	Concatenating DataFrames with `union()` or column-wise `join()`
+-	Using Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions
+-	Grouping DataFrames with `groupBy().agg()` and `groupBy().applyInPandas()` or UDFs (for advanced operations)
+
+
+
+
+# **Loading Data** {background-color="#1c4982"}
+
+
+## Spark `DataFrame`
+
+-	In PySpark, a `DataFrame` is a **distributed collection** of data organized into named columns.
+
+- Unlike Pandas `DataFrame`, a Spark `DataFrame` is evaluated lazily: many transformations are “planned” but not executed until an action (e.g., `count()`, `collect()`) triggers a computation on the cluster.
+
+- No dedicated row index is maintained like in Pandas; rows are conceptually identified by their values, not by a numeric position.
+
+
+## The `SparkSession` Entry Point
+
+```{.python}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+```
+
+- The `SparkSession` entry point provides the functionality for data transformation with **data frames** and **SQL**.
+
+- `from pyspark.sql import SparkSession`
+  - Imports the `SparkSession` class from PySpark's SQL module.
+- `SparkSession.builder`
+  - Begins the configuration of a new `SparkSession`.
+- `.master("local[*]")`
+  - Configures Spark to run locally using all available CPU cores.
+- `.getOrCreate()`
+  - Retrieves an existing `SparkSession` if one exists, or creates a new one otherwise.
+
+
+
+## Reading a CSV file into the Spark Framework
+
+```{.python}
+path = '/content/drive/MyDrive/lecture-data/cces.csv'
+df = spark.read.csv(path, 
+                    inferSchema=True,
+                    header=True)
+df.show()  # Displays the first 20 rows
+```
+
+-	`spark.read.csv(path, ...)`:
+    - Read a CSV file from the location specified by the path variable.
+
+-	`inferSchema=True`:
+    - When set to `True`, Spark will automatically detect (or "infer") the data types of the columns in the CSV file.     
+    - Without this, Spark would treat all columns as strings by default.
+  
+-	`header=True`:
+    - The first row of the CSV file contains the column headers, and will be used as names of the columns.
+
+## Reading a CSV file into the Spark Framework
+
+```{.python}
+path = 'https://bcdanl.github.io/data/nba.csv'
+nba = spark.read.csv(path, 
+                    inferSchema=True,
+                    header=True)
+nba.show()
+```
+- `Spark’s spark.read.csv()` function relies on the Hadoop FileSystem API to access files. 
+- By default, Hadoop does not support reading files directly from HTTPS URLs. 
+  - It expects a local file system path, HDFS path, or another supported distributed file system.
+
+
+## Reading a Web CSV file into the Spark Framework
+
+:::{.nonincremental}
+- What should we do then?
+  - We can convert the Pandas `DataFrame` to a Spark `DataFrame`
+  - `nba = spark.createDataFrame(df_pd)`
+  
+:::
+
+```{.python}
+import pandas as pd
+path = 'https://bcdanl.github.io/data/nba.csv'
+df_pd = pd.read_csv(url)
+
+nba = spark.createDataFrame(df_pd)
+```
+
+
+# **Getting a Summary of Data** {background-color="#1c4982"}
+
+## Spark DataFrame Overview Methods
+-	`df.printSchema()`: prints the schema (column names and data types).
+-	`df.columns`: returns the list of columns.
+-	`df.dtypes`: returns a list of tuples (columnName, dataType).
+-	`df.count()`: returns the total number of rows.
+-	`df.describe()`: returns basic statistics of numerical/string columns (mean, count, std, min, max).
+
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+- By default, displays the first 20 rows.
+
+- `df.show(n, truncate, vertical)` accepts three optional parameters:
+  1.  `n` (int): Number of rows to display.
+  - Example: `df.show(5)`
+
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+2.  `truncate` (bool or int):
+  - If `True` (default), long strings are truncated to 20 characters.
+  - If `False`, displays full column contents.
+  - If an integer is provided, it specifies the maximum number of characters to display.
+  - Example: `df.show(truncate=False)`, `df.show(truncate=30)`
+
+
+## Displaying the First Rows with `df.show()`
+### Three Optional Parameters
+3. `vertical` (bool):
+  - If `True`, displays each row vertically (useful for wide tables).
+  - Example: `df.show(vertical=True)`
+
+
+
+
+## Displaying Variable Information with `df.printSchema()`, `df.dtypes`, and `df.columns`
+```{.python}
+df.printSchema()
+df.dtypes
+df.columns
+```
+
+- `df.printSchema()` prints the `DataFrame` schema in a tree format.
+    - **nullable = true** means that a column can contain **null** values. 
+    - We may need to handle missing data appropriately.
+
+
+- `df.dtypes` returns a list of tuples representing each column's name and data type.
+
+
+- `df.columns` returns a list of colunm names.
+
+
+## Generating Descriptive Statistics with `df.describe().show()` and `df.count()`
+
+```{.python}
+df.describe().show()
+df.count()
+```
+
+-	`df.describe()` computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.
+-	`.show()` prints these statistics in a readable table format.
+
+- `df.count()` returns the number of rows in `df`.
+
+
+## Getting a Summary of a `DataFrame` with `.describe()`
+
+```{.python}
+nba.describe()
+nba.describe(include='all')
+```
+
+
+- `.describe()` method generates **descriptive statistics** that summarize the central tendency, dispersion, and distribution of each variable. 
+  - It can also process `string`-type variables if specified explicitly (`include='all'`).
+
+
+
+
+# **Selecting Columns** {background-color="#1c4982"}
+
+## Selecting a Column by its Name
+
+```{.python}
+# Single column -> returns a DataFrame with one column
+nba.select("Name").show(5)
+
+# Multiple columns -> pass a list-like of column names
+nba.select("Name", "Team", "Salary").show(5)
+```
+
+-	In PySpark, we use `select()` to choose variables. 
+  - It returns a new `DataFrame` projection of the specified variables.
+
+
+
+
+# **Counting Methods** {background-color="#1c4982"}
+
+
+## Counting Observations / Distinct Values
+
+```{.python}
+# Counting how many total rows
+nba_count = nba.count()
+print("Number of rows:", nba_count)
+
+# Count distinct values in one column
+from pyspark.sql.functions import countDistinct
+num_teams = nba.select(countDistinct("Team")).collect()[0][0]
+print("Number of distinct teams:", num_teams)
+
+# GroupBy a column and count occurrences
+nba.groupBy("Team").count().show(5)
+```
+
+
+- Unlike Pandas, there is no direct `.value_counts()` or `.nunique()` in PySpark. 
+  - However, we can replicate these operations using Spark’s aggregations (`groupBy().count()`, `countDistinct`, etc.).
+
+
+
+## PySpark Basics
+
+Let's do Questions 1-3 in [**Classwork 5**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-05.html)!
+
+
+
+# **Sorting Methods** {background-color="#1c4982"}
+
+## Sorting by One or More Variables
+
+```{.python}
+# Sort by a single column ascending
+nba.orderBy("Name").show(5)
+
+# Sort by descending
+from pyspark.sql.functions import desc
+nba.orderBy(desc("Salary")).show(5)
+
+# Sort by multiple columns
+nba.orderBy(["Team", desc("Salary")]).show(5)
+```
+
+-	`orderBy()` can accept column names and ascending/descending instructions.
+
+
+
+## Equivalent of Pandas `nsmallest` or `nlargest`
+
+```{.python}
+# nsmallest example:
+nba.orderBy("Salary").limit(5).show()
+
+# nlargest example:
+nba.orderBy(desc("Salary")).limit(5).show()
+```
+
+-	Spark does not have `nsmallest()` or `nlargest()`, but we can use `limit()` after sorting.
+
+
+
+
+# **Indexing and Row Access** {background-color="#1c4982"}
+
+## Row-Based Access in PySpark
+
+:::{.nonincremental}
+-	Unlike Pandas, PySpark `DataFrames` do not use a row-based index, so there is no direct `.loc[]` or `.iloc[]`.
+-	We typically filter rows by conditions (using `.filter()` or `.where()`) or use transformations (`limit()`, `take()`, `collect()`) to access row data.
+
+:::
+```{.python}
+# Example: filter by condition
+nba.filter("Team == 'Lakers'").show()
+
+# or using a column expression
+from pyspark.sql.functions import col
+nba.filter(col("Team") == "Lakers").show()
+```
+
+-	To get the first `n` rows, use `df.limit(n)` or `df.take(n)`, which returns a list of **Row** objects.
+  - `df.collect()`: Returns all the records as a list of **Row**.
+  
+
+
+# **Adding, Removing, Renaming, and Relocating Variables** {background-color="#1c4982"}
+
+## Adding, Removing, Renaming, and Relocating Variables
+#### Adding Columns with `withColumn()`
+
+```{.python}
+# Add a column "Salary_k"
+nba = nba.withColumn("Salary_k", col("Salary") / 1000)
+```
+
+#### Removing Columns with `drop()`
+
+```{.python}
+nba = nba.drop("Salary_k")  # remove a single column
+nba = nba.drop("Salary_2x", "Salary_3x")  # remove multiple columns
+```
+
+
+#### Renaming Columns with `withColumnRenamed()`
+
+```{.python}
+nba = nba.withColumnRenamed("Birthday", "DateOfBirth")
+```
+
+
+#### Rearranging Columns
+
+```{.python}
+nba = nba.select("Name", "Team", "Position", "Salary", "DateOfBirth")
+```
+
+
+
+
+# **Mathematical & Vectorized Operations**  {background-color="#1c4982"}
+
+## Aggregations & Math Methods
+
+```{.python}
+# Summaries for numeric columns
+nba.selectExpr(
+    "mean(Salary) as mean_salary",
+    "min(Salary) as min_salary",
+    "max(Salary) as max_salary",
+    "stddev_pop(Salary) as std_salary"
+).show()
+```
+-	Spark has many SQL functions that can be used with `selectExpr()`.
+
+
+## Creating or Transforming Columns
+
+```{.python}
+from pyspark.sql import functions as F
+
+# Pre-compute the average salary (pulls it back as a Python float)
+salary_mean = nba.select(F.avg("Salary").alias("mean_salary")).collect()[0]["mean_salary"]
+
+nba2 = (
+    nba
+    .withColumn("Salary_2x", F.col("Salary") * 2)    # Add Salary_2x
+    .withColumn(
+        "Name_w_Position",           # Concatenate Name and Position
+        F.concat(F.col("Name"), F.lit(" ("), F.col("Position"), F.lit(")"))
+    )
+    .withColumn(
+        "Salary_minus_Mean",        # Subtract mean salary
+        F.col("Salary") - F.lit(salary_mean)
+    )
+)
+```
+
+-	All transformations in Spark are “lazy” until an action (`show()`, `collect()`, `count()`) is called.
+  - `.alias()` method is a way to give a temporary (or alternate) name to the column.
+
+
+
+# **Converting Data Types with the `cast()` Method** {background-color="#1c4982"}
+
+
+## Converting Data Types with the `cast()` Method
+:::{.nonincremental}
+-	Spark columns can be cast to other data types using `cast()`:
+
+:::
+
+```{.python}
+from pyspark.sql.functions import col
+
+# Convert Salary to integer
+nba = nba.withColumn("Salary_int", col("Salary").cast("int"))
+
+# Convert to date or timestamp
+nba = nba.withColumn("DateOfBirth_ts", col("DateOfBirth").cast("timestamp"))
+```
+
+
+## Converting Data Types 
+
+:::{.nonincremental}
+- Below is a concise list of PySpark data types along with their common short names:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- Integers
+  -	ByteType — `byte` (8-bit)
+  -	ShortType — `short` (16-bit)
+  -	IntegerType — `int` (32-bit)
+  -	LongType — `long` (64-bit)
+
+- Floating points
+  -	FloatType — `float` (32-bit floating point)
+  -	DoubleType — `double` (64-bit floating point)
+  -	DecimalType — `decimal` (Arbitrary precision numeric type)
+
+:::
+
+::: {.column width="50%"}
+
+
+-	StringType — `string` (Text data)
+-	BooleanType — `boolean` (Boolean values (True/False))
+-	DateType — `date` (Represents a date (year, month, day))
+-	TimestampType — `timestamp` (Represents a timestamp (date and time))
+
+
+:::
+::::
+
+:::
+
+
+## PySpark Basics
+
+Let's do Question 1 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
+
+
+
+# **Filtering by a Condition** {background-color="#1c4982"}
+
+
+
+## Filtering Rows by a Condition
+
+
+```{.python}
+import pandas as pd
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+df_pd = pd.read_csv("https://bcdanl.github.io/data/employment.csv")
+df_pd = df_pd.where(pd.notnull(df_pd), None)  # Convert NaN to None
+emp = spark.createDataFrame(df_pd)
+
+emp.filter(col("Salary") > 100000).show()
+```
+
+
+## Filtering by a Condition
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+emp.filter(
+    ( col("Team") == "Finance" ) & 
+    ( col("Salary") >= 100000 )
+).show()
+
+```
+
+:::
+::: {.column width="50%"}
+```{.python}
+emp.filter(
+    (col("Team") == "Finance") | 
+    (col("Team") == "Legal")   | 
+    (col("Team") == "Sales")
+).show()
+
+```
+:::
+::::
+
+- We could combine multiple separate Boolean conditions with logical operators.
+
+
+
+## Filtering with the `isin()` method
+
+```{.python}
+# Checking membership with "isin"
+emp.filter(col("Team").isin("Finance", "Legal", "Sales")).show()
+```
+
+
+- A better solution is the `isin()` method.
+
+
+## Filtering with the `between()` method
+
+
+```{.python}
+emp_between = emp.filter(col("Salary").between(90000, 100000))
+emp_between.show()
+```
+
+- It returns a Boolean Series where `True` denotes that an observation's value falls between the specified interval.
+
+
+## PySpark Basics
+
+Let's do Questions 2-6 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
+
+
+
+# **Dealing with Missing Values** {background-color="#1c4982"}
+
+
+## Checking for Missing Values: The `isNull()` and `isNotNull()` methods
+:::{.nonincremental}
+- In PySpark, missing values often appear as `null`.
+
+```{.python}
+# Count how many null values in a given column
+emp.filter(col("Team").isNull()).count()
+
+# Similarly, you can filter non-null
+emp.filter(col("Team").isNotNull()).count()
+```
+
+
+:::
+
+
+
+## Dropping Rows with Null Values: The `.na.drop()` method
+
+```{.python}
+# Drop any row that has a null value in any column
+emp_drop_any = emp.na.drop()
+
+```
+
+- The `.na.drop()` method removes observations that hold any `NULL` values.
+
+
+
+## Dropping Rows with Null Values: The `.na.drop()` method with `how`
+
+```{.python}
+# Drop rows that have all columns null
+emp_drop_all = emp.na.drop(how="all")
+```
+- We can pass the `how` parameter an argument of `"all"` to remove observations in which all values are missing.
+
+- Note that the `how` parameter’s default argument is `"any"`. 
+
+
+
+## Dropping Rows with Null Values: The `.na.drop()` method with `subset`
+
+```{.python}
+# Drop rows with nulls in specific columns:
+emp_drop_subset = emp.na.drop(subset=["Gender", "Team"])
+```
+
+- We can use the `subset` parameter to target observations with a missing value in a specific variable.
+  - The above example removes observations that have a missing value in the `Gender` and `Team` variables.
+
+
+
+
+
+
+## Filling Null Values: The `.na.fill()` method 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{.python}
+# Fill a specific column’s nulls with 0
+emp_fill = emp.na.fill(value = 0, subset = ["Salary"])
+```
+- We can specify `value` and `subset` parameters to fill a specific column’s `NULL`s with a specific value
+
+:::
+
+::: {.column width="50%"}
+```{.python}
+# Fill multiple columns with a dictionary
+emp_fill_multi = emp.na.fill({"Salary": 0, "Team": "Unknown"})
+```
+
+- We can fill multiple columns' `NULL`s with a dictionary.
+
+:::
+::::
+
+
+
+
+
+
+# **Dealing with Duplicates** {background-color="#1c4982"}
+
+## Dealing with Duplicates with the `dropDuplicates()` method
+
+::: {.nonincremental}
+- Missing values are a common occurrence in messy data sets, and so are duplicate values.
+
+:::
+
+```{.python}
+# Drop all rows that are exact duplicates across all columns
+emp_no_dups = emp.dropDuplicates()
+
+# Drop duplicates based on subset of columns
+emp_no_dups_subset = emp.dropDuplicates(["Team"])
+```
+
+- By default, `dropDuplicates()` keeps the first occurrence of each distinct combination.
+
+
+
+## PySpark Basics
+
+Let's do Questions 7-8 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
+
+
+

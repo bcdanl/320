@@ -1,0 +1,139 @@
+---
+title: Classwork 5
+subtitle: PySpark Basics - Loading, Summarizing, Selecting, Counting, and Sorting Data
+date: 2025-02-10
+execute: 
+  eval: false
+from: markdown+emoji
+---
+
+```{r}
+#| echo: false
+#| eval: true
+
+reticulate::use_condaenv("/Users/bchoe/anaconda3", required = TRUE)
+```
+
+# Direction
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/nfl.png" width="300px">
+</p>
+
+
+The `nfl.csv` file contains a list of players in the National Football League with similar `Name`, `Team`, `Position`, `Birthday`, and `Salary` variables in the `nba.csv` file. 
+
+
+
+```{python}
+#| echo: true
+import pandas as pd
+from pyspark.sql import SparkSession
+df = pd.read_csv("https://bcdanl.github.io/data/nfl.csv")
+nfl = spark.createDataFrame(df)
+```
+
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| message: false
+DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/nfl.csv'), 
+          extensions = c('Buttons','FixedColumns'),
+          options = list(
+            dom = 'Bfrtip',
+            buttons = c('csv'),
+            scrollX = TRUE,
+            fixedColumns = list(leftColumns = 2)
+            ), 
+          elementId = "exampleTable"
+          )
+```
+
+<br><br>
+
+# Question 1
+- How can we read the *nfl.csv* file, and assign it to a PySpark `DataFrame` object, `nfl`? 
+- What is an effective way to convert the values in its `Birthday` variable to `datetimes`?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+# Question 2
+- How many observations are in `nfl`?
+- What are the mean, standard deviation, minimum, and maximum of `Salary` in `nfl`?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+# Question 3
+- How can we count the number of players per team in `nfl`?
+- How many unique teams are in `nfl`?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+# Question 4
+- Who are the five highest-paid players?
+- Who is the oldest player?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+# Question 5
+How can we sort the `DataFrame` first by `Team` in alphabetical order and then by `Salary` in descending order?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+# Question 6
+Who is the oldest player on the `Kansas City Chiefs` roster, and what is his birthday?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 5 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 5.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 5 materials or need clarification on any points, don't hesitate to ask here. 
+
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
+
+Let's collaborate and learn from each other!
+
+

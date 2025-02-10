@@ -1,0 +1,166 @@
+---
+title: Classwork 6
+subtitle: PySpark Basics - Convering Data Types; Filtering Data; Dealing with Missing Values/Duplicates
+date: 2025-02-17
+execute: 
+  eval: false
+  echo: false
+  warning: false
+  message: false
+  
+from: markdown+emoji
+---
+
+```{r}
+#| echo: false
+
+reticulate::use_condaenv("/Users/bchoe/anaconda3", required = TRUE)
+```
+
+
+
+## Direction
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/netflix.png" width="400px">
+</p>
+
+
+The `netflix.csv` file (with its pathname `https://bcdanl.github.io/data/netflix.csv`) contains a list of 6,000 titles that were available to watch in November 2019 on the video streaming service Netflix. It includes four variables: the video’s `title`, `director`, the date Netflix added it (`date_added`), and its `type` (category). 
+
+
+```{python}
+#| echo: true
+import pandas as pd
+from pyspark.sql import SparkSession
+df = pd.read_csv("https://bcdanl.github.io/data/netflix.csv")
+df = df.where(pd.notnull(df), None)
+netflix = spark.createDataFrame(df)
+```
+
+
+
+```{r}
+#| eval: true
+#| echo: false
+DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/netflix.csv')
+          )
+```
+
+<br><br>
+
+
+
+## Question 1
+Optimize the DataFrame for limited memory use and maximum utility by using the `cast()` method.
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+## Question 2
+Find all observations with a director of "`Martin Scorsese`".
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+## Question 3
+Find all observations with a title of "`Limitless`" and a type of "`Movie`".
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+## Question 4
+Find all observations with either a `date_added` of "`2018-06-15`" or a director of "`Bong Joon Ho`".
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+## Question 5
+Find all observations with a director of "`Ethan Coen`, "`Joel Coen`", and "`Quentin Tarantino`".
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+
+## Question 6
+Find all observations with a `date_added` value between January 1, 2019 and February 1, 2019.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+
+
+## Question 7
+Drop all observations with a `NULL` value in the `director` variable.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+
+
+## Question 8
+Identify the days when Netflix added only one movie to its catalog.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 6 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 6.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 6 materials or need clarification on any points, don't hesitate to ask here. 
+
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
+
+Let's collaborate and learn from each other!
+
+

@@ -1,5 +1,7 @@
 # system("quarto render")
 quarto::quarto_render("listing-danl-320-lec.qmd")
+quarto::quarto_render("listing-danl-320-cw.qmd")
+quarto::quarto_render("listing-danl-320-hw.qmd")
 quarto::quarto_render("index.qmd")
 
 library(stringr)
@@ -12,7 +14,8 @@ system(paste("rm", shQuote("index.html")))
 # Next lecture number & dates
 lec_dates <- c('0122',
                '0127', '0129',
-               '0203', '0205')
+               '0203', '0205',
+               '0210')
 lec_n <- length(lec_dates)
 
 lec_nos <- 1:lec_n
