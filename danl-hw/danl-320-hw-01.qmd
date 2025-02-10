@@ -51,8 +51,8 @@ title: BLOG_TITLE
 author: YOUR_NAME
 date: 2025-02-14
 categories: [tag_1, tag_2, tag_3] # tags for a blog post (e.g., spark, python)
-image: image.png 
-  
+image: "image.png"
+
 toc: true
 ---
 ```
