@@ -2195,7 +2195,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#displaying-the-first-rows-with-df.show",
     "title": "Lecture 6",
     "section": "Displaying the First Rows with df.show()",
-    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\ndf.show(5)\ndf.show(truncate = False)\ndf.show(truncate = 30)\ndf.show(vertical = True)\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
+    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\ndf.show(5)\ndf.show(truncate = False)\ndf.show(truncate = 3)\ndf.show(vertical = True)\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#displaying-the-first-rows-with-df.show-1",
@@ -2286,7 +2286,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#reading-a-web-csv-file-into-the-spark-framework",
     "title": "Lecture 6",
     "section": "Reading a Web CSV file into the Spark Framework",
-    "text": "Reading a Web CSV file into the Spark Framework\n\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\ndf = spark.createDataFrame(df_pd)\n\n\n\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\ndf_pd = pd.read_csv('https://bcdanl.github.io/data/df.csv')\ndf = spark.createDataFrame(df_pd)"
+    "text": "Reading a Web CSV file into the Spark Framework\n\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\ndf = spark.createDataFrame(df_pd)\n\n\n\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\ndf_pd = pd.read_csv('https://bcdanl.github.io/data/nba.csv')\ndf = spark.createDataFrame(df_pd)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#spark-dataframe-overview-methods",
@@ -2314,7 +2314,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#counting-observations-distinct-values",
     "title": "Lecture 6",
     "section": "Counting Observations / Distinct Values",
-    "text": "Counting Observations / Distinct Values\n# Counting how many total rows\nnba_count = df.count()\n\n# Count distinct values in one column\nfrom pyspark.sql.functions import countDistinct\nnum_teams = df.select(countDistinct(\"Team\")).collect()[0][0]\n\n# GroupBy a column and count occurrences\ndf.groupBy(\"Team\").count().show(5)\n\nUnlike Pandas, there is no direct .value_counts() or .nunique() in PySpark.\n\nHowever, we can replicate these operations using Spark’s aggregations (groupBy().count(), countDistinct, etc.)."
+    "text": "Counting Observations / Distinct Values\n# Counting how many total rows\nnba_count = df.count()\n\n# Count distinct values in one column\nfrom pyspark.sql.functions import countDistinct\nnum_teams = df.select(countDistinct(\"Team\")).collect()[0][0]\n\n# GroupBy a column and count occurrences\ndf.groupBy(\"Team\").count().show(5)\n\ndf.count() returns the number of rows in df.\nUnlike Pandas, there is no direct .value_counts() or .nunique() in PySpark.\n\nHowever, we can replicate these operations using Spark’s aggregations (groupBy().count(), countDistinct, etc.)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pandas-basics",
@@ -2342,7 +2342,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#row-based-access-in-pyspark",
     "title": "Lecture 6",
     "section": "Row-Based Access in PySpark",
-    "text": "Row-Based Access in PySpark\n\n\nUnlike Pandas, PySpark DataFrames do not use a row-based index, so there is no direct .loc[] or .iloc[].\nWe typically filter rows by conditions (using .filter() or .where()) or use transformations (limit(), take(), collect()) to access row data.\n\n\n# Example: filter by condition\ndf.filter(\"Team == 'Lakers'\").show()\n\n# or using a column expression\nfrom pyspark.sql.functions import col\ndf.filter(col(\"Team\") == \"Lakers\").show()\n\nTo get the first n rows, use df.limit(n) or df.take(n), which returns a list of Row objects.\ndf.collect(): Returns all the records as a list of Row."
+    "text": "Row-Based Access in PySpark\n\n\nUnlike Pandas, PySpark DataFrames do not use a row-based index, so there is no direct .loc[] or .iloc[].\nWe typically filter rows by conditions (using .filter()) or use transformations (limit(), take(), collect()) to access row data.\n\n\n# Example: filter by condition\ndf.filter(\"Team == 'New York Knicks'\").show()\ndf.limit(5).show()\ndf.take(5)\ndf.collect()\n\nTo get the first n rows, use df.limit(n) or df.take(n), which returns a list of Row objects.\ndf.collect(): Returns all the records as a list of Row."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#aggregations-math-methods",
@@ -2356,7 +2356,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#creating-or-transforming-columns",
     "title": "Lecture 6",
     "section": "Creating or Transforming Columns",
-    "text": "Creating or Transforming Columns\nfrom pyspark.sql import functions as F\n\n# Pre-compute the average salary (pulls it back as a Python float)\nsalary_mean = df.select(F.avg(\"Salary\").alias(\"mean_salary\")).collect()[0][\"mean_salary\"]\n\ndf2 = (\n    nba\n    .withColumn(\"Salary_2x\", F.col(\"Salary\") * 2)    # Add Salary_2x\n    .withColumn(\n        \"Name_w_Position\",           # Concatenate Name and Position\n        F.concat(F.col(\"Name\"), F.lit(\" (\"), F.col(\"Position\"), F.lit(\")\"))\n    )\n    .withColumn(\n        \"Salary_minus_Mean\",        # Subtract mean salary\n        F.col(\"Salary\") - F.lit(salary_mean)\n    )\n)\n\nAll transformations in Spark are “lazy” until an action (show(), collect(), count()) is called.\n.alias() method is a way to give a temporary (or alternate) name to the column."
+    "text": "Creating or Transforming Columns\nfrom pyspark.sql import functions as F\n# Pre-compute the average salary (pulls it back as a Python float)\nsalary_mean = df.select(F.avg(\"Salary\").alias(\"mean_salary\")).collect()[0][\"mean_salary\"]\n\ndf2 = (\n    df\n    .withColumn(\"Salary_2x\", F.col(\"Salary\") * 2)    # Add Salary_2x\n    .withColumn(\n        \"Name_w_Position\",           # Concatenate Name and Position\n        F.concat(F.col(\"Name\"), F.lit(\" (\"), F.col(\"Position\"), F.lit(\")\")))\n    .withColumn(\n        \"Salary_minus_Mean\",        # Subtract mean salary\n        F.col(\"Salary\") - F.lit(salary_mean))\n)\n\nAll transformations in Spark are “lazy” until an action (show(), collect(), count()) is called.\n.alias() method is a way to give a temporary (or alternate) name to the column."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#vectorized-operations",
@@ -2965,21 +2965,21 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#adding-removing-renaming-and-relocating-variables-1",
     "title": "Lecture 6",
     "section": "Adding, Removing, Renaming, and Relocating Variables",
-    "text": "Adding, Removing, Renaming, and Relocating Variables\nAdding Columns with withColumn()\n# Add a column \"Salary_k\"\ndf = df.withColumn(\"Salary_k\", col(\"Salary\") / 1000)\nRemoving Columns with drop()\ndf = df.drop(\"Salary_k\")  # remove a single column\ndf = df.drop(\"Salary_2x\", \"Salary_3x\")  # remove multiple columns\nRenaming Columns with withColumnRenamed()\ndf = df.withColumnRenamed(\"Birthday\", \"DateOfBirth\")\nRearranging Columns\ndf = df.select(\"Name\", \"Team\", \"Position\", \"Salary\", \"DateOfBirth\")"
+    "text": "Adding, Removing, Renaming, and Relocating Variables\nAdding Columns with withColumn()\n# Add a column \"Salary_k\" using a column expression col()\ndf = df.withColumn(\"Salary_k\", col(\"Salary\") / 1000) \nRemoving Columns with drop()\ndf = df.drop(\"Salary_k\")  # remove a single column\ndf = df.drop(\"Salary_2x\", \"Salary_3x\")  # remove multiple columns\nRenaming Columns with withColumnRenamed()\ndf = df.withColumnRenamed(\"Birthday\", \"DateOfBirth\")\nRearranging Columns\ndf = df.select(\"Name\", \"Team\", \"Position\", \"Salary\", \"DateOfBirth\")"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-1",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-1",
     "title": "Lecture 6",
     "section": "Converting Data Types with the cast() Method",
-    "text": "Converting Data Types with the cast() Method\n\n\nSpark columns can be cast to other data types using cast():\n\n\nfrom pyspark.sql.functions import col\n\n# Convert Salary to integer\ndf = df.withColumn(\"Salary_int\", col(\"Salary\").cast(\"int\"))\n\n# Convert to date or timestamp\ndf = df.withColumn(\"DateOfBirth_ts\", col(\"DateOfBirth\").cast(\"timestamp\"))"
+    "text": "Converting Data Types with the cast() Method\n\n\nSpark columns can be cast to other data types using cast():\n\n\n# Convert Salary to integer\ndf = df.withColumn(\"Salary_int\", col(\"Salary\").cast(\"int\"))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types",
     "title": "Lecture 6",
     "section": "Converting Data Types",
-    "text": "Converting Data Types\n\n\nBelow is a concise list of PySpark data types along with their common short names:\n\n\n\n\nIntegers\n\nByteType — byte (8-bit)\nShortType — short (16-bit)\nIntegerType — int (32-bit)\nLongType — long (64-bit)\n\nFloating points\n\nFloatType — float (32-bit floating point)\nDoubleType — double (64-bit floating point)\nDecimalType — decimal (Arbitrary precision numeric type)\n\n\n\n\nStringType — string (Text data)\nBooleanType — boolean (Boolean values (True/False))\nDateType — date (Represents a date (year, month, day))\nTimestampType — timestamp (Represents a timestamp (date and time))"
+    "text": "Converting Data Types\n\n\n\n\n\nIntegers\n\nByteType — byte (8-bit)\nShortType — short (16-bit)\nIntegerType — int (32-bit)\nLongType — long (64-bit)\n\nFloating points\n\nFloatType — float (32-bit floating point)\nDoubleType — double (64-bit floating point)\nDecimalType — decimal (Arbitrary precision numeric type)\n\n\n\n\nStringType — string (Text data)\nBooleanType — boolean (Boolean values (True/False))\nDateType — date (Represents a date (year, month, day))\nTimestampType — timestamp (Represents a timestamp (date and time))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-4",
@@ -3148,5 +3148,26 @@
     "title": "Lecture 5",
     "section": "RDD and PySpark DataFrame",
     "text": "RDD and PySpark DataFrame\n\n\n\n\n\n\nIn the RDD, we think of each row as an independent entity.\nWith the DataFrame, we mostly interact with columns, performing functions on them.\n\nWe still can access the rows of a DataFrame via RDD if necessary."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#generating-descriptive-statistics-with-df.describe.show",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#generating-descriptive-statistics-with-df.describe.show",
+    "title": "Lecture 6",
+    "section": "Generating Descriptive Statistics with df.describe().show()",
+    "text": "Generating Descriptive Statistics with df.describe().show()\ndf.describe().show()\n\ndf.describe() computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.\n.show() prints these statistics in a readable table format."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-2",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-2",
+    "title": "Lecture 6",
+    "section": "Converting Data Types with the cast() Method",
+    "text": "Converting Data Types with the cast() Method\n\n\nto_date() can be used with a given string format (e.g., “M/d/yy”)\n\n\n# Convert to date or timestamp\nfrom pyspark.sql.functions import to_date\n\n# To have 19xx years, not 20xx ones.\nspark.conf.set(\"spark.sql.legacy.timeParserPolicy\", \"LEGACY\") \n\n# Casting the \"Birthday\" column to a date type\ndf = df.withColumn(\"DateOfBirth_ts\", to_date(\"Birthday\", \"M/d/yy\"))"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-to_date-method",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-to_date-method",
+    "title": "Lecture 6",
+    "section": "Converting Data Types with the to_date() Method",
+    "text": "Converting Data Types with the to_date() Method\n\n\nto_date() can be used with a given string format (e.g., “M/d/yy”)\n\n\n# Convert to date or timestamp\nfrom pyspark.sql.functions import to_date\n\n# To have 19xx years, not 20xx ones.\nspark.conf.set(\"spark.sql.legacy.timeParserPolicy\", \"LEGACY\") \n\n# Casting the \"Birthday\" column to a date type\ndf = df.withColumn(\"DateOfBirth_ts\", to_date(\"Birthday\", \"M/d/yy\"))"
   }
 ]

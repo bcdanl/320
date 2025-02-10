@@ -169,7 +169,7 @@ df.show()
 import pandas as pd
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.master("local[*]").getOrCreate()
-df_pd = pd.read_csv('https://bcdanl.github.io/data/df.csv')
+df_pd = pd.read_csv('https://bcdanl.github.io/data/nba.csv')
 df = spark.createDataFrame(df_pd)
 ```
 
@@ -190,7 +190,7 @@ df = spark.createDataFrame(df_pd)
 ```{.python}
 df.show(5)
 df.show(truncate = False)
-df.show(truncate = 30)
+df.show(truncate = 3)
 df.show(vertical = True)
 ```
 
@@ -237,29 +237,15 @@ df.columns
 - `df.columns` returns a list of colunm names.
 
 
-## Generating Descriptive Statistics with `df.describe().show()` and `df.count()`
+## Generating Descriptive Statistics with `df.describe().show()`
 
 ```{.python}
 df.describe().show()
-df.count()
 ```
 
 -	`df.describe()` computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.
 -	`.show()` prints these statistics in a readable table format.
 
-- `df.count()` returns the number of rows in `df`.
-
-
-## Getting a Summary of a `DataFrame` with `.describe()`
-
-```{.python}
-df.describe()
-df.describe(include='all')
-```
-
-
-- `.describe()` method generates **descriptive statistics** that summarize the central tendency, dispersion, and distribution of each variable. 
-  - It can also process `string`-type variables if specified explicitly (`include='all'`).
 
 
 
@@ -299,6 +285,7 @@ num_teams = df.select(countDistinct("Team")).collect()[0][0]
 df.groupBy("Team").count().show(5)
 ```
 
+- `df.count()` returns the number of rows in `df`.
 
 - Unlike Pandas, there is no direct `.value_counts()` or `.nunique()` in PySpark. 
   - However, we can replicate these operations using Spark’s aggregations (`groupBy().count()`, `countDistinct`, etc.).
@@ -352,16 +339,15 @@ df.orderBy(desc("Salary")).limit(5).show()
 
 :::{.nonincremental}
 -	Unlike Pandas, PySpark `DataFrames` do not use a row-based index, so there is no direct `.loc[]` or `.iloc[]`.
--	We typically filter rows by conditions (using `.filter()` or `.where()`) or use transformations (`limit()`, `take()`, `collect()`) to access row data.
+-	We typically filter rows by conditions (using `.filter()`) or use transformations (`limit()`, `take()`, `collect()`) to access row data.
 
 :::
 ```{.python}
 # Example: filter by condition
-df.filter("Team == 'Lakers'").show()
-
-# or using a column expression
-from pyspark.sql.functions import col
-df.filter(col("Team") == "Lakers").show()
+df.filter("Team == 'New York Knicks'").show()
+df.limit(5).show()
+df.take(5)
+df.collect()
 ```
 
 -	To get the first `n` rows, use `df.limit(n)` or `df.take(n)`, which returns a list of **Row** objects.
@@ -375,8 +361,8 @@ df.filter(col("Team") == "Lakers").show()
 #### Adding Columns with `withColumn()`
 
 ```{.python}
-# Add a column "Salary_k"
-df = df.withColumn("Salary_k", col("Salary") / 1000)
+# Add a column "Salary_k" using a column expression col()
+df = df.withColumn("Salary_k", col("Salary") / 1000) 
 ```
 
 #### Removing Columns with `drop()`
@@ -423,21 +409,18 @@ df.selectExpr(
 
 ```{.python}
 from pyspark.sql import functions as F
-
 # Pre-compute the average salary (pulls it back as a Python float)
 salary_mean = df.select(F.avg("Salary").alias("mean_salary")).collect()[0]["mean_salary"]
 
 df2 = (
-    nba
+    df
     .withColumn("Salary_2x", F.col("Salary") * 2)    # Add Salary_2x
     .withColumn(
         "Name_w_Position",           # Concatenate Name and Position
-        F.concat(F.col("Name"), F.lit(" ("), F.col("Position"), F.lit(")"))
-    )
+        F.concat(F.col("Name"), F.lit(" ("), F.col("Position"), F.lit(")")))
     .withColumn(
         "Salary_minus_Mean",        # Subtract mean salary
-        F.col("Salary") - F.lit(salary_mean)
-    )
+        F.col("Salary") - F.lit(salary_mean))
 )
 ```
 
@@ -456,20 +439,34 @@ df2 = (
 :::
 
 ```{.python}
-from pyspark.sql.functions import col
-
 # Convert Salary to integer
 df = df.withColumn("Salary_int", col("Salary").cast("int"))
-
-# Convert to date or timestamp
-df = df.withColumn("DateOfBirth_ts", col("DateOfBirth").cast("timestamp"))
 ```
+
+
+## Converting Data Types with the `to_date()` Method
+:::{.nonincremental}
+-	`to_date()` can be used with a given string format (e.g., **"M/d/yy"**)
+
+:::
+
+```{.python}
+# Convert to date or timestamp
+from pyspark.sql.functions import to_date
+
+# To have 19xx years, not 20xx ones.
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY") 
+
+# Casting the "Birthday" column to a date type
+df = df.withColumn("DateOfBirth_ts", to_date("Birthday", "M/d/yy"))
+```
+
 
 
 ## Converting Data Types 
 
 :::{.nonincremental}
-- Below is a concise list of PySpark data types along with their common short names:
+<!-- - Below is a concise list of PySpark data types along with their common short names: -->
 
 :::: {.columns}
 

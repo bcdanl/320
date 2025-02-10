@@ -537,7 +537,7 @@ Byeong-Hak Choe
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
 <span id="cb4-3"><a href="#cb4-3"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
-<span id="cb4-4"><a href="#cb4-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/df.csv'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/nba.csv'</span>)</span>
 <span id="cb4-5"><a href="#cb4-5"></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
@@ -560,7 +560,7 @@ Byeong-Hak Choe
 <h3 id="three-optional-parameters">Three Optional Parameters</h3>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.show(<span class="dv">5</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>df.show(truncate <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>df.show(truncate <span class="op">=</span> <span class="dv">30</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>df.show(truncate <span class="op">=</span> <span class="dv">3</span>)</span>
 <span id="cb5-4"><a href="#cb5-4"></a>df.show(vertical <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>By default, displays the first 20 rows.</p></li>
@@ -612,25 +612,12 @@ Byeong-Hak Choe
 <li class="fragment"><p><code>df.columns</code> returns a list of colunm names.</p></li>
 </ul>
 </section>
-<section id="generating-descriptive-statistics-with-df.describe.show-and-df.count" class="slide level2">
-<h2>Generating Descriptive Statistics with <code>df.describe().show()</code> and <code>df.count()</code></h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.describe().show()</span>
-<span id="cb7-2"><a href="#cb7-2"></a>df.count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="generating-descriptive-statistics-with-df.describe.show" class="slide level2">
+<h2>Generating Descriptive Statistics with <code>df.describe().show()</code></h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.describe().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><p><code>df.describe()</code> computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.</p></li>
-<li class="fragment"><p><code>.show()</code> prints these statistics in a readable table format.</p></li>
-<li class="fragment"><p><code>df.count()</code> returns the number of rows in <code>df</code>.</p></li>
-</ul>
-</section>
-<section id="getting-a-summary-of-a-dataframe-with-.describe" class="slide level2">
-<h2>Getting a Summary of a <code>DataFrame</code> with <code>.describe()</code></h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.describe()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li class="fragment"><code>.describe()</code> method generates <strong>descriptive statistics</strong> that summarize the central tendency, dispersion, and distribution of each variable.
-<ul>
-<li class="fragment">It can also process <code>string</code>-type variables if specified explicitly (<code>include='all'</code>).</li>
-</ul></li>
+<li class="fragment"><code>df.describe()</code> computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.</li>
+<li class="fragment"><code>.show()</code> prints these statistics in a readable table format.</li>
 </ul>
 </section></section>
 <section>
@@ -640,11 +627,11 @@ Byeong-Hak Choe
 </section>
 <section id="selecting-a-column-by-its-name" class="slide level2">
 <h2>Selecting a Column by its Name</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Single column -&gt; returns a DataFrame with one column</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>df.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Multiple columns -&gt; pass a list-like of column names</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Single column -&gt; returns a DataFrame with one column</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>df.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># Multiple columns -&gt; pass a list-like of column names</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">In PySpark, we use <code>select()</code> to choose variables.</li>
 <li class="fragment">It returns a new <code>DataFrame</code> projection of the specified variables.</li>
@@ -657,17 +644,18 @@ Byeong-Hak Choe
 </section>
 <section id="counting-observations-distinct-values" class="slide level2">
 <h2>Counting Observations / Distinct Values</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Counting how many total rows</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>nba_count <span class="op">=</span> df.count()</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Count distinct values in one column</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
-<span id="cb10-6"><a href="#cb10-6"></a>num_teams <span class="op">=</span> df.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># GroupBy a column and count occurrences</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>df.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Counting how many total rows</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>nba_count <span class="op">=</span> df.count()</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Count distinct values in one column</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
+<span id="cb9-6"><a href="#cb9-6"></a>num_teams <span class="op">=</span> df.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># GroupBy a column and count occurrences</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>df.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment">Unlike Pandas, there is no direct <code>.value_counts()</code> or <code>.nunique()</code> in PySpark.
+<li class="fragment"><p><code>df.count()</code> returns the number of rows in <code>df</code>.</p></li>
+<li class="fragment"><p>Unlike Pandas, there is no direct <code>.value_counts()</code> or <code>.nunique()</code> in PySpark.</p>
 <ul>
 <li class="fragment">However, we can replicate these operations using Spark’s aggregations (<code>groupBy().count()</code>, <code>countDistinct</code>, etc.).</li>
 </ul></li>
@@ -684,26 +672,26 @@ Byeong-Hak Choe
 </section>
 <section id="sorting-by-one-or-more-variables" class="slide level2">
 <h2>Sorting by One or More Variables</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Sort by a single column ascending</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>df.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># Sort by descending</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> desc</span>
-<span id="cb11-6"><a href="#cb11-6"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
-<span id="cb11-7"><a href="#cb11-7"></a></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co"># Sort by multiple columns</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>df.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Sort by a single column ascending</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>df.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Sort by descending</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> desc</span>
+<span id="cb10-6"><a href="#cb10-6"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Sort by multiple columns</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>df.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>orderBy()</code> can accept column names and ascending/descending instructions.</li>
 </ul>
 </section>
 <section id="equivalent-of-pandas-nsmallest-or-nlargest" class="slide level2">
 <h2>Equivalent of Pandas <code>nsmallest</code> or <code>nlargest</code></h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># nsmallest example:</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>df.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
-<span id="cb12-3"><a href="#cb12-3"></a></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># nlargest example:</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># nsmallest example:</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>df.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># nlargest example:</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Spark does not have <code>nsmallest()</code> or <code>nlargest()</code>, but we can use <code>limit()</code> after sorting.</li>
 </ul>
@@ -718,15 +706,14 @@ Byeong-Hak Choe
 <div>
 <ul>
 <li>Unlike Pandas, PySpark <code>DataFrames</code> do not use a row-based index, so there is no direct <code>.loc[]</code> or <code>.iloc[]</code>.</li>
-<li>We typically filter rows by conditions (using <code>.filter()</code> or <code>.where()</code>) or use transformations (<code>limit()</code>, <code>take()</code>, <code>collect()</code>) to access row data.</li>
+<li>We typically filter rows by conditions (using <code>.filter()</code>) or use transformations (<code>limit()</code>, <code>take()</code>, <code>collect()</code>) to access row data.</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Example: filter by condition</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>df.<span class="bu">filter</span>(<span class="st">"Team == 'Lakers'"</span>).show()</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># or using a column expression</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
-<span id="cb13-6"><a href="#cb13-6"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Lakers"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Example: filter by condition</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>df.<span class="bu">filter</span>(<span class="st">"Team == 'New York Knicks'"</span>).show()</span>
+<span id="cb12-3"><a href="#cb12-3"></a>df.limit(<span class="dv">5</span>).show()</span>
+<span id="cb12-4"><a href="#cb12-4"></a>df.take(<span class="dv">5</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>df.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">To get the first <code>n</code> rows, use <code>df.limit(n)</code> or <code>df.take(n)</code>, which returns a list of <strong>Row</strong> objects.</li>
 <li class="fragment"><code>df.collect()</code>: Returns all the records as a list of <strong>Row</strong>.</li>
@@ -740,15 +727,15 @@ Byeong-Hak Choe
 <section id="adding-removing-renaming-and-relocating-variables-1" class="slide level2">
 <h2>Adding, Removing, Renaming, and Relocating Variables</h2>
 <h4 id="adding-columns-with-withcolumn">Adding Columns with <code>withColumn()</code></h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Add a column "Salary_k"</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Add a column "Salary_k" using a column expression col()</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="removing-columns-with-drop">Removing Columns with <code>drop()</code></h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="renaming-columns-with-withcolumnrenamed">Renaming Columns with <code>withColumnRenamed()</code></h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="op">=</span> df.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="rearranging-columns">Rearranging Columns</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="op">=</span> df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="mathematical-vectorized-operations" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -757,36 +744,33 @@ Byeong-Hak Choe
 </section>
 <section id="aggregations-math-methods" class="slide level2">
 <h2>Aggregations &amp; Math Methods</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Summaries for numeric columns</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>df.selectExpr(</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="st">"mean(Salary) as mean_salary"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="st">"min(Salary) as min_salary"</span>,</span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="st">"max(Salary) as max_salary"</span>,</span>
-<span id="cb18-6"><a href="#cb18-6"></a>    <span class="st">"stddev_pop(Salary) as std_salary"</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Summaries for numeric columns</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>df.selectExpr(</span>
+<span id="cb17-3"><a href="#cb17-3"></a>    <span class="st">"mean(Salary) as mean_salary"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="st">"min(Salary) as min_salary"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="st">"max(Salary) as max_salary"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6"></a>    <span class="st">"stddev_pop(Salary) as std_salary"</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Spark has many SQL functions that can be used with <code>selectExpr()</code>.</li>
 </ul>
 </section>
 <section id="creating-or-transforming-columns" class="slide level2">
 <h2>Creating or Transforming Columns</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> functions <span class="im">as</span> F</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Pre-compute the average salary (pulls it back as a Python float)</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>salary_mean <span class="op">=</span> df.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a>df2 <span class="op">=</span> (</span>
-<span id="cb19-7"><a href="#cb19-7"></a>    nba</span>
-<span id="cb19-8"><a href="#cb19-8"></a>    .withColumn(<span class="st">"Salary_2x"</span>, F.col(<span class="st">"Salary"</span>) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># Add Salary_2x</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>    .withColumn(</span>
-<span id="cb19-10"><a href="#cb19-10"></a>        <span class="st">"Name_w_Position"</span>,           <span class="co"># Concatenate Name and Position</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>        F.concat(F.col(<span class="st">"Name"</span>), F.lit(<span class="st">" ("</span>), F.col(<span class="st">"Position"</span>), F.lit(<span class="st">")"</span>))</span>
-<span id="cb19-12"><a href="#cb19-12"></a>    )</span>
-<span id="cb19-13"><a href="#cb19-13"></a>    .withColumn(</span>
-<span id="cb19-14"><a href="#cb19-14"></a>        <span class="st">"Salary_minus_Mean"</span>,        <span class="co"># Subtract mean salary</span></span>
-<span id="cb19-15"><a href="#cb19-15"></a>        F.col(<span class="st">"Salary"</span>) <span class="op">-</span> F.lit(salary_mean)</span>
-<span id="cb19-16"><a href="#cb19-16"></a>    )</span>
-<span id="cb19-17"><a href="#cb19-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> functions <span class="im">as</span> F</span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Pre-compute the average salary (pulls it back as a Python float)</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>salary_mean <span class="op">=</span> df.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
+<span id="cb18-4"><a href="#cb18-4"></a></span>
+<span id="cb18-5"><a href="#cb18-5"></a>df2 <span class="op">=</span> (</span>
+<span id="cb18-6"><a href="#cb18-6"></a>    df</span>
+<span id="cb18-7"><a href="#cb18-7"></a>    .withColumn(<span class="st">"Salary_2x"</span>, F.col(<span class="st">"Salary"</span>) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># Add Salary_2x</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>    .withColumn(</span>
+<span id="cb18-9"><a href="#cb18-9"></a>        <span class="st">"Name_w_Position"</span>,           <span class="co"># Concatenate Name and Position</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>        F.concat(F.col(<span class="st">"Name"</span>), F.lit(<span class="st">" ("</span>), F.col(<span class="st">"Position"</span>), F.lit(<span class="st">")"</span>)))</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    .withColumn(</span>
+<span id="cb18-12"><a href="#cb18-12"></a>        <span class="st">"Salary_minus_Mean"</span>,        <span class="co"># Subtract mean salary</span></span>
+<span id="cb18-13"><a href="#cb18-13"></a>        F.col(<span class="st">"Salary"</span>) <span class="op">-</span> F.lit(salary_mean))</span>
+<span id="cb18-14"><a href="#cb18-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">All transformations in Spark are “lazy” until an action (<code>show()</code>, <code>collect()</code>, <code>count()</code>) is called.</li>
 <li class="fragment"><code>.alias()</code> method is a way to give a temporary (or alternate) name to the column.</li>
@@ -804,20 +788,29 @@ Byeong-Hak Choe
 <li>Spark columns can be cast to other data types using <code>cast()</code>:</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
-<span id="cb20-2"><a href="#cb20-2"></a></span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="co"># Convert Salary to integer</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span>
-<span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="co"># Convert to date or timestamp</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>df <span class="op">=</span> df.withColumn(<span class="st">"DateOfBirth_ts"</span>, col(<span class="st">"DateOfBirth"</span>).cast(<span class="st">"timestamp"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Convert Salary to integer</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="converting-data-types-with-the-to_date-method" class="slide level2">
+<h2>Converting Data Types with the <code>to_date()</code> Method</h2>
+<div>
+<ul>
+<li><code>to_date()</code> can be used with a given string format (e.g., <strong>“M/d/yy”</strong>)</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Convert to date or timestamp</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> to_date</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># To have 19xx years, not 20xx ones.</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>spark.conf.<span class="bu">set</span>(<span class="st">"spark.sql.legacy.timeParserPolicy"</span>, <span class="st">"LEGACY"</span>) </span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># Casting the "Birthday" column to a date type</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>df <span class="op">=</span> df.withColumn(<span class="st">"DateOfBirth_ts"</span>, to_date(<span class="st">"Birthday"</span>, <span class="st">"M/d/yy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="converting-data-types" class="slide level2">
 <h2>Converting Data Types</h2>
 <div>
-<ul>
-<li>Below is a concise list of PySpark data types along with their common short names:</li>
-</ul>
+<!-- - Below is a concise list of PySpark data types along with their common short names: -->
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
