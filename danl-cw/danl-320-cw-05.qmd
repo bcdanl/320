@@ -112,7 +112,7 @@ How can we sort the `DataFrame` first by `Team` in alphabetical order and then b
 
 
 # Question 6
-Who is the oldest player on the `Kansas City Chiefs` roster, and what is his birthday?
+Who is the oldest player on the **Kansas City Chiefs** roster, and what is his birthday?
 
 *Answer:*
 ```{python}

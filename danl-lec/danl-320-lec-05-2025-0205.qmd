@@ -388,3 +388,114 @@ theme_set(theme_fivethirtyeight()+
 ::::
 
 
+# **PySpark on Google Colab** {background-color="#1c4982"}
+
+
+## PySpark on Google Colab
+### PySpark = Spark + Python
+
+- `pyspark` is a Python API to Apache Spark.
+  - API: application programming interface, the set of functions, classes, and variables provided for you to interact with.
+  - Spark itself is coded in a different programming language, called Scala.
+  
+- We can combine Python, pandas, and PySpark in one program.
+  - [Koalas (now called `pyspark.pandas`)](https://koalas.readthedocs.io/) provides a `pandas`-like porcelain on top of PySpark.
+
+
+## Google Drive on Google Colab
+
+:::: {.columns}
+::: {.column width="50%"}
+```{.python}
+from google.colab import drive, files
+drive.mount('/content/drive')
+files.upload()
+```
+
+- `drive.mount('/content/drive')`
+  - To mount your Google Drive on Google colab:
+- `files.upload()`
+  - To initiate uploading a file on Google Drive:
+
+:::
+::: {.column width="50%"}
+- To find a pathname of a CSV file in Google Drive:
+  - Click :file_folder: from the sidebar menu
+  - `drive` :arrow_right: `MyDrive` ...
+  - Hover a mouse cursor on the CSV file
+  - Click the vertical dots
+  - Click **"Copy path"**
+
+:::
+::::
+
+
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+
+- What makes a Spark DataFrame different from other DataFrame? 
+  - Spark DataFrames are designed for big data and distributed computing.
+  
+- **Spark DataFrame:**
+  - Data is distributed across a cluster of machines.
+  - Operations are executed in parallel on multiple nodes.
+  - Can process datasets that exceed the memory of a single machine.
+
+- **Other DataFrames (e.g., Pandas):**
+  - Operate on a single machine.
+  - Entire dataset must fit into memory.
+  - Limited by local system resources.
+  
+  
+  
+  
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Lazy Evaluation and Optimization
+
+- **Spark DataFrame:**
+  - Uses **lazy evaluation**: transformations are not computed until an action is called.
+  - Optimize query execution.
+
+- **Other DataFrames:**
+  - Operations are evaluated **eagerly** (immediately).
+  - No built-in query optimization across multiple operations.
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Scalability
+
+- **Spark DataFrame:**
+  - Designed to scale to petabytes of data.
+  - Utilizes distributed storage and computing resources.
+  - Ideal for large-scale data processing and analytics.
+
+- **Other DataFrames:**
+  - Best suited for small to medium datasets.
+  - Limited by the hardware of a single computer.
+
+
+## Spark `DataFrame` vs. Pandas `DataFrame`
+### Fault Tolerance
+
+- **Spark DataFrame:**
+  - Built on **Resilient Distributed Datasets (RDDs)**.
+  - Automatically recovers lost data if a node fails.
+  - Ensures high reliability in distributed environments.
+
+- **Other DataFrames:**
+  - Typically lack built-in fault tolerance.
+  - Failures on a single machine can result in data loss.
+
+
+## RDD and PySpark `DataFrame`
+
+<div style="text-align: center; width: 66%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/pyspark-rdd-df.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+- In the **RDD**, we think of each row as an independent entity. 
+- With the `DataFrame`, we mostly interact with columns, performing functions on them.
+  - We still can access the **rows** of a `DataFrame` via **RDD** if necessary.
+

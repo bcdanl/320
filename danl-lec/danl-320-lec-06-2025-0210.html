@@ -413,128 +413,6 @@ Byeong-Hak Choe
   <p class="date">February 10, 2025</p>
 </section>
 <section>
-<section id="pyspark-on-google-colab" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1><strong>PySpark on Google Colab</strong></h1>
-
-</section>
-<section id="pyspark-on-google-colab-1" class="slide level2">
-<h2>PySpark on Google Colab</h2>
-<h3 id="pyspark-spark-python">PySpark = Spark + Python</h3>
-<ul>
-<li class="fragment"><code>pyspark</code> is a Python API to Apache Spark.
-<ul>
-<li class="fragment">API: application programming interface, the set of functions, classes, and variables provided for you to interact with.</li>
-<li class="fragment">Spark itself is coded in a different programming language, called Scala.</li>
-</ul></li>
-<li class="fragment">We can combine Python, pandas, and PySpark in one program.
-<ul>
-<li class="fragment"><a href="https://koalas.readthedocs.io/">Koalas (now called <code>pyspark.pandas</code>)</a> provides a <code>pandas</code>-like porcelain on top of PySpark.</li>
-</ul></li>
-</ul>
-</section>
-<section id="google-drive-on-google-colab" class="slide level2">
-<h2>Google Drive on Google Colab</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> google.colab <span class="im">import</span> drive, files</span>
-<span id="cb1-2"><a href="#cb1-2"></a>drive.mount(<span class="st">'/content/drive'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>files.upload()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li class="fragment"><code>drive.mount('/content/drive')</code>
-<ul>
-<li class="fragment">To mount your Google Drive on Google colab:</li>
-</ul></li>
-<li class="fragment"><code>files.upload()</code>
-<ul>
-<li class="fragment">To initiate uploading a file on Google Drive:</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<ul>
-<li class="fragment">To find a pathname of a CSV file in Google Drive:
-<ul>
-<li class="fragment">Click <span class="emoji" data-emoji="file_folder">📁</span> from the sidebar menu</li>
-<li class="fragment"><code>drive</code> <span class="emoji" data-emoji="arrow_right">➡️</span> <code>MyDrive</code> …</li>
-<li class="fragment">Hover a mouse cursor on the CSV file</li>
-<li class="fragment">Click the vertical dots</li>
-<li class="fragment">Click <strong>“Copy path”</strong></li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="spark-dataframe-vs.-pandas-dataframe" class="slide level2">
-<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
-<ul>
-<li class="fragment">What makes a Spark DataFrame different from other DataFrame?
-<ul>
-<li class="fragment">Spark DataFrames are designed for big data and distributed computing.</li>
-</ul></li>
-<li class="fragment"><strong>Spark DataFrame:</strong>
-<ul>
-<li class="fragment">Data is distributed across a cluster of machines.</li>
-<li class="fragment">Operations are executed in parallel on multiple nodes.</li>
-<li class="fragment">Can process datasets that exceed the memory of a single machine.</li>
-</ul></li>
-<li class="fragment"><strong>Other DataFrames (e.g., Pandas):</strong>
-<ul>
-<li class="fragment">Operate on a single machine.</li>
-<li class="fragment">Entire dataset must fit into memory.</li>
-<li class="fragment">Limited by local system resources.</li>
-</ul></li>
-</ul>
-</section>
-<section id="spark-dataframe-vs.-pandas-dataframe-1" class="slide level2">
-<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
-<h3 id="lazy-evaluation-and-optimization">Lazy Evaluation and Optimization</h3>
-<ul>
-<li class="fragment"><strong>Spark DataFrame:</strong>
-<ul>
-<li class="fragment">Uses <strong>lazy evaluation</strong>: transformations are not computed until an action is called.</li>
-<li class="fragment">Optimize query execution.</li>
-</ul></li>
-<li class="fragment"><strong>Other DataFrames:</strong>
-<ul>
-<li class="fragment">Operations are evaluated <strong>eagerly</strong> (immediately).</li>
-<li class="fragment">No built-in query optimization across multiple operations.</li>
-</ul></li>
-</ul>
-</section>
-<section id="spark-dataframe-vs.-pandas-dataframe-2" class="slide level2">
-<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
-<h3 id="scalability">Scalability</h3>
-<ul>
-<li class="fragment"><strong>Spark DataFrame:</strong>
-<ul>
-<li class="fragment">Designed to scale to petabytes of data.</li>
-<li class="fragment">Utilizes distributed storage and computing resources.</li>
-<li class="fragment">Ideal for large-scale data processing and analytics.</li>
-</ul></li>
-<li class="fragment"><strong>Other DataFrames:</strong>
-<ul>
-<li class="fragment">Best suited for small to medium datasets.</li>
-<li class="fragment">Limited by the hardware of a single computer.</li>
-</ul></li>
-</ul>
-</section>
-<section id="spark-dataframe-vs.-pandas-dataframe-3" class="slide level2">
-<h2>Spark <code>DataFrame</code> vs.&nbsp;Pandas <code>DataFrame</code></h2>
-<h3 id="fault-tolerance">Fault Tolerance</h3>
-<ul>
-<li class="fragment"><strong>Spark DataFrame:</strong>
-<ul>
-<li class="fragment">Built on <strong>Resilient Distributed Datasets (RDDs)</strong>.</li>
-<li class="fragment">Automatically recovers lost data if a node fails.</li>
-<li class="fragment">Ensures high reliability in distributed environments.</li>
-</ul></li>
-<li class="fragment"><strong>Other DataFrames:</strong>
-<ul>
-<li class="fragment">Typically lack built-in fault tolerance.</li>
-<li class="fragment">Failures on a single machine can result in data loss.</li>
-</ul></li>
-</ul>
-</section></section>
-<section>
 <section id="pyspark-basics" class="title-slide slide level1 center" data-background-color="#1c4982">
 <h1><strong>PySpark Basics</strong></h1>
 
@@ -584,8 +462,8 @@ Byeong-Hak Choe
 </section>
 <section id="the-sparksession-entry-point" class="slide level2">
 <h2>The <code>SparkSession</code> Entry Point</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb2-2"><a href="#cb2-2"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb1-2"><a href="#cb1-2"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>The <code>SparkSession</code> entry point provides the functionality for data transformation with <strong>data frames</strong> and <strong>SQL</strong>.</p></li>
 <li class="fragment"><p><code>from pyspark.sql import SparkSession</code></p>
@@ -608,11 +486,11 @@ Byeong-Hak Choe
 </section>
 <section id="reading-a-csv-file-into-the-spark-framework" class="slide level2">
 <h2>Reading a CSV file into the Spark Framework</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>path <span class="op">=</span> <span class="st">'/content/drive/MyDrive/lecture-data/cces.csv'</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>df <span class="op">=</span> spark.read.csv(path, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>df.show()  <span class="co"># Displays the first 20 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="op">=</span> <span class="st">'/content/drive/MyDrive/lecture-data/cces.csv'</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>df <span class="op">=</span> spark.read.csv(path, </span>
+<span id="cb2-3"><a href="#cb2-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>df.show()  <span class="co"># Displays the first 20 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>spark.read.csv(path, ...)</code>:
 <ul>
@@ -632,11 +510,11 @@ Byeong-Hak Choe
 </section>
 <section id="reading-a-csv-file-into-the-spark-framework-1" class="slide level2">
 <h2>Reading a CSV file into the Spark Framework</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>path <span class="op">=</span> <span class="st">'https://bcdanl.github.io/data/nba.csv'</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>nba <span class="op">=</span> spark.read.csv(path, </span>
-<span id="cb4-3"><a href="#cb4-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-4"><a href="#cb4-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>nba.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>path <span class="op">=</span> <span class="st">'https://bcdanl.github.io/data/df.csv'</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>df <span class="op">=</span> spark.read.csv(path, </span>
+<span id="cb3-3"><a href="#cb3-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>df.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>Spark’s spark.read.csv()</code> function relies on the Hadoop FileSystem API to access files.</li>
 <li class="fragment">By default, Hadoop does not support reading files directly from HTTPS URLs.
@@ -652,15 +530,15 @@ Byeong-Hak Choe
 <li>What should we do then?
 <ul>
 <li>We can convert the Pandas <code>DataFrame</code> to a Spark <code>DataFrame</code></li>
-<li><code>nba = spark.createDataFrame(df_pd)</code></li>
+<li><code>df = spark.createDataFrame(df_pd)</code></li>
 </ul></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2"></a>path <span class="op">=</span> <span class="st">'https://bcdanl.github.io/data/nba.csv'</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>df_pd <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a>nba <span class="op">=</span> spark.createDataFrame(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb4-3"><a href="#cb4-3"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
+<span id="cb4-4"><a href="#cb4-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/df.csv'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="getting-a-summary-of-data" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -680,6 +558,10 @@ Byeong-Hak Choe
 <section id="displaying-the-first-rows-with-df.show" class="slide level2">
 <h2>Displaying the First Rows with <code>df.show()</code></h2>
 <h3 id="three-optional-parameters">Three Optional Parameters</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.show(<span class="dv">5</span>)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>df.show(truncate <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>df.show(truncate <span class="op">=</span> <span class="dv">30</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>df.show(vertical <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>By default, displays the first 20 rows.</p></li>
 <li class="fragment"><p><code>df.show(n, truncate, vertical)</code> accepts three optional parameters:</p>
@@ -742,8 +624,8 @@ Byeong-Hak Choe
 </section>
 <section id="getting-a-summary-of-a-dataframe-with-.describe" class="slide level2">
 <h2>Getting a Summary of a <code>DataFrame</code> with <code>.describe()</code></h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>nba.describe()</span>
-<span id="cb8-2"><a href="#cb8-2"></a>nba.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.describe()</span>
+<span id="cb8-2"><a href="#cb8-2"></a>df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>.describe()</code> method generates <strong>descriptive statistics</strong> that summarize the central tendency, dispersion, and distribution of each variable.
 <ul>
@@ -759,10 +641,10 @@ Byeong-Hak Choe
 <section id="selecting-a-column-by-its-name" class="slide level2">
 <h2>Selecting a Column by its Name</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Single column -&gt; returns a DataFrame with one column</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>nba.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>df.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
 <span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Multiple columns -&gt; pass a list-like of column names</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>nba.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5"></a>df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">In PySpark, we use <code>select()</code> to choose variables.</li>
 <li class="fragment">It returns a new <code>DataFrame</code> projection of the specified variables.</li>
@@ -776,16 +658,14 @@ Byeong-Hak Choe
 <section id="counting-observations-distinct-values" class="slide level2">
 <h2>Counting Observations / Distinct Values</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Counting how many total rows</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>nba_count <span class="op">=</span> nba.count()</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(<span class="st">"Number of rows:"</span>, nba_count)</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># Count distinct values in one column</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
-<span id="cb10-7"><a href="#cb10-7"></a>num_teams <span class="op">=</span> nba.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="bu">print</span>(<span class="st">"Number of distinct teams:"</span>, num_teams)</span>
-<span id="cb10-9"><a href="#cb10-9"></a></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># GroupBy a column and count occurrences</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a>nba.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2"></a>nba_count <span class="op">=</span> df.count()</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Count distinct values in one column</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
+<span id="cb10-6"><a href="#cb10-6"></a>num_teams <span class="op">=</span> df.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># GroupBy a column and count occurrences</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>df.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Unlike Pandas, there is no direct <code>.value_counts()</code> or <code>.nunique()</code> in PySpark.
 <ul>
@@ -805,14 +685,14 @@ Byeong-Hak Choe
 <section id="sorting-by-one-or-more-variables" class="slide level2">
 <h2>Sorting by One or More Variables</h2>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Sort by a single column ascending</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>nba.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>df.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
 <span id="cb11-3"><a href="#cb11-3"></a></span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="co"># Sort by descending</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> desc</span>
-<span id="cb11-6"><a href="#cb11-6"></a>nba.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
 <span id="cb11-7"><a href="#cb11-7"></a></span>
 <span id="cb11-8"><a href="#cb11-8"></a><span class="co"># Sort by multiple columns</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>nba.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-9"><a href="#cb11-9"></a>df.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>orderBy()</code> can accept column names and ascending/descending instructions.</li>
 </ul>
@@ -820,10 +700,10 @@ Byeong-Hak Choe
 <section id="equivalent-of-pandas-nsmallest-or-nlargest" class="slide level2">
 <h2>Equivalent of Pandas <code>nsmallest</code> or <code>nlargest</code></h2>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># nsmallest example:</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>nba.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
+<span id="cb12-2"><a href="#cb12-2"></a>df.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="co"># nlargest example:</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>nba.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Spark does not have <code>nsmallest()</code> or <code>nlargest()</code>, but we can use <code>limit()</code> after sorting.</li>
 </ul>
@@ -842,11 +722,11 @@ Byeong-Hak Choe
 </ul>
 </div>
 <div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Example: filter by condition</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>nba.<span class="bu">filter</span>(<span class="st">"Team == 'Lakers'"</span>).show()</span>
+<span id="cb13-2"><a href="#cb13-2"></a>df.<span class="bu">filter</span>(<span class="st">"Team == 'Lakers'"</span>).show()</span>
 <span id="cb13-3"><a href="#cb13-3"></a></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="co"># or using a column expression</span></span>
 <span id="cb13-5"><a href="#cb13-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
-<span id="cb13-6"><a href="#cb13-6"></a>nba.<span class="bu">filter</span>(col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Lakers"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-6"><a href="#cb13-6"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Lakers"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">To get the first <code>n</code> rows, use <code>df.limit(n)</code> or <code>df.take(n)</code>, which returns a list of <strong>Row</strong> objects.</li>
 <li class="fragment"><code>df.collect()</code>: Returns all the records as a list of <strong>Row</strong>.</li>
@@ -861,14 +741,14 @@ Byeong-Hak Choe
 <h2>Adding, Removing, Renaming, and Relocating Variables</h2>
 <h4 id="adding-columns-with-withcolumn">Adding Columns with <code>withColumn()</code></h4>
 <div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Add a column "Salary_k"</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>nba <span class="op">=</span> nba.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="removing-columns-with-drop">Removing Columns with <code>drop()</code></h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>nba <span class="op">=</span> nba.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>nba <span class="op">=</span> nba.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="renaming-columns-with-withcolumnrenamed">Renaming Columns with <code>withColumnRenamed()</code></h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>nba <span class="op">=</span> nba.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="op">=</span> df.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="rearranging-columns">Rearranging Columns</h4>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>nba <span class="op">=</span> nba.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="mathematical-vectorized-operations" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -878,7 +758,7 @@ Byeong-Hak Choe
 <section id="aggregations-math-methods" class="slide level2">
 <h2>Aggregations &amp; Math Methods</h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Summaries for numeric columns</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>nba.selectExpr(</span>
+<span id="cb18-2"><a href="#cb18-2"></a>df.selectExpr(</span>
 <span id="cb18-3"><a href="#cb18-3"></a>    <span class="st">"mean(Salary) as mean_salary"</span>,</span>
 <span id="cb18-4"><a href="#cb18-4"></a>    <span class="st">"min(Salary) as min_salary"</span>,</span>
 <span id="cb18-5"><a href="#cb18-5"></a>    <span class="st">"max(Salary) as max_salary"</span>,</span>
@@ -893,9 +773,9 @@ Byeong-Hak Choe
 <div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> functions <span class="im">as</span> F</span>
 <span id="cb19-2"><a href="#cb19-2"></a></span>
 <span id="cb19-3"><a href="#cb19-3"></a><span class="co"># Pre-compute the average salary (pulls it back as a Python float)</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>salary_mean <span class="op">=</span> nba.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
+<span id="cb19-4"><a href="#cb19-4"></a>salary_mean <span class="op">=</span> df.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
 <span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a>nba2 <span class="op">=</span> (</span>
+<span id="cb19-6"><a href="#cb19-6"></a>df2 <span class="op">=</span> (</span>
 <span id="cb19-7"><a href="#cb19-7"></a>    nba</span>
 <span id="cb19-8"><a href="#cb19-8"></a>    .withColumn(<span class="st">"Salary_2x"</span>, F.col(<span class="st">"Salary"</span>) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># Add Salary_2x</span></span>
 <span id="cb19-9"><a href="#cb19-9"></a>    .withColumn(</span>
@@ -927,10 +807,10 @@ Byeong-Hak Choe
 <div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="co"># Convert Salary to integer</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>nba <span class="op">=</span> nba.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span>
+<span id="cb20-4"><a href="#cb20-4"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span>
 <span id="cb20-5"><a href="#cb20-5"></a></span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="co"># Convert to date or timestamp</span></span>
-<span id="cb20-7"><a href="#cb20-7"></a>nba <span class="op">=</span> nba.withColumn(<span class="st">"DateOfBirth_ts"</span>, col(<span class="st">"DateOfBirth"</span>).cast(<span class="st">"timestamp"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-7"><a href="#cb20-7"></a>df <span class="op">=</span> df.withColumn(<span class="st">"DateOfBirth_ts"</span>, col(<span class="st">"DateOfBirth"</span>).cast(<span class="st">"timestamp"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="converting-data-types" class="slide level2">
 <h2>Converting Data Types</h2>
@@ -982,20 +862,20 @@ Byeong-Hak Choe
 <span id="cb21-3"><a href="#cb21-3"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
 <span id="cb21-4"><a href="#cb21-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">"https://bcdanl.github.io/data/employment.csv"</span>)</span>
 <span id="cb21-5"><a href="#cb21-5"></a>df_pd <span class="op">=</span> df_pd.where(pd.notnull(df_pd), <span class="va">None</span>)  <span class="co"># Convert NaN to None</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>emp <span class="op">=</span> spark.createDataFrame(df_pd)</span>
+<span id="cb21-6"><a href="#cb21-6"></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span>
 <span id="cb21-7"><a href="#cb21-7"></a></span>
-<span id="cb21-8"><a href="#cb21-8"></a>emp.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>) <span class="op">&gt;</span> <span class="dv">100000</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-8"><a href="#cb21-8"></a>df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>) <span class="op">&gt;</span> <span class="dv">100000</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="filtering-by-a-condition-1" class="slide level2">
 <h2>Filtering by a Condition</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>emp.<span class="bu">filter</span>(</span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.<span class="bu">filter</span>(</span>
 <span id="cb22-2"><a href="#cb22-2"></a>    ( col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span> ) <span class="op">&amp;</span> </span>
 <span id="cb22-3"><a href="#cb22-3"></a>    ( col(<span class="st">"Salary"</span>) <span class="op">&gt;=</span> <span class="dv">100000</span> )</span>
 <span id="cb22-4"><a href="#cb22-4"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>emp.<span class="bu">filter</span>(</span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.<span class="bu">filter</span>(</span>
 <span id="cb23-2"><a href="#cb23-2"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span>) <span class="op">|</span> </span>
 <span id="cb23-3"><a href="#cb23-3"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Legal"</span>)   <span class="op">|</span> </span>
 <span id="cb23-4"><a href="#cb23-4"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Sales"</span>)</span>
@@ -1009,15 +889,15 @@ Byeong-Hak Choe
 <section id="filtering-with-the-isin-method" class="slide level2">
 <h2>Filtering with the <code>isin()</code> method</h2>
 <div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Checking membership with "isin"</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>emp.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isin(<span class="st">"Finance"</span>, <span class="st">"Legal"</span>, <span class="st">"Sales"</span>)).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isin(<span class="st">"Finance"</span>, <span class="st">"Legal"</span>, <span class="st">"Sales"</span>)).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">A better solution is the <code>isin()</code> method.</li>
 </ul>
 </section>
 <section id="filtering-with-the-between-method" class="slide level2">
 <h2>Filtering with the <code>between()</code> method</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>emp_between <span class="op">=</span> emp.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>).between(<span class="dv">90000</span>, <span class="dv">100000</span>))</span>
-<span id="cb25-2"><a href="#cb25-2"></a>emp_between.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df_between <span class="op">=</span> df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>).between(<span class="dv">90000</span>, <span class="dv">100000</span>))</span>
+<span id="cb25-2"><a href="#cb25-2"></a>df_between.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">It returns a Boolean Series where <code>True</code> denotes that an observation’s value falls between the specified interval.</li>
 </ul>
@@ -1038,16 +918,16 @@ Byeong-Hak Choe
 <li>In PySpark, missing values often appear as <code>null</code>.</li>
 </ul>
 <div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Count how many null values in a given column</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>emp.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNull()).count()</span>
+<span id="cb26-2"><a href="#cb26-2"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNull()).count()</span>
 <span id="cb26-3"><a href="#cb26-3"></a></span>
 <span id="cb26-4"><a href="#cb26-4"></a><span class="co"># Similarly, you can filter non-null</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>emp.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNotNull()).count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-5"><a href="#cb26-5"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNotNull()).count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="dropping-rows-with-null-values-the-.na.drop-method" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method</h2>
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Drop any row that has a null value in any column</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>emp_drop_any <span class="op">=</span> emp.na.drop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2"></a>df_drop_any <span class="op">=</span> df.na.drop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">The <code>.na.drop()</code> method removes observations that hold any <code>NULL</code> values.</li>
 </ul>
@@ -1055,7 +935,7 @@ Byeong-Hak Choe
 <section id="dropping-rows-with-null-values-the-.na.drop-method-with-how" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method with <code>how</code></h2>
 <div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Drop rows that have all columns null</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>emp_drop_all <span class="op">=</span> emp.na.drop(how<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-2"><a href="#cb28-2"></a>df_drop_all <span class="op">=</span> df.na.drop(how<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>We can pass the <code>how</code> parameter an argument of <code>"all"</code> to remove observations in which all values are missing.</p></li>
 <li class="fragment"><p>Note that the <code>how</code> parameter’s default argument is <code>"any"</code>.</p></li>
@@ -1064,7 +944,7 @@ Byeong-Hak Choe
 <section id="dropping-rows-with-null-values-the-.na.drop-method-with-subset" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method with <code>subset</code></h2>
 <div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Drop rows with nulls in specific columns:</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>emp_drop_subset <span class="op">=</span> emp.na.drop(subset<span class="op">=</span>[<span class="st">"Gender"</span>, <span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-2"><a href="#cb29-2"></a>df_drop_subset <span class="op">=</span> df.na.drop(subset<span class="op">=</span>[<span class="st">"Gender"</span>, <span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can use the <code>subset</code> parameter to target observations with a missing value in a specific variable.
 <ul>
@@ -1077,13 +957,13 @@ Byeong-Hak Choe
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Fill a specific column’s nulls with 0</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>emp_fill <span class="op">=</span> emp.na.fill(value <span class="op">=</span> <span class="dv">0</span>, subset <span class="op">=</span> [<span class="st">"Salary"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-2"><a href="#cb30-2"></a>df_fill <span class="op">=</span> df.na.fill(value <span class="op">=</span> <span class="dv">0</span>, subset <span class="op">=</span> [<span class="st">"Salary"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can specify <code>value</code> and <code>subset</code> parameters to fill a specific column’s <code>NULL</code>s with a specific value</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Fill multiple columns with a dictionary</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>emp_fill_multi <span class="op">=</span> emp.na.fill({<span class="st">"Salary"</span>: <span class="dv">0</span>, <span class="st">"Team"</span>: <span class="st">"Unknown"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-2"><a href="#cb31-2"></a>df_fill_multi <span class="op">=</span> df.na.fill({<span class="st">"Salary"</span>: <span class="dv">0</span>, <span class="st">"Team"</span>: <span class="st">"Unknown"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can fill multiple columns’ <code>NULL</code>s with a dictionary.</li>
 </ul>
@@ -1103,10 +983,10 @@ Byeong-Hak Choe
 </ul>
 </div>
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Drop all rows that are exact duplicates across all columns</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>emp_no_dups <span class="op">=</span> emp.dropDuplicates()</span>
+<span id="cb32-2"><a href="#cb32-2"></a>df_no_dups <span class="op">=</span> df.dropDuplicates()</span>
 <span id="cb32-3"><a href="#cb32-3"></a></span>
 <span id="cb32-4"><a href="#cb32-4"></a><span class="co"># Drop duplicates based on subset of columns</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>emp_no_dups_subset <span class="op">=</span> emp.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-5"><a href="#cb32-5"></a>df_no_dups_subset <span class="op">=</span> df.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">By default, <code>dropDuplicates()</code> keeps the first occurrence of each distinct combination.</li>
 </ul>

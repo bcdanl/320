@@ -1999,14 +1999,14 @@
     "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-2",
     "title": "Lecture 5",
     "section": "Spark DataFrame vs. Pandas DataFrame",
-    "text": "Spark DataFrame vs. Pandas DataFrame\nFault Tolerance\n\nSpark DataFrame:\n\nBuilt on Resilient Distributed Datasets (RDDs).\nAutomatically recovers lost data if a node fails.\nEnsures high reliability in distributed environments.\n\nOther DataFrames:\n\nTypically lack built-in fault tolerance.\nFailures on a single machine can result in data loss."
+    "text": "Spark DataFrame vs. Pandas DataFrame\nScalability\n\nSpark DataFrame:\n\nDesigned to scale to petabytes of data.\nUtilizes distributed storage and computing resources.\nIdeal for large-scale data processing and analytics.\n\nOther DataFrames:\n\nBest suited for small to medium datasets.\nLimited by the hardware of a single computer."
   },
   {
     "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-3",
     "href": "danl-lec/danl-320-lec-05-2025-0205.html#spark-dataframe-vs.-pandas-dataframe-3",
     "title": "Lecture 5",
     "section": "Spark DataFrame vs. Pandas DataFrame",
-    "text": "Spark DataFrame vs. Pandas DataFrame\nScalability\n\nSpark DataFrame:\n\nDesigned to scale to petabytes of data.\nUtilizes distributed storage and computing resources.\nIdeal for large-scale data processing and analytics.\n\nOther DataFrames:\n\nBest suited for small to medium datasets.\nLimited by the hardware of a single computer."
+    "text": "Spark DataFrame vs. Pandas DataFrame\nFault Tolerance\n\nSpark DataFrame:\n\nBuilt on Resilient Distributed Datasets (RDDs).\nAutomatically recovers lost data if a node fails.\nEnsures high reliability in distributed environments.\n\nOther DataFrames:\n\nTypically lack built-in fault tolerance.\nFailures on a single machine can result in data loss."
   },
   {
     "objectID": "danl-hw/danl-320-hw-01.html",
@@ -2188,14 +2188,14 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#reading-a-csv-file-into-the-spark-framework-1",
     "title": "Lecture 6",
     "section": "Reading a CSV file into the Spark Framework",
-    "text": "Reading a CSV file into the Spark Framework\npath = 'https://bcdanl.github.io/data/nba.csv'\nnba = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\nnba.show()\n\nSpark’s spark.read.csv() function relies on the Hadoop FileSystem API to access files.\nBy default, Hadoop does not support reading files directly from HTTPS URLs.\n\nIt expects a local file system path, HDFS path, or another supported distributed file system."
+    "text": "Reading a CSV file into the Spark Framework\npath = 'https://bcdanl.github.io/data/df.csv'\ndf = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\ndf.show()\n\nSpark’s spark.read.csv() function relies on the Hadoop FileSystem API to access files.\nBy default, Hadoop does not support reading files directly from HTTPS URLs.\n\nIt expects a local file system path, HDFS path, or another supported distributed file system."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#displaying-the-first-rows-with-df.show",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#displaying-the-first-rows-with-df.show",
     "title": "Lecture 6",
     "section": "Displaying the First Rows with df.show()",
-    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
+    "text": "Displaying the First Rows with df.show()\nThree Optional Parameters\ndf.show(5)\ndf.show(truncate = False)\ndf.show(truncate = 30)\ndf.show(vertical = True)\n\nBy default, displays the first 20 rows.\ndf.show(n, truncate, vertical) accepts three optional parameters:\n\nn (int): Number of rows to display.\n\n\nExample: df.show(5)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#displaying-the-first-rows-with-df.show-1",
@@ -2286,7 +2286,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#reading-a-web-csv-file-into-the-spark-framework",
     "title": "Lecture 6",
     "section": "Reading a Web CSV file into the Spark Framework",
-    "text": "Reading a Web CSV file into the Spark Framework\n\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\nnba = spark.createDataFrame(df_pd)\n\n\n\nimport pandas as pd\npath = 'https://bcdanl.github.io/data/nba.csv'\ndf_pd = pd.read_csv(url)\n\nnba = spark.createDataFrame(df_pd)"
+    "text": "Reading a Web CSV file into the Spark Framework\n\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\ndf = spark.createDataFrame(df_pd)\n\n\n\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\ndf_pd = pd.read_csv('https://bcdanl.github.io/data/df.csv')\ndf = spark.createDataFrame(df_pd)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#spark-dataframe-overview-methods",
@@ -2300,21 +2300,21 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#getting-a-summary-of-a-dataframe-with-.describe",
     "title": "Lecture 6",
     "section": "Getting a Summary of a DataFrame with .describe()",
-    "text": "Getting a Summary of a DataFrame with .describe()\nnba.describe()\nnba.describe(include='all')\n\n.describe() method generates descriptive statistics that summarize the central tendency, dispersion, and distribution of each variable.\n\nIt can also process string-type variables if specified explicitly (include='all')."
+    "text": "Getting a Summary of a DataFrame with .describe()\ndf.describe()\ndf.describe(include='all')\n\n.describe() method generates descriptive statistics that summarize the central tendency, dispersion, and distribution of each variable.\n\nIt can also process string-type variables if specified explicitly (include='all')."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#selecting-a-column-by-its-name",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#selecting-a-column-by-its-name",
     "title": "Lecture 6",
     "section": "Selecting a Column by its Name",
-    "text": "Selecting a Column by its Name\n# Single column -&gt; returns a DataFrame with one column\nnba.select(\"Name\").show(5)\n\n# Multiple columns -&gt; pass a list-like of column names\nnba.select(\"Name\", \"Team\", \"Salary\").show(5)\n\nIn PySpark, we use select() to choose variables.\nIt returns a new DataFrame projection of the specified variables."
+    "text": "Selecting a Column by its Name\n# Single column -&gt; returns a DataFrame with one column\ndf.select(\"Name\").show(5)\n\n# Multiple columns -&gt; pass a list-like of column names\ndf.select(\"Name\", \"Team\", \"Salary\").show(5)\n\nIn PySpark, we use select() to choose variables.\nIt returns a new DataFrame projection of the specified variables."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#counting-observations-distinct-values",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#counting-observations-distinct-values",
     "title": "Lecture 6",
     "section": "Counting Observations / Distinct Values",
-    "text": "Counting Observations / Distinct Values\n# Counting how many total rows\nnba_count = nba.count()\nprint(\"Number of rows:\", nba_count)\n\n# Count distinct values in one column\nfrom pyspark.sql.functions import countDistinct\nnum_teams = nba.select(countDistinct(\"Team\")).collect()[0][0]\nprint(\"Number of distinct teams:\", num_teams)\n\n# GroupBy a column and count occurrences\nnba.groupBy(\"Team\").count().show(5)\n\nUnlike Pandas, there is no direct .value_counts() or .nunique() in PySpark.\n\nHowever, we can replicate these operations using Spark’s aggregations (groupBy().count(), countDistinct, etc.)."
+    "text": "Counting Observations / Distinct Values\n# Counting how many total rows\nnba_count = df.count()\n\n# Count distinct values in one column\nfrom pyspark.sql.functions import countDistinct\nnum_teams = df.select(countDistinct(\"Team\")).collect()[0][0]\n\n# GroupBy a column and count occurrences\ndf.groupBy(\"Team\").count().show(5)\n\nUnlike Pandas, there is no direct .value_counts() or .nunique() in PySpark.\n\nHowever, we can replicate these operations using Spark’s aggregations (groupBy().count(), countDistinct, etc.)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pandas-basics",
@@ -2328,35 +2328,35 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#sorting-by-one-or-more-variables",
     "title": "Lecture 6",
     "section": "Sorting by One or More Variables",
-    "text": "Sorting by One or More Variables\n# Sort by a single column ascending\nnba.orderBy(\"Name\").show(5)\n\n# Sort by descending\nfrom pyspark.sql.functions import desc\nnba.orderBy(desc(\"Salary\")).show(5)\n\n# Sort by multiple columns\nnba.orderBy([\"Team\", desc(\"Salary\")]).show(5)\n\norderBy() can accept column names and ascending/descending instructions."
+    "text": "Sorting by One or More Variables\n# Sort by a single column ascending\ndf.orderBy(\"Name\").show(5)\n\n# Sort by descending\nfrom pyspark.sql.functions import desc\ndf.orderBy(desc(\"Salary\")).show(5)\n\n# Sort by multiple columns\ndf.orderBy([\"Team\", desc(\"Salary\")]).show(5)\n\norderBy() can accept column names and ascending/descending instructions."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#equivalent-of-pandas-nsmallest-or-nlargest",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#equivalent-of-pandas-nsmallest-or-nlargest",
     "title": "Lecture 6",
     "section": "Equivalent of Pandas nsmallest or nlargest",
-    "text": "Equivalent of Pandas nsmallest or nlargest\n# nsmallest example:\nnba.orderBy(\"Salary\").limit(5).show()\n\n# nlargest example:\nnba.orderBy(desc(\"Salary\")).limit(5).show()\n\nSpark does not have nsmallest() or nlargest(), but we can use limit() after sorting."
+    "text": "Equivalent of Pandas nsmallest or nlargest\n# nsmallest example:\ndf.orderBy(\"Salary\").limit(5).show()\n\n# nlargest example:\ndf.orderBy(desc(\"Salary\")).limit(5).show()\n\nSpark does not have nsmallest() or nlargest(), but we can use limit() after sorting."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#row-based-access-in-pyspark",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#row-based-access-in-pyspark",
     "title": "Lecture 6",
     "section": "Row-Based Access in PySpark",
-    "text": "Row-Based Access in PySpark\n\n\nUnlike Pandas, PySpark DataFrames do not use a row-based index, so there is no direct .loc[] or .iloc[].\nWe typically filter rows by conditions (using .filter() or .where()) or use transformations (limit(), take(), collect()) to access row data.\n\n\n# Example: filter by condition\nnba.filter(\"Team == 'Lakers'\").show()\n\n# or using a column expression\nfrom pyspark.sql.functions import col\nnba.filter(col(\"Team\") == \"Lakers\").show()\n\nTo get the first n rows, use df.limit(n) or df.take(n), which returns a list of Row objects.\ndf.collect(): Returns all the records as a list of Row."
+    "text": "Row-Based Access in PySpark\n\n\nUnlike Pandas, PySpark DataFrames do not use a row-based index, so there is no direct .loc[] or .iloc[].\nWe typically filter rows by conditions (using .filter() or .where()) or use transformations (limit(), take(), collect()) to access row data.\n\n\n# Example: filter by condition\ndf.filter(\"Team == 'Lakers'\").show()\n\n# or using a column expression\nfrom pyspark.sql.functions import col\ndf.filter(col(\"Team\") == \"Lakers\").show()\n\nTo get the first n rows, use df.limit(n) or df.take(n), which returns a list of Row objects.\ndf.collect(): Returns all the records as a list of Row."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#aggregations-math-methods",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#aggregations-math-methods",
     "title": "Lecture 6",
     "section": "Aggregations & Math Methods",
-    "text": "Aggregations & Math Methods\n# Summaries for numeric columns\nnba.selectExpr(\n    \"mean(Salary) as mean_salary\",\n    \"min(Salary) as min_salary\",\n    \"max(Salary) as max_salary\",\n    \"stddev_pop(Salary) as std_salary\"\n).show()\n\nSpark has many SQL functions that can be used with selectExpr()."
+    "text": "Aggregations & Math Methods\n# Summaries for numeric columns\ndf.selectExpr(\n    \"mean(Salary) as mean_salary\",\n    \"min(Salary) as min_salary\",\n    \"max(Salary) as max_salary\",\n    \"stddev_pop(Salary) as std_salary\"\n).show()\n\nSpark has many SQL functions that can be used with selectExpr()."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#creating-or-transforming-columns",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#creating-or-transforming-columns",
     "title": "Lecture 6",
     "section": "Creating or Transforming Columns",
-    "text": "Creating or Transforming Columns\nfrom pyspark.sql import functions as F\n\n# Pre-compute the average salary (pulls it back as a Python float)\nsalary_mean = nba.select(F.avg(\"Salary\").alias(\"mean_salary\")).collect()[0][\"mean_salary\"]\n\nnba2 = (\n    nba\n    .withColumn(\"Salary_2x\", F.col(\"Salary\") * 2)    # Add Salary_2x\n    .withColumn(\n        \"Name_w_Position\",           # Concatenate Name and Position\n        F.concat(F.col(\"Name\"), F.lit(\" (\"), F.col(\"Position\"), F.lit(\")\"))\n    )\n    .withColumn(\n        \"Salary_minus_Mean\",        # Subtract mean salary\n        F.col(\"Salary\") - F.lit(salary_mean)\n    )\n)\n\nAll transformations in Spark are “lazy” until an action (show(), collect(), count()) is called.\n.alias() method is a way to give a temporary (or alternate) name to the column."
+    "text": "Creating or Transforming Columns\nfrom pyspark.sql import functions as F\n\n# Pre-compute the average salary (pulls it back as a Python float)\nsalary_mean = df.select(F.avg(\"Salary\").alias(\"mean_salary\")).collect()[0][\"mean_salary\"]\n\ndf2 = (\n    nba\n    .withColumn(\"Salary_2x\", F.col(\"Salary\") * 2)    # Add Salary_2x\n    .withColumn(\n        \"Name_w_Position\",           # Concatenate Name and Position\n        F.concat(F.col(\"Name\"), F.lit(\" (\"), F.col(\"Position\"), F.lit(\")\"))\n    )\n    .withColumn(\n        \"Salary_minus_Mean\",        # Subtract mean salary\n        F.col(\"Salary\") - F.lit(salary_mean)\n    )\n)\n\nAll transformations in Spark are “lazy” until an action (show(), collect(), count()) is called.\n.alias() method is a way to give a temporary (or alternate) name to the column."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#vectorized-operations",
@@ -2482,7 +2482,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-by-a-condition-1",
     "title": "Lecture 6",
     "section": "Filtering by a Condition",
-    "text": "Filtering by a Condition\n\n\nemp.filter(\n    ( col(\"Team\") == \"Finance\" ) & \n    ( col(\"Salary\") &gt;= 100000 )\n).show()\n\nemp.filter(\n    (col(\"Team\") == \"Finance\") | \n    (col(\"Team\") == \"Legal\")   | \n    (col(\"Team\") == \"Sales\")\n).show()\n\n\n\nWe could combine multiple separate Boolean conditions with logical operators."
+    "text": "Filtering by a Condition\n\n\ndf.filter(\n    ( col(\"Team\") == \"Finance\" ) & \n    ( col(\"Salary\") &gt;= 100000 )\n).show()\n\ndf.filter(\n    (col(\"Team\") == \"Finance\") | \n    (col(\"Team\") == \"Legal\")   | \n    (col(\"Team\") == \"Sales\")\n).show()\n\n\n\nWe could combine multiple separate Boolean conditions with logical operators."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-by-a-single-condition",
@@ -2538,7 +2538,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-with-the-isin-method",
     "title": "Lecture 6",
     "section": "Filtering with the isin() method",
-    "text": "Filtering with the isin() method\n# Checking membership with \"isin\"\nemp.filter(col(\"Team\").isin(\"Finance\", \"Legal\", \"Sales\")).show()\n\nA better solution is the isin() method."
+    "text": "Filtering with the isin() method\n# Checking membership with \"isin\"\ndf.filter(col(\"Team\").isin(\"Finance\", \"Legal\", \"Sales\")).show()\n\nA better solution is the isin() method."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-by-a-condition-3",
@@ -2552,7 +2552,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-with-the-between-method",
     "title": "Lecture 6",
     "section": "Filtering with the between() method",
-    "text": "Filtering with the between() method\nemp_between = emp.filter(col(\"Salary\").between(90000, 100000))\nemp_between.show()\n\nIt returns a Boolean Series where True denotes that an observation’s value falls between the specified interval."
+    "text": "Filtering with the between() method\ndf_between = df.filter(col(\"Salary\").between(90000, 100000))\ndf_between.show()\n\nIt returns a Boolean Series where True denotes that an observation’s value falls between the specified interval."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-with-the-between-method-1",
@@ -2965,14 +2965,14 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#adding-removing-renaming-and-relocating-variables-1",
     "title": "Lecture 6",
     "section": "Adding, Removing, Renaming, and Relocating Variables",
-    "text": "Adding, Removing, Renaming, and Relocating Variables\nAdding Columns with withColumn()\n# Add a column \"Salary_k\"\nnba = nba.withColumn(\"Salary_k\", col(\"Salary\") / 1000)\nRemoving Columns with drop()\nnba = nba.drop(\"Salary_k\")  # remove a single column\nnba = nba.drop(\"Salary_2x\", \"Salary_3x\")  # remove multiple columns\nRenaming Columns with withColumnRenamed()\nnba = nba.withColumnRenamed(\"Birthday\", \"DateOfBirth\")\nRearranging Columns\nnba = nba.select(\"Name\", \"Team\", \"Position\", \"Salary\", \"DateOfBirth\")"
+    "text": "Adding, Removing, Renaming, and Relocating Variables\nAdding Columns with withColumn()\n# Add a column \"Salary_k\"\ndf = df.withColumn(\"Salary_k\", col(\"Salary\") / 1000)\nRemoving Columns with drop()\ndf = df.drop(\"Salary_k\")  # remove a single column\ndf = df.drop(\"Salary_2x\", \"Salary_3x\")  # remove multiple columns\nRenaming Columns with withColumnRenamed()\ndf = df.withColumnRenamed(\"Birthday\", \"DateOfBirth\")\nRearranging Columns\ndf = df.select(\"Name\", \"Team\", \"Position\", \"Salary\", \"DateOfBirth\")"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-1",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types-with-the-cast-method-1",
     "title": "Lecture 6",
     "section": "Converting Data Types with the cast() Method",
-    "text": "Converting Data Types with the cast() Method\n\n\nSpark columns can be cast to other data types using cast():\n\n\nfrom pyspark.sql.functions import col\n\n# Convert Salary to integer\nnba = nba.withColumn(\"Salary_int\", col(\"Salary\").cast(\"int\"))\n\n# Convert to date or timestamp\nnba = nba.withColumn(\"DateOfBirth_ts\", col(\"DateOfBirth\").cast(\"timestamp\"))"
+    "text": "Converting Data Types with the cast() Method\n\n\nSpark columns can be cast to other data types using cast():\n\n\nfrom pyspark.sql.functions import col\n\n# Convert Salary to integer\ndf = df.withColumn(\"Salary_int\", col(\"Salary\").cast(\"int\"))\n\n# Convert to date or timestamp\ndf = df.withColumn(\"DateOfBirth_ts\", col(\"DateOfBirth\").cast(\"timestamp\"))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#converting-data-types",
@@ -2993,7 +2993,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-rows-by-a-condition",
     "title": "Lecture 6",
     "section": "Filtering Rows by a Condition",
-    "text": "Filtering Rows by a Condition\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\ndf_pd = pd.read_csv(\"https://bcdanl.github.io/data/employment.csv\")\ndf_pd = df_pd.where(pd.notnull(df_pd), None)  # Convert NaN to None\nemp = spark.createDataFrame(df_pd)\n\nemp.filter(col(\"Salary\") &gt; 100000).show()"
+    "text": "Filtering Rows by a Condition\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\ndf_pd = pd.read_csv(\"https://bcdanl.github.io/data/employment.csv\")\ndf_pd = df_pd.where(pd.notnull(df_pd), None)  # Convert NaN to None\ndf = spark.createDataFrame(df_pd)\n\ndf.filter(col(\"Salary\") &gt; 100000).show()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-5",
@@ -3007,42 +3007,42 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#checking-for-missing-values-the-isnull-and-isnotnull-methods",
     "title": "Lecture 6",
     "section": "Checking for Missing Values: The isNull() and isNotNull() methods",
-    "text": "Checking for Missing Values: The isNull() and isNotNull() methods\n\n\nIn PySpark, missing values often appear as null.\n\n# Count how many null values in a given column\nemp.filter(col(\"Team\").isNull()).count()\n\n# Similarly, you can filter non-null\nemp.filter(col(\"Team\").isNotNull()).count()"
+    "text": "Checking for Missing Values: The isNull() and isNotNull() methods\n\n\nIn PySpark, missing values often appear as null.\n\n# Count how many null values in a given column\ndf.filter(col(\"Team\").isNull()).count()\n\n# Similarly, you can filter non-null\ndf.filter(col(\"Team\").isNotNull()).count()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method",
     "title": "Lecture 6",
     "section": "Dropping Rows with Null Values: The .na.drop() method",
-    "text": "Dropping Rows with Null Values: The .na.drop() method\n# Drop any row that has a null value in any column\nemp_drop_any = emp.na.drop()\n\nThe .na.drop() method removes observations that hold any NULL values."
+    "text": "Dropping Rows with Null Values: The .na.drop() method\n# Drop any row that has a null value in any column\ndf_drop_any = df.na.drop()\n\nThe .na.drop() method removes observations that hold any NULL values."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method-with-how",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method-with-how",
     "title": "Lecture 6",
     "section": "Dropping Rows with Null Values: The .na.drop() method with how",
-    "text": "Dropping Rows with Null Values: The .na.drop() method with how\n# Drop rows that have all columns null\nemp_drop_all = emp.na.drop(how=\"all\")\n\nWe can pass the how parameter an argument of \"all\" to remove observations in which all values are missing.\nNote that the how parameter’s default argument is \"any\"."
+    "text": "Dropping Rows with Null Values: The .na.drop() method with how\n# Drop rows that have all columns null\ndf_drop_all = df.na.drop(how=\"all\")\n\nWe can pass the how parameter an argument of \"all\" to remove observations in which all values are missing.\nNote that the how parameter’s default argument is \"any\"."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method-with-subset",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#dropping-rows-with-null-values-the-.na.drop-method-with-subset",
     "title": "Lecture 6",
     "section": "Dropping Rows with Null Values: The .na.drop() method with subset",
-    "text": "Dropping Rows with Null Values: The .na.drop() method with subset\n# Drop rows with nulls in specific columns:\nemp_drop_subset = emp.na.drop(subset=[\"Gender\", \"Team\"])\n\nWe can use the subset parameter to target observations with a missing value in a specific variable.\n\nThe above example removes observations that have a missing value in the Gender and Team variables."
+    "text": "Dropping Rows with Null Values: The .na.drop() method with subset\n# Drop rows with nulls in specific columns:\ndf_drop_subset = df.na.drop(subset=[\"Gender\", \"Team\"])\n\nWe can use the subset parameter to target observations with a missing value in a specific variable.\n\nThe above example removes observations that have a missing value in the Gender and Team variables."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#filling-null-values-the-.na.fill-method",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#filling-null-values-the-.na.fill-method",
     "title": "Lecture 6",
     "section": "Filling Null Values: The .na.fill() method",
-    "text": "Filling Null Values: The .na.fill() method\n\n\n# Fill a specific column’s nulls with 0\nemp_fill = emp.na.fill(value = 0, subset = [\"Salary\"])\n\nWe can specify value and subset parameters to fill a specific column’s NULLs with a specific value\n\n\n# Fill multiple columns with a dictionary\nemp_fill_multi = emp.na.fill({\"Salary\": 0, \"Team\": \"Unknown\"})\n\nWe can fill multiple columns’ NULLs with a dictionary."
+    "text": "Filling Null Values: The .na.fill() method\n\n\n# Fill a specific column’s nulls with 0\ndf_fill = df.na.fill(value = 0, subset = [\"Salary\"])\n\nWe can specify value and subset parameters to fill a specific column’s NULLs with a specific value\n\n\n# Fill multiple columns with a dictionary\ndf_fill_multi = df.na.fill({\"Salary\": 0, \"Team\": \"Unknown\"})\n\nWe can fill multiple columns’ NULLs with a dictionary."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#dealing-with-duplicates-with-the-dropduplicates-method",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#dealing-with-duplicates-with-the-dropduplicates-method",
     "title": "Lecture 6",
     "section": "Dealing with Duplicates with the dropDuplicates() method",
-    "text": "Dealing with Duplicates with the dropDuplicates() method\n\n\nMissing values are a common occurrence in messy data sets, and so are duplicate values.\n\n\n# Drop all rows that are exact duplicates across all columns\nemp_no_dups = emp.dropDuplicates()\n\n# Drop duplicates based on subset of columns\nemp_no_dups_subset = emp.dropDuplicates([\"Team\"])\n\nBy default, dropDuplicates() keeps the first occurrence of each distinct combination."
+    "text": "Dealing with Duplicates with the dropDuplicates() method\n\n\nMissing values are a common occurrence in messy data sets, and so are duplicate values.\n\n\n# Drop all rows that are exact duplicates across all columns\ndf_no_dups = df.dropDuplicates()\n\n# Drop duplicates based on subset of columns\ndf_no_dups_subset = df.dropDuplicates([\"Team\"])\n\nBy default, dropDuplicates() keeps the first occurrence of each distinct combination."
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-6",
@@ -3098,7 +3098,7 @@
     "href": "danl-cw/danl-320-cw-06.html#question-5",
     "title": "Classwork 6",
     "section": "Question 5",
-    "text": "Question 5\nFind all observations with a director of “Ethan Coen,”Joel Coen“, and”Quentin Tarantino“.\nAnswer:"
+    "text": "Question 5\nFind all observations with a director of “Ethan Coen”, “Joel Coen”, and “Quentin Tarantino”.\nAnswer:"
   },
   {
     "objectID": "danl-cw/danl-320-cw-06.html#question-6",
@@ -3120,5 +3120,33 @@
     "title": "Classwork 6",
     "section": "Question 8",
     "text": "Question 8\nIdentify the days when Netflix added only one movie to its catalog.\nAnswer:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#resilient-distributed-data-set-rdd-and-dataframe-in-pyspark",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#resilient-distributed-data-set-rdd-and-dataframe-in-pyspark",
+    "title": "Lecture 6",
+    "section": "Resilient distributed data set (RDD) and DataFrame in PySpark",
+    "text": "Resilient distributed data set (RDD) and DataFrame in PySpark\n\n\n\n\n\n\nIn the RDD, we think of each record as an independent entity.\nWith the data frame, we mostly interact with columns, performing functions on them.\n\nWe still can access the rows of a DataFrame via RDD if necessary."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#resilient-distributed-data-set-rdd-and-dataframe",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#resilient-distributed-data-set-rdd-and-dataframe",
+    "title": "Lecture 6",
+    "section": "Resilient distributed data set (RDD) and DataFrame",
+    "text": "Resilient distributed data set (RDD) and DataFrame\n\n\n\n\n\n\nIn the RDD, we think of each record as an independent entity.\nWith the data frame, we mostly interact with columns, performing functions on them.\n\nWe still can access the rows of a DataFrame via RDD if necessary."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#rdd-and-pyspark-dataframe",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#rdd-and-pyspark-dataframe",
+    "title": "Lecture 6",
+    "section": "RDD and PySpark DataFrame",
+    "text": "RDD and PySpark DataFrame\n\n\n\n\n\n\nIn the RDD, we think of each row as an independent entity.\nWith the DataFrame, we mostly interact with columns, performing functions on them.\n\nWe still can access the rows of a DataFrame via RDD if necessary."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-05-2025-0205.html#rdd-and-pyspark-dataframe",
+    "href": "danl-lec/danl-320-lec-05-2025-0205.html#rdd-and-pyspark-dataframe",
+    "title": "Lecture 5",
+    "section": "RDD and PySpark DataFrame",
+    "text": "RDD and PySpark DataFrame\n\n\n\n\n\n\nIn the RDD, we think of each row as an independent entity.\nWith the DataFrame, we mostly interact with columns, performing functions on them.\n\nWe still can access the rows of a DataFrame via RDD if necessary."
   }
 ]

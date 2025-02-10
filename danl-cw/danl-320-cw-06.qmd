@@ -65,7 +65,7 @@ Optimize the DataFrame for limited memory use and maximum utility by using the `
 
 
 ## Question 2
-Find all observations with a director of "`Martin Scorsese`".
+Find all observations with a director of **"Martin Scorsese"**.
 
 *Answer:*
 ```{python}
@@ -77,7 +77,7 @@ Find all observations with a director of "`Martin Scorsese`".
 
 
 ## Question 3
-Find all observations with a title of "`Limitless`" and a type of "`Movie`".
+Find all observations with a title of **"Limitless"** and a type of **"Movie"**.
 
 *Answer:*
 ```{python}
@@ -89,7 +89,7 @@ Find all observations with a title of "`Limitless`" and a type of "`Movie`".
 
 
 ## Question 4
-Find all observations with either a `date_added` of "`2018-06-15`" or a director of "`Bong Joon Ho`".
+Find all observations with either a `date_added` of **"2018-06-15"** or a director of **"Bong Joon Ho"**.
 
 *Answer:*
 ```{python}
@@ -101,7 +101,7 @@ Find all observations with either a `date_added` of "`2018-06-15`" or a director
 
 
 ## Question 5
-Find all observations with a director of "`Ethan Coen`, "`Joel Coen`", and "`Quentin Tarantino`".
+Find all observations with a director of **"Ethan Coen"**, **"Joel Coen"**, and **"Quentin Tarantino"**.
 
 *Answer:*
 ```{python}
