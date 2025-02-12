@@ -649,7 +649,11 @@ df_drop_subset = df.na.drop(subset=["Gender", "Team"])
 ::: {.column width="50%"}
 ```{.python}
 # Fill a specific column’s nulls with 0
-df_fill = df.na.fill(value = 0, subset = ["Salary"])
+df_fill = (
+  df.na
+  .fill(value = 0, 
+        subset = ["Salary"])
+)
 ```
 - We can specify `value` and `subset` parameters to fill a specific column’s `NULL`s with a specific value
 
@@ -658,7 +662,11 @@ df_fill = df.na.fill(value = 0, subset = ["Salary"])
 ::: {.column width="50%"}
 ```{.python}
 # Fill multiple columns with a dictionary
-df_fill_multi = df.na.fill({"Salary": 0, "Team": "Unknown"})
+df_fill_multi = (
+  df.na
+  .fill({"Salary": 0, 
+           "Team": "Unknown"})
+)
 ```
 
 - We can fill multiple columns' `NULL`s with a dictionary.
@@ -676,9 +684,11 @@ df_fill_multi = df.na.fill({"Salary": 0, "Team": "Unknown"})
 
 ## Removing Duplicates with `distinct()`
 
+:::{.nonincremental}
 - In PySpark, the `distinct()` method returns a new DataFrame with **duplicate rows removed**.
 - It is similar to the SQL `SELECT DISTINCT` command.
 
+:::
 ```{.python}
 df.select("Team", "Position").distinct().show()
 ```

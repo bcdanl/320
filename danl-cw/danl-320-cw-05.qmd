@@ -88,7 +88,19 @@ DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/nfl.csv'),
 
 <br>
 
+
 # Question 4
+- What is an effective way to convert the values in its `Birthday` variable to `date`?
+
+*Answer:*
+```{python}
+
+```
+
+<br>
+
+
+# Question 5
 - Who are the five highest-paid players?
 - Who is the oldest player?
 
@@ -99,7 +111,7 @@ DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/nfl.csv'),
 
 <br>
 
-# Question 5
+# Question 6
 How can we sort the `DataFrame` first by `Team` in alphabetical order and then by `Salary` in descending order?
 
 *Answer:*
@@ -110,7 +122,7 @@ How can we sort the `DataFrame` first by `Team` in alphabetical order and then b
 <br>
 
 
-# Question 6
+# Question 7
 Who is the oldest player on the **Kansas City Chiefs** roster, and what is his birthday?
 
 *Answer:*
@@ -121,7 +133,7 @@ Who is the oldest player on the **Kansas City Chiefs** roster, and what is his b
 <br>
 
 
-# Question 7
+# Question 8
 - What is the median of `Salary` in `nfl`?
 
 *Answer:*
@@ -131,16 +143,6 @@ Who is the oldest player on the **Kansas City Chiefs** roster, and what is his b
 
 <br>
 
-
-# Question 8
-- What is an effective way to convert the values in its `Birthday` variable to `date`?
-
-*Answer:*
-```{python}
-
-```
-
-<br>
 
 # Discussion
 

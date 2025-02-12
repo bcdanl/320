@@ -1,6 +1,6 @@
 ---
 title: Classwork 7
-subtitle: Group Operations
+subtitle: PySpark Basics - Group Operations
 date: 2025-02-17
 execute: 
   eval: false
