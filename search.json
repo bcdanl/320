@@ -4,7 +4,7 @@
     "href": "listing-danl-320-cw.html",
     "title": "DANL 320 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 6\n\n\nPySpark Basics - Convering Data Types; Filtering Data; Dealing with Missing Values/Duplicates\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 5\n\n\nPySpark Basics - Loading, Summarizing, Selecting, Counting, and Sorting Data\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 4\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 3\n\n\nQuarto Website Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 2\n\n\nMarkdown Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 1\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 22, 2025\n\n\n\n\nClasswork 2\n\n\nMarkdown Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 3\n\n\nQuarto Website Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 4\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 5\n\n\nPySpark Basics - Loading, Summarizing, Selecting, Counting, and Sorting Data\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 6\n\n\nPySpark Basics - Convering Data Types; Filtering Data; Dealing with Missing Values/Duplicates\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 7\n\n\nGroup Operations\n\n\nFebruary 17, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "blog-listing.html",
@@ -1320,7 +1320,7 @@
     "href": "index.html#bullet-classwork",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Classwork ⌨️",
-    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 6\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 5\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 4\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 3\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 2\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 7\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 6\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 5\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 4\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 3\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 2\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-homework",
@@ -2146,14 +2146,14 @@
     "href": "danl-cw/danl-320-cw-05.html",
     "title": "Classwork 5",
     "section": "",
-    "text": "Direction\n\n\n\nThe nfl.csv file contains a list of players in the National Football League with similar Name, Team, Position, Birthday, and Salary variables in the nba.csv file.\n\nimport pandas as pd\nfrom pyspark.sql import SparkSession\ndf = pd.read_csv(\"https://bcdanl.github.io/data/nfl.csv\")\nnfl = spark.createDataFrame(df)\n\n\n\n\n\n\n\n\n\n\n\nQuestion 1\n\nHow can we read the nfl.csv file, and assign it to a PySpark DataFrame object, nfl?\nWhat is an effective way to convert the values in its Birthday variable to datetimes?\n\nAnswer:\n\n\n\nQuestion 2\n\nHow many observations are in nfl?\nWhat are the mean, standard deviation, minimum, and maximum of Salary in nfl?\n\nAnswer:\n\n\n\nQuestion 3\n\nHow can we count the number of players per team in nfl?\nHow many unique teams are in nfl?\n\nAnswer:\n\n\n\nQuestion 4\n\nWho are the five highest-paid players?\nWho is the oldest player?\n\nAnswer:\n\n\n\nQuestion 5\nHow can we sort the DataFrame first by Team in alphabetical order and then by Salary in descending order?\nAnswer:\n\n\n\nQuestion 6\nWho is the oldest player on the Kansas City Chiefs roster, and what is his birthday?\nAnswer:\n\n\n\nDiscussion\nWelcome to our Classwork 5 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Classwork 5.\nWhether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Classwork 5 materials or need clarification on any points, don’t hesitate to ask here.\nAll comments will be stored here.\nLet’s collaborate and learn from each other!\n\n\n\n\n Back to top"
+    "text": "Direction\n\n\n\nThe nfl.csv file contains a list of players in the National Football League with similar Name, Team, Position, Birthday, and Salary variables in the nba.csv file.\n\nimport pandas as pd\nfrom pyspark.sql import SparkSession\ndf = pd.read_csv(\"https://bcdanl.github.io/data/nfl.csv\")\nnfl = spark.createDataFrame(df)\n\n\n\n\n\n\n\n\n\n\n\nQuestion 1\n\nHow can we read the nfl.csv file, and assign it to a PySpark DataFrame object, nfl?\n\nAnswer:\n\n\n\nQuestion 2\n\nHow many observations are in nfl?\nWhat are the mean, standard deviation, minimum, and maximum of Salary in nfl?\n\nAnswer:\n\n\n\nQuestion 3\n\nHow can we count the number of players per team in nfl?\nHow many unique teams are in nfl?\n\nAnswer:\n\n\n\nQuestion 4\n\nWho are the five highest-paid players?\nWho is the oldest player?\n\nAnswer:\n\n\n\nQuestion 5\nHow can we sort the DataFrame first by Team in alphabetical order and then by Salary in descending order?\nAnswer:\n\n\n\nQuestion 6\nWho is the oldest player on the Kansas City Chiefs roster, and what is his birthday?\nAnswer:\n\n\n\nQuestion 7\n\nWhat is the median of Salary in nfl?\n\nAnswer:\n\n\n\nQuestion 8\n\nWhat is an effective way to convert the values in its Birthday variable to date?\n\nAnswer:\n\n\n\nDiscussion\nWelcome to our Classwork 5 Discussion Board! 👋 \nThis space is designed for you to engage with your classmates about the material covered in Classwork 5.\nWhether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.\nIf you have any specific questions for Byeong-Hak (@bcdanl) regarding the Classwork 5 materials or need clarification on any points, don’t hesitate to ask here.\nAll comments will be stored here.\nLet’s collaborate and learn from each other!\n\n\n\n\n Back to top"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html",
     "href": "danl-lec/danl-320-lec-06-2025-0210.html",
     "title": "Lecture 6",
     "section": "",
-    "text": "pyspark is a Python API to Apache Spark.\n\nAPI: application programming interface, the set of functions, classes, and variables provided for you to interact with.\nSpark itself is coded in a different programming language, called Scala.\n\nWe can combine Python, pandas, and PySpark in one program.\n\nKoalas (now called pyspark.pandas) provides a pandas-like porcelain on top of PySpark.\n\n\n\n\n\n\n\n\nfrom google.colab import drive, files\ndrive.mount('/content/drive')\nfiles.upload()\n\ndrive.mount('/content/drive')\n\nTo mount your Google Drive on Google colab:\n\nfiles.upload()\n\nTo initiate uploading a file on Google Drive:\n\n\n\n\nTo find a pathname of a CSV file in Google Drive:\n\nClick 📁 from the sidebar menu\ndrive ➡️ MyDrive …\nHover a mouse cursor on the CSV file\nClick the vertical dots\nClick “Copy path”\n\n\n\n\n\n\n\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\n\nThe SparkSession entry point provides the functionality for data transformation with data frames and SQL.\nfrom pyspark.sql import SparkSession\n\nImports the SparkSession class from PySpark’s SQL module.\n\nSparkSession.builder\n\nBegins the configuration of a new SparkSession.\n\n.master(\"local[*]\")\n\nConfigures Spark to run locally using all available CPU cores.\n\n.getOrCreate()\n\nRetrieves an existing SparkSession if one exists, or creates a new one otherwise.\n\n\n\n\n\npath = '/content/drive/MyDrive/lecture-data/cces.csv'\ndf = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\ndf.show()  # Displays the first 20 rows\n\nspark.read.csv(path, ...):\n\nRead a CSV file from the location specified by the path variable.\n\ninferSchema=True:\n\nWhen set to True, Spark will automatically detect (or “infer”) the data types of the columns in the CSV file.\n\nWithout this, Spark would treat all columns as strings by default.\n\nheader=True:\n\nThe first row of the CSV file contains the column headers, and will be used as names of the columns.\n\n\n\n\n\npath = 'https://bcdanl.github.io/data/dominick_oj.csv'\ndf = spark.read.csv(path, \n                    inferSchema=True,\n                    header=True)\ndf.show()\n\nSpark’s spark.read.csv() function relies on the Hadoop FileSystem API to access files.\nBy default, Hadoop does not support reading files directly from HTTPS URLs.\n\nIt expects a local file system path, HDFS path, or another supported distributed file system.\n\nWhat should we do then?\n\nWe can convert the Pandas DataFrame to a Spark DataFrame\nspark_df = spark.createDataFrame(pandas_df)"
+    "text": "Loading DataFrame with Spark’s read API (analogous to read_csv())\nGetting a Summary with printSchema() and describe()\nSelecting and Reordering Variables with select()\nCounting Values with groupBy().count(), countDistinct(), and count()\nSorting with orderBy()\nAdding a New Variable with withColumn()\nRemoving a Variable with drop()\nRenaming a Variable with withColumnRenamed()\nAggregation and Math Operations with selectExpr()\n\n\n\n\n\n\n\n\nConverting Data Types with cast()\nFiltering Observations with filter()\nDealing with Missing Values (na.drop(), na.fill(), etc.)\nDealing with Duplicates (dropDuplicates())   \nUsing Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions\nGrouping DataFrames with groupBy().agg() and groupBy().applyInPandas() or UDFs (for advanced operations)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-on-google-colab-1",
@@ -2272,7 +2272,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-2",
     "title": "Lecture 6",
     "section": "PySpark Basics",
-    "text": "PySpark Basics\nLearning Objectives\n\nConverting Data Types with cast()\nFiltering Observations with filter()\nDealing with Missing Values (na.drop(), na.fill(), etc.)\nDealing with Duplicates (dropDuplicates())\nReshaping DataFrames with PySpark’s melt-like or pivot() approach\nJoining DataFrames with join()\nConcatenating DataFrames with union() or column-wise join()\nUsing Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions\nGrouping DataFrames with groupBy().agg() and groupBy().applyInPandas() or UDFs (for advanced operations)"
+    "text": "PySpark Basics\nLearning Objectives\n\nConverting Data Types with cast()\nFiltering Observations with filter()\nDealing with Missing Values (na.drop(), na.fill(), etc.)\nDealing with Duplicates (dropDuplicates())    \nGrouping DataFrames with groupBy().agg()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#spark-dataframe",
@@ -2986,7 +2986,7 @@
     "href": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-4",
     "title": "Lecture 6",
     "section": "PySpark Basics",
-    "text": "PySpark Basics\nLet’s do Question 1 in Classwork 6!"
+    "text": "PySpark Basics\n\nLet’s do\n\nQuestions 4-8 in Classwork 5!\nQuestion 1 in Classwork 6!"
   },
   {
     "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#filtering-rows-by-a-condition",
@@ -3169,5 +3169,117 @@
     "title": "Lecture 6",
     "section": "Converting Data Types with the to_date() Method",
     "text": "Converting Data Types with the to_date() Method\n\n\nto_date() can be used with a given string format (e.g., “M/d/yy”)\n\n\n# Convert to date or timestamp\nfrom pyspark.sql.functions import to_date\n\n# To have 19xx years, not 20xx ones.\nspark.conf.set(\"spark.sql.legacy.timeParserPolicy\", \"LEGACY\") \n\n# Casting the \"Birthday\" column to a date type\ndf = df.withColumn(\"DateOfBirth_ts\", to_date(\"Birthday\", \"M/d/yy\"))"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html",
+    "href": "danl-cw/danl-320-cw-07.html",
+    "title": "Classwork 7",
+    "section": "",
+    "text": "The dataset ,cereals_oatmeal.csv,(with its pathname https://bcdanl.github.io/data/cereal_oatmeal.csv) is a listing of 76 popular breakfast cereals and oatmeal.\n\ncereal = pd.read_csv('https://bcdanl.github.io/data/cereal_oatmeal.csv')\n\n\n\n\n\n  \n\n\n\nUse PySpark to solve this classwork."
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#direction",
+    "href": "danl-cw/danl-320-cw-07.html#direction",
+    "title": "Classwork 7",
+    "section": "",
+    "text": "The dataset ,cereals_oatmeal.csv,(with its pathname https://bcdanl.github.io/data/cereal_oatmeal.csv) is a listing of 76 popular breakfast cereals and oatmeal.\n\ncereal = pd.read_csv('https://bcdanl.github.io/data/cereal_oatmeal.csv')\n\n\n\n\n\n  \n\n\n\nUse PySpark to solve this classwork."
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-1",
+    "href": "danl-cw/danl-320-cw-07.html#question-1",
+    "title": "Classwork 7",
+    "section": "Question 1",
+    "text": "Question 1\nGroup the cereal DataFrame, using the Manufacturer variable.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-2",
+    "href": "danl-cw/danl-320-cw-07.html#question-2",
+    "title": "Classwork 7",
+    "section": "Question 2",
+    "text": "Question 2\nDetermine the total number of groups, and the number of cereals per group.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-3",
+    "href": "danl-cw/danl-320-cw-07.html#question-3",
+    "title": "Classwork 7",
+    "section": "Question 3",
+    "text": "Question 3\nExtract the cereals that belong to the manufacturer \"Kellogg's\".\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-4",
+    "href": "danl-cw/danl-320-cw-07.html#question-4",
+    "title": "Classwork 7",
+    "section": "Question 4",
+    "text": "Question 4\nCalculate the average of values in the Calories, Fiber, and Sugars variables for each manufacturer.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-5",
+    "href": "danl-cw/danl-320-cw-07.html#question-5",
+    "title": "Classwork 7",
+    "section": "Question 5",
+    "text": "Question 5\nFind the maximum value in the Sugars variable for each manufacturer.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-6",
+    "href": "danl-cw/danl-320-cw-07.html#question-6",
+    "title": "Classwork 7",
+    "section": "Question 6",
+    "text": "Question 6\nFind the minimum value in the Fiber variable for each manufacturer.\nAnswer:"
+  },
+  {
+    "objectID": "danl-cw/danl-320-cw-07.html#question-7",
+    "href": "danl-cw/danl-320-cw-07.html#question-7",
+    "title": "Classwork 7",
+    "section": "Question 7",
+    "text": "Question 7\n\nCalculate a ‘Normalized_Sugars’ variable for each product by Manufacturer, where the normalization formula is\n\n\\[\n\\text{Normalized\\_Sugars} = \\frac{\\text{Sugars} - \\text{mean(Sugars)}}{\\text{std(Sugars)}}\n\\]\nfor each Manufacturer group. This formula adjusts the sugar content of each product by subtracting the mean sugar content of its manufacturer and then dividing by the standard deviation of the sugar content within its manufacturer.\nAnswer:"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#group-operations-1",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#group-operations-1",
+    "title": "Lecture 6",
+    "section": "Group Operations",
+    "text": "Group Operations\n\nIn PySpark, we use groupBy() (similar to Pandas’ groupby()) to aggregate, analyze, or transform data at a grouped level.\nA GroupedData object is returned, which can then be used with aggregation methods such as sum(), avg(), count(), etc."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#creating-a-groupby-object",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#creating-a-groupby-object",
+    "title": "Lecture 6",
+    "section": "Creating a groupBy Object",
+    "text": "Creating a groupBy Object\n\n\nWe can create a Spark DataFrame from a list (or other data sources like CSV, Parquet, etc.).\nThen call groupBy(\"Type\") on the DataFrame.\n\n\nfood_data = [\n    (\"Apple\", \"Fruit\", 1.05),\n    (\"Onion\", \"Vegie\", 1.00),\n    (\"Orange\", \"Fruit\", 1.25),\n    (\"Tomato\", \"Vegie\", 0.85),\n    (\"Watermelon\", \"Fruit\", 4.15)\n]\n\nfood_df = spark.createDataFrame(food_data, [\"Item\", \"Type\", \"Price\"])\n\n# Group by \"Type\"\ngroups = food_df.groupBy(\"Type\")\n\nIn this example, there are two types of items: “Fruit” and “Vegie”."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#aggregation-on-groups",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#aggregation-on-groups",
+    "title": "Lecture 6",
+    "section": "Aggregation on Groups",
+    "text": "Aggregation on Groups\n# Calculate the average Price for each Type\ngroups.avg(\"Price\").show()\n\n# Calculate the sum of the Price for each Type\ngroups.sum(\"Price\").show()\n\n# Count how many rows in each Type\ngroups.count().show()\n\nThese group-based operations are executed once an action (like .show()) is called."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#group-aggregation-with-multiple-columns",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#group-aggregation-with-multiple-columns",
+    "title": "Lecture 6",
+    "section": "Group Aggregation with Multiple Columns",
+    "text": "Group Aggregation with Multiple Columns\nfrom pyspark.sql.functions import min, max, mean\n\nfood_df.groupBy(\"Type\").agg(\n    min(\"Price\").alias(\"min_price\"),\n    max(\"Price\").alias(\"max_price\"),\n    mean(\"Price\").alias(\"mean_price\")\n).show()\n\nWe can pass multiple aggregations to .agg() to get multiple results at once."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#adding-group-level-statistics-to-each-row",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#adding-group-level-statistics-to-each-row",
+    "title": "Lecture 6",
+    "section": "Adding Group-Level Statistics to Each Row",
+    "text": "Adding Group-Level Statistics to Each Row\n\n\nIn Pandas, .transform() is often used to add group-level statistics back onto the original DataFrame.\nIn PySpark, we typically use a Window function with the aggregated DataFrame.\n\n\nfrom pyspark.sql.window import Window\nfrom pyspark.sql.functions import avg, col\n\n# Define a window partitioned by \"Type\"\nw = Window.partitionBy(\"Type\")\n\nfood_df_with_mean = food_df.withColumn(\n    \"mean_price_by_type\",\n    avg(col(\"Price\")).over(w)\n)\nfood_df_with_mean.show()\n\nThis keeps each original row, adding the group-level mean price for its corresponding Type."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-7",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#pyspark-basics-7",
+    "title": "Lecture 6",
+    "section": "PySpark Basics",
+    "text": "PySpark Basics\nLet’s do Classwork 7!"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-06-2025-0210.html#removing-duplicates-with-distinct",
+    "href": "danl-lec/danl-320-lec-06-2025-0210.html#removing-duplicates-with-distinct",
+    "title": "Lecture 6",
+    "section": "Removing Duplicates with distinct()",
+    "text": "Removing Duplicates with distinct()\n\nIn PySpark, the distinct() method returns a new DataFrame with duplicate rows removed.\nIt is similar to the SQL SELECT DISTINCT command.\n\ndf.select(\"Team\", \"Position\").distinct().show()\n\nAfter applying distinct(), only unique observation remain."
   }
 ]

@@ -1,0 +1,148 @@
+---
+title: Classwork 7
+subtitle: Group Operations
+date: 2025-02-17
+execute: 
+  eval: false
+  echo: false
+  warning: false
+  message: false
+  
+from: markdown+emoji
+---
+
+```{r}
+#| echo: false
+
+reticulate::use_condaenv("/Users/bchoe/anaconda3", required = TRUE)
+```
+
+
+
+## Direction
+
+<br>
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/cereal.png" width="600px">
+</p>
+
+<br>
+
+The dataset ,`cereals_oatmeal.csv`,(with its pathname `https://bcdanl.github.io/data/cereal_oatmeal.csv`) is a listing of 76 popular breakfast cereals and oatmeal.
+
+
+```{python}
+#| echo: true
+#| eval: false
+cereal = pd.read_csv('https://bcdanl.github.io/data/cereal_oatmeal.csv')
+```
+
+
+```{r}
+#| eval: true
+#| echo: false
+rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/cereal_oatmeal.csv')
+          )
+```
+
+Use PySpark to solve this classwork.
+
+<br>
+
+
+## Question 1
+Group the `cereal` DataFrame, using the `Manufacturer` variable.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 2
+Determine the total number of groups, and the number of cereals per group.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 3 
+Extract the cereals that belong to the manufacturer `"Kellogg's"`.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 4 
+Calculate the average of values in the `Calories`, `Fiber`, and `Sugars` variables for each manufacturer.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 5 
+Find the maximum value in the `Sugars` variable for each manufacturer.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 6 
+Find the minimum value in the `Fiber` variable for each manufacturer.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+## Question 7 
+- Calculate a '`Normalized_Sugars`' variable for each product by `Manufacturer`, where the normalization formula is 
+
+$$
+\text{Normalized\_Sugars} = \frac{\text{Sugars} - \text{mean(Sugars)}}{\text{std(Sugars)}}
+$$
+
+for each `Manufacturer` group. This formula adjusts the sugar content of each product by subtracting the mean sugar content of its manufacturer and then dividing by the standard deviation of the sugar content within its manufacturer.
+
+*Answer:*
+```{python}
+
+```
+
+<br><br>
+
+
+
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 7 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 7.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 7 materials or need clarification on any points, don't hesitate to ask here. 
+
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
+
+Let's collaborate and learn from each other!
+
+

@@ -439,12 +439,8 @@ Byeong-Hak Choe
 <li class="fragment">Converting Data Types with <code>cast()</code></li>
 <li class="fragment">Filtering Observations with <code>filter()</code></li>
 <li class="fragment">Dealing with Missing Values (<code>na.drop()</code>, <code>na.fill()</code>, etc.)</li>
-<li class="fragment">Dealing with Duplicates (<code>dropDuplicates()</code>)</li>
-<li class="fragment">Reshaping DataFrames with PySpark’s melt-like or <code>pivot()</code> approach</li>
-<li class="fragment">Joining DataFrames with <code>join()</code></li>
-<li class="fragment">Concatenating DataFrames with <code>union()</code> or column-wise <code>join()</code></li>
-<li class="fragment">Using Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions</li>
-<li class="fragment">Grouping DataFrames with <code>groupBy().agg()</code> and <code>groupBy().applyInPandas()</code> or UDFs (for advanced operations)</li>
+<li class="fragment">Dealing with Duplicates (<code>dropDuplicates()</code>) <!-- -  Reshaping DataFrames with PySpark’s melt-like or `pivot()` approach --> <!-- -  Joining DataFrames with `join()` --> <!-- -  Concatenating DataFrames with `union()` or column-wise `join()` --> <!-- -  Using Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions --></li>
+<li class="fragment">Grouping DataFrames with <code>groupBy().agg()</code></li>
 </ul>
 </section></section>
 <section>
@@ -841,7 +837,13 @@ Byeong-Hak Choe
 </section>
 <section id="pyspark-basics-4" class="slide level2">
 <h2>PySpark Basics</h2>
-<p>Let’s do Question 1 in <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html"><strong>Classwork 6</strong></a>!</p>
+<ul>
+<li class="fragment">Let’s do
+<ul>
+<li class="fragment">Questions 4-8 in <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-05.html"><strong>Classwork 5</strong></a>!</li>
+<li class="fragment">Question 1 in <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html"><strong>Classwork 6</strong></a>!</li>
+</ul></li>
+</ul>
 </section></section>
 <section>
 <section id="filtering-by-a-condition" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -968,6 +970,17 @@ Byeong-Hak Choe
 <h1><strong>Dealing with Duplicates</strong></h1>
 
 </section>
+<section id="removing-duplicates-with-distinct" class="slide level2">
+<h2>Removing Duplicates with <code>distinct()</code></h2>
+<ul>
+<li class="fragment">In PySpark, the <code>distinct()</code> method returns a new DataFrame with <strong>duplicate rows removed</strong>.</li>
+<li class="fragment">It is similar to the SQL <code>SELECT DISTINCT</code> command.</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>df.select(<span class="st">"Team"</span>, <span class="st">"Position"</span>).distinct().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">After applying <code>distinct()</code>, only unique observation remain.</li>
+</ul>
+</section>
 <section id="dealing-with-duplicates-with-the-dropduplicates-method" class="slide level2">
 <h2>Dealing with Duplicates with the <code>dropDuplicates()</code> method</h2>
 <div>
@@ -975,11 +988,11 @@ Byeong-Hak Choe
 <li>Missing values are a common occurrence in messy data sets, and so are duplicate values.</li>
 </ul>
 </div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Drop all rows that are exact duplicates across all columns</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>df_no_dups <span class="op">=</span> df.dropDuplicates()</span>
-<span id="cb32-3"><a href="#cb32-3"></a></span>
-<span id="cb32-4"><a href="#cb32-4"></a><span class="co"># Drop duplicates based on subset of columns</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>df_no_dups_subset <span class="op">=</span> df.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Drop all rows that are exact duplicates across all columns</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>df_no_dups <span class="op">=</span> df.dropDuplicates()</span>
+<span id="cb33-3"><a href="#cb33-3"></a></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># Drop duplicates based on subset of columns</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>df_no_dups_subset <span class="op">=</span> df.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">By default, <code>dropDuplicates()</code> keeps the first occurrence of each distinct combination.</li>
 </ul>
@@ -987,6 +1000,96 @@ Byeong-Hak Choe
 <section id="pyspark-basics-6" class="slide level2">
 <h2>PySpark Basics</h2>
 <p>Let’s do Questions 7-8 in <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html"><strong>Classwork 6</strong></a>!</p>
+</section></section>
+<section>
+<section id="group-operations" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Group Operations</strong></h1>
+
+</section>
+<section id="group-operations-1" class="slide level2">
+<h2>Group Operations</h2>
+<ul>
+<li class="fragment">In PySpark, we use <code>groupBy()</code> (similar to Pandas’ <code>groupby()</code>) to aggregate, analyze, or transform data at a grouped level.</li>
+<li class="fragment">A <code>GroupedData</code> object is returned, which can then be used with aggregation methods such as <code>sum()</code>, <code>avg()</code>, <code>count()</code>, etc.</li>
+</ul>
+</section>
+<section id="creating-a-groupby-object" class="slide level2">
+<h2>Creating a groupBy Object</h2>
+<div>
+<ul>
+<li>We can create a Spark <code>DataFrame</code> from a list (or other data sources like CSV, Parquet, etc.).</li>
+<li>Then call <code>groupBy("Type")</code> on the <code>DataFrame</code>.</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>food_data <span class="op">=</span> [</span>
+<span id="cb34-2"><a href="#cb34-2"></a>    (<span class="st">"Apple"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.05</span>),</span>
+<span id="cb34-3"><a href="#cb34-3"></a>    (<span class="st">"Onion"</span>, <span class="st">"Vegie"</span>, <span class="fl">1.00</span>),</span>
+<span id="cb34-4"><a href="#cb34-4"></a>    (<span class="st">"Orange"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.25</span>),</span>
+<span id="cb34-5"><a href="#cb34-5"></a>    (<span class="st">"Tomato"</span>, <span class="st">"Vegie"</span>, <span class="fl">0.85</span>),</span>
+<span id="cb34-6"><a href="#cb34-6"></a>    (<span class="st">"Watermelon"</span>, <span class="st">"Fruit"</span>, <span class="fl">4.15</span>)</span>
+<span id="cb34-7"><a href="#cb34-7"></a>]</span>
+<span id="cb34-8"><a href="#cb34-8"></a></span>
+<span id="cb34-9"><a href="#cb34-9"></a>food_df <span class="op">=</span> spark.createDataFrame(food_data, [<span class="st">"Item"</span>, <span class="st">"Type"</span>, <span class="st">"Price"</span>])</span>
+<span id="cb34-10"><a href="#cb34-10"></a></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="co"># Group by "Type"</span></span>
+<span id="cb34-12"><a href="#cb34-12"></a>groups <span class="op">=</span> food_df.groupBy(<span class="st">"Type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">In this example, there are two types of items: “Fruit” and “Vegie”.</li>
+</ul>
+</section>
+<section id="aggregation-on-groups" class="slide level2">
+<h2>Aggregation on Groups</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Calculate the average Price for each Type</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>groups.avg(<span class="st">"Price"</span>).show()</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># Calculate the sum of the Price for each Type</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>groups.<span class="bu">sum</span>(<span class="st">"Price"</span>).show()</span>
+<span id="cb35-6"><a href="#cb35-6"></a></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co"># Count how many rows in each Type</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>groups.count().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">These group-based operations are executed once an action (like <code>.show()</code>) is called.</li>
+</ul>
+</section>
+<section id="group-aggregation-with-multiple-columns" class="slide level2">
+<h2>Group Aggregation with Multiple Columns</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> <span class="bu">min</span>, <span class="bu">max</span>, mean</span>
+<span id="cb36-2"><a href="#cb36-2"></a></span>
+<span id="cb36-3"><a href="#cb36-3"></a>food_df.groupBy(<span class="st">"Type"</span>).agg(</span>
+<span id="cb36-4"><a href="#cb36-4"></a>    <span class="bu">min</span>(<span class="st">"Price"</span>).alias(<span class="st">"min_price"</span>),</span>
+<span id="cb36-5"><a href="#cb36-5"></a>    <span class="bu">max</span>(<span class="st">"Price"</span>).alias(<span class="st">"max_price"</span>),</span>
+<span id="cb36-6"><a href="#cb36-6"></a>    mean(<span class="st">"Price"</span>).alias(<span class="st">"mean_price"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">We can pass multiple aggregations to <code>.agg()</code> to get multiple results at once.</li>
+</ul>
+</section>
+<section id="adding-group-level-statistics-to-each-row" class="slide level2">
+<h2>Adding Group-Level Statistics to Each Row</h2>
+<div>
+<ul>
+<li>In Pandas, <code>.transform()</code> is often used to add group-level statistics back onto the original <code>DataFrame</code>.</li>
+<li>In PySpark, we typically use a <code>Window</code> function with the aggregated <code>DataFrame.</code></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> pyspark.sql.window <span class="im">import</span> Window</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> avg, col</span>
+<span id="cb37-3"><a href="#cb37-3"></a></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="co"># Define a window partitioned by "Type"</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>w <span class="op">=</span> Window.partitionBy(<span class="st">"Type"</span>)</span>
+<span id="cb37-6"><a href="#cb37-6"></a></span>
+<span id="cb37-7"><a href="#cb37-7"></a>food_df_with_mean <span class="op">=</span> food_df.withColumn(</span>
+<span id="cb37-8"><a href="#cb37-8"></a>    <span class="st">"mean_price_by_type"</span>,</span>
+<span id="cb37-9"><a href="#cb37-9"></a>    avg(col(<span class="st">"Price"</span>)).over(w)</span>
+<span id="cb37-10"><a href="#cb37-10"></a>)</span>
+<span id="cb37-11"><a href="#cb37-11"></a>food_df_with_mean.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">This keeps each original row, adding the group-level mean price for its corresponding <strong>Type</strong>.</li>
+</ul>
+</section>
+<section id="pyspark-basics-7" class="slide level2">
+<h2>PySpark Basics</h2>
+<p>Let’s do <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-07.html"><strong>Classwork 7</strong></a>!</p>
 
 <div class="footer footer-default">
 

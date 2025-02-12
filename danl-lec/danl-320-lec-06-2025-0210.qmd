@@ -81,11 +81,11 @@ theme_set(theme_fivethirtyeight()+
 -	Filtering Observations with `filter()`
 -	Dealing with Missing Values (`na.drop()`, `na.fill()`, etc.)
 -	Dealing with Duplicates (`dropDuplicates()`)
--	Reshaping DataFrames with PySpark’s melt-like or `pivot()` approach
--	Joining DataFrames with `join()`
--	Concatenating DataFrames with `union()` or column-wise `join()`
--	Using Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions
--	Grouping DataFrames with `groupBy().agg()` and `groupBy().applyInPandas()` or UDFs (for advanced operations)
+<!-- -	Reshaping DataFrames with PySpark’s melt-like or `pivot()` approach -->
+<!-- -	Joining DataFrames with `join()` -->
+<!-- -	Concatenating DataFrames with `union()` or column-wise `join()` -->
+<!-- -	Using Custom Functions (User-Defined Functions, UDFs) and Anonymous Functions -->
+-	Grouping DataFrames with `groupBy().agg()`
 
 
 
@@ -429,6 +429,7 @@ df2 = (
 
 
 
+
 # **Converting Data Types with the `cast()` Method** {background-color="#1c4982"}
 
 
@@ -501,13 +502,13 @@ df = df.withColumn("DateOfBirth_ts", to_date("Birthday", "M/d/yy"))
 
 ## PySpark Basics
 
-Let's do Question 1 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
+- Let's do 
+  - Questions 4-8 in [**Classwork 5**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-05.html)!
+  - Question 1 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
 
 
 
 # **Filtering by a Condition** {background-color="#1c4982"}
-
-
 
 ## Filtering Rows by a Condition
 
@@ -672,6 +673,19 @@ df_fill_multi = df.na.fill({"Salary": 0, "Team": "Unknown"})
 
 # **Dealing with Duplicates** {background-color="#1c4982"}
 
+
+## Removing Duplicates with `distinct()`
+
+- In PySpark, the `distinct()` method returns a new DataFrame with **duplicate rows removed**.
+- It is similar to the SQL `SELECT DISTINCT` command.
+
+```{.python}
+df.select("Team", "Position").distinct().show()
+```
+
+-	After applying `distinct()`, only unique observation remain.
+
+
 ## Dealing with Duplicates with the `dropDuplicates()` method
 
 ::: {.nonincremental}
@@ -696,4 +710,97 @@ df_no_dups_subset = df.dropDuplicates(["Team"])
 Let's do Questions 7-8 in [**Classwork 6**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-06.html)!
 
 
+# **Group Operations** {background-color="#1c4982"}
 
+## Group Operations
+-	In PySpark, we use `groupBy()` (similar to Pandas' `groupby()`) to aggregate, analyze, or transform data at a grouped level.
+-	A `GroupedData` object is returned, which can then be used with aggregation methods such as `sum()`, `avg()`, `count()`, etc.
+	
+
+## Creating a groupBy Object
+
+:::{.nonincremental}
+-	We can create a Spark `DataFrame` from a list (or other data sources like CSV, Parquet, etc.).
+-	Then call `groupBy("Type")` on the `DataFrame`.
+
+:::
+
+```{.python}
+food_data = [
+    ("Apple", "Fruit", 1.05),
+    ("Onion", "Vegie", 1.00),
+    ("Orange", "Fruit", 1.25),
+    ("Tomato", "Vegie", 0.85),
+    ("Watermelon", "Fruit", 4.15)
+]
+
+food_df = spark.createDataFrame(food_data, ["Item", "Type", "Price"])
+
+# Group by "Type"
+groups = food_df.groupBy("Type")
+```
+
+-	In this example, there are two types of items: “Fruit” and “Vegie”.
+
+
+## Aggregation on Groups
+
+```{.python}
+# Calculate the average Price for each Type
+groups.avg("Price").show()
+
+# Calculate the sum of the Price for each Type
+groups.sum("Price").show()
+
+# Count how many rows in each Type
+groups.count().show()
+```
+
+-	These group-based operations are executed once an action (like `.show()`) is called.
+	
+	
+## Group Aggregation with Multiple Columns
+
+```{.python}
+from pyspark.sql.functions import min, max, mean
+
+food_df.groupBy("Type").agg(
+    min("Price").alias("min_price"),
+    max("Price").alias("max_price"),
+    mean("Price").alias("mean_price")
+).show()
+```
+
+-	We can pass multiple aggregations to `.agg()` to get multiple results at once.
+
+
+## Adding Group-Level Statistics to Each Row
+
+:::{.nonincremental}
+-	In Pandas, `.transform()` is often used to add group-level statistics back onto the original `DataFrame`.
+-	In PySpark, we typically use a `Window` function with the aggregated `DataFrame.`
+
+:::
+
+```{.python}
+from pyspark.sql.window import Window
+from pyspark.sql.functions import avg, col
+
+# Define a window partitioned by "Type"
+w = Window.partitionBy("Type")
+
+food_df_with_mean = food_df.withColumn(
+    "mean_price_by_type",
+    avg(col("Price")).over(w)
+)
+food_df_with_mean.show()
+```
+
+-	This keeps each original row, adding the group-level mean price for its corresponding **Type**.
+
+
+
+
+## PySpark Basics
+
+Let's do [**Classwork 7**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-07.html)!
