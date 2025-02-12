@@ -91,6 +91,7 @@ DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/nfl.csv'),
 
 # Question 4
 - What is an effective way to convert the values in its `Birthday` variable to `date`?
+  - The format of `Birthday` is **"M/d/yy""**
 
 *Answer:*
 ```{python}

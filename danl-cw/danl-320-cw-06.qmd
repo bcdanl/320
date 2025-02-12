@@ -53,7 +53,8 @@ DT:::datatable(readr::read_csv('https://bcdanl.github.io/data/netflix.csv')
 
 
 ## Question 1
-Optimize the DataFrame for limited memory use and maximum utility by using the `cast()` method.
+- Optimize the DataFrame for limited memory use and maximum utility by using the `cast()` method.
+  - The format of `date_added` is **"dd-MMM-yy"**.
 
 *Answer:*
 ```{python}
