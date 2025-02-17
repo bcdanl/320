@@ -3925,5 +3925,26 @@
     "title": "Lecture 7",
     "section": "Training and Test Data",
     "text": "Training and Test Data\nModel Construction and Evaluation"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#big-data-and-machine-learning-ml",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#big-data-and-machine-learning-ml",
+    "title": "Lecture 7",
+    "section": "Big Data and Machine Learning (ML)",
+    "text": "Big Data and Machine Learning (ML)\n\nThe `Big Data’ name comes from computer scientists working to do aggregation on data that is too big to fit on a single machine.\nAs aggregation became analysis, Big Data got closer to stats + ML.\n\nScaleability of algorithms is essential.\n\nWe will do ML analysis to:\n\nInfer patterns from big data.\nMake a data-driven decision."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#what-does-it-mean-to-be-big---big-in-both-the-number-of-observations-sizen-and-in-the-number-of-variables-dimension-p.",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#what-does-it-mean-to-be-big---big-in-both-the-number-of-observations-sizen-and-in-the-number-of-variables-dimension-p.",
+    "title": "Lecture 7",
+    "section": "What does it mean to be big'? - Big in both the number of observations (sizen’) and in the number of variables (dimension `p’).",
+    "text": "What does it mean to be big'? - Big in both the number of observations (sizen’) and in the number of variables (dimension `p’).\n\nIn these settings, we cannot:\n\nLook at each individual variable and make a decision.\nChoose among a small set of candidate models.\nPlot every variable to look for interactions or transformations.\n\nSome ML tools are straight out of previous statistics classes (linear regression) and some are totally new (ensemble models, principal component analysis).\n\nAll require a different approach when n and p get really big."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#ml-topics",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#ml-topics",
+    "title": "Lecture 7",
+    "section": "ML topics",
+    "text": "ML topics\n\nRegression: inference and prediction\nRegularization: cross-validation\nPrincipal Component Analysis: dimention reduction\nTree-based models: decision trees, random forest, XGBoost\nClassfication: kNN\nClustering: k-means, association rules\nText Mining: sentiment analysis; topic models"
   }
 ]

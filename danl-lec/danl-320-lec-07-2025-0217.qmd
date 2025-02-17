@@ -56,10 +56,42 @@ theme_set(theme_fivethirtyeight()+
           )
 ```
 
+# **Big Data and Machine Learning** {background-color="#1c4982"}
+
+## Big Data and Machine Learning (ML)
+- The `Big Data' name comes from computer scientists working to do aggregation on data that is too big to fit on a single machine.
+
+- As aggregation became analysis, Big Data got closer to stats + ML.
+  - Scaleability of algorithms is essential.
+  
+- We will do ML analysis to:
+  - Infer patterns from big data.
+  - Make a data-driven decision.
+  
+
+## What does it mean to be `big'?
+- Big in both the number of observations (size `n') and in the number of variables (dimension `p').
+
+- In these settings, we cannot:
+  - Look at each individual variable and make a decision.
+  - Choose among a small set of candidate models.
+  - Plot every variable to look for interactions or transformations.
+
+- Some ML tools are straight out of previous statistics classes (linear regression) and some are totally new (ensemble models, principal component analysis).
+  - All require a different approach when `n` and `p` get really big.
+
+## ML topics
+
+- Regression: inference and prediction
+- Regularization: cross-validation
+- Principal Component Analysis: dimention reduction
+- Tree-based models: decision trees, random forest, XGBoost
+- Classfication: kNN
+- Clustering: k-means, association rules
+- Text Mining: sentiment analysis; topic models
+
 
 # **Linear Regression Model** {background-color="#1c4982"}
-
-
 
 
 ## Models and Assumptions
