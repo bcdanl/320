@@ -3945,6 +3945,6 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#ml-topics",
     "title": "Lecture 7",
     "section": "ML topics",
-    "text": "ML topics\n\nRegression: inference and prediction\nRegularization: cross-validation\nPrincipal Component Analysis: dimention reduction\nTree-based models: decision trees, random forest, XGBoost\nClassfication: kNN\nClustering: k-means, association rules\nText Mining: sentiment analysis; topic models"
+    "text": "ML topics\n\nRegression: inference and prediction\nRegularization: cross-validation\nPrincipal Component Analysis: dimension reduction\nTree-based models: decision trees, random forest, XGBoost\nClassfication: kNN\nClustering: k-means, association rules\nText Mining: sentiment analysis; topic models"
   }
 ]

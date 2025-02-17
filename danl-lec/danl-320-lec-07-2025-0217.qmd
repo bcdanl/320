@@ -84,7 +84,7 @@ theme_set(theme_fivethirtyeight()+
 
 - Regression: inference and prediction
 - Regularization: cross-validation
-- Principal Component Analysis: dimention reduction
+- Principal Component Analysis: dimension reduction
 - Tree-based models: decision trees, random forest, XGBoost
 - Classfication: kNN
 - Clustering: k-means, association rules
