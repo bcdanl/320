@@ -1,0 +1,1081 @@
+---
+title: Lecture 7
+subtitle: Linear Regression
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: false
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-02-17
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(stargazer)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+
+# **Linear Regression Model** {background-color="#1c4982"}
+
+
+
+
+## Models and Assumptions
+### Linear Model
+- Linear regression assumes a __linear relationship__ for $Y = f(X_{1})$:
+
+$$Y_{i} \,=\, \beta_{0} \,+\, \beta_{1} X_{1, i} \,+\, \epsilon_{i}$$
+for $i \,=\, 1, 2, \dots, n$, where $i$ is the $i$-th observation in data.
+
+
+
+- $Y_i$ is the $i$-th value for the __outcome/dependent/response/target__ variable $Y$.
+
+- $X_{1, i}$ is the $i$-th value for the __explanatory/independent/predictor/input__ variable or __feature__ $X_{1}$.
+
+
+
+## Models and Assumptions
+### Beta coefficients
+- Linear regression assumes a __linear relationship__ for $Y = f(X_{1})$:
+
+$$Y_{i} \,=\, \beta_{0} \,+\, \beta_{1} X_{1, i} \,+\, \epsilon_{i}$$
+for $i \,=\, 1, 2, \dots, n$, where $i$ is the $i$-th observation in data.
+
+
+- $\beta_0$ is an unknown __true__ value of an __intercept__: average value for $Y$ if $X_{1} = 0$
+
+- $\beta_1$ is an unknown __true__ value of a __slope__: increase in average value for $Y$ for each one-unit increase in $X_{1}$
+
+
+## Models and Assumptions
+### Random Noises
+- Linear regression assumes a __linear relationship__ for $Y = f(X_{1})$:
+
+$$Y_{i} \,=\, \beta_{0} \,+\, \beta_{1} X_{1, i} \,+\, \epsilon_{i}$$
+for $i \,=\, 1, 2, \dots, n$, where $i$ is the $i$-th observation in data.
+
+
+
+- $\epsilon_i$ is a random noise, or a statistical error:
+
+$$
+\epsilon_i \sim N(0, \sigma^2) 
+$$
+  
+  - Errors have a mean value of 0 with constant variance $\sigma^2$.
+  - Errors are *uncorrelated* with $X_{1, i}$.
+
+
+## What Is Linear Regression Doing?
+### Best Fitting Line
+- Linear regression finds the beta estimates $( \hat{\beta_{0}}, \hat{\beta_{1}} )$ such that:
+
+  – The linear function $f(X_{1}) = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1}$ is as near as possible to $Y$ for all $(X_{1, i}\,,\, Y_{i})$ pairs in the data.
+  
+  - It is the **best fitting** line, or the **predicted outcome**, $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1}$.
+  
+
+
+## What Is Linear Regression Doing?
+### Residual errors
+- The estimated beta coefficients are chosen to minimize the sum of squares of the **residual errors** $(SSR)$:
+$$
+\begin{align}
+SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\ 
+&\quad \,+\, (\texttt{Residual_Error}_{2})^{2}\\ 
+&\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}\\
+\text{where}\qquad\qquad\qquad\qquad&\\
+\texttt{Residual_Error}_{i} &\,=\, Y_{i} \,-\, \hat{Y_{i}},\\
+\texttt{Predicted_Outcome}_{i}: \hat{Y_{i}} &\,=\, \hat{\beta_{0}} \,+\, \hat{\beta_{1}}X_{1, i}
+\end{align}
+$$
+
+  
+
+## What Is Linear Regression Doing?
+### Hat Notation
+- We use the hat notation $(\,\hat{\texttt{ }_{\,}}\,)$  to distinguish true values and estimated/predicted values.
+
+
+- The value of **true** beta coefficient is denoted by $\beta_{1}$.
+- The value of **estimated** beta coefficient is denoted by $\hat{\beta_{1}}$.
+
+
+
+- The $i$-th value of **true** outcome variable is denoted by $Y_{i}$.
+- The $i$-th value of **predicted** outcome variable is denoted by $\hat{Y_{i}}$.
+
+
+## What Is Linear Regression Doing?
+### Relationship
+
+  **1**. Finding the relationship between $X_{1}$ and $Y$
+  $$\hat{\beta_{1}}$$:
+  How is an increase in $X_1$ by one unit associated with a change in $Y$ on average?
+  - Positive? Negative? Independent?
+  - How strong?
+
+## Statistical Significance in Estimated Beta Coefficients
+
+- What does it mean for a beta estimate $\hat{\beta_{\,}}$ to be statistically significant at 5% level?
+  - It means that the null hypothesis $H_{0}: \beta = 0$ is rejected for a given significance level 5%.
+  - "2 standard error rule" of thumb: The true value of $\beta$ is 95% likely to be in the confidence interval $(\, \hat{\beta_{\,}} - 2 * \texttt{Std. Error}\;,\; \hat{\beta_{\,}} + 2 * \texttt{Std. Error} \,)$.
+  - The standard error tells us how uncertain our beta estimate is.
+  - We should look for the stars!
+
+
+## What Is Linear Regression Doing?
+### Prediction
+  **2**. Making a prediction on $Y$:
+  $$\hat{Y_{\,}}$$
+  For **unseen** data point of $X_1$, what is the predicted value of outcome, $\hat{Y_{\,}}$?
+
+
+  - E.g., For $X_{1} = 2$, the predicted outcome is $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}} \times 2$.
+  - E.g., For $X_{1} = 3$, the predicted outcome is $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}} \times 3$.
+
+
+
+
+## Linear Regression - Example
+
+- Suppose we want to predict a property's sales price based on the property size. 
+  - In other words, for some house sale `i`, we want to predict `sale_price[i]` based on `gross_square_feet[i]`.
+  
+  
+- We also want to focus on the relationship between a property's sales price and a property size.
+  - In other words, we estimate how an increase in `gross_square_feet[i]` is associated with `sale_price[i]`.
+
+
+## Linear Relationship
+
+- Linear regression assumes that:
+
+  - The outcome `sale_price[i]` is linearly related to the input `gross_square_feet[i]`:
+
+$$\texttt{sale_price[i]} \;=\quad \texttt{b0} \,+\, \texttt{b1*gross_square_feet[i]} \,+\, \texttt{e[i]}$$
+where `e[i]` is a statistical error term.
+
+
+
+
+## The Linear Relationship between `sale_price` and `gross_square_feet`
+
+
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/reg_hedonic.png")
+```
+
+
+## Best Fitting Line
+
+
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
+```
+
+- What do the vertical lines visualize?
+
+
+
+
+
+## Goals of Linear Regression
+
+-  The goals of linear regression here are to: 
+
+  1. Find the relationship between `gross_square_feet` and `sale_price` by estimating a true value of `b1`.
+  - The estimated value of `b1` is denoted by $\hat{\texttt{b1}}$.
+    
+  2. Make a prediction on `sale_price[i]` for new property `i`
+  - The predicted value of `sale_price[i]` is denoted by $\widehat{\texttt{sale_price}}\texttt{[i]}$, where
+
+$$\widehat{\texttt{sale_price}}\texttt{[i]} \;=\quad \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[i]}$$
+
+
+
+## Training and Test Data
+
+
+- **Training data**: When we're building a linear regression model, we need *data* to train the model.
+
+- **Test data**: We also need data to test whether the model works well on *new data*.
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- So, we start with splitting a given data.frame into training and test data.frames when building a linear regression model.
+
+:::
+
+::: {.column width="50%"}
+
+```{r, echo=FALSE, eval = T, out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig4_12.png")
+```
+
+:::
+::::
+
+
+
+
+
+## Training and Test Data
+### Training vs. Test
+- We use **training data** to train/fit the linear regression model.
+  - We then make a prediction using **test data**, which are **unseen/new** from the viewpoint of the trained linear regression model.
+  
+- In this way, we can test whether our model performs well in the real world, where unseen data points exist.
+  
+
+
+
+## Training and Test Data
+### Model Construction and Evaluation
+```{r, echo=FALSE, eval = T, out.width = '55%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_6.png")
+```
+
+
+
+
+## Model Evaluation
+### R-squared
+
+- **R-squared** is a measure of how well the model “fits” the data, or its “goodness of fit.”
+  - **R-squared** can be thought of as *what fraction of the `y`'s variation is explained by the explanatory variables*.
+
+
+- We want **R-squared** to be *fairly* large and **R-squareds** that are similar on testing and training.
+
+
+- **Caution**: R-squared will be higher for models with more explanatory variables, regardless of whether the additional explanatory variables actually improve the model or not.
+
+
+## Model Evaluation
+### Mean squared error (MSE)
+- One of the most common metrics used to measure the **prediction accuracy** of a linear regression model is **MSE**, which stands for **mean squared error**. 
+  - $MSE$ is $SSR$ divided by $n$ (the number of observations in the data that are used in making predictions).
+
+$$
+MSE = SSR / n
+$$
+$$
+\begin{align}
+SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\ 
+&\quad \,+\, (\texttt{Residual_Error}_{2})^{2}\\ 
+&\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}
+\end{align}
+$$
+
+
+- The lower MSE, the higher accuracy of the model.  
+- The root MSE (RMSE) is the square root of MSE.
+
+
+
+## Model Evaluation
+### Mean squared error (MSE)
+- The root MSE (RMSE) represents the overall deviation of $Y_{i}$ from the best fitting regression line.
+
+
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
+```
+
+
+
+
+
+# __Linear Regression using **PySpark**__ {background-color="#1c4982"}
+
+## Example of Linear Regression using **PySpark**
+
+- We will use the data for residential property sales from September 2017 and August 2018 in NYC.
+
+
+- Each sales data recorded contains a number of interesting variables, but here we focus on the followings:
+  - `sale_price`: a property's sales price;
+  - `gross_square_feet`: a property's size;
+  - `age`: a property's age;
+  - `borough_name`: a borough where a property is located.
+
+
+- Use summary statistics and visualization to explore the data.
+
+
+
+## Splitting Data into Training and Testing Data
+### Step 1. Importing Modules and Reading DataFrames
+```{.python}
+import pandas as pd
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import rand, col, pow, mean, when
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.regression import LinearRegression
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+
+# 1. Read CSV data from URL
+df_pd = pd.read_csv('https://bcdanl.github.io/data/home_sales_nyc.csv')
+sale_df = spark.createDataFrame(df_pd)
+sale_df.show()
+```
+
+
+## Splitting Data into Training and Testing Data
+### A Little Bit of Statistics for the Uniform Distribution
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- The probability density function for the uniform distribution looks like:
+
+
+- With the uniform distribution, any values of $x$ between 0 and 1 is equally likely drawn.
+
+:::
+::: {.column width="50%"}
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/unifpdf.png")
+```
+
+:::
+::::
+
+- We will use the uniform distribution when splitting data into training and testing data sets.
+
+
+## Splitting Data into Training and Testing Data
+### Randomization in the Sampling Process
+
+- Why do we randomize when splitting given data into training and test data?
+  - Randomizing the sampling process ensures that the training and test data sets are representative for the population data.
+  - If the sample does not properly represent the entire population, the model result is biased toward the sample.
+  
+  
+- Suppose the splitting process is not randomized, so that the observations with `sale_price > 10^6` are in the training data and the observations with `sale_price <= 10^6` are in the test data.
+  - What would be the model result then?
+
+
+
+## Splitting Data into Training and Testing Data
+#### Step 2. `rand(seed = ANY_NUMBER)`
+```{.python}
+# 2. Split data into training and testing sets by creating a random column "gp"
+sale_df = sale_df.withColumn("gp", rand(seed=123)) # seed is set for replication
+
+# Splits 50-50 into training and test sets 
+dtrain = sale_df.filter(col("gp") >= 0.5) 
+dtest = sale_df.filter(col("gp") < 0.5)
+```
+
+
+
+## Building an ML DataFrame using `VectorAssembler()`
+
+```{.python}
+# Now assemble inputs using the renamed column
+assembler1 = VectorAssembler(
+    inputCols=["gross_square_feet"], 
+    outputCol="inputs")
+
+dtrain1 = assembler1.transform(dtrain) # training data
+dtest1  = assembler1.transform(dtest)  # test data
+```
+
+- `VectorAssembler` is a transformer in PySpark’s ML library that is used to combine multiple columns into a single vector column. 
+  - Many ML algorithms in Spark require the inputs to be represented as a single vector.
+  -	`VectorAssembler` is often one of the first steps in a Spark ML pipeline.
+
+- `VectorAssembler.transform()` returns a `DataFrame` with a new column, specified in `outputCol` in `VectorAssembler()`.
+
+
+## Building a Linear Regression Model using `LinearRegression().fit()`
+
+```{.python}
+# Fit linear regression model using the new label column "sale_price"
+model1 = (
+    LinearRegression(
+        featuresCol = "inputs", 
+        labelCol = "sale_price")
+    .fit(dtrain1)
+)
+```
+
+- `LinearRegression(featuresCol="inputs", labelCol="sale_price")`
+	-	This creates an instance of the `LinearRegression` class.
+	-	The features (independent variables) are in a column named "inputs".
+	-	The label (dependent variable) is in a column named "sale_price".
+
+- `.fit()` trains (fits) the linear regression model using the training DataFrame `dtrain1`.
+	-	This training process estimates the coefficients (betas) and intercept that best predict the label from the features.
+
+
+## Summary of the Regression Result
+
+```{.python}
+model1.intercept
+model1.coefficients
+model1.summary.coefficientStandardErrors
+model1.summary.rootMeanSquaredError
+model1.summary.r2
+```
+
+
+## Summary of the Regression Result
+### Make the Summary Pretty
+
+```{.python}
+import numpy as np
+import scipy.stats as stats
+from tabulate import tabulate
+
+def regression_table(model, assembler):
+    """
+    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,
+    and inserts a dashed horizontal line after the Intercept row.
+    
+    Parameters:
+        model: A fitted LinearRegression model (with a .summary attribute).
+        assembler: The VectorAssembler used to assemble the features for the model.
+    
+    Returns:
+        A formatted string containing the regression table.
+    """
+    # Extract coefficients and all standard errors as NumPy arrays
+    coeffs = model.coefficients.toArray()
+    std_errors_all = np.array(model.summary.coefficientStandardErrors)
+    
+    # Check if the intercept's standard error is included (one extra element)
+    if len(std_errors_all) == len(coeffs) + 1:
+        intercept_se = std_errors_all[0]
+        std_errors = std_errors_all[1:]
+    else:
+        intercept_se = None
+        std_errors = std_errors_all
+    
+    # Compute t-statistics for feature coefficients (t = beta / SE(beta))
+    t_stats = coeffs / std_errors
+    
+    # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)
+    df = model.summary.numInstances - len(coeffs) - 1
+    
+    # Compute two-tailed p-values for each feature coefficient
+    p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]
+    
+    # Function to assign significance stars based on p-value
+    def significance_stars(p):
+        if p < 0.01:
+            return "***"
+        elif p < 0.05:
+            return "**"
+        elif p < 0.1:
+            return "*"
+        else:
+            return ""
+    
+    # Build the table: one row per feature coefficient using the assembler's input columns
+    table = []
+    for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
+        table.append([
+            "Beta: " + feature,  # Metric name
+            beta,                # Beta estimate
+            se,                  # Standard error
+            p,                   # p-value
+            significance_stars(p)  # Significance stars
+        ])
+    
+    # Compute and add the intercept row with its SE, p-value, and significance (if available)
+    if intercept_se is not None:
+        intercept_t = model.intercept / intercept_se
+        intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))
+        intercept_sig = significance_stars(intercept_p)
+    else:
+        intercept_se = ""
+        intercept_p = ""
+        intercept_sig = ""
+    
+    table.append(["Intercept", model.intercept, intercept_se, intercept_p, intercept_sig])
+    
+    # Append additional overall model metrics (with extra columns left blank)
+    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", ""])
+    table.append(["R²", model.summary.r2, "", "", ""])
+    
+    # Format numeric values to 4 decimal places when applicable
+    formatted_table = [
+        [f"{item:.4f}" if isinstance(item, (int, float, np.floating)) and item != "" else item
+         for item in row]
+        for row in table
+    ]
+    
+    # Generate the table string using tabulate
+    table_str = tabulate(
+        formatted_table,
+        headers=["Metric", "Value", "Std. Error", "p-value", "Significance"],
+        tablefmt="pretty",
+        colalign=("left", "right", "right", "right", "center")
+    )
+    
+    # Split the table string into lines
+    lines = table_str.split("\n")
+    
+    # Determine the width of the table from the first line
+    dash_line = '-' * len(lines[0])
+    
+    # Find the line that contains "Intercept" (skip border lines)
+    for i, line in enumerate(lines):
+        if "Intercept" in line and not line.strip().startswith('+'):
+            # Insert the dash_line after the intercept row
+            lines.insert(i+1, dash_line)
+            break
+    
+    return "\n".join(lines)
+```
+
+
+
+
+## Summary of the Regression Result
+### Make the Summary Pretty
+```{.python}
+# Using the UDF, regression_table(model, assembler)
+print(regression_table(model1, assembler1))
+```
+
+
+
+# **Linear Regression Model with Multiple Input Variables** {background-color="#1c4982"}
+
+
+## Multiple Regression
+
+- What if the regression were missing something? 
+  - Maybe prices are not just about size, but maybe there are certain parts of NYC that are categorically more expensive than other parts of NYC. 
+  - Maybe Manhattan is just more expensive than Bronx. 
+  - Maybe apartments are different than non-apartments.
+  - Maybe old houses are different than new houses.
+
+
+- It is often helpful to bring in multiple explanatory variables—a **Multivariate Regression**.
+
+
+
+
+## Models and Assumptions
+
+- Linear regression assumes a __linear relationship__ for $Y = f(X_{1}, X_{2})$:
+
+$$Y_{i} \,=\, \beta_{0} \,+\, \beta_{1} X_{1, i} \,+\,\beta_{2} X_{2, i} \,+\, \epsilon_{i}$$
+for $i \,=\, 1, 2, \dots, n$, where $i$ is the $i$-th observation in data.
+
+
+- $\beta_0$ is an unknown __true__ value of an __intercept__: average value for $Y$ if $X_{1} = 0$ and $X_{2} = 0$
+
+- $\beta_1$ is an unknown __true__ value of a __slope__: increase in average value for $Y$ for each one-unit increase in $X_{1}$
+
+- $\beta_2$ is an unknown __true__ value of a __slope__: increase in average value for $Y$ for each one-unit increase in $X_{2}$
+
+
+## Models and Assumptions
+### Random Noises
+- Linear regression assumes a __linear relationship__ for $Y = f(X_{1}, X_{2})$:
+
+$$Y_{i} \,=\, \beta_{0} \,+\, \beta_{1} X_{1, i}\,+\, \beta_{1} X_{2, i} \,+\, \epsilon_{i}$$
+for $i \,=\, 1, 2, \dots, n$, where $i$ is the $i$-th observation in data.
+
+
+
+- $\epsilon_i$ is a random noise, or a statistical error:
+
+$$
+\epsilon_i \sim N(0, \sigma^2) 
+$$
+  
+  - Errors have a mean value of 0 with constant variance $\sigma^2$.
+  - Errors are *uncorrelated* with $X_{1, i}$ and with $X_{2, i}$.
+
+
+## Models and Assumptions
+### Best Fitting Plane
+- Linear regression finds the beta estimates $( \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta}_{2} )$ such that:
+
+  – The linear function $f(X_{1}, X_{2}) = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta}_{2}X_{2}$ is as near as possible to $Y$ for all $(X_{1, i}\,,\,X_{2, i}\,,\, Y_{i})$ pairs in the data.
+  
+  - It is the **best fitting** plane, or the **predicted outcome**, $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta}_{2}X_{2}$
+  
+
+## Models and Assumptions
+### Residual Errors
+- The estimated beta coefficients are chosen to minimize the sum of squares of the **residual errors** $(SSR)$:
+$$
+\begin{align}
+SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\ 
+&\quad \,+\, (\texttt{Residual_Error}_{2})^{2}\\ 
+&\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}\\
+\text{where}\qquad\qquad\qquad\qquad&\\
+\texttt{Residual_Error}_{i} &\,=\, Y_{i} \,-\, \hat{Y_{i}},\\
+\texttt{Predicted_Outcome}_{i}: \hat{Y_{i}} &\,=\, \hat{\beta_{0}} \,+\, \hat{\beta_{1}}X_{1, i} \,+\, \hat{\beta_{1}}X_{2, i}
+\end{align}
+$$
+
+
+## Multiple Regression
+### Best Fitting Plane
+
+```{r, eval = T, echo = F, message= F, warning= F, fig.align='center'}
+library(tidyverse)
+library(plotly)
+library(moderndive)
+
+sale_df <- read_csv("https://bcdanl.github.io/data/home_sales_nyc.csv")
+set.seed(3454351) # 3454351 is just any number.
+# The set.seed() function sets the starting number 
+# used to generate a sequence of random numbers.
+# With set.seed(), we can replicate the random number generation:
+# If we start with that same seed number in the set.seed() each time, 
+# we run the same random process, 
+# so that we can replicate the same random numbers.
+# How many random numbers do we need?
+gp <- runif(nrow(sale_df)) 
+# a number generation from a random variable that follows Unif(0,1)
+# Splits 50-50 into training and test sets 
+# using filter() and gp
+dtrain <- filter(sale_df, gp >= .5) 
+dtest <- filter(sale_df,  gp < .5)
+# A vector can be used for CONDITION in the filter(data.frame, CONDITION) 
+# if the length of the vector is the same as that of the data.frame.
+
+# Preprocess data 
+
+model <- lm(data = dtrain,
+            sale_price ~ gross_square_feet + age)
+
+# Re-scale price and size (square footage) by log10 and take a subsample of points
+dtest <- dtest %>%
+  sample_n(500)
+
+
+# Define 3D scatterplot points --
+# Get coordinates of points for 3D scatterplot
+x_values <- dtest$gross_square_feet %>% 
+  round(3)
+y_values <- dtest$age %>% 
+  round(3)
+z_values <- dtest$sale_price %>% 
+  round(3)
+
+
+# Define regression plane -
+# Construct x and y grid elements
+x_grid <- seq(from = min(x_values), 
+              to = max(x_values), length = 50)
+y_grid <- seq(from = min(y_values), 
+              to = max(y_values), length = 50)
+
+# Construct z grid by computing
+# 1) fitted beta coefficients
+# 2) fitted values of outer product of x_grid and y_grid
+# 3) extracting z_grid (matrix needs to be of specific dimensions)
+beta_hat <- dtrain %>% 
+  lm(sale_price ~ gross_square_feet + age, data = .) %>% 
+  coef()
+fitted_values <- crossing(y_grid, x_grid) %>% 
+  mutate(z_grid = beta_hat[1] + beta_hat[2]*x_grid + beta_hat[3]*y_grid)
+z_grid <- fitted_values %>% 
+  pull(z_grid) %>%
+  matrix(nrow = length(x_grid)) %>%
+  t()
+
+# Define text element for each point in plane
+text_grid <- fitted_values %>% 
+  pull(z_grid) %>%
+  round(3) %>% 
+  as.character() %>% 
+  paste("sale_price: ", ., sep = "") %>% 
+  matrix(nrow = length(x_grid)) %>%
+  t()
+
+
+# Plot using plotly -
+plot_ly() %>%
+  # 3D scatterplot:
+  add_markers(
+    x = x_values,
+    y = y_values,
+    z = z_values,
+    opacity = 0.5,
+    marker = list(size = 5),
+    hoverinfo = 'text',
+    text = ~paste(
+      "sale_price: ", z_values, "<br>",
+      "age: ", y_values, "<br>",
+      "gross_square_feet: ", x_values 
+    )
+  ) %>%
+  # Regression plane:
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid,
+    hoverinfo = 'text',
+    text = text_grid
+  ) %>%
+  # Axes labels and title:
+  layout(
+    # title = "Best fitting plane",
+    scene = list(
+      zaxis = list(title = "y: sale_price"),
+      yaxis = list(title = "x2: age"),
+      xaxis = list(title = "x1: gross_square_feet")
+    )
+  )
+```
+
+
+
+
+## Multiple Regression using PySpark
+
+- Let's add a new explanatory variable, `age` to the model.
+
+```{.python}
+assembler2 = VectorAssembler(inputCols=["gross_square_feet", "age"], outputCol="inputs")
+dtrain2 = assembler2.transform(dtrain)
+dtest2  = assembler2.transform(dtest)
+
+model2 = LinearRegression(featuresCol="inputs", labelCol="sale_price").fit(dtrain2)
+dtest2 = model2.transform(dtest2) 
+
+print(regression_table(model2, assembler2))
+```
+
+
+
+
+<!-- ## Linear Regression using **PySpark** -->
+<!-- ### Dummy variables -->
+
+<!-- - Linear regression handles a categorical variable with `m` possible categories by converting it to `m-1` dummy variables, and the rest `1` category, the first level of the categorical variable, becomes a reference level. -->
+<!--   - The value of a dummy variable is either 0 or 1. -->
+
+<!-- - E.g., the dummy variable, `borough_name_Brooklyn`, is follows:  -->
+
+<!-- $$ -->
+<!-- \texttt{borough_name_Brooklyn[i] }\\ -->
+<!-- = \begin{cases} -->
+<!-- \texttt{1} & \text{if a property } \texttt{i} \text{ is in } \texttt{Brooklyn};\\\\ -->
+<!-- \texttt{0} & \text{otherwise}.\qquad\qquad\quad\, -->
+<!-- \end{cases} -->
+<!-- $$ -->
+
+
+<!-- ## Linear Regression using **PySpark** -->
+<!-- ### Dummy variables -->
+
+
+<!-- - Using the `model.matrix()` function on our linear model object, we can get the data matrix of explanatory variables. -->
+<!--   - Since `model.matrix()` returns matrix, we can convert it to data.frame using `as.data.frame()`: -->
+
+<!-- ```{.python} -->
+<!-- X <- as.data.frame( model.matrix(model_3) ) -->
+<!-- ``` -->
+
+
+<!-- ## Linear Regression using **PySpark** -->
+<!-- ### Dummy variables -->
+
+
+<!-- - The model does not include `borough_nameBronx`, because $\texttt{borough_nameBronx[i]}$ is represented by a combination of $\texttt{borough}$ variables: -->
+
+<!--   - $\texttt{borough_nameBronx[i]} = 0$ if any of the $\texttt{borough_name}$ variables is 1. -->
+
+<!--   - $\texttt{borough_nameBronx[i]} = 1$ if all of the $\texttt{borough_name}$ variables are 0. -->
+
+
+
+<!-- - The level `Bronx` is a reference level when interpreting the beta estimate for the `borough_name` variables. -->
+
+
+
+<!-- ## Linear Regression using **PySpark** -->
+<!-- ### Setting a reference level -->
+
+
+<!-- - If a linear regression model includes a **categorical** variable (`factor` or `character` variable), we can consider setting a reference level of a `factor` variable using `relevel(VARIABLE, ref = "LEVEL")`. -->
+
+<!-- ```{r, echo = T, eval= T} -->
+<!-- dtrain <- dtrain %>%  -->
+<!--   mutate(borough_name = factor(borough_name), # borough_name is given as character type. -->
+<!--          borough_name = relevel(borough_name, -->
+<!--                                 "Manhattan") ) -->
+<!-- model_4 <- lm(sale_price ~ gross_square_feet + age + borough_name,  -->
+<!--               data = dtrain) -->
+<!-- summary(model_4)    -->
+<!-- ``` -->
+
+<!-- - The level `Manhattan` now becomes a reference level. -->
+<!--   - Accordingly, the interpretation of beta estimates for `borough_name` variables change. -->
+
+
+<!-- ## Linear Regression using **PySpark** -->
+<!-- ### Setting a reference level -->
+<!-- - Changing a reference level of a factor variable does not change the regression result. -->
+<!-- ```{.python} -->
+<!-- dtest$pred_4 <-  predict(model_4,  -->
+<!--                          newdata = dtest) -->
+<!-- ``` -->
+
+<!-- - Compare `pred_3` with `pred_4`. -->
+
+
+
+
+<!-- ## Interpreting the output of `summary()` -->
+<!-- ### Estimated Beta Coefficients -->
+<!-- #### Model -->
+<!-- The model equation is  -->
+<!-- $$\begin{align} -->
+<!-- \texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ &\texttt{b1*gross_square_feet[i]} \,+\,\texttt{b2*age[i]}\,+\,\\ &\texttt{b3*Bronx[i]} \,+\,\texttt{b4*Brooklyn[i]} \,+\,\\&\texttt{b5*Queens[i]} \,+\,\texttt{b6*Staten Island[i]}\,+\,\\ &\texttt{e[i]} -->
+<!-- \end{align}$$ -->
+<!-- - The reference level of `borough_name` variables is `Manhattan`. -->
+
+
+
+<!-- ## Interpreting the output of `summary()` -->
+<!-- ### Estimated Beta Coefficients -->
+<!-- #### `gross_square_feet` -->
+
+<!-- - All else being equal, an increase in `gross_square_feet` by one unit is associated with an increase in `sale_price` by `b1`. -->
+
+
+
+
+<!-- ## Interpreting the output of `summary()` -->
+<!-- ### Estimated Beta Coefficients -->
+<!-- #### `borough_nameBronx` -->
+
+<!-- - All else being equal, an increase in `borough_nameBronx` by one unit is associated with an increase in `sale_price` by `b3`. -->
+
+<!-- - All else being equal, being in `Bronx` relative to being a in `Manhattan` is associated with a decrease in `sale_price` by `|b2|`. -->
+
+
+
+<!-- ## Interpreting Estimated Beta Coefficients -->
+
+<!-- Consider the predicted sales prices of the two houses, `A` and `B`. -->
+<!--   - Both `A` and `B`'s `age` are the same.  -->
+<!--   - Both `A` and `B` are in `Bronx`.  -->
+<!--   - Both `A` and `B`'s `gross_square_feet` are 2001 and 2000 respectively. -->
+
+
+
+<!-- $$\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\, \hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,\\ -->
+<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\ -->
+<!-- \widehat{\texttt{sale_price[B]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[B]} \,+\, \hat{\texttt{b2}}\texttt{*age[B]}\,+\,\hat{\texttt{b3}}\texttt{*Bronx[B]}\,+\,\\ -->
+<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[B]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[B]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[B]} \end{align}$$ -->
+
+<!-- $$\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[B]}}\qquad  \\ -->
+<!-- \;=\quad &\hat{\texttt{b1}}\texttt{*}(\texttt{gross_square_feet[A]} - \texttt{gross_square_feet[B]})\\ -->
+<!-- \;=\quad &\hat{\texttt{b1}}\texttt{*}\texttt{(2001 - 2000)}\qquad\qquad\quad\;\;\\ -->
+<!-- \;=\quad &\hat{\texttt{b1}}\qquad\qquad\qquad\qquad\quad\;\;\;\,\end{align}$$ -->
+
+
+
+
+
+
+<!-- ## Interpreting Estimated Beta Coefficients -->
+
+<!-- Consider the predicted sales prices of the two houses, `A` and `C`. -->
+<!--   - Both `A` and `C`'s `age` are the same.  -->
+<!--   - Both `A` and `C`'s `gross_square_feet` are the same.  -->
+<!--   - `A` is in `Bronx`, and `C` is in `Manhattan`.  -->
+
+
+<!-- $$\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\, \hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,\\ -->
+<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\ -->
+<!-- \widehat{\texttt{sale_price[C]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[C]} \,+\, \hat{\texttt{b2}}\texttt{*age[C]}\,+\,\hat{\texttt{b3}}\texttt{*Bronx[C]}\,+\,\\ -->
+<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[C]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[C]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[C]} \end{align}$$ -->
+
+<!-- $$\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[C]}}\qquad  \\ -->
+<!-- \;=\quad &\hat{\texttt{b3}}\texttt{*}\texttt{Bronx[A]} \\ -->
+<!-- \;=\quad &\hat{\texttt{b3}}\qquad\qquad\qquad\qquad\quad\;\;\;\,\end{align}$$ -->
+
+
+
+
+
+
+
+
+
+<!-- # **Model Evaluation** {background-color="#1c4982"} -->
+
+<!-- ## Model Evaluation -->
+<!-- ###  Model summary with `stargazer` -->
+
+<!-- - The R package, `stargazer`, is useful when comparing `lm()` objects. -->
+<!-- ```{.python} -->
+<!-- # install.packages("stargazer") -->
+<!-- stargazer(model, model_4,  -->
+<!--           type = 'text')  # from the stargazer package -->
+<!-- ``` -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Model summary with `broom` -->
+<!-- - The R package, broom, is useful when plotting beta estimates. -->
+
+<!-- ```{r, echo = T, eval = F} -->
+<!-- # install.packages("broom") -->
+<!-- sum_model_4 <- tidy(model_4)  # from the broom package -->
+
+<!-- ggplot(sum_model_4) + -->
+<!--   geom_pointrange( aes(x = term,  -->
+<!--                        y = estimate, -->
+<!--                        ymin = estimate - 2*std.error, -->
+<!--                        ymax = estimate + 2*std.error ) ) + -->
+<!--   coord_flip() -->
+<!-- ``` -->
+
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+<!-- - Residual plot is a scatterplot of fitted values and residuals. -->
+<!--   - A variable of fitted values on x-axis -->
+<!--   - A variable of residuals on y-axis -->
+<!-- -  A residual plot can be used to diagnose the quality of model results. -->
+<!-- ```{r, echo = T, eval = F} -->
+<!-- # residual plot from the model 4 -->
+<!-- ggplot(data = dtest, aes(x = pred_4, y = sale_price - pred_4)) + -->
+<!--   geom_point(alpha = 0.2, color = "darkgray") + -->
+<!--   geom_smooth(color = "darkblue") +    -->
+<!--   geom_hline(aes(yintercept = 0),  # perfect prediction  -->
+<!--             color = "red", linetype = 2)  -->
+<!-- ``` -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+<!-- - Model equation: $Y_{i} \,=\, \beta_{0} \,+\, \beta_{1}X_{1,i}$ -->
+<!--   - $\epsilon_i$ is a random noise, or a statistical error: -->
+
+<!-- $$ -->
+<!-- \epsilon_i \sim N(0, \sigma^2)  -->
+<!-- $$ -->
+<!--   - Errors have a mean value of 0 with constant variance $\sigma^2$. -->
+<!--   - Errors are *uncorrelated* with $X_{1,i}$ -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+
+<!-- - If we re-arrange the simple regression equation, -->
+<!-- $$\begin{align} -->
+<!-- {\epsilon}_{i} \,=\, Y_{i} \,-\, (\, {\beta}_{0} \,+\, {\beta}_{1}X_{1} \,). -->
+<!-- \end{align}$$ -->
+
+<!-- - $\texttt{residual_error}_{i}$ can be thought of as the expected value of $\epsilon_{i}$, denoted by $\hat{\epsilon}_{i}$.  -->
+<!-- $$\begin{align} -->
+<!-- \hat{\epsilon}_{i} \,=\, Y_{i} \,-\, (\, \hat{\beta}_{0} \,+\, \hat{\beta}_{1}X_{1} \,) -->
+<!-- \end{align}$$ -->
+
+<!-- - Because we assume that $\epsilon_{i}$ have a mean value of 0 with constant variance $\sigma^2$, a well-behaved residual plot should bounce *randomly* and form a cloud roughly around the perfect prediction line.  -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+<!-- - From the residual plot, we should ask the following the two questions ourselves: -->
+<!--   - On average, are the predictions correct? -->
+<!--   - Are there systematic errors? -->
+
+
+<!-- - A well-behaved plot will bounce *randomly* and form a cloud roughly around the perfect prediction line.  -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+<!-- ```{r, echo=FALSE, eval = T, out.width = '100%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/residual_hetero2.png") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- - On average, are the predictions correct? -->
+
+<!-- - Are there systematic errors? -->
+
+<!-- ::: -->
+<!-- :::: -->
+
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+<!-- - We would like have a residual plot to be -->
+<!--   - **Unbiased**: have an average value of zero in any thin vertical strip; -->
+<!--   - **Homoskedastic**, which means "same stretch": it is ideal to have the same spread of the residuals in any thin vertical strip. -->
+
+
+<!-- ## Model Evaluation -->
+<!-- ###  Residual Plots -->
+
+<!-- ```{r, echo=FALSE, eval = T, out.width = '50%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plots.gif") -->
+<!-- ``` -->
+
