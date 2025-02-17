@@ -3609,14 +3609,14 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-1",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nMean squared error (MSE)\n\nOne of the most common metrics used to measure the prediction accuracy of a linear regression model is MSE, which stands for mean squared error.\n\n\\(MSE\\) is \\(SSR\\) divided by \\(n\\) (the number of observations in the data that are used in making predictions).\n\n\n\\[\nMSE = SSR / n\n\\] \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\n\\end{align}\n\\]\n\nThe lower MSE, the higher accuracy of the model.\n\nThe root MSE (RMSE) is the square root of MSE."
+    "text": "Model Evaluation\nMean squared error (MSE)\n\nThe root MSE (RMSE) represents the overall deviation of \\(Y_{i}\\) from the best fitting regression line."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-2",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-2",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nMean squared error (MSE)\n\nThe root MSE (RMSE) represents the overall deviation of \\(Y_{i}\\) from the best fitting regression line."
+    "text": "Model Evaluation\nR-squared\n\nR-squared is a measure of how well the model “fits” the data, or its “goodness of fit.”\n\nR-squared can be thought of as what fraction of the y’s variation is explained by the explanatory variables.\n\nWe want R-squared to be fairly large and R-squareds that are similar on testing and training.\nCaution: R-squared will be higher for models with more explanatory variables, regardless of whether the additional explanatory variables actually improve the model or not."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-3",
@@ -3693,7 +3693,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nR-squared\n\nR-squared is a measure of how well the model “fits” the data, or its “goodness of fit.”\n\nR-squared can be thought of as what fraction of the y’s variation is explained by the explanatory variables.\n\nWe want R-squared to be fairly large and R-squareds that are similar on testing and training.\nCaution: R-squared will be higher for models with more explanatory variables, regardless of whether the additional explanatory variables actually improve the model or not."
+    "text": "Model Evaluation\nMean squared error (MSE)\n\nOne of the most common metrics used to measure the prediction accuracy of a linear regression model is MSE, which stands for mean squared error.\n\n\\(MSE\\) is \\(SSR\\) divided by \\(n\\) (the number of observations in the data that are used in making predictions).\n\n\n\\[\nMSE = SSR / n\n\\] \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\n\\end{align}\n\\]\n\nThe lower MSE, the higher accuracy of the model.\n\nThe root MSE (RMSE) is the square root of MSE."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-5",
@@ -3798,7 +3798,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#goals-of-linear-regression",
     "title": "Lecture 7",
     "section": "Goals of Linear Regression",
-    "text": "Goals of Linear Regression\n\nThe goals of linear regression here are to:\n\n\nFind the relationship between gross_square_feet and sale_price by estimating a true value of b1.\n\n\nThe estimated value of b1 is denoted by \\(\\hat{\\texttt{b1}}\\).\n\n\nMake a prediction on sale_price[i] for new property i\n\n\nThe predicted value of sale_price[i] is denoted by \\(\\widehat{\\texttt{sale_price}}\\texttt{[i]}\\), where\n\n\\[\\widehat{\\texttt{sale_price}}\\texttt{[i]} \\;=\\quad \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[i]}\\]"
+    "text": "Goals of Linear Regression\n\nThe goals of linear regression here are to:\n\n\nModeling for explanation: Find the relationship between gross_square_feet and sale_price by estimating a true value of b1.\n\n\nThe estimated value of b1 is denoted by \\(\\hat{\\texttt{b1}}\\).\n\n\nModeling for prediction: Make a prediction on sale_price[i] for new property i\n\n\nThe predicted value of sale_price[i] is denoted by \\(\\widehat{\\texttt{sale_price}}\\texttt{[i]}\\), where\n\n\\[\\widehat{\\texttt{sale_price}}\\texttt{[i]} \\;=\\quad \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[i]}\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#training-and-test-data",
@@ -3819,7 +3819,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#training-and-test-data-2",
     "title": "Lecture 7",
     "section": "Training and Test Data",
-    "text": "Training and Test Data\nModel Construction and Evaluation"
+    "text": "Training and Test Data\nOverfitting"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#example-of-linear-regression-using-pyspark",
@@ -3918,5 +3918,12 @@
     "title": "Lecture 7",
     "section": "Models and Assumptions",
     "text": "Models and Assumptions\nResidual Errors\n\nThe estimated beta coefficients are chosen to minimize the sum of squares of the residual errors \\((SSR)\\): \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\\\\\n\\text{where}\\qquad\\qquad\\qquad\\qquad&\\\\\n\\texttt{Residual_Error}_{i} &\\,=\\, Y_{i} \\,-\\, \\hat{Y_{i}},\\\\\n\\texttt{Predicted_Outcome}_{i}: \\hat{Y_{i}} &\\,=\\, \\hat{\\beta_{0}} \\,+\\, \\hat{\\beta_{1}}X_{1, i} \\,+\\, \\hat{\\beta_{1}}X_{2, i}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#training-and-test-data-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#training-and-test-data-3",
+    "title": "Lecture 7",
+    "section": "Training and Test Data",
+    "text": "Training and Test Data\nModel Construction and Evaluation"
   }
 ]

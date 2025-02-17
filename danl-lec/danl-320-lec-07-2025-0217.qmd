@@ -220,6 +220,51 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
 - What do the vertical lines visualize?
 
 
+## Model Evaluation
+### Mean squared error (MSE)
+- One of the most common metrics used to measure the **prediction accuracy** of a linear regression model is **MSE**, which stands for **mean squared error**. 
+  - $MSE$ is $SSR$ divided by $n$ (the number of observations in the data that are used in making predictions).
+
+$$
+MSE = SSR / n
+$$
+$$
+\begin{align}
+SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\ 
+&\quad \,+\, (\texttt{Residual_Error}_{2})^{2}\\ 
+&\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}
+\end{align}
+$$
+
+
+- The lower MSE, the higher accuracy of the model.  
+- The root MSE (RMSE) is the square root of MSE.
+
+
+
+## Model Evaluation
+### Mean squared error (MSE)
+- The root MSE (RMSE) represents the overall deviation of $Y_{i}$ from the best fitting regression line.
+
+
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
+```
+
+
+
+
+## Model Evaluation
+### R-squared
+
+- **R-squared** is a measure of how well the model “fits” the data, or its “goodness of fit.”
+  - **R-squared** can be thought of as *what fraction of the `y`'s variation is explained by the explanatory variables*.
+
+
+- We want **R-squared** to be *fairly* large and **R-squareds** that are similar on testing and training.
+
+
+- **Caution**: R-squared will be higher for models with more explanatory variables, regardless of whether the additional explanatory variables actually improve the model or not.
 
 
 
@@ -227,10 +272,10 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
 
 -  The goals of linear regression here are to: 
 
-  1. Find the relationship between `gross_square_feet` and `sale_price` by estimating a true value of `b1`.
+  1. **Modeling for explanation**: Find the relationship between `gross_square_feet` and `sale_price` by estimating a true value of `b1`.
   - The estimated value of `b1` is denoted by $\hat{\texttt{b1}}$.
     
-  2. Make a prediction on `sale_price[i]` for new property `i`
+  2. **Modeling for prediction**: Make a prediction on `sale_price[i]` for new property `i`
   - The predicted value of `sale_price[i]` is denoted by $\widehat{\texttt{sale_price}}\texttt{[i]}$, where
 
 $$\widehat{\texttt{sale_price}}\texttt{[i]} \;=\quad \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[i]}$$
@@ -238,7 +283,6 @@ $$\widehat{\texttt{sale_price}}\texttt{[i]} \;=\quad \hat{\texttt{b0}} \,+\, \ha
 
 
 ## Training and Test Data
-
 
 - **Training data**: When we're building a linear regression model, we need *data* to train the model.
 
@@ -274,6 +318,12 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig4_12.png")
 - In this way, we can test whether our model performs well in the real world, where unseen data points exist.
   
 
+## Training and Test Data
+### Overfitting
+```{r, echo=FALSE, eval = T, out.width = '55%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/overfitting")
+```
+
 
 
 ## Training and Test Data
@@ -285,49 +335,6 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_6.png")
 
 
 
-## Model Evaluation
-### R-squared
-
-- **R-squared** is a measure of how well the model “fits” the data, or its “goodness of fit.”
-  - **R-squared** can be thought of as *what fraction of the `y`'s variation is explained by the explanatory variables*.
-
-
-- We want **R-squared** to be *fairly* large and **R-squareds** that are similar on testing and training.
-
-
-- **Caution**: R-squared will be higher for models with more explanatory variables, regardless of whether the additional explanatory variables actually improve the model or not.
-
-
-## Model Evaluation
-### Mean squared error (MSE)
-- One of the most common metrics used to measure the **prediction accuracy** of a linear regression model is **MSE**, which stands for **mean squared error**. 
-  - $MSE$ is $SSR$ divided by $n$ (the number of observations in the data that are used in making predictions).
-
-$$
-MSE = SSR / n
-$$
-$$
-\begin{align}
-SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\ 
-&\quad \,+\, (\texttt{Residual_Error}_{2})^{2}\\ 
-&\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}
-\end{align}
-$$
-
-
-- The lower MSE, the higher accuracy of the model.  
-- The root MSE (RMSE) is the square root of MSE.
-
-
-
-## Model Evaluation
-### Mean squared error (MSE)
-- The root MSE (RMSE) represents the overall deviation of $Y_{i}$ from the best fitting regression line.
-
-
-```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
-```
 
 
 
