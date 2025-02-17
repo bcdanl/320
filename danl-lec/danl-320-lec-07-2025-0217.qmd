@@ -458,7 +458,7 @@ dtrain = sale_df.filter(col("gp") >= 0.5)
 dtest = sale_df.filter(col("gp") < 0.5)
 
 # Or simply,
-dtrain, dtest = vector.randomSplit([0.5, 0.5], seed=123)) 
+dtrain, dtest = sale_df.randomSplit([0.5, 0.5], seed = 123)
 ```
 
 
@@ -525,19 +525,25 @@ from tabulate import tabulate
 def regression_table(model, assembler):
     """
     Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,
-    and inserts a dashed horizontal line after the Intercept row.
+    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns 
+    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level).
+    
+    The columns are ordered as:
+        Metric | Value | Significance | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+
+    For the "Value", "Std. Error", "95% CI Lower", and "95% CI Upper" columns, commas are inserted every three digits.
     
     Parameters:
         model: A fitted LinearRegression model (with a .summary attribute).
         assembler: The VectorAssembler used to assemble the features for the model.
-    
+
     Returns:
         A formatted string containing the regression table.
     """
-    # Extract coefficients and all standard errors as NumPy arrays
+    # Extract coefficients and standard errors as NumPy arrays
     coeffs = model.coefficients.toArray()
     std_errors_all = np.array(model.summary.coefficientStandardErrors)
-    
+
     # Check if the intercept's standard error is included (one extra element)
     if len(std_errors_all) == len(coeffs) + 1:
         intercept_se = std_errors_all[0]
@@ -545,16 +551,19 @@ def regression_table(model, assembler):
     else:
         intercept_se = None
         std_errors = std_errors_all
-    
+
     # Compute t-statistics for feature coefficients (t = beta / SE(beta))
     t_stats = coeffs / std_errors
-    
+
     # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)
     df = model.summary.numInstances - len(coeffs) - 1
-    
+
+    # Compute the t-critical value for a 95% confidence interval (two-tailed, 5% significance)
+    t_critical = stats.t.ppf(0.975, df)
+
     # Compute two-tailed p-values for each feature coefficient
     p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]
-    
+
     # Function to assign significance stars based on p-value
     def significance_stars(p):
         if p < 0.01:
@@ -565,62 +574,84 @@ def regression_table(model, assembler):
             return "*"
         else:
             return ""
-    
-    # Build the table: one row per feature coefficient using the assembler's input columns
+
+    # Build the table rows.
+    # New order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.
     table = []
     for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
+        ci_lower = beta - t_critical * se
+        ci_upper = beta + t_critical * se
         table.append([
-            "Beta: " + feature,  # Metric name
-            beta,                # Beta estimate
-            se,                  # Standard error
-            p,                   # p-value
-            significance_stars(p)  # Significance stars
+            "Beta: " + feature,       # Metric name
+            beta,                     # Beta estimate (Value)
+            significance_stars(p),    # Significance stars
+            se,                       # Standard error
+            p,                        # p-value
+            ci_lower,                 # 95% CI lower bound
+            ci_upper                  # 95% CI upper bound
         ])
-    
-    # Compute and add the intercept row with its SE, p-value, and significance (if available)
+
+    # Compute and add the intercept row with its SE, p-value, significance, and CI (if available)
     if intercept_se is not None:
         intercept_t = model.intercept / intercept_se
         intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))
         intercept_sig = significance_stars(intercept_p)
+        ci_intercept_lower = model.intercept - t_critical * intercept_se
+        ci_intercept_upper = model.intercept + t_critical * intercept_se
     else:
         intercept_se = ""
         intercept_p = ""
         intercept_sig = ""
+        ci_intercept_lower = ""
+        ci_intercept_upper = ""
     
-    table.append(["Intercept", model.intercept, intercept_se, intercept_p, intercept_sig])
-    
+    table.append([
+        "Intercept",
+        model.intercept,
+        intercept_sig,
+        intercept_se,
+        intercept_p,
+        ci_intercept_lower,
+        ci_intercept_upper
+    ])
+
     # Append additional overall model metrics (with extra columns left blank)
-    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", ""])
-    table.append(["R²", model.summary.r2, "", "", ""])
-    
-    # Format numeric values to 4 decimal places when applicable
-    formatted_table = [
-        [f"{item:.4f}" if isinstance(item, (int, float, np.floating)) and item != "" else item
-         for item in row]
-        for row in table
-    ]
-    
-    # Generate the table string using tabulate
+    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
+    table.append(["R²", model.summary.r2, "", "", "", "", ""])
+
+    # Format the table.
+    # For the "Value" (index 1), "Std. Error" (index 3), "95% CI Lower" (index 5), and "95% CI Upper" (index 6) columns,
+    # use comma formatting.
+    formatted_table = []
+    for row in table:
+        formatted_row = []
+        for i, item in enumerate(row):
+            if isinstance(item, (int, float, np.floating)) and item != "":
+                if i in [1, 3, 5, 6]:
+                    # Format with commas every three digits and 3 decimal places.
+                    formatted_row.append(f"{item:,.2f}")
+                else:
+                    formatted_row.append(f"{item:.2f}")
+            else:
+                formatted_row.append(item)
+        formatted_table.append(formatted_row)
+
+    # Generate the table string using tabulate.
     table_str = tabulate(
         formatted_table,
-        headers=["Metric", "Value", "Std. Error", "p-value", "Significance"],
+        headers=["Metric", "Value", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"],
         tablefmt="pretty",
-        colalign=("left", "right", "right", "right", "center")
+        colalign=("left", "right", "center", "right", "right", "right", "right")
     )
-    
-    # Split the table string into lines
+
+    # Insert a dashed line after the intercept row for clarity
     lines = table_str.split("\n")
-    
-    # Determine the width of the table from the first line
     dash_line = '-' * len(lines[0])
-    
-    # Find the line that contains "Intercept" (skip border lines)
     for i, line in enumerate(lines):
         if "Intercept" in line and not line.strip().startswith('+'):
-            # Insert the dash_line after the intercept row
             lines.insert(i+1, dash_line)
             break
-    
+
     return "\n".join(lines)
 ```
 
