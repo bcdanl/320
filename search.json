@@ -3854,7 +3854,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-3",
     "title": "Lecture 7",
     "section": "Splitting Data into Training and Testing Data",
-    "text": "Splitting Data into Training and Testing Data\nStep 2. rand(seed = ANY_NUMBER)\n# 2. Split data into training and testing sets by creating a random column \"gp\"\nsale_df = sale_df.withColumn(\"gp\", rand(seed=123)) # seed is set for replication\n\n# Splits 50-50 into training and test sets \ndtrain = sale_df.filter(col(\"gp\") &gt;= 0.5) \ndtest = sale_df.filter(col(\"gp\") &lt; 0.5)"
+    "text": "Splitting Data into Training and Testing Data\nStep 2. rand(seed = ANY_NUMBER)\n# 2. Split data into training and testing sets by creating a random column \"gp\"\nsale_df = sale_df.withColumn(\"gp\", rand(seed=123)) # seed is set for replication\n\n# Splits 50-50 into training and test sets \ndtrain = sale_df.filter(col(\"gp\") &gt;= 0.5) \ndtest = sale_df.filter(col(\"gp\") &lt; 0.5)\n\n# Or simply,\ndtrain, dtest = vector.randomSplit([0.5, 0.5], seed=123))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#building-an-ml-dataframe-using-vectorassembler",
@@ -3931,7 +3931,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#big-data-and-machine-learning-ml",
     "title": "Lecture 7",
     "section": "Big Data and Machine Learning (ML)",
-    "text": "Big Data and Machine Learning (ML)\n\nThe `Big Data’ name comes from computer scientists working to do aggregation on data that is too big to fit on a single machine.\nAs aggregation became analysis, Big Data got closer to stats + ML.\n\nScaleability of algorithms is essential.\n\nWe will do ML analysis to:\n\nInfer patterns from big data.\nMake a data-driven decision."
+    "text": "Big Data and Machine Learning (ML)\n\nThe term “Big Data” originated from computer scientists working with datasets too large to fit on a single machine.\n\nAs aggregation evolved into analysis, Big Data became closely linked with statistics and machine learning (ML).\nScalability of algorithms is crucial for handling large datasets.\n\nWe will use ML to:\n✅ Identify patterns in big data\n✅ Make data-driven decisions"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#what-does-it-mean-to-be-big---big-in-both-the-number-of-observations-sizen-and-in-the-number-of-variables-dimension-p.",
@@ -3946,5 +3946,12 @@
     "title": "Lecture 7",
     "section": "ML topics",
     "text": "ML topics\n\nRegression: inference and prediction\nRegularization: cross-validation\nPrincipal Component Analysis: dimension reduction\nTree-based models: decision trees, random forest, XGBoost\nClassfication: kNN\nClustering: k-means, association rules\nText Mining: sentiment analysis; topic models"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#what-does-it-mean-to-be-big",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#what-does-it-mean-to-be-big",
+    "title": "Lecture 7",
+    "section": "What does it mean to be “big”?",
+    "text": "What does it mean to be “big”?\n\nBig in both the number of observations (size n) and in the number of variables (dimension p).\nIn these settings, we cannot:\n\nLook at each individual variable and make a decision.\nChoose among a small set of candidate models.\nPlot every variable to look for interactions or transformations.\n\nSome ML tools are straight out of previous statistics classes (linear regression) and some are totally new (ensemble models, principal component analysis).\n\nAll require a different approach when n and p get really big."
   }
 ]

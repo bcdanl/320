@@ -59,18 +59,20 @@ theme_set(theme_fivethirtyeight()+
 # **Big Data and Machine Learning** {background-color="#1c4982"}
 
 ## Big Data and Machine Learning (ML)
-- The `Big Data' name comes from computer scientists working to do aggregation on data that is too big to fit on a single machine.
 
-- As aggregation became analysis, Big Data got closer to stats + ML.
-  - Scaleability of algorithms is essential.
-  
-- We will do ML analysis to:
-  - Infer patterns from big data.
-  - Make a data-driven decision.
+-	The term “Big Data” originated from computer scientists working with datasets too large to fit on a single machine.
+	-	As aggregation evolved into analysis, Big Data became closely linked with **statistics** and **machine learning (ML)**.
+	-	Scalability of algorithms is crucial for handling large datasets.
+
+- We will use ML to:\
+  ✅ Identify patterns in big data\
+  ✅ Make data-driven decisions
+
   
 
-## What does it mean to be `big'?
-- Big in both the number of observations (size `n') and in the number of variables (dimension `p').
+## What does it mean to be "big"?
+
+- Big in both the number of observations (size `n`) and in the number of variables (dimension `p`).
 
 - In these settings, we cannot:
   - Look at each individual variable and make a decision.
@@ -454,6 +456,9 @@ sale_df = sale_df.withColumn("gp", rand(seed=123)) # seed is set for replication
 # Splits 50-50 into training and test sets 
 dtrain = sale_df.filter(col("gp") >= 0.5) 
 dtest = sale_df.filter(col("gp") < 0.5)
+
+# Or simply,
+dtrain, dtest = vector.randomSplit([0.5, 0.5], seed=123)) 
 ```
 
 
