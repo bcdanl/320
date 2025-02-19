@@ -246,7 +246,6 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/reg_hedonic.png")
 
 ## Best Fitting Line
 
-
 ```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
 knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
 ```
@@ -258,6 +257,8 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/best_fit_resid.png")
 ### Mean squared error (MSE)
 - One of the most common metrics used to measure the **prediction accuracy** of a linear regression model is **MSE**, which stands for **mean squared error**. 
   - $MSE$ is $SSR$ divided by $n$ (the number of observations in the data that are used in making predictions).
+  
+<div style="display:block; margin:-30px;"></div>
 
 $$
 MSE = SSR / n
@@ -269,6 +270,8 @@ SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\
 &\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}
 \end{align}
 $$
+
+<div style="display:block; margin:-15px;"></div>
 
 
 - The lower MSE, the higher accuracy of the model.  
@@ -367,8 +370,41 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_6.png")
 ```
 
 
+## Splitting Data into Training and Testing Data
+### A Little Bit of Statistics for the Uniform Distribution
 
 
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- The probability density function for the uniform distribution looks like:
+
+
+- With the uniform distribution, any values of $x$ between 0 and 1 is equally likely drawn.
+
+:::
+::: {.column width="50%"}
+```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/unifpdf.png")
+```
+
+:::
+::::
+
+- We will use the uniform distribution when splitting data into training and testing data sets.
+
+
+## Splitting Data into Training and Testing Data
+### Randomization in the Sampling Process
+
+- Why do we randomize when splitting given data into training and test data?
+  - Randomizing the sampling process ensures that the training and test data sets are representative for the population data.
+  - If the sample does not properly represent the entire population, the model result is biased toward the sample.
+  
+  
+- Suppose the splitting process is not randomized, so that the observations with `sale_price > 10^6` are in the training data and the observations with `sale_price <= 10^6` are in the test data.
+  - What would be the model result then?
 
 
 
@@ -409,42 +445,6 @@ sale_df.show()
 ```
 
 
-## Splitting Data into Training and Testing Data
-### A Little Bit of Statistics for the Uniform Distribution
-
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-- The probability density function for the uniform distribution looks like:
-
-
-- With the uniform distribution, any values of $x$ between 0 and 1 is equally likely drawn.
-
-:::
-::: {.column width="50%"}
-```{r, echo=FALSE, eval = T, out.width = '75%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/unifpdf.png")
-```
-
-:::
-::::
-
-- We will use the uniform distribution when splitting data into training and testing data sets.
-
-
-## Splitting Data into Training and Testing Data
-### Randomization in the Sampling Process
-
-- Why do we randomize when splitting given data into training and test data?
-  - Randomizing the sampling process ensures that the training and test data sets are representative for the population data.
-  - If the sample does not properly represent the entire population, the model result is biased toward the sample.
-  
-  
-- Suppose the splitting process is not randomized, so that the observations with `sale_price > 10^6` are in the training data and the observations with `sale_price <= 10^6` are in the test data.
-  - What would be the model result then?
-
 
 
 ## Splitting Data into Training and Testing Data
@@ -453,12 +453,12 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/unifpdf.png")
 # 2. Split data into training and testing sets by creating a random column "gp"
 sale_df = sale_df.withColumn("gp", rand(seed=123)) # seed is set for replication
 
-# Splits 50-50 into training and test sets 
-dtrain = sale_df.filter(col("gp") >= 0.5) 
-dtest = sale_df.filter(col("gp") < 0.5)
+# Splits 60-40 into training and test sets 
+dtrain = sale_df.filter(col("gp") >= 0.4) 
+dtest = sale_df.filter(col("gp") < 0.4)
 
 # Or simply,
-dtrain, dtest = sale_df.randomSplit([0.5, 0.5], seed = 123)
+dtrain, dtest = sale_df.randomSplit([0.6, 0.4], seed = 123)
 ```
 
 
@@ -466,18 +466,27 @@ dtrain, dtest = sale_df.randomSplit([0.5, 0.5], seed = 123)
 ## Building an ML DataFrame using `VectorAssembler()`
 
 ```{.python}
-# Now assemble inputs using the renamed column
+# Now assemble predictors using the renamed column
 assembler1 = VectorAssembler(
     inputCols=["gross_square_feet"], 
-    outputCol="inputs")
-
-dtrain1 = assembler1.transform(dtrain) # training data
-dtest1  = assembler1.transform(dtest)  # test data
+    outputCol="predictors")
 ```
 
 - `VectorAssembler` is a transformer in PySpark’s ML library that is used to combine multiple columns into a single vector column. 
-  - Many ML algorithms in Spark require the inputs to be represented as a single vector.
+  - Many ML algorithms in Spark require the predictors to be represented as a single vector.
   -	`VectorAssembler` is often one of the first steps in a Spark ML pipeline.
+
+
+
+## Building an ML DataFrame using `VectorAssembler()`
+
+```{.python}
+dtrain1 = assembler1.transform(dtrain) # training data
+dtest1  = assembler1.transform(dtest)  # test data
+
+dtrain1.select("predictors", "sale_price").show()
+dtest1.select("predictors", "sale_price").show()
+```
 
 - `VectorAssembler.transform()` returns a `DataFrame` with a new column, specified in `outputCol` in `VectorAssembler()`.
 
@@ -488,19 +497,19 @@ dtest1  = assembler1.transform(dtest)  # test data
 # Fit linear regression model using the new label column "sale_price"
 model1 = (
     LinearRegression(
-        featuresCol = "inputs", 
+        featuresCol = "predictors", 
         labelCol = "sale_price")
     .fit(dtrain1)
 )
 ```
 
-- `LinearRegression(featuresCol="inputs", labelCol="sale_price")`
+- `LinearRegression(featuresCol="predictors", labelCol="sale_price")`
 	-	This creates an instance of the `LinearRegression` class.
-	-	The features (independent variables) are in a column named "inputs".
+	-	The features (independent variables) are in a column named "predictors".
 	-	The label (dependent variable) is in a column named "sale_price".
 
 - `.fit()` trains (fits) the linear regression model using the training DataFrame `dtrain1`.
-	-	This training process estimates the coefficients (betas) and intercept that best predict the label from the features.
+	-	This training process estimates the beta coefficients that best predict the label from the features.
 
 
 ## Summary of the Regression Result
@@ -525,14 +534,17 @@ from tabulate import tabulate
 def regression_table(model, assembler):
     """
     Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,
-    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns 
-    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level).
-    
+    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns
+    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level)
+    and an "Observations" row (using model.summary.numInstances) above the R² row.
+    The RMSE row is placed as the last row.
+
     The columns are ordered as:
         Metric | Value | Significance | Std. Error | p-value | 95% CI Lower | 95% CI Upper
 
-    For the "Value", "Std. Error", "95% CI Lower", and "95% CI Upper" columns, commas are inserted every three digits.
-    
+    For the "Value", "Std. Error", "95% CI Lower", and "95% CI Upper" columns, commas are inserted every three digits,
+    with 3 decimal places (except for Observations which is formatted as an integer with commas).
+
     Parameters:
         model: A fitted LinearRegression model (with a .summary attribute).
         assembler: The VectorAssembler used to assemble the features for the model.
@@ -553,7 +565,8 @@ def regression_table(model, assembler):
         std_errors = std_errors_all
 
     # Compute t-statistics for feature coefficients (t = beta / SE(beta))
-    t_stats = coeffs / std_errors
+    # t_stats = coeffs / std_errors
+    t_stats = model.summary.tValues
 
     # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)
     df = model.summary.numInstances - len(coeffs) - 1
@@ -562,7 +575,8 @@ def regression_table(model, assembler):
     t_critical = stats.t.ppf(0.975, df)
 
     # Compute two-tailed p-values for each feature coefficient
-    p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]
+    # p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]
+    p_values = model.summary.pValues
 
     # Function to assign significance stars based on p-value
     def significance_stars(p):
@@ -576,7 +590,7 @@ def regression_table(model, assembler):
             return ""
 
     # Build the table rows.
-    # New order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.
+    # Order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.
     table = []
     for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
         ci_lower = beta - t_critical * se
@@ -604,7 +618,7 @@ def regression_table(model, assembler):
         intercept_sig = ""
         ci_intercept_lower = ""
         ci_intercept_upper = ""
-    
+
     table.append([
         "Intercept",
         model.intercept,
@@ -615,23 +629,31 @@ def regression_table(model, assembler):
         ci_intercept_upper
     ])
 
-    # Append additional overall model metrics (with extra columns left blank)
-    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
+    # Append overall model metrics:
+    # Insert an Observations row using model.summary.numInstances,
+    # then an R² row, and finally the RMSE row as the last row.
+    table.append(["Observations", model.summary.numInstances, "", "", "", "", ""])
     table.append(["R²", model.summary.r2, "", "", "", "", ""])
+    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
 
     # Format the table.
     # For the "Value" (index 1), "Std. Error" (index 3), "95% CI Lower" (index 5), and "95% CI Upper" (index 6) columns,
-    # use comma formatting.
+    # format with commas and 3 decimal places, except for Observations which should be an integer with commas.
+    # For the p-value (index 4), format to 3 decimal places.
     formatted_table = []
     for row in table:
         formatted_row = []
         for i, item in enumerate(row):
-            if isinstance(item, (int, float, np.floating)) and item != "":
+            if row[0] == "Observations" and i == 1 and isinstance(item, (int, float, np.floating)) and item != "":
+                # Format Observations as integer with commas, no decimals.
+                formatted_row.append(f"{int(item):,}")
+            elif isinstance(item, (int, float, np.floating)) and item != "":
                 if i in [1, 3, 5, 6]:
-                    # Format with commas every three digits and 3 decimal places.
-                    formatted_row.append(f"{item:,.2f}")
+                    formatted_row.append(f"{item:,.3f}")
+                elif i == 4:
+                    formatted_row.append(f"{item:.3f}")
                 else:
-                    formatted_row.append(f"{item:.2f}")
+                    formatted_row.append(f"{item:.3f}")
             else:
                 formatted_row.append(item)
         formatted_table.append(formatted_row)
@@ -644,7 +666,7 @@ def regression_table(model, assembler):
         colalign=("left", "right", "center", "right", "right", "right", "right")
     )
 
-    # Insert a dashed line after the intercept row for clarity
+    # Insert a dashed line after the Intercept row for clarity.
     lines = table_str.split("\n")
     dash_line = '-' * len(lines[0])
     for i, line in enumerate(lines):
@@ -653,6 +675,9 @@ def regression_table(model, assembler):
             break
 
     return "\n".join(lines)
+
+# Example usage:
+# print(regression_table(lr_model, assembler))
 ```
 
 
@@ -667,7 +692,7 @@ print(regression_table(model1, assembler1))
 
 
 
-# **Linear Regression Model with Multiple Input Variables** {background-color="#1c4982"}
+# **Linear Regression Model with Multiple Predictors** {background-color="#1c4982"}
 
 
 ## Multiple Regression
@@ -720,11 +745,11 @@ $$
 
 ## Models and Assumptions
 ### Best Fitting Plane
-- Linear regression finds the beta estimates $( \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta}_{2} )$ such that:
+- Linear regression finds the beta estimates $( \hat{\beta_{0}}, \hat{\beta_{1}}, \hat{\beta_{2}} )$ such that:
 
-  – The linear function $f(X_{1}, X_{2}) = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta}_{2}X_{2}$ is as near as possible to $Y$ for all $(X_{1, i}\,,\,X_{2, i}\,,\, Y_{i})$ pairs in the data.
+  – The linear function $f(X_{1}, X_{2}) = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta_{2}}X_{2}$ is as near as possible to $Y$ for all $(X_{1, i}\,,\,X_{2, i}\,,\, Y_{i})$ pairs in the data.
   
-  - It is the **best fitting** plane, or the **predicted outcome**, $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta}_{2}X_{2}$
+  - It is the **best fitting** plane, or the **predicted outcome**, $\hat{Y_{\,}} = \hat{\beta_{0}} + \hat{\beta_{1}}X_{1} + \hat{\beta_{2}}X_{2}$
   
 
 ## Models and Assumptions
@@ -737,15 +762,17 @@ SSR &\,=\, (\texttt{Residual_Error}_{1})^{2}\\
 &\quad\,+\, \cdots + (\texttt{Residual_Error}_{n})^{2}\\
 \text{where}\qquad\qquad\qquad\qquad&\\
 \texttt{Residual_Error}_{i} &\,=\, Y_{i} \,-\, \hat{Y_{i}},\\
-\texttt{Predicted_Outcome}_{i}: \hat{Y_{i}} &\,=\, \hat{\beta_{0}} \,+\, \hat{\beta_{1}}X_{1, i} \,+\, \hat{\beta_{1}}X_{2, i}
+\texttt{Predicted_Outcome}_{i}: \hat{Y_{i}} &\,=\, \hat{\beta_{0}} \,+\, \hat{\beta_{1}}X_{1, i} \,+\, \hat{\beta_{2}}X_{2, i}
 \end{align}
 $$
 
 
-## Multiple Regression
-### Best Fitting Plane
+## Multiple Regression - Best Fitting Plane
 
-```{r, eval = T, echo = F, message= F, warning= F, fig.align='center'}
+<div style="display:block; margin:-20px;"></div>
+
+
+```{r, eval = T, echo = F, message= F, warning= F, fig.align='center', fig.width=9, fig.height=6}
 library(tidyverse)
 library(plotly)
 library(moderndive)
@@ -855,18 +882,25 @@ plot_ly() %>%
 ```
 
 
+- All else being equal, an increase in `gross_square_feet` by one unit is associated with an increase in `sale_price` by $\hat{\beta_{1}}$.
+
 
 
 ## Multiple Regression using PySpark
 
-- Let's add a new explanatory variable, `age` to the model.
+- Let's add a new predictor, `age`, to the model.
 
 ```{.python}
-assembler2 = VectorAssembler(inputCols=["gross_square_feet", "age"], outputCol="inputs")
+assembler2 = VectorAssembler(
+                    inputCols=["gross_square_feet", "age"], 
+                    outputCol="predictors")
 dtrain2 = assembler2.transform(dtrain)
 dtest2  = assembler2.transform(dtest)
 
-model2 = LinearRegression(featuresCol="inputs", labelCol="sale_price").fit(dtrain2)
+model2 = LinearRegression(
+                featuresCol="predictors",
+                labelCol="sale_price")
+        .fit(dtrain2)
 dtest2 = model2.transform(dtest2) 
 
 print(regression_table(model2, assembler2))
@@ -874,283 +908,441 @@ print(regression_table(model2, assembler2))
 
 
 
+# **Dummy Variables in Linear Regression** {background-color="#1c4982"}
 
-<!-- ## Linear Regression using **PySpark** -->
-<!-- ### Dummy variables -->
 
-<!-- - Linear regression handles a categorical variable with `m` possible categories by converting it to `m-1` dummy variables, and the rest `1` category, the first level of the categorical variable, becomes a reference level. -->
-<!--   - The value of a dummy variable is either 0 or 1. -->
+## Motivation: Treating Categorical Variables in Linear Regression
 
-<!-- - E.g., the dummy variable, `borough_name_Brooklyn`, is follows:  -->
+- Linear regression models require numerical predictors, but many variables are **categorical**.
+  - e.g., Consider the two equivalent houses, except for its location---one in Manhattan and the other in Bronx.
 
-<!-- $$ -->
-<!-- \texttt{borough_name_Brooklyn[i] }\\ -->
-<!-- = \begin{cases} -->
-<!-- \texttt{1} & \text{if a property } \texttt{i} \text{ is in } \texttt{Brooklyn};\\\\ -->
-<!-- \texttt{0} & \text{otherwise}.\qquad\qquad\quad\, -->
-<!-- \end{cases} -->
-<!-- $$ -->
+- **The Approach:**  
+  Convert categorical variables into numerical format using dummy variables.
 
+- **Why Do This?**  
+  - Allows the model to compare different categories.
+  - Each dummy variable indicates the presence (1) or absence (0) of a category.
 
-<!-- ## Linear Regression using **PySpark** -->
-<!-- ### Dummy variables -->
+  
 
+## What are Dummy Variables?
 
-<!-- - Using the `model.matrix()` function on our linear model object, we can get the data matrix of explanatory variables. -->
-<!--   - Since `model.matrix()` returns matrix, we can convert it to data.frame using `as.data.frame()`: -->
+- **Definition:** Binary indicators (0 or 1) representing categorical data.
+- **Purpose:** Transform qualitative data into a quantitative form for regression analysis.
 
-<!-- ```{.python} -->
-<!-- X <- as.data.frame( model.matrix(model_3) ) -->
-<!-- ``` -->
+Example:
 
+$$
+D_i = \begin{cases}
+1, & \text{if the observation belongs to the category} \\
+0, & \text{otherwise}
+\end{cases}
+$$
 
-<!-- ## Linear Regression using **PySpark** -->
-<!-- ### Dummy variables -->
 
+## Dummy Variables in Regression Models
 
-<!-- - The model does not include `borough_nameBronx`, because $\texttt{borough_nameBronx[i]}$ is represented by a combination of $\texttt{borough}$ variables: -->
+Consider a regression model including a dummy variable:
 
-<!--   - $\texttt{borough_nameBronx[i]} = 0$ if any of the $\texttt{borough_name}$ variables is 1. -->
+$$
+y_i = \beta_0 + \beta_1 x_i + \beta_2 D_i + \epsilon_i
+$$
 
-<!--   - $\texttt{borough_nameBronx[i]} = 1$ if all of the $\texttt{borough_name}$ variables are 0. -->
+- **$x_i$:** A continuous predictor.
+- **$D_i$:** Dummy variable (e.g., political party affiliation, type of car).
 
+*Interpretation:*  
+$\beta_2$ captures the difference in the response $y$ when the category is present (i.e., $D_i=1$) versus absent.
 
 
-<!-- - The level `Bronx` is a reference level when interpreting the beta estimate for the `borough_name` variables. -->
+## The Dummy Variable Trap
 
+- **Problem:** Including a dummy for every category introduces redundancy.
+- **For a categorical variable with $k$ levels:**  
+  - If you include **all** $k$ dummy variables in the model, their values always sum to 1:
+  
+  $$
+  D_{1i} + D_{2i} + \cdots + D_{ki} = 1 \quad \text{(for each observation)}
+  $$
 
+- This is problematic, because one dummy is completely predictable from the others. 
 
-<!-- ## Linear Regression using **PySpark** -->
-<!-- ### Setting a reference level -->
+- The intercept already captures the constant part (1), making one of the dummy variables redundant.
 
+<!-- - **Intuitive Explanation:**   -->
+  <!-- Think of the dummy variables as pieces of a puzzle that together form a complete picture. Once you have all but one piece, the last piece is already determined. Including that extra, redundant piece doesn't add new information—it simply repeats what is already known. This redundancy makes it unclear how to uniquely assign the effect to each category. -->
 
-<!-- - If a linear regression model includes a **categorical** variable (`factor` or `character` variable), we can consider setting a reference level of a `factor` variable using `relevel(VARIABLE, ref = "LEVEL")`. -->
+## Avoiding the Dummy Variable Trap
 
-<!-- ```{r, echo = T, eval= T} -->
-<!-- dtrain <- dtrain %>%  -->
-<!--   mutate(borough_name = factor(borough_name), # borough_name is given as character type. -->
-<!--          borough_name = relevel(borough_name, -->
-<!--                                 "Manhattan") ) -->
-<!-- model_4 <- lm(sale_price ~ gross_square_feet + age + borough_name,  -->
-<!--               data = dtrain) -->
-<!-- summary(model_4)    -->
-<!-- ``` -->
+- **Solution:** Drop one dummy (often called the **reference** category)
 
-<!-- - The level `Manhattan` now becomes a reference level. -->
-<!--   - Accordingly, the interpretation of beta estimates for `borough_name` variables change. -->
+- The reference category is represented by a combination of $\texttt{borough}$ variables.
+  - Dummy for the reference category is 1 if all the rest of the dummies is 0.
+  - Dummy for the reference category is 0 otherwise.
 
 
-<!-- ## Linear Regression using **PySpark** -->
-<!-- ### Setting a reference level -->
-<!-- - Changing a reference level of a factor variable does not change the regression result. -->
-<!-- ```{.python} -->
-<!-- dtest$pred_4 <-  predict(model_4,  -->
-<!--                          newdata = dtest) -->
-<!-- ``` -->
+Proper model:
 
-<!-- - Compare `pred_3` with `pred_4`. -->
+$$
+y_i = \beta_0 + \beta_1 D_{1, i} + \beta_2 D_{2, i} + \cdots + \beta_{k-1} D_{(k-1), i} + \epsilon_i
+$$
 
+- **Interpretation:**  
+  - Each $\beta_j$ (for $j=1,2,\ldots,k-1$) represents the difference from the reference category.
 
 
 
-<!-- ## Interpreting the output of `summary()` -->
-<!-- ### Estimated Beta Coefficients -->
-<!-- #### Model -->
-<!-- The model equation is  -->
-<!-- $$\begin{align} -->
-<!-- \texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ &\texttt{b1*gross_square_feet[i]} \,+\,\texttt{b2*age[i]}\,+\,\\ &\texttt{b3*Bronx[i]} \,+\,\texttt{b4*Brooklyn[i]} \,+\,\\&\texttt{b5*Queens[i]} \,+\,\texttt{b6*Staten Island[i]}\,+\,\\ &\texttt{e[i]} -->
-<!-- \end{align}$$ -->
-<!-- - The reference level of `borough_name` variables is `Manhattan`. -->
+## Dummy Variable Regression using PySpark
 
+- The UDF, `add_dummy_variables(var_name, reference_level)` convert a categorical variable into its dummy variables:
+  - `var_name`: a string of categorical variable name
+  - `reference_level`: index position of alphabetically sorted categories
+  - This function requires `dtrain` and `dtest` DataFrames.
+  
+```{.python}
+def add_dummy_variables(var_name, reference_level):
+    """
+    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.
+    If the variable contains boolean values, they are converted to strings.
 
+    Parameters:
+        var_name (str): The name of the categorical column (e.g., "borough_name").
+        reference_level (int): The index (after sorting the categories) of the category
+                               to be used as the reference (dummy omitted).
+
+    Returns:
+        dummy_cols (list): List of dummy column names to be used in subsequent analysis
+                           (the reference category dummy is omitted).
+        ref_category (str): The category value that has been chosen as the reference.
+    """
+    global dtrain, dtest
+
+    # Get distinct categories from the training set.
+    categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()
 
-<!-- ## Interpreting the output of `summary()` -->
-<!-- ### Estimated Beta Coefficients -->
-<!-- #### `gross_square_feet` -->
+    # If any category is a boolean, convert all categories to string.
+    categories = [str(c) if isinstance(c, bool) else c for c in categories]
 
-<!-- - All else being equal, an increase in `gross_square_feet` by one unit is associated with an increase in `sale_price` by `b1`. -->
+    # Sort the categories.
+    categories = sorted(categories)
 
+    # Check that reference_level is valid
+    if reference_level < 0 or reference_level >= len(categories):
+        raise ValueError(f"reference_level must be between 0 and {len(categories) - 1}")
 
+    # Determine the reference category based on the reference level
+    ref_category = categories[reference_level]
+    print("Reference category (dummy omitted):", ref_category)
 
+    # Create dummy variables for all categories
+    for cat in categories:
+        # Always convert the category value to string and replace spaces.
+        dummy_col_name = var_name + "_" + str(cat).replace(" ", "_")
+        dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+        dtest  = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
 
-<!-- ## Interpreting the output of `summary()` -->
-<!-- ### Estimated Beta Coefficients -->
-<!-- #### `borough_nameBronx` -->
+    # Build a list of dummy column names for regression (exclude reference category)
+    dummy_cols = [var_name + "_" + str(cat).replace(" ", "_") for cat in categories if cat != ref_category]
 
-<!-- - All else being equal, an increase in `borough_nameBronx` by one unit is associated with an increase in `sale_price` by `b3`. -->
+    return dummy_cols, ref_category
+```
 
-<!-- - All else being equal, being in `Bronx` relative to being a in `Manhattan` is associated with a decrease in `sale_price` by `|b2|`. -->
+## Dummy Variable Regression using PySpark
 
+- Let's check what categories are in **"borough_name"** and how many categories are:
 
+:::: {.columns}
 
-<!-- ## Interpreting Estimated Beta Coefficients -->
+::: {.column width="50%"}
 
-<!-- Consider the predicted sales prices of the two houses, `A` and `B`. -->
-<!--   - Both `A` and `B`'s `age` are the same.  -->
-<!--   - Both `A` and `B` are in `Bronx`.  -->
-<!--   - Both `A` and `B`'s `gross_square_feet` are 2001 and 2000 respectively. -->
+```{.python}
+# Distinct categories:
+(
+    dtrain
+    .select("borough_name")
+    .distinct()
+    .orderBy("borough_name")
+    .show()
+)
+```
 
+:::
 
+::: {.column width="50%"}
 
-<!-- $$\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\, \hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,\\ -->
-<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\ -->
-<!-- \widehat{\texttt{sale_price[B]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[B]} \,+\, \hat{\texttt{b2}}\texttt{*age[B]}\,+\,\hat{\texttt{b3}}\texttt{*Bronx[B]}\,+\,\\ -->
-<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[B]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[B]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[B]} \end{align}$$ -->
+```{.python}
+# Number of categories
+(
+    dtrain
+    .select("borough_name")
+    .distinct()
+    .count()
+)
+```
 
-<!-- $$\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[B]}}\qquad  \\ -->
-<!-- \;=\quad &\hat{\texttt{b1}}\texttt{*}(\texttt{gross_square_feet[A]} - \texttt{gross_square_feet[B]})\\ -->
-<!-- \;=\quad &\hat{\texttt{b1}}\texttt{*}\texttt{(2001 - 2000)}\qquad\qquad\quad\;\;\\ -->
-<!-- \;=\quad &\hat{\texttt{b1}}\qquad\qquad\qquad\qquad\quad\;\;\;\,\end{align}$$ -->
+:::
+::::
 
+- Let’s convert the **borough_name** variable into its dummies using the UDF, `add_dummy_variables(var_name, reference_level):`
 
+```{.python}
+# 0: Bronx, 1: Brooklyn, 2: Manhattan, 3: Queens, 4: Staten Island
+dummy_cols, ref_category = add_dummy_variables("borough_name", 2)
+# To see dummy variables
+dtrain.select(['borough_name'] + dummy_cols).show()
+dtrain.select(['borough_name'] + dummy_cols).filter(col('borough_name') == "Manhattan").show()
+```
 
 
+## Dummy Variable Regression using PySpark
 
+- Now we're ready to run a linear regression with dummy variables:
 
-<!-- ## Interpreting Estimated Beta Coefficients -->
+```{.python}
+# Define the list of predictor columns:
+# Two numeric predictors plus the dummy variables (excluding the reference dummy)
+conti_cols = ["gross_square_feet", "age"]
+assembler_predictors = conti_cols + dummy_cols
 
-<!-- Consider the predicted sales prices of the two houses, `A` and `C`. -->
-<!--   - Both `A` and `C`'s `age` are the same.  -->
-<!--   - Both `A` and `C`'s `gross_square_feet` are the same.  -->
-<!--   - `A` is in `Bronx`, and `C` is in `Manhattan`.  -->
+assembler3 = VectorAssembler(
+    inputCols = assembler_predictors,
+    outputCol = "predictors"
+)
+dtrain3 = assembler3.transform(dtrain)
+dtest3  = assembler3.transform(dtest)
+model3 = LinearRegression(featuresCol="predictors", labelCol="sale_price").fit(dtrain3)
+dtest3 = model3.transform(dtest3)
 
+# For model3 and assembler3:
+print(regression_table(model3, assembler3))
+```
 
-<!-- $$\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\, \hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,\\ -->
-<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\ -->
-<!-- \widehat{\texttt{sale_price[C]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[C]} \,+\, \hat{\texttt{b2}}\texttt{*age[C]}\,+\,\hat{\texttt{b3}}\texttt{*Bronx[C]}\,+\,\\ -->
-<!-- &\hat{\texttt{b4}}\texttt{*Brooklyn[C]} \,+\, \hat{\texttt{b5}}\texttt{*Queens[C]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[C]} \end{align}$$ -->
 
-<!-- $$\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[C]}}\qquad  \\ -->
-<!-- \;=\quad &\hat{\texttt{b3}}\texttt{*}\texttt{Bronx[A]} \\ -->
-<!-- \;=\quad &\hat{\texttt{b3}}\qquad\qquad\qquad\qquad\quad\;\;\;\,\end{align}$$ -->
 
+# **Residual Plots**  {background-color="#1c4982"}
 
 
+##  Residuals
+- Model equation: $Y_{i} \,=\, \beta_{0} \,+\, \beta_{1}X_{1,i} \,+\, \beta_{2}X_{2,i}$
+  - $\epsilon_i$ is a random noise, or a statistical error:
 
+$$
+\epsilon_i \sim N(0, \sigma^2)
+$$
+- Errors have a mean value of 0 with constant variance $\sigma^2$.
 
+- Errors are *uncorrelated* with $X_{1,i}$ and with $X_{2, i}$.
 
+## Residuals
 
+- If we re-arrange the simple regression equation,
+$$\begin{align}
+{\epsilon}_{i} \,=\, Y_{i} \,-\, (\, {\beta}_{0} \,+\, {\beta}_{1}X_{1,i} \,).
+\end{align}$$
 
+- $\texttt{residual_error}_{i}$ can be thought of as the expected value of $\epsilon_{i}$, denoted by $\hat{\epsilon_{i}}$.
+$$\begin{align}
+\hat{\epsilon_{i}} \,=\, Y_{i} \,-\, (\, \hat{\beta_{0}} \,+\, \hat{\beta_{1}}X_{1,i} \,)
+\end{align}$$
 
-<!-- # **Model Evaluation** {background-color="#1c4982"} -->
 
-<!-- ## Model Evaluation -->
-<!-- ###  Model summary with `stargazer` -->
 
-<!-- - The R package, `stargazer`, is useful when comparing `lm()` objects. -->
-<!-- ```{.python} -->
-<!-- # install.packages("stargazer") -->
-<!-- stargazer(model, model_4,  -->
-<!--           type = 'text')  # from the stargazer package -->
-<!-- ``` -->
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Model summary with `broom` -->
-<!-- - The R package, broom, is useful when plotting beta estimates. -->
+## Residual Plots
+- Residual plot is a scatterplot of fitted values and residuals.
+  - A variable of fitted values on x-axis
+  - A variable of residuals on y-axis
+-  A residual plot can be used to diagnose the quality of model results.
 
-<!-- ```{r, echo = T, eval = F} -->
-<!-- # install.packages("broom") -->
-<!-- sum_model_4 <- tidy(model_4)  # from the broom package -->
+- Because we assume that $\epsilon_{i}$ have a mean value of 0 with constant variance $\sigma^2$, a well-behaved residual plot should bounce *randomly* and form a cloud roughly at the level of zero residual, the perfect prediction line.
 
-<!-- ggplot(sum_model_4) + -->
-<!--   geom_pointrange( aes(x = term,  -->
-<!--                        y = estimate, -->
-<!--                        ymin = estimate - 2*std.error, -->
-<!--                        ymax = estimate + 2*std.error ) ) + -->
-<!--   coord_flip() -->
-<!-- ``` -->
 
+- From the residual plot, we should ask the following the two questions ourselves:
+  - On average, are the predictions correct?
+  - Are there systematic errors?
+  
+<!-- - A well-behaved plot will bounce *randomly* and form a cloud roughly around the perfect prediction line. -->
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
-<!-- - Residual plot is a scatterplot of fitted values and residuals. -->
-<!--   - A variable of fitted values on x-axis -->
-<!--   - A variable of residuals on y-axis -->
-<!-- -  A residual plot can be used to diagnose the quality of model results. -->
-<!-- ```{r, echo = T, eval = F} -->
-<!-- # residual plot from the model 4 -->
-<!-- ggplot(data = dtest, aes(x = pred_4, y = sale_price - pred_4)) + -->
-<!--   geom_point(alpha = 0.2, color = "darkgray") + -->
-<!--   geom_smooth(color = "darkblue") +    -->
-<!--   geom_hline(aes(yintercept = 0),  # perfect prediction  -->
-<!--             color = "red", linetype = 2)  -->
-<!-- ``` -->
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
-<!-- - Model equation: $Y_{i} \,=\, \beta_{0} \,+\, \beta_{1}X_{1,i}$ -->
-<!--   - $\epsilon_i$ is a random noise, or a statistical error: -->
+## Residual Plots
 
-<!-- $$ -->
-<!-- \epsilon_i \sim N(0, \sigma^2)  -->
-<!-- $$ -->
-<!--   - Errors have a mean value of 0 with constant variance $\sigma^2$. -->
-<!--   - Errors are *uncorrelated* with $X_{1,i}$ -->
+```{r, echo=FALSE, eval = T, out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plot-m2-het.png")
+```
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
+- On average, are the predictions correct?
+- Are there systematic errors?
 
-<!-- - If we re-arrange the simple regression equation, -->
-<!-- $$\begin{align} -->
-<!-- {\epsilon}_{i} \,=\, Y_{i} \,-\, (\, {\beta}_{0} \,+\, {\beta}_{1}X_{1} \,). -->
-<!-- \end{align}$$ -->
 
-<!-- - $\texttt{residual_error}_{i}$ can be thought of as the expected value of $\epsilon_{i}$, denoted by $\hat{\epsilon}_{i}$.  -->
-<!-- $$\begin{align} -->
-<!-- \hat{\epsilon}_{i} \,=\, Y_{i} \,-\, (\, \hat{\beta}_{0} \,+\, \hat{\beta}_{1}X_{1} \,) -->
-<!-- \end{align}$$ -->
+##  Residual Plots
+### Unbiasedness and Homoskedasticity
+- We would like have a residual plot to be
+  - **Unbiased**: have an average value of zero in any thin vertical strip;
+  - **Homoskedastic**, which means "same stretch": it is ideal to have the same spread of the residuals in any thin vertical strip.
 
-<!-- - Because we assume that $\epsilon_{i}$ have a mean value of 0 with constant variance $\sigma^2$, a well-behaved residual plot should bounce *randomly* and form a cloud roughly around the perfect prediction line.  -->
 
+##  Residual Plots
+### Examples
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
-<!-- - From the residual plot, we should ask the following the two questions ourselves: -->
-<!--   - On average, are the predictions correct? -->
-<!--   - Are there systematic errors? -->
+```{r, echo=FALSE, eval = T, out.width = '50%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plots.png")
+```
 
 
-<!-- - A well-behaved plot will bounce *randomly* and form a cloud roughly around the perfect prediction line.  -->
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
+## Residual Plots in Python
 
-<!-- :::: {.columns} -->
+- **PySpark** itself does not have built-in visualization capabilities.
+  - Firstly, we convert **PySpark** `DataFrame` into **Pandas** `DataFrame` by using `.toPandas()`
 
-<!-- ::: {.column width="50%"} -->
-<!-- ```{r, echo=FALSE, eval = T, out.width = '100%', fig.align='center'} -->
-<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/residual_hetero2.png") -->
-<!-- ``` -->
+```{.python}
+# Residual plot for Model 2:
+# Convert test predictions to Pandas
+rdf = dtest2.select(["prediction", "sale_price"]).toPandas()
+rdf["residual"] = rdf["sale_price"] - rdf["prediction"]
+```
 
-<!-- ::: -->
 
-<!-- ::: {.column width="50%"} -->
+## Residual Plots in Python
 
-<!-- - On average, are the predictions correct? -->
+- We then use `matplotlib.pyplot` to draw a residual plot:
 
-<!-- - Are there systematic errors? -->
+```{.python}
+import matplotlib.pyplot as plt
+import statsmodels.api as sm  # for lowess smoothing
 
-<!-- ::: -->
-<!-- :::: -->
+plt.scatter(rdf["prediction"], rdf["residual"], alpha=0.2, color="darkgray")
 
+# Use lowess smoothing for the trend line
+smoothed = sm.nonparametric.lowess(rdf["residual"], rdf["prediction"])
+plt.plot(smoothed[:, 0], smoothed[:, 1], color="darkblue")
 
+# Perfect prediction line
+#   A horizontal line at residual = 0
+plt.axhline(y=0, color="red", linestyle="--")
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
-<!-- - We would like have a residual plot to be -->
-<!--   - **Unbiased**: have an average value of zero in any thin vertical strip; -->
-<!--   - **Homoskedastic**, which means "same stretch": it is ideal to have the same spread of the residuals in any thin vertical strip. -->
+# Labeling
+plt.xlabel("Predicted sale.price (Model 2)")
+plt.ylabel("Residuals")
+plt.title("Residual Plot for Model 2")
+plt.show()
+```
 
 
-<!-- ## Model Evaluation -->
-<!-- ###  Residual Plots -->
 
-<!-- ```{r, echo=FALSE, eval = T, out.width = '50%', fig.align='center'} -->
-<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plots.gif") -->
-<!-- ``` -->
+
+
+# **Interpreting Beta Estimates** {background-color="#1c4982"}
+
+## Interpreting Estimated Beta Coefficients
+### Model
+The model equation is
+$$\begin{align}
+\texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ &\texttt{b1*gross_square_feet[i]} \,+\,\texttt{b2*age[i]}\,+\,\\ &\texttt{b3*Bronx[i]} \,+\,\texttt{b4*Brooklyn[i]} \,+\,\\&\texttt{b5*Queens[i]} \,+\,\texttt{b6*Staten Island[i]}\,+\,\\ &\texttt{e[i]}
+\end{align}$$
+- The reference level of `borough_name` variables is `Manhattan`.
+
+
+## Interpreting Estimated Beta Coefficients
+### 1. `gross_square_feet`
+
+- Consider the predicted sales prices of the two houses, `A` and `B`.
+  - Both `A` and `B` are in `Bronx` and with the same `age`.
+  - `gross_square_feet` of house `A` is 2001, while that of house `B` is 2000.
+
+- All else being equal, an increase in `gross_square_feet` by one unit is associated with an increase in `sale_price` by $\hat{\beta_{1}}$.
+  - Why?
+
+
+
+## Interpreting Estimated Beta Coefficients
+### 1. `gross_square_feet`
+$$
+\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\,\\ 
+&\hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\,\\ &\hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\
+\widehat{\texttt{sale_price[B]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[B]} \,+\, \hat{\texttt{b2}}\texttt{*age[B]}\,+\,\\
+&\hat{\texttt{b3}}\texttt{*Bronx[B]}\,+\,
+\hat{\texttt{b4}}\texttt{*Brooklyn[B]} \,+\,\\ &\hat{\texttt{b5}}\texttt{*Queens[B]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[B]} \end{align}
+$$
+
+$$
+\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[B]}}\qquad  \\
+\;=\quad &\hat{\texttt{b1}}\texttt{*}(\texttt{gross_square_feet[A]} - \texttt{gross_square_feet[B]})\\
+\;=\quad &\hat{\texttt{b1}}\texttt{*}\texttt{(2001 - 2000)} \,=\, \hat{\texttt{b1}}\qquad\qquad\quad\;\;
+\end{align}
+$$
+
+
+
+## Interpreting Estimated Beta Coefficients
+### 2. `borough_nameBronx`
+
+- Consider the predicted sales prices of the two houses, `A` and `C`.
+  - Both `A` and `C` are with the same `age` and the same  `gross_square_feet`.
+  - `A` is in `Bronx`, and `C` is in `Manhattan`.
+
+
+- All else being equal, an increase in `borough_nameBronx` by one unit is associated with an increase in `sale_price` by `b3`.
+
+- Equivalently, all else being equal, being in `Bronx` relative to being a in `Manhattan` is associated with a decrease in `sale_price` by `|b3|`.
+  - Why?
+
+
+## Interpreting Estimated Beta Coefficients
+### 2. `borough_nameBronx`
+
+$$
+\begin{align}\widehat{\texttt{sale_price[A]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[A]} \,+\, \hat{\texttt{b2}}\texttt{*age[A]} \,+\,\\ &\hat{\texttt{b3}}\texttt{*Bronx[A]}\,+\,
+\hat{\texttt{b4}}\texttt{*Brooklyn[A]} \,+\,\\ &\hat{\texttt{b5}}\texttt{*Queens[A]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[A]}\\
+\widehat{\texttt{sale_price[C]}} \;=\quad& \hat{\texttt{b0}} \,+\, \hat{\texttt{b1}}\texttt{*gross_square_feet[C]} \,+\, \hat{\texttt{b2}}\texttt{*age[C]}\,+\,\\
+&\hat{\texttt{b3}}\texttt{*Bronx[C]}\,+\,
+\hat{\texttt{b4}}\texttt{*Brooklyn[C]} \,+\,\\ &\hat{\texttt{b5}}\texttt{*Queens[C]}\,+\, \hat{\texttt{b6}}\texttt{*Staten Island[C]} \end{align}
+$$
+
+$$
+\begin{align}\Leftrightarrow\qquad&\widehat{\texttt{sale_price[A]}} \,-\, \widehat{\texttt{sale_price[C]}}\qquad  \\
+\;=\quad &\hat{\texttt{b3}}\texttt{*}\texttt{Bronx[A]} \\
+\;=\quad &\hat{\texttt{b3}}\qquad\qquad\qquad\qquad\quad\;\;\;\,\end{align}
+$$
+
+
+
+
+
+## Coefficient Plots in Python
+
+- A coefficient plot shows beta estimates and their confidence intervals.
+
+
+```{.python}
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Create a Pandas DataFrame from model3's summary information
+terms = assembler3.getInputCols()
+coefs = model3.coefficients.toArray()[:len(terms)]
+stdErrs = model3.summary.coefficientStandardErrors[:len(terms)]
+
+df_summary = pd.DataFrame({
+    "term": terms,
+    "estimate": coefs,
+    "std_error": stdErrs
+})
+
+# Plot using the DataFrame columns
+plt.errorbar(df_summary["term"], df_summary["estimate"],
+             yerr = 1.96 * df_summary["std_error"], fmt='o', capsize=5)
+plt.xlabel("Terms")
+plt.ylabel("Coefficient Estimate")
+plt.title("Coefficient Estimates (Model 2)")
+plt.axhline(0, color="red", linestyle="--")  # Add horizontal line at 0
+plt.xticks(rotation=45)
+plt.show()
+```
+
 

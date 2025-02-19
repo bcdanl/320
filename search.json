@@ -3441,7 +3441,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-using-pyspark-1",
     "title": "Lecture 7",
     "section": "Linear Regression using PySpark",
-    "text": "Linear Regression using PySpark\nSummary of the regression result\nmodel1.intercept\nmodel1.coefficients\nmodel1.summary.coefficientStandardErrors\nmodel1.summary.rootMeanSquaredError\nmodel1.summary.r2"
+    "text": "Linear Regression using PySpark\nDummy variables\n\nThe model does not include borough_nameManhattan, because \\(\\texttt{borough_nameManhattan[i]}\\) is represented by a combination of \\(\\texttt{borough}\\) variables:\n\n\\(\\texttt{borough_nameManhattan[i]} = 0\\) if any of the \\(\\texttt{borough_name}\\) variables is 1.\n\\(\\texttt{borough_nameManhattan[i]} = 1\\) if all of the \\(\\texttt{borough_name}\\) variables are 0.\n\nThe level Manhattan is a reference level when interpreting the beta estimate for the borough_name variables."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-using-pyspark-2",
@@ -3469,7 +3469,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-1",
     "title": "Lecture 7",
     "section": "Multiple Regression",
-    "text": "Multiple Regression\nBest Fitting Plane"
+    "text": "Multiple Regression\nBest Fitting Plane\n\n\n\n\n\n\n\n\n\n\nAll else being equal, an increase in gross_square_feet by one unit is associated with an increase in sale_price by \\(\\hat{\\beta_{1}}\\)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-2",
@@ -3497,7 +3497,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-using-pyspark",
     "title": "Lecture 7",
     "section": "Multiple Regression using PySpark",
-    "text": "Multiple Regression using PySpark\n\nLet’s add a new explanatory variable, age to the model.\n\nassembler2 = VectorAssembler(inputCols=[\"gross_square_feet\", \"age\"], outputCol=\"inputs\")\ndtrain2 = assembler2.transform(dtrain)\ndtest2  = assembler2.transform(dtest)\n\nmodel2 = LinearRegression(featuresCol=\"inputs\", labelCol=\"sale_price\").fit(dtrain2)\ndtest2 = model2.transform(dtest2) \n\nprint(regression_table(model2, assembler2))"
+    "text": "Multiple Regression using PySpark\n\nLet’s add a new predictor, age, to the model.\n\nassembler2 = VectorAssembler(\n                    inputCols=[\"gross_square_feet\", \"age\"], \n                    outputCol=\"predictors\")\ndtrain2 = assembler2.transform(dtrain)\ndtest2  = assembler2.transform(dtest)\n\nmodel2 = LinearRegression(\n                featuresCol=\"predictors\",\n                labelCol=\"sale_price\")\n        .fit(dtrain2)\ndtest2 = model2.transform(dtest2) \n\nprint(regression_table(model2, assembler2))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-using-pyspark-1",
@@ -3553,7 +3553,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-the-output-of-summary",
     "title": "Lecture 7",
     "section": "Interpreting the output of summary()",
-    "text": "Interpreting the output of summary()\nEstimated Beta Coefficients\nModel\nThe model equation is \\[\\begin{align}\n\\texttt{sale_price[i]} \\;=\\;\\, &\\texttt{b0} \\,+\\,\\\\ &\\texttt{b1*gross_square_feet[i]} \\,+\\,\\texttt{b2*age[i]}\\,+\\,\\\\ &\\texttt{b3*Bronx[i]} \\,+\\,\\texttt{b4*Brooklyn[i]} \\,+\\,\\\\&\\texttt{b5*Queens[i]} \\,+\\,\\texttt{b6*Staten Island[i]}\\,+\\,\\\\ &\\texttt{e[i]}\n\\end{align}\\] - The reference level of borough_name variables is Manhattan."
+    "text": "Interpreting the output of summary()\nEstimated Beta Coefficients\nborough_nameBronx\n\nAll else being equal, an increase in borough_nameBronx by one unit is associated with an increase in sale_price by b3.\nAll else being equal, being in Bronx relative to being a in Manhattan is associated with a decrease in sale_price by |b2|."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-the-output-of-summary-1",
@@ -3574,21 +3574,21 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients",
     "title": "Lecture 7",
     "section": "Interpreting Estimated Beta Coefficients",
-    "text": "Interpreting Estimated Beta Coefficients\n\nWhat does it mean for a beta estimate \\(\\hat{\\beta_{\\,}}\\) to be statistically significant at 5% level?\n\nIt means that the null hypothesis \\(H_{0}: \\beta = 0\\) is rejected for a given significance level 5%.\n“2 standard error rule” of thumb: The true value of \\(\\beta\\) is 95% likely to be in the confidence interval \\((\\, \\hat{\\beta_{\\,}} - 2 * \\texttt{Std. Error}\\;,\\; \\hat{\\beta_{\\,}} + 2 * \\texttt{Std. Error} \\,)\\).\nThe standard error tells us how uncertain our beta estimate is.\nWe should look for the stars!"
+    "text": "Interpreting Estimated Beta Coefficients\nModel\nThe model equation is \\[\\begin{align}\n\\texttt{sale_price[i]} \\;=\\;\\, &\\texttt{b0} \\,+\\,\\\\ &\\texttt{b1*gross_square_feet[i]} \\,+\\,\\texttt{b2*age[i]}\\,+\\,\\\\ &\\texttt{b3*Bronx[i]} \\,+\\,\\texttt{b4*Brooklyn[i]} \\,+\\,\\\\&\\texttt{b5*Queens[i]} \\,+\\,\\texttt{b6*Staten Island[i]}\\,+\\,\\\\ &\\texttt{e[i]}\n\\end{align}\\] - The reference level of borough_name variables is Manhattan."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-1",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-1",
     "title": "Lecture 7",
     "section": "Interpreting Estimated Beta Coefficients",
-    "text": "Interpreting Estimated Beta Coefficients\nConsider the predicted sales prices of the two houses, A and C. - Both A and C’s age are the same. - Both A and C’s gross_square_feet are the same. - A is in Bronx, and C is in Manhattan.\n\\[\\begin{align}\\widehat{\\texttt{sale_price[A]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[A]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[A]} \\,+\\, \\hat{\\texttt{b3}}\\texttt{*Bronx[A]}\\,+\\,\\\\\n&\\hat{\\texttt{b4}}\\texttt{*Brooklyn[A]} \\,+\\, \\hat{\\texttt{b5}}\\texttt{*Queens[A]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[A]}\\\\\n\\widehat{\\texttt{sale_price[C]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[C]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[C]}\\,+\\,\\hat{\\texttt{b3}}\\texttt{*Bronx[C]}\\,+\\,\\\\\n&\\hat{\\texttt{b4}}\\texttt{*Brooklyn[C]} \\,+\\, \\hat{\\texttt{b5}}\\texttt{*Queens[C]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[C]} \\end{align}\\]\n\\[\\begin{align}\\Leftrightarrow\\qquad&\\widehat{\\texttt{sale_price[A]}} \\,-\\, \\widehat{\\texttt{sale_price[C]}}\\qquad  \\\\\n\\;=\\quad &\\hat{\\texttt{b3}}\\texttt{*}\\texttt{Bronx[A]} \\\\\n\\;=\\quad &\\hat{\\texttt{b3}}\\qquad\\qquad\\qquad\\qquad\\quad\\;\\;\\;\\,\\end{align}\\]"
+    "text": "Interpreting Estimated Beta Coefficients\n1. gross_square_feet\n\nConsider the predicted sales prices of the two houses, A and B.\n\nBoth A and B are in Bronx and with the same age.\ngross_square_feet of house A is 2001, while that of house B is 2000.\n\nAll else being equal, an increase in gross_square_feet by one unit is associated with an increase in sale_price by \\(\\hat{\\beta_{1}}\\).\n\nWhy?"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-2",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-2",
     "title": "Lecture 7",
     "section": "Interpreting Estimated Beta Coefficients",
-    "text": "Interpreting Estimated Beta Coefficients\n\nWhat does it mean for a beta estimate \\(\\hat{\\beta}\\) to be statistically significant at 5% level?\n\nIt means that the null hypothesis \\(H_{0}: \\beta = 0\\) is rejected for a given significance level 5%.\n“2 standard error rule” of thumb: The true value of \\(\\beta\\) is 95% likely to be in the confidence interval \\((\\, \\hat{\\beta} - 2 * \\texttt{Std. Error}\\;,\\; \\hat{\\beta} + 2 * \\texttt{Std. Error} \\,)\\).\nThe standard error tells us how uncertain our estimate of the coefficient b is.\nWe should look for the stars!"
+    "text": "Interpreting Estimated Beta Coefficients\n1. gross_square_feet\n\\[\n\\begin{align}\\widehat{\\texttt{sale_price[A]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[A]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[A]} \\,+\\,\\\\\n&\\hat{\\texttt{b3}}\\texttt{*Bronx[A]}\\,+\\,\\hat{\\texttt{b4}}\\texttt{*Brooklyn[A]} \\,+\\,\\\\ &\\hat{\\texttt{b5}}\\texttt{*Queens[A]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[A]}\\\\\n\\widehat{\\texttt{sale_price[B]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[B]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[B]}\\,+\\,\\\\\n&\\hat{\\texttt{b3}}\\texttt{*Bronx[B]}\\,+\\,\n\\hat{\\texttt{b4}}\\texttt{*Brooklyn[B]} \\,+\\,\\\\ &\\hat{\\texttt{b5}}\\texttt{*Queens[B]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[B]} \\end{align}\n\\]\n\\[\n\\begin{align}\\Leftrightarrow\\qquad&\\widehat{\\texttt{sale_price[A]}} \\,-\\, \\widehat{\\texttt{sale_price[B]}}\\qquad  \\\\\n\\;=\\quad &\\hat{\\texttt{b1}}\\texttt{*}(\\texttt{gross_square_feet[A]} - \\texttt{gross_square_feet[B]})\\\\\n\\;=\\quad &\\hat{\\texttt{b1}}\\texttt{*}\\texttt{(2001 - 2000)} \\,=\\, \\hat{\\texttt{b1}}\\qquad\\qquad\\quad\\;\\;\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-the-output-of-summary-3",
@@ -3623,21 +3623,21 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-3",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nModel summary with stargazer\n\nThe R package, stargazer, is useful when comparing lm() objects.\n\n# install.packages(\"stargazer\")\nstargazer(model, model_4, \n          type = 'text')  # from the stargazer package"
+    "text": "Model Evaluation\nResidual Plots\n\nWe would like have a residual plot to be\n\nUnbiased: have an average value of zero in any thin vertical strip;\nHomoskedastic, which means “same stretch”: it is ideal to have the same spread of the residuals in any thin vertical strip."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-4",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-4",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nModel summary with broom\n\nThe R package, broom, is useful when plotting beta estimates.\n\n\n# install.packages(\"broom\")\nsum_model_4 &lt;- tidy(model_4)  # from the broom package\n\nggplot(sum_model_4) +\n  geom_pointrange( aes(x = term, \n                       y = estimate,\n                       ymin = estimate - 2*std.error,\n                       ymax = estimate + 2*std.error ) ) +\n  coord_flip()"
+    "text": "Model Evaluation\nResidual Plots"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-5",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-5",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nResidual Plots\n\nResidual plot is a scatterplot of fitted values and residuals.\n\nA variable of fitted values on x-axis\nA variable of residuals on y-axis\n\nA residual plot can be used to diagnose the quality of model results.\n\n\n# residual plot from the model 4\nggplot(data = dtest, aes(x = pred_4, y = sale_price - pred_4)) +\n  geom_point(alpha = 0.2, color = \"darkgray\") +\n  geom_smooth(color = \"darkblue\") +   \n  geom_hline(aes(yintercept = 0),  # perfect prediction \n            color = \"red\", linetype = 2)"
+    "text": "Model Evaluation\nResidual Plots"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation-6",
@@ -3693,7 +3693,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#model-evaluation",
     "title": "Lecture 7",
     "section": "Model Evaluation",
-    "text": "Model Evaluation\nMean squared error (MSE)\n\nOne of the most common metrics used to measure the prediction accuracy of a linear regression model is MSE, which stands for mean squared error.\n\n\\(MSE\\) is \\(SSR\\) divided by \\(n\\) (the number of observations in the data that are used in making predictions).\n\n\n\\[\nMSE = SSR / n\n\\] \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\n\\end{align}\n\\]\n\nThe lower MSE, the higher accuracy of the model.\n\nThe root MSE (RMSE) is the square root of MSE."
+    "text": "Model Evaluation\nMean squared error (MSE)\n\nOne of the most common metrics used to measure the prediction accuracy of a linear regression model is MSE, which stands for mean squared error.\n\n\\(MSE\\) is \\(SSR\\) divided by \\(n\\) (the number of observations in the data that are used in making predictions).\n\n\n\n\n\n\\[\nMSE = SSR / n\n\\] \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\n\\end{align}\n\\]\n\n\n\n\nThe lower MSE, the higher accuracy of the model.\n\nThe root MSE (RMSE) is the square root of MSE."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression-5",
@@ -3833,42 +3833,42 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data",
     "title": "Lecture 7",
     "section": "Splitting Data into Training and Testing Data",
-    "text": "Splitting Data into Training and Testing Data\nStep 1. Importing Modules and Reading DataFrames\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql.functions import rand, col, pow, mean, when\nfrom pyspark.ml.feature import VectorAssembler\nfrom pyspark.ml.regression import LinearRegression\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\n\n# 1. Read CSV data from URL\ndf_pd = pd.read_csv('https://bcdanl.github.io/data/home_sales_nyc.csv')\nsale_df = spark.createDataFrame(df_pd)\nsale_df.show()"
+    "text": "Splitting Data into Training and Testing Data\nA Little Bit of Statistics for the Uniform Distribution\n\n\n\nThe probability density function for the uniform distribution looks like:\nWith the uniform distribution, any values of \\(x\\) between 0 and 1 is equally likely drawn.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe will use the uniform distribution when splitting data into training and testing data sets."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-1",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-1",
     "title": "Lecture 7",
     "section": "Splitting Data into Training and Testing Data",
-    "text": "Splitting Data into Training and Testing Data\nA Little Bit of Statistics for the Uniform Distribution\n\n\n\nThe probability density function for the uniform distribution looks like:\nWith the uniform distribution, any values of \\(x\\) between 0 and 1 is equally likely drawn.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe will use the uniform distribution when splitting data into training and testing data sets."
+    "text": "Splitting Data into Training and Testing Data\nRandomization in the Sampling Process\n\nWhy do we randomize when splitting given data into training and test data?\n\nRandomizing the sampling process ensures that the training and test data sets are representative for the population data.\nIf the sample does not properly represent the entire population, the model result is biased toward the sample.\n\nSuppose the splitting process is not randomized, so that the observations with sale_price &gt; 10^6 are in the training data and the observations with sale_price &lt;= 10^6 are in the test data.\n\nWhat would be the model result then?"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-2",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-2",
     "title": "Lecture 7",
     "section": "Splitting Data into Training and Testing Data",
-    "text": "Splitting Data into Training and Testing Data\nRandomization in the Sampling Process\n\nWhy do we randomize when splitting given data into training and test data?\n\nRandomizing the sampling process ensures that the training and test data sets are representative for the population data.\nIf the sample does not properly represent the entire population, the model result is biased toward the sample.\n\nSuppose the splitting process is not randomized, so that the observations with sale_price &gt; 10^6 are in the training data and the observations with sale_price &lt;= 10^6 are in the test data.\n\nWhat would be the model result then?"
+    "text": "Splitting Data into Training and Testing Data\nStep 1. Importing Modules and Reading DataFrames\nimport pandas as pd\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql.functions import rand, col, pow, mean, when\nfrom pyspark.ml.feature import VectorAssembler\nfrom pyspark.ml.regression import LinearRegression\nspark = SparkSession.builder.master(\"local[*]\").getOrCreate()\n\n# 1. Read CSV data from URL\ndf_pd = pd.read_csv('https://bcdanl.github.io/data/home_sales_nyc.csv')\nsale_df = spark.createDataFrame(df_pd)\nsale_df.show()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-3",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#splitting-data-into-training-and-testing-data-3",
     "title": "Lecture 7",
     "section": "Splitting Data into Training and Testing Data",
-    "text": "Splitting Data into Training and Testing Data\nStep 2. rand(seed = ANY_NUMBER)\n# 2. Split data into training and testing sets by creating a random column \"gp\"\nsale_df = sale_df.withColumn(\"gp\", rand(seed=123)) # seed is set for replication\n\n# Splits 50-50 into training and test sets \ndtrain = sale_df.filter(col(\"gp\") &gt;= 0.5) \ndtest = sale_df.filter(col(\"gp\") &lt; 0.5)\n\n# Or simply,\ndtrain, dtest = sale_df.randomSplit([0.5, 0.5], seed = 123)"
+    "text": "Splitting Data into Training and Testing Data\nStep 2. rand(seed = ANY_NUMBER)\n# 2. Split data into training and testing sets by creating a random column \"gp\"\nsale_df = sale_df.withColumn(\"gp\", rand(seed=123)) # seed is set for replication\n\n# Splits 60-40 into training and test sets \ndtrain = sale_df.filter(col(\"gp\") &gt;= 0.4) \ndtest = sale_df.filter(col(\"gp\") &lt; 0.4)\n\n# Or simply,\ndtrain, dtest = sale_df.randomSplit([0.6, 0.4], seed = 123)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#building-an-ml-dataframe-using-vectorassembler",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#building-an-ml-dataframe-using-vectorassembler",
     "title": "Lecture 7",
     "section": "Building an ML DataFrame using VectorAssembler()",
-    "text": "Building an ML DataFrame using VectorAssembler()\n# Now assemble inputs using the renamed column\nassembler1 = VectorAssembler(\n    inputCols=[\"gross_square_feet\"], \n    outputCol=\"inputs\")\n\ndtrain1 = assembler1.transform(dtrain) # training data\ndtest1  = assembler1.transform(dtest)  # test data\n\nVectorAssembler is a transformer in PySpark’s ML library that is used to combine multiple columns into a single vector column.\n\nMany ML algorithms in Spark require the inputs to be represented as a single vector.\nVectorAssembler is often one of the first steps in a Spark ML pipeline.\n\nVectorAssembler.transform() returns a DataFrame with a new column, specified in outputCol in VectorAssembler()."
+    "text": "Building an ML DataFrame using VectorAssembler()\n# Now assemble predictors using the renamed column\nassembler1 = VectorAssembler(\n    inputCols=[\"gross_square_feet\"], \n    outputCol=\"predictors\")\n\nVectorAssembler is a transformer in PySpark’s ML library that is used to combine multiple columns into a single vector column.\n\nMany ML algorithms in Spark require the predictors to be represented as a single vector.\nVectorAssembler is often one of the first steps in a Spark ML pipeline."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#building-a-linear-regression-model-using-linearregression.fit",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#building-a-linear-regression-model-using-linearregression.fit",
     "title": "Lecture 7",
     "section": "Building a Linear Regression Model using LinearRegression().fit()",
-    "text": "Building a Linear Regression Model using LinearRegression().fit()\n# Fit linear regression model using the new label column \"sale_price\"\nmodel1 = (\n    LinearRegression(\n        featuresCol = \"inputs\", \n        labelCol = \"sale_price\")\n    .fit(dtrain1)\n)\n\nLinearRegression(featuresCol=\"inputs\", labelCol=\"sale_price\")\n\nThis creates an instance of the LinearRegression class.\nThe features (independent variables) are in a column named “inputs”.\nThe label (dependent variable) is in a column named “sale_price”.\n\n.fit() trains (fits) the linear regression model using the training DataFrame dtrain1.\n\nThis training process estimates the coefficients (betas) and intercept that best predict the label from the features."
+    "text": "Building a Linear Regression Model using LinearRegression().fit()\n# Fit linear regression model using the new label column \"sale_price\"\nmodel1 = (\n    LinearRegression(\n        featuresCol = \"predictors\", \n        labelCol = \"sale_price\")\n    .fit(dtrain1)\n)\n\nLinearRegression(featuresCol=\"predictors\", labelCol=\"sale_price\")\n\nThis creates an instance of the LinearRegression class.\nThe features (independent variables) are in a column named “predictors”.\nThe label (dependent variable) is in a column named “sale_price”.\n\n.fit() trains (fits) the linear regression model using the training DataFrame dtrain1.\n\nThis training process estimates the beta coefficients that best predict the label from the features."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#summary-of-the-regression-result",
@@ -3882,7 +3882,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#summary-of-the-regression-result-1",
     "title": "Lecture 7",
     "section": "Summary of the Regression Result",
-    "text": "Summary of the Regression Result\nMake the Summary Pretty\nimport numpy as np\nimport scipy.stats as stats\nfrom tabulate import tabulate\n\ndef regression_table(model, assembler):\n    \"\"\"\n    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,\n    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns \n    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level).\n    \n    The columns are ordered as:\n        Metric | Value | Significance | Std. Error | p-value | 95% CI Lower | 95% CI Upper\n\n    For the \"Value\", \"Std. Error\", \"95% CI Lower\", and \"95% CI Upper\" columns, commas are inserted every three digits.\n    \n    Parameters:\n        model: A fitted LinearRegression model (with a .summary attribute).\n        assembler: The VectorAssembler used to assemble the features for the model.\n\n    Returns:\n        A formatted string containing the regression table.\n    \"\"\"\n    # Extract coefficients and standard errors as NumPy arrays\n    coeffs = model.coefficients.toArray()\n    std_errors_all = np.array(model.summary.coefficientStandardErrors)\n\n    # Check if the intercept's standard error is included (one extra element)\n    if len(std_errors_all) == len(coeffs) + 1:\n        intercept_se = std_errors_all[0]\n        std_errors = std_errors_all[1:]\n    else:\n        intercept_se = None\n        std_errors = std_errors_all\n\n    # Compute t-statistics for feature coefficients (t = beta / SE(beta))\n    t_stats = coeffs / std_errors\n\n    # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)\n    df = model.summary.numInstances - len(coeffs) - 1\n\n    # Compute the t-critical value for a 95% confidence interval (two-tailed, 5% significance)\n    t_critical = stats.t.ppf(0.975, df)\n\n    # Compute two-tailed p-values for each feature coefficient\n    p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]\n\n    # Function to assign significance stars based on p-value\n    def significance_stars(p):\n        if p &lt; 0.01:\n            return \"***\"\n        elif p &lt; 0.05:\n            return \"**\"\n        elif p &lt; 0.1:\n            return \"*\"\n        else:\n            return \"\"\n\n    # Build the table rows.\n    # New order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.\n    table = []\n    for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):\n        ci_lower = beta - t_critical * se\n        ci_upper = beta + t_critical * se\n        table.append([\n            \"Beta: \" + feature,       # Metric name\n            beta,                     # Beta estimate (Value)\n            significance_stars(p),    # Significance stars\n            se,                       # Standard error\n            p,                        # p-value\n            ci_lower,                 # 95% CI lower bound\n            ci_upper                  # 95% CI upper bound\n        ])\n\n    # Compute and add the intercept row with its SE, p-value, significance, and CI (if available)\n    if intercept_se is not None:\n        intercept_t = model.intercept / intercept_se\n        intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))\n        intercept_sig = significance_stars(intercept_p)\n        ci_intercept_lower = model.intercept - t_critical * intercept_se\n        ci_intercept_upper = model.intercept + t_critical * intercept_se\n    else:\n        intercept_se = \"\"\n        intercept_p = \"\"\n        intercept_sig = \"\"\n        ci_intercept_lower = \"\"\n        ci_intercept_upper = \"\"\n    \n    table.append([\n        \"Intercept\",\n        model.intercept,\n        intercept_sig,\n        intercept_se,\n        intercept_p,\n        ci_intercept_lower,\n        ci_intercept_upper\n    ])\n\n    # Append additional overall model metrics (with extra columns left blank)\n    table.append([\"RMSE\", model.summary.rootMeanSquaredError, \"\", \"\", \"\", \"\", \"\"])\n    table.append([\"R²\", model.summary.r2, \"\", \"\", \"\", \"\", \"\"])\n\n    # Format the table.\n    # For the \"Value\" (index 1), \"Std. Error\" (index 3), \"95% CI Lower\" (index 5), and \"95% CI Upper\" (index 6) columns,\n    # use comma formatting.\n    formatted_table = []\n    for row in table:\n        formatted_row = []\n        for i, item in enumerate(row):\n            if isinstance(item, (int, float, np.floating)) and item != \"\":\n                if i in [1, 3, 5, 6]:\n                    # Format with commas every three digits and 3 decimal places.\n                    formatted_row.append(f\"{item:,.2f}\")\n                else:\n                    formatted_row.append(f\"{item:.2f}\")\n            else:\n                formatted_row.append(item)\n        formatted_table.append(formatted_row)\n\n    # Generate the table string using tabulate.\n    table_str = tabulate(\n        formatted_table,\n        headers=[\"Metric\", \"Value\", \"Sig.\", \"Std. Error\", \"p-value\", \"95% CI Lower\", \"95% CI Upper\"],\n        tablefmt=\"pretty\",\n        colalign=(\"left\", \"right\", \"center\", \"right\", \"right\", \"right\", \"right\")\n    )\n\n    # Insert a dashed line after the intercept row for clarity\n    lines = table_str.split(\"\\n\")\n    dash_line = '-' * len(lines[0])\n    for i, line in enumerate(lines):\n        if \"Intercept\" in line and not line.strip().startswith('+'):\n            lines.insert(i+1, dash_line)\n            break\n\n    return \"\\n\".join(lines)"
+    "text": "Summary of the Regression Result\nMake the Summary Pretty\nimport numpy as np\nimport scipy.stats as stats\nfrom tabulate import tabulate\n\ndef regression_table(model, assembler):\n    \"\"\"\n    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,\n    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns\n    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level)\n    and an \"Observations\" row (using model.summary.numInstances) above the R² row.\n    The RMSE row is placed as the last row.\n\n    The columns are ordered as:\n        Metric | Value | Significance | Std. Error | p-value | 95% CI Lower | 95% CI Upper\n\n    For the \"Value\", \"Std. Error\", \"95% CI Lower\", and \"95% CI Upper\" columns, commas are inserted every three digits,\n    with 3 decimal places (except for Observations which is formatted as an integer with commas).\n\n    Parameters:\n        model: A fitted LinearRegression model (with a .summary attribute).\n        assembler: The VectorAssembler used to assemble the features for the model.\n\n    Returns:\n        A formatted string containing the regression table.\n    \"\"\"\n    # Extract coefficients and standard errors as NumPy arrays\n    coeffs = model.coefficients.toArray()\n    std_errors_all = np.array(model.summary.coefficientStandardErrors)\n\n    # Check if the intercept's standard error is included (one extra element)\n    if len(std_errors_all) == len(coeffs) + 1:\n        intercept_se = std_errors_all[0]\n        std_errors = std_errors_all[1:]\n    else:\n        intercept_se = None\n        std_errors = std_errors_all\n\n    # Compute t-statistics for feature coefficients (t = beta / SE(beta))\n    # t_stats = coeffs / std_errors\n    t_stats = model.summary.tValues\n\n    # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)\n    df = model.summary.numInstances - len(coeffs) - 1\n\n    # Compute the t-critical value for a 95% confidence interval (two-tailed, 5% significance)\n    t_critical = stats.t.ppf(0.975, df)\n\n    # Compute two-tailed p-values for each feature coefficient\n    # p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]\n    p_values = model.summary.pValues\n\n    # Function to assign significance stars based on p-value\n    def significance_stars(p):\n        if p &lt; 0.01:\n            return \"***\"\n        elif p &lt; 0.05:\n            return \"**\"\n        elif p &lt; 0.1:\n            return \"*\"\n        else:\n            return \"\"\n\n    # Build the table rows.\n    # Order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.\n    table = []\n    for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):\n        ci_lower = beta - t_critical * se\n        ci_upper = beta + t_critical * se\n        table.append([\n            \"Beta: \" + feature,       # Metric name\n            beta,                     # Beta estimate (Value)\n            significance_stars(p),    # Significance stars\n            se,                       # Standard error\n            p,                        # p-value\n            ci_lower,                 # 95% CI lower bound\n            ci_upper                  # 95% CI upper bound\n        ])\n\n    # Compute and add the intercept row with its SE, p-value, significance, and CI (if available)\n    if intercept_se is not None:\n        intercept_t = model.intercept / intercept_se\n        intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))\n        intercept_sig = significance_stars(intercept_p)\n        ci_intercept_lower = model.intercept - t_critical * intercept_se\n        ci_intercept_upper = model.intercept + t_critical * intercept_se\n    else:\n        intercept_se = \"\"\n        intercept_p = \"\"\n        intercept_sig = \"\"\n        ci_intercept_lower = \"\"\n        ci_intercept_upper = \"\"\n\n    table.append([\n        \"Intercept\",\n        model.intercept,\n        intercept_sig,\n        intercept_se,\n        intercept_p,\n        ci_intercept_lower,\n        ci_intercept_upper\n    ])\n\n    # Append overall model metrics:\n    # Insert an Observations row using model.summary.numInstances,\n    # then an R² row, and finally the RMSE row as the last row.\n    table.append([\"Observations\", model.summary.numInstances, \"\", \"\", \"\", \"\", \"\"])\n    table.append([\"R²\", model.summary.r2, \"\", \"\", \"\", \"\", \"\"])\n    table.append([\"RMSE\", model.summary.rootMeanSquaredError, \"\", \"\", \"\", \"\", \"\"])\n\n    # Format the table.\n    # For the \"Value\" (index 1), \"Std. Error\" (index 3), \"95% CI Lower\" (index 5), and \"95% CI Upper\" (index 6) columns,\n    # format with commas and 3 decimal places, except for Observations which should be an integer with commas.\n    # For the p-value (index 4), format to 3 decimal places.\n    formatted_table = []\n    for row in table:\n        formatted_row = []\n        for i, item in enumerate(row):\n            if row[0] == \"Observations\" and i == 1 and isinstance(item, (int, float, np.floating)) and item != \"\":\n                # Format Observations as integer with commas, no decimals.\n                formatted_row.append(f\"{int(item):,}\")\n            elif isinstance(item, (int, float, np.floating)) and item != \"\":\n                if i in [1, 3, 5, 6]:\n                    formatted_row.append(f\"{item:,.3f}\")\n                elif i == 4:\n                    formatted_row.append(f\"{item:.3f}\")\n                else:\n                    formatted_row.append(f\"{item:.3f}\")\n            else:\n                formatted_row.append(item)\n        formatted_table.append(formatted_row)\n\n    # Generate the table string using tabulate.\n    table_str = tabulate(\n        formatted_table,\n        headers=[\"Metric\", \"Value\", \"Sig.\", \"Std. Error\", \"p-value\", \"95% CI Lower\", \"95% CI Upper\"],\n        tablefmt=\"pretty\",\n        colalign=(\"left\", \"right\", \"center\", \"right\", \"right\", \"right\", \"right\")\n    )\n\n    # Insert a dashed line after the Intercept row for clarity.\n    lines = table_str.split(\"\\n\")\n    dash_line = '-' * len(lines[0])\n    for i, line in enumerate(lines):\n        if \"Intercept\" in line and not line.strip().startswith('+'):\n            lines.insert(i+1, dash_line)\n            break\n\n    return \"\\n\".join(lines)\n\n# Example usage:\n# print(regression_table(lr_model, assembler))"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#summary-of-the-regression-result-2",
@@ -3910,14 +3910,14 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#models-and-assumptions-5",
     "title": "Lecture 7",
     "section": "Models and Assumptions",
-    "text": "Models and Assumptions\nBest Fitting Plane\n\nLinear regression finds the beta estimates \\(( \\hat{\\beta_{0}}, \\hat{\\beta_{1}}, \\hat{\\beta}_{2} )\\) such that:\n– The linear function \\(f(X_{1}, X_{2}) = \\hat{\\beta_{0}} + \\hat{\\beta_{1}}X_{1} + \\hat{\\beta}_{2}X_{2}\\) is as near as possible to \\(Y\\) for all \\((X_{1, i}\\,,\\,X_{2, i}\\,,\\, Y_{i})\\) pairs in the data.\n\nIt is the best fitting plane, or the predicted outcome, \\(\\hat{Y_{\\,}} = \\hat{\\beta_{0}} + \\hat{\\beta_{1}}X_{1} + \\hat{\\beta}_{2}X_{2}\\)"
+    "text": "Models and Assumptions\nBest Fitting Plane\n\nLinear regression finds the beta estimates \\(( \\hat{\\beta_{0}}, \\hat{\\beta_{1}}, \\hat{\\beta_{2}} )\\) such that:\n– The linear function \\(f(X_{1}, X_{2}) = \\hat{\\beta_{0}} + \\hat{\\beta_{1}}X_{1} + \\hat{\\beta_{2}}X_{2}\\) is as near as possible to \\(Y\\) for all \\((X_{1, i}\\,,\\,X_{2, i}\\,,\\, Y_{i})\\) pairs in the data.\n\nIt is the best fitting plane, or the predicted outcome, \\(\\hat{Y_{\\,}} = \\hat{\\beta_{0}} + \\hat{\\beta_{1}}X_{1} + \\hat{\\beta_{2}}X_{2}\\)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#models-and-assumptions-6",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#models-and-assumptions-6",
     "title": "Lecture 7",
     "section": "Models and Assumptions",
-    "text": "Models and Assumptions\nResidual Errors\n\nThe estimated beta coefficients are chosen to minimize the sum of squares of the residual errors \\((SSR)\\): \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\\\\\n\\text{where}\\qquad\\qquad\\qquad\\qquad&\\\\\n\\texttt{Residual_Error}_{i} &\\,=\\, Y_{i} \\,-\\, \\hat{Y_{i}},\\\\\n\\texttt{Predicted_Outcome}_{i}: \\hat{Y_{i}} &\\,=\\, \\hat{\\beta_{0}} \\,+\\, \\hat{\\beta_{1}}X_{1, i} \\,+\\, \\hat{\\beta_{1}}X_{2, i}\n\\end{align}\n\\]"
+    "text": "Models and Assumptions\nResidual Errors\n\nThe estimated beta coefficients are chosen to minimize the sum of squares of the residual errors \\((SSR)\\): \\[\n\\begin{align}\nSSR &\\,=\\, (\\texttt{Residual_Error}_{1})^{2}\\\\\n&\\quad \\,+\\, (\\texttt{Residual_Error}_{2})^{2}\\\\\n&\\quad\\,+\\, \\cdots + (\\texttt{Residual_Error}_{n})^{2}\\\\\n\\text{where}\\qquad\\qquad\\qquad\\qquad&\\\\\n\\texttt{Residual_Error}_{i} &\\,=\\, Y_{i} \\,-\\, \\hat{Y_{i}},\\\\\n\\texttt{Predicted_Outcome}_{i}: \\hat{Y_{i}} &\\,=\\, \\hat{\\beta_{0}} \\,+\\, \\hat{\\beta_{1}}X_{1, i} \\,+\\, \\hat{\\beta_{2}}X_{2, i}\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#training-and-test-data-3",
@@ -3953,5 +3953,159 @@
     "title": "Lecture 7",
     "section": "What does it mean to be “big”?",
     "text": "What does it mean to be “big”?\n\nBig in both the number of observations (size n) and in the number of variables (dimension p).\nIn these settings, we cannot:\n\nLook at each individual variable and make a decision.\nChoose among a small set of candidate models.\nPlot every variable to look for interactions or transformations.\n\nSome ML tools are straight out of previous statistics classes (linear regression) and some are totally new (ensemble models, principal component analysis).\n\nAll require a different approach when n and p get really big."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#building-an-ml-dataframe-using-vectorassembler-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#building-an-ml-dataframe-using-vectorassembler-1",
+    "title": "Lecture 7",
+    "section": "Building an ML DataFrame using VectorAssembler()",
+    "text": "Building an ML DataFrame using VectorAssembler()\ndtrain1 = assembler1.transform(dtrain) # training data\ndtest1  = assembler1.transform(dtest)  # test data\n\ndtrain1.select(\"predictors\", \"sale_price\").show()\ndtest1.select(\"predictors\", \"sale_price\").show()\n\nVectorAssembler.transform() returns a DataFrame with a new column, specified in outputCol in VectorAssembler()."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#what-are-dummy-variables",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#what-are-dummy-variables",
+    "title": "Lecture 7",
+    "section": "What are Dummy Variables?",
+    "text": "What are Dummy Variables?\n\nDefinition: Binary indicators (0 or 1) representing categorical data.\nPurpose: Transform qualitative data into a quantitative form for regression analysis.\n\nExample:\n\\[\nD_i = \\begin{cases}\n1, & \\text{if the observation belongs to the category} \\\\\n0, & \\text{otherwise}\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variables-in-regression-models",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variables-in-regression-models",
+    "title": "Lecture 7",
+    "section": "Dummy Variables in Regression Models",
+    "text": "Dummy Variables in Regression Models\nConsider a regression model including a dummy variable:\n\\[\ny_i = \\beta_0 + \\beta_1 x_i + \\beta_2 D_i + \\epsilon_i\n\\]\n\n\\(x_i\\): A continuous predictor.\n\\(D_i\\): Dummy variable (e.g., political party affiliation, type of car).\n\nInterpretation:\n\\(\\beta_2\\) captures the difference in the response \\(y\\) when the category is present (i.e., \\(D_i=1\\)) versus absent."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#the-dummy-variable-trap",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#the-dummy-variable-trap",
+    "title": "Lecture 7",
+    "section": "The Dummy Variable Trap",
+    "text": "The Dummy Variable Trap\n\nProblem: Including a dummy for every category introduces redundancy.\nFor a categorical variable with \\(k\\) levels:\n\nIf you include all \\(k\\) dummy variables in the model, their values always sum to 1:\n\n\\[\nD_{1i} + D_{2i} + \\cdots + D_{ki} = 1 \\quad \\text{(for each observation)}\n\\]\nThis is problematic, because one dummy is completely predictable from the others.\nThe intercept already captures the constant part (1), making one of the dummy variables redundant."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#avoiding-the-dummy-variable-trap",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#avoiding-the-dummy-variable-trap",
+    "title": "Lecture 7",
+    "section": "Avoiding the Dummy Variable Trap",
+    "text": "Avoiding the Dummy Variable Trap\n\nSolution: Drop one dummy (often called the reference category)\nThe reference category is represented by a combination of \\(\\texttt{borough}\\) variables.\n\nDummy for the reference category is 1 if all the rest of the dummies is 0.\nDummy for the reference category is 0 otherwise.\n\n\nProper model:\n\\[\ny_i = \\beta_0 + \\beta_1 D_{1, i} + \\beta_2 D_{2, i} + \\cdots + \\beta_{k-1} D_{(k-1), i} + \\epsilon_i\n\\]\n\nInterpretation:\n\nEach \\(\\beta_j\\) (for \\(j=1,2,\\ldots,k-1\\)) represents the difference from the reference category."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression---best-fitting-plane",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#multiple-regression---best-fitting-plane",
+    "title": "Lecture 7",
+    "section": "Multiple Regression - Best Fitting Plane",
+    "text": "Multiple Regression - Best Fitting Plane\n\n\n\n\n\n\n\n\n\n\nAll else being equal, an increase in gross_square_feet by one unit is associated with an increase in sale_price by \\(\\hat{\\beta_{1}}\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#motivation-treating-categorical-variables-in-linear-regression",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#motivation-treating-categorical-variables-in-linear-regression",
+    "title": "Lecture 7",
+    "section": "Motivation: Treating Categorical Variables in Linear Regression",
+    "text": "Motivation: Treating Categorical Variables in Linear Regression\n\nLinear regression models require numerical predictors, but many variables are categorical.\n\ne.g., Consider the two equivalent houses, except for its location—one in Manhattan and the other in Bronx.\n\nThe Approach:\nConvert categorical variables into numerical format using dummy variables.\nWhy Do This?\n\nAllows the model to compare different categories.\nEach dummy variable indicates the presence (1) or absence (0) of a category."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#avoiding-the-dummy-variable-trap-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#avoiding-the-dummy-variable-trap-1",
+    "title": "Lecture 7",
+    "section": "Avoiding the Dummy Variable Trap",
+    "text": "Avoiding the Dummy Variable Trap\n\nE.g., the dummy variable, borough_name_Brooklyn, is follows:\n\n\\[\n\\texttt{borough_name_Brooklyn[i] }\\\\\n= \\begin{cases}\n\\texttt{1} & \\text{if a property } \\texttt{i} \\text{ is in } \\texttt{Brooklyn};\\\\\\\\\n\\texttt{0} & \\text{otherwise}.\\qquad\\qquad\\quad\\,\n\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark",
+    "title": "Lecture 7",
+    "section": "Dummy Variable Regression using PySpark",
+    "text": "Dummy Variable Regression using PySpark\n\nThe UDF, add_dummy_variables(var_name, reference_level) convert a categorical variable into its dummy variables:\n\nvar_name: a string of categorical variable name\nreference_level: index position of alphabetically sorted categories\nThis function requires dtrain and dtest DataFrames.\n\n\ndef add_dummy_variables(var_name, reference_level):\n    \"\"\"\n    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.\n    If the variable contains boolean values, they are converted to strings.\n\n    Parameters:\n        var_name (str): The name of the categorical column (e.g., \"borough_name\").\n        reference_level (int): The index (after sorting the categories) of the category\n                               to be used as the reference (dummy omitted).\n\n    Returns:\n        dummy_cols (list): List of dummy column names to be used in subsequent analysis\n                           (the reference category dummy is omitted).\n        ref_category (str): The category value that has been chosen as the reference.\n    \"\"\"\n    global dtrain, dtest\n\n    # Get distinct categories from the training set.\n    categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()\n\n    # If any category is a boolean, convert all categories to string.\n    categories = [str(c) if isinstance(c, bool) else c for c in categories]\n\n    # Sort the categories.\n    categories = sorted(categories)\n\n    # Check that reference_level is valid\n    if reference_level &lt; 0 or reference_level &gt;= len(categories):\n        raise ValueError(f\"reference_level must be between 0 and {len(categories) - 1}\")\n\n    # Determine the reference category based on the reference level\n    ref_category = categories[reference_level]\n    print(\"Reference category (dummy omitted):\", ref_category)\n\n    # Create dummy variables for all categories\n    for cat in categories:\n        # Always convert the category value to string and replace spaces.\n        dummy_col_name = var_name + \"_\" + str(cat).replace(\" \", \"_\")\n        dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))\n        dtest  = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))\n\n    # Build a list of dummy column names for regression (exclude reference category)\n    dummy_cols = [var_name + \"_\" + str(cat).replace(\" \", \"_\") for cat in categories if cat != ref_category]\n\n    return dummy_cols, ref_category"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark-1",
+    "title": "Lecture 7",
+    "section": "Dummy Variable Regression using PySpark",
+    "text": "Dummy Variable Regression using PySpark\n\nLet’s check what categories are in “borough_name” and how many categories are:\n\n\n\n# Distinct categories:\n(\n    dtrain\n    .select(\"borough_name\")\n    .distinct()\n    .orderBy(\"borough_name\")\n    .show()\n)\n\n# Number of categories\n(\n    dtrain\n    .select(\"borough_name\")\n    .distinct()\n    .count()\n)\n\n\n\nLet’s convert the borough_name variable into its dummies using the UDF, add_dummy_variables(var_name, reference_level):\n\n# 0: Bronx, 1: Brooklyn, 2: Manhattan, 3: Queens, 4: Staten Island\ndummy_cols, ref_category = add_dummy_variables(\"borough_name\", 2)\n# To see dummy variables\ndtrain.select(['borough_name'] + dummy_cols).show()\ndtrain.select(['borough_name'] + dummy_cols).filter(col('borough_name') == \"Manhattan\").show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#dummy-variable-regression-using-pyspark-2",
+    "title": "Lecture 7",
+    "section": "Dummy Variable Regression using PySpark",
+    "text": "Dummy Variable Regression using PySpark\n\nNow we’re ready to run a linear regression with dummy variables:\n\n# Define the list of predictor columns:\n# Two numeric predictors plus the dummy variables (excluding the reference dummy)\nconti_cols = [\"gross_square_feet\", \"age\"]\nassembler_predictors = conti_cols + dummy_cols\n\nassembler3 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\ndtrain3 = assembler3.transform(dtrain)\ndtest3  = assembler3.transform(dtest)\nmodel3 = LinearRegression(featuresCol=\"predictors\", labelCol=\"sale_price\").fit(dtrain3)\ndtest3 = model3.transform(dtest3)\n\n# For model3 and assembler3:\nprint(regression_table(model3, assembler3))"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residuals",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residuals",
+    "title": "Lecture 7",
+    "section": "Residuals",
+    "text": "Residuals\n\nModel equation: \\(Y_{i} \\,=\\, \\beta_{0} \\,+\\, \\beta_{1}X_{1,i} \\,+\\, \\beta_{2}X_{2,i}\\)\n\n\\(\\epsilon_i\\) is a random noise, or a statistical error:\n\n\n\\[\n\\epsilon_i \\sim N(0, \\sigma^2)\n\\] - Errors have a mean value of 0 with constant variance \\(\\sigma^2\\).\n\nErrors are uncorrelated with \\(X_{1,i}\\) and with \\(X_{2, i}\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residuals-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residuals-1",
+    "title": "Lecture 7",
+    "section": "Residuals",
+    "text": "Residuals\n\nIf we re-arrange the simple regression equation, \\[\\begin{align}\n{\\epsilon}_{i} \\,=\\, Y_{i} \\,-\\, (\\, {\\beta}_{0} \\,+\\, {\\beta}_{1}X_{1,i} \\,).\n\\end{align}\\]\n\\(\\texttt{residual_error}_{i}\\) can be thought of as the expected value of \\(\\epsilon_{i}\\), denoted by \\(\\hat{\\epsilon_{i}}\\). \\[\\begin{align}\n\\hat{\\epsilon_{i}} \\,=\\, Y_{i} \\,-\\, (\\, \\hat{\\beta_{0}} \\,+\\, \\hat{\\beta_{1}}X_{1,i} \\,)\n\\end{align}\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-1",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\n\nResidual plot is a scatterplot of fitted values and residuals.\n\nA variable of fitted values on x-axis\nA variable of residuals on y-axis\n\nA residual plot can be used to diagnose the quality of model results.\nBecause we assume that \\(\\epsilon_{i}\\) have a mean value of 0 with constant variance \\(\\sigma^2\\), a well-behaved residual plot should bounce randomly and form a cloud roughly at the level of zero residual, the perfect prediction line.\nFrom the residual plot, we should ask the following the two questions ourselves:\n\nOn average, are the predictions correct?\nAre there systematic errors?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-4",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\nExamples"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-in-python",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-in-python",
+    "title": "Lecture 7",
+    "section": "Residual Plots in Python",
+    "text": "Residual Plots in Python\n\nPySpark itself does not have built-in visualization capabilities.\n\nFirstly, we convert PySpark DataFrame into Pandas DataFrame by using .toPandas()\n\n\n# Residual plot for Model 2:\n# Convert test predictions to Pandas\nrdf = dtest2.select([\"prediction\", \"sale_price\"]).toPandas()\nrdf[\"residual\"] = rdf[\"sale_price\"] - rdf[\"prediction\"]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-in-python-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-in-python-1",
+    "title": "Lecture 7",
+    "section": "Residual Plots in Python",
+    "text": "Residual Plots in Python\n\nWe then use matplotlib.pyplot to draw a residual plot:\n\nimport matplotlib.pyplot as plt\nimport statsmodels.api as sm  # for lowess smoothing\n\nplt.scatter(rdf[\"prediction\"], rdf[\"residual\"], alpha=0.2, color=\"darkgray\")\n\n# Use lowess smoothing for the trend line\nsmoothed = sm.nonparametric.lowess(rdf[\"residual\"], rdf[\"prediction\"])\nplt.plot(smoothed[:, 0], smoothed[:, 1], color=\"darkblue\")\n\n# Perfect prediction line\n#   A horizontal line at residual = 0\nplt.axhline(y=0, color=\"red\", linestyle=\"--\")\n\n# Labeling\nplt.xlabel(\"Predicted sale.price (Model 2)\")\nplt.ylabel(\"Residuals\")\nplt.title(\"Residual Plot for Model 2\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-3",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\nUnbiasedness and Homoskedasticity\n\nWe would like have a residual plot to be\n\nUnbiased: have an average value of zero in any thin vertical strip;\nHomoskedastic, which means “same stretch”: it is ideal to have the same spread of the residuals in any thin vertical strip."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-2",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\n\n\nOn average, are the predictions correct?\nAre there systematic errors?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-3",
+    "title": "Lecture 7",
+    "section": "Interpreting Estimated Beta Coefficients",
+    "text": "Interpreting Estimated Beta Coefficients\n2. borough_nameBronx\n\nConsider the predicted sales prices of the two houses, A and C.\n\nBoth A and C are with the same age and the same gross_square_feet.\nA is in Bronx, and C is in Manhattan.\n\nAll else being equal, an increase in borough_nameBronx by one unit is associated with an increase in sale_price by b3.\nEquivalently, all else being equal, being in Bronx relative to being a in Manhattan is associated with a decrease in sale_price by |b3|.\n\nWhy?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-estimated-beta-coefficients-4",
+    "title": "Lecture 7",
+    "section": "Interpreting Estimated Beta Coefficients",
+    "text": "Interpreting Estimated Beta Coefficients\n2. borough_nameBronx\n\\[\n\\begin{align}\\widehat{\\texttt{sale_price[A]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[A]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[A]} \\,+\\,\\\\ &\\hat{\\texttt{b3}}\\texttt{*Bronx[A]}\\,+\\,\n\\hat{\\texttt{b4}}\\texttt{*Brooklyn[A]} \\,+\\,\\\\ &\\hat{\\texttt{b5}}\\texttt{*Queens[A]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[A]}\\\\\n\\widehat{\\texttt{sale_price[C]}} \\;=\\quad& \\hat{\\texttt{b0}} \\,+\\, \\hat{\\texttt{b1}}\\texttt{*gross_square_feet[C]} \\,+\\, \\hat{\\texttt{b2}}\\texttt{*age[C]}\\,+\\,\\\\\n&\\hat{\\texttt{b3}}\\texttt{*Bronx[C]}\\,+\\,\n\\hat{\\texttt{b4}}\\texttt{*Brooklyn[C]} \\,+\\,\\\\ &\\hat{\\texttt{b5}}\\texttt{*Queens[C]}\\,+\\, \\hat{\\texttt{b6}}\\texttt{*Staten Island[C]} \\end{align}\n\\]\n\\[\n\\begin{align}\\Leftrightarrow\\qquad&\\widehat{\\texttt{sale_price[A]}} \\,-\\, \\widehat{\\texttt{sale_price[C]}}\\qquad  \\\\\n\\;=\\quad &\\hat{\\texttt{b3}}\\texttt{*}\\texttt{Bronx[A]} \\\\\n\\;=\\quad &\\hat{\\texttt{b3}}\\qquad\\qquad\\qquad\\qquad\\quad\\;\\;\\;\\,\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#coefficient-plots-in-python",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#coefficient-plots-in-python",
+    "title": "Lecture 7",
+    "section": "Coefficient Plots in Python",
+    "text": "Coefficient Plots in Python\n\nA coefficient plot shows beta estimates and their confidence intervals.\n\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\n# Create a Pandas DataFrame from model3's summary information\nterms = assembler3.getInputCols()\ncoefs = model3.coefficients.toArray()[:len(terms)]\nstdErrs = model3.summary.coefficientStandardErrors[:len(terms)]\n\ndf_summary = pd.DataFrame({\n    \"term\": terms,\n    \"estimate\": coefs,\n    \"std_error\": stdErrs\n})\n\n# Plot using the DataFrame columns\nplt.errorbar(df_summary[\"term\"], df_summary[\"estimate\"],\n             yerr = 1.96 * df_summary[\"std_error\"], fmt='o', capsize=5)\nplt.xlabel(\"Terms\")\nplt.ylabel(\"Coefficient Estimate\")\nplt.title(\"Coefficient Estimates (Model 2)\")\nplt.axhline(0, color=\"red\", linestyle=\"--\")  # Add horizontal line at 0\nplt.xticks(rotation=45)\nplt.show()"
   }
 ]
