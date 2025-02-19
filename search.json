@@ -4114,5 +4114,12 @@
     "title": "Lecture 7",
     "section": "Summary of the Regression Result",
     "text": "Summary of the Regression Result\nMake the Summary Pretty\n# Using the UDF, regression_table(model, assembler)\nprint(regression_table(model1, assembler1))"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#building-a-linear-regression-model-using-linearregression.fit-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#building-a-linear-regression-model-using-linearregression.fit-1",
+    "title": "Lecture 7",
+    "section": "Building a Linear Regression Model using LinearRegression().fit()",
+    "text": "Building a Linear Regression Model using LinearRegression().fit()\n# Adding a \"prediction\" coulmn to dtest1 DataFrame\ndtest1  = model1.transform(dtest1)\n\ndtest1 = model1.transform(dtest1): Adds a new column prediction to dtest1 DataFrame.\n\nThis new column contains the predicted outcome based on the trained model1 to predict an outcome for the test dataset dtest1."
   }
 ]

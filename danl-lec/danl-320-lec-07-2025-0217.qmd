@@ -512,6 +512,18 @@ model1 = (
 	-	This training process estimates the beta coefficients that best predict the label from the features.
 
 
+## Building a Linear Regression Model using `LinearRegression().fit()`
+
+```{.python}
+# Adding a "prediction" coulmn to dtest1 DataFrame
+dtest1  = model1.transform(dtest1)
+```
+
+- `dtest1 = model1.transform(dtest1)`: Adds a new column `prediction` to `dtest1` DataFrame.
+  - This new column contains the **predicted outcome** based on the trained `model1` to predict an outcome for the test dataset `dtest1`.
+
+
+
 ## Summary of the Regression Result
 
 ```{.python}
