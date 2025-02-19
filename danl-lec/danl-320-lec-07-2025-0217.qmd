@@ -523,6 +523,16 @@ model1.summary.r2
 ```
 
 
+
+## Summary of the Regression Result
+### Example of a Regression Table
+
+<div style="text-align: center; width: 70%; margin: auto;">
+  <img src="https://bcdanl.github.io/lec_figs/reg-table-ex.png" style="width: 100%; margin-bottom: -20px;">
+  <p style="font-weight: bold;"> </p>
+</div>
+
+
 ## Summary of the Regression Result
 ### Make the Summary Pretty
 
