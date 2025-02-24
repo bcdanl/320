@@ -1538,11 +1538,22 @@ $$
 - All else being equal, an increase in `broughBronx` by one unit is associated with an increase in `log(sale.price)` by `b3`.
   - All else being equal, being in `Bronx` is associated with a decrease in `sale.price` by `|(exp(b3) - 1)| * 100`% relative to being in `Manhattan`.
 
-## Adding a Log-transformed Variable to a PySpark DataFrame
+## Log-transformed Variables in PySpark
+
+- We use the `log()` function to add a log-transformed variable:
 
 ```{.python}
 from pyspark.sql.functions import log
 sale_df = sale_df.withColumn("log_sale_price", 
                               log( sale_df['sale_price'] ) ) 
+```
+
+- To use a exponential function, we can use an `exp()` function from `numpy`:
+
+```{.python}
+import numpy as np
+
+np.exp(1)
+np.exp([1, 2, 3])
 ```
 

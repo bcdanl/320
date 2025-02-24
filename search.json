@@ -4323,6 +4323,13 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#adding-a-log-transformed-variable-to-a-pyspark-dataframe",
     "title": "Lecture 7",
     "section": "Adding a Log-transformed Variable to a PySpark DataFrame",
-    "text": "Adding a Log-transformed Variable to a PySpark DataFrame\nfrom pyspark.sql.functions import log\nsale_df = sale_df.withColumn(\"log_sale_price\", \n                              log( sale_df['sale_price'] ) )"
+    "text": "Adding a Log-transformed Variable to a PySpark DataFrame\n\nWe use the log() function to add a log-transformed variable:\n\nfrom pyspark.sql.functions import log\nsale_df = sale_df.withColumn(\"log_sale_price\", \n                              log( sale_df['sale_price'] ) ) \n\nTo use a exponential function, we can use an exp() function from numpy:\n\nimport numpy as np\n\nnp.exp(1)\nnp.exp([1, 2, 3])"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-transformed-variables-in-pyspark",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-transformed-variables-in-pyspark",
+    "title": "Lecture 7",
+    "section": "Log-transformed Variables in PySpark",
+    "text": "Log-transformed Variables in PySpark\n\nWe use the log() function to add a log-transformed variable:\n\nfrom pyspark.sql.functions import log\nsale_df = sale_df.withColumn(\"log_sale_price\", \n                              log( sale_df['sale_price'] ) ) \n\nTo use a exponential function, we can use an exp() function from numpy:\n\nimport numpy as np\n\nnp.exp(1)\nnp.exp([1, 2, 3])"
   }
 ]
