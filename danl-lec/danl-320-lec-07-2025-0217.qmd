@@ -1022,51 +1022,65 @@ $$
   - This function requires `dtrain` and `dtest` DataFrames.
   
 ```{.python}
-def add_dummy_variables(var_name, reference_level):
+def add_dummy_variables(var_name, reference_level, category_order=None):
     """
     Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.
-    If the variable contains boolean values, they are converted to strings.
+    Allows manual setting of category order.
 
     Parameters:
         var_name (str): The name of the categorical column (e.g., "borough_name").
-        reference_level (int): The index (after sorting the categories) of the category
-                               to be used as the reference (dummy omitted).
+        reference_level (int): Index of the category to be used as the reference (dummy omitted).
+        category_order (list, optional): List of categories in the desired order. If None, categories are sorted.
 
     Returns:
-        dummy_cols (list): List of dummy column names to be used in subsequent analysis
-                           (the reference category dummy is omitted).
-        ref_category (str): The category value that has been chosen as the reference.
+        dummy_cols (list): List of dummy column names excluding the reference category.
+        ref_category (str): The category chosen as the reference.
     """
     global dtrain, dtest
 
     # Get distinct categories from the training set.
     categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()
 
-    # If any category is a boolean, convert all categories to string.
+    # Convert booleans to strings if present.
     categories = [str(c) if isinstance(c, bool) else c for c in categories]
 
-    # Sort the categories.
-    categories = sorted(categories)
+    # Use manual category order if provided; otherwise, sort categories.
+    if category_order:
+        # Ensure all categories are present in the user-defined order
+        missing = set(categories) - set(category_order)
+        if missing:
+            raise ValueError(f"These categories are missing from your custom order: {missing}")
+        categories = category_order
+    else:
+        categories = sorted(categories)
 
-    # Check that reference_level is valid
+    # Validate reference_level
     if reference_level < 0 or reference_level >= len(categories):
         raise ValueError(f"reference_level must be between 0 and {len(categories) - 1}")
 
-    # Determine the reference category based on the reference level
+    # Define the reference category
     ref_category = categories[reference_level]
     print("Reference category (dummy omitted):", ref_category)
 
     # Create dummy variables for all categories
     for cat in categories:
-        # Always convert the category value to string and replace spaces.
         dummy_col_name = var_name + "_" + str(cat).replace(" ", "_")
         dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
-        dtest  = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+        dtest = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
 
-    # Build a list of dummy column names for regression (exclude reference category)
+    # List of dummy columns, excluding the reference category
     dummy_cols = [var_name + "_" + str(cat).replace(" ", "_") for cat in categories if cat != ref_category]
 
     return dummy_cols, ref_category
+    
+  
+# Example usage without category_order:
+# dummy_cols_year, ref_category_year = add_dummy_variables('year', 0)
+
+# Example usage with category_order:
+# custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+# dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
+
 ```
 
 ## Dummy Variable Regression using PySpark
@@ -1259,10 +1273,59 @@ plt.show()
 
 
 
+# **Hypothesis Testing on Beta Coefficient** {background-color="#1c4982"}
+
+## Hypothesis Testing on Beta Coefficient
+
+
+- To determine whether an independent variable has a statistically significant effect on the dependent variable in a linear regression model.
+
+- Consider the following linear regression model:
+$$
+y_{i} = \beta_0 + \beta_1 x_{1,i} + \beta_2 x_{2,i} + \dots + \beta_k x_{k,i} + \epsilon_{i}
+$$
+
+- $y$: Outcome
+- $x_1, x_2, \dots, x_k$: Predictors
+- $\beta_0$: Intercept  
+- $\beta_1, \beta_2, \dots, \beta_k$: Coefficients  
+- $\epsilon_{i}$: Error term  
+
+## Hypotheses and Test Statistic
+- We test whether a specific coefficient $\beta_j$ significantly differs from zero:
+  - **Null Hypothesis ($H_0$)**: $\beta_j = 0$ (No effect)  
+  - **Alternative Hypothesis ($H_A$)**: $\beta_j \neq 0$ (Significant effect)
+
+- The t-statistic is used to test each coefficient:
+
+$$
+t = \frac{\hat{\beta_j} - 0}{SE(\hat{\beta_j})}
+$$
+
+- $\hat{\beta_j}$: Estimated coefficient  
+- $SE(\hat{\beta_j})$: Standard error of the estimate  
+
+
+## Hypothesis Testing - Decision Rule and Interpretation
+
+1. **Calculate the p-value** based on the t-distribution with $n - k - 1$ degrees of freedom.
+2. **Compare p-value with significance level $\alpha$ (e.g., 0.05):**
+   - If $p \leq \alpha$: Reject $H_0$ (Significant)
+   - If $p > \alpha$: Fail to reject $H_0$ (Not significant)
+
+- In our course, stars in a regression table mean a significance level:
+  - `*` (10%); `**` (5%); `***` (1%)
+
+- **Reject $H_0$:** There is sufficient evidence to suggest a statistically significant relationship between $x_j$ and $y$.
+- **Fail to reject $H_0$:** No statistically significant evidence of a relationship $x_j$ affects $y$.
+
+
+
 # **Interpreting Beta Estimates** {background-color="#1c4982"}
 
+
 ## Interpreting Estimated Beta Coefficients
-### Model
+### Example
 The model equation is
 $$\begin{align}
 \texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ &\texttt{b1*gross_square_feet[i]} \,+\,\texttt{b2*age[i]}\,+\,\\ &\texttt{b3*Bronx[i]} \,+\,\texttt{b4*Brooklyn[i]} \,+\,\\&\texttt{b5*Queens[i]} \,+\,\texttt{b6*Staten Island[i]}\,+\,\\ &\texttt{e[i]}
