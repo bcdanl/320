@@ -4078,7 +4078,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-3",
     "title": "Lecture 7",
     "section": "Residual Plots",
-    "text": "Residual Plots\nUnbiasedness and Homoskedasticity\n\nWe would like have a residual plot to be\n\nUnbiased: have an average value of zero in any thin vertical strip;\nHomoskedastic, which means “same stretch”: it is ideal to have the same spread of the residuals in any thin vertical strip."
+    "text": "Residual Plots\nUnbiasedness and Homoskedasticity\n\nWe would like have a residual plot to be\n\nUnbiased: have an average value of zero in any thin vertical strip;\nHomoskedastic, which means “same stretch”: it is ideal to have the same spread of the residuals in any thin vertical strip.\nWhen the variance of residuals changes across predicted values (e.g., residuals get larger as predicted values increase), the model suffers from heteroscedasticity."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-2",
@@ -4198,5 +4198,131 @@
     "title": "Lecture 7",
     "section": "Hypothesis Testing - Decision Rule and Interpretation",
     "text": "Hypothesis Testing - Decision Rule and Interpretation\n\nCalculate the p-value based on the t-distribution with \\(n - k - 1\\) degrees of freedom.\nCompare p-value with significance level \\(\\alpha\\) (e.g., 0.05):\n\nIf \\(p \\leq \\alpha\\): Reject \\(H_0\\) (Significant)\nIf \\(p &gt; \\alpha\\): Fail to reject \\(H_0\\) (Not significant)\n\n\n\nIn our course, stars in a regression table mean a significance level:\n\n* (10%); ** (5%); *** (1%)\n\nReject \\(H_0\\): There is sufficient evidence to suggest a statistically significant relationship between \\(x_j\\) and \\(y\\).\nFail to reject \\(H_0\\): No statistically significant evidence of a relationship \\(x_j\\) affects \\(y\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-log-transformation-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-log-transformation-1",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Log Transformation",
+    "text": "Linear Regression with Log Transformation\nThe model equation with log-transformed \\(\\texttt{sale.price[i]}\\) is \\[\\begin{align}\n\\log(\\texttt{sale.price[i]}) \\;=\\;\\, &\\texttt{b0} \\,+\\,\\\\ &\\texttt{b1*gross.square.feet[i]} \\,+\\,\\texttt{b2*age[i]}\\,+\\,\\\\ &\\texttt{b3*Bronx[i]} \\,+\\,\\texttt{b4*Brooklyn[i]} \\,+\\,\\\\&\\texttt{b5*Queens[i]} \\,+\\,\\texttt{b6*Staten Island[i]}\\,+\\,\\\\ &\\texttt{e[i]}.\n\\end{align}\\]\n\nNote that the reference level for borough_name is Manhattan."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n1. gross_square_feet\n\nLet’s re-consider the two properties \\(\\texttt{A}\\) and \\(\\texttt{B}\\).\n\n\\(\\texttt{gross.square.feet[A]} = 2001\\) and \\(\\texttt{gross.square.feet[B]} = 2000\\).\nBoth are in the same borough.\nBoth properties’ ages are the same."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-1",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n1. gross_square_feet\n\nIf we apply the rule above for \\(\\widehat{\\texttt{sale.price}}\\texttt{[A]}\\) and \\(\\widehat{\\texttt{sale.price}}\\texttt{[B]}\\),\n\n\n\n\n\\[\\begin{align}&\\log(\\widehat{\\texttt{sale.price}}\\texttt{[A]}) - \\log(\\widehat{\\texttt{sale.price}}\\texttt{[B]}) \\\\\n\\,=\\, &\\hat{\\texttt{b1}}\\,*\\,(\\texttt{gross.square.feet[A]} \\,-\\, \\texttt{gross.square.feet[B]})\\\\\n\\,=\\, &\\hat{\\texttt{b1}}\\end{align}\\]\nSo we can have the following: \\[\n\\begin{align}\n&\\Leftrightarrow\\qquad\\frac{\\widehat{\\texttt{sale.price[A]}}}{ \\widehat{\\texttt{sale.price[B]}}} \\;=\\; \\texttt{exp(}\\hat{\\texttt{b1}}\\texttt{)}\\\\ \\quad&\\Leftrightarrow\\qquad\\widehat{\\texttt{sale.price[A]}} \\;=\\; \\widehat{\\texttt{sale.price[B]}} * \\texttt{exp(}\\hat{\\texttt{b1}}\\texttt{)}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-2",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n1. gross_square_feet\n\nSuppose \\(\\texttt{exp(}\\hat{\\texttt{b2}}\\texttt{)} = 1.000431\\).\n\nThen \\(\\widehat{\\texttt{sale.price[A]}}\\) is \\(1.000431\\times\\widehat{\\texttt{sale.price[B]}}\\).\nAll else being equal, an increase in \\(\\texttt{gross.square.feet}\\) by one unit is associated with an increase in \\(\\texttt{sale.price}\\) by 0.0431%."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-3",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n2. borough_nameBronx\n\nLet’s re-consider the two properties \\(\\texttt{A}\\) and \\(\\texttt{C}\\).\n\nA is in Bronx, and C is in Manhattan.\nBoth A and C’s age are the same.\nBoth A and C’s gross.square.feet are the same."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-4",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n2. borough_nameBronx\n\nIf we apply the log()-exp() rules for \\(\\widehat{\\texttt{sale.price}}\\texttt{[A]}\\) and \\(\\widehat{\\texttt{sale.price}}\\texttt{[C]}\\),\n\n\n\n\n\\[\\begin{align}&\\log(\\widehat{\\texttt{sale.price}}\\texttt{[A]}) - \\log(\\widehat{\\texttt{sale.price}}\\texttt{[C]}) \\\\\n\\,=\\, &\\hat{\\texttt{b3}}\\,*\\,(\\texttt{borough_Bronx[A]} \\,-\\, \\texttt{borough_Bronx[C]})\\,=\\, \\hat{\\texttt{b3}}\\end{align}\\]\nSo we can have the following: \\[\n\\begin{align}&\\Leftrightarrow\\qquad\\frac{\\widehat{\\texttt{sale.price[A]}}}{ \\widehat{\\texttt{sale.price[C]}}} \\;=\\; \\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)}\\\\ \\quad&\\Leftrightarrow\\qquad\\,\\widehat{\\texttt{sale.price[A]}} \\;=\\; \\widehat{\\texttt{sale.price[C]}} * \\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-5",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-5",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n2. borough_nameBronx\n\nSuppose \\(\\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)} = 0.2831691\\).\n\nThen \\(\\widehat{\\texttt{sale.price[A]}}\\) is \\(0.2831691\\times\\widehat{\\texttt{sale.price[B]}}\\).\nAll else being equal, an increase in \\(\\texttt{borough_Bronx}\\) by one unit is associated with a decrease in \\(\\texttt{sale.price}\\) by (1 - 0.2831691) = 71.78%.\nAll else being equal, being in Bronx relative to being in Manhattan is associated with a decrease in \\(\\texttt{sale.price}\\) by 71.78%."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-6",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#interpreting-beta-estimates-on-log-transformed-variables-6",
+    "title": "Lecture 7",
+    "section": "Interpreting Beta Estimates on Log-transformed Variables",
+    "text": "Interpreting Beta Estimates on Log-transformed Variables\n\nAll else being equal, an increase in gross.square.feet by one unit is associated with an increase in log(sale.price) by b1.\n\nAll else being equal, an increase in gross.square.feet by one unit is associated with an increase in sale.price by (exp(b1) - 1) * 100%.\n\nAll else being equal, an increase in broughBronx by one unit is associated with an increase in log(sale.price) by b3.\n\nAll else being equal, being in Bronx is associated with a decrease in sale.price by |(exp(b3) - 1)| * 100% relative to being in Manhattan."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n1. gross_square_feet\n\nLet’s re-consider the two properties \\(\\texttt{A}\\) and \\(\\texttt{B}\\).\n\n\\(\\texttt{gross.square.feet[A]} = 2001\\) and \\(\\texttt{gross.square.feet[B]} = 2000\\).\nBoth are in the same borough.\nBoth properties’ ages are the same."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-1",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n1. gross_square_feet\n\nIf we apply the rule above for \\(\\widehat{\\texttt{sale.price}}\\texttt{[A]}\\) and \\(\\widehat{\\texttt{sale.price}}\\texttt{[B]}\\),\n\n\n\n\n\\[\\begin{align}&\\log(\\widehat{\\texttt{sale.price}}\\texttt{[A]}) - \\log(\\widehat{\\texttt{sale.price}}\\texttt{[B]}) \\\\\n\\,=\\, &\\hat{\\texttt{b1}}\\,*\\,(\\texttt{gross.square.feet[A]} \\,-\\, \\texttt{gross.square.feet[B]})\\\\\n\\,=\\, &\\hat{\\texttt{b1}}\\end{align}\\]\nSo we can have the following: \\[\n\\begin{align}\n&\\Leftrightarrow\\qquad\\frac{\\widehat{\\texttt{sale.price[A]}}}{ \\widehat{\\texttt{sale.price[B]}}} \\;=\\; \\texttt{exp(}\\hat{\\texttt{b1}}\\texttt{)}\\\\ \\quad&\\Leftrightarrow\\qquad\\widehat{\\texttt{sale.price[A]}} \\;=\\; \\widehat{\\texttt{sale.price[B]}} * \\texttt{exp(}\\hat{\\texttt{b1}}\\texttt{)}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-2",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n1. gross_square_feet\n\nSuppose \\(\\texttt{exp(}\\hat{\\texttt{b2}}\\texttt{)} = 1.000431\\).\n\nThen \\(\\widehat{\\texttt{sale.price[A]}}\\) is \\(1.000431\\times\\widehat{\\texttt{sale.price[B]}}\\).\nAll else being equal, an increase in \\(\\texttt{gross.square.feet}\\) by one unit is associated with an increase in \\(\\texttt{sale.price}\\) by 0.0431%."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-3",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n2. borough_nameBronx\n\nLet’s re-consider the two properties \\(\\texttt{A}\\) and \\(\\texttt{C}\\).\n\nA is in Bronx, and C is in Manhattan.\nBoth A and C’s age are the same.\nBoth A and C’s gross.square.feet are the same."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-4",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n2. borough_nameBronx\n\nIf we apply the log()-exp() rules for \\(\\widehat{\\texttt{sale.price}}\\texttt{[A]}\\) and \\(\\widehat{\\texttt{sale.price}}\\texttt{[C]}\\),\n\n\n\n\n\\[\\begin{align}&\\log(\\widehat{\\texttt{sale.price}}\\texttt{[A]}) - \\log(\\widehat{\\texttt{sale.price}}\\texttt{[C]}) \\\\\n\\,=\\, &\\hat{\\texttt{b3}}\\,*\\,(\\texttt{borough_Bronx[A]} \\,-\\, \\texttt{borough_Bronx[C]})\\,=\\, \\hat{\\texttt{b3}}\\end{align}\\]\nSo we can have the following: \\[\n\\begin{align}&\\Leftrightarrow\\qquad\\frac{\\widehat{\\texttt{sale.price[A]}}}{ \\widehat{\\texttt{sale.price[C]}}} \\;=\\; \\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)}\\\\ \\quad&\\Leftrightarrow\\qquad\\,\\widehat{\\texttt{sale.price[A]}} \\;=\\; \\widehat{\\texttt{sale.price[C]}} * \\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-5",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-5",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n2. borough_nameBronx\n\nSuppose \\(\\texttt{exp(}\\hat{\\texttt{b3}}\\texttt{)} = 0.2831691\\).\n\nThen \\(\\widehat{\\texttt{sale.price[A]}}\\) is \\(0.2831691\\times\\widehat{\\texttt{sale.price[B]}}\\).\nAll else being equal, an increase in \\(\\texttt{borough_Bronx}\\) by one unit is associated with a decrease in \\(\\texttt{sale.price}\\) by (1 - 0.2831691) = 71.78%.\nAll else being equal, being in Bronx relative to being in Manhattan is associated with a decrease in \\(\\texttt{sale.price}\\) by 71.78%."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-6",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#beta-estimates-for-log-transformed-variables-6",
+    "title": "Lecture 7",
+    "section": "Beta Estimates for Log-transformed Variables",
+    "text": "Beta Estimates for Log-transformed Variables\n\nAll else being equal, an increase in gross.square.feet by one unit is associated with an increase in log(sale.price) by b1.\n\nAll else being equal, an increase in gross.square.feet by one unit is associated with an increase in sale.price by (exp(b1) - 1) * 100%.\n\nAll else being equal, an increase in broughBronx by one unit is associated with an increase in log(sale.price) by b3.\n\nAll else being equal, being in Bronx is associated with a decrease in sale.price by |(exp(b3) - 1)| * 100% relative to being in Manhattan."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-5",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-5",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\nWhat happens if biased?\n\nThe model consistently overpredicts or underpredicts for certain values.\n\nIndicates that the model might be misspecified—perhaps missing important variables or using an incorrect functional form.\nLeads to biased parameter estimates, meaning the coefficients are systematically off, reducing the validity of predictions and inferences."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-6",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#residual-plots-6",
+    "title": "Lecture 7",
+    "section": "Residual Plots",
+    "text": "Residual Plots\nWhat happens if heteroscedasticity is present?\n\nConsequences of heteroscedasticity:\n\n📉 Inefficient coefficient estimates: Estimates remain unbiased but are no longer efficient (i.e., they don’t have the smallest variance).\n❌ Biased standard errors: Leads to unreliable p-values and confidence intervals, potentially resulting in invalid hypothesis tests.\n⚠️ Misleading inferences: Predictors may appear statistically significant or insignificant incorrectly.\n🎯 Poor predictive performance: The model might perform poorly on future data, especially if the residual variance grows with higher predicted values."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#adding-a-log-transformed-variable-to-a-pyspark-dataframe",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#adding-a-log-transformed-variable-to-a-pyspark-dataframe",
+    "title": "Lecture 7",
+    "section": "Adding a Log-transformed Variable to a PySpark DataFrame",
+    "text": "Adding a Log-transformed Variable to a PySpark DataFrame\nfrom pyspark.sql.functions import log\nsale_df = sale_df.withColumn(\"log_sale_price\", \n                              log( sale_df['sale_price'] ) )"
   }
 ]

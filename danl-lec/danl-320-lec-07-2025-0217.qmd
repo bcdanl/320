@@ -1219,6 +1219,7 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plot-m2-het.png
 - We would like have a residual plot to be
   - **Unbiased**: have an average value of zero in any thin vertical strip;
   - **Homoskedastic**, which means "same stretch": it is ideal to have the same spread of the residuals in any thin vertical strip.
+  - When the **variance of residuals changes** across predicted values (e.g., residuals get larger as predicted values increase), the model suffers from **heteroscedasticity**.
 
 
 ##  Residual Plots
@@ -1229,6 +1230,20 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/resid-plots.png")
 ```
 
 
+## Residual Plots
+### **What happens if biased?**
+
+- The model consistently **overpredicts** or **underpredicts** for certain values.
+  - Indicates that the model might be **misspecified**—perhaps missing important variables or using an incorrect functional form.
+  - Leads to **biased parameter estimates**, meaning the coefficients are systematically off, reducing the validity of predictions and inferences.
+
+## Residual Plots
+### **What happens if heteroscedasticity is present?**
+- **Consequences of heteroscedasticity**:
+  - 📉 **Inefficient coefficient estimates**: Estimates remain unbiased but are no longer efficient (i.e., they don't have the smallest variance).
+  - ❌ **Biased standard errors**: Leads to unreliable p-values and confidence intervals, potentially resulting in invalid hypothesis tests.
+  - ⚠️ **Misleading inferences**: Predictors may appear statistically significant or insignificant incorrectly.
+  - 🎯 **Poor predictive performance**: The model might perform poorly on future data, especially if the residual variance grows with higher predicted values.
 
 
 ## Residual Plots in Python
@@ -1430,4 +1445,104 @@ plt.xticks(rotation=45)
 plt.show()
 ```
 
+
+# **Linear Regression with Log Transformation** {background-color="#1c4982"}
+
+## Linear Regression with Log Transformation
+
+The model equation with log-transformed $\texttt{sale.price[i]}$ is 
+$$\begin{align}
+\log(\texttt{sale.price[i]}) \;=\;\, &\texttt{b0} \,+\,\\ &\texttt{b1*gross.square.feet[i]} \,+\,\texttt{b2*age[i]}\,+\,\\ &\texttt{b3*Bronx[i]} \,+\,\texttt{b4*Brooklyn[i]} \,+\,\\&\texttt{b5*Queens[i]} \,+\,\texttt{b6*Staten Island[i]}\,+\,\\ &\texttt{e[i]}.
+\end{align}$$
+
+- Note that the reference level for `borough_name` is `Manhattan`.
+
+
+## Beta Estimates for Log-transformed Variables
+### 1. `gross_square_feet`
+
+- Let's re-consider the two properties $\texttt{A}$ and $\texttt{B}$.
+  - $\texttt{gross.square.feet[A]} = 2001$ and $\texttt{gross.square.feet[B]} = 2000$.
+  - Both are in the same borough.
+  - Both properties' ages are the same.
+
+## Beta Estimates for Log-transformed Variables
+### 1. `gross_square_feet`
+
+- If we apply the rule above for $\widehat{\texttt{sale.price}}\texttt{[A]}$ and $\widehat{\texttt{sale.price}}\texttt{[B]}$,
+
+<div style="display:block; margin:-20px;"></div>
+
+$$\begin{align}&\log(\widehat{\texttt{sale.price}}\texttt{[A]}) - \log(\widehat{\texttt{sale.price}}\texttt{[B]}) \\
+\,=\, &\hat{\texttt{b1}}\,*\,(\texttt{gross.square.feet[A]} \,-\, \texttt{gross.square.feet[B]})\\
+\,=\, &\hat{\texttt{b1}}\end{align}$$
+
+
+So we can have the following:
+$$
+\begin{align}
+&\Leftrightarrow\qquad\frac{\widehat{\texttt{sale.price[A]}}}{ \widehat{\texttt{sale.price[B]}}} \;=\; \texttt{exp(}\hat{\texttt{b1}}\texttt{)}\\ \quad&\Leftrightarrow\qquad\widehat{\texttt{sale.price[A]}} \;=\; \widehat{\texttt{sale.price[B]}} * \texttt{exp(}\hat{\texttt{b1}}\texttt{)}
+\end{align}
+$$
+
+## Beta Estimates for Log-transformed Variables
+### 1. `gross_square_feet`
+
+- Suppose $\texttt{exp(}\hat{\texttt{b2}}\texttt{)} = 1.000431$.
+  - Then $\widehat{\texttt{sale.price[A]}}$ is $1.000431\times\widehat{\texttt{sale.price[B]}}$.
+  - All else being equal, an increase in $\texttt{gross.square.feet}$ by one unit is associated with an increase in $\texttt{sale.price}$ by 0.0431%.
+
+## Beta Estimates for Log-transformed Variables
+### 2. `borough_nameBronx`
+
+- Let's re-consider the two properties $\texttt{A}$ and $\texttt{C}$.
+  - `A` is in `Bronx`, and `C` is in `Manhattan`. 
+  - Both `A` and `C`'s `age` are the same. 
+  - Both `A` and `C`'s `gross.square.feet` are the same. 
+
+## Beta Estimates for Log-transformed Variables
+### 2. `borough_nameBronx`
+
+
+- If we apply the `log()`-`exp()` rules for $\widehat{\texttt{sale.price}}\texttt{[A]}$ and $\widehat{\texttt{sale.price}}\texttt{[C]}$,
+
+<div style="display:block; margin:-20px;"></div>
+
+$$\begin{align}&\log(\widehat{\texttt{sale.price}}\texttt{[A]}) - \log(\widehat{\texttt{sale.price}}\texttt{[C]}) \\
+\,=\, &\hat{\texttt{b3}}\,*\,(\texttt{borough_Bronx[A]} \,-\, \texttt{borough_Bronx[C]})\,=\, \hat{\texttt{b3}}\end{align}$$
+
+
+So we can have the following:
+$$
+\begin{align}&\Leftrightarrow\qquad\frac{\widehat{\texttt{sale.price[A]}}}{ \widehat{\texttt{sale.price[C]}}} \;=\; \texttt{exp(}\hat{\texttt{b3}}\texttt{)}\\ \quad&\Leftrightarrow\qquad\,\widehat{\texttt{sale.price[A]}} \;=\; \widehat{\texttt{sale.price[C]}} * \texttt{exp(}\hat{\texttt{b3}}\texttt{)}
+\end{align}
+$$
+
+## Beta Estimates for Log-transformed Variables
+### 2. `borough_nameBronx`
+
+- Suppose $\texttt{exp(}\hat{\texttt{b3}}\texttt{)} = 0.2831691$. 
+  - Then $\widehat{\texttt{sale.price[A]}}$ is $0.2831691\times\widehat{\texttt{sale.price[B]}}$.
+  - All else being equal, an increase in $\texttt{borough_Bronx}$ by one unit is associated with a decrease in $\texttt{sale.price}$ by (1 - 0.2831691) = 71.78%.
+  - All else being equal, being in `Bronx` relative to being in `Manhattan` is associated with a decrease in $\texttt{sale.price}$ by 71.78%.
+
+
+## Beta Estimates for Log-transformed Variables
+
+
+- All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `log(sale.price)` by `b1`.
+  - All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `sale.price` by `(exp(b1) - 1) * 100`%.
+
+
+
+- All else being equal, an increase in `broughBronx` by one unit is associated with an increase in `log(sale.price)` by `b3`.
+  - All else being equal, being in `Bronx` is associated with a decrease in `sale.price` by `|(exp(b3) - 1)| * 100`% relative to being in `Manhattan`.
+
+## Adding a Log-transformed Variable to a PySpark DataFrame
+
+```{.python}
+from pyspark.sql.functions import log
+sale_df = sale_df.withColumn("log_sale_price", 
+                              log( sale_df['sale_price'] ) ) 
+```
 
