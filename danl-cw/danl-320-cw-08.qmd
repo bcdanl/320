@@ -15,6 +15,7 @@ import numpy as np
 from tabulate import tabulate  # for table summary
 import scipy.stats as stats
 import matplotlib.pyplot as plt
+import seaborn as sns
 import statsmodels.api as sm  # for lowess smoothing
 
 from pyspark.sql import SparkSession
@@ -285,6 +286,16 @@ plt.title("Residual Plot for Model")
 plt.show()
 ```
 
+<br>
+
+## Histogram
+
+```{.python}
+# Create a histogram
+dfpd = TEST_DATAFRAME.select(["prediction", "Y_VARIABLE"]).toPandas()
+sns.histplot(dfpd["Y_VARIABLE"], bins=10, kde=True)
+```
+
 
 <br><br>
 
@@ -399,6 +410,42 @@ Interpret the beta estimate of `windspeed`.
 # Question 8
 - Draw a residual plot.
   - On average, are the predictions correct in the model in Question 3? Are there systematic errors?
+
+
+<br><br>
+
+# Question 9
+Draw a histogram of $\text{cnt}_{i}$ and a histogram of $\log(\text{cnt}_{i})$. 
+
+
+<br><br>
+
+# Question 10
+Train the following linear regression model. Provide the summary of the regression result. Repeat Questions 4-8.
+
+$$
+\begin{align}
+\log(\text{cnt}_{i}) =\ &\beta_{\text{intercept}}\\ 
+&+ \beta_{\text{temp}} \, \text{temp}_{i} + \beta_{\text{hum}} \, \text{hum}_{i} + \beta_{\text{windspeed}} \, \text{windspeed}_{i} \nonumber \\
+&+ \beta_{\text{year\_2012}} \, \text{year\_2012}_{i}\\ 
+&+ \beta_{\text{month\_2}} \, \text{month\_2}_{i} + \beta_{\text{month\_3}} \, \text{month\_3}_{i} + \beta_{\text{month\_4}} \, \text{month\_4}_{i} \nonumber \\
+&+ \beta_{\text{month\_5}} \, \text{month\_5}_{i} + \beta_{\text{month\_6}} \, \text{month\_6}_{i} + \beta_{\text{month\_7}} \, \text{month\_7}_{i} + \beta_{\text{month\_8}} \, \text{month\_8}_{i} \nonumber \\
+&+ \beta_{\text{month\_9}} \, \text{month\_9}_{i} + \beta_{\text{month\_10}} \, \text{month\_10}_{i} + \beta_{\text{month\_11}} \, \text{month\_11}_{i} + \beta_{\text{month\_12}} \, \text{month\_12}_{i} \nonumber \\
+&+ \beta_{\text{hr\_1}} \, \text{hr\_1}_{i} + \beta_{\text{hr\_2}} \, \text{hr\_2}_{i} + \beta_{\text{hr\_3}} \, \text{hr\_3}_{i} + \beta_{\text{hr\_4}} \, \text{hr\_4}_{i} \nonumber \\
+&+ \beta_{\text{hr\_5}} \, \text{hr\_5}_{i} + \beta_{\text{hr\_6}} \, \text{hr\_6}_{i} + \beta_{\text{hr\_7}} \, \text{hr\_7}_{i} + \beta_{\text{hr\_8}} \, \text{hr\_8}_{i} \nonumber \\
+&+ \beta_{\text{hr\_9}} \, \text{hr\_9}_{i} + \beta_{\text{hr\_10}} \, \text{hr\_10}_{i} + \beta_{\text{hr\_11}} \, \text{hr\_11}_{i} + \beta_{\text{hr\_12}} \, \text{hr\_12}_{i} \nonumber \\
+&+ \beta_{\text{hr\_13}} \, \text{hr\_13}_{i} + \beta_{\text{hr\_14}} \, \text{hr\_14}_{i} + \beta_{\text{hr\_15}} \, \text{hr\_15}_{i} + \beta_{\text{hr\_16}} \, \text{hr\_16}_{i} \nonumber \\
+&+ \beta_{\text{hr\_17}} \, \text{hr\_17}_{i} + \beta_{\text{hr\_18}} \, \text{hr\_18}_{i} + \beta_{\text{hr\_19}} \, \text{hr\_19}_{i} + \beta_{\text{hr\_20}} \, \text{hr\_20}_{i} \nonumber \\
+&+ \beta_{\text{hr\_21}} \, \text{hr\_21}_{i} + \beta_{\text{hr\_22}} \, \text{hr\_22}_{i} + \beta_{\text{hr\_23}} \, \text{hr\_23}_{i} \nonumber \\
+&+ \beta_{\text{wkday\_monday}} \, \text{wkday\_monday}_{i} + \beta_{\text{wkday\_tuesday}} \, \text{wkday\_tuesday}_{i} + \beta_{\text{wkday\_wednesday}} \, \text{wkday\_wednesday}_{i} \nonumber \\
+&+ \beta_{\text{wkday\_thursday}} \, \text{wkday\_thursday}_{i} + \beta_{\text{wkday\_friday}} \, \text{wkday\_friday}_{i} + \beta_{\text{wkday\_saturday}} \, \text{wkday\_saturday}_{i} \nonumber \\
+&+ \beta_{\text{holiday\_1}} \, \text{holiday\_1}_{i} \nonumber \\
+&+ \beta_{\text{seasons\_summer}} \, \text{seasons\_summer}_{i} + \beta_{\text{seasons\_fall}} \, \text{seasons\_fall}_{i} + \beta_{\text{seasons\_winter}} \, \text{seasons\_winter}_{i} \nonumber \\
+&+ \beta_{\text{weather\_cond\_Light\_Snow\_or\_Light\_Rain}} \, \text{weather\_cond\_Light\_Snow\_or\_Light\_Rain}_{i}\nonumber \\ 
+&+ \beta_{\text{weather\_cond\_Mist\_or\_Cloudy}} \, \text{weather\_cond\_Mist\_or\_Cloudy}_{i}\\
+&+ \epsilon_{i}
+\end{align}
+$$
 
 
 <br><br>
