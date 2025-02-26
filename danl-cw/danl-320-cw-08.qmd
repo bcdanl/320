@@ -292,7 +292,7 @@ plt.show()
 
 ```{.python}
 # Create a histogram
-dfpd = TEST_DATAFRAME.select(["prediction", "Y_VARIABLE"]).toPandas()
+dfpd = TEST_DATAFRAME.select(["Y_VARIABLE"]).toPandas()
 sns.histplot(dfpd["Y_VARIABLE"], bins=10, kde=True)
 ```
 
