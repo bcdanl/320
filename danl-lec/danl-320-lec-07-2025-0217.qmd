@@ -1308,8 +1308,8 @@ $$
 
 ## Hypotheses and Test Statistic
 - We test whether a specific coefficient $\beta_j$ significantly differs from zero:
-  - **Null Hypothesis ($H_0$)**: $\beta_j = 0$ (No effect)  
-  - **Alternative Hypothesis ($H_A$)**: $\beta_j \neq 0$ (Significant effect)
+  - **Null Hypothesis ($H_0$)**: $\beta_j = 0$ (No relationship)  
+  - **Alternative Hypothesis ($H_A$)**: $\beta_j \neq 0$ (Significant relationship)
 
 - The t-statistic is used to test each coefficient:
 
@@ -1332,7 +1332,7 @@ $$
   - `*` (10%); `**` (5%); `***` (1%)
 
 - **Reject $H_0$:** There is sufficient evidence to suggest a statistically significant relationship between $x_j$ and $y$.
-- **Fail to reject $H_0$:** No statistically significant evidence of a relationship $x_j$ affects $y$.
+- **Fail to reject $H_0$:** No statistically significant evidence of a relationship between $x_j$ and $y$.
 
 
 
@@ -1527,16 +1527,16 @@ $$
   - All else being equal, being in `Bronx` relative to being in `Manhattan` is associated with a decrease in $\texttt{sale.price}$ by 71.78%.
 
 
-## Beta Estimates for Log-transformed Variables
+<!-- ## Beta Estimates for Log-transformed Variables -->
 
 
-- All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `log(sale.price)` by `b1`.
-  - All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `sale.price` by `(exp(b1) - 1) * 100`%.
+<!-- - All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `log(sale.price)` by `b1`. -->
+<!--   - All else being equal, an increase in `gross.square.feet` by one unit is associated with an increase in `sale.price` by `(exp(b1) - 1) * 100`%. -->
 
 
 
-- All else being equal, an increase in `broughBronx` by one unit is associated with an increase in `log(sale.price)` by `b3`.
-  - All else being equal, being in `Bronx` is associated with a decrease in `sale.price` by `|(exp(b3) - 1)| * 100`% relative to being in `Manhattan`.
+<!-- - All else being equal, an increase in `broughBronx` by one unit is associated with an increase in `log(sale.price)` by `b3`. -->
+<!--   - All else being equal, being in `Bronx` is associated with a decrease in `sale.price` by `|(exp(b3) - 1)| * 100`% relative to being in `Manhattan`. -->
 
 ## Log-transformed Variables in PySpark
 
@@ -1556,4 +1556,459 @@ import numpy as np
 np.exp(1)
 np.exp([1, 2, 3])
 ```
+
+
+
+
+
+
+# **Linear Regression with Interaction Terms** {background-color="#1c4982"}
+
+
+
+## Linear Regression with Interaction Terms
+### Motivation
+
+- Does the relationship between `sale.price` and `gross.square.feet` vary by `borough_name`?
+
+  - How can linear regression address the question above?
+
+
+
+
+## Linear Regression with Interaction Terms
+### Model
+
+- The linear regression with an interaction between predictors $X_{1}$ and $X_{2}$ are:
+
+$$Y_{\texttt{i}} \,=\, b_{0} \,+\, b_{1}\,X_{1,\texttt{i}} \,+\, b_{2}\,X_{2,\texttt{i}} \,+\, b_{3}\,X_{1,\texttt{i}}\times \color{Red}{X_{2,\texttt{i}}} \,+\, e_{\texttt{i}},$$
+
+- where
+  - $i\;$: $\;\;i$-th observation in the training DataFrame, $i = 1, 2, 3, \cdots$.
+  - $Y_{i}\,$: $\;i$-th observation of outcome $Y$.
+  - $X_{p, i}\,$: $i$-th observation of the $p$-th predictor $X_{p}$.
+  - $e_{i}\;$: $\;i$-th observation of statistical error.
+  
+  
+
+
+## Linear Regression with Interaction Terms
+### Model
+
+- The linear regression with an interaction between predictors $X_{1}$ and $X_{2}$ are:
+
+$$Y_{\texttt{i}} \,=\, b_{0} \,+\, b_{1}\,X_{1,\texttt{i}} \,+\, b_{2}\,X_{2,\texttt{i}} \,+\, b_{3}\,X_{1,\texttt{i}}\times \color{Red}{X_{2,\texttt{i}}} \,+\, e_{\texttt{i}}\;.$$
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+#### Interaction
+
+- The relationship between $X_{1}$ and $Y$ varies by values of $b_{3}\, X_{2}$:
+
+$$\frac{\Delta Y}{\Delta X_{1}} \,=\, b_{1} + b_{3}\, X_{2}$$.
+
+:::
+::: {.column width="50%"}
+#### Example
+- $X_{2}$ is often a dummy variable. If $b_{3} \neq 0$ and $X_{2, \texttt{i}} = 1$,
+  
+$$\frac{\Delta Y}{\Delta X_{1}} \,=\, b_{1} + b_{3}$$.
+
+:::
+::::
+
+
+
+
+## Linear Regression with Interaction Terms
+### Interaction with a Dummy Variable
+
+- The linear regression with an interaction between predictors $X_{1}$ and $X_{2}\in\{\,0, 1\,\}$ are:
+
+$$Y_{\texttt{i}} \,=\, b_{0} \,+\, b_{1}\,X_{1,\texttt{i}} \,+\, b_{2}\,X_{2,\texttt{i}} \,+\, b_{3}\,X_{1,\texttt{i}}\times \color{Red}{X_{2,\texttt{i}}} \,+\, e_{\texttt{i}},$$
+where $X_{\,2, \texttt{i}}$ is either 0 or 1.
+
+- For $\texttt{i}$ such that $X_{\,2, \texttt{i}} = 0$, the model is
+$$Y_{\texttt{i}} \,=\, b_{0} \,+\, b_{1}\,X_{1,\texttt{i}} \,+\, e_{\texttt{i}}\qquad\qquad\qquad\qquad\qquad\quad\;\;$$
+
+- For $\texttt{i}$ such that $X_{\,2, \texttt{i}} = 1$,  the model is
+
+$$Y_{\texttt{i}} \,=\, (\,b_{0} \,+\, b_{2}\,) \,+\, (\,b_{1}\,+\, b_{3}\,)\,X_{1,\texttt{i}} \,+\, e_{\texttt{i}}\qquad\qquad$$
+
+
+
+## Linear Regression with Interaction Terms
+### Motivation
+
+- Is `sale.price` related with `gross.square.feet`?
+
+$$
+\begin{align}
+\texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ 
+&\texttt{b1*Bronx[i]} \,+\,\texttt{b2*Brooklyn[i]} \,+\,\\&\texttt{b3*Queens[i]} \,+\,\texttt{b4*Staten Island[i]}\,+\,\\
+&\texttt{b5*age[i]}\,+\,\\
+&\texttt{b6*gross_square_feet[i]} \,+\,\texttt{e[i]}
+\end{align}
+$$
+
+## Linear Regression with Interaction Terms
+### Motivation
+- Does the relationship between `sale.price` and `gross.square.feet` vary by `borough_name`?
+
+<div style="display:block; margin:-20px;"></div>
+
+$$
+\begin{align}
+\texttt{sale_price[i]} \;=\;\, &\texttt{b0} \,+\,\\ 
+&\texttt{b1*Bronx[i]} \,+\,\texttt{b2*Brooklyn[i]} \,+\,\\
+&\texttt{b3*Queens[i]} \,+\,\texttt{b4*Staten Island[i]}\,+\, \\ 
+&\texttt{b5*age[i]}\,+\,\\
+&\texttt{b6*gross_square_feet[i]} \,+\,\\ 
+&\texttt{b7*gross_square_feet[i]*Bronx[i]} \,+\,  \\
+&\texttt{b8*gross_square_feet[i]*Brooklyn[i]} \,+\,  \\
+&\texttt{b9*gross_square_feet[i]*Queens[i]} \,+\,  \\
+&\texttt{b10*gross_square_feet[i]*Staten Island[i]} \,+\, \texttt{e[i]} \\
+\end{align}
+$$
+
+
+
+# **Log-Log Linear Regression** {background-color="#1c4982"}
+
+## Log-Log Linear Regression
+
+- To estimate the price elasticity of orange juice (OJ), we will use sales data for OJ from Dominick’s grocery stores in the 1990s.
+  - Weekly `price` and `sales` (in number of cartons "sold") for three OJ brandsTropicana, Minute Maid, Dominick's
+  - A dummy, `ad`, showing whether each `brand` was advertised (in store or flyer) that week.
+  
+
+Variable  | Description
+-|-
+`sales`   | Quantity of OJ cartons sold
+`price`   | Price of OJ
+`brand`   | Brand of OJ
+`ad`    | Advertisement status
+
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- Let's prepare the OJ data:
+```{.python}
+oj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')
+```
+
+
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- The following model estimates the price elasticity of demand for a carton of OJ:
+
+<div style="display:block; margin:-20px;"></div>
+
+
+$$\begin{align}
+\log(\texttt{sales}_{\texttt{i}}) &\,=\, \;\; b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}\\
+ &\quad\,+\, b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}},\\
+\text{where}\qquad\qquad&\\
+\texttt{brand}_{\,\texttt{tr}, \texttt{i}}
+&\,=\, \begin{cases}
+\texttt{1} & \text{ if an orange juice } \texttt{i} \text{ is } \texttt{Tropicana};\\\\
+\texttt{0} & \text{otherwise}.\qquad\qquad\quad\,
+\end{cases}\\
+\texttt{brand}_{\,\texttt{mm}, \texttt{i}} &\,=\, \begin{cases}
+\texttt{1} & \text{ if an orange juice } \texttt{i} \text{ is } \texttt{Minute Maid};\\\\
+\texttt{0} & \text{otherwise}.\qquad\qquad\quad\,
+\end{cases}
+\end{align}$$
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- The following model estimates the price elasticity of demand for a carton of OJ:
+
+$$\log(\texttt{sales}_{\texttt{i}}) \,=\, \quad\;\; b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}\\
+ \,+\, b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}}$$
+
+- When $\texttt{brand}_{\,\texttt{tr}, \texttt{i}}\,=\,0$ and $\texttt{brand}_{\,\texttt{mm}, \texttt{i}}\,=\,0$, the beta coefficient for the intercept $b_{\texttt{intercept}}$ gives the value of Dominick's log sales at $\log(\,\texttt{price[i]}\,) = 0$.
+
+- The beta coefficient $b_{\texttt{price}}$ is the price elasticity of demand.
+  - It measures how sensitive the quantity demanded is to its price.
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- For small changes in variable $x$ from $x_{0}$ to $x_{1}$, the following equation holds: 
+
+<div style="display:block; margin:-20px;"></div>
+
+$$\Delta \log(x) \,= \, \log(x_{1}) \,-\, \log(x_{0}) 
+\approx\, \frac{x_{1} \,-\, x_{0}}{x_{0}} 
+\,=\, \frac{\Delta\, x}{x_{0}}.$$
+
+- The coefficient on $\log(\texttt{price}_{\texttt{i}})$, $b_{\texttt{price}}$, is therefore
+<div style="display:block; margin:-20px;"></div>
+
+$$b_{\texttt{price}} \,=\, \frac{\Delta \log(\texttt{sales}_{\texttt{i}})}{\Delta \log(\texttt{price}_{\texttt{i}})}\,=\, \frac{\frac{\Delta \texttt{sales}_{\texttt{i}}}{\texttt{sales}_{\texttt{i}}}}{\frac{\Delta \texttt{price}_{\texttt{i}}}{\texttt{price}_{\texttt{i}}}}.$$
+
+- All else being equal, an increase in $\texttt{price}$ by 1% is associated with a decrease in $\texttt{sales}$ by $b_{\texttt{price}}$%.
+
+
+
+
+
+## Log-Log Linear Regression
+### EDA
+
+- Describe the relationship between `log(price)` and `log(sales)` by `brand`.
+
+```{.python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+oj['log_price'] = oj['price'].apply(lambda x: np.log(x))
+oj['log_sales'] = oj['sales'].apply(lambda x: np.log(x))
+
+sns.lmplot(
+    x='log_price', 
+    y='log_sales', 
+    hue='brand',     # color by brand
+    data=oj, 
+    aspect=1.2, 
+    height=5,
+    markers=["o", "s", "D"],  # optional: different markers per brand
+    scatter_kws={'alpha': 0.025},  # Pass alpha to the scatter plot
+    legend=True
+)
+```
+
+
+
+
+## Log-Log Linear Regression
+### EDA
+
+- Describe the relationship between `log(price)` and `log(sales)` by `brand` and `ad`.
+
+```{.python}
+sns.lmplot(
+    x='log_price', 
+    y='log_sales', 
+    hue='brand',     # color by brand
+    col='ad',         # facet by feat
+    data=oj, 
+    aspect=1.2, 
+    height=5,
+    markers=["o", "s", "D"],  # optional: different markers per brand
+    # Pass alpha to the scatter plot
+    scatter_kws={'alpha': 0.025},
+    col_wrap=2,         # how many facets per row
+    legend=True
+)
+```
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- Let's train the first model, `model_1`:
+
+$$
+\begin{align}
+\log(\texttt{sales}_{\texttt{i}}) \,=\, &\quad\;\; b_{\texttt{intercept}} \\ &\,+\,b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}\\
+&\,+\, b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}}
+\end{align}
+$$
+
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- How does the relationship between `log(sales)` and `log(price)` vary by `brand`?
+
+  - Let's train the second model, `model_2`, that addresses the above question:
+
+$$
+\begin{align}
+\log(\texttt{sales}_{\texttt{i}}) \,=\,&\;\; \quad b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}\\
+&\,+\, b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}})  \\
+&\, +\, b_{\texttt{price*mm}}\,\log(\texttt{price}_{\texttt{i}})\,\times\,\color{Green} {\texttt{brand}_{\,\texttt{mm}, \texttt{i}}} \\
+&\,+\, b_{\texttt{price*tr}}\,\log(\texttt{price}_{\texttt{i}})\,\times\,\color{Blue} {\texttt{brand}_{\,\texttt{tr}, \texttt{i}}} \,+\, e_{\texttt{i}}
+\end{align} 
+$$
+
+
+
+## Log-Log Linear Regression
+
+
+- For $\texttt{i}$ such that $\color{Green}{\texttt{brand}_{\,\texttt{mm}, \texttt{i}}} = 0$ and $\color{Blue}{\texttt{brand}_{\,\texttt{tr}, \texttt{i}}} = 0$, the model equation is:
+$$\log(\texttt{sales}_{\texttt{i}}) \,=\, \; \,b_{\texttt{intercept}}\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\\
+\qquad\,+\, b_{\texttt{price}} \,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}}\,.\qquad\qquad\;$$
+
+
+- For $\texttt{i}$ such that $\color{Green}{\texttt{brand}_{\,\texttt{mm}, \texttt{i}}} = 1$ and $\color{Blue}{\texttt{brand}_{\,\texttt{tr}, \texttt{i}}} = 0$, the model equation is:
+$$\log(\texttt{sales}_{\texttt{i}}) \,=\, \; (\,b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,)\qquad\qquad\qquad\qquad\qquad\qquad\qquad\\
+\qquad\!\,+\,(\, b_{\texttt{price}} \,+\, \color{Green}{b_{\texttt{price*mm}}}\,)\,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}}\,.$$
+
+
+- For $\texttt{i}$ such that $\color{Green}{\texttt{brand}_{\,\texttt{mm}, \texttt{i}}} = 0$ and $\color{Blue}{\texttt{brand}_{\,\texttt{tr}, \texttt{i}}} = 1$, the model equation is:
+$$\log(\texttt{sales}_{\texttt{i}}) \,=\, \; (\,b_{\texttt{intercept}} \,+\, b_{\,\texttt{tr}}\,)\qquad\qquad\qquad\qquad\qquad\qquad\qquad\\
+\qquad\!\,+\,(\, b_{\texttt{price}} \,+\, \color{Blue}{b_{\texttt{price*tr}}}\,)\,\log(\texttt{price}_{\texttt{i}}) \,+\, e_{\texttt{i}}\,.$$
+
+
+## Adding Interaction Terms in PySpark
+
+- The UDF `add_interaction_terms` requires at least two lists of variable names.
+
+- `var_list3` is optional. 
+  - If `var_list3` is provided, the `add_interaction_terms` function adds all possible two-way interactions and three-way interaction to the `dtrain` and `dtest` DataFrames.
+```{.python}
+def add_interaction_terms(var_list1, var_list2, var_list3=None):
+    """
+    Creates interaction term columns in the global DataFrames dtrain and dtest.
+
+    For two sets of variable names (which may represent categorical (dummy) or continuous variables),
+    this function creates two-way interactions by multiplying each variable in var_list1 with each
+    variable in var_list2.
+
+    Optionally, if a third list of variable names (var_list3) is provided, the function also creates
+    three-way interactions among each variable in var_list1, each variable in var_list2, and each variable
+    in var_list3.
+
+    Parameters:
+        var_list1 (list): List of column names for the first set of variables.
+        var_list2 (list): List of column names for the second set of variables.
+        var_list3 (list, optional): List of column names for the third set of variables for three-way interactions.
+
+    Returns:
+        A flat list of new interaction column names.
+    """
+    global dtrain, dtest
+
+    interaction_cols = []
+
+    # Create two-way interactions between var_list1 and var_list2.
+    for var1 in var_list1:
+        for var2 in var_list2:
+            col_name = f"{var1}_*_{var2}"
+            dtrain = dtrain.withColumn(col_name, col(var1).cast("double") * col(var2).cast("double"))
+            dtest = dtest.withColumn(col_name, col(var1).cast("double") * col(var2).cast("double"))
+            interaction_cols.append(col_name)
+
+    # Create two-way interactions between var_list1 and var_list3.
+    if var_list3 is not None:
+      for var1 in var_list1:
+          for var3 in var_list3:
+              col_name = f"{var1}_*_{var3}"
+              dtrain = dtrain.withColumn(col_name, col(var1).cast("double") * col(var3).cast("double"))
+              dtest = dtest.withColumn(col_name, col(var1).cast("double") * col(var3).cast("double"))
+              interaction_cols.append(col_name)
+
+    # Create two-way interactions between var_list2 and var_list3.
+    if var_list3 is not None:
+      for var2 in var_list2:
+          for var3 in var_list3:
+              col_name = f"{var2}_*_{var3}"
+              dtrain = dtrain.withColumn(col_name, col(var2).cast("double") * col(var3).cast("double"))
+              dtest = dtest.withColumn(col_name, col(var2).cast("double") * col(var3).cast("double"))
+              interaction_cols.append(col_name)
+
+    # If a third list is provided, create three-way interactions.
+    if var_list3 is not None:
+        for var1 in var_list1:
+            for var2 in var_list2:
+                for var3 in var_list3:
+                    col_name = f"{var1}_*_{var2}_*_{var3}"
+                    dtrain = dtrain.withColumn(col_name, col(var1).cast("double") * col(var2).cast("double") * col(var3).cast("double"))
+                    dtest = dtest.withColumn(col_name, col(var1).cast("double") * col(var2).cast("double") * col(var3).cast("double"))
+                    interaction_cols.append(col_name)
+
+    return interaction_cols
+    
+# Example
+# interaction_cols_brand_price = add_interaction_terms(dummy_cols_brand, ['log_price'])
+# interaction_cols_brand_ad_price = add_interaction_terms(dummy_cols_brand, dummy_cols_ad, ['log_price'])
+```
+
+
+
+## Log-Log Linear Regression
+
+- How does advertisement play a role in the relationship between sales and prices in the OJ market?
+  - The ads can increase sales at all prices.
+  - They can change price sensitivity.
+  - They can do both of these things in a brand-specific manner.
+- What would be the formula that address the question above?
+
+
+
+## Log-Log Linear Regression
+- Let's train the third model, `model_3`, that addresses the question in the previous page:
+
+$$
+\begin{align}
+\log(\texttt{sales}_{\texttt{i}}) \,=\,\quad& b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}  \\
+&\,+\; b_{\,\texttt{ad}}\,\color{Orange}{\texttt{ad}_{\,\texttt{i}}} \qquad\qquad\qquad\qquad\quad   \\
+&\,+\, b_{\texttt{mm*ad}}\,\color{Green} {\texttt{brand}_{\,\texttt{mm}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}}\,+\, b_{\texttt{tr*ad}}\,\color{Blue} {\texttt{brand}_{\,\texttt{tr}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}} \\
+&\,+\;  b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}}) \qquad\qquad\qquad\;\;\;\;\,  \\
+&\,+\, b_{\texttt{price*mm}}\,\log(\texttt{price}_{\texttt{i}})\,\times\,\color{Green} {\texttt{brand}_{\,\texttt{mm}, \texttt{i}}}\qquad\qquad\qquad\;\, \\
+&\,+\, b_{\texttt{price*tr}}\,\log(\texttt{price}_{\texttt{i}})\,\times\,\color{Blue} {\texttt{brand}_{\,\texttt{tr}, \texttt{i}}}\qquad\qquad\qquad\;\, \\
+& \,+\, b_{\texttt{price*ad}}\,\log(\texttt{price}_{\texttt{i}})\,\times\,\color{Orange}{\texttt{ad}_{\,\texttt{i}}}\qquad\qquad\qquad\;\;\, \\
+&\,+\, b_{\texttt{price*mm*ad}}\,\log(\texttt{price}_{\texttt{i}}) \,\times\,\,\color{Green} {\texttt{brand}_{\,\texttt{mm}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}} \\
+&\,+\, b_{\texttt{price*tr*ad}}\,\log(\texttt{price}_{\texttt{i}}) \,\times\,\,\color{Blue} {\texttt{brand}_{\,\texttt{tr}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}}  \,+\, e_{\texttt{i}}
+ \end{align}
+$$
+
+ 
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+- Describe the relationship between `ad` and `brand` using stacked bar charts.
+
+```{.python}
+sns.histplot(
+    data=oj,
+    x='ad_status',   # categorical variable on the x-axis
+    hue='brand',     # fill color by brand
+    multiple='fill'  # 100% stacked bars
+)
+plt.ylabel('Proportion')
+```
+
+- Model 3 assumes that the relationship between `price` and `sales` can vary by `ad`.
+
+
+
+
+
+## Log-Log Linear Regression
+### Estimating Price Elasticity
+
+
+```{r, echo=FALSE, eval = T, out.width = '85%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/oj_elasticity_ad.png")
+```
+
+- How would you explain different estimation results across different models?
+
+- Which model do you prefer? Why?
+
 

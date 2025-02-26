@@ -4190,14 +4190,14 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#hypotheses-and-test-statistic",
     "title": "Lecture 7",
     "section": "Hypotheses and Test Statistic",
-    "text": "Hypotheses and Test Statistic\n\nWe test whether a specific coefficient \\(\\beta_j\\) significantly differs from zero:\n\nNull Hypothesis (\\(H_0\\)): \\(\\beta_j = 0\\) (No effect)\n\nAlternative Hypothesis (\\(H_A\\)): \\(\\beta_j \\neq 0\\) (Significant effect)\n\nThe t-statistic is used to test each coefficient:\n\n\\[\nt = \\frac{\\hat{\\beta_j} - 0}{SE(\\hat{\\beta_j})}\n\\]\n\n\\(\\hat{\\beta_j}\\): Estimated coefficient\n\n\\(SE(\\hat{\\beta_j})\\): Standard error of the estimate"
+    "text": "Hypotheses and Test Statistic\n\nWe test whether a specific coefficient \\(\\beta_j\\) significantly differs from zero:\n\nNull Hypothesis (\\(H_0\\)): \\(\\beta_j = 0\\) (No relationship)\n\nAlternative Hypothesis (\\(H_A\\)): \\(\\beta_j \\neq 0\\) (Significant relationship)\n\nThe t-statistic is used to test each coefficient:\n\n\\[\nt = \\frac{\\hat{\\beta_j} - 0}{SE(\\hat{\\beta_j})}\n\\]\n\n\\(\\hat{\\beta_j}\\): Estimated coefficient\n\n\\(SE(\\hat{\\beta_j})\\): Standard error of the estimate"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#hypothesis-testing---decision-rule-and-interpretation",
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#hypothesis-testing---decision-rule-and-interpretation",
     "title": "Lecture 7",
     "section": "Hypothesis Testing - Decision Rule and Interpretation",
-    "text": "Hypothesis Testing - Decision Rule and Interpretation\n\nCalculate the p-value based on the t-distribution with \\(n - k - 1\\) degrees of freedom.\nCompare p-value with significance level \\(\\alpha\\) (e.g., 0.05):\n\nIf \\(p \\leq \\alpha\\): Reject \\(H_0\\) (Significant)\nIf \\(p &gt; \\alpha\\): Fail to reject \\(H_0\\) (Not significant)\n\n\n\nIn our course, stars in a regression table mean a significance level:\n\n* (10%); ** (5%); *** (1%)\n\nReject \\(H_0\\): There is sufficient evidence to suggest a statistically significant relationship between \\(x_j\\) and \\(y\\).\nFail to reject \\(H_0\\): No statistically significant evidence of a relationship \\(x_j\\) affects \\(y\\)."
+    "text": "Hypothesis Testing - Decision Rule and Interpretation\n\nCalculate the p-value based on the t-distribution with \\(n - k - 1\\) degrees of freedom.\nCompare p-value with significance level \\(\\alpha\\) (e.g., 0.05):\n\nIf \\(p \\leq \\alpha\\): Reject \\(H_0\\) (Significant)\nIf \\(p &gt; \\alpha\\): Fail to reject \\(H_0\\) (Not significant)\n\n\n\nIn our course, stars in a regression table mean a significance level:\n\n* (10%); ** (5%); *** (1%)\n\nReject \\(H_0\\): There is sufficient evidence to suggest a statistically significant relationship between \\(x_j\\) and \\(y\\).\nFail to reject \\(H_0\\): No statistically significant evidence of a relationship between \\(x_j\\) and \\(y\\)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-log-transformation-1",
@@ -4331,5 +4331,173 @@
     "title": "Lecture 7",
     "section": "Log-transformed Variables in PySpark",
     "text": "Log-transformed Variables in PySpark\n\nWe use the log() function to add a log-transformed variable:\n\nfrom pyspark.sql.functions import log\nsale_df = sale_df.withColumn(\"log_sale_price\", \n                              log( sale_df['sale_price'] ) ) \n\nTo use a exponential function, we can use an exp() function from numpy:\n\nimport numpy as np\n\nnp.exp(1)\nnp.exp([1, 2, 3])"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-1",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nMotivation\n\nDoes the relationship between sale.price and gross.square.feet vary by borough_name?\n\nHow can linear regression address the question above?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-2",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nModel\n\nThe linear regression with an interaction between predictors \\(X_{1}\\) and \\(X_{2}\\) are:\n\n\\[Y_{\\texttt{i}} \\,=\\, b_{0} \\,+\\, b_{1}\\,X_{1,\\texttt{i}} \\,+\\, b_{2}\\,X_{2,\\texttt{i}} \\,+\\, b_{3}\\,X_{1,\\texttt{i}}\\times \\color{Red}{X_{2,\\texttt{i}}} \\,+\\, e_{\\texttt{i}},\\]\n\nwhere\n\n\\(i\\;\\): \\(\\;\\;i\\)-th observation in the training DataFrame, \\(i = 1, 2, 3, \\cdots\\).\n\\(Y_{i}\\,\\): \\(\\;i\\)-th observation of outcome \\(Y\\).\n\\(X_{p, i}\\,\\): \\(i\\)-th observation of the \\(p\\)-th predictor \\(X_{p}\\).\n\\(e_{i}\\;\\): \\(\\;i\\)-th observation of statistical error."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-3",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nModel\n\nThe linear regression with an interaction between predictors \\(X_{1}\\) and \\(X_{2}\\) are:\n\n\\[Y_{\\texttt{i}} \\,=\\, b_{0} \\,+\\, b_{1}\\,X_{1,\\texttt{i}} \\,+\\, b_{2}\\,X_{2,\\texttt{i}} \\,+\\, b_{3}\\,X_{1,\\texttt{i}}\\times \\color{Red}{X_{2,\\texttt{i}}} \\,+\\, e_{\\texttt{i}}\\;.\\]\n\n\nInteraction\n\nThe relationship between \\(X_{1}\\) and \\(Y\\) varies by values of \\(b_{3}\\, X_{2}\\):\n\n\\[\\frac{\\Delta Y}{\\Delta X_{1}} \\,=\\, b_{1} + b_{3}\\, X_{2}\\].\n\nExample\n\n\\(X_{2}\\) is often a dummy variable. If \\(b_{3} \\neq 0\\) and \\(X_{2, \\texttt{i}} = 1\\),\n\n\\[\\frac{\\Delta Y}{\\Delta X_{1}} \\,=\\, b_{1} + b_{3}\\]."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-4",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nInteraction with a Dummy Variable\n\nThe linear regression with an interaction between predictors \\(X_{1}\\) and \\(X_{2}\\in\\{\\,0, 1\\,\\}\\) are:\n\n\\[Y_{\\texttt{i}} \\,=\\, b_{0} \\,+\\, b_{1}\\,X_{1,\\texttt{i}} \\,+\\, b_{2}\\,X_{2,\\texttt{i}} \\,+\\, b_{3}\\,X_{1,\\texttt{i}}\\times \\color{Red}{X_{2,\\texttt{i}}} \\,+\\, e_{\\texttt{i}},\\] where \\(X_{\\,2, \\texttt{i}}\\) is either 0 or 1.\n\nFor \\(\\texttt{i}\\) such that \\(X_{\\,2, \\texttt{i}} = 0\\), the model is \\[Y_{\\texttt{i}} \\,=\\, b_{0} \\,+\\, b_{1}\\,X_{1,\\texttt{i}} \\,+\\, e_{\\texttt{i}}\\qquad\\qquad\\qquad\\qquad\\qquad\\quad\\;\\;\\]\nFor \\(\\texttt{i}\\) such that \\(X_{\\,2, \\texttt{i}} = 1\\), the model is\n\n\\[Y_{\\texttt{i}} \\,=\\, (\\,b_{0} \\,+\\, b_{2}\\,) \\,+\\, (\\,b_{1}\\,+\\, b_{3}\\,)\\,X_{1,\\texttt{i}} \\,+\\, e_{\\texttt{i}}\\qquad\\qquad\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-5",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-5",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nMotivation\n\nIs sale.price related with gross.square.feet?\n\n\\[\n\\begin{align}\n\\texttt{sale_price[i]} \\;=\\;\\, &\\texttt{b0} \\,+\\,\\\\\n&\\texttt{b1*Bronx[i]} \\,+\\,\\texttt{b2*Brooklyn[i]} \\,+\\,\\\\&\\texttt{b3*Queens[i]} \\,+\\,\\texttt{b4*Staten Island[i]}\\,+\\,\\\\\n&\\texttt{b5*age[i]}\\,+\\,\\\\\n&\\texttt{b6*gross_square_feet[i]} \\,+\\,\\texttt{e[i]}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-6",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#linear-regression-with-interaction-terms-6",
+    "title": "Lecture 7",
+    "section": "Linear Regression with Interaction Terms",
+    "text": "Linear Regression with Interaction Terms\nMotivation\n\nDoes the relationship between sale.price and gross.square.feet vary by borough_name?\n\n\n\n\n\\[\n\\begin{align}\n\\texttt{sale_price[i]} \\;=\\;\\, &\\texttt{b0} \\,+\\,\\\\\n&\\texttt{b1*Bronx[i]} \\,+\\,\\texttt{b2*Brooklyn[i]} \\,+\\,\\\\\n&\\texttt{b3*Queens[i]} \\,+\\,\\texttt{b4*Staten Island[i]}\\,+\\, \\\\\n&\\texttt{b5*age[i]}\\,+\\,\\\\\n&\\texttt{b6*gross_square_feet[i]} \\,+\\,\\\\\n&\\texttt{b7*gross_square_feet[i]*Bronx[i]} \\,+\\,  \\\\\n&\\texttt{b8*gross_square_feet[i]*Brooklyn[i]} \\,+\\,  \\\\\n&\\texttt{b9*gross_square_feet[i]*Queens[i]} \\,+\\,  \\\\\n&\\texttt{b10*gross_square_feet[i]*Staten Island[i]} \\,+\\, \\texttt{e[i]} \\\\\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-1",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-1",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\n\nTo estimate the price elasticity of orange juice (OJ), we will use sales data for OJ from Dominick’s grocery stores in the 1990s.\n\nWeekly price and sales (in number of cartons “sold”) for three OJ brandsTropicana, Minute Maid, Dominick’s\nA dummy, ad, showing whether each brand was advertised (in store or flyer) that week.\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nsales\nQuantity of OJ cartons sold\n\n\nprice\nPrice of OJ\n\n\nbrand\nBrand of OJ\n\n\nad\nAdvertisement status"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-2",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-2",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nLet’s prepare the OJ data:\n\noj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-3",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-3",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nThe following model estimates the price elasticity of demand for a carton of OJ:\n\n\n\n\n\\[\\begin{align}\n\\log(\\texttt{sales}_{\\texttt{i}}) &\\,=\\, \\;\\; b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{mm}}\\,\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} \\,+\\, b_{\\,\\texttt{tr}}\\,\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\\\\\n&\\quad\\,+\\, b_{\\texttt{price}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}},\\\\\n\\text{where}\\qquad\\qquad&\\\\\n\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\n&\\,=\\, \\begin{cases}\n\\texttt{1} & \\text{ if an orange juice } \\texttt{i} \\text{ is } \\texttt{Tropicana};\\\\\\\\\n\\texttt{0} & \\text{otherwise}.\\qquad\\qquad\\quad\\,\n\\end{cases}\\\\\n\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} &\\,=\\, \\begin{cases}\n\\texttt{1} & \\text{ if an orange juice } \\texttt{i} \\text{ is } \\texttt{Minute Maid};\\\\\\\\\n\\texttt{0} & \\text{otherwise}.\\qquad\\qquad\\quad\\,\n\\end{cases}\n\\end{align}\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-4",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-4",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nThe following model estimates the price elasticity of demand for a carton of OJ:\n\n\\[\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\, \\quad\\;\\; b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{mm}}\\,\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} \\,+\\, b_{\\,\\texttt{tr}}\\,\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\\\\\n\\,+\\, b_{\\texttt{price}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}}\\]\n\nWhen \\(\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\\,=\\,0\\) and \\(\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}\\,=\\,0\\), the beta coefficient for the intercept \\(b_{\\texttt{intercept}}\\) gives the value of Dominick’s log sales at \\(\\log(\\,\\texttt{price[i]}\\,) = 0\\).\nThe beta coefficient \\(b_{\\texttt{price}}\\) is the price elasticity of demand.\n\nIt measures how sensitive the quantity demanded is to its price."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-5",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-5",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nFor small changes in variable \\(x\\) from \\(x_{0}\\) to \\(x_{1}\\), the following equation holds:\n\n\n\n\n\\[\\Delta \\log(x) \\,= \\, \\log(x_{1}) \\,-\\, \\log(x_{0})\n\\approx\\, \\frac{x_{1} \\,-\\, x_{0}}{x_{0}}\n\\,=\\, \\frac{\\Delta\\, x}{x_{0}}.\\]\n\nThe coefficient on \\(\\log(\\texttt{price}_{\\texttt{i}})\\), \\(b_{\\texttt{price}}\\), is therefore\n\n\n\n\n\\[b_{\\texttt{price}} \\,=\\, \\frac{\\Delta \\log(\\texttt{sales}_{\\texttt{i}})}{\\Delta \\log(\\texttt{price}_{\\texttt{i}})}\\,=\\, \\frac{\\frac{\\Delta \\texttt{sales}_{\\texttt{i}}}{\\texttt{sales}_{\\texttt{i}}}}{\\frac{\\Delta \\texttt{price}_{\\texttt{i}}}{\\texttt{price}_{\\texttt{i}}}}.\\]\n\nAll else being equal, an increase in \\(\\texttt{price}\\) by 1% is associated with a decrease in \\(\\texttt{sales}\\) by \\(b_{\\texttt{price}}\\)%."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-6",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-6",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEDA\n\nDescribe the relationship between log(price) and log(sales) by brand.\n\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\noj['log_price'] = oj['price'].apply(lambda x: np.log(x))\noj['log_sales'] = oj['sales'].apply(lambda x: np.log(x))\n\nsns.lmplot(\n    x='log_price', \n    y='log_sales', \n    hue='brand',     # color by brand\n    data=oj, \n    aspect=1.2, \n    height=5,\n    markers=[\"o\", \"s\", \"D\"],  # optional: different markers per brand\n    scatter_kws={'alpha': 0.025},  # Pass alpha to the scatter plot\n    legend=True\n)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-7",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-7",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEDA\n\nDescribe the relationship between log(price) and log(sales) by brand and ad.\n\nsns.lmplot(\n    x='log_price', \n    y='log_sales', \n    hue='brand',     # color by brand\n    col='ad',         # facet by feat\n    data=oj, \n    aspect=1.2, \n    height=5,\n    markers=[\"o\", \"s\", \"D\"],  # optional: different markers per brand\n    # Pass alpha to the scatter plot\n    scatter_kws={'alpha': 0.025},\n    col_wrap=2,         # how many facets per row\n    legend=True\n)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-8",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-8",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nLet’s train the first model, model_1:\n\n\\[\n\\begin{align}\n\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\, &\\quad\\;\\; b_{\\texttt{intercept}} \\\\ &\\,+\\,b_{\\,\\texttt{mm}}\\,\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} \\,+\\, b_{\\,\\texttt{tr}}\\,\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\\\\\n&\\,+\\, b_{\\texttt{price}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-9",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-9",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nHow does the relationship between log(sales) and log(price) vary by brand?\n\nLet’s train the second model, model_2, that addresses the above question:\n\n\n\\[\n\\begin{align}\n\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\,&\\;\\; \\quad b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{mm}}\\,\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} \\,+\\, b_{\\,\\texttt{tr}}\\,\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}\\\\\n&\\,+\\, b_{\\texttt{price}}\\,\\log(\\texttt{price}_{\\texttt{i}})  \\\\\n&\\, +\\, b_{\\texttt{price*mm}}\\,\\log(\\texttt{price}_{\\texttt{i}})\\,\\times\\,\\color{Green} {\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}} \\\\\n&\\,+\\, b_{\\texttt{price*tr}}\\,\\log(\\texttt{price}_{\\texttt{i}})\\,\\times\\,\\color{Blue} {\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}} \\,+\\, e_{\\texttt{i}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-10",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-10",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\n\nFor \\(\\texttt{i}\\) such that \\(\\color{Green}{\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}} = 0\\) and \\(\\color{Blue}{\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}} = 0\\), the model equation is: \\[\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\, \\; \\,b_{\\texttt{intercept}}\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\\\\n\\qquad\\,+\\, b_{\\texttt{price}} \\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}}\\,.\\qquad\\qquad\\;\\]\nFor \\(\\texttt{i}\\) such that \\(\\color{Green}{\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}} = 1\\) and \\(\\color{Blue}{\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}} = 0\\), the model equation is: \\[\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\, \\; (\\,b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{mm}}\\,)\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\\\\n\\qquad\\!\\,+\\,(\\, b_{\\texttt{price}} \\,+\\, \\color{Green}{b_{\\texttt{price*mm}}}\\,)\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}}\\,.\\]\nFor \\(\\texttt{i}\\) such that \\(\\color{Green}{\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}} = 0\\) and \\(\\color{Blue}{\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}} = 1\\), the model equation is: \\[\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\, \\; (\\,b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{tr}}\\,)\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\qquad\\\\\n\\qquad\\!\\,+\\,(\\, b_{\\texttt{price}} \\,+\\, \\color{Blue}{b_{\\texttt{price*tr}}}\\,)\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,+\\, e_{\\texttt{i}}\\,.\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-11",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-11",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\n\nHow would you explain different estimation results across different models?\nWhich model do you prefer? Why?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-12",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-12",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\n\nLet’s train the third model, model_3, that addresses the question in the previous page:\n\n\\[\n\\begin{align}\n\\log(\\texttt{sales}_{\\texttt{i}}) \\,=\\,\\quad& b_{\\texttt{intercept}} \\,+\\, b_{\\,\\texttt{mm}}\\,\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}} \\,+\\, b_{\\,\\texttt{tr}}\\,\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}  \\\\\n&\\,+\\; b_{\\,\\texttt{ad}}\\,\\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}} \\qquad\\qquad\\qquad\\qquad\\quad   \\\\\n&\\,+\\, b_{\\texttt{mm*ad}}\\,\\color{Green} {\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}}\\,\\times\\, \\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}}\\,+\\, b_{\\texttt{tr*ad}}\\,\\color{Blue} {\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}}\\,\\times\\, \\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}} \\\\\n&\\,+\\;  b_{\\texttt{price}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\qquad\\qquad\\qquad\\;\\;\\;\\;\\,  \\\\\n&\\,+\\, b_{\\texttt{price*mm}}\\,\\log(\\texttt{price}_{\\texttt{i}})\\,\\times\\,\\color{Green} {\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}}\\qquad\\qquad\\qquad\\;\\, \\\\\n&\\,+\\, b_{\\texttt{price*tr}}\\,\\log(\\texttt{price}_{\\texttt{i}})\\,\\times\\,\\color{Blue} {\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}}\\qquad\\qquad\\qquad\\;\\, \\\\\n& \\,+\\, b_{\\texttt{price*ad}}\\,\\log(\\texttt{price}_{\\texttt{i}})\\,\\times\\,\\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}}\\qquad\\qquad\\qquad\\;\\;\\, \\\\\n&\\,+\\, b_{\\texttt{price*mm*ad}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,\\times\\,\\,\\color{Green} {\\texttt{brand}_{\\,\\texttt{mm}, \\texttt{i}}}\\,\\times\\, \\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}} \\\\\n&\\,+\\, b_{\\texttt{price*tr*ad}}\\,\\log(\\texttt{price}_{\\texttt{i}}) \\,\\times\\,\\,\\color{Blue} {\\texttt{brand}_{\\,\\texttt{tr}, \\texttt{i}}}\\,\\times\\, \\color{Orange}{\\texttt{ad}_{\\,\\texttt{i}}}  \\,+\\, e_{\\texttt{i}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-13",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-13",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nDescribe the relationship between ad and brand using stacked bar charts.\n\nsns.histplot(\n    data=oj,\n    x='ad_status',   # categorical variable on the x-axis\n    hue='brand',     # fill color by brand\n    multiple='fill'  # 100% stacked bars\n)\nplt.ylabel('Proportion')\n\nModel 3 assumes that the relationship between price and sales can vary by ad."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-14",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-14",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\n\nHow would you explain different estimation results across different models?\nWhich model do you prefer? Why?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-15",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-15",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nHere are the inverse demand curves from model_3:\n\n.pull-left[\n\n\n\n\n\n]\n.pull-right[\n\n\n\n\n\n]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-16",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-16",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\nDescribe the relationship between ad and brand using stacked bar charts.\n\n.pull-left[\n\n\n\n\n\n]\n.pull-right[\n\n\n\n\n\n]\n\nModel 3 assumes that the relationship between price and sales can vary by ad."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-17",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-17",
+    "title": "Lecture 7",
+    "section": "Log-Log Linear Regression",
+    "text": "Log-Log Linear Regression\nEstimating Price Elasticity\n\n\nHow would you explain different estimation results across different models?\nWhich model do you prefer? Why?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#adding-interaction-terms-in-pyspark",
+    "href": "danl-lec/danl-320-lec-07-2025-0217.html#adding-interaction-terms-in-pyspark",
+    "title": "Lecture 7",
+    "section": "Adding Interaction Terms in PySpark",
+    "text": "Adding Interaction Terms in PySpark\n\nThe UDF add_interaction_terms requires at least two lists of variable names.\nvar_list3 is optional.\n\nIf var_list3 is provided, the add_interaction_terms function adds all possible two-way interactions and three-way interaction to the dtrain and dtest DataFrames. ```{.python} def add_interaction_terms(var_list1, var_list2, var_list3=None): ““” Creates interaction term columns in the global DataFrames dtrain and dtest.\nFor two sets of variable names (which may represent categorical (dummy) or continuous variables), this function creates two-way interactions by multiplying each variable in var_list1 with each variable in var_list2.\nOptionally, if a third list of variable names (var_list3) is provided, the function also creates three-way interactions among each variable in var_list1, each variable in var_list2, and each variable in var_list3.\nParameters: var_list1 (list): List of column names for the first set of variables. var_list2 (list): List of column names for the second set of variables. var_list3 (list, optional): List of column names for the third set of variables for three-way interactions.\nReturns: A flat list of new interaction column names. ““” global dtrain, dtest\ninteraction_cols = []\nCreate two-way interactions between var_list1 and var_list2.\nfor var1 in var_list1: for var2 in var_list2: col_name = f”{var1}_*_{var2}” dtrain = dtrain.withColumn(col_name, col(var1).cast(“double”) * col(var2).cast(“double”)) dtest = dtest.withColumn(col_name, col(var1).cast(“double”) * col(var2).cast(“double”)) interaction_cols.append(col_name)\nCreate two-way interactions between var_list1 and var_list3.\nif var_list3 is not None: for var1 in var_list1: for var3 in var_list3: col_name = f”{var1}_*_{var3}” dtrain = dtrain.withColumn(col_name, col(var1).cast(“double”) * col(var3).cast(“double”)) dtest = dtest.withColumn(col_name, col(var1).cast(“double”) * col(var3).cast(“double”)) interaction_cols.append(col_name)\nCreate two-way interactions between var_list2 and var_list3.\nif var_list3 is not None: for var2 in var_list2: for var3 in var_list3: col_name = f”{var2}_*_{var3}” dtrain = dtrain.withColumn(col_name, col(var2).cast(“double”) * col(var3).cast(“double”)) dtest = dtest.withColumn(col_name, col(var2).cast(“double”) * col(var3).cast(“double”)) interaction_cols.append(col_name)\nIf a third list is provided, create three-way interactions.\nif var_list3 is not None: for var1 in var_list1: for var2 in var_list2: for var3 in var_list3: col_name = f”{var1}{var2}{var3}” dtrain = dtrain.withColumn(col_name, col(var1).cast(“double”) * col(var2).cast(“double”) * col(var3).cast(“double”)) dtest = dtest.withColumn(col_name, col(var1).cast(“double”) * col(var2).cast(“double”) * col(var3).cast(“double”)) interaction_cols.append(col_name)\nreturn interaction_cols"
   }
 ]
