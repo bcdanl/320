@@ -1877,6 +1877,7 @@ $$\log(\texttt{sales}_{\texttt{i}}) \,=\, \; (\,b_{\texttt{intercept}} \,+\, b_{
 
 - `var_list3` is optional. 
   - If `var_list3` is provided, the `add_interaction_terms` function adds all possible two-way interactions and three-way interaction to the `dtrain` and `dtest` DataFrames.
+  
 ```{.python}
 def add_interaction_terms(var_list1, var_list2, var_list3=None):
     """
@@ -1939,10 +1940,10 @@ def add_interaction_terms(var_list1, var_list2, var_list3=None):
                     interaction_cols.append(col_name)
 
     return interaction_cols
-    
-# Example
-# interaction_cols_brand_price = add_interaction_terms(dummy_cols_brand, ['log_price'])
-# interaction_cols_brand_ad_price = add_interaction_terms(dummy_cols_brand, dummy_cols_ad, ['log_price'])
+
+ # Example
+ # interaction_cols_brand_price = add_interaction_terms(dummy_cols_brand, ['log_price'])
+ # interaction_cols_brand_ad_price = add_interaction_terms(dummy_cols_brand, dummy_cols_ad, ['log_price'])
 ```
 
 
@@ -1959,10 +1960,11 @@ def add_interaction_terms(var_list1, var_list2, var_list3=None):
 
 ## Log-Log Linear Regression
 - Let's train the third model, `model_3`, that addresses the question in the previous page:
+<div style="display:block; margin:-20px;"></div>
 
 $$
 \begin{align}
-\log(\texttt{sales}_{\texttt{i}}) \,=\,\quad& b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}  \\
+\log(\texttt{sales}_{\texttt{i}}) \,=\,\quad\;\;& b_{\texttt{intercept}} \,+\, b_{\,\texttt{mm}}\,\texttt{brand}_{\,\texttt{mm}, \texttt{i}} \,+\, b_{\,\texttt{tr}}\,\texttt{brand}_{\,\texttt{tr}, \texttt{i}}  \\
 &\,+\; b_{\,\texttt{ad}}\,\color{Orange}{\texttt{ad}_{\,\texttt{i}}} \qquad\qquad\qquad\qquad\quad   \\
 &\,+\, b_{\texttt{mm*ad}}\,\color{Green} {\texttt{brand}_{\,\texttt{mm}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}}\,+\, b_{\texttt{tr*ad}}\,\color{Blue} {\texttt{brand}_{\,\texttt{tr}, \texttt{i}}}\,\times\, \color{Orange}{\texttt{ad}_{\,\texttt{i}}} \\
 &\,+\;  b_{\texttt{price}}\,\log(\texttt{price}_{\texttt{i}}) \qquad\qquad\qquad\;\;\;\;\,  \\
