@@ -1775,6 +1775,7 @@ $$b_{\texttt{price}} \,=\, \frac{\Delta \log(\texttt{sales}_{\texttt{i}})}{\Delt
 
 ```{.python}
 import pandas as pd
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 

@@ -78,7 +78,7 @@ toc: true
 <br><br><br>
 
 
-# Part 2. Python Basics
+# Part 3. Python Basics
 
 
 ## Question 0
@@ -93,6 +93,16 @@ Provide your GitHub username.
 - Create a list of integers from 1 to 10.
 - Append the number `11` to the list and remove the number `5`.
 
+
+
+
+```{python}
+list_numbers = list(range(1, 11))
+list_numbers.append(11)
+list_numbers.remove(5)
+```
+
+
 <br>
 
 ### Q1b
@@ -105,6 +115,27 @@ dict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}
 - Add a new employee `'Dana'` with a salary of `65000`.
 - Update `'Alice'`'s salary to `55000`.
 - Print all employee names and their salaries.
+
+<br>
+
+
+
+```{python}
+dict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}
+dict_salaries['Dana'] = 65000
+dict_salaries['Alice'] = 55000
+
+for name, salary in dict_salaries.items():
+    print(name, ":", salary)
+    
+# An f-string (formatted string literal) is a way to embed expressions 
+  # inside string literals using curly braces `{}`.
+for name, salary in dict_salaries.items():
+    print(f'{name}: {salary}')
+```
+
+
+
 
 <br><br>
 
@@ -119,6 +150,20 @@ dict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}
 
 <br>
 
+
+
+```{python}
+salary = 75000
+if salary < 50000:
+    print('Low')
+elif 50000 <= salary < 100000:
+    print('Medium')
+else:
+    print('High')
+```
+
+<br>
+
 ### Q2b
 - Assign two variables, `role` and `salary`, to `'Manager'` and `85000`, respectively.
 
@@ -126,6 +171,28 @@ dict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}
   - `'Eligible for bonus'` if the `role` is `'Manager'` and the `salary` is greater than `80,000`.
   - `'Eligible for raise'` if the `role` is `'Analyst'` and the `salary` is less than `60,000`.
   - `'No action needed'` for all other cases.
+
+<br>
+
+
+
+```{python}
+role = 'Manager'
+salary = 85000
+
+if role == 'Manager':
+    if salary > 80000:
+        print('Eligible for bonus')
+    else:
+        print('No action needed')
+elif role == 'Analyst':
+    if salary < 60000:
+        print('Eligible for raise')
+    else:
+        print('No action needed')
+else:
+    print('No action needed')
+```
 
 <br><br>
 
@@ -143,10 +210,36 @@ list_salaries = [45000, 60000, 75000, 120000, 30000]
 
 <br>
 
+
+
+```{python}
+list_salaries = [45000, 60000, 75000, 120000, 30000]
+average_salary = sum(list_salaries) / len(list_salaries)
+
+for salary in list_salaries:
+    if salary > average_salary:
+        print(f'{salary} is Above Average')
+    else:
+        print(f'{salary} is Below Average')
+```
+
+<br>
+
 ### Q3b
 - Start with a `salary` of `50000`.
 - Use a `while` loop to increase the salary by `5000` each year until it exceeds `80000`.
 - Print the salary after each increment.
+
+<br>
+
+
+
+```{python}
+salary = 50000
+while salary <= 80000:
+    print(f'Salary: {salary}')
+    salary += 5000
+```
 
 <br>
 
@@ -158,6 +251,18 @@ salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}
 ```
 
 - Use a `for` loop to print the names of employees who earn more than `55000`.
+
+<br>
+
+
+
+```{python}
+salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}
+
+for name, salary in salaries.items():
+    if salary > 55000:
+        print(f'{name} earns more than 55000')
+```
 
 
 <br>
@@ -171,6 +276,29 @@ data_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}
   - Convert the integer `42` to a string.
   - Convert the float `3.14` to a string, then back to a float.
   - Convert the boolean `True` to an integer.
+
+<br>
+
+
+
+```{python}
+data_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}, (4, 5)]
+
+for item in data_list:
+    print(f'Original: {item}, Type: {type(item)}')
+    
+    if item == 42:
+        item = str(item)
+        print(f'Converted 42 to string: {item}, Type: {type(item)}')
+    
+    if item == 3.14:
+        item = float(str(item))
+        print(f'Converted "3.14" to float: {item}, Type: {type(item)}')
+
+    if item is True:
+        item = int(item)
+        print(f'Converted True to integer: {item}, Type: {type(item)}')
+```
 
 <br><br>
 
@@ -189,6 +317,21 @@ b = 0
 
 <br>
 
+
+
+```{python}
+a = 10
+b = 0
+
+try:
+    result = a / b
+    print(result)
+except ZeroDivisionError:
+    print('Cannot divide by zero!')
+```
+
+<br>
+
 ### Q4b
 - Consider the following dictionary of salaries with some missing (`None`) values:
 
@@ -198,10 +341,34 @@ salaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 
 
 - Use a `for` loop with a `try`-`except` block to calculate the total of non-missing salaries.
 
+<br>
+
+
+
+```{python}
+salaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 80000}
+total = 0
+
+for name, salary in salaries.items():
+    try:
+        total += salary
+    except TypeError:
+        continue
+```
+
 <br><br>
 
 ## Question 5
 
 - Import the `math` library and calculate the square root of `81` using the `sqrt()` function provided by the `math` library.
+
+<br>
+
+
+
+```{python}
+import math
+math.sqrt(81)
+```
 
 <br><br>

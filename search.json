@@ -1327,14 +1327,14 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nMarch 3, 2025\n\n\n\n\nHomework 1\n\n\nMarch 2, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nMarch 3, 2025\n\n\n\n\nHomework 1\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "listing-danl-320-hw.html",
     "href": "listing-danl-320-hw.html",
     "title": "DANL 320 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 2, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 3, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "listing-danl-320-lec.html",
@@ -2027,35 +2027,35 @@
     "href": "danl-hw/danl-320-hw-01.html#question-1",
     "title": "Homework 1",
     "section": "Question 1",
-    "text": "Question 1\n\nQ1a\n\nCreate a list of integers from 1 to 10.\nAppend the number 11 to the list and remove the number 5.\n\n\n\n\nQ1b\n\nConsider the following dictionary of three employees and their salaries:\n\ndict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}\n\nAdd a new employee 'Dana' with a salary of 65000.\nUpdate 'Alice'’s salary to 55000.\nPrint all employee names and their salaries."
+    "text": "Question 1\n\nQ1a\n\nCreate a list of integers from 1 to 10.\nAppend the number 11 to the list and remove the number 5.\n\n\nlist_numbers = list(range(1, 11))\nlist_numbers.append(11)\nlist_numbers.remove(5)\n\n\n\n\nQ1b\n\nConsider the following dictionary of three employees and their salaries:\n\ndict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}\n\nAdd a new employee 'Dana' with a salary of 65000.\nUpdate 'Alice'’s salary to 55000.\nPrint all employee names and their salaries.\n\n\n\ndict_salaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000}\ndict_salaries['Dana'] = 65000\ndict_salaries['Alice'] = 55000\n\nfor name, salary in dict_salaries.items():\n    print(name, \":\", salary)\n    \n# An f-string (formatted string literal) is a way to embed expressions \n  # inside string literals using curly braces `{}`.\nfor name, salary in dict_salaries.items():\n    print(f'{name}: {salary}')"
   },
   {
     "objectID": "danl-hw/danl-320-hw-01.html#question-2",
     "href": "danl-hw/danl-320-hw-01.html#question-2",
     "title": "Homework 1",
     "section": "Question 2",
-    "text": "Question 2\n\nQ2a\n\nAssign a variable salary to 75000.\nUse an if-elif-else statement to print:\n\n'Low' if salary is less than 50,000\n'Medium' if salary is between 50,000 and 99,999\n'High' if salary is 100,000 or more\n\n\n\n\n\nQ2b\n\nAssign two variables, role and salary, to 'Manager' and 85000, respectively.\nUse nested if-else statements to print:\n\n'Eligible for bonus' if the role is 'Manager' and the salary is greater than 80,000.\n'Eligible for raise' if the role is 'Analyst' and the salary is less than 60,000.\n'No action needed' for all other cases."
+    "text": "Question 2\n\nQ2a\n\nAssign a variable salary to 75000.\nUse an if-elif-else statement to print:\n\n'Low' if salary is less than 50,000\n'Medium' if salary is between 50,000 and 99,999\n'High' if salary is 100,000 or more\n\n\n\n\nsalary = 75000\nif salary &lt; 50000:\n    print('Low')\nelif 50000 &lt;= salary &lt; 100000:\n    print('Medium')\nelse:\n    print('High')\n\n\n\n\nQ2b\n\nAssign two variables, role and salary, to 'Manager' and 85000, respectively.\nUse nested if-else statements to print:\n\n'Eligible for bonus' if the role is 'Manager' and the salary is greater than 80,000.\n'Eligible for raise' if the role is 'Analyst' and the salary is less than 60,000.\n'No action needed' for all other cases.\n\n\n\n\nrole = 'Manager'\nsalary = 85000\n\nif role == 'Manager':\n    if salary &gt; 80000:\n        print('Eligible for bonus')\n    else:\n        print('No action needed')\nelif role == 'Analyst':\n    if salary &lt; 60000:\n        print('Eligible for raise')\n    else:\n        print('No action needed')\nelse:\n    print('No action needed')"
   },
   {
     "objectID": "danl-hw/danl-320-hw-01.html#question-3",
     "href": "danl-hw/danl-320-hw-01.html#question-3",
     "title": "Homework 1",
     "section": "Question 3",
-    "text": "Question 3\n\nQ3a\n\nConsider the following list of salaries:\n\nlist_salaries = [45000, 60000, 75000, 120000, 30000]\n\nCalculate the average salary.\nUse a for loop to print whether each salary is 'Above Average' or 'Below Average'.\n\n\n\n\nQ3b\n\nStart with a salary of 50000.\nUse a while loop to increase the salary by 5000 each year until it exceeds 80000.\nPrint the salary after each increment.\n\n\n\n\nQ3c\n\nConsider the following dictionary of employee salaries:\n\nsalaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}\n\nUse a for loop to print the names of employees who earn more than 55000.\n\n\n\n\nQ3d\ndata_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}, (4, 5)]\n\nGiven the list above, print the data type of each element using the type() function in a for loop. In the loop:\n\nConvert the integer 42 to a string.\nConvert the float 3.14 to a string, then back to a float.\nConvert the boolean True to an integer."
+    "text": "Question 3\n\nQ3a\n\nConsider the following list of salaries:\n\nlist_salaries = [45000, 60000, 75000, 120000, 30000]\n\nCalculate the average salary.\nUse a for loop to print whether each salary is 'Above Average' or 'Below Average'.\n\n\n\nlist_salaries = [45000, 60000, 75000, 120000, 30000]\naverage_salary = sum(list_salaries) / len(list_salaries)\n\nfor salary in list_salaries:\n    if salary &gt; average_salary:\n        print(f'{salary} is Above Average')\n    else:\n        print(f'{salary} is Below Average')\n\n\n\n\nQ3b\n\nStart with a salary of 50000.\nUse a while loop to increase the salary by 5000 each year until it exceeds 80000.\nPrint the salary after each increment.\n\n\n\nsalary = 50000\nwhile salary &lt;= 80000:\n    print(f'Salary: {salary}')\n    salary += 5000\n\n\n\n\nQ3c\n\nConsider the following dictionary of employee salaries:\n\nsalaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}\n\nUse a for loop to print the names of employees who earn more than 55000.\n\n\n\nsalaries = {'Alice': 50000, 'Bob': 60000, 'Charlie': 70000, 'Dana': 45000}\n\nfor name, salary in salaries.items():\n    if salary &gt; 55000:\n        print(f'{name} earns more than 55000')\n\n\n\n\nQ3d\ndata_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}, (4, 5)]\n\nGiven the list above, print the data type of each element using the type() function in a for loop. In the loop:\n\nConvert the integer 42 to a string.\nConvert the float 3.14 to a string, then back to a float.\nConvert the boolean True to an integer.\n\n\n\n\ndata_list = [42, 3.14, 'Data Analytics', True, None, [1, 2, 3], {'key': 'value'}, (4, 5)]\n\nfor item in data_list:\n    print(f'Original: {item}, Type: {type(item)}')\n    \n    if item == 42:\n        item = str(item)\n        print(f'Converted 42 to string: {item}, Type: {type(item)}')\n    \n    if item == 3.14:\n        item = float(str(item))\n        print(f'Converted \"3.14\" to float: {item}, Type: {type(item)}')\n\n    if item is True:\n        item = int(item)\n        print(f'Converted True to integer: {item}, Type: {type(item)}')"
   },
   {
     "objectID": "danl-hw/danl-320-hw-01.html#question-4",
     "href": "danl-hw/danl-320-hw-01.html#question-4",
     "title": "Homework 1",
     "section": "Question 4",
-    "text": "Question 4\n\nQ4a\nConsider the variables a and b:\na = 10\nb = 0\n\nUse a try-except block to print the result of a / b.\n\nIf there is an error, print 'Cannot divide by zero!'.\n\n\n\n\n\nQ4b\n\nConsider the following dictionary of salaries with some missing (None) values:\n\nsalaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 80000}\n\nUse a for loop with a try-except block to calculate the total of non-missing salaries."
+    "text": "Question 4\n\nQ4a\nConsider the variables a and b:\na = 10\nb = 0\n\nUse a try-except block to print the result of a / b.\n\nIf there is an error, print 'Cannot divide by zero!'.\n\n\n\n\na = 10\nb = 0\n\ntry:\n    result = a / b\n    print(result)\nexcept ZeroDivisionError:\n    print('Cannot divide by zero!')\n\n\n\n\nQ4b\n\nConsider the following dictionary of salaries with some missing (None) values:\n\nsalaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 80000}\n\nUse a for loop with a try-except block to calculate the total of non-missing salaries.\n\n\n\nsalaries = {'Alice': 50000, 'Bob': None, 'Charlie': 70000, 'Dana': None, 'Eve': 80000}\ntotal = 0\n\nfor name, salary in salaries.items():\n    try:\n        total += salary\n    except TypeError:\n        continue"
   },
   {
     "objectID": "danl-hw/danl-320-hw-01.html#question-5",
     "href": "danl-hw/danl-320-hw-01.html#question-5",
     "title": "Homework 1",
     "section": "Question 5",
-    "text": "Question 5\n\nImport the math library and calculate the square root of 81 using the sqrt() function provided by the math library."
+    "text": "Question 5\n\nImport the math library and calculate the square root of 81 using the sqrt() function provided by the math library.\n\n\n\nimport math\nmath.sqrt(81)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-03-2025-0129.html#list-comprehension",
@@ -4414,7 +4414,7 @@
     "href": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-6",
     "title": "Lecture 7",
     "section": "Log-Log Linear Regression",
-    "text": "Log-Log Linear Regression\nEDA\n\nDescribe the relationship between log(price) and log(sales) by brand.\n\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\noj['log_price'] = oj['price'].apply(lambda x: np.log(x))\noj['log_sales'] = oj['sales'].apply(lambda x: np.log(x))\n\nsns.lmplot(\n    x='log_price', \n    y='log_sales', \n    hue='brand',     # color by brand\n    data=oj, \n    aspect=1.2, \n    height=5,\n    markers=[\"o\", \"s\", \"D\"],  # optional: different markers per brand\n    scatter_kws={'alpha': 0.025},  # Pass alpha to the scatter plot\n    legend=True\n)"
+    "text": "Log-Log Linear Regression\nEDA\n\nDescribe the relationship between log(price) and log(sales) by brand.\n\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\noj['log_price'] = oj['price'].apply(lambda x: np.log(x))\noj['log_sales'] = oj['sales'].apply(lambda x: np.log(x))\n\nsns.lmplot(\n    x='log_price', \n    y='log_sales', \n    hue='brand',     # color by brand\n    data=oj, \n    aspect=1.2, \n    height=5,\n    markers=[\"o\", \"s\", \"D\"],  # optional: different markers per brand\n    scatter_kws={'alpha': 0.025},  # Pass alpha to the scatter plot\n    legend=True\n)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-07-2025-0217.html#log-log-linear-regression-7",
