@@ -1,0 +1,252 @@
+---
+title: Homework 2
+subtitle: Linear Regression; Jupyter Notebook Blogging
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Direction
+
+- Please submit your **Jupyter Notebook** for **Part 1 in Homework 2** to Brightspace with the name below:
+
+  - `danl-320-hw2-LASTNAME-FIRSTNAME.ipynb`\
+  ( e.g., `danl-320-hw2-choe-byeonghak.ipynb` )
+
+- The due is March 24, 2025, 3:15 P.M.
+  - It is recommended to finish it before the Spring Break begins.
+
+- Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
+
+<br><br><br>
+
+
+
+
+# Part 1. Linear Regression
+
+Consider the `beer_markets`
+```{.python}
+beer_markets = pd.read_csv(
+  'https://bcdanl.github.io/data/beer_markets_all.csv'
+)
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/beer_markets_all.csv'))
+```
+
+
+<br>
+
+## Variable Description
+
+| Variable Name           | Description |
+|-------------------------|-------------|
+| `household`              | Unique identifier for household |
+| `X_purchase_desc`        | Description of beer purchase |
+| `quantity`               | Number of beer packages purchased |
+| `brand`                  | Brand of beer purchased |
+| `dollar_spent`           | Total amount spent on the purchase |
+| `beer_floz`              | Total volume of beer purchased (in fluid ounces) |
+| `price_floz`             | Price per fluid ounce of beer |
+| `container`              | Type of beer container (e.g., CAN, BOTTLE) |
+| `promo`                  | Indicates if the purchase was part of a promotion (True/False) |
+| `region`                 | Geographic region of purchase |
+| `marital`                | Marital status of household head |
+| `income`                 | Income level of the household |
+| `age`                    | Age group of household head |
+| `employment`             | Employment status of household head |
+| `degree`                 | Education level of household head |
+| `occupation`             | Occupation category of household head |
+| `ethnic`                 | Ethnicity of household head |
+| `microwave`              | Indicates if the household owns a microwave (True/False) |
+| `dishwasher`             | Indicates if the household owns a dishwasher (True/False) |
+| `tvcable`                | Type of television subscription (e.g., basic, premium) |
+| `singlefamilyhome`       | Indicates if the household is a single-family home (True/False) |
+| `npeople`                | Number of people in the household |
+
+<br>
+
+<br><br>
+
+## Question 1
+Create the DataFrame that keeps all the observations  whose value of `container` is either 'CAN' or 'NON REFILLABLE BOTTLE' in the `beer_markets` DataFrame.
+
+<br>
+
+## Question 2
+Split the resulting data.frame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame.
+
+
+<br>
+
+
+## Questions 3-8
+Consider the following three linear regression models:
+
+### Model 1
+
+$$
+\begin{aligned}
+\log(\text{price\_per\_floz}) = &\ \beta_{0} + \sum_{i=1}^{N} \beta_{i} \,\text{market}_{i} + \sum_{j=N+1}^{N+4} \beta_{j} \,\text{brand}_{j}
++ \beta_{N+5} \,\text{container\_CAN} \\ 
+&\,+\, \beta_{N+6} \log(\text{beer\_floz}) + \epsilon
+\end{aligned}
+$$
+
+### Model 2
+
+$$
+\begin{aligned}
+\log(\text{price\_per\_floz}) \,=\, & \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container\_CAN} \\
+&\,+\, \beta_{N+6}\log(\text{beer\_floz})\\
+&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
+&\,+\, \epsilon
+\end{aligned}
+$$
+
+
+### Model 3
+
+$$
+\begin{aligned}
+\log(\text{price\_per\_floz}) \,=\, & \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container\_CAN} \\
+&\,+\, \beta_{N+6}\log(\text{beer\_floz})\\
+&\,+\, \beta_{N+7}\,\text{promo} \times\log(\text{beer\_floz}) \\
+&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
+&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\\
+&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer\_floz})\\
+&\,+\, \epsilon
+\end{aligned}
+$$
+
+- Set "**BUD LIGHT**" as the reference level for $\text{brand}$. 
+- Set "**BUFFALO-ROCHESTER**" as the reference level for $\text{market}$. 
+
+<br><br>
+
+
+
+
+### Question 3
+Provide intuition behind each of the model.
+
+
+<br><br>
+
+
+### Question 4
+- Train each of the three linear regression models using the training DataFrame from Question 2.
+  - Provide the summary of the result for each linear regression model.
+  - What are the predicted beer prices for unseen data from each model?
+
+<br><br>
+
+### Question 5
+- Interpret the beta estimates of the following variables from the Model 3:
+  1. `market_ALBANY`
+  2. `market_EXURBAN NY`
+  3. `market_RURAL NEW YORK`
+  4. `market_SURBURBAN NY`
+  5. `market_SYRACUSE`
+  6. `market_URBAN NY`
+
+<br><br>
+
+
+### Question 6
+- Across the three models, how is the percentage change in the price of beer sensitive to the percentage change in the volume of beer purchases for each brand? 
+
+- How does `promo` affect such sensitivity in the Model 3?
+
+
+<br><br>
+
+### Question 7
+- Draw a residual plot from each of the three models.
+  - On average, are the prediction correct? Are there systematic errors?
+
+
+<br><br>
+
+
+### Question 8
+Which model do you prefer most and why?
+
+<br><br>
+
+
+
+
+# Part 2. Jupyter Notebook Blogging
+
+Use the following data.frame for Quarto Blogging:
+
+<br>
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/ben-jerry-ice-cream.png" width="600px">
+</p>
+
+<br>
+
+
+```{r}
+ice_cream <- read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv')
+```
+
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+
+rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv'),
+                       options = list(rows.print = 25))
+```
+
+<br>
+
+## Variable Description
+
+| Variable Name                  | Description |
+|--------------------------------|-------------|
+| `quantity`                       | Number of items purchased |
+| `price_paid_deal`                | Price paid under a deal (discounted price) |
+| `price_paid_non_deal`            | Price paid without a deal (regular price) |
+| `coupon_value`                   | Value of any coupon used |
+| `promotion_type`                 | Type of promotion applied |
+| `total_spent`                    | Total amount spent on purchase |
+| `size1_descr`                    | Description of product size (e.g., 16.0 MLOZ) |
+| `flavor_descr`                   | Flavor description of the product |
+| `formula_descr`                   | Type of product formula (e.g., Regular) |
+| `household_id`                    | Unique identifier for household |
+| `projection_factor`               | Weighting factor for data projection |
+| `fips_state_code`                 | FIPS state code for location |
+| `fips_county_code`                | FIPS county code for location |
+| `census_tract_county_code`        | Census tract code within the county |
+| `type_of_residence`               | Type of housing/residence |
+| `kitchen_appliances`              | Number of kitchen appliances owned |
+| `tv_items`                        | Number of televisions in the household |
+| `female_head_birth`               | Birthdate of female head of household (if applicable) |
+| `male_head_birth`                 | Birthdate of male head of household (if applicable) |
+| `household_internet_connection`   | Type of household internet connection |
+
+
+
+<br>
+
+
+- Write a blog post about **Ben and Jerry's ice cream** in the `ice_cream` data.frame using Jupyter Notebook, and add it to your online blog.
+  - In your blog post, provide your linear regression model, as well as descriptive statistics, counting, filtering, and various group operations.
+  - Optionally, provide `seaborn` visualizations.
+  
+<br>
+
+

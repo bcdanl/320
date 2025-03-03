@@ -20,6 +20,19 @@ execute:
 
 <br><br><br>
 
+# Descriptive Statistics
+
+The following provides the descriptive statistics for each part of Homework 1:
+
+```{r}
+#| echo: false
+#| eval: true
+sum <- readr::read_csv("https://bcdanl.github.io/data/spring-2025-danl-320-hw1-stat.csv")
+DT::datatable(sum, options = list(pageLength = nrow(sum)))
+```
+
+<br>
+
 
 # Part 1. Quarto Website
 
