@@ -121,13 +121,14 @@ $$
 &\,+\, \beta_{N+7}\,\text{promo} \times\log(\text{beer\_floz}) \\
 &\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
 &\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\\
-&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer\_floz})\\
+&\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}\times\text{beer\_floz}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer\_floz})\\
 &\,+\, \epsilon
 \end{aligned}
 $$
 
-- Set "**BUD LIGHT**" as the reference level for $\text{brand}$. 
-- Set "**BUFFALO-ROCHESTER**" as the reference level for $\text{market}$. 
+- Set "**BUD LIGHT**" as the reference level for the $\text{brand}$ variable.
+- Set "**BUFFALO-ROCHESTER**" as the reference level for the $\text{market}$ variable.. 
+  - There are $N+1$ distinct categories in the $\text{market}$ variable.
 
 <br><br>
 
