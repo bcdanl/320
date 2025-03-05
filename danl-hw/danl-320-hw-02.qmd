@@ -198,8 +198,8 @@ Use the following data.frame for Quarto Blogging:
 <br>
 
 
-```{r}
-ice_cream <- read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv')
+```{.python}
+ice_cream = pd.read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv')
 ```
 
 

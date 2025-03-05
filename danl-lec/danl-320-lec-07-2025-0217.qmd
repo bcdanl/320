@@ -432,10 +432,18 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/unifpdf.png")
 ### Step 1. Importing Modules and Reading DataFrames
 ```{.python}
 import pandas as pd
+import numpy as np
+from tabulate import tabulate  # for table summary
+import scipy.stats as stats
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm  # for lowess smoothing
+
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import rand, col, pow, mean, when
+from pyspark.sql.functions import rand, col, pow, mean, avg, when, log, sqrt
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.regression import LinearRegression
+
 spark = SparkSession.builder.master("local[*]").getOrCreate()
 
 # 1. Read CSV data from URL
@@ -549,10 +557,6 @@ model1.summary.r2
 ### Make the Summary Pretty
 
 ```{.python}
-import numpy as np
-import scipy.stats as stats
-from tabulate import tabulate
-
 def regression_table(model, assembler):
     """
     Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,
@@ -561,24 +565,34 @@ def regression_table(model, assembler):
     and an "Observations" row (using model.summary.numInstances) above the R² row.
     The RMSE row is placed as the last row.
 
-    The columns are ordered as:
-        Metric | Value | Significance | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+    If the model’s labelCol (retrieved using getLabelCol()) starts with "log", an extra column showing np.exp(coeff)
+    is added immediately after the beta estimate column for predictor rows. However, if the predictor's name includes "log_",
+    the Exp(Beta) cell is left blank.
 
-    For the "Value", "Std. Error", "95% CI Lower", and "95% CI Upper" columns, commas are inserted every three digits,
-    with 3 decimal places (except for Observations which is formatted as an integer with commas).
+    When labelCol starts with "log", the columns are ordered as:
+        y: [label] | Beta | Exp(Beta) | Sig. | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+
+    Otherwise, the columns are:
+        y: [label] | Beta | Sig. | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+
+    For the numeric columns, commas are inserted every three digits with 3 decimal places 
+    (except for Observations which is formatted as an integer with commas).
 
     Parameters:
-        model: A fitted LinearRegression model (with a .summary attribute).
+        model: A fitted LinearRegression model (with a .summary attribute and a labelCol).
         assembler: The VectorAssembler used to assemble the features for the model.
 
     Returns:
         A formatted string containing the regression table.
     """
-    # Extract coefficients and standard errors as NumPy arrays
+    # Determine if we should display exponential values for coefficients.
+    is_log = model.getLabelCol().lower().startswith("log")
+
+    # Extract coefficients and standard errors as NumPy arrays.
     coeffs = model.coefficients.toArray()
     std_errors_all = np.array(model.summary.coefficientStandardErrors)
 
-    # Check if the intercept's standard error is included (one extra element)
+    # Check if the intercept's standard error is included (one extra element).
     if len(std_errors_all) == len(coeffs) + 1:
         intercept_se = std_errors_all[0]
         std_errors = std_errors_all[1:]
@@ -586,21 +600,13 @@ def regression_table(model, assembler):
         intercept_se = None
         std_errors = std_errors_all
 
-    # Compute t-statistics for feature coefficients (t = beta / SE(beta))
-    # t_stats = coeffs / std_errors
+    # Use provided tValues and pValues.
     t_stats = model.summary.tValues
-
-    # Degrees of freedom: number of instances minus number of predictors minus 1 (for intercept)
     df = model.summary.numInstances - len(coeffs) - 1
-
-    # Compute the t-critical value for a 95% confidence interval (two-tailed, 5% significance)
     t_critical = stats.t.ppf(0.975, df)
-
-    # Compute two-tailed p-values for each feature coefficient
-    # p_values = [2 * (1 - stats.t.cdf(np.abs(t), df)) for t in t_stats]
     p_values = model.summary.pValues
 
-    # Function to assign significance stars based on p-value
+    # Helper: significance stars.
     def significance_stars(p):
         if p < 0.01:
             return "***"
@@ -611,23 +617,39 @@ def regression_table(model, assembler):
         else:
             return ""
 
-    # Build the table rows.
-    # Order: Metric, Value, Significance, Std. Error, p-value, 95% CI Lower, 95% CI Upper.
+    # Build table rows for each feature.
     table = []
     for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
         ci_lower = beta - t_critical * se
         ci_upper = beta + t_critical * se
-        table.append([
-            "Beta: " + feature,       # Metric name
-            beta,                     # Beta estimate (Value)
-            significance_stars(p),    # Significance stars
-            se,                       # Standard error
-            p,                        # p-value
-            ci_lower,                 # 95% CI lower bound
-            ci_upper                  # 95% CI upper bound
-        ])
+        if is_log:
+            # For predictors, if the predictor's name includes "log_" (case-insensitive), do not compute np.exp(beta).
+            if "log_" in feature.lower():
+                exp_beta = ""
+            else:
+                exp_beta = np.exp(beta)
+            table.append([
+                feature,            # Predictor name
+                beta,               # Beta estimate
+                exp_beta,           # Exponential of beta (or blank)
+                significance_stars(p),
+                se,
+                p,
+                ci_lower,
+                ci_upper
+            ])
+        else:
+            table.append([
+                feature,
+                beta,
+                significance_stars(p),
+                se,
+                p,
+                ci_lower,
+                ci_upper
+            ])
 
-    # Compute and add the intercept row with its SE, p-value, significance, and CI (if available)
+    # Process intercept.
     if intercept_se is not None:
         intercept_t = model.intercept / intercept_se
         intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))
@@ -635,60 +657,89 @@ def regression_table(model, assembler):
         ci_intercept_lower = model.intercept - t_critical * intercept_se
         ci_intercept_upper = model.intercept + t_critical * intercept_se
     else:
-        intercept_se = ""
-        intercept_p = ""
         intercept_sig = ""
+        intercept_p = ""
         ci_intercept_lower = ""
         ci_intercept_upper = ""
+        intercept_se = ""
 
-    table.append([
-        "Intercept",
-        model.intercept,
-        intercept_sig,
-        intercept_se,
-        intercept_p,
-        ci_intercept_lower,
-        ci_intercept_upper
-    ])
+    if is_log:
+        table.append([
+            "Intercept",
+            model.intercept,
+            "",                    # Removed np.exp(model.intercept)
+            intercept_sig,
+            intercept_se,
+            intercept_p,
+            ci_intercept_lower,
+            ci_intercept_upper
+        ])
+    else:
+        table.append([
+            "Intercept",
+            model.intercept,
+            intercept_sig,
+            intercept_se,
+            intercept_p,
+            ci_intercept_lower,
+            ci_intercept_upper
+        ])
 
-    # Append overall model metrics:
-    # Insert an Observations row using model.summary.numInstances,
-    # then an R² row, and finally the RMSE row as the last row.
-    table.append(["Observations", model.summary.numInstances, "", "", "", "", ""])
-    table.append(["R²", model.summary.r2, "", "", "", "", ""])
-    table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
+    # Append overall model metrics.
+    if is_log:
+        table.append(["Observations", model.summary.numInstances, "", "", "", "", "", ""])
+        table.append(["R²", model.summary.r2, "", "", "", "", "", ""])
+        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", "", ""])
+    else:
+        table.append(["Observations", model.summary.numInstances, "", "", "", "", ""])
+        table.append(["R²", model.summary.r2, "", "", "", "", ""])
+        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
 
-    # Format the table.
-    # For the "Value" (index 1), "Std. Error" (index 3), "95% CI Lower" (index 5), and "95% CI Upper" (index 6) columns,
-    # format with commas and 3 decimal places, except for Observations which should be an integer with commas.
-    # For the p-value (index 4), format to 3 decimal places.
+    # Format the table rows.
     formatted_table = []
     for row in table:
         formatted_row = []
         for i, item in enumerate(row):
+            # For Observations, format as integer with commas.
             if row[0] == "Observations" and i == 1 and isinstance(item, (int, float, np.floating)) and item != "":
-                # Format Observations as integer with commas, no decimals.
                 formatted_row.append(f"{int(item):,}")
             elif isinstance(item, (int, float, np.floating)) and item != "":
-                if i in [1, 3, 5, 6]:
-                    formatted_row.append(f"{item:,.3f}")
-                elif i == 4:
-                    formatted_row.append(f"{item:.3f}")
+                if is_log:
+                    # When is_log, columns: 0:Metric, 1:Beta, 2:Exp(Beta), 3:Sig, 4:Std. Error, 5:p-value, 6:95% CI Lower, 7:95% CI Upper.
+                    if i in [1, 2, 4, 6, 7]:
+                        formatted_row.append(f"{item:,.3f}")
+                    elif i == 5:
+                        formatted_row.append(f"{item:.3f}")
+                    else:
+                        formatted_row.append(f"{item:.3f}")
                 else:
-                    formatted_row.append(f"{item:.3f}")
+                    # When not is_log, columns: 0:Metric, 1:Beta, 2:Sig, 3:Std. Error, 4:p-value, 5:95% CI Lower, 6:95% CI Upper.
+                    if i in [1, 3, 5, 6]:
+                        formatted_row.append(f"{item:,.3f}")
+                    elif i == 4:
+                        formatted_row.append(f"{item:.3f}")
+                    else:
+                        formatted_row.append(f"{item:.3f}")
             else:
                 formatted_row.append(item)
         formatted_table.append(formatted_row)
 
-    # Generate the table string using tabulate.
+    # Set header and column alignment based on whether label starts with "log"
+    if is_log:
+        headers = [f"y: {model.getLabelCol()}", "Beta", "Exp(Beta)", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"]
+        colalign = ("left", "right", "right", "center", "right", "right", "right", "right")
+    else:
+        headers = [f"y: {model.getLabelCol()}", "Beta", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"]
+        colalign = ("left", "right", "center", "right", "right", "right", "right")
+
     table_str = tabulate(
         formatted_table,
-        headers=["Metric", "Value", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"],
+        headers=headers,
         tablefmt="pretty",
-        colalign=("left", "right", "center", "right", "right", "right", "right")
+        colalign=colalign
     )
 
-    # Insert a dashed line after the Intercept row for clarity.
+    # Insert a dashed line after the Intercept row.
     lines = table_str.split("\n")
     dash_line = '-' * len(lines[0])
     for i, line in enumerate(lines):
@@ -699,7 +750,7 @@ def regression_table(model, assembler):
     return "\n".join(lines)
 
 # Example usage:
-# print(regression_table(lr_model, assembler))
+# print(regression_table(model_1, assembler_1))
 ```
 
 
@@ -1699,7 +1750,7 @@ Variable  | Description
 
 - Let's prepare the OJ data:
 ```{.python}
-oj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj.csv')
+oj = pd.read_csv('https://bcdanl.github.io/data/dominick_oj_feat.csv')
 ```
 
 
