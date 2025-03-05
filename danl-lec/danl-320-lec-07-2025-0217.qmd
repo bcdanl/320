@@ -559,24 +559,18 @@ model1.summary.r2
 ```{.python}
 def regression_table(model, assembler):
     """
-    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler,
-    and inserts a dashed horizontal line after the Intercept row. The table includes separate columns
-    for the 95% confidence interval lower and upper bounds for each coefficient (computed at the 5% significance level)
-    and an "Observations" row (using model.summary.numInstances) above the R² row.
-    The RMSE row is placed as the last row.
+    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler.
 
     If the model’s labelCol (retrieved using getLabelCol()) starts with "log", an extra column showing np.exp(coeff)
-    is added immediately after the beta estimate column for predictor rows. However, if the predictor's name includes "log_",
-    the Exp(Beta) cell is left blank.
+    is added immediately after the beta estimate column for predictor rows. Additionally, np.exp() of the 95% CI
+    Lower and Upper bounds is also added unless the predictor's name includes "log_". The Intercept row does not
+    include exponentiated values.
 
     When labelCol starts with "log", the columns are ordered as:
-        y: [label] | Beta | Exp(Beta) | Sig. | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+        y: [label] | Beta | Exp(Beta) | Sig. | Std. Error | p-value | 95% CI Lower | Exp(95% CI Lower) | 95% CI Upper | Exp(95% CI Upper)
 
     Otherwise, the columns are:
         y: [label] | Beta | Sig. | Std. Error | p-value | 95% CI Lower | 95% CI Upper
-
-    For the numeric columns, commas are inserted every three digits with 3 decimal places 
-    (except for Observations which is formatted as an integer with commas).
 
     Parameters:
         model: A fitted LinearRegression model (with a .summary attribute and a labelCol).
@@ -601,7 +595,6 @@ def regression_table(model, assembler):
         std_errors = std_errors_all
 
     # Use provided tValues and pValues.
-    t_stats = model.summary.tValues
     df = model.summary.numInstances - len(coeffs) - 1
     t_critical = stats.t.ppf(0.975, df)
     p_values = model.summary.pValues
@@ -622,12 +615,15 @@ def regression_table(model, assembler):
     for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
         ci_lower = beta - t_critical * se
         ci_upper = beta + t_critical * se
+
+        # Check if predictor contains "log_" to determine if exponentiation should be applied
+        apply_exp = is_log and "log_" not in feature.lower()
+
+        exp_beta = np.exp(beta) if apply_exp else ""
+        exp_ci_lower = np.exp(ci_lower) if apply_exp else ""
+        exp_ci_upper = np.exp(ci_upper) if apply_exp else ""
+
         if is_log:
-            # For predictors, if the predictor's name includes "log_" (case-insensitive), do not compute np.exp(beta).
-            if "log_" in feature.lower():
-                exp_beta = ""
-            else:
-                exp_beta = np.exp(beta)
             table.append([
                 feature,            # Predictor name
                 beta,               # Beta estimate
@@ -636,7 +632,9 @@ def regression_table(model, assembler):
                 se,
                 p,
                 ci_lower,
-                ci_upper
+                exp_ci_lower,       # Exponential of 95% CI lower bound
+                ci_upper,
+                exp_ci_upper        # Exponential of 95% CI upper bound
             ])
         else:
             table.append([
@@ -651,14 +649,12 @@ def regression_table(model, assembler):
 
     # Process intercept.
     if intercept_se is not None:
-        intercept_t = model.intercept / intercept_se
-        intercept_p = 2 * (1 - stats.t.cdf(np.abs(intercept_t), df))
+        intercept_p = model.summary.pValues[0] if model.summary.pValues is not None else None
         intercept_sig = significance_stars(intercept_p)
         ci_intercept_lower = model.intercept - t_critical * intercept_se
         ci_intercept_upper = model.intercept + t_critical * intercept_se
     else:
         intercept_sig = ""
-        intercept_p = ""
         ci_intercept_lower = ""
         ci_intercept_upper = ""
         intercept_se = ""
@@ -670,9 +666,11 @@ def regression_table(model, assembler):
             "",                    # Removed np.exp(model.intercept)
             intercept_sig,
             intercept_se,
-            intercept_p,
+            "",
             ci_intercept_lower,
-            ci_intercept_upper
+            "",
+            ci_intercept_upper,
+            ""
         ])
     else:
         table.append([
@@ -680,16 +678,16 @@ def regression_table(model, assembler):
             model.intercept,
             intercept_sig,
             intercept_se,
-            intercept_p,
+            "",
             ci_intercept_lower,
             ci_intercept_upper
         ])
 
     # Append overall model metrics.
     if is_log:
-        table.append(["Observations", model.summary.numInstances, "", "", "", "", "", ""])
-        table.append(["R²", model.summary.r2, "", "", "", "", "", ""])
-        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", "", ""])
+        table.append(["Observations", model.summary.numInstances, "", "", "", "", "", "", "", ""])
+        table.append(["R²", model.summary.r2, "", "", "", "", "", "", "", ""])
+        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", "", "", "", ""])
     else:
         table.append(["Observations", model.summary.numInstances, "", "", "", "", ""])
         table.append(["R²", model.summary.r2, "", "", "", "", ""])
@@ -700,20 +698,23 @@ def regression_table(model, assembler):
     for row in table:
         formatted_row = []
         for i, item in enumerate(row):
-            # For Observations, format as integer with commas.
+            # Format Observations as integer with commas.
             if row[0] == "Observations" and i == 1 and isinstance(item, (int, float, np.floating)) and item != "":
                 formatted_row.append(f"{int(item):,}")
             elif isinstance(item, (int, float, np.floating)) and item != "":
                 if is_log:
-                    # When is_log, columns: 0:Metric, 1:Beta, 2:Exp(Beta), 3:Sig, 4:Std. Error, 5:p-value, 6:95% CI Lower, 7:95% CI Upper.
-                    if i in [1, 2, 4, 6, 7]:
+                    # When is_log, the columns are:
+                    # 0: Metric, 1: Beta, 2: Exp(Beta), 3: Sig, 4: Std. Error, 5: p-value,
+                    # 6: 95% CI Lower, 7: Exp(95% CI Lower), 8: 95% CI Upper, 9: Exp(95% CI Upper).
+                    if i in [1, 2, 4, 6, 7, 8, 9]:
                         formatted_row.append(f"{item:,.3f}")
                     elif i == 5:
                         formatted_row.append(f"{item:.3f}")
                     else:
                         formatted_row.append(f"{item:.3f}")
                 else:
-                    # When not is_log, columns: 0:Metric, 1:Beta, 2:Sig, 3:Std. Error, 4:p-value, 5:95% CI Lower, 6:95% CI Upper.
+                    # When not is_log, the columns are:
+                    # 0: Metric, 1: Beta, 2: Sig, 3: Std. Error, 4: p-value, 5: 95% CI Lower, 6: 95% CI Upper.
                     if i in [1, 3, 5, 6]:
                         formatted_row.append(f"{item:,.3f}")
                     elif i == 4:
@@ -726,8 +727,12 @@ def regression_table(model, assembler):
 
     # Set header and column alignment based on whether label starts with "log"
     if is_log:
-        headers = [f"y: {model.getLabelCol()}", "Beta", "Exp(Beta)", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"]
-        colalign = ("left", "right", "right", "center", "right", "right", "right", "right")
+        headers = [
+            f"y: {model.getLabelCol()}",
+            "Beta", "Exp(Beta)", "Sig.", "Std. Error", "p-value",
+            "95% CI Lower", "Exp(95% CI Lower)", "95% CI Upper", "Exp(95% CI Upper)"
+        ]
+        colalign = ("left", "right", "right", "center", "right", "right", "right", "right", "right", "right")
     else:
         headers = [f"y: {model.getLabelCol()}", "Beta", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"]
         colalign = ("left", "right", "center", "right", "right", "right", "right")
