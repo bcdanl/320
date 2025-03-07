@@ -1327,14 +1327,14 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nMarch 5, 2025\n\n\n\n\nHomework 1\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nMarch 6, 2025\n\n\n\n\nHomework 1\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "listing-danl-320-hw.html",
     "href": "listing-danl-320-hw.html",
     "title": "DANL 320 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 3, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 3, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 6, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "listing-danl-320-lec.html",
@@ -4533,7 +4533,7 @@
     "href": "danl-hw/danl-320-hw-02.html#question-2",
     "title": "Homework 2",
     "section": "Question 2",
-    "text": "Question 2\nSplit the resulting data.frame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame."
+    "text": "Question 2\nSplit the resulting DataFrame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame."
   },
   {
     "objectID": "danl-hw/danl-320-hw-02.html#questions-3-",

@@ -29,7 +29,7 @@ execute:
 Consider the `beer_markets`
 ```{.python}
 beer_markets = pd.read_csv(
-  'https://bcdanl.github.io/data/beer_markets_all.csv'
+  'https://bcdanl.github.io/data/beer_markets_all_cleaned.csv'
 )
 ```
 
@@ -38,7 +38,7 @@ beer_markets = pd.read_csv(
 #| echo: false
 #| eval: true
 
-DT::datatable(readr::read_csv('https://bcdanl.github.io/data/beer_markets_all.csv'))
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/beer_markets_all_cleaned.csv'))
 ```
 
 
@@ -81,7 +81,7 @@ Create the DataFrame that keeps all the observations  whose value of `container`
 <br>
 
 ## Question 2
-Split the resulting data.frame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame.
+Split the resulting DataFrame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame.
 
 
 <br>
