@@ -126,7 +126,7 @@ $$
 \end{aligned}
 $$
 
-- Set "**BUD LIGHT**" as the reference level for the $\text{brand}$ variable.
+- Set "**BUD_LIGHT**" as the reference level for the $\text{brand}$ variable.
 - Set "**BUFFALO-ROCHESTER**" as the reference level for the $\text{market}$ variable.. 
   - There are $N+1$ distinct categories in the $\text{market}$ variable.
 
@@ -152,11 +152,11 @@ Provide intuition behind each of the model.
 ### Question 5
 - Interpret the beta estimates of the following variables from the Model 3:
   1. `market_ALBANY`
-  2. `market_EXURBAN NY`
-  3. `market_RURAL NEW YORK`
-  4. `market_SURBURBAN NY`
+  2. `market_EXURBAN_NY`
+  3. `market_RURAL_NEW_YORK`
+  4. `market_SURBURBAN_NY`
   5. `market_SYRACUSE`
-  6. `market_URBAN NY`
+  6. `market_URBAN_NY`
 
 <br><br>
 
