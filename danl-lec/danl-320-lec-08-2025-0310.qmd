@@ -166,14 +166,16 @@ $$
 
 ## What is the Logistic Regression doing?
 
+:::{.nonincremental}
 - Logistic regression can be expressed as linear regression of log odds of $y_{i} = 1$ on predictors $x_1, x_2, \cdots, x_k$:
 
+:::
 
 $$
 \begin{align}
 \text{Prob}(y_{i} = 1) &\,=\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i} )\\
 \text{ }\\
-\log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
+\Leftrightarrow\qquad \log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
 \end{align}
 $$
 

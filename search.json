@@ -5051,7 +5051,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-2",
     "title": "Lecture 8",
     "section": "What is the Logistic Regression doing?",
-    "text": "What is the Logistic Regression doing?\n\nLogistic regression can be expressed as linear regression of log odds of \\(y_{i} = 1\\) on predictors \\(x_1, x_2, \\cdots, x_k\\):\n\n\\[\n\\begin{align}\n\\text{Prob}(y_{i} = 1) &\\,=\\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i} )\\\\\n\\text{ }\\\\\n\\log\\left(\\dfrac{\\text{Prob}( y_i = 1 )}{\\text{Prob}( y_i = 0 )}\\right) &\\,=\\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i}\n\\end{align}\n\\]"
+    "text": "What is the Logistic Regression doing?\n\n\nLogistic regression can be expressed as linear regression of log odds of \\(y_{i} = 1\\) on predictors \\(x_1, x_2, \\cdots, x_k\\):\n\n\n\\[\n\\begin{align}\n\\text{Prob}(y_{i} = 1) &\\,=\\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i} )\\\\\n\\text{ }\\\\\n\\Leftrightarrow\\qquad \\log\\left(\\dfrac{\\text{Prob}( y_i = 1 )}{\\text{Prob}( y_i = 0 )}\\right) &\\,=\\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i}\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-in-pyspark",

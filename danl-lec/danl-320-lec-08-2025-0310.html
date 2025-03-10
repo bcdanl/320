@@ -495,14 +495,16 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </section>
 <section id="what-is-the-logistic-regression-doing-2" class="slide level2">
 <h2>What is the Logistic Regression doing?</h2>
+<div>
 <ul>
-<li class="fragment">Logistic regression can be expressed as linear regression of log odds of <span class="math inline">\(y_{i} = 1\)</span> on predictors <span class="math inline">\(x_1, x_2, \cdots, x_k\)</span>:</li>
+<li>Logistic regression can be expressed as linear regression of log odds of <span class="math inline">\(y_{i} = 1\)</span> on predictors <span class="math inline">\(x_1, x_2, \cdots, x_k\)</span>:</li>
 </ul>
+</div>
 <p><span class="math display">\[
 \begin{align}
 \text{Prob}(y_{i} = 1) &amp;\,=\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i} )\\
 \text{ }\\
-\log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &amp;\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
+\Leftrightarrow\qquad \log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &amp;\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
 \end{align}
 \]</span></p>
 </section>
