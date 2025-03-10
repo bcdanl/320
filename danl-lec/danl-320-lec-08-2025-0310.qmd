@@ -1,0 +1,840 @@
+---
+title: Lecture 8
+subtitle: Logistic Regression
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: true
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-03-10
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(stargazer)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+# **Logistic Regression** {background-color="#1c4982"}
+
+
+
+## Motivation
+
+- Suppose we want to know how much the flight’s origin/destination, weather, and air carrier affect  *the probability that a flight will be delayed*. 
+- Suppose we also want to predict *whether or not a flight will be delayed*, based on facts like the flight’s origin/destination, weather, and air carrier. 
+- For every flight $\texttt{i}$, you want to predict $\texttt{flight_delayed[i]}$, a binary variable ( $\texttt{TRUE}$ or $\texttt{FALSE}$), based on $\texttt{origin[i]}$, $\texttt{destination[i]}$, $\texttt{weather[i]}$, and $\texttt{air_carrier[i]}$.
+
+
+
+
+## Motivation
+
+:::{.nonincremental}
+- The logistic regression model for the probability that a flight will be delayed is formulated as:
+$$
+\begin{align}
+&\quad\texttt{ Prob( flight_delayed[i] == TRUE ) } \\[.5em] 
+&=\, \texttt{G( b$_{\texttt{0}}$ + b$_{\texttt{origin}}$*origin[i]  }\\
+&\qquad\quad\, + \texttt{b$_{\texttt{destination}}$*destination[i]  }\\
+&\qquad\quad\, + \texttt{b$_{\texttt{weather}}$*weather[i]  }\\
+&\qquad\quad\, + \texttt{b$_{\texttt{air\_carrier}}$*air_carrier[i] )}.
+\end{align}
+$$
+
+
+<!-- - $\texttt{Prob( flight_delayed[i] == TRUE )}$: Probability that a flight is delayed. -->
+- $G(z_i)$: the logistic function
+
+<div style="display:block; margin:-20px;"></div>
+
+$$
+\begin{align}
+\texttt{G(z[i]) = } \dfrac{\texttt{exp(z[i])}}{\texttt{1 + exp(z[i])}}.\notag
+\end{align}
+$$
+
+:::
+
+
+
+
+
+## Properties of the Logistic Function
+
+- The logistic function $G(z_i)$ maps the linear combination of predictors to the probability that the outcome $y_{i}$ is $\texttt{TRUE}$.
+
+- $z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i}$
+- $z_{i} \overset{G}{\rightarrow} \texttt{ Prob} ( y_{i} = 1 )$
+
+
+
+
+
+
+
+
+
+## Properties of the Logistic Function
+
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig7_13.png")
+```
+
+
+
+- The logistic function $G(z_i)$
+$$
+\begin{align}
+G(z_i) = \frac{\exp(z_i)}{1 + \exp(z_i)}
+\end{align}
+$$
+ranges between 0 and 1 for any value of $z_i$
+
+
+
+
+
+## What is the Logistic Regression doing?
+
+- The logistic regression finds the beta coefficients, $b_0$, $b_1$, $b_2$, $\cdots$, $b_{k}$ such that the logistic function 
+$$
+G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
+$$
+is the best possible estimate of the binary outcome $y_{i}$.
+
+
+
+
+## What is the Logistic Regression doing?
+
+- The function $G(z_i)$ is called the logistic function because the function $G(z_i)$ is the inverse function of a **logit** (or a **log-odd**) of the probability that the outcome $y_{i}$ is 1.
+$$
+\begin{align}
+G^{-1}(z_i) &\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
+&\equiv \log\left(\, \frac{\text{Prob}(y_{i} = 1)}{\text{Prob}(y_{i} = 0)} \,\right)\\
+&\,=\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i}
+\end{align}
+$$
+
+- Logistic regression is a **linear regression model for _log odds_**.
+
+
+
+
+## What is the Logistic Regression doing?
+
+- Logistic regression can be expressed as linear regression of log odds of $y_{i} = 1$ on predictors $x_1, x_2, \cdots, x_k$:
+
+
+$$
+\begin{align}
+\text{Prob}(y_{i} = 1) &\,=\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i} )\\
+\text{ }\\
+\log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
+\end{align}
+$$
+
+
+
+## Assessing Newborn Babies at Risk
+
+- Newborn babies are assessed at one and five minutes after birth using what’s called the **Apgar test**, which is designed to determine if a baby needs immediate emergency care or extra medical attention.  
+  - A baby who scores below 7 (on a scale from 0 to 10) on the Apgar scale needs extra attention. 
+- Such at-risk babies are rare, so the hospital doesn’t want to provision extra emergency equipment for every delivery.  
+- On the other hand, at-risk babies may need attention quickly, so provisioning resources proactively to appropriate deliveries can save
+lives.
+
+
+
+
+
+## Assessing Newborn Babies at Risk
+
+
+```{.python}
+dfpd = pd.read_csv('https://bcdanl.github.io/data/NatalRiskData.csv')
+```
+
+- We’ll use a sample dataset from the 2010 CDC natality public-use data file.
+- The data set records information about all US births, including facts about the mother and
+father, and about the delivery. 
+- The sample has just over 26,000 births in a DataFrame.
+
+
+
+
+## Assessing Newborn Babies at Risk
+
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png")
+```
+
+
+
+## Assessing Newborn Babies at Risk
+
+- **Task 1.** Identify the effects of predictors on the probability of $\texttt{atRisk == TRUE}$.
+- **Task 2.** Identify ahead of time situations with a higher probability of $\texttt{atRisk == TRUE}$.
+
+
+
+
+## Building a Logistic Regression Model in PySpark
+
+- The function to build a logistic regression model in PySpark is $\texttt{GeneralizedLinearRegression(family="binomial", link="logit")}$.
+- The outcome variable $y$ is the binary variable $\texttt{atRisk}$ (0 or 1).
+- The other variables in the table in the previous slide are predictors $x_{k}$.
+- The arguments $\texttt{family="binomial"}$ and $\texttt{link="logit"}$ specify the logistic distribution of the outcome variable $y$.
+
+
+```{.python}
+from pyspark.ml.regression import GeneralizedLinearRegression
+
+dummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)
+dummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)
+
+# assembling predictors
+x_cols = ['PWGT', 'UPREVIS', 'CIG_REC', 
+          'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',
+          'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']
+
+assembler_predictors = (
+    x_cols +
+    dummy_cols_GESTREC3 + dummy_cols_DPLURAL
+)
+
+assembler_1 = VectorAssembler(
+    inputCols = assembler_predictors,
+    outputCol = "predictors"
+)
+
+dtrain_1 = assembler_1.transform(dtrain)
+dtest_1  = assembler_1.transform(dtest)
+
+# training model
+model_1 = (
+    GeneralizedLinearRegression(featuresCol="predictors",
+                                labelCol="atRisk",
+                                family="binomial", 
+                                link="logit")
+    .fit(dtrain_1)
+)
+
+# making prediction
+dtest_1 = model_1.transform(dtest_1)
+```
+
+
+
+
+# **Marginal Effects** {background-color="#1c4982"}
+
+
+## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$
+
+
+:::{.nonincremental}
+- Interpreting only the estimated beta coefficient may not be informative.
+
+:::
+
+```{.python}
+model_1.summary
+```
+
+
+- If the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby.
+
+
+
+
+
+## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$
+
+:::{.nonincremental}
+
+- In logistic regression, the effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$ is different for each observation $i$.
+
+:::
+
+:::: {.columns}
+
+::: {.column width="48%"}
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center', fig.cap="Linear regression"}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/effect_linear.png")
+```
+:::
+
+
+::: {.column width="52%"}
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center', fig.cap="Logistic regression"}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/effect_logit.png")
+```
+:::
+
+:::: 
+
+
+
+
+
+
+## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$
+
+
+- How can we calculate the effect of $x_{k, i}$ on the probability of $y_{i} = 1$?
+  1. Marginal effect at the mean (MEM): We can obtain the marginal effect at an average observation or representative observations in the training data (MEM) or at representative values (MER)).
+  2. Average marginal effect (AME): We can average the marginal effects across the training data.
+
+```{.pyspark}
+def marginal_effects(model, means):
+    """
+    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)
+    and return a formatted table with statistical significance.
+    
+    Parameters:
+        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).
+        means: List of mean values for the predictor variables.
+    
+    Returns:
+        A formatted string containing the marginal effects table.
+    """
+    global assembler_predictors  # Use the global assembler_predictors list
+    
+    # Extract model coefficients, standard errors, and intercept
+    coeffs = np.array(model.coefficients)
+    std_errors = np.array(model.summary.coefficientStandardErrors)
+    intercept = model.intercept
+    
+    # Compute linear combination of means and coefficients (XB)
+    XB = np.dot(means, coeffs) + intercept
+    
+    # Compute derivative of logistic function (G'(XB))
+    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)
+    
+    # Helper: significance stars.
+    def significance_stars(p):
+        if p < 0.01:
+            return "***"
+        elif p < 0.05:
+            return "**"
+        elif p < 0.1:
+            return "*"
+        else:
+            return ""
+    
+    # Create table to store results
+    results = []
+    
+    for i, predictor in enumerate(assembler_predictors):
+        # Compute marginal effect
+        marginal_effect = G_prime_XB * coeffs[i]
+        
+        # Compute standard error of the marginal effect
+        std_error = G_prime_XB * std_errors[i]
+        
+        # Compute z-score and p-value
+        z_score = marginal_effect / std_error if std_error != 0 else np.nan
+        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan
+        
+        # Compute confidence interval (95%)
+        ci_lower = marginal_effect - 1.96 * std_error
+        ci_upper = marginal_effect + 1.96 * std_error
+        
+        # Append results
+        results.append([predictor, f"{marginal_effect: .4f}", significance_stars(p_value), f"{ci_lower: .4f}", f"{ci_upper: .4f}"])
+    
+    # Convert results to tabulated format
+    table_str = tabulate(results, headers=["Variable", "Marginal Effect", "Significance", "95% CI Lower", "95% CI Upper"], 
+                         tablefmt="pretty", colalign=("left", "decimal", "left", "decimal", "decimal"))
+    
+    return table_str
+
+# Example usage:
+# means = [0.5, 30]  # Mean values for x1 and x2
+# assembler_predictors = ['x1', 'x2']  # Define globally before calling the function
+# table_output = mfx_glm(fitted_model, means)
+# print(table_output)
+```
+
+
+
+## % vs. % point
+
+- Let’s say you have money in a savings account. The interest is 3%.
+- Now consider two scenarios:
+  1. The bank increases the interest rate by one percent.
+  2. The bank increases the interest rate by one percentage point.
+
+- What is the new interest rate in each scenario? Which is better?
+
+
+
+
+## Logistic Regression
+### Interpreting the Marginal Effect
+
+- How do we interpret the ME? All else being equal,
+  - The probability of a new born baby being at risk increases by 2.05% **points** if the baby is prematurely born.
+  - The probability of a new born baby being at risk decreases by 0.04% **points** if the number of parental medical visits increases by one unit.
+
+
+
+
+# **Classification** {background-color="#1c4982"}
+
+
+## Classifier
+
+- Your goal is to use the logistic regression model to classify newborn babies into one of two categories---at-risk or not.
+- Prediction from the logistic regression with a threshold on the predicted probabilities can be used as a **classifier**.
+
+- If the predicted probability that the baby $\texttt{i}$ is at risk is greater than the threshold, the baby $\texttt{i}$ is classified as at-risk.
+- Otherwise, the baby $\texttt{i}$ is classified as not-at-risk.
+
+
+
+
+
+
+## Double Density Plot – Choosing the Optimal Threshold
+
+:::{.nonincremental}
+- Double density plot is useful when picking the classifier threshold.
+
+:::
+
+```{.python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Filter data for atRisk == 1 and atRisk == 0
+pdf = dtest_1.select("prediction", "atRisk").toPandas()
+
+train_true = pdf[pdf["atRisk"] == 1]
+train_false = pdf[pdf["atRisk"] == 0]
+
+# Create the first density plot
+plt.figure(figsize=(8, 6))
+sns.kdeplot(train_true["prediction"], label="TRUE", color="red", fill=True)
+sns.kdeplot(train_false["prediction"], label="FALSE", color="blue", fill=True)
+plt.xlabel("Prediction")
+plt.ylabel("Density")
+plt.title("Density Plot of Predictions")
+plt.legend(title="atRisk")
+plt.show()
+
+# Define threshold for vertical line
+threshold = 0.02  # Replace with actual value
+
+# Create the second density plot with vertical line
+plt.figure(figsize=(8, 6))
+sns.kdeplot(train_true["prediction"], label="TRUE", color="red", fill=True)
+sns.kdeplot(train_false["prediction"], label="FALSE", color="blue", fill=True)
+plt.axvline(x=threshold, color="blue", linestyle="dashed", label=f"Threshold = {threshold}")
+plt.xlabel("Prediction")
+plt.ylabel("Density")
+plt.title("Density Plot of Predictions with Threshold")
+plt.legend(title="atRisk")
+plt.show()
+```
+
+
+
+
+## Performance of Classifier
+### Confusion matrix
+
+:::{.nonincremental}
+
+- The **confusion matrix** summarizes the classifier's predictions against the actual known data categories.
+  - Suppose the threshold is set as 0.02.
+
+:::
+
+```{.python}
+# Compute confusion matrix
+dtest_1 = dtest_1.withColumn("predicted_class", when(col("prediction") > .02, 1).otherwise(0))
+conf_matrix = dtest_1.groupBy("atRisk", "predicted_class").count().orderBy("atRisk", "predicted_class")
+
+# Collect as a dictionary for easy lookup
+conf_dict = {(row["atRisk"], row["predicted_class"]): row["count"] for row in conf_matrix.collect()}
+
+# Extract values safely (handle missing values if any)
+TN = conf_dict.get((0, 0), 0)  # True Negative
+FP = conf_dict.get((0, 1), 0)  # False Positive
+FN = conf_dict.get((1, 0), 0)  # False Negative
+TP = conf_dict.get((1, 1), 0)  # True Positive
+
+# Print formatted confusion matrix with labels
+print("\n Confusion Matrix:\n")
+print("                     Predicted")
+print("            |  Negative  |  Positive  ")
+print("------------+------------+------------")
+print(f"Actual Neg. |    {TN:5}   |    {FP:5}  |")
+print("------------+------------+------------")
+print(f"Actual Pos. |    {FN:5}   |    {TP:5}  |")
+print("------------+------------+------------")
+```
+
+
+
+
+
+## Performance of Classifier
+### Accuracy
+
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_10.png")
+```
+
+- **Accuracy**: When the classifier says this newborn baby is at risk or is not at risk, what is the probability that the model is correct?
+  - **Accuracy** is defined as the number of items categorized correctly divided by the total number of items.
+
+
+## Performance of Classifier
+### False positive/negative
+
+- **False positive rate (FPR)**: If the classifier says this newborn baby is at risk, what's the probability that the baby is not really at risk?
+  - **FPR** is defined as the ratio of false positives to predicted positives.
+
+- **False negative rate (FNR)**: If the classifier says this newborn baby is not at risk, what's the probability that the baby is really at risk?
+  - **FNR** is defined as the ratio of false negatives to predicted negatives.
+
+
+
+
+
+## Performance of Classifier
+### Precision
+
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_11.png")
+```
+
+
+- **Precision**: If the classifier says this newborn baby is at risk, what's the probability that the baby is really at risk?
+  - **Precision** is defined as the ratio of true positives to predicted positives.
+
+
+## Performance of Classifier
+### Recall (or Sensitivity)
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_12.png")
+```
+
+
+- **Recall (or sensitivity)**:  Of all the babies at risk, what fraction did the classifier detect?
+  - **Recall (or sensitivity)** is also called the **true positive rate (TPR)**, the ratio of true positives over all actual positives.
+
+
+## Performance of Classifier
+### Specificity
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_13.png")
+```
+
+
+- **Specificity**:  Of all the not-at-risk babies, what fraction did the classifier detect?
+  - **Specificity** is also called the **true negative rate (TNR)**, the ratio of true negatives over all actual negatives.
+
+
+
+
+
+
+## Performance of Classifier
+### Enrichment
+
+- **Average**: Average rate of new born babies being at risk
+- **Enrichment**: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?
+  - You want a classifier whose enrichment is greater than 2.
+
+
+
+
+## Performance of Classifier
+
+
+```{.python}
+TP = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 1)).count()
+FP = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 1)).count()
+FN = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 0)).count()
+TN = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 0)).count()
+
+accuracy = (TP + TN) / (TP + FP + FN + TN)
+precision = TP / (TP + FP)
+recall = TP / (TP + FN)
+specificity = TN / (TN + FP)
+average_rate = (TP + FN) / (TP + TN + FP + FN)  # Proportion of actual at-risk babies
+enrichment = precision / average_rate
+
+print(f"Accuracy:  {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall (Sensitivity): {recall:.4f}")
+print(f"Specificity:  {specificity:.4f}")
+print(f"Average Rate: {average_rate:.4f}")
+print(f"Enrichment:   {enrichment:.4f} (Relative Precision)")
+```
+
+
+
+
+
+
+## Performance of Classifier
+### Trade-off between recall and precision/enrichment
+
+:::{.nonincremental}
+- There is a trade-off between recall and precision/enrichment.
+  - What would be the optimal threshold?
+
+:::
+
+```{.python}
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.metrics import precision_recall_curve
+
+pdf = dtest_1.select("prediction", "atRisk").toPandas()
+
+# Extract predictions and true labels
+y_true = pdf["atRisk"]  # True labels
+y_scores = pdf["prediction"]  # Predicted probabilities
+
+# Compute precision, recall, and thresholds
+precision, recall, thresholds = precision_recall_curve(y_true, y_scores)
+
+# Compute enrichment: precision divided by average at-risk rate
+average_rate = np.mean(y_true)
+enrichment = precision / average_rate
+
+# Define optimal threshold (example: threshold where recall ≈ enrichment balance)
+optimal_threshold = 0.02  # Adjust based on the plot
+
+# Plot Enrichment vs. Recall vs. Threshold
+plt.figure(figsize=(8, 6))
+plt.plot(thresholds, enrichment[:-1], label="Enrichment", color="blue", linestyle="--")
+plt.plot(thresholds, recall[:-1], label="Recall", color="red", linestyle="-")
+
+# Add vertical line for chosen threshold
+plt.axvline(x=optimal_threshold, color="black", linestyle="dashed", label=f"Optimal Threshold = {optimal_threshold}")
+
+# Labels and legend
+plt.xlabel("Threshold")
+plt.ylabel("Score")
+plt.title("Enrichment vs. Recall vs. Threshold")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+
+
+
+## Performance of Classifier
+### Trade-off between sensitivity and specificity
+
+:::{.nonincremental}
+
+- There is also a trade-off between sensitivity and specificity.
+
+:::
+
+- The receiver operating characteristic curve (or **ROC** curve) plot both the true positive rate and the false positive rate (or 1 - specificity) for all threshold levels. 
+
+  - Area under the curve (or **AUC**) can be another measure of the quality of the model.
+  
+```{.python}
+from sklearn.metrics import roc_curve
+
+# Convert to Pandas
+pdf = dtest_1.select("prediction", "atRisk").toPandas()
+
+# Compute ROC curve
+fpr, tpr, _ = roc_curve(pdf["atRisk"], pdf["prediction"])
+
+# Plot ROC curve
+plt.figure(figsize=(8,6))
+plt.plot(fpr, tpr, label=f"ROC Curve (AUC = {auc:.4f})")
+plt.plot([0, 1], [0, 1], 'k--', label="Random Guess")
+plt.xlabel("False Positive Rate")
+plt.ylabel("True Positive Rate")
+plt.title("ROC Curve")
+plt.legend()
+plt.show()
+```
+
+
+
+
+
+
+
+
+## Performance of Classifier
+### AUC
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_17.png")
+```
+
+
+- (0,0)—Corresponding to a classifier defined by the threshold $\text{Prob}(y_{i} = 1) = 1$: 
+  - Nothing gets classified as at-risk.
+
+
+
+## Performance of Classifier
+### AUC
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_17.png")
+```
+
+
+- (1,1)—Corresponding to a classifier defined by the threshold $\text{Prob}(y_{i} = 1) = 0$: 
+  - Everything gets classified as at-risk.
+
+
+
+
+## Performance of Classifier
+### AUC
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_17.png")
+```
+
+- (0,1)—Corresponding to any classifier defined by a threshold between 0 and 1:
+  - Everything is classified perfectly!
+
+
+
+
+## Performance of Classifier
+### AUC
+
+- The AUC for the random model is 0.5. 
+  - You want a classifier whose AUC is close to 1, and greater than 0.5.
+
+- When comparing multiple classifiers, you generally want to prefer classifiers that have a higher AUC. 
+
+- You also want to examine the shape of the ROC to explore possible trade-offs. 
+
+
+
+
+## Performance of Classifier
+
+- Suppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data. 
+- Now you want to use that same classifier on all the data from hospitals in MA. 
+- Will the classifier work as well?
+
+
+- The proportion of at-risk babies in MA hospitals may be different than that in NY hospitals. 
+- This can change the performance of the classifier on all the MA data.
+- Let's see how classifier performance change with an average rate of at-risk babies.
+
+
+
+## Performance of Classifier
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '75%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab1.png")
+```
+
+
+
+
+## Performance of Classifier
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab2.png")
+```
+
+
+- The classifier with relatively _high_ average rate of at-risk babies throws out a _lower_ fraction of not-at-risk babies.
+- The classifier with relatively _low_ average rate of at-risk babies throws out a _higher_ fraction of not-at-risk babies.
+
+
+
+
+
+## Performance of Classifier
+
+- Precision and false negative rate change a lot with the average rate of positives (at-risk babies).
+- Accuracy, sensitivity, and specificity is relatively independent of the class prevalence.
+- Sensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution
+of the different classes in the population. 
+- Precision/recall gives you an idea how well a classifier will work on a specific population.
+
+
+
+
+
+
+## Performance of Classifier
+
+
+- Which classifier do you prefer for identifying at-risk babies?
+  1. High accuracy, low sensitivity, other things being equal;
+  2. Low accuracy, high sensitivity, other things being equal.
+
+
+- Accuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event).
+
+
+
+
+

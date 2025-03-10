@@ -1313,7 +1313,7 @@
     "href": "index.html#bullet-lecture-slides",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Lecture Slides 🚀",
-    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 7\n\n\nFebruary 17, 2025\n\n\n\n\nLecture 6\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 5\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 4\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Lecture Slides 🚀\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nLecture 8\n\n\nMarch 10, 2025\n\n\n\n\nLecture 7\n\n\nFebruary 17, 2025\n\n\n\n\nLecture 6\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 5\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 4\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 3\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 2\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-classwork",
@@ -1341,7 +1341,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Apache Hadoop and Spark; PySpark\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 6\n\n\nPySpark Basics\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 7\n\n\nLinear Regression\n\n\nFebruary 17, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Apache Hadoop and Spark; PySpark\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 6\n\n\nPySpark Basics\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 7\n\n\nLinear Regression\n\n\nFebruary 17, 2025\n\n\n\n\nLecture 8\n\n\nLogistic Regression\n\n\nMarch 10, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "econml.html",
@@ -4653,5 +4653,439 @@
     "title": "Classwork 9",
     "section": "Model 3",
     "text": "Model 3\n\\[\n\\begin{align}\n\\log(\\text{sales}_{\\text{i}}) \\,=\\,\\quad\\;\\;& b_{\\text{intercept}} \\,+\\, \\color{Green}{b_{\\,\\text{mm}}\\,\\text{brand}_{\\,\\text{mm}, \\text{i}}} \\,+\\, \\color{Blue}{b_{\\,\\text{tr}}\\,\\text{brand}_{\\,\\text{tr}, \\text{i}}}  \\\\\n&\\,+\\; b_{\\,\\text{ad}}\\,\\color{Orange}{\\text{ad}_{\\,\\text{i}}} \\qquad\\qquad\\qquad\\qquad\\quad   \\\\\n&\\,+\\, b_{\\text{mm*ad}}\\,\\color{Green} {\\text{brand}_{\\,\\text{mm}, \\text{i}}}\\,\\times\\, \\color{Orange}{\\text{ad}_{\\,\\text{i}}}\\,+\\, b_{\\text{tr*ad}}\\,\\color{Blue} {\\text{brand}_{\\,\\text{tr}, \\text{i}}}\\,\\times\\, \\color{Orange}{\\text{ad}_{\\,\\text{i}}} \\\\\n&\\,+\\;  b_{\\text{price}}\\,\\log(\\text{price}_{\\text{i}}) \\qquad\\qquad\\qquad\\;\\;\\;\\;\\,  \\\\\n&\\,+\\, b_{\\text{price*mm}}\\,\\log(\\text{price}_{\\text{i}})\\,\\times\\,\\color{Green} {\\text{brand}_{\\,\\text{mm}, \\text{i}}}\\qquad\\qquad\\qquad\\;\\, \\\\\n&\\,+\\, b_{\\text{price*tr}}\\,\\log(\\text{price}_{\\text{i}})\\,\\times\\,\\color{Blue} {\\text{brand}_{\\,\\text{tr}, \\text{i}}}\\qquad\\qquad\\qquad\\;\\, \\\\\n& \\,+\\, b_{\\text{price*ad}}\\,\\log(\\text{price}_{\\text{i}})\\,\\times\\,\\color{Orange}{\\text{ad}_{\\,\\text{i}}}\\qquad\\qquad\\qquad\\;\\;\\, \\\\\n&\\,+\\, b_{\\text{price*mm*ad}}\\,\\log(\\text{price}_{\\text{i}}) \\,\\times\\,\\,\\color{Green} {\\text{brand}_{\\,\\text{mm}, \\text{i}}}\\,\\times\\, \\color{Orange}{\\text{ad}_{\\,\\text{i}}} \\\\\n&\\,+\\, b_{\\text{price*tr*ad}}\\,\\log(\\text{price}_{\\text{i}}) \\,\\times\\,\\,\\color{Blue} {\\text{brand}_{\\,\\text{tr}, \\text{i}}}\\,\\times\\, \\color{Orange}{\\text{ad}_{\\,\\text{i}}}  \\,+\\, e_{\\text{i}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-logistic-regression-doing",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-logistic-regression-doing",
+    "title": "Lecture 8",
+    "section": "What is Logistic Regression Doing?",
+    "text": "What is Logistic Regression Doing?\nLogistic regression maps any input through a logistic (sigmoid) function to estimate the probability of a binary outcome (0/1):\n\\[\nG(z_i) = \\frac{\\exp(z_i)}{1 + \\exp(z_i)}\n\\]\nwhere ( z_i ) is a linear combination of predictors:\n\\[\nz_i = b_0 + b_{x1} x_{i,1} + b_{x2} x_{i,2} + \\dots + b_{xN}x_{i,N}\n\\]\nLogistic regression finds coefficients \\((b_0, b_{x1}, \\dots, b_{xN})\\) that maximize the likelihood of correctly predicting the binary outcome \\((y_i)\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-predicting-whether-a-newborn-needs-extra-medical-attention",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-predicting-whether-a-newborn-needs-extra-medical-attention",
+    "title": "Lecture 8",
+    "section": "Example: Predicting Whether a Newborn Needs Extra Medical Attention",
+    "text": "Example: Predicting Whether a Newborn Needs Extra Medical Attention\nDataset records information about all US births, including facts about the mother and father, and about the delivery."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects",
+    "title": "Lecture 8",
+    "section": "Marginal Effects",
+    "text": "Marginal Effects\nWhat are Marginal Effects?\nMarginal effects show how the probability of the binary outcome changes when you vary explanatory variables, holding others constant.\nIn PySpark, this typically requires manual computation."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function",
+    "title": "Lecture 8",
+    "section": "Properties of the Logistic Function",
+    "text": "Properties of the Logistic Function\n\nThe logistic function \\(G(z_i)\\) maps the linear combination of predictors to the probability that the outcome \\(y_{i}\\) is \\(\\texttt{TRUE}\\).\n\\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i}\\)\n\\(z_{i} \\overset{G}{\\rightarrow} \\texttt{ Prob} ( y_{i} = 1 )\\)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#pyspark-logistic-regression-example",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#pyspark-logistic-regression-example",
+    "title": "Lecture 8",
+    "section": "PySpark Logistic Regression Example",
+    "text": "PySpark Logistic Regression Example\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml.feature import VectorAssembler\n\n# Assemble features\nassembler = VectorAssembler(inputCols=['PWGT', 'UPREVIS', 'CIG_REC', 'GESTREC3',\n                                       'DPLURAL_1', 'DPLURAL_2', 'ULD_MECO',\n                                       'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB'],\n                            outputCol='features')\n\ndata_assembled = assembler.transform(df).select('features', 'atRisk')\n\n# Fit logistic regression model\nfrom pyspark.ml.classification import LogisticRegression\nlog_reg = LogisticRegression(featuresCol='features', labelCol='atRisk')\n\nmodel = log_reg.fit(data_assembled)\n\n# Predictions\npredictions = model.transform(data_assembled)\n\n# Evaluate\npredictions.select('probability', 'prediction', 'atRisk').show(5)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects-1",
+    "title": "Lecture 8",
+    "section": "Marginal Effects",
+    "text": "Marginal Effects\nExample in PySpark:\n# Using PySpark SQL to calculate marginal effects numerically or via model coefficients directly\nInterpreting Marginal Effects\n\nMarginal effects are interpreted as percentage points:\n\n\n“The probability of a newborn being at risk increases by 4.50 percentage points if the baby is born prematurely.”"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#characterizing-prediction-quality",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#characterizing-prediction-quality",
+    "title": "Lecture 8",
+    "section": "Characterizing Prediction Quality",
+    "text": "Characterizing Prediction Quality\nCommon evaluation metrics:\n\n\n\n\n\n\n\nMetric\nInterpretation\n\n\n\n\nAccuracy\nProbability model predictions are correct\n\n\nPrecision\nProbability predicted positives are true positives\n\n\nRecall\nProbability model identifies actual at-risk babies\n\n\nEnrichment\nHow much better the model does compared to random chance\n\n\n\nPySpark Example:\nfrom pyspark.ml.evaluation import BinaryClassificationEvaluator\n\nevaluator = BinaryClassificationEvaluator(labelCol='atRisk', metricName='areaUnderROC')\nauc = evaluator.evaluate(predictions)\nprint(\"AUC: \", auc)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#prediction-quality",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#prediction-quality",
+    "title": "Lecture 8",
+    "section": "Prediction Quality",
+    "text": "Prediction Quality\nClassifying based on a threshold:\n\nPredict at-risk if \\(\\text{probability} &gt; 0.02\\)\nOtherwise, predict not-at-risk.\n\nPySpark Example:\npred_threshold = predictions.withColumn('atRisk_pred', (predictions.probability[1] &gt; 0.02).cast('integer'))\n\n# Confusion matrix\npred_threshold.groupBy('atRisk_pred', 'atRisk').count().show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#characterizing-prediction-quality-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#characterizing-prediction-quality-1",
+    "title": "Lecture 8",
+    "section": "Characterizing Prediction Quality",
+    "text": "Characterizing Prediction Quality\nPySpark visualization example (via pandas conversion for plot):\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\npdf = predictions.select('probability', 'atRisk').toPandas()\npdf['prob'] = pdf['probability'].apply(lambda x: x[1])\n\nsns.kdeplot(data=pdf, x='prob', hue='atRisk', fill=True)\nplt.xlabel('Predicted Probability')\nplt.title('Prediction Probability Distribution by At-Risk Status')\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#evaluating-prediction-quality",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#evaluating-prediction-quality",
+    "title": "Lecture 8",
+    "section": "Evaluating Prediction Quality",
+    "text": "Evaluating Prediction Quality\nPySpark Confusion Matrix:\nctab = pred_threshold.groupBy('atRisk_pred', 'atRisk').count().toPandas()\nctab_pivot = ctab.pivot(index='atRisk_pred', columns='atRisk', values='count').fillna(0)\n\n# Accuracy, Precision, Recall calculations\naccuracy = (ctab_pivot.loc[0, 0] + ctab_pivot.loc[1, 1]) / ctab_pivot.values.sum()\nprecision = ctab_pivot.loc[1,1] / ctab_pivot.loc[1].sum()\nrecall = ctab_pivot.loc[1,1] / ctab_pivot[1].sum()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects-for-subgroups",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effects-for-subgroups",
+    "title": "Lecture 8",
+    "section": "Marginal Effects for Subgroups",
+    "text": "Marginal Effects for Subgroups\nIn PySpark, subset data explicitly:\nsubset_cig_true = data.filter(data.CIG_REC == 1)\nsubset_cig_false = data.filter(data.CIG_REC == 0)\n\n# Run separate models or marginal calculations"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#choosing-the-threshold",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#choosing-the-threshold",
+    "title": "Lecture 8",
+    "section": "Choosing the Threshold",
+    "text": "Choosing the Threshold\n\nAdjust threshold based on available resources, trade-off precision vs recall.\n\nPlotting precision-recall or ROC curves helps determine optimal thresholds:\nfrom pyspark.ml.evaluation import BinaryClassificationEvaluator\n\nevaluator = BinaryClassificationEvaluator(rawPredictionCol='rawPrediction', labelCol='atRisk')\nroc_auc = evaluator.evaluate(predictions)\nprint(f'ROC AUC: {roc_auc}')\nVisualize ROC Curve using pandas and matplotlib:\nfrom sklearn.metrics import roc_curve, auc\n\npdf = predictions.select('probability', 'atRisk').toPandas()\npdf['prob'] = pdf['probability'].apply(lambda x: x[1])\n\nfrom sklearn.metrics import roc_curve\nfpr, tpr, thresholds = roc_curve(pdf['atRisk'], pdf['prob'])\n\nsns.lineplot(x=fpr, y=tpr)\nplt.xlabel('False Positive Rate')\nplt.ylabel('True Positive Rate')\nplt.title('ROC Curve')\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#interpretation",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#interpretation",
+    "title": "Lecture 8",
+    "section": "Interpretation:",
+    "text": "Interpretation:\nChoose thresholds according to your resources and desired balance between recall and precision."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#motivation",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#motivation",
+    "title": "Lecture 8",
+    "section": "Motivation",
+    "text": "Motivation\n\nSuppose we want to know how much the flight’s origin/destination, weather, and air carrier affect the probability that a flight will be delayed.\nSuppose we also want to predict whether or not a flight will be delayed, based on facts like the flight’s origin/destination, weather, and air carrier.\nFor every flight \\(\\texttt{i}\\), you want to predict \\(\\texttt{flight_delayed[i]}\\), a binary variable ( \\(\\texttt{TRUE}\\) or \\(\\texttt{FALSE}\\)), based on \\(\\texttt{origin[i]}\\), \\(\\texttt{destination[i]}\\), \\(\\texttt{weather[i]}\\), and \\(\\texttt{air_carrier[i]}\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#motivation-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#motivation-1",
+    "title": "Lecture 8",
+    "section": "Motivation",
+    "text": "Motivation\n\n\nThe logistic regression model for the probability that a flight will be delayed is formulated as: \\[\n\\begin{align}\n&\\quad\\texttt{ Prob( flight_delayed[i] == TRUE ) } \\\\[.5em]\n&=\\, \\texttt{G( b$_{\\texttt{0}}$ + b$_{\\texttt{origin}}$*origin[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{destination}}$*destination[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{weather}}$*weather[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{air\\_carrier}}$*air_carrier[i] )}.\n\\end{align}\n\\]\n\n\n\n\\(G(z_i)\\): the logistic function\n\n\n\n\n\\[\n\\begin{align}\n\\texttt{G(z[i]) = } \\dfrac{\\texttt{exp(z[i])}}{\\texttt{1 + exp(z[i])}}.\\notag\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function-1",
+    "title": "Lecture 8",
+    "section": "Properties of the Logistic Function",
+    "text": "Properties of the Logistic Function\n\n\nThe logistic function \\(G(z_i)\\) \\[\n\\begin{align}\nG(z_i) = \\frac{\\exp(z_i)}{1 + \\exp(z_i)}\n\\end{align}\n\\] ranges between 0 and 1 for any value of \\(z_i\\)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-1",
+    "title": "Lecture 8",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nInterpreting the Marginal Effect\n\nHow do we interpret the ME? All else being equal,\n\nThe probability of a new born baby being at risk increases by 2.05% points if the baby is prematurely born.\nThe probability of a new born baby being at risk decreases by 0.04% points if the number of parental medical visits increases by one unit."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-2",
+    "title": "Lecture 8",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nProperties of the Logistic Function\n\nThe function \\(G(z_i)\\) is called the logistic function because the function \\(G(z_i)\\) is the inverse function of a logit (or a log-odd) of the probability that the outcome \\(y_{i}\\) is 1. \\[\n\\begin{align}\nG^{-1}(z_i) &\\,\\equiv\\, \\text{logit} (\\text{Prob}(y_{i} = 1))\\\\\n&\\equiv \\log\\left(\\, \\frac{\\text{Prob}(y_{i} = 1)}{\\text{Prob}(y_{i} = 0)} \\,\\right)\\\\\n&\\,=\\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i}\n\\end{align}\n\\]\nLogistic regression is a linear regression model for log odds."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression",
+    "title": "Lecture 8",
+    "section": "Example of Logistic Regression",
+    "text": "Example of Logistic Regression\nMarginal Effect of on }\n\nInterpreting only the estimated beta coefficient may not be informative.\n\nmodel_1.summary\n\nIf the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-1",
+    "title": "Lecture 8",
+    "section": "Example of Logistic Regression",
+    "text": "Example of Logistic Regression\nMarginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\nIn logistic regression, the effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\) is different for each observation \\(i\\).\n\n\n\n\n\n\n\n\nLinear regression\n\n\n\n\n\n\n\n\n\n\nLogistic regression"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-2",
+    "title": "Lecture 8",
+    "section": "Example of Logistic Regression",
+    "text": "Example of Logistic Regression\n\nThe data set records information about all US births, including facts about the mother and father, and about the delivery.\nThe sample has just over 26,000 births in a DataFrame."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model",
+    "title": "Lecture 8",
+    "section": "Building a logistic regression model",
+    "text": "Building a logistic regression model\n\nThe function to build a logistic regression model in PySpark is \\(\\texttt{GeneralizedLinearRegression(family=\"binomial\", link=\"logit\")}\\).\nThe outcome variable \\(y\\) is the binary variable \\(\\texttt{atRisk}\\) (0 or 1).\nThe other variables in the table in the previous slide are predictors \\(x_{k}\\).\nThe arguments \\(\\texttt{family=\"binomial\"}\\) and \\(\\texttt{link=\"logit\"}\\) specify the logistic distribution of the outcome variable \\(y\\).\n\nfrom pyspark.ml.regression import GeneralizedLinearRegression\n\ndummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)\ndummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)\n\n# assembling predictors\nx_cols = ['PWGT', 'UPREVIS', 'CIG_REC', \n          'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',\n          'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']\n\nassembler_predictors = (\n    x_cols +\n    dummy_cols_GESTREC3 + dummy_cols_DPLURAL\n)\n\nassembler_1 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\n\ndtrain_1 = assembler_1.transform(dtrain)\ndtest_1  = assembler_1.transform(dtest)\n\n# training model\nmodel_1 = (\n    GeneralizedLinearRegression(featuresCol=\"predictors\",\n                                labelCol=\"atRisk\",\n                                family=\"binomial\", \n                                link=\"logit\")\n    .fit(dtrain_1)\n)\n\n# making prediction\ndtest_1 = model_1.transform(dtest_1)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-1",
+    "title": "Lecture 8",
+    "section": "Building a logistic regression model",
+    "text": "Building a logistic regression model\n\nThe function to build a logistic regression model in PySpark is \\(\\texttt{GeneralizedLinearRegression(family=\"binomial\", link=\"logit\")}\\).\nThe outcome variable \\(y\\) is the binary variable \\(\\texttt{atRisk}\\) (0 or 1).\nThe other variables in the table in the previous slide are predictors \\(x_{k}\\).\nThe arguments \\(\\texttt{family=\"binomial\"}\\) and \\(\\texttt{link=\"logit\"}\\) specify the logistic distribution of the outcome variable \\(y\\).\n\ndummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)\ndummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)\n\n# assembling predictors\nconti_cols = [\"PWGT\", 'UPREVIS', 'CIG_REC', \n              'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',\n              'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']\n\nassembler_predictors = (\n    conti_cols +\n    dummy_cols_GESTREC3 + dummy_cols_DPLURAL\n)\n\nassembler_1 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\n\ndtrain_1 = assembler_1.transform(dtrain)\ndtest_1  = assembler_1.transform(dtest)\n\n# training model\nmodel_1 = (\n    GeneralizedLinearRegression(featuresCol=\"predictors\",\n                                labelCol=\"atRisk\",\n                                family=\"binomial\", \n                                link=\"logit\")\n    .fit(dtrain_1)\n)\n\n# making prediction\ndtest_1 = model_1.transform(dtest_1)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-3",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-3",
+    "title": "Lecture 8",
+    "section": "Example of Logistic Regression",
+    "text": "Example of Logistic Regression\nMarginal Effect of on }\n\nInterpreting only the estimated beta coefficient may not be informative.\n\nmodel_1.summary\n\nIf the baby is prematurely born, the log-odds of being at risk increases by 1.539, relative to the non-premature baby."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-3",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-3",
+    "title": "Lecture 8",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nProperties of the Logistic Regression\n\nLogistic regression\n\n\\[\n\\begin{align}\n\\text{Prob}(y_{i} = 1) = G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i} )\n\\end{align}\n\\]\ncan be expressed as linear regression of log odds of \\(\\texttt{y[i]==TRUE}\\) on predictors \\(\\texttt{x[i,1], x[i,2], ...}\\)\n\\[\n\\begin{align}\n\\log\\left(\\dfrac{\\text{Prob}( y_i = 1 )}{\\text{Prob}( y_i = 0 )}\\right) \\,=\\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-4",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#example-of-logistic-regression-4",
+    "title": "Lecture 8",
+    "section": "Example of Logistic Regression",
+    "text": "Example of Logistic Regression\nMarginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\nIn logistic regression, the effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\) is different for each observation \\(i\\).\n\n\n\n\n\n\n\n\nLinear regression\n\n\n\n\n\n\n\n\n\n\nLogistic regression"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-4",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-4",
+    "title": "Lecture 8",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nMarginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\nHow can we calculate the effect of \\(x_{k, i}\\) on the probability of \\(y_{i} = 1\\)?\n\nWe can average the marginal effects across the training data (average marginal effect, or AME).\n\n\nIt can be computationally challenging, especially for the large number of observations.\n\n\nWe can obtain the marginal effect at an average observation or representative observations in the training data (marginal effect at the mean (MEM) or at representative values (MER)).\n\n\ndef marginal_effects(model, means):\n    \"\"\"\n    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)\n    and return a formatted table with statistical significance.\n    \n    Parameters:\n        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).\n        means: List of mean values for the predictor variables.\n    \n    Returns:\n        A formatted string containing the marginal effects table.\n    \"\"\"\n    global assembler_predictors  # Use the global assembler_predictors list\n    \n    # Extract model coefficients, standard errors, and intercept\n    coeffs = np.array(model.coefficients)\n    std_errors = np.array(model.summary.coefficientStandardErrors)\n    intercept = model.intercept\n    \n    # Compute linear combination of means and coefficients (XB)\n    XB = np.dot(means, coeffs) + intercept\n    \n    # Compute derivative of logistic function (G'(XB))\n    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)\n    \n    # Helper: significance stars.\n    def significance_stars(p):\n        if p &lt; 0.01:\n            return \"***\"\n        elif p &lt; 0.05:\n            return \"**\"\n        elif p &lt; 0.1:\n            return \"*\"\n        else:\n            return \"\"\n    \n    # Create table to store results\n    results = []\n    \n    for i, predictor in enumerate(assembler_predictors):\n        # Compute marginal effect\n        marginal_effect = G_prime_XB * coeffs[i]\n        \n        # Compute standard error of the marginal effect\n        std_error = G_prime_XB * std_errors[i]\n        \n        # Compute z-score and p-value\n        z_score = marginal_effect / std_error if std_error != 0 else np.nan\n        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan\n        \n        # Compute confidence interval (95%)\n        ci_lower = marginal_effect - 1.96 * std_error\n        ci_upper = marginal_effect + 1.96 * std_error\n        \n        # Append results\n        results.append([predictor, f\"{marginal_effect: .4f}\", significance_stars(p_value), f\"{ci_lower: .4f}\", f\"{ci_upper: .4f}\"])\n    \n    # Convert results to tabulated format\n    table_str = tabulate(results, headers=[\"Variable\", \"Marginal Effect\", \"Significance\", \"95% CI Lower\", \"95% CI Upper\"], \n                         tablefmt=\"pretty\", colalign=(\"left\", \"decimal\", \"left\", \"decimal\", \"decimal\"))\n    \n    return table_str\n\n# Example usage:\n# means = [0.5, 30]  # Mean values for x1 and x2\n# assembler_predictors = ['x1', 'x2']  # Define globally before calling the function\n# table_output = mfx_glm(fitted_model, means)\n# print(table_output)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#vs.-point",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#vs.-point",
+    "title": "Lecture 8",
+    "section": "% vs. % point",
+    "text": "% vs. % point\n\nLet’s say you have money in a savings account. The interest is 3%.\nNow consider two scenarios:\n\nThe bank increases the interest rate by one percent.\nThe bank increases the interest rate by one percentage point.\n\nWhat is the new interest rate in each scenario? Which is better?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-5",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-5",
+    "title": "Lecture 8",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nInterpreting the Marginal Effect\n\nHow do we interpret the ME? All else being equal,\n\nThe probability of a new born baby being at risk increases by 2.05% points if the baby is prematurely born.\nThe probability of a new born baby being at risk decreases by 0.04% points if the number of parental medical visits increases by one unit."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#classifier",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#classifier",
+    "title": "Lecture 8",
+    "section": "Classifier",
+    "text": "Classifier\n\nYour goal is to use the logistic regression model to classify newborn babies into one of two categories—at-risk or not.\nPrediction from the logistic regression with a threshold on the predicted probabilities can be used as a classifier.\nIf the predicted probability that the baby \\(\\texttt{i}\\) is at risk is greater than the threshold, the baby \\(\\texttt{i}\\) is classified as at-risk.\nOtherwise, the baby \\(\\texttt{i}\\) is classified as not-at-risk."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#classifier-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#classifier-1",
+    "title": "Lecture 8",
+    "section": "Classifier",
+    "text": "Classifier\n\nDouble density plot is useful when picking the classifier threshold.\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Filter data for atRisk == 1 and atRisk == 0\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\ntrain_true = pdf[pdf[\"atRisk\"] == 1]\ntrain_false = pdf[pdf[\"atRisk\"] == 0]\n\n# Create the first density plot\nplt.figure(figsize=(8, 6))\nsns.kdeplot(train_true[\"prediction\"], label=\"TRUE\", color=\"red\", fill=True)\nsns.kdeplot(train_false[\"prediction\"], label=\"FALSE\", color=\"blue\", fill=True)\nplt.xlabel(\"Prediction\")\nplt.ylabel(\"Density\")\nplt.title(\"Density Plot of Predictions\")\nplt.legend(title=\"atRisk\")\nplt.show()\n\n# Define threshold for vertical line\nthreshold = 0.02  # Replace with actual value\n\n# Create the second density plot with vertical line\nplt.figure(figsize=(8, 6))\nsns.kdeplot(train_true[\"prediction\"], label=\"TRUE\", color=\"red\", fill=True)\nsns.kdeplot(train_false[\"prediction\"], label=\"FALSE\", color=\"blue\", fill=True)\nplt.axvline(x=threshold, color=\"blue\", linestyle=\"dashed\", label=f\"Threshold = {threshold}\")\nplt.xlabel(\"Prediction\")\nplt.ylabel(\"Density\")\nplt.title(\"Density Plot of Predictions with Threshold\")\nplt.legend(title=\"atRisk\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nConfusion matrix\n\n\nThe confusion matrix summarizes the classifier’s predictions against the actual known data categories.\n\nSuppose the threshold is set as 0.02.\n\n\n\n# Compute confusion matrix\ndtest_1 = dtest_1.withColumn(\"predicted_class\", when(col(\"prediction\") &gt; .02, 1).otherwise(0))\nconf_matrix = dtest_1.groupBy(\"atRisk\", \"predicted_class\").count().orderBy(\"atRisk\", \"predicted_class\")\n\n# Collect as a dictionary for easy lookup\nconf_dict = {(row[\"atRisk\"], row[\"predicted_class\"]): row[\"count\"] for row in conf_matrix.collect()}\n\n# Extract values safely (handle missing values if any)\nTN = conf_dict.get((0, 0), 0)  # True Negative\nFP = conf_dict.get((0, 1), 0)  # False Positive\nFN = conf_dict.get((1, 0), 0)  # False Negative\nTP = conf_dict.get((1, 1), 0)  # True Positive\n\n# Print formatted confusion matrix with labels\nprint(\"\\n Confusion Matrix:\\n\")\nprint(\"                     Predicted\")\nprint(\"            |  Negative  |  Positive  \")\nprint(\"------------+------------+------------\")\nprint(f\"Actual Neg. |    {TN:5}   |    {FP:5}  |\")\nprint(\"------------+------------+------------\")\nprint(f\"Actual Pos. |    {FN:5}   |    {TP:5}  |\")\nprint(\"------------+------------+------------\")"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-1",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nAccuracy\n\n\nAccuracy: When the classifier says this newborn baby is at risk or is not at risk, what is the probability that the model is correct?\n\nAccuracy is defined as the number of items categorized correctly divided by the total number of items."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-2",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nFalse positive/negative\n\nFalse positive rate (FPR): If the classifier says this newborn baby is at risk, what’s the probability that the baby is not really at risk?\n\nFPR is defined as the ratio of false positives to predicted positives.\n\nFalse negative rate (FNR): If the classifier says this newborn baby is not at risk, what’s the probability that the baby is really at risk?\n\nFNR is defined as the ratio of false negatives to predicted negatives."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-3",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-3",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nPrecision\n\n\nPrecision: If the classifier says this newborn baby is at risk, what’s the probability that the baby is really at risk?\n\nPrecision is defined as the ratio of true positives to predicted positives."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-4",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-4",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nRecall (or Sensitivity)\n\n\nRecall (or sensitivity): Of all the babies at risk, what fraction did the classifier detect?\n\nRecall (or sensitivity) is also called the true positive rate (TPR), the ratio of true positives over all actual positives."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-5",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-5",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nSpecificity\n\n\nSpecificity: Of all the not-at-risk babies, what fraction did the classifier detect?\n\nSpecificity is also called the true negative rate (TNR), the ratio of true negatives over all actual negatives."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-6",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-6",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nEnrichment\n\nAverage: Average rate of new born babies being at risk\nEnrichment: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?\n\nYou want a classifier whose enrichment is greater than 2."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-7",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-7",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nTP = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 1)).count()\nFP = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 1)).count()\nFN = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 0)).count()\nTN = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 0)).count()\n\naccuracy = (TP + TN) / (TP + FP + FN + TN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nspecificity = TN / (TN + FP)\naverage_rate = (TP + FN) / (TP + TN + FP + FN)  # Proportion of actual at-risk babies\nenrichment = precision / average_rate\n\nprint(f\"Accuracy:  {accuracy:.4f}\")\nprint(f\"Precision: {precision:.4f}\")\nprint(f\"Recall (Sensitivity): {recall:.4f}\")\nprint(f\"Specificity:  {specificity:.4f}\")\nprint(f\"Average Rate: {average_rate:.4f}\")\nprint(f\"Enrichment:   {enrichment:.4f} (Relative Precision)\")"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-8",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-8",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nTrade-off between recall and precision/enrichment\n\n\nThere is a trade-off between recall and precision/enrichment.\n\nWhat would be the optimal threshold?\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.metrics import precision_recall_curve\n\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Extract predictions and true labels\ny_true = pdf[\"atRisk\"]  # True labels\ny_scores = pdf[\"prediction\"]  # Predicted probabilities\n\n# Compute precision, recall, and thresholds\nprecision, recall, thresholds = precision_recall_curve(y_true, y_scores)\n\n# Compute enrichment: precision divided by average at-risk rate\naverage_rate = np.mean(y_true)\nenrichment = precision / average_rate\n\n# Define optimal threshold (example: threshold where recall ≈ enrichment balance)\noptimal_threshold = 0.02  # Adjust based on the plot\n\n# Plot Enrichment vs. Recall vs. Threshold\nplt.figure(figsize=(8, 6))\nplt.plot(thresholds, enrichment[:-1], label=\"Enrichment\", color=\"blue\", linestyle=\"--\")\nplt.plot(thresholds, recall[:-1], label=\"Recall\", color=\"red\", linestyle=\"-\")\n\n# Add vertical line for chosen threshold\nplt.axvline(x=optimal_threshold, color=\"black\", linestyle=\"dashed\", label=f\"Optimal Threshold = {optimal_threshold}\")\n\n# Labels and legend\nplt.xlabel(\"Threshold\")\nplt.ylabel(\"Score\")\nplt.title(\"Enrichment vs. Recall vs. Threshold\")\nplt.legend()\nplt.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-9",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-9",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nTrade-off between sensitivity and specificity\n\n\nThere is also a trade-off between sensitivity and specificity.\n\n\n\nThe receiver operating characteristic curve (or ROC curve) plot both the true positive rate and the false positive rate (or 1 - specificity) for all threshold levels.\n\nArea under the curve (or AUC) can be another measure of the quality of the model.\n\n\nfrom sklearn.metrics import roc_curve\n\n# Convert to Pandas\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Compute ROC curve\nfpr, tpr, _ = roc_curve(pdf[\"atRisk\"], pdf[\"prediction\"])\n\n# Plot ROC curve\nplt.figure(figsize=(8,6))\nplt.plot(fpr, tpr, label=f\"ROC Curve (AUC = {auc:.4f})\")\nplt.plot([0, 1], [0, 1], 'k--', label=\"Random Guess\")\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.title(\"ROC Curve\")\nplt.legend()\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-10",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-10",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nAUC\n\n\n(0,0)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 1\\):\n\nNothing gets classified as at-risk."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-11",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-11",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nAUC\n\n\n(1,1)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 0\\):\n\nEverything gets classified as at-risk."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-12",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-12",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nAUC\n\n\n(0,1)—Corresponding to any classifier defined by a threshold between 0 and 1:\n\nEverything is classified perfectly!"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-13",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-13",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\nAUC\n\nThe AUC for the random model is 0.5.\n\nYou want a classifier whose AUC is close to 1, and greater than 0.5.\n\nWhen comparing multiple classifiers, you generally want to prefer classifiers that have a higher AUC.\nYou also want to examine the shape of the ROC to explore possible trade-offs."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-14",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-14",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\n\nSuppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.\nNow you want to use that same classifier on all the data from hospitals in MA.\nWill the classifier work as well?\nThe proportion of at-risk babies in MA hospitals may be different than that in NY hospitals.\nThis can change the performance of the classifier on all the MA data.\nLet’s see how classifier performance change with an average rate of at-risk babies."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-15",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-15",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-16",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-16",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\n\n\nThe classifier with relatively high average rate of at-risk babies throws out a lower fraction of not-at-risk babies.\nThe classifier with relatively low average rate of at-risk babies throws out a higher fraction of not-at-risk babies."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-17",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-17",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\n\nPrecision and false negative rate change a lot with the average rate of positives (at-risk babies).\nAccuracy, sensitivity, and specificity is relatively independent of the class prevalence.\nSensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution of the different classes in the population.\nPrecision/recall gives you an idea how well a classifier will work on a specific population."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-18",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-18",
+    "title": "Lecture 8",
+    "section": "Performance of Classifier",
+    "text": "Performance of Classifier\n\nWhich classifier do you prefer for identifying at-risk babies?\n\nHigh accuracy, low sensitivity, other things being equal;\nLow accuracy, high sensitivity, other things being equal.\n\nAccuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk",
+    "title": "Lecture 8",
+    "section": "Assessing Newborn Babies at Risk",
+    "text": "Assessing Newborn Babies at Risk\n\nNewborn babies are assessed at one and five minutes after birth using what’s called the Apgar test, which is designed to determine if a baby needs immediate emergency care or extra medical attention.\n\nA baby who scores below 7 (on a scale from 0 to 10) on the Apgar scale needs extra attention.\n\nSuch at-risk babies are rare, so the hospital doesn’t want to provision extra emergency equipment for every delivery.\n\nOn the other hand, at-risk babies may need attention quickly, so provisioning resources proactively to appropriate deliveries can save lives."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-1",
+    "title": "Lecture 8",
+    "section": "Assessing Newborn Babies at Risk",
+    "text": "Assessing Newborn Babies at Risk\ndfpd = pd.read_csv('https://bcdanl.github.io/data/NatalRiskData.csv')\n\nWe’ll use a sample dataset from the 2010 CDC natality public-use data file.\nThe data set records information about all US births, including facts about the mother and father, and about the delivery.\nThe sample has just over 26,000 births in a DataFrame."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-2",
+    "title": "Lecture 8",
+    "section": "Assessing Newborn Babies at Risk",
+    "text": "Assessing Newborn Babies at Risk"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-3",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-3",
+    "title": "Lecture 8",
+    "section": "Assessing Newborn Babies at Risk",
+    "text": "Assessing Newborn Babies at Risk\n\nTask 1. Identify the effects of predictors on the probability of \\(\\texttt{atRisk == TRUE}\\).\nTask 2. Identify ahead of time situations with a higher probability of \\(\\texttt{atRisk == TRUE}\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing",
+    "title": "Lecture 8",
+    "section": "What is the Logistic Regression doing?",
+    "text": "What is the Logistic Regression doing?\n\nThe logistic regression finds the beta coefficients, \\(b_0\\), \\(b_1\\), \\(b_2\\), \\(\\cdots\\), \\(b_{k}\\) such that the logistic function \\[\nG(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i})\n\\] is the best possible estimate of the binary outcome \\(y_{i}\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-1",
+    "title": "Lecture 8",
+    "section": "What is the Logistic Regression doing?",
+    "text": "What is the Logistic Regression doing?\n\nThe function \\(G(z_i)\\) is called the logistic function because the function \\(G(z_i)\\) is the inverse function of a logit (or a log-odd) of the probability that the outcome \\(y_{i}\\) is 1. \\[\n\\begin{align}\nG^{-1}(z_i) &\\,\\equiv\\, \\text{logit} (\\text{Prob}(y_{i} = 1))\\\\\n&\\equiv \\log\\left(\\, \\frac{\\text{Prob}(y_{i} = 1)}{\\text{Prob}(y_{i} = 0)} \\,\\right)\\\\\n&\\,=\\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i}\n\\end{align}\n\\]\nLogistic regression is a linear regression model for log odds."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-2",
+    "title": "Lecture 8",
+    "section": "What is the Logistic Regression doing?",
+    "text": "What is the Logistic Regression doing?\n\nLogistic regression can be expressed as linear regression of log odds of \\(y_{i} = 1\\) on predictors \\(x_1, x_2, \\cdots, x_k\\):\n\n\\[\n\\begin{align}\n\\text{Prob}(y_{i} = 1) &\\,=\\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i} )\\\\\n\\text{ }\\\\\n\\log\\left(\\dfrac{\\text{Prob}( y_i = 1 )}{\\text{Prob}( y_i = 0 )}\\right) &\\,=\\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, +  b_{k}x_{k,i}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-in-pyspark",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-in-pyspark",
+    "title": "Lecture 8",
+    "section": "Building a Logistic Regression Model in PySpark",
+    "text": "Building a Logistic Regression Model in PySpark\n\nThe function to build a logistic regression model in PySpark is \\(\\texttt{GeneralizedLinearRegression(family=\"binomial\", link=\"logit\")}\\).\nThe outcome variable \\(y\\) is the binary variable \\(\\texttt{atRisk}\\) (0 or 1).\nThe other variables in the table in the previous slide are predictors \\(x_{k}\\).\nThe arguments \\(\\texttt{family=\"binomial\"}\\) and \\(\\texttt{link=\"logit\"}\\) specify the logistic distribution of the outcome variable \\(y\\).\n\nfrom pyspark.ml.regression import GeneralizedLinearRegression\n\ndummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)\ndummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)\n\n# assembling predictors\nx_cols = ['PWGT', 'UPREVIS', 'CIG_REC', \n          'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',\n          'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']\n\nassembler_predictors = (\n    x_cols +\n    dummy_cols_GESTREC3 + dummy_cols_DPLURAL\n)\n\nassembler_1 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\n\ndtrain_1 = assembler_1.transform(dtrain)\ndtest_1  = assembler_1.transform(dtest)\n\n# training model\nmodel_1 = (\n    GeneralizedLinearRegression(featuresCol=\"predictors\",\n                                labelCol=\"atRisk\",\n                                family=\"binomial\", \n                                link=\"logit\")\n    .fit(dtrain_1)\n)\n\n# making prediction\ndtest_1 = model_1.transform(dtest_1)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1",
+    "title": "Lecture 8",
+    "section": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)",
+    "text": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\n\nInterpreting only the estimated beta coefficient may not be informative.\n\n\nmodel_1.summary\n\nIf the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1-1",
+    "title": "Lecture 8",
+    "section": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)",
+    "text": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\n\nIn logistic regression, the effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\) is different for each observation \\(i\\).\n\n\n\n\n\n\n\n\n\nLinear regression\n\n\n\n\n\n\n\n\n\n\nLogistic regression"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1-2",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1-2",
+    "title": "Lecture 8",
+    "section": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)",
+    "text": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\nHow can we calculate the effect of \\(x_{k, i}\\) on the probability of \\(y_{i} = 1\\)?\n\nMarginal effect at the mean (MEM): We can obtain the marginal effect at an average observation or representative observations in the training data (MEM) or at representative values (MER)).\nAverage marginal effect (AME): We can average the marginal effects across the training data.\n\n\ndef marginal_effects(model, means):\n    \"\"\"\n    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)\n    and return a formatted table with statistical significance.\n    \n    Parameters:\n        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).\n        means: List of mean values for the predictor variables.\n    \n    Returns:\n        A formatted string containing the marginal effects table.\n    \"\"\"\n    global assembler_predictors  # Use the global assembler_predictors list\n    \n    # Extract model coefficients, standard errors, and intercept\n    coeffs = np.array(model.coefficients)\n    std_errors = np.array(model.summary.coefficientStandardErrors)\n    intercept = model.intercept\n    \n    # Compute linear combination of means and coefficients (XB)\n    XB = np.dot(means, coeffs) + intercept\n    \n    # Compute derivative of logistic function (G'(XB))\n    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)\n    \n    # Helper: significance stars.\n    def significance_stars(p):\n        if p &lt; 0.01:\n            return \"***\"\n        elif p &lt; 0.05:\n            return \"**\"\n        elif p &lt; 0.1:\n            return \"*\"\n        else:\n            return \"\"\n    \n    # Create table to store results\n    results = []\n    \n    for i, predictor in enumerate(assembler_predictors):\n        # Compute marginal effect\n        marginal_effect = G_prime_XB * coeffs[i]\n        \n        # Compute standard error of the marginal effect\n        std_error = G_prime_XB * std_errors[i]\n        \n        # Compute z-score and p-value\n        z_score = marginal_effect / std_error if std_error != 0 else np.nan\n        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan\n        \n        # Compute confidence interval (95%)\n        ci_lower = marginal_effect - 1.96 * std_error\n        ci_upper = marginal_effect + 1.96 * std_error\n        \n        # Append results\n        results.append([predictor, f\"{marginal_effect: .4f}\", significance_stars(p_value), f\"{ci_lower: .4f}\", f\"{ci_upper: .4f}\"])\n    \n    # Convert results to tabulated format\n    table_str = tabulate(results, headers=[\"Variable\", \"Marginal Effect\", \"Significance\", \"95% CI Lower\", \"95% CI Upper\"], \n                         tablefmt=\"pretty\", colalign=(\"left\", \"decimal\", \"left\", \"decimal\", \"decimal\"))\n    \n    return table_str\n\n# Example usage:\n# means = [0.5, 30]  # Mean values for x1 and x2\n# assembler_predictors = ['x1', 'x2']  # Define globally before calling the function\n# table_output = mfx_glm(fitted_model, means)\n# print(table_output)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#double-density-plot-choosing-the-optimal-threshold",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#double-density-plot-choosing-the-optimal-threshold",
+    "title": "Lecture 8",
+    "section": "Double Density Plot – Choosing the Optimal Threshold",
+    "text": "Double Density Plot – Choosing the Optimal Threshold\n\n\nDouble density plot is useful when picking the classifier threshold.\n\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Filter data for atRisk == 1 and atRisk == 0\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\ntrain_true = pdf[pdf[\"atRisk\"] == 1]\ntrain_false = pdf[pdf[\"atRisk\"] == 0]\n\n# Create the first density plot\nplt.figure(figsize=(8, 6))\nsns.kdeplot(train_true[\"prediction\"], label=\"TRUE\", color=\"red\", fill=True)\nsns.kdeplot(train_false[\"prediction\"], label=\"FALSE\", color=\"blue\", fill=True)\nplt.xlabel(\"Prediction\")\nplt.ylabel(\"Density\")\nplt.title(\"Density Plot of Predictions\")\nplt.legend(title=\"atRisk\")\nplt.show()\n\n# Define threshold for vertical line\nthreshold = 0.02  # Replace with actual value\n\n# Create the second density plot with vertical line\nplt.figure(figsize=(8, 6))\nsns.kdeplot(train_true[\"prediction\"], label=\"TRUE\", color=\"red\", fill=True)\nsns.kdeplot(train_false[\"prediction\"], label=\"FALSE\", color=\"blue\", fill=True)\nplt.axvline(x=threshold, color=\"blue\", linestyle=\"dashed\", label=f\"Threshold = {threshold}\")\nplt.xlabel(\"Prediction\")\nplt.ylabel(\"Density\")\nplt.title(\"Density Plot of Predictions with Threshold\")\nplt.legend(title=\"atRisk\")\nplt.show()"
   }
 ]

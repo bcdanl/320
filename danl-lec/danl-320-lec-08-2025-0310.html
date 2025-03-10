@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <meta name="author" content="Byeong-Hak Choe">
+  <meta name="dcterms.date" content="2025-03-10">
+  <title>Home - Lecture 8</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture 8</h1>
+  <p class="subtitle">Logistic Regression</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Byeong-Hak Choe 
+</div>
+<div class="quarto-title-author-email">
+<a href="mailto:bchoe@geneseo.edu">bchoe@geneseo.edu</a>
+</div>
+        <p class="quarto-title-affiliation">
+            SUNY Geneseo
+          </p>
+    </div>
+</div>
+
+  <p class="date">March 10, 2025</p>
+</section>
+<section>
+<section id="logistic-regression" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Logistic Regression</strong></h1>
+
+</section>
+<section id="motivation" class="slide level2">
+<h2>Motivation</h2>
+<ul>
+<li class="fragment">Suppose we want to know how much the flight’s origin/destination, weather, and air carrier affect <em>the probability that a flight will be delayed</em>.</li>
+<li class="fragment">Suppose we also want to predict <em>whether or not a flight will be delayed</em>, based on facts like the flight’s origin/destination, weather, and air carrier.</li>
+<li class="fragment">For every flight <span class="math inline">\(\texttt{i}\)</span>, you want to predict <span class="math inline">\(\texttt{flight_delayed[i]}\)</span>, a binary variable ( <span class="math inline">\(\texttt{TRUE}\)</span> or <span class="math inline">\(\texttt{FALSE}\)</span>), based on <span class="math inline">\(\texttt{origin[i]}\)</span>, <span class="math inline">\(\texttt{destination[i]}\)</span>, <span class="math inline">\(\texttt{weather[i]}\)</span>, and <span class="math inline">\(\texttt{air_carrier[i]}\)</span>.</li>
+</ul>
+</section>
+<section id="motivation-1" class="slide level2">
+<h2>Motivation</h2>
+<div>
+<ul>
+<li>The logistic regression model for the probability that a flight will be delayed is formulated as: <span class="math display">\[
+\begin{align}
+&amp;\quad\texttt{ Prob( flight_delayed[i] == TRUE ) } \\[.5em]
+&amp;=\, \texttt{G( b$_{\texttt{0}}$ + b$_{\texttt{origin}}$*origin[i]  }\\
+&amp;\qquad\quad\, + \texttt{b$_{\texttt{destination}}$*destination[i]  }\\
+&amp;\qquad\quad\, + \texttt{b$_{\texttt{weather}}$*weather[i]  }\\
+&amp;\qquad\quad\, + \texttt{b$_{\texttt{air\_carrier}}$*air_carrier[i] )}.
+\end{align}
+\]</span></li>
+</ul>
+<!-- - $\texttt{Prob( flight_delayed[i] == TRUE )}$: Probability that a flight is delayed. -->
+<ul>
+<li><span class="math inline">\(G(z_i)\)</span>: the logistic function</li>
+</ul>
+<div style="display:block; margin:-20px;">
+
+</div>
+<p><span class="math display">\[
+\begin{align}
+\texttt{G(z[i]) = } \dfrac{\texttt{exp(z[i])}}{\texttt{1 + exp(z[i])}}.\notag
+\end{align}
+\]</span></p>
+</div>
+</section>
+<section id="properties-of-the-logistic-function" class="slide level2">
+<h2>Properties of the Logistic Function</h2>
+<ul>
+<li class="fragment"><p>The logistic function <span class="math inline">\(G(z_i)\)</span> maps the linear combination of predictors to the probability that the outcome <span class="math inline">\(y_{i}\)</span> is <span class="math inline">\(\texttt{TRUE}\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i}\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(z_{i} \overset{G}{\rightarrow} \texttt{ Prob} ( y_{i} = 1 )\)</span></p></li>
+</ul>
+</section>
+<section id="properties-of-the-logistic-function-1" class="slide level2">
+<h2>Properties of the Logistic Function</h2>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig7_13.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment">The logistic function <span class="math inline">\(G(z_i)\)</span> <span class="math display">\[
+\begin{align}
+G(z_i) = \frac{\exp(z_i)}{1 + \exp(z_i)}
+\end{align}
+\]</span> ranges between 0 and 1 for any value of <span class="math inline">\(z_i\)</span></li>
+</ul>
+</section>
+<section id="what-is-the-logistic-regression-doing" class="slide level2">
+<h2>What is the Logistic Regression doing?</h2>
+<ul>
+<li class="fragment">The logistic regression finds the beta coefficients, <span class="math inline">\(b_0\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(b_2\)</span>, <span class="math inline">\(\cdots\)</span>, <span class="math inline">\(b_{k}\)</span> such that the logistic function <span class="math display">\[
+G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
+\]</span> is the best possible estimate of the binary outcome <span class="math inline">\(y_{i}\)</span>.</li>
+</ul>
+</section>
+<section id="what-is-the-logistic-regression-doing-1" class="slide level2">
+<h2>What is the Logistic Regression doing?</h2>
+<ul>
+<li class="fragment"><p>The function <span class="math inline">\(G(z_i)\)</span> is called the logistic function because the function <span class="math inline">\(G(z_i)\)</span> is the inverse function of a <strong>logit</strong> (or a <strong>log-odd</strong>) of the probability that the outcome <span class="math inline">\(y_{i}\)</span> is 1. <span class="math display">\[
+\begin{align}
+G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
+&amp;\equiv \log\left(\, \frac{\text{Prob}(y_{i} = 1)}{\text{Prob}(y_{i} = 0)} \,\right)\\
+&amp;\,=\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i}
+\end{align}
+\]</span></p></li>
+<li class="fragment"><p>Logistic regression is a <strong>linear regression model for <em>log odds</em></strong>.</p></li>
+</ul>
+</section>
+<section id="what-is-the-logistic-regression-doing-2" class="slide level2">
+<h2>What is the Logistic Regression doing?</h2>
+<ul>
+<li class="fragment">Logistic regression can be expressed as linear regression of log odds of <span class="math inline">\(y_{i} = 1\)</span> on predictors <span class="math inline">\(x_1, x_2, \cdots, x_k\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\text{Prob}(y_{i} = 1) &amp;\,=\, G( b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i} )\\
+\text{ }\\
+\log\left(\dfrac{\text{Prob}( y_i = 1 )}{\text{Prob}( y_i = 0 )}\right) &amp;\,=\,  b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, +  b_{k}x_{k,i}
+\end{align}
+\]</span></p>
+</section>
+<section id="assessing-newborn-babies-at-risk" class="slide level2">
+<h2>Assessing Newborn Babies at Risk</h2>
+<ul>
+<li class="fragment">Newborn babies are assessed at one and five minutes after birth using what’s called the <strong>Apgar test</strong>, which is designed to determine if a baby needs immediate emergency care or extra medical attention.
+<ul>
+<li class="fragment">A baby who scores below 7 (on a scale from 0 to 10) on the Apgar scale needs extra attention.</li>
+</ul></li>
+<li class="fragment">Such at-risk babies are rare, so the hospital doesn’t want to provision extra emergency equipment for every delivery.<br>
+</li>
+<li class="fragment">On the other hand, at-risk babies may need attention quickly, so provisioning resources proactively to appropriate deliveries can save lives.</li>
+</ul>
+</section>
+<section id="assessing-newborn-babies-at-risk-1" class="slide level2">
+<h2>Assessing Newborn Babies at Risk</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>dfpd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/NatalRiskData.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">We’ll use a sample dataset from the 2010 CDC natality public-use data file.</li>
+<li class="fragment">The data set records information about all US births, including facts about the mother and father, and about the delivery.</li>
+<li class="fragment">The sample has just over 26,000 births in a DataFrame.</li>
+</ul>
+</section>
+<section id="assessing-newborn-babies-at-risk-2" class="slide level2">
+<h2>Assessing Newborn Babies at Risk</h2>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<section id="assessing-newborn-babies-at-risk-3" class="slide level2">
+<h2>Assessing Newborn Babies at Risk</h2>
+<ul>
+<li class="fragment"><strong>Task 1.</strong> Identify the effects of predictors on the probability of <span class="math inline">\(\texttt{atRisk == TRUE}\)</span>.</li>
+<li class="fragment"><strong>Task 2.</strong> Identify ahead of time situations with a higher probability of <span class="math inline">\(\texttt{atRisk == TRUE}\)</span>.</li>
+</ul>
+</section>
+<section id="building-a-logistic-regression-model-in-pyspark" class="slide level2">
+<h2>Building a Logistic Regression Model in PySpark</h2>
+<ul>
+<li class="fragment">The function to build a logistic regression model in PySpark is <span class="math inline">\(\texttt{GeneralizedLinearRegression(family="binomial", link="logit")}\)</span>.</li>
+<li class="fragment">The outcome variable <span class="math inline">\(y\)</span> is the binary variable <span class="math inline">\(\texttt{atRisk}\)</span> (0 or 1).</li>
+<li class="fragment">The other variables in the table in the previous slide are predictors <span class="math inline">\(x_{k}\)</span>.</li>
+<li class="fragment">The arguments <span class="math inline">\(\texttt{family="binomial"}\)</span> and <span class="math inline">\(\texttt{link="logit"}\)</span> specify the logistic distribution of the outcome variable <span class="math inline">\(y\)</span>.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> pyspark.ml.regression <span class="im">import</span> GeneralizedLinearRegression</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>dummy_cols_GESTREC3, ref_category_GESTREC3 <span class="op">=</span> add_dummy_variables(<span class="st">'GESTREC3'</span>, <span class="dv">1</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>dummy_cols_DPLURAL, ref_category_DPLURAL <span class="op">=</span> add_dummy_variables(<span class="st">'DPLURAL'</span>, <span class="dv">0</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co"># assembling predictors</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>x_cols <span class="op">=</span> [<span class="st">'PWGT'</span>, <span class="st">'UPREVIS'</span>, <span class="st">'CIG_REC'</span>, </span>
+<span id="cb2-8"><a href="#cb2-8"></a>          <span class="st">'ULD_MECO'</span>, <span class="st">'ULD_PRECIP'</span>, <span class="st">'ULD_BREECH'</span>, <span class="st">'URF_DIAB'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>          <span class="st">'URF_CHYPER'</span>, <span class="st">'URF_PHYPER'</span>, <span class="st">'URF_ECLAM'</span>]</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>assembler_predictors <span class="op">=</span> (</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    x_cols <span class="op">+</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    dummy_cols_GESTREC3 <span class="op">+</span> dummy_cols_DPLURAL</span>
+<span id="cb2-14"><a href="#cb2-14"></a>)</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a>assembler_1 <span class="op">=</span> VectorAssembler(</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    inputCols <span class="op">=</span> assembler_predictors,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    outputCol <span class="op">=</span> <span class="st">"predictors"</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>)</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>dtrain_1 <span class="op">=</span> assembler_1.transform(dtrain)</span>
+<span id="cb2-22"><a href="#cb2-22"></a>dtest_1  <span class="op">=</span> assembler_1.transform(dtest)</span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co"># training model</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>model_1 <span class="op">=</span> (</span>
+<span id="cb2-26"><a href="#cb2-26"></a>    GeneralizedLinearRegression(featuresCol<span class="op">=</span><span class="st">"predictors"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27"></a>                                labelCol<span class="op">=</span><span class="st">"atRisk"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28"></a>                                family<span class="op">=</span><span class="st">"binomial"</span>, </span>
+<span id="cb2-29"><a href="#cb2-29"></a>                                link<span class="op">=</span><span class="st">"logit"</span>)</span>
+<span id="cb2-30"><a href="#cb2-30"></a>    .fit(dtrain_1)</span>
+<span id="cb2-31"><a href="#cb2-31"></a>)</span>
+<span id="cb2-32"><a href="#cb2-32"></a></span>
+<span id="cb2-33"><a href="#cb2-33"></a><span class="co"># making prediction</span></span>
+<span id="cb2-34"><a href="#cb2-34"></a>dtest_1 <span class="op">=</span> model_1.transform(dtest_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="marginal-effects" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Marginal Effects</strong></h1>
+
+</section>
+<section id="marginal-effect-of-x_k-i-on-textproby_i-1" class="slide level2">
+<h2>Marginal Effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span></h2>
+<div>
+<ul>
+<li>Interpreting only the estimated beta coefficient may not be informative.</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>model_1.summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li class="fragment">If the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby.</li>
+</ul>
+</section>
+<section id="marginal-effect-of-x_k-i-on-textproby_i-1-1" class="slide level2">
+<h2>Marginal Effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span></h2>
+<div>
+<ul>
+<li>In logistic regression, the effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span> is different for each observation <span class="math inline">\(i\)</span>.</li>
+</ul>
+</div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://bcdanl.github.io/lec_figs/effect_linear.png" style="width:100.0%"></p>
+<figcaption>Linear regression</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://bcdanl.github.io/lec_figs/effect_logit.png" style="width:100.0%"></p>
+<figcaption>Logistic regression</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="marginal-effect-of-x_k-i-on-textproby_i-1-2" class="slide level2">
+<h2>Marginal Effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span></h2>
+<ul>
+<li class="fragment">How can we calculate the effect of <span class="math inline">\(x_{k, i}\)</span> on the probability of <span class="math inline">\(y_{i} = 1\)</span>?
+<ol type="1">
+<li class="fragment">Marginal effect at the mean (MEM): We can obtain the marginal effect at an average observation or representative observations in the training data (MEM) or at representative values (MER)).</li>
+<li class="fragment">Average marginal effect (AME): We can average the marginal effects across the training data.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource pyspark number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>def marginal_effects(model, means):</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    """</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>    and return a formatted table with statistical significance.</span>
+<span id="cb4-5"><a href="#cb4-5"></a>    </span>
+<span id="cb4-6"><a href="#cb4-6"></a>    Parameters:</span>
+<span id="cb4-7"><a href="#cb4-7"></a>        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        means: List of mean values for the predictor variables.</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    </span>
+<span id="cb4-10"><a href="#cb4-10"></a>    Returns:</span>
+<span id="cb4-11"><a href="#cb4-11"></a>        A formatted string containing the marginal effects table.</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    """</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    global assembler_predictors  # Use the global assembler_predictors list</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    </span>
+<span id="cb4-15"><a href="#cb4-15"></a>    # Extract model coefficients, standard errors, and intercept</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    coeffs = np.array(model.coefficients)</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    std_errors = np.array(model.summary.coefficientStandardErrors)</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    intercept = model.intercept</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    </span>
+<span id="cb4-20"><a href="#cb4-20"></a>    # Compute linear combination of means and coefficients (XB)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    XB = np.dot(means, coeffs) + intercept</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    </span>
+<span id="cb4-23"><a href="#cb4-23"></a>    # Compute derivative of logistic function (G'(XB))</span>
+<span id="cb4-24"><a href="#cb4-24"></a>    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)</span>
+<span id="cb4-25"><a href="#cb4-25"></a>    </span>
+<span id="cb4-26"><a href="#cb4-26"></a>    # Helper: significance stars.</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    def significance_stars(p):</span>
+<span id="cb4-28"><a href="#cb4-28"></a>        if p &lt; 0.01:</span>
+<span id="cb4-29"><a href="#cb4-29"></a>            return "***"</span>
+<span id="cb4-30"><a href="#cb4-30"></a>        elif p &lt; 0.05:</span>
+<span id="cb4-31"><a href="#cb4-31"></a>            return "**"</span>
+<span id="cb4-32"><a href="#cb4-32"></a>        elif p &lt; 0.1:</span>
+<span id="cb4-33"><a href="#cb4-33"></a>            return "*"</span>
+<span id="cb4-34"><a href="#cb4-34"></a>        else:</span>
+<span id="cb4-35"><a href="#cb4-35"></a>            return ""</span>
+<span id="cb4-36"><a href="#cb4-36"></a>    </span>
+<span id="cb4-37"><a href="#cb4-37"></a>    # Create table to store results</span>
+<span id="cb4-38"><a href="#cb4-38"></a>    results = []</span>
+<span id="cb4-39"><a href="#cb4-39"></a>    </span>
+<span id="cb4-40"><a href="#cb4-40"></a>    for i, predictor in enumerate(assembler_predictors):</span>
+<span id="cb4-41"><a href="#cb4-41"></a>        # Compute marginal effect</span>
+<span id="cb4-42"><a href="#cb4-42"></a>        marginal_effect = G_prime_XB * coeffs[i]</span>
+<span id="cb4-43"><a href="#cb4-43"></a>        </span>
+<span id="cb4-44"><a href="#cb4-44"></a>        # Compute standard error of the marginal effect</span>
+<span id="cb4-45"><a href="#cb4-45"></a>        std_error = G_prime_XB * std_errors[i]</span>
+<span id="cb4-46"><a href="#cb4-46"></a>        </span>
+<span id="cb4-47"><a href="#cb4-47"></a>        # Compute z-score and p-value</span>
+<span id="cb4-48"><a href="#cb4-48"></a>        z_score = marginal_effect / std_error if std_error != 0 else np.nan</span>
+<span id="cb4-49"><a href="#cb4-49"></a>        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan</span>
+<span id="cb4-50"><a href="#cb4-50"></a>        </span>
+<span id="cb4-51"><a href="#cb4-51"></a>        # Compute confidence interval (95%)</span>
+<span id="cb4-52"><a href="#cb4-52"></a>        ci_lower = marginal_effect - 1.96 * std_error</span>
+<span id="cb4-53"><a href="#cb4-53"></a>        ci_upper = marginal_effect + 1.96 * std_error</span>
+<span id="cb4-54"><a href="#cb4-54"></a>        </span>
+<span id="cb4-55"><a href="#cb4-55"></a>        # Append results</span>
+<span id="cb4-56"><a href="#cb4-56"></a>        results.append([predictor, f"{marginal_effect: .4f}", significance_stars(p_value), f"{ci_lower: .4f}", f"{ci_upper: .4f}"])</span>
+<span id="cb4-57"><a href="#cb4-57"></a>    </span>
+<span id="cb4-58"><a href="#cb4-58"></a>    # Convert results to tabulated format</span>
+<span id="cb4-59"><a href="#cb4-59"></a>    table_str = tabulate(results, headers=["Variable", "Marginal Effect", "Significance", "95% CI Lower", "95% CI Upper"], </span>
+<span id="cb4-60"><a href="#cb4-60"></a>                         tablefmt="pretty", colalign=("left", "decimal", "left", "decimal", "decimal"))</span>
+<span id="cb4-61"><a href="#cb4-61"></a>    </span>
+<span id="cb4-62"><a href="#cb4-62"></a>    return table_str</span>
+<span id="cb4-63"><a href="#cb4-63"></a></span>
+<span id="cb4-64"><a href="#cb4-64"></a># Example usage:</span>
+<span id="cb4-65"><a href="#cb4-65"></a># means = [0.5, 30]  # Mean values for x1 and x2</span>
+<span id="cb4-66"><a href="#cb4-66"></a># assembler_predictors = ['x1', 'x2']  # Define globally before calling the function</span>
+<span id="cb4-67"><a href="#cb4-67"></a># table_output = mfx_glm(fitted_model, means)</span>
+<span id="cb4-68"><a href="#cb4-68"></a># print(table_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="vs.-point" class="slide level2">
+<h2>% vs.&nbsp;% point</h2>
+<ul>
+<li class="fragment">Let’s say you have money in a savings account. The interest is 3%.</li>
+<li class="fragment">Now consider two scenarios:
+<ol type="1">
+<li class="fragment">The bank increases the interest rate by one percent.</li>
+<li class="fragment">The bank increases the interest rate by one percentage point.</li>
+</ol></li>
+<li class="fragment">What is the new interest rate in each scenario? Which is better?</li>
+</ul>
+</section>
+<section id="logistic-regression-1" class="slide level2">
+<h2>Logistic Regression</h2>
+<h3 id="interpreting-the-marginal-effect">Interpreting the Marginal Effect</h3>
+<ul>
+<li class="fragment">How do we interpret the ME? All else being equal,
+<ul>
+<li class="fragment">The probability of a new born baby being at risk increases by 2.05% <strong>points</strong> if the baby is prematurely born.</li>
+<li class="fragment">The probability of a new born baby being at risk decreases by 0.04% <strong>points</strong> if the number of parental medical visits increases by one unit.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="classification" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Classification</strong></h1>
+
+</section>
+<section id="classifier" class="slide level2">
+<h2>Classifier</h2>
+<ul>
+<li class="fragment"><p>Your goal is to use the logistic regression model to classify newborn babies into one of two categories—at-risk or not.</p></li>
+<li class="fragment"><p>Prediction from the logistic regression with a threshold on the predicted probabilities can be used as a <strong>classifier</strong>.</p></li>
+<li class="fragment"><p>If the predicted probability that the baby <span class="math inline">\(\texttt{i}\)</span> is at risk is greater than the threshold, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as at-risk.</p></li>
+<li class="fragment"><p>Otherwise, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as not-at-risk.</p></li>
+</ul>
+</section>
+<section id="double-density-plot-choosing-the-optimal-threshold" class="slide level2">
+<h2>Double Density Plot – Choosing the Optimal Threshold</h2>
+<div>
+<ul>
+<li>Double density plot is useful when picking the classifier threshold.</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Filter data for atRisk == 1 and atRisk == 0</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>train_true <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb5-8"><a href="#cb5-8"></a>train_false <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Create the first density plot</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb5-12"><a href="#cb5-12"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-13"><a href="#cb5-13"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
+<span id="cb5-16"><a href="#cb5-16"></a>plt.title(<span class="st">"Density Plot of Predictions"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>plt.show()</span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="co"># Define threshold for vertical line</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Replace with actual value</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a><span class="co"># Create the second density plot with vertical line</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb5-25"><a href="#cb5-25"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-26"><a href="#cb5-26"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-27"><a href="#cb5-27"></a>plt.axvline(x<span class="op">=</span>threshold, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Threshold = </span><span class="sc">{</span>threshold<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-28"><a href="#cb5-28"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
+<span id="cb5-29"><a href="#cb5-29"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
+<span id="cb5-30"><a href="#cb5-30"></a>plt.title(<span class="st">"Density Plot of Predictions with Threshold"</span>)</span>
+<span id="cb5-31"><a href="#cb5-31"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
+<span id="cb5-32"><a href="#cb5-32"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performance-of-classifier" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="confusion-matrix">Confusion matrix</h3>
+<div>
+<ul>
+<li>The <strong>confusion matrix</strong> summarizes the classifier’s predictions against the actual known data categories.
+<ul>
+<li>Suppose the threshold is set as 0.02.</li>
+</ul></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Compute confusion matrix</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>dtest_1 <span class="op">=</span> dtest_1.withColumn(<span class="st">"predicted_class"</span>, when(col(<span class="st">"prediction"</span>) <span class="op">&gt;</span> <span class="fl">.02</span>, <span class="dv">1</span>).otherwise(<span class="dv">0</span>))</span>
+<span id="cb6-3"><a href="#cb6-3"></a>conf_matrix <span class="op">=</span> dtest_1.groupBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>).count().orderBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># Collect as a dictionary for easy lookup</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>conf_dict <span class="op">=</span> {(row[<span class="st">"atRisk"</span>], row[<span class="st">"predicted_class"</span>]): row[<span class="st">"count"</span>] <span class="cf">for</span> row <span class="kw">in</span> conf_matrix.collect()}</span>
+<span id="cb6-7"><a href="#cb6-7"></a></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># Extract values safely (handle missing values if any)</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>TN <span class="op">=</span> conf_dict.get((<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">0</span>)  <span class="co"># True Negative</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>FP <span class="op">=</span> conf_dict.get((<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">0</span>)  <span class="co"># False Positive</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>FN <span class="op">=</span> conf_dict.get((<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">0</span>)  <span class="co"># False Negative</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>TP <span class="op">=</span> conf_dict.get((<span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)  <span class="co"># True Positive</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co"># Print formatted confusion matrix with labels</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Confusion Matrix:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="bu">print</span>(<span class="st">"                     Predicted"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(<span class="st">"            |  Negative  |  Positive  "</span>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="bu">print</span>(<span class="ss">f"Actual Neg. |    </span><span class="sc">{</span>TN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>FP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21"></a><span class="bu">print</span>(<span class="ss">f"Actual Pos. |    </span><span class="sc">{</span>FN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>TP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performance-of-classifier-1" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="accuracy">Accuracy</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_10.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment"><strong>Accuracy</strong>: When the classifier says this newborn baby is at risk or is not at risk, what is the probability that the model is correct?
+<ul>
+<li class="fragment"><strong>Accuracy</strong> is defined as the number of items categorized correctly divided by the total number of items.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-2" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="false-positivenegative">False positive/negative</h3>
+<ul>
+<li class="fragment"><strong>False positive rate (FPR)</strong>: If the classifier says this newborn baby is at risk, what’s the probability that the baby is not really at risk?
+<ul>
+<li class="fragment"><strong>FPR</strong> is defined as the ratio of false positives to predicted positives.</li>
+</ul></li>
+<li class="fragment"><strong>False negative rate (FNR)</strong>: If the classifier says this newborn baby is not at risk, what’s the probability that the baby is really at risk?
+<ul>
+<li class="fragment"><strong>FNR</strong> is defined as the ratio of false negatives to predicted negatives.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-3" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="precision">Precision</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_11.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment"><strong>Precision</strong>: If the classifier says this newborn baby is at risk, what’s the probability that the baby is really at risk?
+<ul>
+<li class="fragment"><strong>Precision</strong> is defined as the ratio of true positives to predicted positives.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-4" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="recall-or-sensitivity">Recall (or Sensitivity)</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_12.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment"><strong>Recall (or sensitivity)</strong>: Of all the babies at risk, what fraction did the classifier detect?
+<ul>
+<li class="fragment"><strong>Recall (or sensitivity)</strong> is also called the <strong>true positive rate (TPR)</strong>, the ratio of true positives over all actual positives.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-5" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="specificity">Specificity</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_13.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment"><strong>Specificity</strong>: Of all the not-at-risk babies, what fraction did the classifier detect?
+<ul>
+<li class="fragment"><strong>Specificity</strong> is also called the <strong>true negative rate (TNR)</strong>, the ratio of true negatives over all actual negatives.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-6" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="enrichment">Enrichment</h3>
+<ul>
+<li class="fragment"><strong>Average</strong>: Average rate of new born babies being at risk</li>
+<li class="fragment"><strong>Enrichment</strong>: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?
+<ul>
+<li class="fragment">You want a classifier whose enrichment is greater than 2.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-7" class="slide level2">
+<h2>Performance of Classifier</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb7-2"><a href="#cb7-2"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb7-3"><a href="#cb7-3"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb7-4"><a href="#cb7-4"></a>TN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a>accuracy <span class="op">=</span> (TP <span class="op">+</span> TN) <span class="op">/</span> (TP <span class="op">+</span> FP <span class="op">+</span> FN <span class="op">+</span> TN)</span>
+<span id="cb7-7"><a href="#cb7-7"></a>precision <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FP)</span>
+<span id="cb7-8"><a href="#cb7-8"></a>recall <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FN)</span>
+<span id="cb7-9"><a href="#cb7-9"></a>specificity <span class="op">=</span> TN <span class="op">/</span> (TN <span class="op">+</span> FP)</span>
+<span id="cb7-10"><a href="#cb7-10"></a>average_rate <span class="op">=</span> (TP <span class="op">+</span> FN) <span class="op">/</span> (TP <span class="op">+</span> TN <span class="op">+</span> FP <span class="op">+</span> FN)  <span class="co"># Proportion of actual at-risk babies</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="ss">f"Accuracy:  </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="bu">print</span>(<span class="ss">f"Recall (Sensitivity): </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="bu">print</span>(<span class="ss">f"Specificity:  </span><span class="sc">{</span>specificity<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performance-of-classifier-8" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="trade-off-between-recall-and-precisionenrichment">Trade-off between recall and precision/enrichment</h3>
+<div>
+<ul>
+<li>There is a trade-off between recall and precision/enrichment.
+<ul>
+<li>What would be the optimal threshold?</li>
+</ul></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_curve</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co"># Extract predictions and true labels</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>y_true <span class="op">=</span> pdf[<span class="st">"atRisk"</span>]  <span class="co"># True labels</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a>y_scores <span class="op">=</span> pdf[<span class="st">"prediction"</span>]  <span class="co"># Predicted probabilities</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co"># Compute precision, recall, and thresholds</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a>precision, recall, thresholds <span class="op">=</span> precision_recall_curve(y_true, y_scores)</span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co"># Compute enrichment: precision divided by average at-risk rate</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>average_rate <span class="op">=</span> np.mean(y_true)</span>
+<span id="cb8-16"><a href="#cb8-16"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
+<span id="cb8-17"><a href="#cb8-17"></a></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="co"># Define optimal threshold (example: threshold where recall ≈ enrichment balance)</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>optimal_threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Adjust based on the plot</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="co"># Plot Enrichment vs. Recall vs. Threshold</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb8-23"><a href="#cb8-23"></a>plt.plot(thresholds, enrichment[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Enrichment"</span>, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb8-24"><a href="#cb8-24"></a>plt.plot(thresholds, recall[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Recall"</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb8-25"><a href="#cb8-25"></a></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="co"># Add vertical line for chosen threshold</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a>plt.axvline(x<span class="op">=</span>optimal_threshold, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Optimal Threshold = </span><span class="sc">{</span>optimal_threshold<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28"></a></span>
+<span id="cb8-29"><a href="#cb8-29"></a><span class="co"># Labels and legend</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>plt.xlabel(<span class="st">"Threshold"</span>)</span>
+<span id="cb8-31"><a href="#cb8-31"></a>plt.ylabel(<span class="st">"Score"</span>)</span>
+<span id="cb8-32"><a href="#cb8-32"></a>plt.title(<span class="st">"Enrichment vs. Recall vs. Threshold"</span>)</span>
+<span id="cb8-33"><a href="#cb8-33"></a>plt.legend()</span>
+<span id="cb8-34"><a href="#cb8-34"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb8-35"><a href="#cb8-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performance-of-classifier-9" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="trade-off-between-sensitivity-and-specificity">Trade-off between sensitivity and specificity</h3>
+<div>
+<ul>
+<li>There is also a trade-off between sensitivity and specificity.</li>
+</ul>
+</div>
+<ul>
+<li class="fragment"><p>The receiver operating characteristic curve (or <strong>ROC</strong> curve) plot both the true positive rate and the false positive rate (or 1 - specificity) for all threshold levels.</p>
+<ul>
+<li class="fragment">Area under the curve (or <strong>AUC</strong>) can be another measure of the quality of the model.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Convert to Pandas</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># Compute ROC curve</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>fpr, tpr, _ <span class="op">=</span> roc_curve(pdf[<span class="st">"atRisk"</span>], pdf[<span class="st">"prediction"</span>])</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb9-11"><a href="#cb9-11"></a>plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f"ROC Curve (AUC = </span><span class="sc">{</span>auc<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">"Random Guess"</span>)</span>
+<span id="cb9-13"><a href="#cb9-13"></a>plt.xlabel(<span class="st">"False Positive Rate"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>plt.ylabel(<span class="st">"True Positive Rate"</span>)</span>
+<span id="cb9-15"><a href="#cb9-15"></a>plt.title(<span class="st">"ROC Curve"</span>)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>plt.legend()</span>
+<span id="cb9-17"><a href="#cb9-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performance-of-classifier-10" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="auc">AUC</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_17.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment">(0,0)—Corresponding to a classifier defined by the threshold <span class="math inline">\(\text{Prob}(y_{i} = 1) = 1\)</span>:
+<ul>
+<li class="fragment">Nothing gets classified as at-risk.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-11" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="auc-1">AUC</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_17.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment">(1,1)—Corresponding to a classifier defined by the threshold <span class="math inline">\(\text{Prob}(y_{i} = 1) = 0\)</span>:
+<ul>
+<li class="fragment">Everything gets classified as at-risk.</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-12" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="auc-2">AUC</h3>
+
+<img data-src="https://bcdanl.github.io/lec_figs/pds_fig6_17.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment">(0,1)—Corresponding to any classifier defined by a threshold between 0 and 1:
+<ul>
+<li class="fragment">Everything is classified perfectly!</li>
+</ul></li>
+</ul>
+</section>
+<section id="performance-of-classifier-13" class="slide level2">
+<h2>Performance of Classifier</h2>
+<h3 id="auc-3">AUC</h3>
+<ul>
+<li class="fragment"><p>The AUC for the random model is 0.5.</p>
+<ul>
+<li class="fragment">You want a classifier whose AUC is close to 1, and greater than 0.5.</li>
+</ul></li>
+<li class="fragment"><p>When comparing multiple classifiers, you generally want to prefer classifiers that have a higher AUC.</p></li>
+<li class="fragment"><p>You also want to examine the shape of the ROC to explore possible trade-offs.</p></li>
+</ul>
+</section>
+<section id="performance-of-classifier-14" class="slide level2">
+<h2>Performance of Classifier</h2>
+<ul>
+<li class="fragment"><p>Suppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.</p></li>
+<li class="fragment"><p>Now you want to use that same classifier on all the data from hospitals in MA.</p></li>
+<li class="fragment"><p>Will the classifier work as well?</p></li>
+<li class="fragment"><p>The proportion of at-risk babies in MA hospitals may be different than that in NY hospitals.</p></li>
+<li class="fragment"><p>This can change the performance of the classifier on all the MA data.</p></li>
+<li class="fragment"><p>Let’s see how classifier performance change with an average rate of at-risk babies.</p></li>
+</ul>
+</section>
+<section id="performance-of-classifier-15" class="slide level2">
+<h2>Performance of Classifier</h2>
+
+<img data-src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" style="width:75.0%" class="r-stretch quarto-figure-center"></section>
+<section id="performance-of-classifier-16" class="slide level2">
+<h2>Performance of Classifier</h2>
+
+<img data-src="https://bcdanl.github.io/lec_figs/classifier-tab2.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
+<li class="fragment">The classifier with relatively <em>high</em> average rate of at-risk babies throws out a <em>lower</em> fraction of not-at-risk babies.</li>
+<li class="fragment">The classifier with relatively <em>low</em> average rate of at-risk babies throws out a <em>higher</em> fraction of not-at-risk babies.</li>
+</ul>
+</section>
+<section id="performance-of-classifier-17" class="slide level2">
+<h2>Performance of Classifier</h2>
+<ul>
+<li class="fragment">Precision and false negative rate change a lot with the average rate of positives (at-risk babies).</li>
+<li class="fragment">Accuracy, sensitivity, and specificity is relatively independent of the class prevalence.</li>
+<li class="fragment">Sensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution of the different classes in the population.</li>
+<li class="fragment">Precision/recall gives you an idea how well a classifier will work on a specific population.</li>
+</ul>
+</section>
+<section id="performance-of-classifier-18" class="slide level2">
+<h2>Performance of Classifier</h2>
+<ul>
+<li class="fragment">Which classifier do you prefer for identifying at-risk babies?
+<ol type="1">
+<li class="fragment">High accuracy, low sensitivity, other things being equal;</li>
+<li class="fragment">Low accuracy, high sensitivity, other things being equal.</li>
+</ol></li>
+<li class="fragment">Accuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event).</li>
+</ul>
+
+<div class="footer footer-default">
+
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    document.addEventListener('wheel', function(event) {
+        if (event.deltaY > 0) {
+            Reveal.next(); // Scroll down to go to the next slide
+        } else {
+            Reveal.prev(); // Scroll up to go to the previous slide
+        }
+    }, false);
+
+    window.onload = function() {
+        document.querySelectorAll('a').forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Query all anchor tags within code blocks (adjust the selector as needed)
+      document.querySelectorAll('pre code a').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent the default anchor action
+          e.stopPropagation(); // Stop the event from bubbling up
+        });
+      });
+    });
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Target all span elements within code blocks that have IDs starting with 'cb'
+        document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
+            element.addEventListener('mouseenter', function() {
+                // Apply yellow background color to the hovered span element
+                this.style.backgroundColor = '#FFFF99';
+            });
+            element.addEventListener('mouseleave', function() {
+                // Revert the background color when the mouse leaves the span element
+                this.style.backgroundColor = '';
+            });
+        });
+    });
+
+
+
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+          // Handle positioning of the toggle
+          window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
