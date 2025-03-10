@@ -435,9 +435,8 @@ def marginal_effects(model, means):
 
 - Your goal is to use the logistic regression model to classify newborn babies into one of two categories---at-risk or not.
 - **Prediction** from the logistic regression with a **threshold** on the predicted probabilities can be used as a **classifier**.
-
-- If the predicted probability that the baby $\texttt{i}$ is at risk is greater than the threshold, the baby $\texttt{i}$ is classified as at-risk.
-- Otherwise, the baby $\texttt{i}$ is classified as not-at-risk.
+  - If the predicted probability that the baby $\texttt{i}$ is at risk is greater than the threshold, the baby $\texttt{i}$ is classified as at-risk.
+  - Otherwise, the baby $\texttt{i}$ is classified as not-at-risk.
 
 
 
@@ -448,15 +447,15 @@ def marginal_effects(model, means):
 
 :::{.nonincremental}
 - Double density plot is useful when picking the classifier threshold.
-
+  - Since the classifier is built using the training data, the threshold should also be selected using the training data.
 :::
 
 ```{.python}
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Filter data for atRisk == 1 and atRisk == 0
-pdf = dtest_1.select("prediction", "atRisk").toPandas()
+# Filter training data for atRisk == 1 and atRisk == 0
+pdf = dtrain_1.select("prediction", "atRisk").toPandas()
 
 train_true = pdf[pdf["atRisk"] == 1]
 train_false = pdf[pdf["atRisk"] == 0]

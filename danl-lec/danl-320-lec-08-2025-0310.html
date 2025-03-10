@@ -746,24 +746,29 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <section id="classifier" class="slide level2">
 <h2>Classifier</h2>
 <ul>
-<li class="fragment"><p>Your goal is to use the logistic regression model to classify newborn babies into one of two categories—at-risk or not.</p></li>
-<li class="fragment"><p><strong>Prediction</strong> from the logistic regression with a <strong>threshold</strong> on the predicted probabilities can be used as a <strong>classifier</strong>.</p></li>
-<li class="fragment"><p>If the predicted probability that the baby <span class="math inline">\(\texttt{i}\)</span> is at risk is greater than the threshold, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as at-risk.</p></li>
-<li class="fragment"><p>Otherwise, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as not-at-risk.</p></li>
+<li class="fragment">Your goal is to use the logistic regression model to classify newborn babies into one of two categories—at-risk or not.</li>
+<li class="fragment"><strong>Prediction</strong> from the logistic regression with a <strong>threshold</strong> on the predicted probabilities can be used as a <strong>classifier</strong>.
+<ul>
+<li class="fragment">If the predicted probability that the baby <span class="math inline">\(\texttt{i}\)</span> is at risk is greater than the threshold, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as at-risk.</li>
+<li class="fragment">Otherwise, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as not-at-risk.</li>
+</ul></li>
 </ul>
 </section>
 <section id="double-density-plot-choosing-the-optimal-threshold" class="slide level2">
 <h2>Double Density Plot – Choosing the Optimal Threshold</h2>
 <div>
 <ul>
-<li>Double density plot is useful when picking the classifier threshold.</li>
+<li>Double density plot is useful when picking the classifier threshold.
+<ul>
+<li>Since the classifier is built using the training data, the threshold should also be selected using the training data.</li>
+</ul></li>
 </ul>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Filter data for atRisk == 1 and atRisk == 0</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Filter training data for atRisk == 1 and atRisk == 0</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>pdf <span class="op">=</span> dtrain_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
 <span id="cb5-6"><a href="#cb5-6"></a></span>
 <span id="cb5-7"><a href="#cb5-7"></a>train_true <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
 <span id="cb5-8"><a href="#cb5-8"></a>train_false <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
