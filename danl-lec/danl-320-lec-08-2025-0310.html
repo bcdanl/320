@@ -1044,6 +1044,38 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment"><p>This can change the performance of the classifier on all the MA data.</p></li>
 <li class="fragment"><p>Let’s see how classifier performance change with an average rate of at-risk babies.</p></li>
 </ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dtrain, dtest <span class="op">=</span> df.randomSplit([<span class="fl">0.5</span>, <span class="fl">0.5</span>], seed <span class="op">=</span> <span class="dv">1234</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>pd_dtrain <span class="op">=</span> dtrain.toPandas()</span>
+<span id="cb10-4"><a href="#cb10-4"></a>pd_dtest <span class="op">=</span> dtest.toPandas()</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>np.random.seed(<span class="dv">23464</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># Sample 1000 random indices from the test dataset without replacement</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>sample_indices <span class="op">=</span> np.random.choice(pd_dtest.index, size<span class="op">=</span><span class="dv">1000</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="co"># Separate the selected observations from testing data</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>separated <span class="op">=</span> pd_dtest.loc[sample_indices]</span>
+<span id="cb10-14"><a href="#cb10-14"></a></span>
+<span id="cb10-15"><a href="#cb10-15"></a><span class="co"># Remove the selected observations from the testing data</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a><span class="co"># Consider this as data from NY hospitals</span></span>
+<span id="cb10-17"><a href="#cb10-17"></a>pd_dtest_NY <span class="op">=</span> pd_dtest.drop(sample_indices)</span>
+<span id="cb10-18"><a href="#cb10-18"></a></span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># Split the separated sample into at-risk and not-at-risk groups</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]  <span class="co"># Only at-risk cases</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>not_at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]  <span class="co"># Only not-at-risk cases</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a></span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="co"># Create test sets for MA hospitals with different at-risk rates</span></span>
+<span id="cb10-24"><a href="#cb10-24"></a>pd_dtest_MA_moreRisk <span class="op">=</span> pd.concat([pd_dtest_NY, at_risk_sample])  <span class="co"># Adds back only at-risk cases</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a>pd_dtest_MA_lessRisk <span class="op">=</span> pd.concat([pd_dtest_NY, not_at_risk_sample])  <span class="co"># Adds back only not-at-risk cases</span></span>
+<span id="cb10-26"><a href="#cb10-26"></a></span>
+<span id="cb10-27"><a href="#cb10-27"></a><span class="co"># Show counts to verify results</span></span>
+<span id="cb10-28"><a href="#cb10-28"></a><span class="bu">print</span>(<span class="st">"Original Test Set Size:"</span>, pd_dtest.shape[<span class="dv">0</span>])</span>
+<span id="cb10-29"><a href="#cb10-29"></a><span class="bu">print</span>(<span class="st">"Sampled Separated Size:"</span>, separated.shape[<span class="dv">0</span>])</span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="bu">print</span>(<span class="st">"NY Hospitals Data Size:"</span>, pd_dtest_NY.shape[<span class="dv">0</span>])</span>
+<span id="cb10-31"><a href="#cb10-31"></a><span class="bu">print</span>(<span class="st">"MA More Risk Data Size:"</span>, pd_dtest_MA_moreRisk.shape[<span class="dv">0</span>])</span>
+<span id="cb10-32"><a href="#cb10-32"></a><span class="bu">print</span>(<span class="st">"MA Less Risk Data Size:"</span>, pd_dtest_MA_lessRisk.shape[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-15" class="slide level2">
 <h2>Performance of Classifier</h2>

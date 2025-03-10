@@ -781,10 +781,45 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_17.png")
 - Now you want to use that same classifier on all the data from hospitals in MA. 
 - Will the classifier work as well?
 
-
 - The proportion of at-risk babies in MA hospitals may be different than that in NY hospitals. 
 - This can change the performance of the classifier on all the MA data.
 - Let's see how classifier performance change with an average rate of at-risk babies.
+
+```{.python}
+dtrain, dtest = df.randomSplit([0.5, 0.5], seed = 1234)
+
+pd_dtrain = dtrain.toPandas()
+pd_dtest = dtest.toPandas()
+
+# Set seed for reproducibility
+np.random.seed(23464)
+
+# Sample 1000 random indices from the test dataset without replacement
+sample_indices = np.random.choice(pd_dtest.index, size=1000, replace=False)
+
+# Separate the selected observations from testing data
+separated = pd_dtest.loc[sample_indices]
+
+# Remove the selected observations from the testing data
+# Consider this as data from NY hospitals
+pd_dtest_NY = pd_dtest.drop(sample_indices)
+
+# Split the separated sample into at-risk and not-at-risk groups
+at_risk_sample = separated[separated["atRisk"] == 1]  # Only at-risk cases
+not_at_risk_sample = separated[separated["atRisk"] == 0]  # Only not-at-risk cases
+
+# Create test sets for MA hospitals with different at-risk rates
+pd_dtest_MA_moreRisk = pd.concat([pd_dtest_NY, at_risk_sample])  # Adds back only at-risk cases
+pd_dtest_MA_lessRisk = pd.concat([pd_dtest_NY, not_at_risk_sample])  # Adds back only not-at-risk cases
+
+# Show counts to verify results
+print("Original Test Set Size:", pd_dtest.shape[0])
+print("Sampled Separated Size:", separated.shape[0])
+print("NY Hospitals Data Size:", pd_dtest_NY.shape[0])
+print("MA More Risk Data Size:", pd_dtest_MA_moreRisk.shape[0])
+print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
+```
+
 
 
 
