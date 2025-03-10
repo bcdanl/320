@@ -420,9 +420,12 @@ Byeong-Hak Choe
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
 <ul>
-<li class="fragment">Suppose we want to know how much the flight’s origin/destination, weather, and air carrier affect <em>the probability that a flight will be delayed</em>.</li>
-<li class="fragment">Suppose we also want to predict <em>whether or not a flight will be delayed</em>, based on facts like the flight’s origin/destination, weather, and air carrier.</li>
-<li class="fragment">For every flight <span class="math inline">\(\texttt{i}\)</span>, you want to predict <span class="math inline">\(\texttt{flight_delayed[i]}\)</span>, a binary variable ( <span class="math inline">\(\texttt{TRUE}\)</span> or <span class="math inline">\(\texttt{FALSE}\)</span>), based on <span class="math inline">\(\texttt{origin[i]}\)</span>, <span class="math inline">\(\texttt{destination[i]}\)</span>, <span class="math inline">\(\texttt{weather[i]}\)</span>, and <span class="math inline">\(\texttt{air_carrier[i]}\)</span>.</li>
+<li class="fragment"><strong>Relationship</strong>: Suppose we want to know how much the flight’s origin/destination, weather, and air carrier is associated with <em>the probability that a flight will be delayed</em>.</li>
+<li class="fragment"><strong>Prediction</strong>: Suppose we also want to predict <em>whether or not a flight will be delayed</em>, based on facts like the flight’s origin/destination, weather, and air carrier.</li>
+<li class="fragment">For every flight <span class="math inline">\(\texttt{i}\)</span>, you want to predict <span class="math inline">\(\texttt{flight_delayed[i]}\)</span>, a binary variable ( <span class="math inline">\(\texttt{TRUE}\)</span> or <span class="math inline">\(\texttt{FALSE}\)</span>), based on <span class="math inline">\(\texttt{origin[i]}\)</span>, <span class="math inline">\(\texttt{destination[i]}\)</span>, <span class="math inline">\(\texttt{weather[i]}\)</span>, and <span class="math inline">\(\texttt{air_carrier[i]}\)</span>.
+<ul>
+<li class="fragment">Prediction of a binary variable <span class="math inline">\(y_{i}\)</span> (0 or 1) is the expected value of <span class="math inline">\(y_{i}\)</span>—the <strong>predicted probability</strong> that <span class="math inline">\(y_{i} = 1\)</span>.</li>
+</ul></li>
 </ul>
 </section>
 <section id="motivation-1" class="slide level2">
@@ -433,9 +436,9 @@ Byeong-Hak Choe
 \begin{align}
 &amp;\quad\texttt{ Prob( flight_delayed[i] == TRUE ) } \\[.5em]
 &amp;=\, \texttt{G( b$_{\texttt{0}}$ + b$_{\texttt{origin}}$*origin[i]  }\\
-&amp;\qquad\quad\, + \texttt{b$_{\texttt{destination}}$*destination[i]  }\\
-&amp;\qquad\quad\, + \texttt{b$_{\texttt{weather}}$*weather[i]  }\\
-&amp;\qquad\quad\, + \texttt{b$_{\texttt{air\_carrier}}$*air_carrier[i] )}.
+&amp;\qquad\quad\,\, + \texttt{b$_{\texttt{destination}}$*destination[i]  }\\
+&amp;\qquad\quad\,\, + \texttt{b$_{\texttt{weather}}$*weather[i]  }\\
+&amp;\qquad\quad\,\, + \texttt{b$_{\texttt{air_carrier}}$*air_carrier[i] )}.
 \end{align}
 \]</span></li>
 </ul>
@@ -456,8 +459,8 @@ Byeong-Hak Choe
 <section id="properties-of-the-logistic-function" class="slide level2">
 <h2>Properties of the Logistic Function</h2>
 <ul>
-<li class="fragment"><p>The logistic function <span class="math inline">\(G(z_i)\)</span> maps the linear combination of predictors to the probability that the outcome <span class="math inline">\(y_{i}\)</span> is <span class="math inline">\(\texttt{TRUE}\)</span>.</p></li>
-<li class="fragment"><p><span class="math inline">\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i}\)</span></p></li>
+<li class="fragment"><p>The logistic function <span class="math inline">\(G(z_i)\)</span> maps the linear combination of predictors to the probability that the outcome <span class="math inline">\(y_{i}\)</span> is <span class="math inline">\(1\)</span>.</p></li>
+<li class="fragment"><p><span class="math inline">\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i} + \,\cdots\, + x_{k, i}\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(z_{i} \overset{G}{\rightarrow} \texttt{ Prob} ( y_{i} = 1 )\)</span></p></li>
 </ul>
 </section>
@@ -486,7 +489,7 @@ G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
 <li class="fragment"><p>The function <span class="math inline">\(G(z_i)\)</span> is called the logistic function because the function <span class="math inline">\(G(z_i)\)</span> is the inverse function of a <strong>logit</strong> (or a <strong>log-odd</strong>) of the probability that the outcome <span class="math inline">\(y_{i}\)</span> is 1. <span class="math display">\[
 \begin{align}
 G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
-&amp;\equiv \log\left(\, \frac{\text{Prob}(y_{i} = 1)}{\text{Prob}(y_{i} = 0)} \,\right)\\
+&amp;\,\equiv \log\left(\, \frac{\text{Prob}(y_{i} = 1)}{\text{Prob}(y_{i} = 0)} \,\right)\\
 &amp;\,=\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i}
 \end{align}
 \]</span></p></li>
@@ -536,7 +539,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <section id="assessing-newborn-babies-at-risk-3" class="slide level2">
 <h2>Assessing Newborn Babies at Risk</h2>
 <ul>
-<li class="fragment"><strong>Task 1.</strong> Identify the effects of predictors on the probability of <span class="math inline">\(\texttt{atRisk == TRUE}\)</span>.</li>
+<li class="fragment"><strong>Task 1.</strong> Identify the relationship between a predictor and the probability of <span class="math inline">\(\texttt{atRisk == TRUE}\)</span>.</li>
 <li class="fragment"><strong>Task 2.</strong> Identify ahead of time situations with a higher probability of <span class="math inline">\(\texttt{atRisk == TRUE}\)</span>.</li>
 </ul>
 </section>
@@ -581,7 +584,8 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb2-31"><a href="#cb2-31"></a>)</span>
 <span id="cb2-32"><a href="#cb2-32"></a></span>
 <span id="cb2-33"><a href="#cb2-33"></a><span class="co"># making prediction</span></span>
-<span id="cb2-34"><a href="#cb2-34"></a>dtest_1 <span class="op">=</span> model_1.transform(dtest_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-34"><a href="#cb2-34"></a>dtrain_1 <span class="op">=</span> model_1.transform(dtrain_1)</span>
+<span id="cb2-35"><a href="#cb2-35"></a>dtest_1 <span class="op">=</span> model_1.transform(dtest_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="marginal-effects" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -729,8 +733,8 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <ul>
 <li class="fragment">How do we interpret the ME? All else being equal,
 <ul>
-<li class="fragment">The probability of a new born baby being at risk increases by 2.05% <strong>points</strong> if the baby is prematurely born.</li>
-<li class="fragment">The probability of a new born baby being at risk decreases by 0.04% <strong>points</strong> if the number of parental medical visits increases by one unit.</li>
+<li class="fragment">There is a 2.05 <strong>percentage point</strong> increase in the probability of a newborn being at risk if the baby is prematurely born.</li>
+<li class="fragment">There is a 0.04 <strong>percentage point</strong> decrease in the probability of a newborn being at risk for each additional parental medical visit.</li>
 </ul></li>
 </ul>
 </section></section>
@@ -743,7 +747,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <h2>Classifier</h2>
 <ul>
 <li class="fragment"><p>Your goal is to use the logistic regression model to classify newborn babies into one of two categories—at-risk or not.</p></li>
-<li class="fragment"><p>Prediction from the logistic regression with a threshold on the predicted probabilities can be used as a <strong>classifier</strong>.</p></li>
+<li class="fragment"><p><strong>Prediction</strong> from the logistic regression with a <strong>threshold</strong> on the predicted probabilities can be used as a <strong>classifier</strong>.</p></li>
 <li class="fragment"><p>If the predicted probability that the baby <span class="math inline">\(\texttt{i}\)</span> is at risk is greater than the threshold, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as at-risk.</p></li>
 <li class="fragment"><p>Otherwise, the baby <span class="math inline">\(\texttt{i}\)</span> is classified as not-at-risk.</p></li>
 </ul>

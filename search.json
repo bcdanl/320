@@ -4,7 +4,7 @@
     "href": "listing-danl-320-cw.html",
     "title": "DANL 320 - Classwork",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 22, 2025\n\n\n\n\nClasswork 2\n\n\nMarkdown Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 3\n\n\nQuarto Website Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 4\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 5\n\n\nPySpark Basics - Loading, Summarizing, Selecting, Counting, and Sorting Data\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 6\n\n\nPySpark Basics - Convering Data Types; Filtering Data; Dealing with Missing Values/Duplicates\n\n\nFebruary 12, 2025\n\n\n\n\nClasswork 7\n\n\nPySpark Basics - Group Operations\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 8\n\n\nLinear Regression I\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 9\n\n\nLinear Regression II\n\n\nMarch 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nClasswork 1\n\n\nBuilding a Personal Website using Git, GitHub, and RStudio with Quarto\n\n\nJanuary 22, 2025\n\n\n\n\nClasswork 10\n\n\nLogistic Regression\n\n\nMarch 10, 2025\n\n\n\n\nClasswork 2\n\n\nMarkdown Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 3\n\n\nQuarto Website Basics\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 4\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 5\n\n\nPySpark Basics - Loading, Summarizing, Selecting, Counting, and Sorting Data\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 6\n\n\nPySpark Basics - Convering Data Types; Filtering Data; Dealing with Missing Values/Duplicates\n\n\nFebruary 12, 2025\n\n\n\n\nClasswork 7\n\n\nPySpark Basics - Group Operations\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 8\n\n\nLinear Regression I\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 9\n\n\nLinear Regression II\n\n\nMarch 5, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "blog-listing.html",
@@ -1320,7 +1320,7 @@
     "href": "index.html#bullet-classwork",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Classwork ⌨️",
-    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 9\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 8\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 7\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 6\n\n\nFebruary 12, 2025\n\n\n\n\nClasswork 5\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 4\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 3\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 2\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Classwork ⌨️\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nClasswork 9\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 8\n\n\nMarch 5, 2025\n\n\n\n\nClasswork 7\n\n\nFebruary 17, 2025\n\n\n\n\nClasswork 6\n\n\nFebruary 12, 2025\n\n\n\n\nClasswork 5\n\n\nFebruary 10, 2025\n\n\n\n\nClasswork 4\n\n\nJanuary 29, 2025\n\n\n\n\nClasswork 3\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 2\n\n\nJanuary 27, 2025\n\n\n\n\nClasswork 10\n\n\nMarch 10, 2025\n\n\n\n\nClasswork 1\n\n\nJanuary 22, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#bullet-homework",
@@ -4680,7 +4680,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function",
     "title": "Lecture 8",
     "section": "Properties of the Logistic Function",
-    "text": "Properties of the Logistic Function\n\nThe logistic function \\(G(z_i)\\) maps the linear combination of predictors to the probability that the outcome \\(y_{i}\\) is \\(\\texttt{TRUE}\\).\n\\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i}\\)\n\\(z_{i} \\overset{G}{\\rightarrow} \\texttt{ Prob} ( y_{i} = 1 )\\)"
+    "text": "Properties of the Logistic Function\n\nThe logistic function \\(G(z_i)\\) maps the linear combination of predictors to the probability that the outcome \\(y_{i}\\) is \\(1\\).\n\\(z_{i} = b_{0} + b_{1}x_{1, i} + b_{2}x_{2, i} + \\,\\cdots\\, + x_{k, i}\\)\n\\(z_{i} \\overset{G}{\\rightarrow} \\texttt{ Prob} ( y_{i} = 1 )\\)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#pyspark-logistic-regression-example",
@@ -4750,14 +4750,14 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#motivation",
     "title": "Lecture 8",
     "section": "Motivation",
-    "text": "Motivation\n\nSuppose we want to know how much the flight’s origin/destination, weather, and air carrier affect the probability that a flight will be delayed.\nSuppose we also want to predict whether or not a flight will be delayed, based on facts like the flight’s origin/destination, weather, and air carrier.\nFor every flight \\(\\texttt{i}\\), you want to predict \\(\\texttt{flight_delayed[i]}\\), a binary variable ( \\(\\texttt{TRUE}\\) or \\(\\texttt{FALSE}\\)), based on \\(\\texttt{origin[i]}\\), \\(\\texttt{destination[i]}\\), \\(\\texttt{weather[i]}\\), and \\(\\texttt{air_carrier[i]}\\)."
+    "text": "Motivation\n\nRelationship: Suppose we want to know how much the flight’s origin/destination, weather, and air carrier is associated with the probability that a flight will be delayed.\nPrediction: Suppose we also want to predict whether or not a flight will be delayed, based on facts like the flight’s origin/destination, weather, and air carrier.\nFor every flight \\(\\texttt{i}\\), you want to predict \\(\\texttt{flight_delayed[i]}\\), a binary variable ( \\(\\texttt{TRUE}\\) or \\(\\texttt{FALSE}\\)), based on \\(\\texttt{origin[i]}\\), \\(\\texttt{destination[i]}\\), \\(\\texttt{weather[i]}\\), and \\(\\texttt{air_carrier[i]}\\).\n\nPrediction of a binary variable \\(y_{i}\\) (0 or 1) is the expected value of \\(y_{i}\\)—the predicted probability that \\(y_{i} = 1\\)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#motivation-1",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#motivation-1",
     "title": "Lecture 8",
     "section": "Motivation",
-    "text": "Motivation\n\n\nThe logistic regression model for the probability that a flight will be delayed is formulated as: \\[\n\\begin{align}\n&\\quad\\texttt{ Prob( flight_delayed[i] == TRUE ) } \\\\[.5em]\n&=\\, \\texttt{G( b$_{\\texttt{0}}$ + b$_{\\texttt{origin}}$*origin[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{destination}}$*destination[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{weather}}$*weather[i]  }\\\\\n&\\qquad\\quad\\, + \\texttt{b$_{\\texttt{air\\_carrier}}$*air_carrier[i] )}.\n\\end{align}\n\\]\n\n\n\n\\(G(z_i)\\): the logistic function\n\n\n\n\n\\[\n\\begin{align}\n\\texttt{G(z[i]) = } \\dfrac{\\texttt{exp(z[i])}}{\\texttt{1 + exp(z[i])}}.\\notag\n\\end{align}\n\\]"
+    "text": "Motivation\n\n\nThe logistic regression model for the probability that a flight will be delayed is formulated as: \\[\n\\begin{align}\n&\\quad\\texttt{ Prob( flight_delayed[i] == TRUE ) } \\\\[.5em]\n&=\\, \\texttt{G( b$_{\\texttt{0}}$ + b$_{\\texttt{origin}}$*origin[i]  }\\\\\n&\\qquad\\quad\\,\\, + \\texttt{b$_{\\texttt{destination}}$*destination[i]  }\\\\\n&\\qquad\\quad\\,\\, + \\texttt{b$_{\\texttt{weather}}$*weather[i]  }\\\\\n&\\qquad\\quad\\,\\, + \\texttt{b$_{\\texttt{air_carrier}}$*air_carrier[i] )}.\n\\end{align}\n\\]\n\n\n\n\\(G(z_i)\\): the logistic function\n\n\n\n\n\\[\n\\begin{align}\n\\texttt{G(z[i]) = } \\dfrac{\\texttt{exp(z[i])}}{\\texttt{1 + exp(z[i])}}.\\notag\n\\end{align}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#properties-of-the-logistic-function-1",
@@ -4771,7 +4771,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-1",
     "title": "Lecture 8",
     "section": "Logistic Regression",
-    "text": "Logistic Regression\nInterpreting the Marginal Effect\n\nHow do we interpret the ME? All else being equal,\n\nThe probability of a new born baby being at risk increases by 2.05% points if the baby is prematurely born.\nThe probability of a new born baby being at risk decreases by 0.04% points if the number of parental medical visits increases by one unit."
+    "text": "Logistic Regression\nInterpreting the Marginal Effect\n\nHow do we interpret the ME? All else being equal,\n\nThere is a 2.05 percentage point increase in the probability of a newborn being at risk if the baby is prematurely born.\nThere is a 0.04 percentage point decrease in the probability of a newborn being at risk for each additional parental medical visit."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#logistic-regression-2",
@@ -5030,7 +5030,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#assessing-newborn-babies-at-risk-3",
     "title": "Lecture 8",
     "section": "Assessing Newborn Babies at Risk",
-    "text": "Assessing Newborn Babies at Risk\n\nTask 1. Identify the effects of predictors on the probability of \\(\\texttt{atRisk == TRUE}\\).\nTask 2. Identify ahead of time situations with a higher probability of \\(\\texttt{atRisk == TRUE}\\)."
+    "text": "Assessing Newborn Babies at Risk\n\nTask 1. Identify the relationship between a predictor and the probability of \\(\\texttt{atRisk == TRUE}\\).\nTask 2. Identify ahead of time situations with a higher probability of \\(\\texttt{atRisk == TRUE}\\)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing",
@@ -5044,7 +5044,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-1",
     "title": "Lecture 8",
     "section": "What is the Logistic Regression doing?",
-    "text": "What is the Logistic Regression doing?\n\nThe function \\(G(z_i)\\) is called the logistic function because the function \\(G(z_i)\\) is the inverse function of a logit (or a log-odd) of the probability that the outcome \\(y_{i}\\) is 1. \\[\n\\begin{align}\nG^{-1}(z_i) &\\,\\equiv\\, \\text{logit} (\\text{Prob}(y_{i} = 1))\\\\\n&\\equiv \\log\\left(\\, \\frac{\\text{Prob}(y_{i} = 1)}{\\text{Prob}(y_{i} = 0)} \\,\\right)\\\\\n&\\,=\\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i}\n\\end{align}\n\\]\nLogistic regression is a linear regression model for log odds."
+    "text": "What is the Logistic Regression doing?\n\nThe function \\(G(z_i)\\) is called the logistic function because the function \\(G(z_i)\\) is the inverse function of a logit (or a log-odd) of the probability that the outcome \\(y_{i}\\) is 1. \\[\n\\begin{align}\nG^{-1}(z_i) &\\,\\equiv\\, \\text{logit} (\\text{Prob}(y_{i} = 1))\\\\\n&\\,\\equiv \\log\\left(\\, \\frac{\\text{Prob}(y_{i} = 1)}{\\text{Prob}(y_{i} = 0)} \\,\\right)\\\\\n&\\,=\\, b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i}\n\\end{align}\n\\]\nLogistic regression is a linear regression model for log odds."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-the-logistic-regression-doing-2",
@@ -5058,7 +5058,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#building-a-logistic-regression-model-in-pyspark",
     "title": "Lecture 8",
     "section": "Building a Logistic Regression Model in PySpark",
-    "text": "Building a Logistic Regression Model in PySpark\n\nThe function to build a logistic regression model in PySpark is \\(\\texttt{GeneralizedLinearRegression(family=\"binomial\", link=\"logit\")}\\).\nThe outcome variable \\(y\\) is the binary variable \\(\\texttt{atRisk}\\) (0 or 1).\nThe other variables in the table in the previous slide are predictors \\(x_{k}\\).\nThe arguments \\(\\texttt{family=\"binomial\"}\\) and \\(\\texttt{link=\"logit\"}\\) specify the logistic distribution of the outcome variable \\(y\\).\n\nfrom pyspark.ml.regression import GeneralizedLinearRegression\n\ndummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)\ndummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)\n\n# assembling predictors\nx_cols = ['PWGT', 'UPREVIS', 'CIG_REC', \n          'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',\n          'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']\n\nassembler_predictors = (\n    x_cols +\n    dummy_cols_GESTREC3 + dummy_cols_DPLURAL\n)\n\nassembler_1 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\n\ndtrain_1 = assembler_1.transform(dtrain)\ndtest_1  = assembler_1.transform(dtest)\n\n# training model\nmodel_1 = (\n    GeneralizedLinearRegression(featuresCol=\"predictors\",\n                                labelCol=\"atRisk\",\n                                family=\"binomial\", \n                                link=\"logit\")\n    .fit(dtrain_1)\n)\n\n# making prediction\ndtest_1 = model_1.transform(dtest_1)"
+    "text": "Building a Logistic Regression Model in PySpark\n\nThe function to build a logistic regression model in PySpark is \\(\\texttt{GeneralizedLinearRegression(family=\"binomial\", link=\"logit\")}\\).\nThe outcome variable \\(y\\) is the binary variable \\(\\texttt{atRisk}\\) (0 or 1).\nThe other variables in the table in the previous slide are predictors \\(x_{k}\\).\nThe arguments \\(\\texttt{family=\"binomial\"}\\) and \\(\\texttt{link=\"logit\"}\\) specify the logistic distribution of the outcome variable \\(y\\).\n\nfrom pyspark.ml.regression import GeneralizedLinearRegression\n\ndummy_cols_GESTREC3, ref_category_GESTREC3 = add_dummy_variables('GESTREC3', 1)\ndummy_cols_DPLURAL, ref_category_DPLURAL = add_dummy_variables('DPLURAL', 0)\n\n# assembling predictors\nx_cols = ['PWGT', 'UPREVIS', 'CIG_REC', \n          'ULD_MECO', 'ULD_PRECIP', 'ULD_BREECH', 'URF_DIAB',\n          'URF_CHYPER', 'URF_PHYPER', 'URF_ECLAM']\n\nassembler_predictors = (\n    x_cols +\n    dummy_cols_GESTREC3 + dummy_cols_DPLURAL\n)\n\nassembler_1 = VectorAssembler(\n    inputCols = assembler_predictors,\n    outputCol = \"predictors\"\n)\n\ndtrain_1 = assembler_1.transform(dtrain)\ndtest_1  = assembler_1.transform(dtest)\n\n# training model\nmodel_1 = (\n    GeneralizedLinearRegression(featuresCol=\"predictors\",\n                                labelCol=\"atRisk\",\n                                family=\"binomial\", \n                                link=\"logit\")\n    .fit(dtrain_1)\n)\n\n# making prediction\ndtrain_1 = model_1.transform(dtrain_1)\ndtest_1 = model_1.transform(dtest_1)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1",

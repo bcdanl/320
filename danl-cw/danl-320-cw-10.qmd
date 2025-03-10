@@ -1,0 +1,183 @@
+---
+title: Classwork 10
+subtitle: Logistic Regression
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Setup for PySpark, UDFs, and Plots
+## Required Libraries and `SparkSession` Entry Point
+```{.python}
+import pandas as pd
+import numpy as np
+from tabulate import tabulate  # for table summary
+import scipy.stats as stats
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm  # for lowess smoothing
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import rand, col, pow, mean, avg, when, log, sqrt, exp
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.regression import LinearRegression, GeneralizedLinearRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+```
+
+<br>
+
+
+## UDF for Adding Dummy Variables
+```{.python}
+def add_dummy_variables(var_name, reference_level, category_order=None):
+    """
+    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.
+    Allows manual setting of category order.
+
+    Parameters:
+        var_name (str): The name of the categorical column (e.g., "borough_name").
+        reference_level (int): Index of the category to be used as the reference (dummy omitted).
+        category_order (list, optional): List of categories in the desired order. If None, categories are sorted.
+
+    Returns:
+        dummy_cols (list): List of dummy column names excluding the reference category.
+        ref_category (str): The category chosen as the reference.
+    """
+    global dtrain, dtest
+
+    # Get distinct categories from the training set.
+    categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()
+
+    # Convert booleans to strings if present.
+    categories = [str(c) if isinstance(c, bool) else c for c in categories]
+
+    # Use manual category order if provided; otherwise, sort categories.
+    if category_order:
+        # Ensure all categories are present in the user-defined order
+        missing = set(categories) - set(category_order)
+        if missing:
+            raise ValueError(f"These categories are missing from your custom order: {missing}")
+        categories = category_order
+    else:
+        categories = sorted(categories)
+
+    # Validate reference_level
+    if reference_level < 0 or reference_level >= len(categories):
+        raise ValueError(f"reference_level must be between 0 and {len(categories) - 1}")
+
+    # Define the reference category
+    ref_category = categories[reference_level]
+    print("Reference category (dummy omitted):", ref_category)
+
+    # Create dummy variables for all categories
+    for cat in categories:
+        dummy_col_name = var_name + "_" + str(cat).replace(" ", "_")
+        dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+        dtest = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+
+    # List of dummy columns, excluding the reference category
+    dummy_cols = [var_name + "_" + str(cat).replace(" ", "_") for cat in categories if cat != ref_category]
+
+    return dummy_cols, ref_category
+
+
+# Example usage without category_order:
+# dummy_cols_year, ref_category_year = add_dummy_variables('year', 0)
+
+# Example usage with category_order:
+# custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+# dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
+```
+
+
+<br>
+
+## UDF for a Residual Plot
+
+```{.python}
+def residual_plot(df, label_col, model_name):
+    """
+    Generates a residual plot for a given test dataframe.
+
+    Parameters:
+        df (DataFrame): Spark DataFrame containing the test set with predictions.
+        label_col (str): The column name of the actual outcome variable.
+        title (str): The title for the residual plot.
+
+    Returns:
+        None (displays the plot)
+    """
+    # Convert to Pandas DataFrame
+    df_pd = df.select(["prediction", label_col]).toPandas()
+    df_pd["residual"] = df_pd[label_col] - df_pd["prediction"]
+
+    # Scatter plot of residuals vs. predicted values
+    plt.scatter(df_pd["prediction"], df_pd["residual"], alpha=0.2, color="darkgray")
+
+    # Use LOWESS smoothing for trend line
+    smoothed = sm.nonparametric.lowess(df_pd["residual"], df_pd["prediction"])
+    plt.plot(smoothed[:, 0], smoothed[:, 1], color="darkblue")
+
+    # Add reference line at y=0
+    plt.axhline(y=0, color="red", linestyle="--")
+
+    # Labels and title (model_name)
+    plt.xlabel("Predicted Values")
+    plt.ylabel("Residuals")
+    model_name = "Residual Plot for " + model_name
+    plt.title(model_name)
+
+    # Show plot
+    plt.show()
+
+# Example usage:
+# residual_plot(dtest_1, "log_sales", "Model 1")
+```
+
+<br><br>
+
+# Question 1
+```{.python}
+dfpd = pd.read_csv('https://bcdanl.github.io/data/NatalRiskData.csv')
+```
+
+- Convert the `dfpd` Pandas DataFrame into the PySpark DataFrame object with the name, `df`. 
+  - What are continuous variables? What are categorical variables?
+
+```{r}
+#| echo: false
+#| eval: true
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/NatalRiskData.csv'))
+```
+
+<br>
+
+## Variable description 
+
+```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
+knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png")
+```
+
+
+
+<br><br>
+
+
+# Question 2 
+- Then, divide the `df` DataFrame into training and test DataFrames.
+  - Use `dtrain` and `dtest` for training and test DataFrames, respectively.
+  - 50% of observations in the `df` are assigned to `dtrain`; the rest is assigned to `dtest`.
+  
+
+<br><br>
+
+# Question 3 
+Train the following logistic regression model. Provide the summary of the regression result.
+
+- Set "**>= 37 weeks**" as the reference level for the $\text{GESTREC3}$ variable.
+- Set "**single**" as the reference level for the $\text{DPLURAL}$ variable.
+
