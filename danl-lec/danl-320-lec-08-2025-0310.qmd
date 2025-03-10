@@ -598,7 +598,7 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_13.png")
 
 - **Average**: Average rate of new born babies being at risk
 - **Enrichment**: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?
-  - You want a classifier whose enrichment is greater than 2.
+  - We want a classifier whose enrichment is greater than 2.
 
 
 
@@ -673,7 +673,7 @@ plt.axvline(x=optimal_threshold, color="black", linestyle="dashed", label=f"Opti
 # Labels and legend
 plt.xlabel("Threshold")
 plt.ylabel("Score")
-plt.title("Enrichment vs. Recall vs. Threshold")
+plt.title("Enrichment vs. Recall")
 plt.legend()
 plt.grid(True)
 plt.show()
@@ -691,7 +691,7 @@ plt.show()
 
 :::
 
-- The receiver operating characteristic curve (or **ROC** curve) plot both the true positive rate and the false positive rate (or 1 - specificity) for all threshold levels. 
+- The receiver operating characteristic curve (or **ROC** curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels. 
 
   - Area under the curve (or **AUC**) can be another measure of the quality of the model.
   

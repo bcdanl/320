@@ -896,7 +896,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment"><strong>Average</strong>: Average rate of new born babies being at risk</li>
 <li class="fragment"><strong>Enrichment</strong>: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?
 <ul>
-<li class="fragment">You want a classifier whose enrichment is greater than 2.</li>
+<li class="fragment">We want a classifier whose enrichment is greater than 2.</li>
 </ul></li>
 </ul>
 </section>
@@ -963,7 +963,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb8-29"><a href="#cb8-29"></a><span class="co"># Labels and legend</span></span>
 <span id="cb8-30"><a href="#cb8-30"></a>plt.xlabel(<span class="st">"Threshold"</span>)</span>
 <span id="cb8-31"><a href="#cb8-31"></a>plt.ylabel(<span class="st">"Score"</span>)</span>
-<span id="cb8-32"><a href="#cb8-32"></a>plt.title(<span class="st">"Enrichment vs. Recall vs. Threshold"</span>)</span>
+<span id="cb8-32"><a href="#cb8-32"></a>plt.title(<span class="st">"Enrichment vs. Recall"</span>)</span>
 <span id="cb8-33"><a href="#cb8-33"></a>plt.legend()</span>
 <span id="cb8-34"><a href="#cb8-34"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb8-35"><a href="#cb8-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -977,7 +977,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </ul>
 </div>
 <ul>
-<li class="fragment"><p>The receiver operating characteristic curve (or <strong>ROC</strong> curve) plot both the true positive rate and the false positive rate (or 1 - specificity) for all threshold levels.</p>
+<li class="fragment"><p>The receiver operating characteristic curve (or <strong>ROC</strong> curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels.</p>
 <ul>
 <li class="fragment">Area under the curve (or <strong>AUC</strong>) can be another measure of the quality of the model.</li>
 </ul></li>
