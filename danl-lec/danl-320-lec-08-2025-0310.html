@@ -973,15 +973,13 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <h3 id="trade-off-between-sensitivity-and-specificity">Trade-off between sensitivity and specificity</h3>
 <div>
 <ul>
-<li>There is also a trade-off between sensitivity and specificity.</li>
-</ul>
-</div>
+<li><p>There is also a trade-off between sensitivity and specificity.</p></li>
+<li><p>The receiver operating characteristic curve (or <strong>ROC</strong> curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels.</p>
 <ul>
-<li class="fragment"><p>The receiver operating characteristic curve (or <strong>ROC</strong> curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels.</p>
-<ul>
-<li class="fragment">Area under the curve (or <strong>AUC</strong>) can be another measure of the quality of the model.</li>
+<li>Area under the curve (or <strong>AUC</strong>) can be another measure of the quality of the model.</li>
 </ul></li>
 </ul>
+</div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
 <span id="cb9-2"><a href="#cb9-2"></a></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Convert to Pandas</span></span>
@@ -1090,8 +1088,13 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </section>
 <section id="performance-of-classifier-15" class="slide level2">
 <h2>Performance of Classifier</h2>
+<div style="display:block; margin:-39px;">
 
-<img data-src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" style="width:75.0%" class="r-stretch quarto-figure-center"></section>
+</div>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" width="870px">
+</p>
+</section>
 <section id="performance-of-classifier-16" class="slide level2">
 <h2>Performance of Classifier</h2>
 

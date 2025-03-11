@@ -689,12 +689,13 @@ plt.show()
 
 - There is also a trade-off between sensitivity and specificity.
 
-:::
 
 - The receiver operating characteristic curve (or **ROC** curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels. 
 
   - Area under the curve (or **AUC**) can be another measure of the quality of the model.
   
+:::
+
 ```{.python}
 from sklearn.metrics import roc_curve
 
@@ -825,11 +826,11 @@ print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
 
 ## Performance of Classifier
 
-```{r, echo=FALSE, eval = T,  eval = T,out.width = '75%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab1.png")
-```
+<div style="display:block; margin:-39px;"></div>
 
-
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" width="870px">
+</p>
 
 
 ## Performance of Classifier
