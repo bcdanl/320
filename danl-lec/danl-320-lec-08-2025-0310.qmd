@@ -503,14 +503,10 @@ plt.show()
 dtest_1 = dtest_1.withColumn("predicted_class", when(col("prediction") > .02, 1).otherwise(0))
 conf_matrix = dtest_1.groupBy("atRisk", "predicted_class").count().orderBy("atRisk", "predicted_class")
 
-# Collect as a dictionary for easy lookup
-conf_dict = {(row["atRisk"], row["predicted_class"]): row["count"] for row in conf_matrix.collect()}
-
-# Extract values safely (handle missing values if any)
-TN = conf_dict.get((0, 0), 0)  # True Negative
-FP = conf_dict.get((0, 1), 0)  # False Positive
-FN = conf_dict.get((1, 0), 0)  # False Negative
-TP = conf_dict.get((1, 1), 0)  # True Positive
+TP = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 1)).count()
+FP = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 1)).count()
+FN = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 0)).count()
+TN = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 0)).count()
 
 # Print formatted confusion matrix with labels
 print("\n Confusion Matrix:\n")
@@ -602,10 +598,6 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_13.png")
 
 
 ```{.python}
-TP = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 1)).count()
-FP = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 1)).count()
-FN = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 0)).count()
-TN = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 0)).count()
 
 accuracy = (TP + TN) / (TP + FP + FN + TN)
 precision = TP / (TP + FP)

@@ -812,24 +812,20 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb6-2"><a href="#cb6-2"></a>dtest_1 <span class="op">=</span> dtest_1.withColumn(<span class="st">"predicted_class"</span>, when(col(<span class="st">"prediction"</span>) <span class="op">&gt;</span> <span class="fl">.02</span>, <span class="dv">1</span>).otherwise(<span class="dv">0</span>))</span>
 <span id="cb6-3"><a href="#cb6-3"></a>conf_matrix <span class="op">=</span> dtest_1.groupBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>).count().orderBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># Collect as a dictionary for easy lookup</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a>conf_dict <span class="op">=</span> {(row[<span class="st">"atRisk"</span>], row[<span class="st">"predicted_class"</span>]): row[<span class="st">"count"</span>] <span class="cf">for</span> row <span class="kw">in</span> conf_matrix.collect()}</span>
-<span id="cb6-7"><a href="#cb6-7"></a></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># Extract values safely (handle missing values if any)</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>TN <span class="op">=</span> conf_dict.get((<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">0</span>)  <span class="co"># True Negative</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a>FP <span class="op">=</span> conf_dict.get((<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">0</span>)  <span class="co"># False Positive</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>FN <span class="op">=</span> conf_dict.get((<span class="dv">1</span>, <span class="dv">0</span>), <span class="dv">0</span>)  <span class="co"># False Negative</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>TP <span class="op">=</span> conf_dict.get((<span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)  <span class="co"># True Positive</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co"># Print formatted confusion matrix with labels</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Confusion Matrix:</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="bu">print</span>(<span class="st">"                     Predicted"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(<span class="st">"            |  Negative  |  Positive  "</span>)</span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
-<span id="cb6-19"><a href="#cb6-19"></a><span class="bu">print</span>(<span class="ss">f"Actual Neg. |    </span><span class="sc">{</span>TN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>FP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
-<span id="cb6-20"><a href="#cb6-20"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
-<span id="cb6-21"><a href="#cb6-21"></a><span class="bu">print</span>(<span class="ss">f"Actual Pos. |    </span><span class="sc">{</span>FN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>TP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb6-6"><a href="#cb6-6"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb6-7"><a href="#cb6-7"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb6-8"><a href="#cb6-8"></a>TN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># Print formatted confusion matrix with labels</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Confusion Matrix:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="bu">print</span>(<span class="st">"                     Predicted"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="st">"            |  Negative  |  Positive  "</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="ss">f"Actual Neg. |    </span><span class="sc">{</span>TN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>FP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(<span class="ss">f"Actual Pos. |    </span><span class="sc">{</span>FN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>TP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-1" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -899,24 +895,20 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment">We want a classifier whose enrichment is greater than 2.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
-<span id="cb7-2"><a href="#cb7-2"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
-<span id="cb7-3"><a href="#cb7-3"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
-<span id="cb7-4"><a href="#cb7-4"></a>TN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a>accuracy <span class="op">=</span> (TP <span class="op">+</span> TN) <span class="op">/</span> (TP <span class="op">+</span> FP <span class="op">+</span> FN <span class="op">+</span> TN)</span>
-<span id="cb7-7"><a href="#cb7-7"></a>precision <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FP)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>recall <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FN)</span>
-<span id="cb7-9"><a href="#cb7-9"></a>specificity <span class="op">=</span> TN <span class="op">/</span> (TN <span class="op">+</span> FP)</span>
-<span id="cb7-10"><a href="#cb7-10"></a>average_rate <span class="op">=</span> (TP <span class="op">+</span> FN) <span class="op">/</span> (TP <span class="op">+</span> TN <span class="op">+</span> FP <span class="op">+</span> FN)  <span class="co"># Proportion of actual at-risk babies</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
-<span id="cb7-12"><a href="#cb7-12"></a></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="ss">f"Accuracy:  </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="bu">print</span>(<span class="ss">f"Recall (Sensitivity): </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="bu">print</span>(<span class="ss">f"Specificity:  </span><span class="sc">{</span>specificity<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2"></a>accuracy <span class="op">=</span> (TP <span class="op">+</span> TN) <span class="op">/</span> (TP <span class="op">+</span> FP <span class="op">+</span> FN <span class="op">+</span> TN)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>precision <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FP)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>recall <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FN)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>specificity <span class="op">=</span> TN <span class="op">/</span> (TN <span class="op">+</span> FP)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>average_rate <span class="op">=</span> (TP <span class="op">+</span> FN) <span class="op">/</span> (TP <span class="op">+</span> TN <span class="op">+</span> FP <span class="op">+</span> FN)  <span class="co"># Proportion of actual at-risk babies</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="bu">print</span>(<span class="ss">f"Accuracy:  </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">print</span>(<span class="ss">f"Recall (Sensitivity): </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">print</span>(<span class="ss">f"Specificity:  </span><span class="sc">{</span>specificity<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-7" class="slide level2">
 <h2>Performance of Classifier</h2>
