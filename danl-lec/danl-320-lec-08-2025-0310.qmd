@@ -601,11 +601,6 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_13.png")
   - We want a classifier whose enrichment is greater than 2.
 
 
-
-
-## Performance of Classifier
-
-
 ```{.python}
 TP = dtest_1.filter((col("atRisk") == 1) & (col("predicted_class") == 1)).count()
 FP = dtest_1.filter((col("atRisk") == 0) & (col("predicted_class") == 1)).count()

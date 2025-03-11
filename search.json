@@ -4918,84 +4918,84 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-6",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nEnrichment\n\nAverage: Average rate of new born babies being at risk\nEnrichment: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?\n\nWe want a classifier whose enrichment is greater than 2."
+    "text": "Performance of Classifier\nEnrichment\n\nAverage: Average rate of new born babies being at risk\nEnrichment: How does the classifier precisely choose babies at risk relative to the average rate of new born babies being at risk?\n\nWe want a classifier whose enrichment is greater than 2.\n\n\nTP = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 1)).count()\nFP = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 1)).count()\nFN = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 0)).count()\nTN = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 0)).count()\n\naccuracy = (TP + TN) / (TP + FP + FN + TN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nspecificity = TN / (TN + FP)\naverage_rate = (TP + FN) / (TP + TN + FP + FN)  # Proportion of actual at-risk babies\nenrichment = precision / average_rate\n\nprint(f\"Accuracy:  {accuracy:.4f}\")\nprint(f\"Precision: {precision:.4f}\")\nprint(f\"Recall (Sensitivity): {recall:.4f}\")\nprint(f\"Specificity:  {specificity:.4f}\")\nprint(f\"Average Rate: {average_rate:.4f}\")\nprint(f\"Enrichment:   {enrichment:.4f} (Relative Precision)\")"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-7",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-7",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nTP = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 1)).count()\nFP = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 1)).count()\nFN = dtest_1.filter((col(\"atRisk\") == 1) & (col(\"predicted_class\") == 0)).count()\nTN = dtest_1.filter((col(\"atRisk\") == 0) & (col(\"predicted_class\") == 0)).count()\n\naccuracy = (TP + TN) / (TP + FP + FN + TN)\nprecision = TP / (TP + FP)\nrecall = TP / (TP + FN)\nspecificity = TN / (TN + FP)\naverage_rate = (TP + FN) / (TP + TN + FP + FN)  # Proportion of actual at-risk babies\nenrichment = precision / average_rate\n\nprint(f\"Accuracy:  {accuracy:.4f}\")\nprint(f\"Precision: {precision:.4f}\")\nprint(f\"Recall (Sensitivity): {recall:.4f}\")\nprint(f\"Specificity:  {specificity:.4f}\")\nprint(f\"Average Rate: {average_rate:.4f}\")\nprint(f\"Enrichment:   {enrichment:.4f} (Relative Precision)\")"
+    "text": "Performance of Classifier\nTrade-off between recall and precision/enrichment\n\n\nThere is a trade-off between recall and precision/enrichment.\n\nWhat would be the optimal threshold?\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.metrics import precision_recall_curve\n\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Extract predictions and true labels\ny_true = pdf[\"atRisk\"]  # True labels\ny_scores = pdf[\"prediction\"]  # Predicted probabilities\n\n# Compute precision, recall, and thresholds\nprecision, recall, thresholds = precision_recall_curve(y_true, y_scores)\n\n# Compute enrichment: precision divided by average at-risk rate\naverage_rate = np.mean(y_true)\nenrichment = precision / average_rate\n\n# Define optimal threshold (example: threshold where recall ≈ enrichment balance)\noptimal_threshold = 0.02  # Adjust based on the plot\n\n# Plot Enrichment vs. Recall vs. Threshold\nplt.figure(figsize=(8, 6))\nplt.plot(thresholds, enrichment[:-1], label=\"Enrichment\", color=\"blue\", linestyle=\"--\")\nplt.plot(thresholds, recall[:-1], label=\"Recall\", color=\"red\", linestyle=\"-\")\n\n# Add vertical line for chosen threshold\nplt.axvline(x=optimal_threshold, color=\"black\", linestyle=\"dashed\", label=f\"Optimal Threshold = {optimal_threshold}\")\n\n# Labels and legend\nplt.xlabel(\"Threshold\")\nplt.ylabel(\"Score\")\nplt.title(\"Enrichment vs. Recall\")\nplt.legend()\nplt.grid(True)\nplt.show()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-8",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-8",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nTrade-off between recall and precision/enrichment\n\n\nThere is a trade-off between recall and precision/enrichment.\n\nWhat would be the optimal threshold?\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.metrics import precision_recall_curve\n\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Extract predictions and true labels\ny_true = pdf[\"atRisk\"]  # True labels\ny_scores = pdf[\"prediction\"]  # Predicted probabilities\n\n# Compute precision, recall, and thresholds\nprecision, recall, thresholds = precision_recall_curve(y_true, y_scores)\n\n# Compute enrichment: precision divided by average at-risk rate\naverage_rate = np.mean(y_true)\nenrichment = precision / average_rate\n\n# Define optimal threshold (example: threshold where recall ≈ enrichment balance)\noptimal_threshold = 0.02  # Adjust based on the plot\n\n# Plot Enrichment vs. Recall vs. Threshold\nplt.figure(figsize=(8, 6))\nplt.plot(thresholds, enrichment[:-1], label=\"Enrichment\", color=\"blue\", linestyle=\"--\")\nplt.plot(thresholds, recall[:-1], label=\"Recall\", color=\"red\", linestyle=\"-\")\n\n# Add vertical line for chosen threshold\nplt.axvline(x=optimal_threshold, color=\"black\", linestyle=\"dashed\", label=f\"Optimal Threshold = {optimal_threshold}\")\n\n# Labels and legend\nplt.xlabel(\"Threshold\")\nplt.ylabel(\"Score\")\nplt.title(\"Enrichment vs. Recall\")\nplt.legend()\nplt.grid(True)\nplt.show()"
+    "text": "Performance of Classifier\nTrade-off between sensitivity and specificity\n\n\nThere is also a trade-off between sensitivity and specificity.\nThe receiver operating characteristic curve (or ROC curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels.\n\nArea under the curve (or AUC) can be another measure of the quality of the model.\n\n\n\nfrom sklearn.metrics import roc_curve\n\n# Convert to Pandas\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Compute ROC curve\nfpr, tpr, _ = roc_curve(pdf[\"atRisk\"], pdf[\"prediction\"])\n\n# Plot ROC curve\nplt.figure(figsize=(8,6))\nplt.plot(fpr, tpr, label=f\"ROC Curve (AUC = {auc:.4f})\")\nplt.plot([0, 1], [0, 1], 'k--', label=\"Random Guess\")\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.title(\"ROC Curve\")\nplt.legend()\nplt.show()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-9",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-9",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nTrade-off between sensitivity and specificity\n\n\nThere is also a trade-off between sensitivity and specificity.\nThe receiver operating characteristic curve (or ROC curve) plot both the true positive rate (recall) and the false positive rate (or 1 - specificity) for all threshold levels.\n\nArea under the curve (or AUC) can be another measure of the quality of the model.\n\n\n\nfrom sklearn.metrics import roc_curve\n\n# Convert to Pandas\npdf = dtest_1.select(\"prediction\", \"atRisk\").toPandas()\n\n# Compute ROC curve\nfpr, tpr, _ = roc_curve(pdf[\"atRisk\"], pdf[\"prediction\"])\n\n# Plot ROC curve\nplt.figure(figsize=(8,6))\nplt.plot(fpr, tpr, label=f\"ROC Curve (AUC = {auc:.4f})\")\nplt.plot([0, 1], [0, 1], 'k--', label=\"Random Guess\")\nplt.xlabel(\"False Positive Rate\")\nplt.ylabel(\"True Positive Rate\")\nplt.title(\"ROC Curve\")\nplt.legend()\nplt.show()"
+    "text": "Performance of Classifier\nAUC\n\n\n(0,0)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 1\\):\n\nNothing gets classified as at-risk."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-10",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-10",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nAUC\n\n\n(0,0)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 1\\):\n\nNothing gets classified as at-risk."
+    "text": "Performance of Classifier\nAUC\n\n\n(1,1)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 0\\):\n\nEverything gets classified as at-risk."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-11",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-11",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nAUC\n\n\n(1,1)—Corresponding to a classifier defined by the threshold \\(\\text{Prob}(y_{i} = 1) = 0\\):\n\nEverything gets classified as at-risk."
+    "text": "Performance of Classifier\nAUC\n\n\n(0,1)—Corresponding to any classifier defined by a threshold between 0 and 1:\n\nEverything is classified perfectly!"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-12",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-12",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nAUC\n\n\n(0,1)—Corresponding to any classifier defined by a threshold between 0 and 1:\n\nEverything is classified perfectly!"
+    "text": "Performance of Classifier\nAUC\n\nThe AUC for the random model is 0.5.\n\nYou want a classifier whose AUC is close to 1, and greater than 0.5.\n\nWhen comparing multiple classifiers, you generally want to prefer classifiers that have a higher AUC.\nYou also want to examine the shape of the ROC to explore possible trade-offs."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-13",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-13",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\nAUC\n\nThe AUC for the random model is 0.5.\n\nYou want a classifier whose AUC is close to 1, and greater than 0.5.\n\nWhen comparing multiple classifiers, you generally want to prefer classifiers that have a higher AUC.\nYou also want to examine the shape of the ROC to explore possible trade-offs."
+    "text": "Performance of Classifier\n\nSuppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.\nNow you want to use that same classifier on all the data from hospitals in MA.\nWill the classifier work as well?\nThe proportion of at-risk babies in MA hospitals may be different than that in NY hospitals.\nThis can change the performance of the classifier on all the MA data.\nLet’s see how classifier performance change with an average rate of at-risk babies.\n\ndtrain, dtest = df.randomSplit([0.5, 0.5], seed = 1234)\n\npd_dtrain = dtrain.toPandas()\npd_dtest = dtest.toPandas()\n\n# Set seed for reproducibility\nnp.random.seed(23464)\n\n# Sample 1000 random indices from the test dataset without replacement\nsample_indices = np.random.choice(pd_dtest.index, size=1000, replace=False)\n\n# Separate the selected observations from testing data\nseparated = pd_dtest.loc[sample_indices]\n\n# Remove the selected observations from the testing data\n# Consider this as data from NY hospitals\npd_dtest_NY = pd_dtest.drop(sample_indices)\n\n# Split the separated sample into at-risk and not-at-risk groups\nat_risk_sample = separated[separated[\"atRisk\"] == 1]  # Only at-risk cases\nnot_at_risk_sample = separated[separated[\"atRisk\"] == 0]  # Only not-at-risk cases\n\n# Create test sets for MA hospitals with different at-risk rates\npd_dtest_MA_moreRisk = pd.concat([pd_dtest_NY, at_risk_sample])  # Adds back only at-risk cases\npd_dtest_MA_lessRisk = pd.concat([pd_dtest_NY, not_at_risk_sample])  # Adds back only not-at-risk cases\n\n# Show counts to verify results\nprint(\"Original Test Set Size:\", pd_dtest.shape[0])\nprint(\"Sampled Separated Size:\", separated.shape[0])\nprint(\"NY Hospitals Data Size:\", pd_dtest_NY.shape[0])\nprint(\"MA More Risk Data Size:\", pd_dtest_MA_moreRisk.shape[0])\nprint(\"MA Less Risk Data Size:\", pd_dtest_MA_lessRisk.shape[0])"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-14",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-14",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\n\nSuppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.\nNow you want to use that same classifier on all the data from hospitals in MA.\nWill the classifier work as well?\nThe proportion of at-risk babies in MA hospitals may be different than that in NY hospitals.\nThis can change the performance of the classifier on all the MA data.\nLet’s see how classifier performance change with an average rate of at-risk babies.\n\ndtrain, dtest = df.randomSplit([0.5, 0.5], seed = 1234)\n\npd_dtrain = dtrain.toPandas()\npd_dtest = dtest.toPandas()\n\n# Set seed for reproducibility\nnp.random.seed(23464)\n\n# Sample 1000 random indices from the test dataset without replacement\nsample_indices = np.random.choice(pd_dtest.index, size=1000, replace=False)\n\n# Separate the selected observations from testing data\nseparated = pd_dtest.loc[sample_indices]\n\n# Remove the selected observations from the testing data\n# Consider this as data from NY hospitals\npd_dtest_NY = pd_dtest.drop(sample_indices)\n\n# Split the separated sample into at-risk and not-at-risk groups\nat_risk_sample = separated[separated[\"atRisk\"] == 1]  # Only at-risk cases\nnot_at_risk_sample = separated[separated[\"atRisk\"] == 0]  # Only not-at-risk cases\n\n# Create test sets for MA hospitals with different at-risk rates\npd_dtest_MA_moreRisk = pd.concat([pd_dtest_NY, at_risk_sample])  # Adds back only at-risk cases\npd_dtest_MA_lessRisk = pd.concat([pd_dtest_NY, not_at_risk_sample])  # Adds back only not-at-risk cases\n\n# Show counts to verify results\nprint(\"Original Test Set Size:\", pd_dtest.shape[0])\nprint(\"Sampled Separated Size:\", separated.shape[0])\nprint(\"NY Hospitals Data Size:\", pd_dtest_NY.shape[0])\nprint(\"MA More Risk Data Size:\", pd_dtest_MA_moreRisk.shape[0])\nprint(\"MA Less Risk Data Size:\", pd_dtest_MA_lessRisk.shape[0])"
+    "text": "Performance of Classifier"
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-15",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-15",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier"
+    "text": "Performance of Classifier\n\n\nThe classifier with relatively high average rate of at-risk babies throws out a lower fraction of not-at-risk babies.\nThe classifier with relatively low average rate of at-risk babies throws out a higher fraction of not-at-risk babies."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-16",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-16",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\n\n\nThe classifier with relatively high average rate of at-risk babies throws out a lower fraction of not-at-risk babies.\nThe classifier with relatively low average rate of at-risk babies throws out a higher fraction of not-at-risk babies."
+    "text": "Performance of Classifier\n\nPrecision and false negative rate change a lot with the average rate of positives (at-risk babies).\nAccuracy, sensitivity, and specificity is relatively independent of the class prevalence.\nSensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution of the different classes in the population.\nPrecision/recall gives you an idea how well a classifier will work on a specific population."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-17",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-17",
     "title": "Lecture 8",
     "section": "Performance of Classifier",
-    "text": "Performance of Classifier\n\nPrecision and false negative rate change a lot with the average rate of positives (at-risk babies).\nAccuracy, sensitivity, and specificity is relatively independent of the class prevalence.\nSensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution of the different classes in the population.\nPrecision/recall gives you an idea how well a classifier will work on a specific population."
+    "text": "Performance of Classifier\n\nWhich classifier do you prefer for identifying at-risk babies?\n\nHigh accuracy, low sensitivity, other things being equal;\nLow accuracy, high sensitivity, other things being equal.\n\nAccuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#performance-of-classifier-18",

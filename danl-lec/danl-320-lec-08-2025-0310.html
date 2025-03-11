@@ -899,9 +899,6 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment">We want a classifier whose enrichment is greater than 2.</li>
 </ul></li>
 </ul>
-</section>
-<section id="performance-of-classifier-7" class="slide level2">
-<h2>Performance of Classifier</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
 <span id="cb7-2"><a href="#cb7-2"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
 <span id="cb7-3"><a href="#cb7-3"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
@@ -921,7 +918,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb7-17"><a href="#cb7-17"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
 <span id="cb7-18"><a href="#cb7-18"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="performance-of-classifier-8" class="slide level2">
+<section id="performance-of-classifier-7" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="trade-off-between-recall-and-precisionenrichment">Trade-off between recall and precision/enrichment</h3>
 <div>
@@ -968,7 +965,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb8-34"><a href="#cb8-34"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb8-35"><a href="#cb8-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="performance-of-classifier-9" class="slide level2">
+<section id="performance-of-classifier-8" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="trade-off-between-sensitivity-and-specificity">Trade-off between sensitivity and specificity</h3>
 <div>
@@ -998,7 +995,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb9-16"><a href="#cb9-16"></a>plt.legend()</span>
 <span id="cb9-17"><a href="#cb9-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="performance-of-classifier-10" class="slide level2">
+<section id="performance-of-classifier-9" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="auc">AUC</h3>
 
@@ -1009,7 +1006,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </ul></li>
 </ul>
 </section>
-<section id="performance-of-classifier-11" class="slide level2">
+<section id="performance-of-classifier-10" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="auc-1">AUC</h3>
 
@@ -1020,7 +1017,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </ul></li>
 </ul>
 </section>
-<section id="performance-of-classifier-12" class="slide level2">
+<section id="performance-of-classifier-11" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="auc-2">AUC</h3>
 
@@ -1031,7 +1028,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 </ul></li>
 </ul>
 </section>
-<section id="performance-of-classifier-13" class="slide level2">
+<section id="performance-of-classifier-12" class="slide level2">
 <h2>Performance of Classifier</h2>
 <h3 id="auc-3">AUC</h3>
 <ul>
@@ -1043,7 +1040,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment"><p>You also want to examine the shape of the ROC to explore possible trade-offs.</p></li>
 </ul>
 </section>
-<section id="performance-of-classifier-14" class="slide level2">
+<section id="performance-of-classifier-13" class="slide level2">
 <h2>Performance of Classifier</h2>
 <ul>
 <li class="fragment"><p>Suppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.</p></li>
@@ -1086,7 +1083,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <span id="cb10-31"><a href="#cb10-31"></a><span class="bu">print</span>(<span class="st">"MA More Risk Data Size:"</span>, pd_dtest_MA_moreRisk.shape[<span class="dv">0</span>])</span>
 <span id="cb10-32"><a href="#cb10-32"></a><span class="bu">print</span>(<span class="st">"MA Less Risk Data Size:"</span>, pd_dtest_MA_lessRisk.shape[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="performance-of-classifier-15" class="slide level2">
+<section id="performance-of-classifier-14" class="slide level2">
 <h2>Performance of Classifier</h2>
 <div style="display:block; margin:-39px;">
 
@@ -1095,7 +1092,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <img src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" width="870px">
 </p>
 </section>
-<section id="performance-of-classifier-16" class="slide level2">
+<section id="performance-of-classifier-15" class="slide level2">
 <h2>Performance of Classifier</h2>
 
 <img data-src="https://bcdanl.github.io/lec_figs/classifier-tab2.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
@@ -1103,7 +1100,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment">The classifier with relatively <em>low</em> average rate of at-risk babies throws out a <em>higher</em> fraction of not-at-risk babies.</li>
 </ul>
 </section>
-<section id="performance-of-classifier-17" class="slide level2">
+<section id="performance-of-classifier-16" class="slide level2">
 <h2>Performance of Classifier</h2>
 <ul>
 <li class="fragment">Precision and false negative rate change a lot with the average rate of positives (at-risk babies).</li>
@@ -1112,7 +1109,7 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment">Precision/recall gives you an idea how well a classifier will work on a specific population.</li>
 </ul>
 </section>
-<section id="performance-of-classifier-18" class="slide level2">
+<section id="performance-of-classifier-17" class="slide level2">
 <h2>Performance of Classifier</h2>
 <ul>
 <li class="fragment">Which classifier do you prefer for identifying at-risk babies?
