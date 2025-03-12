@@ -320,28 +320,83 @@ dtest_1 = model_1.transform(dtest_1)
 ```
 
 
+## Deviance and Likelihood
+
+
+```{.python}
+model_1.summary
+```
+
+:::{.nonincremental}
+- Deviance is a measure of the distance between the data and the estimated model. 
+
+$$
+\text{Deviance} = -2 \log(\text{Likelihood}) + C,
+$$
+where $C$ is constant that we can ignore.
+
+:::
+
+## Deviance and Likelihood
+
+:::{.nonincremental}
+
+- Logistic regression finds the beta coefficients, $b_0, b_1, \,\cdots, b_k$ , such that the logistic function 
+
+$$
+G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
+$$
+
+is the best possible estimate of the binary outcome $y_i$.
+
+:::
+
+- Logistic regression finds the beta parameters that maximize the **log likelihood** of the data, given the model, which is equivalent to minimizing the sum of the residual **deviances**.
+
+  - When you minimize the deviance, you are fitting the parameters to **make the model and data look as close as possible.**
+
+
+
+
+## Likelihood Function
+:::{.nonincremental}
+- Likelihood is the probability of your data given the model.
+
+:::
+
+<div style="display:block; margin:-30px;"></div>
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/logistic_likelihood.png" width="350px">
+</p>
+
+
+
+- The probability that the seven data points would be observed: 
+  - $L = (1-P1)*(1-P2)* P3*(1-P4)*P5*P6*P7$
+- The log of the likelihood: 
+$$
+\begin{align}
+\log(L) &= \log(1-P1) + \log(1-P2) + \log(P3) \\
+&\quad+ \log(1-P4) + \log(P5) + \log(P6) + \log(P7)
+\end{align}
+$$
+
+
+
 
 
 # **Marginal Effects** {background-color="#1c4982"}
 
-
-## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$
-
-
-:::{.nonincremental}
-- Interpreting only the estimated beta coefficient may not be informative.
-
-:::
+## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$?
 
 ```{.python}
 model_1.summary
 ```
 
 
+
 - If the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby.
-
-
-
 
 
 ## Marginal Effect of $x_{k, i}$ on $\text{Prob}(y_{i} = 1)$

@@ -751,6 +751,62 @@ Bool
 <span id="cb2-33"><a href="#cb2-33"></a><span class="co"># making prediction</span></span>
 <span id="cb2-34"><a href="#cb2-34"></a>dtrain_1 <span class="op">=</span> model_1.transform(dtrain_1)</span>
 <span id="cb2-35"><a href="#cb2-35"></a>dtest_1 <span class="op">=</span> model_1.transform(dtest_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deviance-and-likelihood" class="slide level2">
+<h2>Deviance and Likelihood</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>model_1.summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+<ul>
+<li>Deviance is a measure of the distance between the data and the estimated model.</li>
+</ul>
+<p><span class="math display">\[
+\text{Deviance} = -2 \log(\text{Likelihood}) + C,
+\]</span> where <span class="math inline">\(C\)</span> is constant that we can ignore.</p>
+</div>
+</section>
+<section id="deviance-and-likelihood-1" class="slide level2">
+<h2>Deviance and Likelihood</h2>
+<div>
+<ul>
+<li>Logistic regression finds the beta coefficients, <span class="math inline">\(b_0, b_1, \,\cdots, b_k\)</span> , such that the logistic function</li>
+</ul>
+<p><span class="math display">\[
+G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
+\]</span></p>
+<p>is the best possible estimate of the binary outcome <span class="math inline">\(y_i\)</span>.</p>
+</div>
+<ul>
+<li class="fragment"><p>Logistic regression finds the beta parameters that maximize the <strong>log likelihood</strong> of the data, given the model, which is equivalent to minimizing the sum of the residual <strong>deviances</strong>.</p>
+<ul>
+<li class="fragment">When you minimize the deviance, you are fitting the parameters to <strong>make the model and data look as close as possible.</strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="likelihood-function" class="slide level2">
+<h2>Likelihood Function</h2>
+<div>
+<ul>
+<li>Likelihood is the probability of your data given the model.</li>
+</ul>
+</div>
+<div style="display:block; margin:-30px;">
+
+</div>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/logistic_likelihood.png" width="350px">
+</p>
+<ul>
+<li class="fragment">The probability that the seven data points would be observed:
+<ul>
+<li class="fragment"><span class="math inline">\(L = (1-P1)*(1-P2)* P3*(1-P4)*P5*P6*P7\)</span></li>
+</ul></li>
+<li class="fragment">The log of the likelihood: <span class="math display">\[
+\begin{align}
+\log(L) &amp;= \log(1-P1) + \log(1-P2) + \log(P3) \\
+&amp;\quad+ \log(1-P4) + \log(P5) + \log(P6) + \log(P7)
+\end{align}
+\]</span></li>
+</ul>
 </section></section>
 <section>
 <section id="marginal-effects" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -758,13 +814,8 @@ Bool
 
 </section>
 <section id="marginal-effect-of-x_k-i-on-textproby_i-1" class="slide level2">
-<h2>Marginal Effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span></h2>
-<div>
-<ul>
-<li>Interpreting only the estimated beta coefficient may not be informative.</li>
-</ul>
-</div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>model_1.summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h2>Marginal Effect of <span class="math inline">\(x_{k, i}\)</span> on <span class="math inline">\(\text{Prob}(y_{i} = 1)\)</span>?</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>model_1.summary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">If the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby.</li>
 </ul>
@@ -811,74 +862,74 @@ Bool
 <li class="fragment">Average marginal effect (AME): We can average the marginal effects across the training data.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource pyspark number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>def marginal_effects(model, means):</span>
-<span id="cb4-2"><a href="#cb4-2"></a>    """</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>    and return a formatted table with statistical significance.</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    </span>
-<span id="cb4-6"><a href="#cb4-6"></a>    Parameters:</span>
-<span id="cb4-7"><a href="#cb4-7"></a>        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).</span>
-<span id="cb4-8"><a href="#cb4-8"></a>        means: List of mean values for the predictor variables.</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    </span>
-<span id="cb4-10"><a href="#cb4-10"></a>    Returns:</span>
-<span id="cb4-11"><a href="#cb4-11"></a>        A formatted string containing the marginal effects table.</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    """</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    global assembler_predictors  # Use the global assembler_predictors list</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    </span>
-<span id="cb4-15"><a href="#cb4-15"></a>    # Extract model coefficients, standard errors, and intercept</span>
-<span id="cb4-16"><a href="#cb4-16"></a>    coeffs = np.array(model.coefficients)</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    std_errors = np.array(model.summary.coefficientStandardErrors)</span>
-<span id="cb4-18"><a href="#cb4-18"></a>    intercept = model.intercept</span>
-<span id="cb4-19"><a href="#cb4-19"></a>    </span>
-<span id="cb4-20"><a href="#cb4-20"></a>    # Compute linear combination of means and coefficients (XB)</span>
-<span id="cb4-21"><a href="#cb4-21"></a>    XB = np.dot(means, coeffs) + intercept</span>
-<span id="cb4-22"><a href="#cb4-22"></a>    </span>
-<span id="cb4-23"><a href="#cb4-23"></a>    # Compute derivative of logistic function (G'(XB))</span>
-<span id="cb4-24"><a href="#cb4-24"></a>    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)</span>
-<span id="cb4-25"><a href="#cb4-25"></a>    </span>
-<span id="cb4-26"><a href="#cb4-26"></a>    # Helper: significance stars.</span>
-<span id="cb4-27"><a href="#cb4-27"></a>    def significance_stars(p):</span>
-<span id="cb4-28"><a href="#cb4-28"></a>        if p &lt; 0.01:</span>
-<span id="cb4-29"><a href="#cb4-29"></a>            return "***"</span>
-<span id="cb4-30"><a href="#cb4-30"></a>        elif p &lt; 0.05:</span>
-<span id="cb4-31"><a href="#cb4-31"></a>            return "**"</span>
-<span id="cb4-32"><a href="#cb4-32"></a>        elif p &lt; 0.1:</span>
-<span id="cb4-33"><a href="#cb4-33"></a>            return "*"</span>
-<span id="cb4-34"><a href="#cb4-34"></a>        else:</span>
-<span id="cb4-35"><a href="#cb4-35"></a>            return ""</span>
-<span id="cb4-36"><a href="#cb4-36"></a>    </span>
-<span id="cb4-37"><a href="#cb4-37"></a>    # Create table to store results</span>
-<span id="cb4-38"><a href="#cb4-38"></a>    results = []</span>
-<span id="cb4-39"><a href="#cb4-39"></a>    </span>
-<span id="cb4-40"><a href="#cb4-40"></a>    for i, predictor in enumerate(assembler_predictors):</span>
-<span id="cb4-41"><a href="#cb4-41"></a>        # Compute marginal effect</span>
-<span id="cb4-42"><a href="#cb4-42"></a>        marginal_effect = G_prime_XB * coeffs[i]</span>
-<span id="cb4-43"><a href="#cb4-43"></a>        </span>
-<span id="cb4-44"><a href="#cb4-44"></a>        # Compute standard error of the marginal effect</span>
-<span id="cb4-45"><a href="#cb4-45"></a>        std_error = G_prime_XB * std_errors[i]</span>
-<span id="cb4-46"><a href="#cb4-46"></a>        </span>
-<span id="cb4-47"><a href="#cb4-47"></a>        # Compute z-score and p-value</span>
-<span id="cb4-48"><a href="#cb4-48"></a>        z_score = marginal_effect / std_error if std_error != 0 else np.nan</span>
-<span id="cb4-49"><a href="#cb4-49"></a>        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan</span>
-<span id="cb4-50"><a href="#cb4-50"></a>        </span>
-<span id="cb4-51"><a href="#cb4-51"></a>        # Compute confidence interval (95%)</span>
-<span id="cb4-52"><a href="#cb4-52"></a>        ci_lower = marginal_effect - 1.96 * std_error</span>
-<span id="cb4-53"><a href="#cb4-53"></a>        ci_upper = marginal_effect + 1.96 * std_error</span>
-<span id="cb4-54"><a href="#cb4-54"></a>        </span>
-<span id="cb4-55"><a href="#cb4-55"></a>        # Append results</span>
-<span id="cb4-56"><a href="#cb4-56"></a>        results.append([predictor, f"{marginal_effect: .4f}", significance_stars(p_value), f"{ci_lower: .4f}", f"{ci_upper: .4f}"])</span>
-<span id="cb4-57"><a href="#cb4-57"></a>    </span>
-<span id="cb4-58"><a href="#cb4-58"></a>    # Convert results to tabulated format</span>
-<span id="cb4-59"><a href="#cb4-59"></a>    table_str = tabulate(results, headers=["Variable", "Marginal Effect", "Significance", "95% CI Lower", "95% CI Upper"], </span>
-<span id="cb4-60"><a href="#cb4-60"></a>                         tablefmt="pretty", colalign=("left", "decimal", "left", "decimal", "decimal"))</span>
-<span id="cb4-61"><a href="#cb4-61"></a>    </span>
-<span id="cb4-62"><a href="#cb4-62"></a>    return table_str</span>
-<span id="cb4-63"><a href="#cb4-63"></a></span>
-<span id="cb4-64"><a href="#cb4-64"></a># Example usage:</span>
-<span id="cb4-65"><a href="#cb4-65"></a># means = [0.5, 30]  # Mean values for x1 and x2</span>
-<span id="cb4-66"><a href="#cb4-66"></a># assembler_predictors = ['x1', 'x2']  # Define globally before calling the function</span>
-<span id="cb4-67"><a href="#cb4-67"></a># table_output = mfx_glm(fitted_model, means)</span>
-<span id="cb4-68"><a href="#cb4-68"></a># print(table_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource pyspark number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>def marginal_effects(model, means):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    """</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    and return a formatted table with statistical significance.</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    </span>
+<span id="cb5-6"><a href="#cb5-6"></a>    Parameters:</span>
+<span id="cb5-7"><a href="#cb5-7"></a>        model: Fitted GeneralizedLinearRegression model (with binomial family and logit link).</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        means: List of mean values for the predictor variables.</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    </span>
+<span id="cb5-10"><a href="#cb5-10"></a>    Returns:</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        A formatted string containing the marginal effects table.</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    """</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    global assembler_predictors  # Use the global assembler_predictors list</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    </span>
+<span id="cb5-15"><a href="#cb5-15"></a>    # Extract model coefficients, standard errors, and intercept</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    coeffs = np.array(model.coefficients)</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    std_errors = np.array(model.summary.coefficientStandardErrors)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    intercept = model.intercept</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    </span>
+<span id="cb5-20"><a href="#cb5-20"></a>    # Compute linear combination of means and coefficients (XB)</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    XB = np.dot(means, coeffs) + intercept</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    </span>
+<span id="cb5-23"><a href="#cb5-23"></a>    # Compute derivative of logistic function (G'(XB))</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    G_prime_XB = np.exp(XB) / ((1 + np.exp(XB)) ** 2)</span>
+<span id="cb5-25"><a href="#cb5-25"></a>    </span>
+<span id="cb5-26"><a href="#cb5-26"></a>    # Helper: significance stars.</span>
+<span id="cb5-27"><a href="#cb5-27"></a>    def significance_stars(p):</span>
+<span id="cb5-28"><a href="#cb5-28"></a>        if p &lt; 0.01:</span>
+<span id="cb5-29"><a href="#cb5-29"></a>            return "***"</span>
+<span id="cb5-30"><a href="#cb5-30"></a>        elif p &lt; 0.05:</span>
+<span id="cb5-31"><a href="#cb5-31"></a>            return "**"</span>
+<span id="cb5-32"><a href="#cb5-32"></a>        elif p &lt; 0.1:</span>
+<span id="cb5-33"><a href="#cb5-33"></a>            return "*"</span>
+<span id="cb5-34"><a href="#cb5-34"></a>        else:</span>
+<span id="cb5-35"><a href="#cb5-35"></a>            return ""</span>
+<span id="cb5-36"><a href="#cb5-36"></a>    </span>
+<span id="cb5-37"><a href="#cb5-37"></a>    # Create table to store results</span>
+<span id="cb5-38"><a href="#cb5-38"></a>    results = []</span>
+<span id="cb5-39"><a href="#cb5-39"></a>    </span>
+<span id="cb5-40"><a href="#cb5-40"></a>    for i, predictor in enumerate(assembler_predictors):</span>
+<span id="cb5-41"><a href="#cb5-41"></a>        # Compute marginal effect</span>
+<span id="cb5-42"><a href="#cb5-42"></a>        marginal_effect = G_prime_XB * coeffs[i]</span>
+<span id="cb5-43"><a href="#cb5-43"></a>        </span>
+<span id="cb5-44"><a href="#cb5-44"></a>        # Compute standard error of the marginal effect</span>
+<span id="cb5-45"><a href="#cb5-45"></a>        std_error = G_prime_XB * std_errors[i]</span>
+<span id="cb5-46"><a href="#cb5-46"></a>        </span>
+<span id="cb5-47"><a href="#cb5-47"></a>        # Compute z-score and p-value</span>
+<span id="cb5-48"><a href="#cb5-48"></a>        z_score = marginal_effect / std_error if std_error != 0 else np.nan</span>
+<span id="cb5-49"><a href="#cb5-49"></a>        p_value = 2 * (1 - norm.cdf(abs(z_score))) if not np.isnan(z_score) else np.nan</span>
+<span id="cb5-50"><a href="#cb5-50"></a>        </span>
+<span id="cb5-51"><a href="#cb5-51"></a>        # Compute confidence interval (95%)</span>
+<span id="cb5-52"><a href="#cb5-52"></a>        ci_lower = marginal_effect - 1.96 * std_error</span>
+<span id="cb5-53"><a href="#cb5-53"></a>        ci_upper = marginal_effect + 1.96 * std_error</span>
+<span id="cb5-54"><a href="#cb5-54"></a>        </span>
+<span id="cb5-55"><a href="#cb5-55"></a>        # Append results</span>
+<span id="cb5-56"><a href="#cb5-56"></a>        results.append([predictor, f"{marginal_effect: .4f}", significance_stars(p_value), f"{ci_lower: .4f}", f"{ci_upper: .4f}"])</span>
+<span id="cb5-57"><a href="#cb5-57"></a>    </span>
+<span id="cb5-58"><a href="#cb5-58"></a>    # Convert results to tabulated format</span>
+<span id="cb5-59"><a href="#cb5-59"></a>    table_str = tabulate(results, headers=["Variable", "Marginal Effect", "Significance", "95% CI Lower", "95% CI Upper"], </span>
+<span id="cb5-60"><a href="#cb5-60"></a>                         tablefmt="pretty", colalign=("left", "decimal", "left", "decimal", "decimal"))</span>
+<span id="cb5-61"><a href="#cb5-61"></a>    </span>
+<span id="cb5-62"><a href="#cb5-62"></a>    return table_str</span>
+<span id="cb5-63"><a href="#cb5-63"></a></span>
+<span id="cb5-64"><a href="#cb5-64"></a># Example usage:</span>
+<span id="cb5-65"><a href="#cb5-65"></a># means = [0.5, 30]  # Mean values for x1 and x2</span>
+<span id="cb5-66"><a href="#cb5-66"></a># assembler_predictors = ['x1', 'x2']  # Define globally before calling the function</span>
+<span id="cb5-67"><a href="#cb5-67"></a># table_output = mfx_glm(fitted_model, means)</span>
+<span id="cb5-68"><a href="#cb5-68"></a># print(table_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="vs.-point" class="slide level2">
 <h2>% vs.&nbsp;% point</h2>
@@ -929,38 +980,38 @@ Bool
 </ul></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Filter training data for atRisk == 1 and atRisk == 0</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>pdf <span class="op">=</span> dtrain_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a>train_true <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
-<span id="cb5-8"><a href="#cb5-8"></a>train_false <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Create the first density plot</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb5-12"><a href="#cb5-12"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-14"><a href="#cb5-14"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a>plt.title(<span class="st">"Density Plot of Predictions"</span>)</span>
-<span id="cb5-17"><a href="#cb5-17"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
-<span id="cb5-18"><a href="#cb5-18"></a>plt.show()</span>
-<span id="cb5-19"><a href="#cb5-19"></a></span>
-<span id="cb5-20"><a href="#cb5-20"></a><span class="co"># Define threshold for vertical line</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a>threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Replace with actual value</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a></span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="co"># Create the second density plot with vertical line</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb5-25"><a href="#cb5-25"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-26"><a href="#cb5-26"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-27"><a href="#cb5-27"></a>plt.axvline(x<span class="op">=</span>threshold, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Threshold = </span><span class="sc">{</span>threshold<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-28"><a href="#cb5-28"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
-<span id="cb5-29"><a href="#cb5-29"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
-<span id="cb5-30"><a href="#cb5-30"></a>plt.title(<span class="st">"Density Plot of Predictions with Threshold"</span>)</span>
-<span id="cb5-31"><a href="#cb5-31"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
-<span id="cb5-32"><a href="#cb5-32"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># Filter training data for atRisk == 1 and atRisk == 0</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>pdf <span class="op">=</span> dtrain_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>train_true <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb6-8"><a href="#cb6-8"></a>train_false <span class="op">=</span> pdf[pdf[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># Create the first density plot</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb6-12"><a href="#cb6-12"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-13"><a href="#cb6-13"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16"></a>plt.title(<span class="st">"Density Plot of Predictions"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18"></a>plt.show()</span>
+<span id="cb6-19"><a href="#cb6-19"></a></span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="co"># Define threshold for vertical line</span></span>
+<span id="cb6-21"><a href="#cb6-21"></a>threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Replace with actual value</span></span>
+<span id="cb6-22"><a href="#cb6-22"></a></span>
+<span id="cb6-23"><a href="#cb6-23"></a><span class="co"># Create the second density plot with vertical line</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb6-25"><a href="#cb6-25"></a>sns.kdeplot(train_true[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"TRUE"</span>, color<span class="op">=</span><span class="st">"red"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-26"><a href="#cb6-26"></a>sns.kdeplot(train_false[<span class="st">"prediction"</span>], label<span class="op">=</span><span class="st">"FALSE"</span>, color<span class="op">=</span><span class="st">"blue"</span>, fill<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-27"><a href="#cb6-27"></a>plt.axvline(x<span class="op">=</span>threshold, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Threshold = </span><span class="sc">{</span>threshold<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28"></a>plt.xlabel(<span class="st">"Prediction"</span>)</span>
+<span id="cb6-29"><a href="#cb6-29"></a>plt.ylabel(<span class="st">"Density"</span>)</span>
+<span id="cb6-30"><a href="#cb6-30"></a>plt.title(<span class="st">"Density Plot of Predictions with Threshold"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31"></a>plt.legend(title<span class="op">=</span><span class="st">"atRisk"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -973,24 +1024,24 @@ Bool
 </ul></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Compute confusion matrix</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>dtest_1 <span class="op">=</span> dtest_1.withColumn(<span class="st">"predicted_class"</span>, when(col(<span class="st">"prediction"</span>) <span class="op">&gt;</span> <span class="fl">.02</span>, <span class="dv">1</span>).otherwise(<span class="dv">0</span>))</span>
-<span id="cb6-3"><a href="#cb6-3"></a>conf_matrix <span class="op">=</span> dtest_1.groupBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>).count().orderBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a></span>
-<span id="cb6-5"><a href="#cb6-5"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
-<span id="cb6-6"><a href="#cb6-6"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
-<span id="cb6-7"><a href="#cb6-7"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
-<span id="cb6-8"><a href="#cb6-8"></a>TN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># Print formatted confusion matrix with labels</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Confusion Matrix:</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="bu">print</span>(<span class="st">"                     Predicted"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="st">"            |  Negative  |  Positive  "</span>)</span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="bu">print</span>(<span class="ss">f"Actual Neg. |    </span><span class="sc">{</span>TN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>FP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="bu">print</span>(<span class="ss">f"Actual Pos. |    </span><span class="sc">{</span>FN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>TP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Compute confusion matrix</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>dtest_1 <span class="op">=</span> dtest_1.withColumn(<span class="st">"predicted_class"</span>, when(col(<span class="st">"prediction"</span>) <span class="op">&gt;</span> <span class="fl">.02</span>, <span class="dv">1</span>).otherwise(<span class="dv">0</span>))</span>
+<span id="cb7-3"><a href="#cb7-3"></a>conf_matrix <span class="op">=</span> dtest_1.groupBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>).count().orderBy(<span class="st">"atRisk"</span>, <span class="st">"predicted_class"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a></span>
+<span id="cb7-5"><a href="#cb7-5"></a>TP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb7-6"><a href="#cb7-6"></a>FP <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">1</span>)).count()</span>
+<span id="cb7-7"><a href="#cb7-7"></a>FN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb7-8"><a href="#cb7-8"></a>TN <span class="op">=</span> dtest_1.<span class="bu">filter</span>((col(<span class="st">"atRisk"</span>) <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> (col(<span class="st">"predicted_class"</span>) <span class="op">==</span> <span class="dv">0</span>)).count()</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co"># Print formatted confusion matrix with labels</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Confusion Matrix:</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">print</span>(<span class="st">"                     Predicted"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="st">"            |  Negative  |  Positive  "</span>)</span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="bu">print</span>(<span class="ss">f"Actual Neg. |    </span><span class="sc">{</span>TN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>FP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="bu">print</span>(<span class="ss">f"Actual Pos. |    </span><span class="sc">{</span>FN<span class="sc">:5}</span><span class="ss">   |    </span><span class="sc">{</span>TP<span class="sc">:5}</span><span class="ss">  |"</span>)</span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="bu">print</span>(<span class="st">"------------+------------+------------"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-1" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -1060,20 +1111,20 @@ Bool
 <li class="fragment">We want a classifier whose enrichment is greater than 2.</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2"></a>accuracy <span class="op">=</span> (TP <span class="op">+</span> TN) <span class="op">/</span> (TP <span class="op">+</span> FP <span class="op">+</span> FN <span class="op">+</span> TN)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>precision <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FP)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>recall <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FN)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>specificity <span class="op">=</span> TN <span class="op">/</span> (TN <span class="op">+</span> FP)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>average_rate <span class="op">=</span> (TP <span class="op">+</span> FN) <span class="op">/</span> (TP <span class="op">+</span> TN <span class="op">+</span> FP <span class="op">+</span> FN)  <span class="co"># Proportion of actual at-risk babies</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
-<span id="cb7-8"><a href="#cb7-8"></a></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="bu">print</span>(<span class="ss">f"Accuracy:  </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="bu">print</span>(<span class="ss">f"Recall (Sensitivity): </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="bu">print</span>(<span class="ss">f"Specificity:  </span><span class="sc">{</span>specificity<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2"></a>accuracy <span class="op">=</span> (TP <span class="op">+</span> TN) <span class="op">/</span> (TP <span class="op">+</span> FP <span class="op">+</span> FN <span class="op">+</span> TN)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>precision <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FP)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>recall <span class="op">=</span> TP <span class="op">/</span> (TP <span class="op">+</span> FN)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>specificity <span class="op">=</span> TN <span class="op">/</span> (TN <span class="op">+</span> FP)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>average_rate <span class="op">=</span> (TP <span class="op">+</span> FN) <span class="op">/</span> (TP <span class="op">+</span> TN <span class="op">+</span> FP <span class="op">+</span> FN)  <span class="co"># Proportion of actual at-risk babies</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bu">print</span>(<span class="ss">f"Accuracy:  </span><span class="sc">{</span>accuracy<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bu">print</span>(<span class="ss">f"Precision: </span><span class="sc">{</span>precision<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="bu">print</span>(<span class="ss">f"Recall (Sensitivity): </span><span class="sc">{</span>recall<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bu">print</span>(<span class="ss">f"Specificity:  </span><span class="sc">{</span>specificity<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="bu">print</span>(<span class="ss">f"Average Rate: </span><span class="sc">{</span>average_rate<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="bu">print</span>(<span class="ss">f"Enrichment:   </span><span class="sc">{</span>enrichment<span class="sc">:.4f}</span><span class="ss"> (Relative Precision)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-7" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -1086,41 +1137,41 @@ Bool
 </ul></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_curve</span>
-<span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co"># Extract predictions and true labels</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>y_true <span class="op">=</span> pdf[<span class="st">"atRisk"</span>]  <span class="co"># True labels</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>y_scores <span class="op">=</span> pdf[<span class="st">"prediction"</span>]  <span class="co"># Predicted probabilities</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co"># Compute precision, recall, and thresholds</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>precision, recall, thresholds <span class="op">=</span> precision_recall_curve(y_true, y_scores)</span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co"># Compute enrichment: precision divided by average at-risk rate</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>average_rate <span class="op">=</span> np.mean(y_true)</span>
-<span id="cb8-16"><a href="#cb8-16"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
-<span id="cb8-17"><a href="#cb8-17"></a></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co"># Define optimal threshold (example: threshold where recall ≈ enrichment balance)</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a>optimal_threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Adjust based on the plot</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a></span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="co"># Plot Enrichment vs. Recall vs. Threshold</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
-<span id="cb8-23"><a href="#cb8-23"></a>plt.plot(thresholds, enrichment[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Enrichment"</span>, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb8-24"><a href="#cb8-24"></a>plt.plot(thresholds, recall[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Recall"</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
-<span id="cb8-25"><a href="#cb8-25"></a></span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="co"># Add vertical line for chosen threshold</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a>plt.axvline(x<span class="op">=</span>optimal_threshold, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Optimal Threshold = </span><span class="sc">{</span>optimal_threshold<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-28"><a href="#cb8-28"></a></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="co"># Labels and legend</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a>plt.xlabel(<span class="st">"Threshold"</span>)</span>
-<span id="cb8-31"><a href="#cb8-31"></a>plt.ylabel(<span class="st">"Score"</span>)</span>
-<span id="cb8-32"><a href="#cb8-32"></a>plt.title(<span class="st">"Enrichment vs. Recall"</span>)</span>
-<span id="cb8-33"><a href="#cb8-33"></a>plt.legend()</span>
-<span id="cb8-34"><a href="#cb8-34"></a>plt.grid(<span class="va">True</span>)</span>
-<span id="cb8-35"><a href="#cb8-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_recall_curve</span>
+<span id="cb9-4"><a href="#cb9-4"></a></span>
+<span id="cb9-5"><a href="#cb9-5"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># Extract predictions and true labels</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>y_true <span class="op">=</span> pdf[<span class="st">"atRisk"</span>]  <span class="co"># True labels</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>y_scores <span class="op">=</span> pdf[<span class="st">"prediction"</span>]  <span class="co"># Predicted probabilities</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># Compute precision, recall, and thresholds</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>precision, recall, thresholds <span class="op">=</span> precision_recall_curve(y_true, y_scores)</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co"># Compute enrichment: precision divided by average at-risk rate</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>average_rate <span class="op">=</span> np.mean(y_true)</span>
+<span id="cb9-16"><a href="#cb9-16"></a>enrichment <span class="op">=</span> precision <span class="op">/</span> average_rate</span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co"># Define optimal threshold (example: threshold where recall ≈ enrichment balance)</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a>optimal_threshold <span class="op">=</span> <span class="fl">0.02</span>  <span class="co"># Adjust based on the plot</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="co"># Plot Enrichment vs. Recall vs. Threshold</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb9-23"><a href="#cb9-23"></a>plt.plot(thresholds, enrichment[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Enrichment"</span>, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24"></a>plt.plot(thresholds, recall[:<span class="op">-</span><span class="dv">1</span>], label<span class="op">=</span><span class="st">"Recall"</span>, color<span class="op">=</span><span class="st">"red"</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="co"># Add vertical line for chosen threshold</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a>plt.axvline(x<span class="op">=</span>optimal_threshold, color<span class="op">=</span><span class="st">"black"</span>, linestyle<span class="op">=</span><span class="st">"dashed"</span>, label<span class="op">=</span><span class="ss">f"Optimal Threshold = </span><span class="sc">{</span>optimal_threshold<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-28"><a href="#cb9-28"></a></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="co"># Labels and legend</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a>plt.xlabel(<span class="st">"Threshold"</span>)</span>
+<span id="cb9-31"><a href="#cb9-31"></a>plt.ylabel(<span class="st">"Score"</span>)</span>
+<span id="cb9-32"><a href="#cb9-32"></a>plt.title(<span class="st">"Enrichment vs. Recall"</span>)</span>
+<span id="cb9-33"><a href="#cb9-33"></a>plt.legend()</span>
+<span id="cb9-34"><a href="#cb9-34"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb9-35"><a href="#cb9-35"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-8" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -1134,23 +1185,23 @@ Bool
 </ul></li>
 </ul>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
-<span id="cb9-2"><a href="#cb9-2"></a></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="co"># Convert to Pandas</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># Compute ROC curve</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>fpr, tpr, _ <span class="op">=</span> roc_curve(pdf[<span class="st">"atRisk"</span>], pdf[<span class="st">"prediction"</span>])</span>
-<span id="cb9-8"><a href="#cb9-8"></a></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co"># Plot ROC curve</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb9-11"><a href="#cb9-11"></a>plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f"ROC Curve (AUC = </span><span class="sc">{</span>auc<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
-<span id="cb9-12"><a href="#cb9-12"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">"Random Guess"</span>)</span>
-<span id="cb9-13"><a href="#cb9-13"></a>plt.xlabel(<span class="st">"False Positive Rate"</span>)</span>
-<span id="cb9-14"><a href="#cb9-14"></a>plt.ylabel(<span class="st">"True Positive Rate"</span>)</span>
-<span id="cb9-15"><a href="#cb9-15"></a>plt.title(<span class="st">"ROC Curve"</span>)</span>
-<span id="cb9-16"><a href="#cb9-16"></a>plt.legend()</span>
-<span id="cb9-17"><a href="#cb9-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_curve</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># Convert to Pandas</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>pdf <span class="op">=</span> dtest_1.select(<span class="st">"prediction"</span>, <span class="st">"atRisk"</span>).toPandas()</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Compute ROC curve</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>fpr, tpr, _ <span class="op">=</span> roc_curve(pdf[<span class="st">"atRisk"</span>], pdf[<span class="st">"prediction"</span>])</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb10-11"><a href="#cb10-11"></a>plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f"ROC Curve (AUC = </span><span class="sc">{</span>auc<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
+<span id="cb10-12"><a href="#cb10-12"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">"Random Guess"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13"></a>plt.xlabel(<span class="st">"False Positive Rate"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14"></a>plt.ylabel(<span class="st">"True Positive Rate"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15"></a>plt.title(<span class="st">"ROC Curve"</span>)</span>
+<span id="cb10-16"><a href="#cb10-16"></a>plt.legend()</span>
+<span id="cb10-17"><a href="#cb10-17"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-9" class="slide level2">
 <h2>Performance of Classifier</h2>
@@ -1211,38 +1262,38 @@ Bool
 </ul></li>
 <li class="fragment">Let’s examine how classifier performance changes with varying at-risk rates.</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dtrain, dtest <span class="op">=</span> df.randomSplit([<span class="fl">0.5</span>, <span class="fl">0.5</span>], seed <span class="op">=</span> <span class="dv">1234</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>pd_dtrain <span class="op">=</span> dtrain.toPandas()</span>
-<span id="cb10-4"><a href="#cb10-4"></a>pd_dtest <span class="op">=</span> dtest.toPandas()</span>
-<span id="cb10-5"><a href="#cb10-5"></a></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a>np.random.seed(<span class="dv">23464</span>)</span>
-<span id="cb10-8"><a href="#cb10-8"></a></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># Sample 1000 random indices from the test dataset without replacement</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a>sample_indices <span class="op">=</span> np.random.choice(pd_dtest.index, size<span class="op">=</span><span class="dv">1000</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb10-11"><a href="#cb10-11"></a></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="co"># Separate the selected observations from testing data</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a>separated <span class="op">=</span> pd_dtest.loc[sample_indices]</span>
-<span id="cb10-14"><a href="#cb10-14"></a></span>
-<span id="cb10-15"><a href="#cb10-15"></a><span class="co"># Remove the selected observations from the testing data</span></span>
-<span id="cb10-16"><a href="#cb10-16"></a><span class="co"># Consider this as data from NY hospitals</span></span>
-<span id="cb10-17"><a href="#cb10-17"></a>pd_dtest_NY <span class="op">=</span> pd_dtest.drop(sample_indices)</span>
-<span id="cb10-18"><a href="#cb10-18"></a></span>
-<span id="cb10-19"><a href="#cb10-19"></a><span class="co"># Split the separated sample into at-risk and not-at-risk groups</span></span>
-<span id="cb10-20"><a href="#cb10-20"></a>at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]  <span class="co"># Only at-risk cases</span></span>
-<span id="cb10-21"><a href="#cb10-21"></a>not_at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]  <span class="co"># Only not-at-risk cases</span></span>
-<span id="cb10-22"><a href="#cb10-22"></a></span>
-<span id="cb10-23"><a href="#cb10-23"></a><span class="co"># Create test sets for MA hospitals with different at-risk rates</span></span>
-<span id="cb10-24"><a href="#cb10-24"></a>pd_dtest_MA_moreRisk <span class="op">=</span> pd.concat([pd_dtest_NY, at_risk_sample])  <span class="co"># Adds back only at-risk cases</span></span>
-<span id="cb10-25"><a href="#cb10-25"></a>pd_dtest_MA_lessRisk <span class="op">=</span> pd.concat([pd_dtest_NY, not_at_risk_sample])  <span class="co"># Adds back only not-at-risk cases</span></span>
-<span id="cb10-26"><a href="#cb10-26"></a></span>
-<span id="cb10-27"><a href="#cb10-27"></a><span class="co"># Show counts to verify results</span></span>
-<span id="cb10-28"><a href="#cb10-28"></a><span class="bu">print</span>(<span class="st">"Original Test Set Size:"</span>, pd_dtest.shape[<span class="dv">0</span>])</span>
-<span id="cb10-29"><a href="#cb10-29"></a><span class="bu">print</span>(<span class="st">"Sampled Separated Size:"</span>, separated.shape[<span class="dv">0</span>])</span>
-<span id="cb10-30"><a href="#cb10-30"></a><span class="bu">print</span>(<span class="st">"NY Hospitals Data Size:"</span>, pd_dtest_NY.shape[<span class="dv">0</span>])</span>
-<span id="cb10-31"><a href="#cb10-31"></a><span class="bu">print</span>(<span class="st">"MA More Risk Data Size:"</span>, pd_dtest_MA_moreRisk.shape[<span class="dv">0</span>])</span>
-<span id="cb10-32"><a href="#cb10-32"></a><span class="bu">print</span>(<span class="st">"MA Less Risk Data Size:"</span>, pd_dtest_MA_lessRisk.shape[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>dtrain, dtest <span class="op">=</span> df.randomSplit([<span class="fl">0.5</span>, <span class="fl">0.5</span>], seed <span class="op">=</span> <span class="dv">1234</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>pd_dtrain <span class="op">=</span> dtrain.toPandas()</span>
+<span id="cb11-4"><a href="#cb11-4"></a>pd_dtest <span class="op">=</span> dtest.toPandas()</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>np.random.seed(<span class="dv">23464</span>)</span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># Sample 1000 random indices from the test dataset without replacement</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>sample_indices <span class="op">=</span> np.random.choice(pd_dtest.index, size<span class="op">=</span><span class="dv">1000</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co"># Separate the selected observations from testing data</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>separated <span class="op">=</span> pd_dtest.loc[sample_indices]</span>
+<span id="cb11-14"><a href="#cb11-14"></a></span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="co"># Remove the selected observations from the testing data</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a><span class="co"># Consider this as data from NY hospitals</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>pd_dtest_NY <span class="op">=</span> pd_dtest.drop(sample_indices)</span>
+<span id="cb11-18"><a href="#cb11-18"></a></span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="co"># Split the separated sample into at-risk and not-at-risk groups</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">1</span>]  <span class="co"># Only at-risk cases</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a>not_at_risk_sample <span class="op">=</span> separated[separated[<span class="st">"atRisk"</span>] <span class="op">==</span> <span class="dv">0</span>]  <span class="co"># Only not-at-risk cases</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a></span>
+<span id="cb11-23"><a href="#cb11-23"></a><span class="co"># Create test sets for MA hospitals with different at-risk rates</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a>pd_dtest_MA_moreRisk <span class="op">=</span> pd.concat([pd_dtest_NY, at_risk_sample])  <span class="co"># Adds back only at-risk cases</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a>pd_dtest_MA_lessRisk <span class="op">=</span> pd.concat([pd_dtest_NY, not_at_risk_sample])  <span class="co"># Adds back only not-at-risk cases</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a></span>
+<span id="cb11-27"><a href="#cb11-27"></a><span class="co"># Show counts to verify results</span></span>
+<span id="cb11-28"><a href="#cb11-28"></a><span class="bu">print</span>(<span class="st">"Original Test Set Size:"</span>, pd_dtest.shape[<span class="dv">0</span>])</span>
+<span id="cb11-29"><a href="#cb11-29"></a><span class="bu">print</span>(<span class="st">"Sampled Separated Size:"</span>, separated.shape[<span class="dv">0</span>])</span>
+<span id="cb11-30"><a href="#cb11-30"></a><span class="bu">print</span>(<span class="st">"NY Hospitals Data Size:"</span>, pd_dtest_NY.shape[<span class="dv">0</span>])</span>
+<span id="cb11-31"><a href="#cb11-31"></a><span class="bu">print</span>(<span class="st">"MA More Risk Data Size:"</span>, pd_dtest_MA_moreRisk.shape[<span class="dv">0</span>])</span>
+<span id="cb11-32"><a href="#cb11-32"></a><span class="bu">print</span>(<span class="st">"MA Less Risk Data Size:"</span>, pd_dtest_MA_lessRisk.shape[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="performance-of-classifier-14" class="slide level2">
 <h2>Performance of Classifier</h2>

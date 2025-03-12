@@ -5064,8 +5064,8 @@
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1",
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1",
     "title": "Lecture 8",
-    "section": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)",
-    "text": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)\n\n\nInterpreting only the estimated beta coefficient may not be informative.\n\n\nmodel_1.summary\n\nIf the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby."
+    "section": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)?",
+    "text": "Marginal Effect of \\(x_{k, i}\\) on \\(\\text{Prob}(y_{i} = 1)\\)?\nmodel_1.summary\n\nIf the baby is prematurely born, the log-odds of being at risk increases by 1.539 relative to the non-premature baby."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#marginal-effect-of-x_k-i-on-textproby_i-1-1",
@@ -5185,5 +5185,26 @@
     "title": "Lecture 8",
     "section": "Accuracy Can Be Misleading in Imbalanced Data",
     "text": "Accuracy Can Be Misleading in Imbalanced Data\n\nThe cost of misclassification matters:\n\nMissing a severe complication (false negative) can be more costly than mistakenly flagging a healthy case as at risk (false positive).\n\nAlternative metrics are better suited for evaluating classifiers in imbalanced scenarios:\n\nPrecision, Recall, AUC-ROC\n\nThis is not a paradox—it simply reflects that accuracy alone does not capture the effectiveness of a model when class distributions are skewed."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#deviance-and-likelihood",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#deviance-and-likelihood",
+    "title": "Lecture 8",
+    "section": "Deviance and Likelihood",
+    "text": "Deviance and Likelihood\nmodel_1.summary\n\n\nDeviance is a measure of the distance between the data and the estimated model.\n\n\\[\n\\text{Deviance} = -2 \\log(\\text{Likelihood}) + C,\n\\] where \\(C\\) is constant that we can ignore."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#deviance-and-likelihood-1",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#deviance-and-likelihood-1",
+    "title": "Lecture 8",
+    "section": "Deviance and Likelihood",
+    "text": "Deviance and Likelihood\n\n\nLogistic regression finds the beta coefficients, \\(b_0, b_1, \\,\\cdots, b_k\\) , such that the logistic function\n\n\\[\nG(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \\,\\cdots\\, + b_{k}x_{k,i})\n\\]\nis the best possible estimate of the binary outcome \\(y_i\\).\n\n\nLogistic regression finds the beta parameters that maximize the log likelihood of the data, given the model, which is equivalent to minimizing the sum of the residual deviances.\n\nWhen you minimize the deviance, you are fitting the parameters to make the model and data look as close as possible."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#likelihood-function",
+    "href": "danl-lec/danl-320-lec-08-2025-0310.html#likelihood-function",
+    "title": "Lecture 8",
+    "section": "Likelihood Function",
+    "text": "Likelihood Function\n\n\nLikelihood is the probability of your data given the model.\n\n\n\n\n\n\n\n\n\nThe probability that the seven data points would be observed:\n\n\\(L = (1-P1)*(1-P2)* P3*(1-P4)*P5*P6*P7\\)\n\nThe log of the likelihood: \\[\n\\begin{align}\n\\log(L) &= \\log(1-P1) + \\log(1-P2) + \\log(P3) \\\\\n&\\quad+ \\log(1-P4) + \\log(P5) + \\log(P6) + \\log(P7)\n\\end{align}\n\\]"
   }
 ]
