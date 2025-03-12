@@ -1273,24 +1273,11 @@ Bool
 <section id="accuracy-can-be-misleading-in-imbalanced-data" class="slide level2">
 <h2>Accuracy Can Be Misleading in Imbalanced Data</h2>
 <ul>
-<li class="fragment">Rare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).</li>
-<li class="fragment">A null model (one that predicts the rare event never happens) would be 99% accurate, as it correctly classifies 99% of cases as “not at risk.”</li>
-<li class="fragment">A useful but imperfect model that flags 5% of cases as at-risk and captures all true at-risk cases may have lower overall accuracy than the null model.</li>
-<li class="fragment">However, this does not mean the null model is better—it just highlights that accuracy is a poor metric for imbalanced data.</li>
-</ul>
-</section>
-<section id="accuracy-can-be-misleading-in-imbalanced-data-1" class="slide level2">
-<h2>Accuracy Can Be Misleading in Imbalanced Data</h2>
-<ul>
-<li class="fragment">The <strong>cost of misclassification matters</strong>:
-<ul>
+<li class="fragment"><strong>Rare events</strong> (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).</li>
+<li class="fragment">A <strong>simple model that always predicts “not-at-risk”</strong> would be <strong>99% accurate</strong>, as it correctly classifies 99% of cases where no complications occur.</li>
+<li class="fragment">However, this does not mean the simple model is better—<strong>accuracy alone does not capture the effectiveness of a model when class distributions are skewed.</strong></li>
+<li class="fragment">A <strong>better model</strong> that <strong>identifies 5% of cases as “at-risk”</strong> and <strong>catches all true at-risk cases</strong> may appear to have <strong>lower overall accuracy</strong> than the simple model.</li>
 <li class="fragment">Missing a severe complication (<strong>false negative</strong>) can be <strong>more costly</strong> than mistakenly flagging a healthy case as at risk (<strong>false positive</strong>).</li>
-</ul></li>
-<li class="fragment">Alternative metrics are better suited for evaluating classifiers in imbalanced scenarios:
-<ul>
-<li class="fragment"><strong>Precision</strong>, <strong>Recall</strong>, <strong>AUC-ROC</strong></li>
-</ul></li>
-<li class="fragment">This is not a paradox—it simply reflects that accuracy alone does not capture the effectiveness of a model when class distributions are skewed.</li>
 </ul>
 
 <div class="footer footer-default">

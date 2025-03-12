@@ -894,18 +894,12 @@ print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
 
 
 ## Accuracy Can Be Misleading in Imbalanced Data
-- Rare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).
-- A null model (one that predicts the rare event never happens) would be 99% accurate, as it correctly classifies 99% of cases as “not at risk.”
-- A useful but imperfect model that flags 5% of cases as at-risk and captures all true at-risk cases may have lower overall accuracy than the null model.
-- However, this does not mean the null model is better—it just highlights that accuracy is a poor metric for imbalanced data.
-
-## Accuracy Can Be Misleading in Imbalanced Data
-- The **cost of misclassification matters**:
+- **Rare events** (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).
+-	A **simple model that always predicts "not-at-risk"** would be **99% accurate**, as it correctly classifies 99% of cases where no complications occur.
+-	However, this does not mean the simple model is better—**accuracy alone does not capture the effectiveness of a model when class distributions are skewed.**
+-	A **better model** that **identifies 5% of cases as "at-risk"** and **catches all true at-risk cases** may appear to have **lower overall accuracy** than the simple model.
   - Missing a severe complication (**false negative**) can be **more costly** than mistakenly flagging a healthy case as at risk (**false positive**).
--	Alternative metrics are better suited for evaluating classifiers in imbalanced scenarios:
-	-	**Precision**, **Recall**, **AUC-ROC**
-- This is not a paradox—it simply reflects that accuracy alone does not capture the effectiveness of a model when class distributions are skewed.
-
+  
 
 
 

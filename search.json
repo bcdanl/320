@@ -5177,7 +5177,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#accuracy-can-be-misleading-in-imbalanced-data",
     "title": "Lecture 8",
     "section": "Accuracy Can Be Misleading in Imbalanced Data",
-    "text": "Accuracy Can Be Misleading in Imbalanced Data\n\nRare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).\nA null model (one that predicts the rare event never happens) would be 99% accurate, as it correctly classifies 99% of cases as “not at risk.”\nA useful but imperfect model that flags 5% of cases as at-risk and captures all true at-risk cases may have lower overall accuracy than the null model.\nHowever, this does not mean the null model is better—it just highlights that accuracy is a poor metric for imbalanced data."
+    "text": "Accuracy Can Be Misleading in Imbalanced Data\n\nRare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).\nA simple model that always predicts “not-at-risk” would be 99% accurate, as it correctly classifies 99% of cases where no complications occur.\nHowever, this does not mean the simple model is better—accuracy alone does not capture the effectiveness of a model when class distributions are skewed.\nA better model that identifies 5% of cases as “at-risk” and catches all true at-risk cases may appear to have lower overall accuracy than the simple model.\nMissing a severe complication (false negative) can be more costly than mistakenly flagging a healthy case as at risk (false positive)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#accuracy-can-be-misleading-in-imbalanced-data-1",

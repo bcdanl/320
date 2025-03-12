@@ -289,14 +289,17 @@ dtest_MA_lessRisk = spark.createDataFrame(pd_dtest_MA_lessRisk)
 ```
 
 -	For MA hospitals, compute the percentage change in each of the following metrics relative to NY hospitals:
-	1.	Average Rate
-	2.	Accuracy
-	3.	Precision
-	4.	Recall
-	5.	False Negative Rate
-	6.	Specificity
-	7.	False Positive Rate
-	8.	Enrichment
-	9.	AUC
+	0.	Average Rate
+	1.	Accuracy
+	2.	Precision
+	3.	Recall
+	4.	False Negative Rate
+	5.	Specificity
+	6.	False Positive Rate
+	7.	Enrichment
+	8.	AUC
+
+- Which metric does vary a lot with average rate? Why?
+
 
 <br>
