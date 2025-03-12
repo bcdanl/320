@@ -10,6 +10,10 @@ execute:
 # Setup for PySpark, UDFs, and Plots
 ## Required Libraries and `SparkSession` Entry Point
 ```{.python}
+# Below is for an interactive display of Pandas DataFrame in Colab
+from google.colab import data_table
+data_table.enable_dataframe_formatter()
+
 import pandas as pd
 import numpy as np
 from tabulate import tabulate  # for table summary
@@ -18,6 +22,8 @@ from scipy.stats import norm
 import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm  # for lowess smoothing
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import roc_curve
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import rand, col, pow, mean, avg, when, log, sqrt, exp
@@ -93,50 +99,32 @@ def add_dummy_variables(var_name, reference_level, category_order=None):
 # dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
 ```
 
-
-<br>
-
-## UDF for a Residual Plot
+## Marginal Effect Plot
 
 ```{.python}
-def residual_plot(df, label_col, model_name):
-    """
-    Generates a residual plot for a given test dataframe.
+# Increase figure size to prevent overlapping
+plt.figure(figsize=(10, 6))
 
-    Parameters:
-        df (DataFrame): Spark DataFrame containing the test set with predictions.
-        label_col (str): The column name of the actual outcome variable.
-        title (str): The title for the residual plot.
+# Plot using the DataFrame columns
+plt.errorbar(df_ME["Variable"], df_ME["Marginal Effect"],
+             yerr=1.96 * df_ME["Std. Error"], fmt='o', capsize=5)
 
-    Returns:
-        None (displays the plot)
-    """
-    # Convert to Pandas DataFrame
-    df_pd = df.select(["prediction", label_col]).toPandas()
-    df_pd["residual"] = df_pd[label_col] - df_pd["prediction"]
+# Labels and title
+plt.xlabel("Terms")
+plt.ylabel("Marginal Effect")
+plt.title("Marginal Effect at the Mean")
 
-    # Scatter plot of residuals vs. predicted values
-    plt.scatter(df_pd["prediction"], df_pd["residual"], alpha=0.2, color="darkgray")
+# Add horizontal line at 0 for reference
+plt.axhline(0, color="red", linestyle="--")
 
-    # Use LOWESS smoothing for trend line
-    smoothed = sm.nonparametric.lowess(df_pd["residual"], df_pd["prediction"])
-    plt.plot(smoothed[:, 0], smoothed[:, 1], color="darkblue")
+# Adjust x-axis labels to avoid overlap
+plt.xticks(rotation=45, ha="right")  # Rotate and align labels to the right
+plt.tight_layout()  # Adjust layout to prevent overlap
 
-    # Add reference line at y=0
-    plt.axhline(y=0, color="red", linestyle="--")
-
-    # Labels and title (model_name)
-    plt.xlabel("Predicted Values")
-    plt.ylabel("Residuals")
-    model_name = "Residual Plot for " + model_name
-    plt.title(model_name)
-
-    # Show plot
-    plt.show()
-
-# Example usage:
-# residual_plot(dtest_1, "log_sales", "Model 1")
+# Show plot
+plt.show()
 ```
+
 
 <br><br>
 
@@ -146,7 +134,6 @@ dfpd = pd.read_csv('https://bcdanl.github.io/data/NatalRiskData.csv')
 ```
 
 - Convert the `dfpd` Pandas DataFrame into the PySpark DataFrame object with the name, `df`. 
-  - What are continuous variables? What are categorical variables?
 
 ```{r}
 #| echo: false
@@ -158,17 +145,28 @@ DT::datatable(readr::read_csv('https://bcdanl.github.io/data/NatalRiskData.csv')
 
 ## Variable description 
 
-```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png")
-```
-
+| Variable    | Type        | Description |
+|------------|------------|-------------|
+| `atRisk`  | Boolean    | TRUE (1) if 5-minute Apgar score < 7; FALSE (0) otherwise |
+| `PWGT`    | Numeric    | Mother’s prepregnancy weight |
+| `UPREVIS` | Numeric (integer) | Number of prenatal medical visits |
+| `CIG_REC` | Boolean    | TRUE (1) if smoker; FALSE (0) otherwise |
+| `GESTREC3` | Categorical | Two categories: <37 weeks (premature) and >=37 weeks |
+| `DPLURAL` | Categorical | Birth plurality, three categories: single/twin/triplet+ |
+| `ULD_MECO` | Boolean    | TRUE (1) if moderate/heavy fecal staining of amniotic fluid |
+| `ULD_PRECIP` | Boolean  | TRUE (1) for unusually short labor (< three hours) |
+| `ULD_BREECH` | Boolean  | TRUE (1) for breech (pelvis first) birth position |
+| `URF_DIAB` | Boolean   | TRUE (1) if mother is diabetic |
+| `URF_CHYPER` | Boolean | TRUE (1) if mother has chronic hypertension |
+| `URF_PHYPER` | Boolean | TRUE (1) if mother has pregnancy-related hypertension |
+| `URF_ECLAM` | Boolean  | TRUE (1) if mother experienced eclampsia: pregnancy-related seizures |
 
 
 <br><br>
 
 
 # Question 2 
-- Then, divide the `df` DataFrame into training and test DataFrames.
+- Divide the `df` DataFrame into training and test DataFrames.
   - Use `dtrain` and `dtest` for training and test DataFrames, respectively.
   - 50% of observations in the `df` are assigned to `dtrain`; the rest is assigned to `dtest`.
   
@@ -176,8 +174,130 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png")
 <br><br>
 
 # Question 3 
-Train the following logistic regression model. Provide the summary of the regression result.
+Fit the following regression model:
+
+$$
+\begin{align}
+&\quad\;\; \text{Prob}(\text{atRisk}_{i} = 1) \\
+&= G\Big(\beta_{0} 
+\,+\, \beta_{1} \text{PWGT}_{i} 
+\,+\, \beta_{2} \text{UPREVIS}_{i} 
+\,+\, \beta_{3} \text{CIG\_REC}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{4} \text{ULD\_MECO}_{i} 
+\,+\, \beta_{5} \text{ULD\_PRECIP}_{i} 
+\,+\, \beta_{6} \text{ULD\_BREECH}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{7} \text{URF\_DIAB}_{i} 
+\,+\, \beta_{8} \text{URF\_CHYPER}_{i} 
+\,+\, \beta_{9} \text{URF\_PHYPER}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{10} \text{URF\_ECLAM}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{11} \text{GESTREC3\_<\_37\_weeks}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{12} \text{DPLURAL\_triplet\_or\_higher}_{i} 
+\,+\, \beta_{13} \text{DPLURAL\_twin}_{i} 
+\Big),
+\end{align}
+$$
+
+where $G(\,\cdot\,)$ is
+
+$$
+G(\,\cdot\,) = \frac{\exp(\,\cdot\,)}{1 + \exp(\,\cdot\,)}.
+$$
+
+Provide the summary of the regression result.
 
 - Set "**>= 37 weeks**" as the reference level for the $\text{GESTREC3}$ variable.
 - Set "**single**" as the reference level for the $\text{DPLURAL}$ variable.
 
+
+
+<br>
+
+# Question 4
+- Calculate the marginal effect of each variable for an average pregnant woman.
+- Calculate the marginal effect of each variable for an average pregnant woman who smokes.
+
+
+<br>
+
+
+# Question 5
+
+- Calculate the followings:
+  - Confusion matrix with the threshold level 0.02
+  - Accuracy
+  - Precision
+  - Recall
+  - Specificity
+  - Average rate of at-risk babies
+  - Enrichment
+
+
+<br>
+
+
+# Question 6
+Visualize the variation in recall and enrichment across different threshold levels.
+
+<br>
+
+
+# Question 7
+- Draw the receiver operating characteristic (ROC) curve.
+- Calculate the area under the curve (AUC).
+
+<br>
+
+
+# Question 8
+-	Now, suppose you are deploying the classifier in real-world scenarios. Assess its performance using the following datasets:
+	-	NY hospital data (`dtest_NY`)
+	-	MA hospital data with a higher average rate of at-risk babies than NY (`dtest_MA_moreRisk`)
+	-	MA hospital data with a lower average rate of at-risk babies than NY (`dtest_MA_lessRisk`)
+
+```{.python}
+pd_dtest = dtest.toPandas()
+
+# Set seed for reproducibility
+np.random.seed(23464)
+
+# Sample 1000 random indices from the test dataset without replacement
+sample_indices = np.random.choice(pd_dtest.index, size=1000, replace=False)
+
+# Separate the selected observations from testing data
+separated = pd_dtest.loc[sample_indices]
+
+# Remove the selected observations from the testing data
+# Consider this as data from NY hospitals
+pd_dtest_NY = pd_dtest.drop(sample_indices)
+
+# Split the separated sample into at-risk and not-at-risk groups
+at_risk_sample = separated[separated["atRisk"] == 1]  # Only at-risk cases
+not_at_risk_sample = separated[separated["atRisk"] == 0]  # Only not-at-risk cases
+
+# Create test sets for MA hospitals with different at-risk average rates
+pd_dtest_MA_moreRisk = pd.concat([pd_dtest_NY, at_risk_sample])  # Adds back only at-risk cases
+pd_dtest_MA_lessRisk = pd.concat([pd_dtest_NY, not_at_risk_sample])  # Adds back only not-at-risk cases
+
+# Show counts to verify results
+print("Original Test Set Size:", pd_dtest.shape[0])
+print("Sampled Separated Size:", separated.shape[0])
+print("NY Hospitals Data Size:", pd_dtest_NY.shape[0])
+print("MA More Risk Data Size:", pd_dtest_MA_moreRisk.shape[0])
+print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
+
+# PySpark DataFrames
+dtest_NY = spark.createDataFrame(pd_dtest_NY)
+dtest_MA_moreRisk = spark.createDataFrame(pd_dtest_MA_moreRisk)
+dtest_MA_lessRisk = spark.createDataFrame(pd_dtest_MA_lessRisk)
+```
+
+-	For MA hospitals, compute the percentage change in each of the following metrics relative to NY hospitals:
+	1.	Accuracy
+	2.	Precision
+	3.	Recall
+	4.	Specificity
+	5.	Average Rate
+	6.	Enrichment
+	7.	AUC
+
+<br>

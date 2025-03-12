@@ -208,14 +208,62 @@ father, and about the delivery.
 
 
 
+<!-- ```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png") -->
+<!-- ``` -->
+
 ## Assessing Newborn Babies at Risk
 
+<style>
+.small-table th, .small-table td {
+    font-size: 80%;
+}
+</style>
 
-```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png")
-```
-
-
+<table class="small-table">
+<tr>
+<th>Variable</th> <th>Type</th> <th>Description</th>
+</tr>
+<tr>
+<td>`atRisk`</td> <td>Bool</td> <td>1 if Apgar < 7, 0 otherwise</td>
+</tr>
+<tr>
+<td>`PWGT`</td> <td>Num</td> <td>Prepregnancy weight</td>
+</tr>
+<tr>
+<td>`UPREVIS`</td> <td>Int</td> <td>Prenatal visits</td>
+</tr>
+<tr>
+<td>`CIG_REC`</td> <td>Bool</td> <td>1 if smoker, 0 otherwise</td>
+</tr>
+<tr>
+<td>`GESTREC3`</td> <td>Cat</td> <td>< 37 weeks or ≥ 37 weeks</td>
+</tr>
+<tr>
+<td>`DPLURAL`</td> <td>Cat</td> <td>Single / Twin / Triplet+</td>
+</tr>
+<tr>
+<td>`ULD_MECO`</td> <td>Bool</td> <td>1 if heavy meconium</td>
+</tr>
+<tr>
+<td>`ULD_PRECIP`</td> <td>Bool</td> <td>1 if labor < 3 hours</td>
+</tr>
+<tr>
+<td>`ULD_BREECH`</td> <td>Bool</td> <td>1 if breech birth</td>
+</tr>
+<tr>
+<td>`URF_DIAB`</td> <td>Bool</td> <td>1 if diabetic</td>
+</tr>
+<tr>
+<td>`URF_CHYPER`</td> <td>Bool</td> <td>1 if chronic hypertension</td>
+</tr>
+<tr>
+<td>`URF_PHYPER`</td> <td>Bool</td> <td>1 if pregnancy hypertension</td>
+</tr>
+<tr>
+<td>`URF_ECLAM`</td> <td>Bool</td> <td>1 if eclampsia</td>
+</tr>
+</table>
 
 ## Assessing Newborn Babies at Risk
 

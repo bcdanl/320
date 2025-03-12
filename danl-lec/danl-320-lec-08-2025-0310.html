@@ -531,11 +531,176 @@ G^{-1}(z_i) &amp;\,\equiv\, \text{logit} (\text{Prob}(y_{i} = 1))\\
 <li class="fragment">The data set records information about all US births, including facts about the mother and father, and about the delivery.</li>
 <li class="fragment">The sample has just over 26,000 births in a DataFrame.</li>
 </ul>
+<!-- ```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png") -->
+<!-- ``` -->
 </section>
 <section id="assessing-newborn-babies-at-risk-2" class="slide level2">
 <h2>Assessing Newborn Babies at Risk</h2>
 
-<img data-src="https://bcdanl.github.io/lec_figs/pds_tab7_1_all.png" style="width:100.0%" class="r-stretch quarto-figure-center"></section>
+<style>
+.small-table th, .small-table td {
+    font-size: 80%;
+}
+</style>
+<table class="small-table">
+<tbody><tr>
+<th>
+Variable
+</th>
+<th>
+Type
+</th>
+<th>
+Description
+</th>
+</tr>
+<tr>
+<td>
+<code>atRisk</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if Apgar &lt; 7, 0 otherwise
+</td>
+</tr>
+<tr>
+<td>
+<code>PWGT</code>
+</td>
+<td>
+Num
+</td>
+<td>
+Prepregnancy weight
+</td>
+</tr>
+<tr>
+<td>
+<code>UPREVIS</code>
+</td>
+<td>
+Int
+</td>
+<td>
+Prenatal visits
+</td>
+</tr>
+<tr>
+<td>
+<code>CIG_REC</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if smoker, 0 otherwise
+</td>
+</tr>
+<tr>
+<td>
+<code>GESTREC3</code>
+</td>
+<td>
+Cat
+</td>
+<td>
+&lt; 37 weeks or ≥ 37 weeks
+</td>
+</tr>
+<tr>
+<td>
+<code>DPLURAL</code>
+</td>
+<td>
+Cat
+</td>
+<td>
+Single / Twin / Triplet+
+</td>
+</tr>
+<tr>
+<td>
+<code>ULD_MECO</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if heavy meconium
+</td>
+</tr>
+<tr>
+<td>
+<code>ULD_PRECIP</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if labor &lt; 3 hours
+</td>
+</tr>
+<tr>
+<td>
+<code>ULD_BREECH</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if breech birth
+</td>
+</tr>
+<tr>
+<td>
+<code>URF_DIAB</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if diabetic
+</td>
+</tr>
+<tr>
+<td>
+<code>URF_CHYPER</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if chronic hypertension
+</td>
+</tr>
+<tr>
+<td>
+<code>URF_PHYPER</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if pregnancy hypertension
+</td>
+</tr>
+<tr>
+<td>
+<code>URF_ECLAM</code>
+</td>
+<td>
+Bool
+</td>
+<td>
+1 if eclampsia
+</td>
+</tr>
+
+</tbody></table>
+</section>
 <section id="assessing-newborn-babies-at-risk-3" class="slide level2">
 <h2>Assessing Newborn Babies at Risk</h2>
 <ul>
