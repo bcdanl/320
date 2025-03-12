@@ -813,13 +813,12 @@ knitr::include_graphics("https://bcdanl.github.io/lec_figs/pds_fig6_17.png")
 
 ## Performance of Classifier
 
-- Suppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data. 
-- Now you want to use that same classifier on all the data from hospitals in MA. 
-- Will the classifier work as well?
-
-- The proportion of at-risk babies in MA hospitals may be different than that in NY hospitals. 
-- This can change the performance of the classifier on all the MA data.
-- Let's see how classifier performance change with an average rate of at-risk babies.
+- Suppose that you have successfully trained a classifier with acceptable precision and recall using NY hospital data.
+- Now you want to apply the same classifier on all hospital data in MA. 
+  - **Will the classifier perform as well?**
+- The proportion of at-risk babies in MA hospitals may differ from that in NY.
+  - **Can this difference impact classifier performance on MA data?**
+- Let’s examine how classifier performance changes with varying at-risk rates.
 
 ```{.python}
 dtrain, dtest = df.randomSplit([0.5, 0.5], seed = 1234)
@@ -868,30 +867,16 @@ print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
 </p>
 
 
-## Performance of Classifier
+<!-- ## Performance of Classifier -->
 
-```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'}
-knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab2.png")
-```
-
-
-- The classifier with relatively _high_ average rate of at-risk babies throws out a _lower_ fraction of not-at-risk babies.
-- The classifier with relatively _low_ average rate of at-risk babies throws out a _higher_ fraction of not-at-risk babies.
+<!-- ```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab2.png") -->
+<!-- ``` -->
 
 
+<!-- - The classifier with **higher at-risk populations** throws out a _lower_ fraction of not-at-risk babies. -->
 
-
-
-## Performance of Classifier
-
-- Precision and false negative rate change a lot with the average rate of positives (at-risk babies).
-- Accuracy, sensitivity, and specificity is relatively independent of the class prevalence.
-- Sensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution
-of the different classes in the population. 
-- Precision/recall gives you an idea how well a classifier will work on a specific population.
-
-
-
+<!-- - The classifier with **lower at-risk populations** throws out a _higher_ fraction of not-at-risk babies. -->
 
 
 
@@ -899,11 +884,28 @@ of the different classes in the population.
 
 
 - Which classifier do you prefer for identifying at-risk babies?
-  1. High accuracy, low sensitivity, other things being equal;
-  2. Low accuracy, high sensitivity, other things being equal.
+  1. High accuracy, low recall, other things being equal;
+  2. Low accuracy, high recall, other things being equal.
 
 
 - Accuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event).
+
+
+
+
+## Accuracy Can Be Misleading in Imbalanced Data
+- Rare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).
+- A null model (one that predicts the rare event never happens) would be 99% accurate, as it correctly classifies 99% of cases as “not at risk.”
+- A useful but imperfect model that flags 5% of cases as at-risk and captures all true at-risk cases may have lower overall accuracy than the null model.
+- However, this does not mean the null model is better—it just highlights that accuracy is a poor metric for imbalanced data.
+
+## Accuracy Can Be Misleading in Imbalanced Data
+- The **cost of misclassification matters**:
+  - Missing a severe complication (**false negative**) can be **more costly** than mistakenly flagging a healthy case as at risk (**false positive**).
+-	Alternative metrics are better suited for evaluating classifiers in imbalanced scenarios:
+	-	**Precision**, **Recall**, **AUC-ROC**
+- This is not a paradox—it simply reflects that accuracy alone does not capture the effectiveness of a model when class distributions are skewed.
+
 
 
 

@@ -1200,12 +1200,16 @@ Bool
 <section id="performance-of-classifier-13" class="slide level2">
 <h2>Performance of Classifier</h2>
 <ul>
-<li class="fragment"><p>Suppose that you have successfully trained a classifier with acceptable precision and recall, using all the data from hospitals in NY as training data.</p></li>
-<li class="fragment"><p>Now you want to use that same classifier on all the data from hospitals in MA.</p></li>
-<li class="fragment"><p>Will the classifier work as well?</p></li>
-<li class="fragment"><p>The proportion of at-risk babies in MA hospitals may be different than that in NY hospitals.</p></li>
-<li class="fragment"><p>This can change the performance of the classifier on all the MA data.</p></li>
-<li class="fragment"><p>Let’s see how classifier performance change with an average rate of at-risk babies.</p></li>
+<li class="fragment">Suppose that you have successfully trained a classifier with acceptable precision and recall using NY hospital data.</li>
+<li class="fragment">Now you want to apply the same classifier on all hospital data in MA.
+<ul>
+<li class="fragment"><strong>Will the classifier perform as well?</strong></li>
+</ul></li>
+<li class="fragment">The proportion of at-risk babies in MA hospitals may differ from that in NY.
+<ul>
+<li class="fragment"><strong>Can this difference impact classifier performance on MA data?</strong></li>
+</ul></li>
+<li class="fragment">Let’s examine how classifier performance changes with varying at-risk rates.</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>dtrain, dtest <span class="op">=</span> df.randomSplit([<span class="fl">0.5</span>, <span class="fl">0.5</span>], seed <span class="op">=</span> <span class="dv">1234</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a></span>
@@ -1248,33 +1252,45 @@ Bool
 <p align="center">
 <img src="https://bcdanl.github.io/lec_figs/classifier-tab1.png" width="870px">
 </p>
+<!-- ## Performance of Classifier -->
+<!-- ```{r, echo=FALSE, eval = T,  eval = T,out.width = '100%', fig.align='center'} -->
+<!-- knitr::include_graphics("https://bcdanl.github.io/lec_figs/classifier-tab2.png") -->
+<!-- ``` -->
+<!-- - The classifier with **higher at-risk populations** throws out a _lower_ fraction of not-at-risk babies. -->
+<!-- - The classifier with **lower at-risk populations** throws out a _higher_ fraction of not-at-risk babies. -->
 </section>
 <section id="performance-of-classifier-15" class="slide level2">
-<h2>Performance of Classifier</h2>
-
-<img data-src="https://bcdanl.github.io/lec_figs/classifier-tab2.png" style="width:100.0%" class="r-stretch quarto-figure-center"><ul>
-<li class="fragment">The classifier with relatively <em>high</em> average rate of at-risk babies throws out a <em>lower</em> fraction of not-at-risk babies.</li>
-<li class="fragment">The classifier with relatively <em>low</em> average rate of at-risk babies throws out a <em>higher</em> fraction of not-at-risk babies.</li>
-</ul>
-</section>
-<section id="performance-of-classifier-16" class="slide level2">
-<h2>Performance of Classifier</h2>
-<ul>
-<li class="fragment">Precision and false negative rate change a lot with the average rate of positives (at-risk babies).</li>
-<li class="fragment">Accuracy, sensitivity, and specificity is relatively independent of the class prevalence.</li>
-<li class="fragment">Sensitivity/specificity is good for fields, like medicine, where it’s important to have an idea how well a classifier separates positive from negative instances independently of the distribution of the different classes in the population.</li>
-<li class="fragment">Precision/recall gives you an idea how well a classifier will work on a specific population.</li>
-</ul>
-</section>
-<section id="performance-of-classifier-17" class="slide level2">
 <h2>Performance of Classifier</h2>
 <ul>
 <li class="fragment">Which classifier do you prefer for identifying at-risk babies?
 <ol type="1">
-<li class="fragment">High accuracy, low sensitivity, other things being equal;</li>
-<li class="fragment">Low accuracy, high sensitivity, other things being equal.</li>
+<li class="fragment">High accuracy, low recall, other things being equal;</li>
+<li class="fragment">Low accuracy, high recall, other things being equal.</li>
 </ol></li>
 <li class="fragment">Accuracy may not be a good measure for the classes that have unbalanced distribution of predicted probabilities (e.g., rare event).</li>
+</ul>
+</section>
+<section id="accuracy-can-be-misleading-in-imbalanced-data" class="slide level2">
+<h2>Accuracy Can Be Misleading in Imbalanced Data</h2>
+<ul>
+<li class="fragment">Rare events (e.g., severe childbirth complications) occur in a very small percentage of cases (e.g., 1% of the population).</li>
+<li class="fragment">A null model (one that predicts the rare event never happens) would be 99% accurate, as it correctly classifies 99% of cases as “not at risk.”</li>
+<li class="fragment">A useful but imperfect model that flags 5% of cases as at-risk and captures all true at-risk cases may have lower overall accuracy than the null model.</li>
+<li class="fragment">However, this does not mean the null model is better—it just highlights that accuracy is a poor metric for imbalanced data.</li>
+</ul>
+</section>
+<section id="accuracy-can-be-misleading-in-imbalanced-data-1" class="slide level2">
+<h2>Accuracy Can Be Misleading in Imbalanced Data</h2>
+<ul>
+<li class="fragment">The <strong>cost of misclassification matters</strong>:
+<ul>
+<li class="fragment">Missing a severe complication (<strong>false negative</strong>) can be <strong>more costly</strong> than mistakenly flagging a healthy case as at risk (<strong>false positive</strong>).</li>
+</ul></li>
+<li class="fragment">Alternative metrics are better suited for evaluating classifiers in imbalanced scenarios:
+<ul>
+<li class="fragment"><strong>Precision</strong>, <strong>Recall</strong>, <strong>AUC-ROC</strong></li>
+</ul></li>
+<li class="fragment">This is not a paradox—it simply reflects that accuracy alone does not capture the effectiveness of a model when class distributions are skewed.</li>
 </ul>
 
 <div class="footer footer-default">

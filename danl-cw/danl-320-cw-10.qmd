@@ -250,9 +250,8 @@ Visualize the variation in recall and enrichment across different threshold leve
 
 # Question 8
 -	Now, suppose you are deploying the classifier in real-world scenarios. Assess its performance using the following datasets:
-	-	NY hospital data (`dtest_NY`)
-	-	MA hospital data with a higher average rate of at-risk babies than NY (`dtest_MA_moreRisk`)
-	-	MA hospital data with a lower average rate of at-risk babies than NY (`dtest_MA_lessRisk`)
+	-	MA hospital data with a higher average rate of at-risk babies than NY hospital (`dtest_MA_moreRisk`)
+	-	MA hospital data with a lower average rate of at-risk babies than NY hospital (`dtest_MA_lessRisk`)
 
 ```{.python}
 pd_dtest = dtest.toPandas()
@@ -274,7 +273,7 @@ pd_dtest_NY = pd_dtest.drop(sample_indices)
 at_risk_sample = separated[separated["atRisk"] == 1]  # Only at-risk cases
 not_at_risk_sample = separated[separated["atRisk"] == 0]  # Only not-at-risk cases
 
-# Create test sets for MA hospitals with different at-risk average rates
+# Create test sets for MA hospitals with different at-risk average rates compared to NY
 pd_dtest_MA_moreRisk = pd.concat([pd_dtest_NY, at_risk_sample])  # Adds back only at-risk cases
 pd_dtest_MA_lessRisk = pd.concat([pd_dtest_NY, not_at_risk_sample])  # Adds back only not-at-risk cases
 
@@ -285,19 +284,19 @@ print("NY Hospitals Data Size:", pd_dtest_NY.shape[0])
 print("MA More Risk Data Size:", pd_dtest_MA_moreRisk.shape[0])
 print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
 
-# PySpark DataFrames
-dtest_NY = spark.createDataFrame(pd_dtest_NY)
 dtest_MA_moreRisk = spark.createDataFrame(pd_dtest_MA_moreRisk)
 dtest_MA_lessRisk = spark.createDataFrame(pd_dtest_MA_lessRisk)
 ```
 
 -	For MA hospitals, compute the percentage change in each of the following metrics relative to NY hospitals:
-	1.	Accuracy
-	2.	Precision
-	3.	Recall
-	4.	Specificity
-	5.	Average Rate
-	6.	Enrichment
-	7.	AUC
+	1.	Average Rate
+	2.	Accuracy
+	3.	Precision
+	4.	Recall
+	5.	False Negative Rate
+	6.	Specificity
+	7.	False Positive Rate
+	8.	Enrichment
+	9.	AUC
 
 <br>
