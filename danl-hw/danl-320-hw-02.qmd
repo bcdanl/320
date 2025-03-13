@@ -187,7 +187,7 @@ Which model do you prefer most and why?
 
 # Part 2. Jupyter Notebook Blogging
 
-Use the following data.frame for Quarto Blogging:
+Use the following data.frame for Jupyter Notebook Blogging:
 
 <br>
 
@@ -198,8 +198,8 @@ Use the following data.frame for Quarto Blogging:
 <br>
 
 
-```{.python}
-ice_cream = pd.read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv')
+```{r}
+ice_cream <- read_csv('https://bcdanl.github.io/data/ben-and-jerry-cleaned.csv')
 ```
 
 
@@ -208,7 +208,7 @@ ice_cream = pd.read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv')
 #| echo: false
 #| warning: false
 
-rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-jerry.csv'),
+rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-jerry-cleaned.csv'),
                        options = list(rows.print = 25))
 ```
 
@@ -216,32 +216,29 @@ rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-je
 
 ## Variable Description
 
-| Variable Name                  | Description |
-|--------------------------------|-------------|
-| `quantity`                       | Number of items purchased |
-| `price_paid_deal`                | Price paid under a deal (discounted price) |
-| `price_paid_non_deal`            | Price paid without a deal (regular price) |
-| `coupon_value`                   | Value of any coupon used |
-| `promotion_type`                 | Type of promotion applied |
-| `total_spent`                    | Total amount spent on purchase |
-| `size1_descr`                    | Description of product size (e.g., 16.0 MLOZ) |
-| `flavor_descr`                   | Flavor description of the product |
-| `formula_descr`                   | Type of product formula (e.g., Regular) |
-| `household_id`                    | Unique identifier for household |
-| `projection_factor`               | Weighting factor for data projection |
-| `fips_state_code`                 | FIPS state code for location |
-| `fips_county_code`                | FIPS county code for location |
-| `census_tract_county_code`        | Census tract code within the county |
-| `type_of_residence`               | Type of housing/residence |
-| `kitchen_appliances`              | Number of kitchen appliances owned |
-| `tv_items`                        | Number of televisions in the household |
-| `female_head_birth`               | Birthdate of female head of household (if applicable) |
-| `male_head_birth`                 | Birthdate of male head of household (if applicable) |
-| `household_internet_connection`   | Type of household internet connection |
-
+| **Variable Name**   | **Type**       | **Description**                                                                                                                                           | **Categories / Notes**                                                                                                                                                                         |
+|---------------------|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `priceper1`           | Numeric        | The unit price for one product serving (in dollars).                                                                                             | Continuous numeric value.                                                                                                                                                                      |
+| `flavor_descr`        | Categorical    | Description of the ice cream flavor.                                                                                                                      | Values include names like “CAKE BATTER,” “VAN CARAMEL FUDGE,” “W-N-C-P-C,” “AMERICONE DREAM”. These represent different flavor variants offered.                                           |
+| `size1_descr`         | Numeric/Label  | The description of the package or serving size (in fluid ounces or a related measure).                                                                     | For example, “16.0 MLOZ” indicates a 16 fluid ounce serving size. This column is essentially constant across observations in this dataset.                                                     |
+| `household_id`        | Categorical/ID | Unique identifier for each household purchasing product(s).                                                                                               | Alphanumeric or numeric IDs; these are identifiers and not ordered categories.                                                                                                                |
+| `household_income`    | Categorical/Numeric    | The household income bracket (in dollars).                                                                                                        | The number (e.g., 60,000) corresponds to predefined income categories. (for instance, “60,000” represents a particular income range from $60,000 to $70,000).  |
+| `household_size`      | Categorical        | The number of persons in the household.                                                                                                                    | Discrete numeric count (e.g., 1, 2, 3…). Not a categorical variable per se, but can be grouped into categories if desired.                                                                     |
+| `usecoup`             | Categorical    | Indicates whether a coupon was used in the purchase.                                                                                                      | Boolean category: `True` (coupon used) or `False` (coupon not used).                                                                                                                           |
+| `couponper1`          | Numeric        | The discount amount per unit applied when a coupon is used.                                                                                                 | Continuous numeric value; often zero if no coupon is used, and a positive number when a discount is applied.                                                                                    |
+| `region`              | Categorical    | Geographic region where the household is located.                                                                                                         | Categories include “Central”, “West”, “South”, etc. Each label represents a defined regional area.                                                                                             |
+| `married`             | Categorical    | Marital status of the household head (or the household overall status).                                                                                     | Boolean category: `True` (married) or `False` (not married).                                                                                                                                  |
+| `race`                | Categorical    | Race of the household head or primary respondent.                                                                                                         | For example, “white” is shown. Likely includes other categories such as Black, Asian, etc. The dataset appears to use text labels for race.                                                     |
+| `hispanic_origin`     | Categorical    | Indicates whether the household identifies as of Hispanic origin.                                                                                           | Boolean category: `True` (Hispanic origin) or `False` (not Hispanic).                                                                                                                          |
+| `microwave`           | Categorical    | Whether the household owns a microwave.                                                                                                                     | Boolean category: `True` (owns microwave) or `False` (does not own one).                                                                                                                        |
+| `dishwasher`          | Categorical    | Whether the household owns a dishwasher.                                                                                                                    | Boolean category: `True` (owns dishwasher) or `False` (does not own one).                                                                                                                       |
+| `sfh`                 | Categorical    | Whether the household resides in a single-family home.                                                                                          | Boolean category: `True` (single-family home) or `False` (does not live in a single-family home).                                                                                               |
+| `internet`            | Categorical    | Whether the household has internet service.                                                                                                                 | Boolean category: `True` (has internet) or `False` (does not).                                                                                                                                  |
+| `tvcable`             | Categorical    | Indicates whether the household subscribes to cable television service.                                                                                     | Boolean category: `True` (has cable TV) or `False` (does not).                                                                                                                                  |
 
 
 <br>
+
 
 
 - Write a blog post about **Ben and Jerry's ice cream** in the `ice_cream` data.frame using Jupyter Notebook, and add it to your online blog.
@@ -249,5 +246,6 @@ rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-je
   - Optionally, provide `seaborn` visualizations.
   
 <br>
+
 
 
