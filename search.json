@@ -1327,14 +1327,14 @@
     "href": "index.html#bullet-homework",
     "title": "DANL 320-01: Big Data Analytics, Spring 2025",
     "section": "\\(\\bullet\\,\\) Homework 💻",
-    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 2\n\n\nMarch 13, 2025\n\n\n\n\nHomework 1\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "\\(\\bullet\\,\\) Homework 💻\n\n\n\n\n\n\nTitle\n\n\nDate\n\n\n\n\n\n\nHomework 3\n\n\nMarch 13, 2025\n\n\n\n\nHomework 2\n\n\nMarch 13, 2025\n\n\n\n\nHomework 1\n\n\nMarch 3, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "listing-danl-320-hw.html",
     "href": "listing-danl-320-hw.html",
     "title": "DANL 320 - Homework",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 3, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 13, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nHomework 1\n\n\nSurvey, Personal Website, and Python Basics\n\n\nMarch 3, 2025\n\n\n\n\nHomework 2\n\n\nLinear Regression; Jupyter Notebook Blogging\n\n\nMarch 13, 2025\n\n\n\n\nHomework 3\n\n\nRegression; Jupyter Notebook Blogging\n\n\nMarch 13, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "listing-danl-320-lec.html",
@@ -4547,7 +4547,7 @@
     "href": "danl-hw/danl-320-hw-02.html#variable-description-1",
     "title": "Homework 2",
     "section": "Variable Description",
-    "text": "Variable Description\n\n\n\n\n\n\n\n\n\nVariable Name\nType\nDescription\nCategories / Notes\n\n\n\n\npriceper1\nNumeric\nThe unit price for one product serving (in dollars).\n\n\n\nflavor_descr\nCategorical\nDescription of the ice cream flavor.\n\n\n\nsize1_descr\nCategorical\nThe description of the package or serving size (in fluid ounces or a related measure).\n\n\n\nhousehold_id\nCategorical/ID\nUnique identifier for each household purchasing product(s).\n\n\n\nhousehold_income\nCategorical/Numeric\nThe household income bracket (in dollars).\nThe number (e.g., 60,000) corresponds to predefined income categories. (for instance, “60,000” represents a particular income range from $60,000 to $70,000). Not a categorical variable per se, but can be grouped into categories if desired.\n\n\nhousehold_size\nCategorical\nThe number of persons in the household.\nDiscrete numeric count (e.g., 1, 2, 3…). Not a categorical variable per se, but can be grouped into categories if desired.\n\n\nusecoup\nCategorical\nIndicates whether a coupon was used in the purchase.\nBoolean category: True (coupon used) or False (coupon not used).\n\n\ncouponper1\nNumeric\nThe discount amount per unit applied when a coupon is used.\nContinuous numeric value; often zero if no coupon is used, and a positive number when a discount is applied.\n\n\nregion\nCategorical\nGeographic region where the household is located.\nCategories include “East”, “Central”, “West”, and “South”.\n\n\nmarried\nCategorical\nMarital status of the household head (or the household overall status).\nBoolean category: True (married) or False (not married).\n\n\nrace\nCategorical\nRace of the household head or primary respondent.\nCategories include “white”, “black”, “asian”, and “other”.\n\n\nhispanic_origin\nCategorical\nIndicates whether the household identifies as of Hispanic origin.\nBoolean category: True (Hispanic origin) or False (not Hispanic).\n\n\nmicrowave\nCategorical\nWhether the household owns a microwave.\nBoolean category: True (owns microwave) or False (does not own one).\n\n\ndishwasher\nCategorical\nWhether the household owns a dishwasher.\nBoolean category: True (owns dishwasher) or False (does not own one).\n\n\nsfh\nCategorical\nWhether the household resides in a single-family home.\nBoolean category: True (single-family home) or False (does not live in a single-family home).\n\n\ninternet\nCategorical\nWhether the household has internet service.\nBoolean category: True (has internet) or False (does not).\n\n\ntvcable\nCategorical\nIndicates whether the household subscribes to cable television service.\nBoolean category: True (has cable TV) or False (does not).\n\n\n\n\n\n\n\n\n\n\n\nWrite a blog post about Ben and Jerry’s ice cream in the ice_cream data.frame using Jupyter Notebook, and add it to your online blog.\n\nIn your blog post, provide your linear regression model, as well as descriptive statistics, counting, filtering, and various group operations.\nOptionally, provide seaborn visualizations."
+    "text": "Variable Description\n\n\n\n\n\n\n\n\n\nVariable Name\nType\nDescription\nCategories / Notes\n\n\n\n\npriceper1\nNumeric\nThe unit price for one product serving (in dollars).\n\n\n\nflavor_descr\nCategorical\nDescription of the ice cream flavor.\n\n\n\nsize1_descr\nCategorical\nThe description of the package or serving size (in fluid ounces or a related measure).\n\n\n\nhousehold_id\nCategorical/ID\nUnique identifier for each household purchasing product(s).\n\n\n\nhousehold_income\nCategorical/Numeric\nThe household income bracket (in dollars).\nThe number (e.g., 60,000) corresponds to predefined income categories. (for instance, “60,000” represents a particular income range from $60,000 to $70,000). Not a categorical variable per se, but can be grouped into categories if desired.\n\n\nhousehold_size\nCategorical\nThe number of persons in the household.\nDiscrete numeric count (e.g., 1, 2, 3…). Not a categorical variable per se, but can be grouped into categories if desired.\n\n\nusecoup\nCategorical\nIndicates whether a coupon was used in the purchase.\nBoolean category: True (coupon used) or False (coupon not used).\n\n\ncouponper1\nNumeric\nThe discount amount per unit applied when a coupon is used.\nContinuous numeric value; often zero if no coupon is used, and a positive number when a discount is applied.\n\n\nregion\nCategorical\nGeographic region where the household is located.\nCategories include “East”, “Central”, “West”, and “South”.\n\n\nmarried\nCategorical\nMarital status of the household head (or the household overall status).\nBoolean category: True (married) or False (not married).\n\n\nrace\nCategorical\nRace of the household head or primary respondent.\nCategories include “white”, “black”, “asian”, and “other”.\n\n\nhispanic_origin\nCategorical\nIndicates whether the household identifies as of Hispanic origin.\nBoolean category: True (Hispanic origin) or False (not Hispanic).\n\n\nmicrowave\nCategorical\nWhether the household owns a microwave.\nBoolean category: True (owns microwave) or False (does not own one).\n\n\ndishwasher\nCategorical\nWhether the household owns a dishwasher.\nBoolean category: True (owns dishwasher) or False (does not own one).\n\n\nsfh\nCategorical\nWhether the household resides in a single-family home.\nBoolean category: True (single-family home) or False (does not live in a single-family home).\n\n\ninternet\nCategorical\nWhether the household has internet service.\nBoolean category: True (has internet) or False (does not).\n\n\ntvcable\nCategorical\nIndicates whether the household subscribes to cable television service.\nBoolean category: True (has cable TV) or False (does not).\n\n\n\n\n\n\n\n\n\n\n\nWrite a blog post about Ben and Jerry’s ice cream in the ice_cream DataFrame using Jupyter Notebook, and add it to your online blog.\n\nIn your blog post, provide your linear regression model, as well as descriptive statistics, counting, filtering, and various group operations.\nOptionally, provide seaborn visualizations."
   },
   {
     "objectID": "danl-hw/danl-320-hw-02.html#questions-3-8",
@@ -5135,28 +5135,28 @@
     "href": "danl-hw/danl-320-hw-03.html",
     "title": "Homework 3",
     "section": "",
-    "text": "Please submit your Jupyter Notebook for Part 1 in Homework 3 to Brightspace with the name below:\n\ndanl-320-hw3-LASTNAME-FIRSTNAME.ipynb\n( e.g., danl-320-hw3-choe-byeonghak.ipynb )\n\nThe due is March 31, 2025, 3:15 P.M.\n\nIt is recommended to finish it before the Spring Break begins.\n\nPlease send Byeong-Hak an email (bchoe@geneseo.edu) if you have any questions."
+    "text": "Please submit your Jupyter Notebook for Part 1 in Homework 3 to Brightspace with the name below:\n\ndanl-320-hw3-LASTNAME-FIRSTNAME.ipynb\n( e.g., danl-320-hw3-choe-byeonghak.ipynb )\n\nThe due is March 31, 2025, 3:15 P.M.\nPlease send Byeong-Hak an email (bchoe@geneseo.edu) if you have any questions."
   },
   {
     "objectID": "danl-hw/danl-320-hw-03.html#variable-description",
     "href": "danl-hw/danl-320-hw-03.html#variable-description",
     "title": "Homework 3",
     "section": "Variable Description",
-    "text": "Variable Description\n\n\n\n\n\n\n\n\nVariable\nDescription\nData Type\n\n\n\n\ncustid\nUnique customer identifier\nString\n\n\nsex\nBiological geneder of the customer (Male/Female)\nString\n\n\nis_employed\nEmployment status (e.g., Employed, Out_of_labor_force)\nString\n\n\nincome\nAnnual income of the customer (in dollars)\nInteger\n\n\nmarital_status\nMarital status of the customer\nString\n\n\nhousing_type\nType of housing the customer lives in\nString\n\n\nrecent_move\nWhether the customer has recently moved (0 = No, 1 = Yes)\nInteger\n\n\nnum_vehicles\nNumber of vehicles owned by the customer\nInteger\n\n\nage\nAge of the customer\nInteger\n\n\nstate_of_res\nState of residence of the customer\nString\n\n\ngas_usage\nMonthly gas usage\nString\n\n\nhealth_ins\nWhether the customer has health insurance (0 = No, 1 = Yes)\nInteger"
+    "text": "Variable Description\n\n\n\nVariable\nDescription\n\n\n\n\nLPRICE\nPurchase price of unit and land\n\n\nVALUE\nCurrent market value of unit\n\n\nSTATE\nState code\n\n\nMETRO\nCentral city/suburban status\n\n\nZINC2\nHousehold income\n\n\nHHGRAD\nEducational level of householder\n\n\nBATHS\nNumber of full bathrooms in unit\n\n\nBEDRMS\nNumber of bedrooms in unit\n\n\nPER\nNumber of persons in household\n\n\nZADULT\nNumber of adults (18+) in household\n\n\nNUNITS\nNumber of units in building\n\n\nEAPTBL\nApartment buildings within 1/2 block of unit\n\n\nECOM1\nBusiness/institutions within 1/2 block\n\n\nECOM2\nFactories/other industry within 1/2 block\n\n\nEGREEN\nOpen spaces within 1/2 block of unit\n\n\nEJUNK\nTrash/junk in streets/properties in 1/2 block\n\n\nELOW1\nSingle-family town/rowhouses in 1/2 block\n\n\nESFD\nSingle-family homes within 1/2 block\n\n\nETRANS\nRR/airport/4-lane highway within 1/2 block\n\n\nEABAN\nAbandoned/vandalized buildings within 1/2 block\n\n\nHOWH\nRating of unit as a place to live\n\n\nHOWN\nRating of neighborhood as a place to live\n\n\nODORA\nNeighborhood has bad smells\n\n\nSTRNA\nNeighborhood has heavy street noise/traffic\n\n\nFRSTHO\nFirst home\n\n\nAMMORT\nAmount of 1st mortgage when acquired\n\n\nINTW\nInterest rate of 1st mortgage (whole number %)\n\n\nMATBUY\nGot 1st mortgage in the same year bought unit\n\n\nDWNPAY\nMain source of down payment on unit"
   },
   {
     "objectID": "danl-hw/danl-320-hw-03.html#question-1",
     "href": "danl-hw/danl-320-hw-03.html#question-1",
     "title": "Homework 3",
     "section": "Question 1",
-    "text": "Question 1\nCreate the DataFrame that keeps all the observations whose value of container is either ‘CAN’ or ‘NON REFILLABLE BOTTLE’ in the beer_markets DataFrame."
+    "text": "Question 1\nPlot some relationships and tell a story."
   },
   {
     "objectID": "danl-hw/danl-320-hw-03.html#question-2",
     "href": "danl-hw/danl-320-hw-03.html#question-2",
     "title": "Homework 3",
     "section": "Question 2",
-    "text": "Question 2\nSplit the resulting DataFrame of Question 1 into training and test DataFrames such that approximately 67% of observations in the resulting DataFrame of Question 1 belong to the training DataFrame and the rest observations belong to the test DataFrame."
+    "text": "Question 2\n\nFit a linear regression model with the following specifications:\n\nOutcome variable: \\(\\log(VALUE)\\)\nPredictors: all but AMORT and LPRICE"
   },
   {
     "objectID": "danl-hw/danl-320-hw-03.html#questions-3-8",
@@ -5206,5 +5206,33 @@
     "title": "Lecture 8",
     "section": "Likelihood Function",
     "text": "Likelihood Function\n\n\nLikelihood is the probability of your data given the model.\n\n\n\n\n\n\n\n\n\nThe probability that the seven data points would be observed:\n\n\\(L = (1-P1)*(1-P2)* P3*(1-P4)*P5*P6*P7\\)\n\nThe log of the likelihood: \\[\n\\begin{align}\n\\log(L) &= \\log(1-P1) + \\log(1-P2) + \\log(P3) \\\\\n&\\quad+ \\log(1-P4) + \\log(P5) + \\log(P6) + \\log(P7)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-hw/danl-320-hw-03.html#question-3",
+    "href": "danl-hw/danl-320-hw-03.html#question-3",
+    "title": "Homework 3",
+    "section": "Question 3",
+    "text": "Question 3\n\nRefit the linear regression model, retaining only statistically significant predictors from Question 1.\nCompare the revised model to the initial model from Question 2 using:\n\n\\(\\beta\\) estimates\n\\(R^2\\)\nRMSE\nResidual plots"
+  },
+  {
+    "objectID": "danl-hw/danl-320-hw-03.html#question-4",
+    "href": "danl-hw/danl-320-hw-03.html#question-4",
+    "title": "Homework 3",
+    "section": "Question 4",
+    "text": "Question 4\n\nFit a logistic regression model with the following specifications:\n\nOutcome variable: \\(\\text{GT20DWN}\\) (indicating whether the buyer made a down payment of 20% or more)\nPredictors: All available variables except AMORT and LPRICE\n\nThe outcome variable is defined as: \\[\n\\begin{align}\n\\text{GT20DWN} \\,=\\,\\begin{cases}\n1 & \\text{if}\\; \\frac{\\text{LPRICE} - \\text{AMMORT}}{\\text{LPRICE}} &gt; 0.2 \\\\\n0 & \\text{otherwise}\n\\end{cases}\n\\end{align}\n\\]\nAnalyze and interpret the following relationships:\nThe association between first-time homeownership (\\(\\text{FRSTHO}\\)) and the probability of making a 20%+ down payment.\nThe association between number of bedrooms (\\(\\text{BEDRMS}\\)) and the probability of making a 20%+ down payment."
+  },
+  {
+    "objectID": "danl-hw/danl-320-hw-03.html#question-5",
+    "href": "danl-hw/danl-320-hw-03.html#question-5",
+    "title": "Homework 3",
+    "section": "Question 5",
+    "text": "Question 5\n\nRefit the logistic regression model, adding interaction terms:\nPredictors: all previously included predictors in Question 4 plus the interaction between \\(\\text{FRSTHO}\\) and \\(\\text{BEDRMS}\\)\nInterpret how the relationship between BEDRMS and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner (\\(\\text{FRSTHO}\\))."
+  },
+  {
+    "objectID": "danl-hw/danl-320-hw-03.html#question-6",
+    "href": "danl-hw/danl-320-hw-03.html#question-6",
+    "title": "Homework 3",
+    "section": "Question 6",
+    "text": "Question 6\n\nFit separate logistic regression models (similar to Question 4) for two subsets of homes:\n\n\nHomes worth \\(\\text{VALUE} \\geq 175k\\).\nHomes worth \\(\\text{VALUE} &lt; 175k\\).\n\n\nCompare residual deviance, \\(RMSE\\), and classification performance."
   }
 ]

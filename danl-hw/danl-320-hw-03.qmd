@@ -1,0 +1,153 @@
+---
+title: Homework 3
+subtitle: Regression; Jupyter Notebook Blogging
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Direction
+
+- Please submit your **Jupyter Notebook** for **Part 1 in Homework 3** to Brightspace with the name below:
+
+  - `danl-320-hw3-LASTNAME-FIRSTNAME.ipynb`\
+  ( e.g., `danl-320-hw3-choe-byeonghak.ipynb` )
+
+- The due is March 31, 2025, 3:15 P.M.
+
+- Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
+
+<br><br><br>
+
+
+
+
+# Part 1. Regression
+
+Consider the `homes` DataFrame from the 2004 American Housing Survey, which includes data on home values, demographics, schools, income, finance, mortgages, sales, neighborhood characteristics, noise, smells, state geography, and urban classification.
+
+```{.python}
+homes = pd.read_csv(
+  'https://bcdanl.github.io/data/american_housing_survey.csv'
+)
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/american_housing_survey.csv'))
+```
+
+
+<br>
+
+## Variable Description
+
+| Variable | Description |
+|----------|------------|
+| LPRICE  | Purchase price of unit and land |
+| VALUE   | Current market value of unit |
+| STATE   | State code |
+| METRO   | Central city/suburban status |
+| ZINC2   | Household income |
+| HHGRAD  | Educational level of householder |
+| BATHS   | Number of full bathrooms in unit |
+| BEDRMS  | Number of bedrooms in unit |
+| PER     | Number of persons in household |
+| ZADULT  | Number of adults (18+) in household |
+| NUNITS  | Number of units in building |
+| EAPTBL  | Apartment buildings within 1/2 block of unit |
+| ECOM1   | Business/institutions within 1/2 block |
+| ECOM2   | Factories/other industry within 1/2 block |
+| EGREEN  | Open spaces within 1/2 block of unit |
+| EJUNK   | Trash/junk in streets/properties in 1/2 block |
+| ELOW1   | Single-family town/rowhouses in 1/2 block |
+| ESFD    | Single-family homes within 1/2 block |
+| ETRANS  | RR/airport/4-lane highway within 1/2 block |
+| EABAN   | Abandoned/vandalized buildings within 1/2 block |
+| HOWH    | Rating of unit as a place to live |
+| HOWN    | Rating of neighborhood as a place to live |
+| ODORA   | Neighborhood has bad smells |
+| STRNA   | Neighborhood has heavy street noise/traffic |
+| FRSTHO  | First home |
+| AMMORT  | Amount of 1st mortgage when acquired |
+| INTW    | Interest rate of 1st mortgage (whole number %) |
+| MATBUY  | Got 1st mortgage in the same year bought unit |
+| DWNPAY  | Main source of down payment on unit |
+
+<br>
+
+
+## Question 1
+Plot some relationships and tell a story.
+
+<br>
+
+## Question 2
+- Fit a **linear regression model** with the following specifications:
+  - **Outcome variable**: $\log(VALUE)$
+  - **Predictors**: all but `AMORT` and `LPRICE`
+
+<br>
+
+## Question 3
+- Refit the **linear regression model**, retaining only statistically significant predictors from Question 1. 
+- Compare the revised model to the initial model from **Question 2** using:
+	-	$\beta$ estimates
+	-	$R^2$
+	-	RMSE
+	-	Residual plots
+
+<br>
+
+## Question 4
+- Fit a **logistic regression model** with the following specifications:
+  - **Outcome variable**: $\text{GT20DWN}$ (indicating whether the buyer made a down payment of 20% or more)
+  - **Predictors**: All available variables except `AMORT` and `LPRICE`
+
+- The outcome variable is defined as:
+$$
+\begin{align}
+\text{GT20DWN} \,=\,\begin{cases}
+1 & \text{if}\; \frac{\text{LPRICE} - \text{AMMORT}}{\text{LPRICE}} > 0.2 \\
+0 & \text{otherwise}
+\end{cases}
+\end{align}
+$$
+
+-	Analyze and interpret the following relationships:
+  - The association between **first-time homeownership** ($\text{FRSTHO}$) and the probability of making a 20%+ down payment.
+  - The association between **number of bedrooms** ($\text{BEDRMS}$) and the probability of making a 20%+ down payment.
+
+<br>
+
+
+
+## Question 5
+-	Refit the **logistic regression model**, adding interaction terms:
+  - **Predictors**: all previously included predictors in Question 4 **plus** the interaction between $\text{FRSTHO}$ and $\text{BEDRMS}$
+
+- Interpret how the relationship between BEDRMS and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner ($\text{FRSTHO}$). 
+
+<br>
+
+
+
+## Question 6
+-	Fit separate **logistic regression models** (similar to Question 4) for two subsets of homes:
+  1. **Homes worth** $\text{VALUE} \geq 175k$. 
+  2. **Homes worth** $\text{VALUE} < 175k$. 
+- Compare residual deviance, $RMSE$, and classification performance.
+
+
+<br><br>
+
+
+# Part 2. Jupyter Notebook Blogging
+
+- Write a blog post about **Part 1 of Homework 2 - Beer Markets** using Jupyter Notebook, and add it to your online blog.
+
+<br>

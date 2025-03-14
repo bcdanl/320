@@ -242,7 +242,7 @@ rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/ben-and-je
 
 
 
-- Write a blog post about **Ben and Jerry's ice cream** in the `ice_cream` data.frame using Jupyter Notebook, and add it to your online blog.
+- Write a blog post about **Ben and Jerry's ice cream** in the `ice_cream` DataFrame using Jupyter Notebook, and add it to your online blog.
   - In your blog post, provide your linear regression model, as well as descriptive statistics, counting, filtering, and various group operations.
   - Optionally, provide `seaborn` visualizations.
   
