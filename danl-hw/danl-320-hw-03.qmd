@@ -14,7 +14,7 @@ execute:
   - `danl-320-hw3-LASTNAME-FIRSTNAME.ipynb`\
   ( e.g., `danl-320-hw3-choe-byeonghak.ipynb` )
 
-- The due is March 31, 2025, 3:15 P.M.
+- The due is April 2, 2025, 3:15 P.M.
 
 - Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
 
