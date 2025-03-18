@@ -25,6 +25,12 @@ execute:
 
 # Part 1. Regression
 
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/home-sold.png" width="600px">
+</p>
+
+
 Consider the `homes` DataFrame from the 2004 American Housing Survey, which includes data on home values, demographics, schools, income, finance, mortgages, sales, neighborhood characteristics, noise, smells, state geography, and urban classification.
 
 ```{.python}
