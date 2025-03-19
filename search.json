@@ -5233,6 +5233,6 @@
     "href": "danl-hw/danl-320-hw-03.html#question-6",
     "title": "Homework 3",
     "section": "Question 6",
-    "text": "Question 6\n\nFit separate logistic regression models (similar to Question 4) for two subsets of homes:\n\n\nHomes worth \\(\\text{VALUE} \\geq 175k\\).\nHomes worth \\(\\text{VALUE} &lt; 175k\\).\n\n\nCompare residual deviance, \\(RMSE\\), and classification performance."
+    "text": "Question 6\n\nFit separate logistic regression models (with the same model specification as in Question 4) for two subsets of home data:\n\n\nHomes worth \\(\\text{VALUE} \\geq 175k\\).\nHomes worth \\(\\text{VALUE} &lt; 175k\\).\n\n\nCompare residual deviance, \\(RMSE\\), and classification performance between the two models."
   }
 ]

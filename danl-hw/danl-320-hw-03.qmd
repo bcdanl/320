@@ -143,10 +143,10 @@ $$
 
 
 ## Question 6
--	Fit separate **logistic regression models** (similar to Question 4) for two subsets of homes:
-  1. **Homes worth** $\text{VALUE} \geq 175k$. 
-  2. **Homes worth** $\text{VALUE} < 175k$. 
-- Compare residual deviance, $RMSE$, and classification performance.
+-	Fit separate **logistic regression models** (with the same model specification as in Question 4) for two subsets of home data:
+  1. **Homes worth** $\text{VALUE} \geq 175k$.
+  2. **Homes worth** $\text{VALUE} < 175k$.
+- Compare residual deviance, $RMSE$, and classification performance between the two models.
 
 
 <br><br>
