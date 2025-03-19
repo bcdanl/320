@@ -133,10 +133,10 @@ $$
 
 
 ## Question 5
--	Refit the **logistic regression model**, adding interaction terms:
+- Refit the **logistic regression model**, adding interaction terms:
   - **Predictors**: all previously included predictors in Question 4 **plus** the interaction between $\text{FRSTHO}$ and $\text{BEDRMS}$
-
-- Interpret how the relationship between BEDRMS and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner ($\text{FRSTHO}$). 
+  
+- Interpret how the relationship between $\text{BEDRMS}$ and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner ($\text{FRSTHO}$). 
 
 <br>
 

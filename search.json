@@ -5226,7 +5226,7 @@
     "href": "danl-hw/danl-320-hw-03.html#question-5",
     "title": "Homework 3",
     "section": "Question 5",
-    "text": "Question 5\n\nRefit the logistic regression model, adding interaction terms:\nPredictors: all previously included predictors in Question 4 plus the interaction between \\(\\text{FRSTHO}\\) and \\(\\text{BEDRMS}\\)\nInterpret how the relationship between BEDRMS and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner (\\(\\text{FRSTHO}\\))."
+    "text": "Question 5\n\nRefit the logistic regression model, adding interaction terms:\n\nPredictors: all previously included predictors in Question 4 plus the interaction between \\(\\text{FRSTHO}\\) and \\(\\text{BEDRMS}\\)\n\nInterpret how the relationship between \\(\\text{BEDRMS}\\) and the probability of a 20%+ down payment varies depending on whether the buyer is a first-time homeowner (\\(\\text{FRSTHO}\\))."
   },
   {
     "objectID": "danl-hw/danl-320-hw-03.html#question-6",
