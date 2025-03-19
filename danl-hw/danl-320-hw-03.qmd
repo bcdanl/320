@@ -54,35 +54,35 @@ DT::datatable(readr::read_csv('https://bcdanl.github.io/data/american_housing_su
 
 | Variable | Description |
 |----------|------------|
-| LPRICE  | Purchase price of unit and land |
-| VALUE   | Current market value of unit |
-| STATE   | State code |
-| METRO   | Central city/suburban status |
-| ZINC2   | Household income |
-| HHGRAD  | Educational level of householder |
-| BATHS   | Number of full bathrooms in unit |
-| BEDRMS  | Number of bedrooms in unit |
-| PER     | Number of persons in household |
-| ZADULT  | Number of adults (18+) in household |
-| NUNITS  | Number of units in building |
-| EAPTBL  | Apartment buildings within 1/2 block of unit |
-| ECOM1   | Business/institutions within 1/2 block |
-| ECOM2   | Factories/other industry within 1/2 block |
-| EGREEN  | Open spaces within 1/2 block of unit |
-| EJUNK   | Trash/junk in streets/properties in 1/2 block |
-| ELOW1   | Single-family town/rowhouses in 1/2 block |
-| ESFD    | Single-family homes within 1/2 block |
-| ETRANS  | RR/airport/4-lane highway within 1/2 block |
-| EABAN   | Abandoned/vandalized buildings within 1/2 block |
-| HOWH    | Rating of unit as a place to live |
-| HOWN    | Rating of neighborhood as a place to live |
-| ODORA   | Neighborhood has bad smells |
-| STRNA   | Neighborhood has heavy street noise/traffic |
-| FRSTHO  | First home |
-| AMMORT  | Amount of 1st mortgage when acquired |
-| INTW    | Interest rate of 1st mortgage (whole number %) |
-| MATBUY  | Got 1st mortgage in the same year bought unit |
-| DWNPAY  | Main source of down payment on unit |
+| `LPRICE`  | Purchase price of unit and land |
+| `VALUE`   | Current market value of unit |
+| `STATE`   | State code |
+| `METRO`   | Central city/suburban status |
+| `ZINC2`   | Household income |
+| `HHGRAD`  | Educational level of householder |
+| `BATHS`   | Number of full bathrooms in unit |
+| `BEDRMS`  | Number of bedrooms in unit |
+| `PER`     | Number of persons in household |
+| `ZADULT`  | Number of adults (18+) in household |
+| `NUNITS`  | Number of units in building |
+| `EAPTBL`  | Apartment buildings within 1/2 block of unit |
+| `ECOM1`   | Business/institutions within 1/2 block |
+| `ECOM2`   | Factories/other industry within 1/2 block |
+| `EGREEN`  | Open spaces within 1/2 block of unit |
+| `EJUNK`   | Trash/junk in streets/properties in 1/2 block |
+| `ELOW1`   | Single-family town/rowhouses in 1/2 block |
+| `ESFD`    | Single-family homes within 1/2 block |
+| `ETRANS`  | RR/airport/4-lane highway within 1/2 block |
+| `EABAN`   | Abandoned/vandalized buildings within 1/2 block |
+| `HOWH`    | Rating of unit as a place to live |
+| `HOWN`    | Rating of neighborhood as a place to live |
+| `ODORA`   | Neighborhood has bad smells |
+| `STRNA`   | Neighborhood has heavy street noise/traffic |
+| `FRSTHO`  | First home |
+| `AMMORT`  | Amount of 1st mortgage when acquired |
+| `INTW`    | Interest rate of 1st mortgage (whole number %) |
+| `MATBUY`  | Got 1st mortgage in the same year bought unit |
+| `DWNPAY`  | Main source of down payment on unit |
 
 <br>
 
