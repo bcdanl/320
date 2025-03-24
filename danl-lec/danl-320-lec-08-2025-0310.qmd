@@ -959,4 +959,40 @@ print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
 
 
 
+# **Separation and Quasi-separation** {background-color="#1c4982"}
+
+
+
+## What is Separation?
+
+- One of the model variables or some combination of the model variables predicts the outcome perfectly for at least a subset of the training data. 
+  - You’d think this would be a good thing; but, ironically, logistic regression fails when the variables are too powerful.
+
+
+- **Separation** occurs when a predictor (or combination of predictors) perfectly separates the outcome classes.
+- For example, if:
+  - All `fail = TRUE` when `safety = low`, and
+  - All `fail = FALSE` when `safety ≠ low`,  
+  then the model can predict the outcome with **100% accuracy** based on `safety`.
+
+➡️ This leads to **infinite (non-estimable) coefficients** and **convergence problems**.
+
+## What is Quasi-Separation?
+
+- **Quasi-separation** occurs when:
+  - Some, but not all, values of a predictor perfectly predict the outcome.
+- Example:
+  - `fail = TRUE` for *all* cars with `safety = low`,  
+  - But `fail` is mixed for `safety = med` or `high`.
+
+➡️ Model still suffers from **unstable coefficient estimates** or **high standard errors**.
+
+
+## Example of Quasi-separation
+- Suppose a car review site rates cars on several characteristics, including affordability and safety rating. 
+- Car ratings can be “very good,” “good,” “acceptable,” or “unacceptable.” 
+- Your goal is to predict whether a car will fail the review: that is, get an unacceptable rating.
+  - Let's do [**Classwork 11**](https://bcdanl.github.io/320/danl-cw/danl-320-cw-11.html).
+  
+  
 

@@ -1,0 +1,236 @@
+---
+title: Classwork 11
+subtitle: Quasi-separation
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Setup for PySpark, UDFs, and Plots
+## Required Libraries and `SparkSession` Entry Point
+```{.python}
+# Below is for an interactive display of Pandas DataFrame in Colab
+from google.colab import data_table
+data_table.enable_dataframe_formatter()
+
+import pandas as pd
+import numpy as np
+from tabulate import tabulate  # for table summary
+import scipy.stats as stats
+from scipy.stats import norm
+import matplotlib.pyplot as plt
+import seaborn as sns
+import statsmodels.api as sm  # for lowess smoothing
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import roc_curve
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import rand, col, pow, mean, avg, when, log, sqrt, exp
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.regression import LinearRegression, GeneralizedLinearRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+```
+
+<br>
+
+
+## UDF for Adding Dummy Variables
+```{.python}
+def add_dummy_variables(var_name, reference_level, category_order=None):
+    """
+    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.
+    Allows manual setting of category order.
+
+    Parameters:
+        var_name (str): The name of the categorical column (e.g., "borough_name").
+        reference_level (int): Index of the category to be used as the reference (dummy omitted).
+        category_order (list, optional): List of categories in the desired order. If None, categories are sorted.
+
+    Returns:
+        dummy_cols (list): List of dummy column names excluding the reference category.
+        ref_category (str): The category chosen as the reference.
+    """
+    global dtrain, dtest
+
+    # Get distinct categories from the training set.
+    categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()
+
+    # Convert booleans to strings if present.
+    categories = [str(c) if isinstance(c, bool) else c for c in categories]
+
+    # Use manual category order if provided; otherwise, sort categories.
+    if category_order:
+        # Ensure all categories are present in the user-defined order
+        missing = set(categories) - set(category_order)
+        if missing:
+            raise ValueError(f"These categories are missing from your custom order: {missing}")
+        categories = category_order
+    else:
+        categories = sorted(categories)
+
+    # Validate reference_level
+    if reference_level < 0 or reference_level >= len(categories):
+        raise ValueError(f"reference_level must be between 0 and {len(categories) - 1}")
+
+    # Define the reference category
+    ref_category = categories[reference_level]
+    print("Reference category (dummy omitted):", ref_category)
+
+    # Create dummy variables for all categories
+    for cat in categories:
+        dummy_col_name = var_name + "_" + str(cat).replace(" ", "_")
+        dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+        dtest = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+
+    # List of dummy columns, excluding the reference category
+    dummy_cols = [var_name + "_" + str(cat).replace(" ", "_") for cat in categories if cat != ref_category]
+
+    return dummy_cols, ref_category
+
+
+# Example usage without category_order:
+# dummy_cols_year, ref_category_year = add_dummy_variables('year', 0)
+
+# Example usage with category_order:
+# custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+# dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
+```
+
+## Marginal Effect Plot
+
+```{.python}
+# Increase figure size to prevent overlapping
+plt.figure(figsize=(10, 6))
+
+# Plot using the DataFrame columns
+plt.errorbar(df_ME["Variable"], df_ME["Marginal Effect"],
+             yerr=1.96 * df_ME["Std. Error"], fmt='o', capsize=5)
+
+# Labels and title
+plt.xlabel("Terms")
+plt.ylabel("Marginal Effect")
+plt.title("Marginal Effect at the Mean")
+
+# Add horizontal line at 0 for reference
+plt.axhline(0, color="red", linestyle="--")
+
+# Adjust x-axis labels to avoid overlap
+plt.xticks(rotation=45, ha="right")  # Rotate and align labels to the right
+plt.tight_layout()  # Adjust layout to prevent overlap
+
+# Show plot
+plt.show()
+```
+
+
+<br><br>
+
+# Question 1
+```{.python}
+dfpd = pd.read_csv('https://bcdanl.github.io/data/car-data.csv')
+```
+
+- Convert the `dfpd` Pandas DataFrame into the PySpark DataFrame object with the name, `df`. 
+
+```{r}
+#| echo: false
+#| eval: true
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/car-data.csv'))
+```
+
+<br>
+
+## Variable description 
+
+| Variable   | Description                                                      |
+|------------|------------------------------------------------------------------|
+| `buying`   | Buying price of the car (vhigh, high, med, low)                  |
+| `maint`    | Maintenance cost (vhigh, high, med, low)                         |
+| `doors`    | Number of doors (2, 3, 4, 5more)                                  |
+| `persons`  | Capacity in terms of persons to carry (2, 4, more)               |
+| `lug_boot` | Size of luggage boot (small, med, big)                           |
+| `safety`   | Estimated safety of the car (low, med, high)                     |
+| `rating`   | Car acceptability (unacc, acc, good, vgood)                      |
+| `fail`     | TRUE if the car is unacceptable (unacc), otherwise FALSE       |
+
+
+<br><br>
+
+
+# Question 2 
+- Divide the `df` DataFrame into training and test DataFrames.
+  - Use `dtrain` and `dtest` for training and test DataFrames, respectively.
+  - 70% of observations in the `df` are assigned to `dtrain`; the rest is assigned to `dtest`.
+  
+
+<br><br>
+
+# Question 3 
+Fit the following regression model:
+
+$$
+\begin{align}
+&\quad\;\; \text{Prob}(\text{fail}_{i} = 1) \\
+&= G\Big(\beta_{0} \\
+&\qquad\quad\;\;\; \,+\, \beta_{4} \text{buying\_med}_{i} \,+\, \beta_{4} \text{buying\_high}_{i} 
+\,+\, \beta_{4} \text{buying\_vhigh}_{i}  \\
+&\qquad\quad\;\;\; \,+\, \beta_{4} \text{maint\_med}_{i} \,+\, \beta_{4} \text{maint\_high}_{i} 
+\,+\, \beta_{4} \text{maint\_vhigh}_{i}  \\
+&\qquad\quad\;\;\; \,+\, \beta_{7} \text{persons\_4}_{i} 
+\,+\, \beta_{8} \text{persons\_more}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{10} \text{lug\_boot\_med}_{i}\,+\, \beta_{10} \text{lug\_boot\_big}_{i} \\
+&\qquad\quad\;\;\; \,+\, \beta_{11} \text{safety\_med}_{i}\,+\, \beta_{11} \text{safety\_high}_{i}
+\Big),
+\end{align}
+$$
+
+where $G(\,\cdot\,)$ is
+
+$$
+G(\,\cdot\,) = \frac{\exp(\,\cdot\,)}{1 + \exp(\,\cdot\,)}.
+$$
+
+Provide the summary of the regression result.
+
+- Set the reference levels accordingly.
+
+
+
+<br>
+
+# Question 4
+- How are coefficient estimates?
+
+
+<br>
+
+
+# Question 5
+
+- Calculate the followings:
+  - Confusion matrix with the appropriate threshold level.
+  - Accuracy
+  - Precision
+  - Recall
+  - Specificity
+  - Average rate of at-risk babies
+  - Enrichment
+
+
+<br>
+
+
+# Question 6
+Visualize the variation in recall and enrichment across different threshold levels.
+
+<br>
+
+
+# Question 7
+- Draw the receiver operating characteristic (ROC) curve.
+- Calculate the area under the curve (AUC).
+
+<br>

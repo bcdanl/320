@@ -1330,6 +1330,55 @@ G(b_0 + b_{1}x_{1,i} + b_{2}x_{2,i} + \,\cdots\, + b_{k}x_{k,i})
 <li class="fragment">A <strong>better model</strong> that <strong>identifies 5% of cases as “at-risk”</strong> and <strong>catches all true at-risk cases</strong> may appear to have <strong>lower overall accuracy</strong> than the simple model.</li>
 <li class="fragment">Missing a severe complication (<strong>false negative</strong>) can be <strong>more costly</strong> than mistakenly flagging a healthy case as at risk (<strong>false positive</strong>).</li>
 </ul>
+</section></section>
+<section>
+<section id="separation-and-quasi-separation" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Separation and Quasi-separation</strong></h1>
+
+</section>
+<section id="what-is-separation" class="slide level2">
+<h2>What is Separation?</h2>
+<ul>
+<li class="fragment">One of the model variables or some combination of the model variables predicts the outcome perfectly for at least a subset of the training data.
+<ul>
+<li class="fragment">You’d think this would be a good thing; but, ironically, logistic regression fails when the variables are too powerful.</li>
+</ul></li>
+<li class="fragment"><strong>Separation</strong> occurs when a predictor (or combination of predictors) perfectly separates the outcome classes.</li>
+<li class="fragment">For example, if:
+<ul>
+<li class="fragment">All <code>fail = TRUE</code> when <code>safety = low</code>, and</li>
+<li class="fragment">All <code>fail = FALSE</code> when <code>safety ≠ low</code>,<br>
+then the model can predict the outcome with <strong>100% accuracy</strong> based on <code>safety</code>.</li>
+</ul></li>
+</ul>
+<p>➡️ This leads to <strong>infinite (non-estimable) coefficients</strong> and <strong>convergence problems</strong>.</p>
+</section>
+<section id="what-is-quasi-separation" class="slide level2">
+<h2>What is Quasi-Separation?</h2>
+<ul>
+<li class="fragment"><strong>Quasi-separation</strong> occurs when:
+<ul>
+<li class="fragment">Some, but not all, values of a predictor perfectly predict the outcome.</li>
+</ul></li>
+<li class="fragment">Example:
+<ul>
+<li class="fragment"><code>fail = TRUE</code> for <em>all</em> cars with <code>safety = low</code>,<br>
+</li>
+<li class="fragment">But <code>fail</code> is mixed for <code>safety = med</code> or <code>high</code>.</li>
+</ul></li>
+</ul>
+<p>➡️ Model still suffers from <strong>unstable coefficient estimates</strong> or <strong>high standard errors</strong>.</p>
+</section>
+<section id="example-of-quasi-separation" class="slide level2">
+<h2>Example of Quasi-separation</h2>
+<ul>
+<li class="fragment">Suppose a car review site rates cars on several characteristics, including affordability and safety rating.</li>
+<li class="fragment">Car ratings can be “very good,” “good,” “acceptable,” or “unacceptable.”</li>
+<li class="fragment">Your goal is to predict whether a car will fail the review: that is, get an unacceptable rating.
+<ul>
+<li class="fragment">Let’s do <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-11.html"><strong>Classwork 11</strong></a>.</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 
