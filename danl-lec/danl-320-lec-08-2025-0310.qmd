@@ -975,6 +975,9 @@ print("MA Less Risk Data Size:", pd_dtest_MA_lessRisk.shape[0])
   - All `fail = FALSE` when `safety ≠ low`,  
   then the model can predict the outcome with **100% accuracy** based on `safety`.
 
+<div style="display:block; margin:-30px;"></div>
+
+
 ➡️ This leads to **infinite (non-estimable) coefficients** and **convergence problems**.
 
 ## What is Quasi-Separation?

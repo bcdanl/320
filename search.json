@@ -5240,7 +5240,7 @@
     "href": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-separation",
     "title": "Lecture 8",
     "section": "What is Separation?",
-    "text": "What is Separation?\n\nOne of the model variables or some combination of the model variables predicts the outcome perfectly for at least a subset of the training data.\n\nYou’d think this would be a good thing; but, ironically, logistic regression fails when the variables are too powerful.\n\nSeparation occurs when a predictor (or combination of predictors) perfectly separates the outcome classes.\nFor example, if:\n\nAll fail = TRUE when safety = low, and\nAll fail = FALSE when safety ≠ low,\nthen the model can predict the outcome with 100% accuracy based on safety.\n\n\n➡️ This leads to infinite (non-estimable) coefficients and convergence problems."
+    "text": "What is Separation?\n\nOne of the model variables or some combination of the model variables predicts the outcome perfectly for at least a subset of the training data.\n\nYou’d think this would be a good thing; but, ironically, logistic regression fails when the variables are too powerful.\n\nSeparation occurs when a predictor (or combination of predictors) perfectly separates the outcome classes.\nFor example, if:\n\nAll fail = TRUE when safety = low, and\nAll fail = FALSE when safety ≠ low,\nthen the model can predict the outcome with 100% accuracy based on safety.\n\n\n\n\n\n➡️ This leads to infinite (non-estimable) coefficients and convergence problems."
   },
   {
     "objectID": "danl-lec/danl-320-lec-08-2025-0310.html#what-is-quasi-separation",
