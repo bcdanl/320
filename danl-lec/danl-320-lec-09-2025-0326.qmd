@@ -270,9 +270,15 @@ where $0 \leq \lambda \leq 1$.
 
 
 
+## Intuition on Different Penalties
 
 
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/ridge-lasso-animation.gif" width="1200px">
+</p>
 
+
+- Lasso induces corner solutions!
 
 
 
