@@ -1,11 +1,11 @@
 ---
 title: Lecture 9
-subtitle: Regularization
+subtitle: K-fold Cross-Validation; Regularized Regression
 format:
   clean-revealjs:
     self-contained: false
     chalkboard: true
-    incremental: true
+    incremental: false
     code-annotations: hover
     scrollable: false
 
@@ -56,7 +56,537 @@ theme_set(theme_fivethirtyeight()+
           )
 ```
 
+# **$K$-fold Cross-Validation** {background-color="#1c4982"}
+
+## K-fold Cross-Validation
+
+
+:::: {.columns}
+
+::: {.column width="42%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig69.png" width="350px">
+  <br>
+  <strong>Partitioning Data for 3-fold Cross-Validation</strong>
+</p>
+
+:::
+::: {.column width="58%"}
+
+- A single train–test split uses each subset only once—either for training or for evaluation.
+- **K‑fold cross-validation** divides the training data into *K* equal parts (folds).
+  - For each fold $k=1, \dots, K$:
+    - **Step 1:** Train the model on $K‑1$ folds.
+    - **Step 2:** Evaluate the model on the held‑out fold.
+- The average error (e.g., deviance) across folds provides a robust estimate of model performance.
+
+:::
+::::
+
+
+
+  
+## Training, Validation, and Test Datasets
+
+- **Training Data:**  
+  The portion of data used to fit the model.  
+  *Within this set, k‑fold cross-validation is applied.*
+
+- **Validation Data:**  
+  Temporary splits within the training set during cross-validation, used to tune hyperparameters and assess performance.
+
+- **Test Data:**  
+  A held-out dataset that is never used during model tuning.  
+  Provides an unbiased evaluation of the final model's performance.
+
+- **Workflow:**  
+  1. **Split:** Divide the dataset into training and test sets.  
+  2. **Cross-Validate:** Apply k‑fold CV on the training set for model tuning and selection.
+  3. **Evaluate:** Use the test set for final performance assessment.
+
+
+
 # **Regularization** {background-color="#1c4982"}
 
+## Regularization
 
+:::{.incremental}
+
+- Regularized regression can resolve the following problems:
+  - Quasi-separation in logistic regression
+  - Multicolinearity in linear regression
+    - e.g., Variables $\texttt{age}$ and $\texttt{years_of_workforce}$ in linear regression of $\texttt{income}$.
+  - Overfitting
+    
+- The above situations usually happen when the model is too complex (e.g., has large or many beta variables).
+
+- We will discuss three regularized regression methods:
+  - Lasso or LASSO (least absolute shrinkage and selection operator) (L1)
+  - Ridge (L2)
+  - Elastic net
+
+:::
+
+## What is Linear Regression Doing?
+
+- Regular linear regression tries to find the beta parameters $\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}$ such that
+
+$$
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+$$
+is as close as possible to $y_i$ for all the training data by minimizing the sum of the squared error (SSE) between $y$ and $f(x)$ with observations $i = 1, \cdots, N$, where the SSE is
+
+$$
+(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 
+$$
+
+
+
+## What is **Lasso** Regression Doing?
+
+- Lasso regression tries to find the beta parameters $\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}$ and $\alpha$ such that
+
+$$
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+$$
+is as close as possible to $y_i$ for all the training data by minimizing the sum of the squared error (SSE) plus the sum of the absolute value of the beta parameters multiplied by the alpha parameter:
+
+$$
+\begin{align}
+&(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&+ \alpha \times(| \beta_1 | + |\beta_2 | + \,\cdots\, + |\beta_{p}|)
+\end{align}
+$$
+- When $\alpha = 0$, this reduces to regular linear regression.
+
+
+## What is **Lasso** Regression Doing?
+
+:::{.incremental}
+- When variables are nearly collinear, lasso regression tends to drive one or more of them to zero.
+
+- In the regression of $\text{income}$, lasso regression might give zero credit to one of the two variables, $\texttt{age}$ and $\texttt{years_of_workforce}$.
+
+- For this reason, lasso regression is often used as a form of **model/variable selection**.
+
+:::
+
+## What is **Ridge** Regression Doing?
+
+
+- Ridge regression tries to find the beta parameters $\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}$ and $\alpha$ such that
+
+$$
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+$$
+is as close as possible to $y_i$ for all the training data by minimizing the sum of the squared error (SSE) plus the sum of the squared beta parameters multiplied by the alpha parameter:
+
+$$
+\begin{align}
+&(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&+ \alpha \times (\beta_1^2 + \beta_2^2 + \,\cdots\, + \beta_{p}^2)
+\end{align}
+$$
+- When $\alpha = 0$, this reduces to regular linear regression.
+
+
+## What is **Ridge** Regression Doing?
+
+:::{.incremental}
+- When variables are nearly collinear, ridge regression tends to average the collinear variables together.
+- You can think of this as “ridge regression shares the credit.”
+  - Imagine that being one year older/one year longer in the workforce increases $\texttt{income}$ in the training data.
+  - In this situation, ridge regression might give a half credit to each variable of $\texttt{age}$ and $\texttt{years_of_workforce}$, which adds up to the appropriate effect.
+
+:::
+
+## What is **Elastic Net** Regression Doing?
+
+- Elastic net regression tries to find the beta parameters $\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}$ and $\lambda$ (L1 parameter) such that
+
+$$
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+$$
+is as close as possible to $y_i$ for all the training data by minimizing the sum of the squared error (SSE) plus a linear combination of the ridge and the lasso penalties with the $\lambda$ parameter:
+
+$$
+\begin{align}
+&(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&+ \lambda \times(| \beta_1 | + |\beta_2 | + \,\cdots\, + |\beta_{p}|)\\
+&+ (1-\lambda) \times(\beta_1^2 + \beta_2^2 + \,\cdots\, + \beta_{p}^2)
+\end{align}
+$$
+
+where $0 \leq \lambda \leq 1$.
+
+
+
+
+## Choosing Between Lasso, Ridge, and Elastic Net
+
+:::{.incremental}
+- In some situations, such as when you have a very large number of variables, many of which are correlated to each other, the **lasso** may be preferred.
+- In other situations, like quasi-separability, the **ridge** solution may be preferred.
+- When you are not sure which is the best approach, you can combine the two by using **elastic net** regression.
+  - Different values of $\lambda$ between 0 and 1 give different trade-offs between sharing the credit among correlated variables, and only keeping a subset of them.
+
+:::
+
+## Intuition on Different Penalties
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/regularization-penalty.png" width="550px">
+</p>
+
+<!-- - The ridge penalty places little penalty on small values of beta but a rapidly increasing penalty on large values. -->
+<!-- - The lasso’s absolute value penalty places a constant penalty on deviations from zero. -->
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- **Lasso (L1) Penalty ($|\beta|$):**  
+  <!-- - The penalty curve has a “V” shape. -->
+  - Each unit increase in $\beta$  adds a constant penalty, regardless of $\beta$ ’s size.
+  - Drives some coefficients exactly to zero, acting as a predictor selection mechanism.
+
+:::
+::: {.column width="50%"}
+
+- **Ridge (L2) Penalty ($\beta^2$):**  
+  <!-- - The penalty curve is parabolic. -->
+  - Gently penalizes small-to-moderate deviations from zero, but penalty increases quickly for large $\beta$.
+  - Shrinks coefficients but does not set them exactly to zero.
+
+:::
+::::
+
+<!-- - **Elastic Net:**   -->
+  <!-- - Combines both L1 and L2 penalties. -->
+  <!-- - Gains lasso’s ability to force coefficients to zero while benefiting from ridge’s smoothing effect. -->
+
+
+
+
+
+
+
+
+
+
+
+## Regularization Affects the Interpretation of Beta
+
+<div style="display:block; margin:-15px;"></div>
+
+:::{.incremental}
+- **No Need to Omit a Reference Category:**  
+  - In standard regression, one dummy is typically omitted to avoid perfect multicollinearity. 
+    - Even though including all dummies creates perfect collinearity with an intercept, regularization resolves this by penalizing the beta parameters.
+  - In regularized regression, the penalty term handles multicollinearity by shrinking all coefficients, so you can include all dummy variables.
+  - Each coefficient then represents the deviation from a shared baseline (an implicit average effect).
+
+- **Interpretation:**  
+  - With this approach, we interpret a dummy's beta as how much that category's association with the outcome, without worrying about the reference level (intercept).
+
+:::
+
+## Regularized Regression with Cross-Validation with `scikit-learn`
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/cv-regularized.png" width="600px">
+</p>
+
+<div style="display:block; margin:-30px;"></div>
+
+- $\alpha_{min}$: the $\alpha$ for the model with the minimum cross-validation (CV) error
+
+
+# **Regularization with `scikit-learn`** {background-color="#1c4982"}
+
+## Python Libraries and Modules for Regularization
+Here are the required libraries and modules for logistic regression with regularization:
+
+```{.python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
+from sklearn.metrics import (confusion_matrix, accuracy_score, precision_score,
+                             recall_score, roc_curve, roc_auc_score)
+```
+
+
+## Data Preparation with `train_test_split()` and  `pd.get_dummies()`
+
+```{.python}
+cars = pd.read_csv('https://bcdanl.github.io/data/car-data.csv')
+
+# Split into train and test (70% train, 30% test)
+# Using a fixed random state for reproducibility (seed = 24351)
+cars_train, cars_test = train_test_split(cars, test_size=0.3, random_state=24351)
+
+# Define predictors: all columns except "rating" and "fail"
+predictors = [col for col in cars.columns if col not in ['rating', 'fail']]
+
+# One-hot encode categorical predictors.
+X_train = pd.get_dummies(cars_train[predictors])
+X_test = pd.get_dummies(cars_test[predictors])
+# Ensure that the test set has the same dummy columns as the training set
+X_test = X_test.reindex(columns=X_train.columns)
+
+# Outcome variable
+y_train = cars_train['fail'].astype(int)
+y_test = cars_test['fail'].astype(int)
+```
+
+## Lasso - `LogisticRegressionCV(penalty='l1', solver='saga')`
+
+```{.python}
+lasso_cv = LogisticRegressionCV(Cs=100, cv=5, 
+  penalty='l1', solver='saga', max_iter=1000, scoring='neg_log_loss')
+lasso_cv.fit(X_train, y_train)
+```
+
+- `Cs=100`: Tries 100 different values of regularization strength (**1/C**)
+- `cv=5`: Uses **5-fold cross-validation**
+- `penalty='l1'`:	Applies **L1 regularization (Lasso)**
+- `solver='saga'` Supports L1 regularization
+- `max_iter=1000`: Sets the maximum number of iterations for solver to converge
+- `scoring='neg_log_loss'`: Uses **deviance** as the CV performance metric
+- `.fit(X_train, y_train)`: Fits the model; Selects the best $\alpha = \frac{1}{C}$.
+
+
+
+## Lasso Logistic Regression (L1) - Full Code
+
+
+```{.python}
+# Note: solver='saga' supports L1 regularization.
+lasso_cv = LogisticRegressionCV(
+    Cs=100, cv=5, penalty='l1', solver='saga', max_iter=1000, scoring='neg_log_loss'
+)
+lasso_cv.fit(X_train, y_train)
+
+intercept = float(lasso_cv.intercept_)
+coef_lasso = pd.DataFrame({
+    'predictor': ['Intercept'] + list(X_train.columns),
+    'coefficient': [intercept] + list(lasso_cv.coef_[0])
+})
+
+print("Lasso Regression Coefficients:")
+print(coef_lasso)
+
+# Force an order for the y-axis (using the feature names as they appear in coef_lasso)
+order = coef_lasso['predictor'].tolist()
+
+plt.figure(figsize=(8,6))
+ax = sns.pointplot(x="coefficient", y="predictor", data=coef_lasso, order=order, join=False)
+plt.title("Coefficients of Lasso Logistic Regression Model")
+plt.xlabel("Coefficient value")
+plt.ylabel("Predictor")
+
+# Draw horizontal lines from 0 to each coefficient.
+for _, row in coef_lasso.iterrows():
+    # Get the y-axis position from the order list.
+    y_pos = order.index(row['predictor'])
+    plt.hlines(y=y_pos, xmin=0, xmax=row['coefficient'], color='gray', linestyle='--')
+
+# Draw a vertical line at 0.
+plt.axvline(0, color='black', linestyle='--')
+
+plt.show()
+
+# Prediction and evaluation for lasso model
+y_pred_prob_lasso = lasso_cv.predict_proba(X_test)[:, 1]
+y_pred_lasso = (y_pred_prob_lasso > 0.5).astype(int)
+ctab_lasso = confusion_matrix(y_test, y_pred_lasso)
+accuracy_lasso = accuracy_score(y_test, y_pred_lasso)
+precision_lasso = precision_score(y_test, y_pred_lasso)
+recall_lasso = recall_score(y_test, y_pred_lasso)
+auc_lasso = roc_auc_score(y_test, y_pred_prob_lasso)
+
+print("Confusion Matrix (Lasso):\n", ctab_lasso)
+print("Lasso Accuracy:", accuracy_lasso)
+print("Lasso Precision:", precision_lasso)
+print("Lasso Recall:", recall_lasso)
+
+
+# Plot ROC Curve
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob_lasso)
+plt.figure(figsize=(8,6))
+plt.plot(fpr, tpr, label=f'Lasso (AUC = {auc_ridge:.2f})')
+plt.plot([0, 1], [0, 1], 'k--', label='Random Guess')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve for Lasso Logistic Regression Model')
+plt.legend(loc='best')
+plt.show()
+
+```
+
+
+
+
+## Ridge (L2) - `LogisticRegressionCV(penalty='l2')`
+
+```{.python}
+ridge_cv = LogisticRegressionCV(Cs=100, cv=5, 
+  penalty='l2', solver='lbfgs', max_iter=1000, scoring='neg_log_loss'
+)
+ridge_cv.fit(X_train, y_train)
+```
+
+- `penalty='l2'`:	Applies **L2 regularization (Ridge)**
+- `solver='lbfgs'` Supports L2 regularization (optional)
+
+
+
+## Ridge Logistic Regression (L2) - Full Code
+
+```{.python}
+# LogisticRegressionCV automatically selects the best regularization strength.
+ridge_cv = LogisticRegressionCV(
+    Cs=100, cv=5, penalty='l2', solver='lbfgs', max_iter=1000, scoring='neg_log_loss'
+)
+ridge_cv.fit(X_train, y_train)
+
+print("Ridge Regression - Best C (inverse of regularization strength):", ridge_cv.C_[0])
+intercept = float(ridge_cv.intercept_)
+coef_ridge = pd.DataFrame({
+    'predictor': ['Intercept'] + list(X_train.columns),
+    'coefficient': [intercept] + list(ridge_cv.coef_[0])
+})
+print("Ridge Regression Coefficients:")
+print(coef_ridge)
+
+# Force an order for the y-axis (using the feature names as they appear in coef_ridge)
+order = coef_ridge['predictor'].tolist()
+
+plt.figure(figsize=(8,6))
+ax = sns.pointplot(x="coefficient", y="predictor", data=coef_ridge, order=order, join=False)
+plt.title("Coefficients of Ridge Logistic Regression Model")
+plt.xlabel("Coefficient value")
+plt.ylabel("Predictor")
+
+# Draw horizontal lines from 0 to each coefficient.
+for _, row in coef_ridge.iterrows():
+    # Get the y-axis position from the order list.
+    y_pos = order.index(row['predictor'])
+    plt.hlines(y=y_pos, xmin=0, xmax=row['coefficient'], color='gray', linestyle='--')
+
+# Draw a vertical line at 0.
+plt.axvline(0, color='black', linestyle='--')
+plt.show()
+
+# Prediction and evaluation for ridge model
+y_pred_prob_ridge = ridge_cv.predict_proba(X_test)[:, 1]
+y_pred_ridge = (y_pred_prob_ridge > 0.5).astype(int)
+ctab_ridge = confusion_matrix(y_test, y_pred_ridge)
+accuracy_ridge = accuracy_score(y_test, y_pred_ridge)
+precision_ridge = precision_score(y_test, y_pred_ridge)
+recall_ridge = recall_score(y_test, y_pred_ridge)
+auc_ridge = roc_auc_score(y_test, y_pred_prob_ridge)
+
+print("Confusion Matrix (Ridge):\n", ctab_ridge)
+print("Ridge Accuracy:", accuracy_ridge)
+print("Ridge Precision:", precision_ridge)
+print("Ridge Recall:", recall_ridge)
+
+
+# Plot ROC Curve
+fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob_ridge)
+plt.figure(figsize=(8,6))
+plt.plot(fpr, tpr, label=f'Ridge (AUC = {auc_ridge:.2f})')
+plt.plot([0, 1], [0, 1], 'k--', label='Random Guess')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC Curve for Ridge Logistic Regression Model')
+plt.legend(loc='best')
+plt.show()
+
+```
+
+
+
+## Elastic Net - `LogisticRegressionCV(penalty='l2')`
+
+```{.python}
+enet_cv = LogisticRegressionCV(
+    Cs=10, cv=5, penalty='elasticnet', solver='saga',
+    l1_ratios=[0.5, 0.7, 0.9], max_iter=1000, scoring='neg_log_loss'
+)
+enet_cv.fit(X_train, y_train)
+```
+
+- `Cs=10`: Tries 10 different values of regularization strength (**1/C**)
+- `cv=5`: Uses **5-fold cross-validation**
+- `penalty='elasticnet'`:	Applies **Elastic Net regularization**
+- `l1_ratios = [0.5, 0.7, 0.9]` In this model, we try 0.5, 0.7, 0.9
+  - `l1_ratio = 1` → Lasso
+	- `l1_ratio = 0` → Ridge
+
+## Elastic Net Logistic Regression - Full Code
+
+```{.python}
+# LogisticRegressionCV supports elastic net penalty with solver 'saga'.
+# l1_ratio specifies the mix between L1 and L2 (0 = ridge, 1 = lasso).
+enet_cv = LogisticRegressionCV(
+    Cs=10, cv=5, penalty='elasticnet', solver='saga',
+    l1_ratios=[0.5, 0.7, 0.9], max_iter=1000, scoring='neg_log_loss'
+)
+enet_cv.fit(X_train, y_train)
+
+print("Elastic Net Regression - Best C:", enet_cv.C_[0])
+print("Elastic Net Regression - Best l1 ratio:", enet_cv.l1_ratio_[0])
+
+intercept = float(enet_cv.intercept_)
+coef_enet = pd.DataFrame({
+    'predictor': ['Intercept'] + list(X_train.columns),
+    'coefficient': [intercept] + list(enet_cv.coef_[0])
+})
+print("Elastic Net Regression Coefficients:")
+print(coef_enet)
+
+
+# Force an order for the y-axis (using the feature names as they appear in coef_lasso)
+order = coef_enet['predictor'].tolist()
+
+plt.figure(figsize=(8,6))
+ax = sns.pointplot(x="coefficient", y="predictor", data=coef_enet, order=order, join=False)
+plt.title("Coefficients of Elastic Net Logistic Regression Model")
+plt.xlabel("Coefficient value")
+plt.ylabel("Predictor")
+
+# Draw horizontal lines from 0 to each coefficient.
+for _, row in coef_enet.iterrows():
+    # Get the y-axis position from the order list.
+    y_pos = order.index(row['predictor'])
+    plt.hlines(y=y_pos, xmin=0, xmax=row['coefficient'], color='gray', linestyle='--')
+
+# Draw a vertical line at 0.
+plt.axvline(0, color='black', linestyle='--')
+
+plt.show()
+
+# Prediction and evaluation for elastic net model
+y_pred_prob_enet = enet_cv.predict_proba(X_test)[:, 1]
+y_pred_enet = (y_pred_prob_enet > 0.5).astype(int)
+ctab_enet = confusion_matrix(y_test, y_pred_enet)
+accuracy_enet = accuracy_score(y_test, y_pred_enet)
+precision_enet = precision_score(y_test, y_pred_enet)
+recall_enet = recall_score(y_test, y_pred_enet)
+
+print("Confusion Matrix (Elastic Net):\n", ctab_enet)
+print("Elastic Net Accuracy:", accuracy_enet)
+print("Elastic Net Precision:", precision_enet)
+print("Elastic Net Recall:", recall_enet)
+```
 

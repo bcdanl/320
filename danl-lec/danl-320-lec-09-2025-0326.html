@@ -1,635 +1,1515 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Byeong-Hak Choe">
-<meta name="dcterms.date" content="2025-03-26">
-
-<title>Home - Lecture 9</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-</style>
-
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<html lang="en"><head>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.3.450">
+
+  <meta name="author" content="Byeong-Hak Choe">
+  <meta name="dcterms.date" content="2025-03-26">
+  <title>Home - Lecture 9</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
   }
-}</script>
 
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
 
-<link rel="stylesheet" href="../styles.css">
-<link rel="stylesheet" href="../assets/css/font.css">
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
 </head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
 
-<body class="nav-sidebar docked nav-fixed">
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Lecture 9</h1>
+  <p class="subtitle">K-fold Cross-Validation; Regularized Regression</p>
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/geneseo-logo-squared.png" alt="" class="navbar-logo">
-    </a>
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Home</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../blog-listing.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://github.com/bcdanl/320-code" rel="" target="_blank">
- <span class="menu-text">Class Code</span></a>
-  </li>  
-  <li class="dropdown-header">
- <span class="menu-text"> </span></li>
-</ul>
-            <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Byeong-Hak Choe 
 </div>
-          </div> <!-- /navcollapse -->
-      </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Lecture 9</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../img/geneseo-logo-squared.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
- <span class="menu-text"><a href="./index.html"><font size="6"><b>Welcome! </b></font><font size="5" color="#194493"> <i class="fa fa-sun" aria-hidden="true"></i></font></a></span>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../listing-danl-320-lec.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><font size="5"><b>- Lecture </b></font><font size="5" color="#194493"><i class="fa-solid fa-laptop" aria-label="laptop"></i></font></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../listing-danl-320-cw.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><font size="5"><b>- Classwork </b></font><font size="5" color="#194493"><i class="fa-solid fa-keyboard" aria-label="keyboard"></i></font></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../listing-danl-320-hw.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><font size="5"><b>- Homework </b></font><font size="5" color="#194493"><i class="fa-solid fa-level-up" aria-label="level-up"></i></font></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../danl-qa/danl-320-qa.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><font size="5"><b>- Q &amp; A </b></font><font size="5" color="#194493"><i class="fa-solid fa-commenting" aria-label="commenting"></i></font></span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="danl-320-lec-09-2025-0326.html"><i class="bi bi-file-slides"></i>RevealJS (clean)</a></li></ul></div></div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Lecture 9</h1>
-<p class="subtitle lead">Regularization</p>
+<div class="quarto-title-author-email">
+<a href="mailto:bchoe@geneseo.edu">bchoe@geneseo.edu</a>
 </div>
-
-
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">Author</div>
-  <div class="quarto-title-meta-heading">Affiliation</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">Byeong-Hak Choe </p>
-  </div>
-    <div class="quarto-title-meta-contents">
-        <p class="affiliation">
+        <p class="quarto-title-affiliation">
             SUNY Geneseo
           </p>
-      </div>
     </div>
+</div>
 
-<div class="quarto-title-meta">
-
-      
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 26, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-</header>
-
-<section id="regularization" class="level1" data-background-color="#1c4982">
-<h1 data-background-color="#1c4982"><strong>Regularization</strong></h1>
-
+  <p class="date">March 26, 2025</p>
+</section>
+<section>
+<section id="k-fold-cross-validation" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong><span class="math inline">\(K\)</span>-fold Cross-Validation</strong></h1>
 
 </section>
+<section id="k-fold-cross-validation-1" class="slide level2">
+<h2>K-fold Cross-Validation</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig69.png" width="350px"> <br> <strong>Partitioning Data for 3-fold Cross-Validation</strong>
+</p>
+</div><div class="column" style="width:58%;">
+<ul>
+<li>A single train–test split uses each subset only once—either for training or for evaluation.</li>
+<li><strong>K‑fold cross-validation</strong> divides the training data into <em>K</em> equal parts (folds).
+<ul>
+<li>For each fold <span class="math inline">\(k=1, \dots, K\)</span>:
+<ul>
+<li><strong>Step 1:</strong> Train the model on <span class="math inline">\(K‑1\)</span> folds.</li>
+<li><strong>Step 2:</strong> Evaluate the model on the held‑out fold.</li>
+</ul></li>
+</ul></li>
+<li>The average error (e.g., deviance) across folds provides a robust estimate of model performance.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="training-validation-and-test-datasets" class="slide level2">
+<h2>Training, Validation, and Test Datasets</h2>
+<ul>
+<li><p><strong>Training Data:</strong><br>
+The portion of data used to fit the model.<br>
+<em>Within this set, k‑fold cross-validation is applied.</em></p></li>
+<li><p><strong>Validation Data:</strong><br>
+Temporary splits within the training set during cross-validation, used to tune hyperparameters and assess performance.</p></li>
+<li><p><strong>Test Data:</strong><br>
+A held-out dataset that is never used during model tuning.<br>
+Provides an unbiased evaluation of the final model’s performance.</p></li>
+<li><p><strong>Workflow:</strong></p>
+<ol type="1">
+<li><strong>Split:</strong> Divide the dataset into training and test sets.<br>
+</li>
+<li><strong>Cross-Validate:</strong> Apply k‑fold CV on the training set for model tuning and selection.</li>
+<li><strong>Evaluate:</strong> Use the test set for final performance assessment.</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="regularization" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Regularization</strong></h1>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<script>
-document.addEventListener('wheel', function(event) {
-    if (event.deltaY > 0) {
-        Reveal.next(); // Scroll down to go to the next slide
-    } else {
-        Reveal.prev(); // Scroll up to go to the previous slide
-    }
-}, false);
+</section>
+<section id="regularization-1" class="slide level2">
+<h2>Regularization</h2>
+<div>
+<ul>
+<li class="fragment"><p>Regularized regression can resolve the following problems:</p>
+<ul>
+<li class="fragment">Quasi-separation in logistic regression</li>
+<li class="fragment">Multicolinearity in linear regression
+<ul>
+<li class="fragment">e.g., Variables <span class="math inline">\(\texttt{age}\)</span> and <span class="math inline">\(\texttt{years_of_workforce}\)</span> in linear regression of <span class="math inline">\(\texttt{income}\)</span>.</li>
+</ul></li>
+<li class="fragment">Overfitting</li>
+</ul></li>
+<li class="fragment"><p>The above situations usually happen when the model is too complex (e.g., has large or many beta variables).</p></li>
+<li class="fragment"><p>We will discuss three regularized regression methods:</p>
+<ul>
+<li class="fragment">Lasso or LASSO (least absolute shrinkage and selection operator) (L1)</li>
+<li class="fragment">Ridge (L2)</li>
+<li class="fragment">Elastic net</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="what-is-linear-regression-doing" class="slide level2">
+<h2>What is Linear Regression Doing?</h2>
+<ul>
+<li>Regular linear regression tries to find the beta parameters <span class="math inline">\(\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}\)</span> such that</li>
+</ul>
+<p><span class="math display">\[
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+\]</span> is as close as possible to <span class="math inline">\(y_i\)</span> for all the training data by minimizing the sum of the squared error (SSE) between <span class="math inline">\(y\)</span> and <span class="math inline">\(f(x)\)</span> with observations <span class="math inline">\(i = 1, \cdots, N\)</span>, where the SSE is</p>
+<p><span class="math display">\[
+(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2
+\]</span></p>
+</section>
+<section id="what-is-lasso-regression-doing" class="slide level2">
+<h2>What is <strong>Lasso</strong> Regression Doing?</h2>
+<ul>
+<li>Lasso regression tries to find the beta parameters <span class="math inline">\(\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}\)</span> and <span class="math inline">\(\alpha\)</span> such that</li>
+</ul>
+<p><span class="math display">\[
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+\]</span> is as close as possible to <span class="math inline">\(y_i\)</span> for all the training data by minimizing the sum of the squared error (SSE) plus the sum of the absolute value of the beta parameters multiplied by the alpha parameter:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&amp;+ \alpha \times(| \beta_1 | + |\beta_2 | + \,\cdots\, + |\beta_{p}|)
+\end{align}
+\]</span> - When <span class="math inline">\(\alpha = 0\)</span>, this reduces to regular linear regression.</p>
+</section>
+<section id="what-is-lasso-regression-doing-1" class="slide level2">
+<h2>What is <strong>Lasso</strong> Regression Doing?</h2>
+<div>
+<ul>
+<li class="fragment"><p>When variables are nearly collinear, lasso regression tends to drive one or more of them to zero.</p></li>
+<li class="fragment"><p>In the regression of <span class="math inline">\(\text{income}\)</span>, lasso regression might give zero credit to one of the two variables, <span class="math inline">\(\texttt{age}\)</span> and <span class="math inline">\(\texttt{years_of_workforce}\)</span>.</p></li>
+<li class="fragment"><p>For this reason, lasso regression is often used as a form of <strong>model/variable selection</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="what-is-ridge-regression-doing" class="slide level2">
+<h2>What is <strong>Ridge</strong> Regression Doing?</h2>
+<ul>
+<li>Ridge regression tries to find the beta parameters <span class="math inline">\(\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}\)</span> and <span class="math inline">\(\alpha\)</span> such that</li>
+</ul>
+<p><span class="math display">\[
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+\]</span> is as close as possible to <span class="math inline">\(y_i\)</span> for all the training data by minimizing the sum of the squared error (SSE) plus the sum of the squared beta parameters multiplied by the alpha parameter:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&amp;+ \alpha \times (\beta_1^2 + \beta_2^2 + \,\cdots\, + \beta_{p}^2)
+\end{align}
+\]</span> - When <span class="math inline">\(\alpha = 0\)</span>, this reduces to regular linear regression.</p>
+</section>
+<section id="what-is-ridge-regression-doing-1" class="slide level2">
+<h2>What is <strong>Ridge</strong> Regression Doing?</h2>
+<div>
+<ul>
+<li class="fragment">When variables are nearly collinear, ridge regression tends to average the collinear variables together.</li>
+<li class="fragment">You can think of this as “ridge regression shares the credit.”
+<ul>
+<li class="fragment">Imagine that being one year older/one year longer in the workforce increases <span class="math inline">\(\texttt{income}\)</span> in the training data.</li>
+<li class="fragment">In this situation, ridge regression might give a half credit to each variable of <span class="math inline">\(\texttt{age}\)</span> and <span class="math inline">\(\texttt{years_of_workforce}\)</span>, which adds up to the appropriate effect.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="what-is-elastic-net-regression-doing" class="slide level2">
+<h2>What is <strong>Elastic Net</strong> Regression Doing?</h2>
+<ul>
+<li>Elastic net regression tries to find the beta parameters <span class="math inline">\(\beta_0, \beta_1, \beta_2, \,\cdots\, \beta_{p}\)</span> and <span class="math inline">\(\lambda\)</span> (L1 parameter) such that</li>
+</ul>
+<p><span class="math display">\[
+f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
+\]</span> is as close as possible to <span class="math inline">\(y_i\)</span> for all the training data by minimizing the sum of the squared error (SSE) plus a linear combination of the ridge and the lasso penalties with the <span class="math inline">\(\lambda\)</span> parameter:</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;(y_1 - f(x_1))^2 + (y_2 - f(x_2))^2 + \,\cdots\, + (y_N - f(x_N))^2 \\
+&amp;+ \lambda \times(| \beta_1 | + |\beta_2 | + \,\cdots\, + |\beta_{p}|)\\
+&amp;+ (1-\lambda) \times(\beta_1^2 + \beta_2^2 + \,\cdots\, + \beta_{p}^2)
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(0 \leq \lambda \leq 1\)</span>.</p>
+</section>
+<section id="choosing-between-lasso-ridge-and-elastic-net" class="slide level2">
+<h2>Choosing Between Lasso, Ridge, and Elastic Net</h2>
+<div>
+<ul>
+<li class="fragment">In some situations, such as when you have a very large number of variables, many of which are correlated to each other, the <strong>lasso</strong> may be preferred.</li>
+<li class="fragment">In other situations, like quasi-separability, the <strong>ridge</strong> solution may be preferred.</li>
+<li class="fragment">When you are not sure which is the best approach, you can combine the two by using <strong>elastic net</strong> regression.
+<ul>
+<li class="fragment">Different values of <span class="math inline">\(\lambda\)</span> between 0 and 1 give different trade-offs between sharing the credit among correlated variables, and only keeping a subset of them.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="intuition-on-different-penalties" class="slide level2">
+<h2>Intuition on Different Penalties</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/regularization-penalty.png" width="550px">
+</p>
+<!-- - The ridge penalty places little penalty on small values of beta but a rapidly increasing penalty on large values. -->
+<!-- - The lasso’s absolute value penalty places a constant penalty on deviations from zero. -->
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Lasso (L1) Penalty (<span class="math inline">\(|\beta|\)</span>):</strong><br>
+<!-- - The penalty curve has a “V” shape. -->
+<ul>
+<li>Each unit increase in <span class="math inline">\(\beta\)</span> adds a constant penalty, regardless of <span class="math inline">\(\beta\)</span> ’s size.</li>
+<li>Drives some coefficients exactly to zero, acting as a predictor selection mechanism.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><strong>Ridge (L2) Penalty (<span class="math inline">\(\beta^2\)</span>):</strong><br>
+<!-- - The penalty curve is parabolic. -->
+<ul>
+<li>Gently penalizes small-to-moderate deviations from zero, but penalty increases quickly for large <span class="math inline">\(\beta\)</span>.</li>
+<li>Shrinks coefficients but does not set them exactly to zero.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- - **Elastic Net:**   -->
+<p><!-- - Combines both L1 and L2 penalties. --> <!-- - Gains lasso’s ability to force coefficients to zero while benefiting from ridge’s smoothing effect. --></p>
+</section>
+<section id="regularization-affects-the-interpretation-of-beta" class="slide level2">
+<h2>Regularization Affects the Interpretation of Beta</h2>
+<div style="display:block; margin:-15px;">
 
-window.onload = function() {
-    document.querySelectorAll('a').forEach(function(link) {
-        link.setAttribute('target', '_blank');
-    });
-};
+</div>
+<div>
+<ul>
+<li class="fragment"><strong>No Need to Omit a Reference Category:</strong>
+<ul>
+<li class="fragment">In standard regression, one dummy is typically omitted to avoid perfect multicollinearity.
+<ul>
+<li class="fragment">Even though including all dummies creates perfect collinearity with an intercept, regularization resolves this by penalizing the beta parameters.</li>
+</ul></li>
+<li class="fragment">In regularized regression, the penalty term handles multicollinearity by shrinking all coefficients, so you can include all dummy variables.</li>
+<li class="fragment">Each coefficient then represents the deviation from a shared baseline (an implicit average effect).</li>
+</ul></li>
+<li class="fragment"><strong>Interpretation:</strong>
+<ul>
+<li class="fragment">With this approach, we interpret a dummy’s beta as how much that category’s association with the outcome, without worrying about the reference level (intercept).</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="regularized-regression-with-cross-validation-with-scikit-learn" class="slide level2">
+<h2>Regularized Regression with Cross-Validation with <code>scikit-learn</code></h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/cv-regularized.png" width="600px">
+</p>
+<div style="display:block; margin:-30px;">
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Query all anchor tags within code blocks (adjust the selector as needed)
-  document.querySelectorAll('pre code a').forEach(function(element) {
-    element.addEventListener('click', function(e) {
-      e.preventDefault(); // Prevent the default anchor action
-      e.stopPropagation(); // Stop the event from bubbling up
-    });
-  });
-});
+</div>
+<ul>
+<li><span class="math inline">\(\alpha_{min}\)</span>: the <span class="math inline">\(\alpha\)</span> for the model with the minimum cross-validation (CV) error</li>
+</ul>
+</section></section>
+<section>
+<section id="regularization-with-scikit-learn" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Regularization with <code>scikit-learn</code></strong></h1>
 
+</section>
+<section id="python-libraries-and-modules-for-regularization" class="slide level2">
+<h2>Python Libraries and Modules for Regularization</h2>
+<p>Here are the required libraries and modules for logistic regression with regularization:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression, LogisticRegressionCV</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> (confusion_matrix, accuracy_score, precision_score,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>                             recall_score, roc_curve, roc_auc_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-preparation-with-train_test_split-and-pd.get_dummies" class="slide level2">
+<h2>Data Preparation with <code>train_test_split()</code> and <code>pd.get_dummies()</code></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>cars <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/car-data.csv'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># Split into train and test (70% train, 30% test)</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Using a fixed random state for reproducibility (seed = 24351)</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>cars_train, cars_test <span class="op">=</span> train_test_split(cars, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">24351</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># Define predictors: all columns except "rating" and "fail"</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>predictors <span class="op">=</span> [col <span class="cf">for</span> col <span class="kw">in</span> cars.columns <span class="cf">if</span> col <span class="kw">not</span> <span class="kw">in</span> [<span class="st">'rating'</span>, <span class="st">'fail'</span>]]</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># One-hot encode categorical predictors.</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>X_train <span class="op">=</span> pd.get_dummies(cars_train[predictors])</span>
+<span id="cb2-12"><a href="#cb2-12"></a>X_test <span class="op">=</span> pd.get_dummies(cars_test[predictors])</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co"># Ensure that the test set has the same dummy columns as the training set</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>X_test <span class="op">=</span> X_test.reindex(columns<span class="op">=</span>X_train.columns)</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co"># Outcome variable</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>y_train <span class="op">=</span> cars_train[<span class="st">'fail'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>y_test <span class="op">=</span> cars_test[<span class="st">'fail'</span>].astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso---logisticregressioncvpenaltyl1-solversaga" class="slide level2">
+<h2>Lasso - <code>LogisticRegressionCV(penalty='l1', solver='saga')</code></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>lasso_cv <span class="op">=</span> LogisticRegressionCV(Cs<span class="op">=</span><span class="dv">100</span>, cv<span class="op">=</span><span class="dv">5</span>, </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  penalty<span class="op">=</span><span class="st">'l1'</span>, solver<span class="op">=</span><span class="st">'saga'</span>, max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>lasso_cv.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>Cs=100</code>: Tries 100 different values of regularization strength (<strong>1/C</strong>)</li>
+<li><code>cv=5</code>: Uses <strong>5-fold cross-validation</strong></li>
+<li><code>penalty='l1'</code>: Applies <strong>L1 regularization (Lasso)</strong></li>
+<li><code>solver='saga'</code> Supports L1 regularization</li>
+<li><code>max_iter=1000</code>: Sets the maximum number of iterations for solver to converge</li>
+<li><code>scoring='neg_log_loss'</code>: Uses <strong>deviance</strong> as the CV performance metric</li>
+<li><code>.fit(X_train, y_train)</code>: Fits the model; Selects the best <span class="math inline">\(\alpha = \frac{1}{C}\)</span>.</li>
+</ul>
+</section>
+<section id="lasso-logistic-regression-l1---full-code" class="slide level2">
+<h2>Lasso Logistic Regression (L1) - Full Code</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Note: solver='saga' supports L1 regularization.</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>lasso_cv <span class="op">=</span> LogisticRegressionCV(</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    Cs<span class="op">=</span><span class="dv">100</span>, cv<span class="op">=</span><span class="dv">5</span>, penalty<span class="op">=</span><span class="st">'l1'</span>, solver<span class="op">=</span><span class="st">'saga'</span>, max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>)</span>
+<span id="cb4-5"><a href="#cb4-5"></a>lasso_cv.fit(X_train, y_train)</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>intercept <span class="op">=</span> <span class="bu">float</span>(lasso_cv.intercept_)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>coef_lasso <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(lasso_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb4-11"><a href="#cb4-11"></a>})</span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(<span class="st">"Lasso Regression Coefficients:"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="bu">print</span>(coef_lasso)</span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="co"># Force an order for the y-axis (using the feature names as they appear in coef_lasso)</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>order <span class="op">=</span> coef_lasso[<span class="st">'predictor'</span>].tolist()</span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb4-20"><a href="#cb4-20"></a>ax <span class="op">=</span> sns.pointplot(x<span class="op">=</span><span class="st">"coefficient"</span>, y<span class="op">=</span><span class="st">"predictor"</span>, data<span class="op">=</span>coef_lasso, order<span class="op">=</span>order, join<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-21"><a href="#cb4-21"></a>plt.title(<span class="st">"Coefficients of Lasso Logistic Regression Model"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22"></a>plt.xlabel(<span class="st">"Coefficient value"</span>)</span>
+<span id="cb4-23"><a href="#cb4-23"></a>plt.ylabel(<span class="st">"Predictor"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a><span class="co"># Draw horizontal lines from 0 to each coefficient.</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a><span class="cf">for</span> _, row <span class="kw">in</span> coef_lasso.iterrows():</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="co"># Get the y-axis position from the order list.</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>    y_pos <span class="op">=</span> order.index(row[<span class="st">'predictor'</span>])</span>
+<span id="cb4-29"><a href="#cb4-29"></a>    plt.hlines(y<span class="op">=</span>y_pos, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>row[<span class="st">'coefficient'</span>], color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb4-30"><a href="#cb4-30"></a></span>
+<span id="cb4-31"><a href="#cb4-31"></a><span class="co"># Draw a vertical line at 0.</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb4-33"><a href="#cb4-33"></a></span>
+<span id="cb4-34"><a href="#cb4-34"></a>plt.show()</span>
+<span id="cb4-35"><a href="#cb4-35"></a></span>
+<span id="cb4-36"><a href="#cb4-36"></a><span class="co"># Prediction and evaluation for lasso model</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>y_pred_prob_lasso <span class="op">=</span> lasso_cv.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
+<span id="cb4-38"><a href="#cb4-38"></a>y_pred_lasso <span class="op">=</span> (y_pred_prob_lasso <span class="op">&gt;</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb4-39"><a href="#cb4-39"></a>ctab_lasso <span class="op">=</span> confusion_matrix(y_test, y_pred_lasso)</span>
+<span id="cb4-40"><a href="#cb4-40"></a>accuracy_lasso <span class="op">=</span> accuracy_score(y_test, y_pred_lasso)</span>
+<span id="cb4-41"><a href="#cb4-41"></a>precision_lasso <span class="op">=</span> precision_score(y_test, y_pred_lasso)</span>
+<span id="cb4-42"><a href="#cb4-42"></a>recall_lasso <span class="op">=</span> recall_score(y_test, y_pred_lasso)</span>
+<span id="cb4-43"><a href="#cb4-43"></a>auc_lasso <span class="op">=</span> roc_auc_score(y_test, y_pred_prob_lasso)</span>
+<span id="cb4-44"><a href="#cb4-44"></a></span>
+<span id="cb4-45"><a href="#cb4-45"></a><span class="bu">print</span>(<span class="st">"Confusion Matrix (Lasso):</span><span class="ch">\n</span><span class="st">"</span>, ctab_lasso)</span>
+<span id="cb4-46"><a href="#cb4-46"></a><span class="bu">print</span>(<span class="st">"Lasso Accuracy:"</span>, accuracy_lasso)</span>
+<span id="cb4-47"><a href="#cb4-47"></a><span class="bu">print</span>(<span class="st">"Lasso Precision:"</span>, precision_lasso)</span>
+<span id="cb4-48"><a href="#cb4-48"></a><span class="bu">print</span>(<span class="st">"Lasso Recall:"</span>, recall_lasso)</span>
+<span id="cb4-49"><a href="#cb4-49"></a></span>
+<span id="cb4-50"><a href="#cb4-50"></a></span>
+<span id="cb4-51"><a href="#cb4-51"></a><span class="co"># Plot ROC Curve</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>fpr, tpr, thresholds <span class="op">=</span> roc_curve(y_test, y_pred_prob_lasso)</span>
+<span id="cb4-53"><a href="#cb4-53"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb4-54"><a href="#cb4-54"></a>plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f'Lasso (AUC = </span><span class="sc">{</span>auc_ridge<span class="sc">:.2f}</span><span class="ss">)'</span>)</span>
+<span id="cb4-55"><a href="#cb4-55"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">'Random Guess'</span>)</span>
+<span id="cb4-56"><a href="#cb4-56"></a>plt.xlabel(<span class="st">'False Positive Rate'</span>)</span>
+<span id="cb4-57"><a href="#cb4-57"></a>plt.ylabel(<span class="st">'True Positive Rate'</span>)</span>
+<span id="cb4-58"><a href="#cb4-58"></a>plt.title(<span class="st">'ROC Curve for Lasso Logistic Regression Model'</span>)</span>
+<span id="cb4-59"><a href="#cb4-59"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb4-60"><a href="#cb4-60"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ridge-l2---logisticregressioncvpenaltyl2" class="slide level2">
+<h2>Ridge (L2) - <code>LogisticRegressionCV(penalty='l2')</code></h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>ridge_cv <span class="op">=</span> LogisticRegressionCV(Cs<span class="op">=</span><span class="dv">100</span>, cv<span class="op">=</span><span class="dv">5</span>, </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  penalty<span class="op">=</span><span class="st">'l2'</span>, solver<span class="op">=</span><span class="st">'lbfgs'</span>, max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>ridge_cv.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>penalty='l2'</code>: Applies <strong>L2 regularization (Ridge)</strong></li>
+<li><code>solver='lbfgs'</code> Supports L2 regularization (optional)</li>
+</ul>
+</section>
+<section id="ridge-logistic-regression-l2---full-code" class="slide level2">
+<h2>Ridge Logistic Regression (L2) - Full Code</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># LogisticRegressionCV automatically selects the best regularization strength.</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>ridge_cv <span class="op">=</span> LogisticRegressionCV(</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    Cs<span class="op">=</span><span class="dv">100</span>, cv<span class="op">=</span><span class="dv">5</span>, penalty<span class="op">=</span><span class="st">'l2'</span>, solver<span class="op">=</span><span class="st">'lbfgs'</span>, max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>ridge_cv.fit(X_train, y_train)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="bu">print</span>(<span class="st">"Ridge Regression - Best C (inverse of regularization strength):"</span>, ridge_cv.C_[<span class="dv">0</span>])</span>
+<span id="cb6-8"><a href="#cb6-8"></a>intercept <span class="op">=</span> <span class="bu">float</span>(ridge_cv.intercept_)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>coef_ridge <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(ridge_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb6-12"><a href="#cb6-12"></a>})</span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="st">"Ridge Regression Coefficients:"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(coef_ridge)</span>
+<span id="cb6-15"><a href="#cb6-15"></a></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co"># Force an order for the y-axis (using the feature names as they appear in coef_ridge)</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a>order <span class="op">=</span> coef_ridge[<span class="st">'predictor'</span>].tolist()</span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb6-20"><a href="#cb6-20"></a>ax <span class="op">=</span> sns.pointplot(x<span class="op">=</span><span class="st">"coefficient"</span>, y<span class="op">=</span><span class="st">"predictor"</span>, data<span class="op">=</span>coef_ridge, order<span class="op">=</span>order, join<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-21"><a href="#cb6-21"></a>plt.title(<span class="st">"Coefficients of Ridge Logistic Regression Model"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22"></a>plt.xlabel(<span class="st">"Coefficient value"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23"></a>plt.ylabel(<span class="st">"Predictor"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24"></a></span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co"># Draw horizontal lines from 0 to each coefficient.</span></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="cf">for</span> _, row <span class="kw">in</span> coef_ridge.iterrows():</span>
+<span id="cb6-27"><a href="#cb6-27"></a>    <span class="co"># Get the y-axis position from the order list.</span></span>
+<span id="cb6-28"><a href="#cb6-28"></a>    y_pos <span class="op">=</span> order.index(row[<span class="st">'predictor'</span>])</span>
+<span id="cb6-29"><a href="#cb6-29"></a>    plt.hlines(y<span class="op">=</span>y_pos, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>row[<span class="st">'coefficient'</span>], color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="co"># Draw a vertical line at 0.</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb6-33"><a href="#cb6-33"></a>plt.show()</span>
+<span id="cb6-34"><a href="#cb6-34"></a></span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="co"># Prediction and evaluation for ridge model</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a>y_pred_prob_ridge <span class="op">=</span> ridge_cv.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
+<span id="cb6-37"><a href="#cb6-37"></a>y_pred_ridge <span class="op">=</span> (y_pred_prob_ridge <span class="op">&gt;</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb6-38"><a href="#cb6-38"></a>ctab_ridge <span class="op">=</span> confusion_matrix(y_test, y_pred_ridge)</span>
+<span id="cb6-39"><a href="#cb6-39"></a>accuracy_ridge <span class="op">=</span> accuracy_score(y_test, y_pred_ridge)</span>
+<span id="cb6-40"><a href="#cb6-40"></a>precision_ridge <span class="op">=</span> precision_score(y_test, y_pred_ridge)</span>
+<span id="cb6-41"><a href="#cb6-41"></a>recall_ridge <span class="op">=</span> recall_score(y_test, y_pred_ridge)</span>
+<span id="cb6-42"><a href="#cb6-42"></a>auc_ridge <span class="op">=</span> roc_auc_score(y_test, y_pred_prob_ridge)</span>
+<span id="cb6-43"><a href="#cb6-43"></a></span>
+<span id="cb6-44"><a href="#cb6-44"></a><span class="bu">print</span>(<span class="st">"Confusion Matrix (Ridge):</span><span class="ch">\n</span><span class="st">"</span>, ctab_ridge)</span>
+<span id="cb6-45"><a href="#cb6-45"></a><span class="bu">print</span>(<span class="st">"Ridge Accuracy:"</span>, accuracy_ridge)</span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="bu">print</span>(<span class="st">"Ridge Precision:"</span>, precision_ridge)</span>
+<span id="cb6-47"><a href="#cb6-47"></a><span class="bu">print</span>(<span class="st">"Ridge Recall:"</span>, recall_ridge)</span>
+<span id="cb6-48"><a href="#cb6-48"></a></span>
+<span id="cb6-49"><a href="#cb6-49"></a></span>
+<span id="cb6-50"><a href="#cb6-50"></a><span class="co"># Plot ROC Curve</span></span>
+<span id="cb6-51"><a href="#cb6-51"></a>fpr, tpr, thresholds <span class="op">=</span> roc_curve(y_test, y_pred_prob_ridge)</span>
+<span id="cb6-52"><a href="#cb6-52"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb6-53"><a href="#cb6-53"></a>plt.plot(fpr, tpr, label<span class="op">=</span><span class="ss">f'Ridge (AUC = </span><span class="sc">{</span>auc_ridge<span class="sc">:.2f}</span><span class="ss">)'</span>)</span>
+<span id="cb6-54"><a href="#cb6-54"></a>plt.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], <span class="st">'k--'</span>, label<span class="op">=</span><span class="st">'Random Guess'</span>)</span>
+<span id="cb6-55"><a href="#cb6-55"></a>plt.xlabel(<span class="st">'False Positive Rate'</span>)</span>
+<span id="cb6-56"><a href="#cb6-56"></a>plt.ylabel(<span class="st">'True Positive Rate'</span>)</span>
+<span id="cb6-57"><a href="#cb6-57"></a>plt.title(<span class="st">'ROC Curve for Ridge Logistic Regression Model'</span>)</span>
+<span id="cb6-58"><a href="#cb6-58"></a>plt.legend(loc<span class="op">=</span><span class="st">'best'</span>)</span>
+<span id="cb6-59"><a href="#cb6-59"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="elastic-net---logisticregressioncvpenaltyl2" class="slide level2">
+<h2>Elastic Net - <code>LogisticRegressionCV(penalty='l2')</code></h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>enet_cv <span class="op">=</span> LogisticRegressionCV(</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    Cs<span class="op">=</span><span class="dv">10</span>, cv<span class="op">=</span><span class="dv">5</span>, penalty<span class="op">=</span><span class="st">'elasticnet'</span>, solver<span class="op">=</span><span class="st">'saga'</span>,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    l1_ratios<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.9</span>], max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>enet_cv.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>Cs=10</code>: Tries 10 different values of regularization strength (<strong>1/C</strong>)</li>
+<li><code>cv=5</code>: Uses <strong>5-fold cross-validation</strong></li>
+<li><code>penalty='elasticnet'</code>: Applies <strong>Elastic Net regularization</strong></li>
+<li><code>l1_ratios = [0.5, 0.7, 0.9]</code> In this model, we try 0.5, 0.7, 0.9
+<ul>
+<li><code>l1_ratio = 1</code> → Lasso
+<ul>
+<li><code>l1_ratio = 0</code> → Ridge</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="elastic-net-logistic-regression---full-code" class="slide level2">
+<h2>Elastic Net Logistic Regression - Full Code</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># LogisticRegressionCV supports elastic net penalty with solver 'saga'.</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co"># l1_ratio specifies the mix between L1 and L2 (0 = ridge, 1 = lasso).</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>enet_cv <span class="op">=</span> LogisticRegressionCV(</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    Cs<span class="op">=</span><span class="dv">10</span>, cv<span class="op">=</span><span class="dv">5</span>, penalty<span class="op">=</span><span class="st">'elasticnet'</span>, solver<span class="op">=</span><span class="st">'saga'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    l1_ratios<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.7</span>, <span class="fl">0.9</span>], max_iter<span class="op">=</span><span class="dv">1000</span>, scoring<span class="op">=</span><span class="st">'neg_log_loss'</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>enet_cv.fit(X_train, y_train)</span>
+<span id="cb8-8"><a href="#cb8-8"></a></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bu">print</span>(<span class="st">"Elastic Net Regression - Best C:"</span>, enet_cv.C_[<span class="dv">0</span>])</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bu">print</span>(<span class="st">"Elastic Net Regression - Best l1 ratio:"</span>, enet_cv.l1_ratio_[<span class="dv">0</span>])</span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>intercept <span class="op">=</span> <span class="bu">float</span>(enet_cv.intercept_)</span>
+<span id="cb8-13"><a href="#cb8-13"></a>coef_enet <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(enet_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb8-16"><a href="#cb8-16"></a>})</span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="bu">print</span>(<span class="st">"Elastic Net Regression Coefficients:"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="bu">print</span>(coef_enet)</span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="co"># Force an order for the y-axis (using the feature names as they appear in coef_lasso)</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a>order <span class="op">=</span> coef_enet[<span class="st">'predictor'</span>].tolist()</span>
+<span id="cb8-23"><a href="#cb8-23"></a></span>
+<span id="cb8-24"><a href="#cb8-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb8-25"><a href="#cb8-25"></a>ax <span class="op">=</span> sns.pointplot(x<span class="op">=</span><span class="st">"coefficient"</span>, y<span class="op">=</span><span class="st">"predictor"</span>, data<span class="op">=</span>coef_enet, order<span class="op">=</span>order, join<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb8-26"><a href="#cb8-26"></a>plt.title(<span class="st">"Coefficients of Elastic Net Logistic Regression Model"</span>)</span>
+<span id="cb8-27"><a href="#cb8-27"></a>plt.xlabel(<span class="st">"Coefficient value"</span>)</span>
+<span id="cb8-28"><a href="#cb8-28"></a>plt.ylabel(<span class="st">"Predictor"</span>)</span>
+<span id="cb8-29"><a href="#cb8-29"></a></span>
+<span id="cb8-30"><a href="#cb8-30"></a><span class="co"># Draw horizontal lines from 0 to each coefficient.</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a><span class="cf">for</span> _, row <span class="kw">in</span> coef_enet.iterrows():</span>
+<span id="cb8-32"><a href="#cb8-32"></a>    <span class="co"># Get the y-axis position from the order list.</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a>    y_pos <span class="op">=</span> order.index(row[<span class="st">'predictor'</span>])</span>
+<span id="cb8-34"><a href="#cb8-34"></a>    plt.hlines(y<span class="op">=</span>y_pos, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span>row[<span class="st">'coefficient'</span>], color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb8-35"><a href="#cb8-35"></a></span>
+<span id="cb8-36"><a href="#cb8-36"></a><span class="co"># Draw a vertical line at 0.</span></span>
+<span id="cb8-37"><a href="#cb8-37"></a>plt.axvline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb8-38"><a href="#cb8-38"></a></span>
+<span id="cb8-39"><a href="#cb8-39"></a>plt.show()</span>
+<span id="cb8-40"><a href="#cb8-40"></a></span>
+<span id="cb8-41"><a href="#cb8-41"></a><span class="co"># Prediction and evaluation for elastic net model</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a>y_pred_prob_enet <span class="op">=</span> enet_cv.predict_proba(X_test)[:, <span class="dv">1</span>]</span>
+<span id="cb8-43"><a href="#cb8-43"></a>y_pred_enet <span class="op">=</span> (y_pred_prob_enet <span class="op">&gt;</span> <span class="fl">0.5</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb8-44"><a href="#cb8-44"></a>ctab_enet <span class="op">=</span> confusion_matrix(y_test, y_pred_enet)</span>
+<span id="cb8-45"><a href="#cb8-45"></a>accuracy_enet <span class="op">=</span> accuracy_score(y_test, y_pred_enet)</span>
+<span id="cb8-46"><a href="#cb8-46"></a>precision_enet <span class="op">=</span> precision_score(y_test, y_pred_enet)</span>
+<span id="cb8-47"><a href="#cb8-47"></a>recall_enet <span class="op">=</span> recall_score(y_test, y_pred_enet)</span>
+<span id="cb8-48"><a href="#cb8-48"></a></span>
+<span id="cb8-49"><a href="#cb8-49"></a><span class="bu">print</span>(<span class="st">"Confusion Matrix (Elastic Net):</span><span class="ch">\n</span><span class="st">"</span>, ctab_enet)</span>
+<span id="cb8-50"><a href="#cb8-50"></a><span class="bu">print</span>(<span class="st">"Elastic Net Accuracy:"</span>, accuracy_enet)</span>
+<span id="cb8-51"><a href="#cb8-51"></a><span class="bu">print</span>(<span class="st">"Elastic Net Precision:"</span>, precision_enet)</span>
+<span id="cb8-52"><a href="#cb8-52"></a><span class="bu">print</span>(<span class="st">"Elastic Net Recall:"</span>, recall_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
+<div class="footer footer-default">
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Target all span elements within code blocks that have IDs starting with 'cb'
-    document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
-        element.addEventListener('mouseenter', function() {
-            // Apply yellow background color to the hovered span element
-            this.style.backgroundColor = '#FFFF99';
-        });
-        element.addEventListener('mouseleave', function() {
-            // Revert the background color when the mouse leaves the span element
-            this.style.backgroundColor = '';
-        });
-    });
-});
-
-
-
-</script>
-<script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  let localAlternateSentinel = 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
-      });
-    }
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-          // target, if specified
-          link.setAttribute("target", "_blank");
-      }
-    }
-});
-</script>
-</div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-      &nbsp;
-    </div>   
-    <div class="nav-footer-center">powered with github, quarto, and rstudio<br>byeong-hak choe, 2025</div>
-    <div class="nav-footer-right">
-      &nbsp;
+</div>
+</section></section>
     </div>
   </div>
-</footer>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script>
+    document.addEventListener('wheel', function(event) {
+        if (event.deltaY > 0) {
+            Reveal.next(); // Scroll down to go to the next slide
+        } else {
+            Reveal.prev(); // Scroll up to go to the previous slide
+        }
+    }, false);
+
+    window.onload = function() {
+        document.querySelectorAll('a').forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Query all anchor tags within code blocks (adjust the selector as needed)
+      document.querySelectorAll('pre code a').forEach(function(element) {
+        element.addEventListener('click', function(e) {
+          e.preventDefault(); // Prevent the default anchor action
+          e.stopPropagation(); // Stop the event from bubbling up
+        });
+      });
+    });
 
 
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Target all span elements within code blocks that have IDs starting with 'cb'
+        document.querySelectorAll('pre code span[id^="cb"]').forEach(function(element) {
+            element.addEventListener('mouseenter', function() {
+                // Apply yellow background color to the hovered span element
+                this.style.backgroundColor = '#FFFF99';
+            });
+            element.addEventListener('mouseleave', function() {
+                // Revert the background color when the mouse leaves the span element
+                this.style.backgroundColor = '';
+            });
+        });
+    });
+
+
+
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+          let selectedAnnoteEl;
+          const selectorForAnnotation = ( cell, annotation) => {
+            let cellAttr = 'data-code-cell="' + cell + '"';
+            let lineAttr = 'data-code-annotation="' +  annotation + '"';
+            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+            return selector;
+          }
+          const selectCodeLines = (annoteEl) => {
+            const doc = window.document;
+            const targetCell = annoteEl.getAttribute("data-target-cell");
+            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+            const lineIds = lines.map((line) => {
+              return targetCell + "-" + line;
+            })
+            let top = null;
+            let height = null;
+            let parent = null;
+            if (lineIds.length > 0) {
+                //compute the position of the single el (top and bottom and make a div)
+                const el = window.document.getElementById(lineIds[0]);
+                top = el.offsetTop;
+                height = el.offsetHeight;
+                parent = el.parentElement.parentElement;
+              if (lineIds.length > 1) {
+                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                height = bottom - top;
+              }
+              if (top !== null && height !== null && parent !== null) {
+                // cook up a div (if necessary) and position it 
+                let div = window.document.getElementById("code-annotation-line-highlight");
+                if (div === null) {
+                  div = window.document.createElement("div");
+                  div.setAttribute("id", "code-annotation-line-highlight");
+                  div.style.position = 'absolute';
+                  parent.appendChild(div);
+                }
+                div.style.top = top - 2 + "px";
+                div.style.height = height + 4 + "px";
+                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                if (gutterDiv === null) {
+                  gutterDiv = window.document.createElement("div");
+                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                  gutterDiv.style.position = 'absolute';
+                  const codeCell = window.document.getElementById(targetCell);
+                  const gutter = codeCell.querySelector('.code-annotation-gutter');
+                  gutter.appendChild(gutterDiv);
+                }
+                gutterDiv.style.top = top - 2 + "px";
+                gutterDiv.style.height = height + 4 + "px";
+              }
+              selectedAnnoteEl = annoteEl;
+            }
+          };
+          const unselectCodeLines = () => {
+            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+            elementsIds.forEach((elId) => {
+              const div = window.document.getElementById(elId);
+              if (div) {
+                div.remove();
+              }
+            });
+            selectedAnnoteEl = undefined;
+          };
+          // Handle positioning of the toggle
+          window.addEventListener(
+          "resize",
+          throttle(() => {
+            elRect = undefined;
+            if (selectedAnnoteEl) {
+              selectCodeLines(selectedAnnoteEl);
+            }
+          }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+          for (let i=0; i<annoteTargets.length; i++) {
+            const annoteTarget = annoteTargets[i];
+            const targetCell = annoteTarget.getAttribute("data-target-cell");
+            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+            const contentFn = () => {
+              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              if (content) {
+                const tipContent = content.cloneNode(true);
+                tipContent.classList.add("code-annotation-tip-content");
+                return tipContent.outerHTML;
+              }
+            }
+            const config = {
+              allowHTML: true,
+              content: contentFn,
+              onShow: (instance) => {
+                selectCodeLines(instance.reference);
+                instance.reference.classList.add('code-annotation-active');
+                window.tippy.hideAll();
+              },
+              onHide: (instance) => {
+                unselectCodeLines();
+                instance.reference.classList.remove('code-annotation-active');
+              },
+              maxWidth: 300,
+              delay: [50, 0],
+              duration: [200, 0],
+              offset: [5, 10],
+              arrow: true,
+              appendTo: function(el) {
+                return el.parentElement.parentElement.parentElement;
+              },
+              interactive: true,
+              interactiveBorder: 10,
+              theme: 'light-border',
+              placement: 'right',
+              popperOptions: {
+                modifiers: [
+                {
+                  name: 'flip',
+                  options: {
+                    flipVariations: false, // true by default
+                    allowedAutoPlacements: ['right'],
+                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
+                  },
+                },
+                {
+                  name: 'preventOverflow',
+                  options: {
+                    mainAxis: false,
+                    altAxis: false
+                  }
+                }
+                ]        
+              }      
+            };
+            window.tippy(annoteTarget, config); 
+          }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
 
 </body></html>

@@ -1,6 +1,6 @@
 ---
 title: Classwork 11
-subtitle: Quasi-separation
+subtitle: Addressing Quasi-Separation in Logistic Regression with Regularization
 date: last-modified
 from: markdown+emoji
 execute: 
@@ -99,30 +99,14 @@ def add_dummy_variables(var_name, reference_level, category_order=None):
 # dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
 ```
 
-## Marginal Effect Plot
+
+# Setup for `scikit-learn` and Plots
 
 ```{.python}
-# Increase figure size to prevent overlapping
-plt.figure(figsize=(10, 6))
-
-# Plot using the DataFrame columns
-plt.errorbar(df_ME["Variable"], df_ME["Marginal Effect"],
-             yerr=1.96 * df_ME["Std. Error"], fmt='o', capsize=5)
-
-# Labels and title
-plt.xlabel("Terms")
-plt.ylabel("Marginal Effect")
-plt.title("Marginal Effect at the Mean")
-
-# Add horizontal line at 0 for reference
-plt.axhline(0, color="red", linestyle="--")
-
-# Adjust x-axis labels to avoid overlap
-plt.xticks(rotation=45, ha="right")  # Rotate and align labels to the right
-plt.tight_layout()  # Adjust layout to prevent overlap
-
-# Show plot
-plt.show()
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
+from sklearn.metrics import (confusion_matrix, accuracy_score, precision_score, 
+                             recall_score, roc_curve, roc_auc_score)
 ```
 
 
@@ -233,4 +217,23 @@ Visualize the variation in recall and enrichment across different threshold leve
 - Draw the receiver operating characteristic (ROC) curve.
 - Calculate the area under the curve (AUC).
 
+
+<br>
+
+# Question 8
+- Use `sklearn` to fit a Lasso logistic regression.
+  - Repeat Questions 3-7.
+  
+<br>
+
+# Question 9
+- Use `sklearn` to fit a Ridge logistic regression.
+  - Repeat Questions 3-7.
+  
+<br>
+
+# Question 10
+- Use `sklearn` to fit a Elastic Net logistic regression.
+  - Repeat Questions 3-7.
+  
 <br>
