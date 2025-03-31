@@ -312,7 +312,7 @@ where $0 \leq \lambda \leq 1$.
 - $\alpha_{min}$: the $\alpha$ for the model with the minimum cross-validation (CV) error
 
 
-# **Regularization with `scikit-learn`** {background-color="#1c4982"}
+# **Regularized Logistic Regression with `scikit-learn`** {background-color="#1c4982"}
 
 ## Python Libraries and Modules for Regularization
 Here are the required libraries and modules for logistic regression with regularization:
@@ -383,8 +383,8 @@ lasso_cv.fit(X_train, y_train)
 
 intercept = float(lasso_cv.intercept_)
 coef_lasso = pd.DataFrame({
-    'predictor': ['Intercept'] + list(X_train.columns),
-    'coefficient': [intercept] + list(lasso_cv.coef_[0])
+    'predictor': list(X_train.columns),
+    'coefficient': list(lasso_cv.coef_[0])
 })
 
 print("Lasso Regression Coefficients:")
@@ -467,8 +467,8 @@ ridge_cv.fit(X_train, y_train)
 print("Ridge Regression - Best C (inverse of regularization strength):", ridge_cv.C_[0])
 intercept = float(ridge_cv.intercept_)
 coef_ridge = pd.DataFrame({
-    'predictor': ['Intercept'] + list(X_train.columns),
-    'coefficient': [intercept] + list(ridge_cv.coef_[0])
+    'predictor': list(X_train.columns),
+    'coefficient': list(ridge_cv.coef_[0])
 })
 print("Ridge Regression Coefficients:")
 print(coef_ridge)
@@ -555,8 +555,8 @@ print("Elastic Net Regression - Best l1 ratio:", enet_cv.l1_ratio_[0])
 
 intercept = float(enet_cv.intercept_)
 coef_enet = pd.DataFrame({
-    'predictor': ['Intercept'] + list(X_train.columns),
-    'coefficient': [intercept] + list(enet_cv.coef_[0])
+    'predictor': list(X_train.columns),
+    'coefficient': list(enet_cv.coef_[0])
 })
 print("Elastic Net Regression Coefficients:")
 print(coef_enet)
@@ -594,5 +594,163 @@ print("Confusion Matrix (Elastic Net):\n", ctab_enet)
 print("Elastic Net Accuracy:", accuracy_enet)
 print("Elastic Net Precision:", precision_enet)
 print("Elastic Net Recall:", recall_enet)
+```
+
+
+
+# **Regularized Linear Regression with `scikit-learn`** {background-color="#1c4982"}
+
+## Lasso Linear Regression
+
+- The browser dataset contains web browsing logs for 10,000 households.
+- The browser dataset include a year’s worth of their browser logs for the 1,000 most heavily trafficked websites
+- Each browser in the sample spent at least $1 online in the same year.
+
+$$
+\log(\text{spend}_{i}) = \beta_0 + \beta_1 X_{1,i} +\,\cdots\,+ \beta_{1000} X_{1000,i} + \epsilon_i
+$$
+- $\text{spend}_{i}$: household $i$'s amount of dollars spent on online shopping
+- $X_{p, i}$ household $i$'s percentage of visiting the $p$ website
+
+
+## Lasso Linear Regression - Libraries and Modules
+
+```{.python}
+from google.colab import data_table
+data_table.enable_dataframe_formatter()  # Enabling an interactive DataFrame display
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.preprocessing import scale   # zero mean & one s.d.
+from sklearn.linear_model import LassoCV, lasso_path
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+
+```
+
+## Lasso Linear Regression - Data Prep
+
+```{.python}
+df = pd.read_csv("https://bcdanl.github.io/data/browser-online-shopping.zip")
+
+X = df.drop('spend', axis = 1)
+y = df['spend']
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+X_train_np = X_train.values
+X_test_np = X_test.values
+y_train_np = y_train.values
+y_test_np = y_test.values
+```
+
+
+## Lasso Linear Regression - Fitting the Model
+
+```{.python}
+# LassoCV with a range of alpha values
+lasso_cv = LassoCV(n_alphas = 100, # default is 100
+                   alphas = None, # alphas=None automatically generate 100 candidate alpha values
+                   cv = 5, 
+                   random_state=42,
+                   max_iter=100000)
+lasso_cv.fit(X_train, np.log(y_train))
+
+```
+
+
+
+
+## Lasso Linear Regression - Results
+
+```{.python}
+# Best alpha
+print("LassoCV - Best alpha:", lasso_cv.alpha_)
+
+# Create a DataFrame including the intercept and the coefficients:
+coef_lasso = pd.DataFrame({
+    'predictor': list(X_train.columns),
+    'coefficient':  list(lasso_cv.coef_),
+    'exp_coefficient': np.exp(  list(lasso_cv.coef_) )
+})
+
+# Evaluate
+y_pred_lasso = lasso_cv.predict(X_test)
+mse_lasso = mean_squared_error(y_test, y_pred_lasso)
+print("LassoCV - MSE:", mse_lasso)
+
+coef_lasso = coef_lasso.query('coefficient != 0')
+coef_lasso.shape[0]
+coef_lasso.sort_values('coefficient', ascending = False)
+```
+
+
+
+
+## Lasso Path - CV Errors as as a Function of Alpha
+
+```{.python}
+# Compute the mean and standard deviation of the CV errors for each alpha.
+mean_cv_errors = np.mean(lasso_cv.mse_path_, axis=1)
+std_cv_errors = np.std(lasso_cv.mse_path_, axis=1)
+
+plt.figure(figsize=(8, 6))
+plt.errorbar(lasso_cv.alphas_, mean_cv_errors, yerr=std_cv_errors, marker='o', linestyle='-', capsize=5)
+plt.xscale('log')
+plt.xlabel('Alpha')
+plt.ylabel('Mean CV Error (MSE)')
+plt.title('Cross-Validation Error vs. Alpha')
+plt.axvline(x=lasso_cv.alpha_, color='red', linestyle='--', label='Best alpha')
+plt.legend()
+plt.show()
+```
+
+
+
+## Lasso Path - Beta Estimates as a Function of Alpha
+
+```{.python}
+# Compute the lasso path. Note: we use np.log(y_train) because that's what you used in LassoCV.
+alphas, coefs, _ = lasso_path(X_train, np.log(y_train), alphas=lasso_cv.alphas_, max_iter=100000)
+
+plt.figure(figsize=(8, 6))
+# Iterate over each predictor and plot its coefficient path.
+for i, col in enumerate(X_train.columns):
+    plt.plot(alphas, coefs[i, :], label=col)
+
+plt.xscale('log')
+plt.xlabel('Alpha')
+plt.ylabel('Coefficient value')
+plt.title('Lasso Coefficient Paths')
+plt.axvline(x=lasso_cv.alpha_, color='red', linestyle='--', label='Best alpha')
+plt.show()
+```
+
+
+## Lasso Path - The Number of Nonzero Betas as a Function of Alpha
+
+```{.python}
+# Compute the coefficient path over the alpha grid that LassoCV used
+alphas, coefs, _ = lasso_path(X_train, np.log(y_train),
+                              alphas=lasso_cv.alphas_,
+                              max_iter=100000)
+
+# Count nonzero coefficients for each alpha (coefs shape: (n_features, n_alphas))
+nonzero_counts = np.sum(coefs != 0, axis=0)
+
+# Plot the number of nonzero coefficients versus alpha
+plt.figure(figsize=(8,6))
+plt.plot(alphas, nonzero_counts, marker='o', linestyle='-')
+plt.xscale('log')
+plt.xlabel('Alpha')
+plt.ylabel('Number of nonzero coefficients')
+plt.title('Nonzero Coefficients vs. Alpha')
+#plt.gca().invert_xaxis()  # Lower alphas (less regularization) on the right
+plt.axvline(x=lasso_cv.alpha_, color='red', linestyle='--', label='Best alpha')
+plt.legend()
+plt.show()
 ```
 

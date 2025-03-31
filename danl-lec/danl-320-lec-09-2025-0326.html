@@ -659,8 +659,8 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 </ul>
 </section></section>
 <section>
-<section id="regularization-with-scikit-learn" class="title-slide slide level1 center" data-background-color="#1c4982">
-<h1><strong>Regularization with <code>scikit-learn</code></strong></h1>
+<section id="regularized-logistic-regression-with-scikit-learn" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Regularized Logistic Regression with <code>scikit-learn</code></strong></h1>
 
 </section>
 <section id="python-libraries-and-modules-for-regularization" class="slide level2">
@@ -722,8 +722,8 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <span id="cb4-6"><a href="#cb4-6"></a></span>
 <span id="cb4-7"><a href="#cb4-7"></a>intercept <span class="op">=</span> <span class="bu">float</span>(lasso_cv.intercept_)</span>
 <span id="cb4-8"><a href="#cb4-8"></a>coef_lasso <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb4-9"><a href="#cb4-9"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
-<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(lasso_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="st">'predictor'</span>: <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="st">'coefficient'</span>: <span class="bu">list</span>(lasso_cv.coef_[<span class="dv">0</span>])</span>
 <span id="cb4-11"><a href="#cb4-11"></a>})</span>
 <span id="cb4-12"><a href="#cb4-12"></a></span>
 <span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(<span class="st">"Lasso Regression Coefficients:"</span>)</span>
@@ -797,8 +797,8 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <span id="cb6-7"><a href="#cb6-7"></a><span class="bu">print</span>(<span class="st">"Ridge Regression - Best C (inverse of regularization strength):"</span>, ridge_cv.C_[<span class="dv">0</span>])</span>
 <span id="cb6-8"><a href="#cb6-8"></a>intercept <span class="op">=</span> <span class="bu">float</span>(ridge_cv.intercept_)</span>
 <span id="cb6-9"><a href="#cb6-9"></a>coef_ridge <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb6-10"><a href="#cb6-10"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
-<span id="cb6-11"><a href="#cb6-11"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(ridge_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="st">'predictor'</span>: <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="st">'coefficient'</span>: <span class="bu">list</span>(ridge_cv.coef_[<span class="dv">0</span>])</span>
 <span id="cb6-12"><a href="#cb6-12"></a>})</span>
 <span id="cb6-13"><a href="#cb6-13"></a><span class="bu">print</span>(<span class="st">"Ridge Regression Coefficients:"</span>)</span>
 <span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(coef_ridge)</span>
@@ -883,8 +883,8 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <span id="cb8-11"><a href="#cb8-11"></a></span>
 <span id="cb8-12"><a href="#cb8-12"></a>intercept <span class="op">=</span> <span class="bu">float</span>(enet_cv.intercept_)</span>
 <span id="cb8-13"><a href="#cb8-13"></a>coef_enet <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">'predictor'</span>: [<span class="st">'Intercept'</span>] <span class="op">+</span> <span class="bu">list</span>(X_train.columns),</span>
-<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">'coefficient'</span>: [intercept] <span class="op">+</span> <span class="bu">list</span>(enet_cv.coef_[<span class="dv">0</span>])</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    <span class="st">'predictor'</span>: <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="st">'coefficient'</span>: <span class="bu">list</span>(enet_cv.coef_[<span class="dv">0</span>])</span>
 <span id="cb8-16"><a href="#cb8-16"></a>})</span>
 <span id="cb8-17"><a href="#cb8-17"></a><span class="bu">print</span>(<span class="st">"Elastic Net Regression Coefficients:"</span>)</span>
 <span id="cb8-18"><a href="#cb8-18"></a><span class="bu">print</span>(coef_enet)</span>
@@ -922,6 +922,137 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <span id="cb8-50"><a href="#cb8-50"></a><span class="bu">print</span>(<span class="st">"Elastic Net Accuracy:"</span>, accuracy_enet)</span>
 <span id="cb8-51"><a href="#cb8-51"></a><span class="bu">print</span>(<span class="st">"Elastic Net Precision:"</span>, precision_enet)</span>
 <span id="cb8-52"><a href="#cb8-52"></a><span class="bu">print</span>(<span class="st">"Elastic Net Recall:"</span>, recall_enet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="regularized-linear-regression-with-scikit-learn" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Regularized Linear Regression with <code>scikit-learn</code></strong></h1>
+
+</section>
+<section id="lasso-linear-regression" class="slide level2">
+<h2>Lasso Linear Regression</h2>
+<ul>
+<li>The browser dataset contains web browsing logs for 10,000 households.</li>
+<li>The browser dataset include a year’s worth of their browser logs for the 1,000 most heavily trafficked websites</li>
+<li>Each browser in the sample spent at least $1 online in the same year.</li>
+</ul>
+<p><span class="math display">\[
+\log(\text{spend}_{i}) = \beta_0 + \beta_1 X_{1,i} +\,\cdots\,+ \beta_{1000} X_{1000,i} + \epsilon_i
+\]</span> - <span class="math inline">\(\text{spend}_{i}\)</span>: household <span class="math inline">\(i\)</span>’s amount of dollars spent on online shopping - <span class="math inline">\(X_{p, i}\)</span> household <span class="math inline">\(i\)</span>’s percentage of visiting the <span class="math inline">\(p\)</span> website</p>
+</section>
+<section id="lasso-linear-regression---libraries-and-modules" class="slide level2">
+<h2>Lasso Linear Regression - Libraries and Modules</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> google.colab <span class="im">import</span> data_table</span>
+<span id="cb9-2"><a href="#cb9-2"></a>data_table.enable_dataframe_formatter()  <span class="co"># Enabling an interactive DataFrame display</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> scale   <span class="co"># zero mean &amp; one s.d.</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LassoCV, lasso_path</span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-linear-regression---data-prep" class="slide level2">
+<h2>Lasso Linear Regression - Data Prep</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://bcdanl.github.io/data/browser-online-shopping.zip"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>X <span class="op">=</span> df.drop(<span class="st">'spend'</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>y <span class="op">=</span> df[<span class="st">'spend'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co"># Train-test split</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a>X_train_np <span class="op">=</span> X_train.values</span>
+<span id="cb10-10"><a href="#cb10-10"></a>X_test_np <span class="op">=</span> X_test.values</span>
+<span id="cb10-11"><a href="#cb10-11"></a>y_train_np <span class="op">=</span> y_train.values</span>
+<span id="cb10-12"><a href="#cb10-12"></a>y_test_np <span class="op">=</span> y_test.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-linear-regression---fitting-the-model" class="slide level2">
+<h2>Lasso Linear Regression - Fitting the Model</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># LassoCV with a range of alpha values</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>lasso_cv <span class="op">=</span> LassoCV(n_alphas <span class="op">=</span> <span class="dv">100</span>, <span class="co"># default is 100</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>                   alphas <span class="op">=</span> <span class="va">None</span>, <span class="co"># alphas=None automatically generate 100 candidate alpha values</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>                   cv <span class="op">=</span> <span class="dv">5</span>, </span>
+<span id="cb11-5"><a href="#cb11-5"></a>                   random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb11-6"><a href="#cb11-6"></a>                   max_iter<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>lasso_cv.fit(X_train, np.log(y_train))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-linear-regression---results" class="slide level2">
+<h2>Lasso Linear Regression - Results</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Best alpha</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(<span class="st">"LassoCV - Best alpha:"</span>, lasso_cv.alpha_)</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Create a DataFrame including the intercept and the coefficients:</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>coef_lasso <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb12-6"><a href="#cb12-6"></a>    <span class="st">'predictor'</span>: <span class="bu">list</span>(X_train.columns),</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    <span class="st">'coefficient'</span>:  <span class="bu">list</span>(lasso_cv.coef_),</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="st">'exp_coefficient'</span>: np.exp(  <span class="bu">list</span>(lasso_cv.coef_) )</span>
+<span id="cb12-9"><a href="#cb12-9"></a>})</span>
+<span id="cb12-10"><a href="#cb12-10"></a></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="co"># Evaluate</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a>y_pred_lasso <span class="op">=</span> lasso_cv.predict(X_test)</span>
+<span id="cb12-13"><a href="#cb12-13"></a>mse_lasso <span class="op">=</span> mean_squared_error(y_test, y_pred_lasso)</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="bu">print</span>(<span class="st">"LassoCV - MSE:"</span>, mse_lasso)</span>
+<span id="cb12-15"><a href="#cb12-15"></a></span>
+<span id="cb12-16"><a href="#cb12-16"></a>coef_lasso <span class="op">=</span> coef_lasso.query(<span class="st">'coefficient != 0'</span>)</span>
+<span id="cb12-17"><a href="#cb12-17"></a>coef_lasso.shape[<span class="dv">0</span>]</span>
+<span id="cb12-18"><a href="#cb12-18"></a>coef_lasso.sort_values(<span class="st">'coefficient'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-path---cv-errors-as-as-a-function-of-alpha" class="slide level2">
+<h2>Lasso Path - CV Errors as as a Function of Alpha</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Compute the mean and standard deviation of the CV errors for each alpha.</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>mean_cv_errors <span class="op">=</span> np.mean(lasso_cv.mse_path_, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>std_cv_errors <span class="op">=</span> np.std(lasso_cv.mse_path_, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb13-4"><a href="#cb13-4"></a></span>
+<span id="cb13-5"><a href="#cb13-5"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb13-6"><a href="#cb13-6"></a>plt.errorbar(lasso_cv.alphas_, mean_cv_errors, yerr<span class="op">=</span>std_cv_errors, marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, capsize<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb13-7"><a href="#cb13-7"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>plt.xlabel(<span class="st">'Alpha'</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a>plt.ylabel(<span class="st">'Mean CV Error (MSE)'</span>)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>plt.title(<span class="st">'Cross-Validation Error vs. Alpha'</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a>plt.axvline(x<span class="op">=</span>lasso_cv.alpha_, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Best alpha'</span>)</span>
+<span id="cb13-12"><a href="#cb13-12"></a>plt.legend()</span>
+<span id="cb13-13"><a href="#cb13-13"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-path---beta-estimates-as-a-function-of-alpha" class="slide level2">
+<h2>Lasso Path - Beta Estimates as a Function of Alpha</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Compute the lasso path. Note: we use np.log(y_train) because that's what you used in LassoCV.</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>alphas, coefs, _ <span class="op">=</span> lasso_path(X_train, np.log(y_train), alphas<span class="op">=</span>lasso_cv.alphas_, max_iter<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Iterate over each predictor and plot its coefficient path.</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(X_train.columns):</span>
+<span id="cb14-7"><a href="#cb14-7"></a>    plt.plot(alphas, coefs[i, :], label<span class="op">=</span>col)</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb14-10"><a href="#cb14-10"></a>plt.xlabel(<span class="st">'Alpha'</span>)</span>
+<span id="cb14-11"><a href="#cb14-11"></a>plt.ylabel(<span class="st">'Coefficient value'</span>)</span>
+<span id="cb14-12"><a href="#cb14-12"></a>plt.title(<span class="st">'Lasso Coefficient Paths'</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a>plt.axvline(x<span class="op">=</span>lasso_cv.alpha_, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Best alpha'</span>)</span>
+<span id="cb14-14"><a href="#cb14-14"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="lasso-path---the-number-of-nonzero-betas-as-a-function-of-alpha" class="slide level2">
+<h2>Lasso Path - The Number of Nonzero Betas as a Function of Alpha</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Compute the coefficient path over the alpha grid that LassoCV used</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>alphas, coefs, _ <span class="op">=</span> lasso_path(X_train, np.log(y_train),</span>
+<span id="cb15-3"><a href="#cb15-3"></a>                              alphas<span class="op">=</span>lasso_cv.alphas_,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>                              max_iter<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># Count nonzero coefficients for each alpha (coefs shape: (n_features, n_alphas))</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>nonzero_counts <span class="op">=</span> np.<span class="bu">sum</span>(coefs <span class="op">!=</span> <span class="dv">0</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co"># Plot the number of nonzero coefficients versus alpha</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
+<span id="cb15-11"><a href="#cb15-11"></a>plt.plot(alphas, nonzero_counts, marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb15-12"><a href="#cb15-12"></a>plt.xscale(<span class="st">'log'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13"></a>plt.xlabel(<span class="st">'Alpha'</span>)</span>
+<span id="cb15-14"><a href="#cb15-14"></a>plt.ylabel(<span class="st">'Number of nonzero coefficients'</span>)</span>
+<span id="cb15-15"><a href="#cb15-15"></a>plt.title(<span class="st">'Nonzero Coefficients vs. Alpha'</span>)</span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="co">#plt.gca().invert_xaxis()  # Lower alphas (less regularization) on the right</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a>plt.axvline(x<span class="op">=</span>lasso_cv.alpha_, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Best alpha'</span>)</span>
+<span id="cb15-18"><a href="#cb15-18"></a>plt.legend()</span>
+<span id="cb15-19"><a href="#cb15-19"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="footer footer-default">
 
