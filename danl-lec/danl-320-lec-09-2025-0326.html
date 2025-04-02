@@ -1115,6 +1115,12 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 </section>
 <section id="home-ice-advantage" class="slide level2">
 <h2>Home-ice Advantage</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/geneseo-hockey.png" width="350px">
+</p>
+</div><div class="column" style="width:60%;">
 <ul>
 <li>How can we estimate the home-team effect?</li>
 </ul>
@@ -1122,33 +1128,53 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <ul>
 <li>This is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice.</li>
 </ul>
+</div>
+</div>
 </section>
-<section id="traditional-plusminus-pm-vs.-expected-plusminus-ppm" class="slide level2">
-<h2>Traditional Plus‑Minus (PM) vs.&nbsp;Expected Plus‑Minus (ppm)</h2>
+<section id="players-impact" class="slide level2">
+<h2>Player’s Impact</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/nhl-Peter_Forsberg.webp" width="350px">
+</p>
+</div><div class="column" style="width:60%;">
 <ul>
-<li><strong>Traditional Plus‑Minus (PM):</strong>
+<li>How can we estimate the player effect?</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>np.exp(lasso_cv.coef_[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Whenever a goal is scored in the season 2002-2003, …
+<ul>
+<li>Colorado’s odds of having scored (rather than having been scored on) increase by 160% if <strong>Peter Forsberg</strong> is on the ice.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="traditional-plusminus-vs.-expected-plusminus" class="slide level2">
+<h2>Traditional Plus‑Minus vs.&nbsp;Expected Plus‑Minus</h2>
+<ul>
+<li><strong>Traditional Plus‑Minus (PM)</strong>
 <ul>
 <li><strong>Definition:</strong> Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.</li>
-<li><strong>Data-Driven:</strong> Directly observed outcome.</li>
 <li><strong>Limitations:</strong> Can be noisy due to team context, limited ice time, or random variation.</li>
 </ul></li>
-<li><strong>Expected Plus‑Minus (ppm):</strong>
+<li><strong>Expected Plus‑Minus (ppm)</strong>
 <ul>
 <li><strong>Definition:</strong> A model-based estimate of a player’s impact.</li>
 <li><strong>Calculation:</strong>
 <ul>
 <li>Convert a player’s effect (<span class="math inline">\(\beta\)</span>) to a probability: <span class="math inline">\(p = \frac{e^{\beta}}{1 + e^{\beta}}\)</span></li>
-<li>Compute expected PM as: <span class="math inline">\(\text{ppm} = ng*p − ng* (1−p ) \)\)</span></li>
-<li>Where <span class="math inline">\(ng\)</span> is the total number of goals the player was on the ice.</li>
+<li>Compute expected PM as: <span class="math inline">\(\text{ppm} = ng \times p − ng \times (1−p )\)</span></li>
+<li><span class="math inline">\(ng\)</span>: the total number of goals the player was on the ice.</li>
 </ul></li>
 <li><strong>Benefits:</strong> Smooths out noise and adjusts for context.</li>
 </ul></li>
 </ul>
 </section>
-<section id="traditional-plusminus-pm-vs.-expected-plusminus-ppm-1" class="slide level2">
-<h2>Traditional Plus‑Minus (PM) vs.&nbsp;Expected Plus‑Minus (ppm)</h2>
-<ul>
-<li><strong>Key Comparisons:</strong>
+<section id="traditional-plusminus-vs.-expected-plusminus-1" class="slide level2">
+<h2>Traditional Plus‑Minus vs.&nbsp;Expected Plus‑Minus</h2>
 <ul>
 <li><strong>Observed vs.&nbsp;Modeled:</strong>
 <ul>
@@ -1166,17 +1192,22 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <ul>
 <li>Expected PM can help identify under- or over-performing players and guide strategic decisions.</li>
 </ul></li>
-</ul></li>
 </ul>
 </section>
 <section id="scaling" class="slide level2">
 <h2>Scaling?</h2>
 <ul>
-<li><p>We do not want to standardize variables here. – The penalty with standardization is <span class="math inline">\(\alpha \times SD(X_{player})\)</span> – Players with small SD are those who play little (almost all zeros). – Players with large SD are those who play a lot. – Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.</p></li>
-<li><p>Re-do everything with</p></li>
+<li>We do not want to standardize variables here.
+<ul>
+<li>The penalty with standardization is <span class="math inline">\(\alpha \times SD(X_{player})\)</span></li>
+<li>Players with small SD are those who play little (almost all zeros).</li>
+<li>Players with large SD are those who play a lot.</li>
+<li>Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.</li>
+</ul></li>
+<li>Re-do everything with</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> scale <span class="co"># zero mean &amp; one s.d.</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>Xpred <span class="op">=</span> scale(nhl_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> scale <span class="co"># zero mean &amp; one s.d.</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>Xpred <span class="op">=</span> scale(nhl_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 <div class="footer footer-default">
 

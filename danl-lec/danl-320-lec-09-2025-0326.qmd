@@ -803,6 +803,16 @@ $$
 
 ## Home-ice Advantage
 
+:::: {.columns}
+
+::: {.column width="40%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/geneseo-hockey.png" width="350px">
+</p>
+
+:::
+::: {.column width="60%"}
 - How can we estimate the home-team effect?
 
 ```{.python}
@@ -811,26 +821,50 @@ np.exp(lasso_cv.intercept_)
 
 - This is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice.
 
+:::
+::::
+
+## Player's Impact
 
 
-## Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)
+:::: {.columns}
 
-- **Traditional Plus‑Minus (PM):**
+::: {.column width="40%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/nhl-Peter_Forsberg.webp" width="350px">
+</p>
+
+:::
+::: {.column width="60%"}
+- How can we estimate the player effect?
+
+```{.python}
+np.exp(lasso_cv.coef_[0])
+```
+
+- Whenever a goal is scored in the season 2002-2003, ...
+  - Colorado’s odds of having scored (rather than having been scored on) increase by 160% if **Peter Forsberg** is on the ice.
+
+:::
+::::
+
+## Traditional Plus‑Minus vs. Expected Plus‑Minus
+
+- **Traditional Plus‑Minus (PM)**
   - **Definition:** Sum of on-ice contributions; +1 for a goal scored for the player's team and -1 for a goal against.
-  - **Data-Driven:** Directly observed outcome.
   - **Limitations:** Can be noisy due to team context, limited ice time, or random variation.
 
-- **Expected Plus‑Minus (ppm):**
+- **Expected Plus‑Minus (ppm)**
   - **Definition:** A model-based estimate of a player's impact.
   - **Calculation:** 
     - Convert a player's effect ($\beta$) to a probability: $p = \frac{e^{\beta}}{1 + e^{\beta}}$
-    - Compute expected PM as:  $\text{ppm} = ng*p − ng* (1−p ) \)$
-    - Where $ng$ is the total number of goals the player was on the ice.
+    - Compute expected PM as:  $\text{ppm} = ng \times p − ng \times (1−p )$
+    - $ng$: the total number of goals the player was on the ice.
   - **Benefits:** Smooths out noise and adjusts for context.
 
-## Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)
+## Traditional Plus‑Minus vs. Expected Plus‑Minus
 
-- **Key Comparisons:**
   - **Observed vs. Modeled:**  
     - PM is a raw, observed measure.  
     - Expected PM leverages model estimates to predict performance.
@@ -848,10 +882,10 @@ np.exp(lasso_cv.intercept_)
 ## Scaling?
 
 - We do not want to standardize variables here.
-  – The penalty with standardization is $\alpha \times SD(X_{player})$
-  – Players with small SD are those who play little (almost all zeros).
-  – Players with large SD are those who play a lot.
-  – Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.
+  - The penalty with standardization is $\alpha \times SD(X_{player})$
+  - Players with small SD are those who play little (almost all zeros).
+  - Players with large SD are those who play a lot.
+  - Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.
 
 - Re-do everything with
 

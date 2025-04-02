@@ -5611,7 +5611,7 @@
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#home-ice-advantage",
     "title": "Lecture 9",
     "section": "Home-ice Advantage",
-    "text": "Home-ice Advantage\n\nHow can we estimate the home-team effect?\n\nnp.exp(lasso_cv.intercept_)\n\nThis is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice."
+    "text": "Home-ice Advantage\n\n\n\n\n\n\n\nHow can we estimate the home-team effect?\n\nnp.exp(lasso_cv.intercept_)\n\nThis is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice."
   },
   {
     "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-and-expected-plusminus-ppm",
@@ -5625,20 +5625,55 @@
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm",
     "title": "Lecture 9",
     "section": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)",
-    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nTraditional Plus‑Minus (PM):\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nData-Driven: Directly observed outcome.\nLimitations: Can be noisy due to team context, limited ice time, or random variation.\n\nExpected Plus‑Minus (ppm):\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (\\(\\beta\\)) to a probability: \\(p = \\frac{e^{\\beta}}{1 + e^{\\beta}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng*p − ng* (1−p ) \\)\\)\nWhere \\(ng\\) is the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
+    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nTraditional Plus‑Minus (PM)\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nLimitations: Can be noisy due to team context, limited ice time, or random variation.\n\nExpected Plus‑Minus (ppm)\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (\\(\\beta\\)) to a probability: \\(p = \\frac{e^{\\beta}}{1 + e^{\\beta}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng \\times p − ng \\times (1−p )\\)\nWhere \\(ng\\) is the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
   },
   {
     "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#scaling",
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#scaling",
     "title": "Lecture 9",
     "section": "Scaling?",
-    "text": "Scaling?\n\nWe do not want to standardize variables here. – The penalty with standardization is \\(\\alpha \\times SD(X_{player})\\) – Players with small SD are those who play little (almost all zeros). – Players with large SD are those who play a lot. – Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.\nRe-do everything with\n\nfrom sklearn.preprocessing import scale # zero mean & one s.d.\nXpred = scale(nhl_train)"
+    "text": "Scaling?\n\nWe do not want to standardize variables here.\n\nThe penalty with standardization is \\(\\alpha \\times SD(X_{player})\\)\nPlayers with small SD are those who play little (almost all zeros).\nPlayers with large SD are those who play a lot.\nStandardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.\n\nRe-do everything with\n\nfrom sklearn.preprocessing import scale # zero mean & one s.d.\nXpred = scale(nhl_train)"
   },
   {
     "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm-1",
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm-1",
     "title": "Lecture 9",
     "section": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)",
-    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nKey Comparisons:\n\nObserved vs. Modeled:\n\nPM is a raw, observed measure.\n\nExpected PM leverages model estimates to predict performance.\n\nVariability:\n\nPM may fluctuate due to external factors.\n\nExpected PM attempts to isolate a player’s true impact.\n\nApplications:\n\nExpected PM can help identify under- or over-performing players and guide strategic decisions."
+    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nObserved vs. Modeled:\n\nPM is a raw, observed measure.\n\nExpected PM leverages model estimates to predict performance.\n\nVariability:\n\nPM may fluctuate due to external factors.\n\nExpected PM attempts to isolate a player’s true impact.\n\nApplications:\n\nExpected PM can help identify under- or over-performing players and guide strategic decisions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus (PM)",
+    "text": "Traditional Plus‑Minus (PM)\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nLimitations: Can be noisy due to team context, limited ice time, or random variation."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#expected-plusminus-ppm",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#expected-plusminus-ppm",
+    "title": "Lecture 9",
+    "section": "Expected Plus‑Minus (ppm)",
+    "text": "Expected Plus‑Minus (ppm)\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (\\(\\beta\\)) to a probability: \\(p = \\frac{e^{\\beta}}{1 + e^{\\beta}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng*p − ng* (1−p ) \\)\\)\nWhere \\(ng\\) is the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-vs.-expected-plusminus",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-vs.-expected-plusminus",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus vs. Expected Plus‑Minus",
+    "text": "Traditional Plus‑Minus vs. Expected Plus‑Minus\n\nTraditional Plus‑Minus (PM)\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nLimitations: Can be noisy due to team context, limited ice time, or random variation.\n\nExpected Plus‑Minus (ppm)\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (\\(\\beta\\)) to a probability: \\(p = \\frac{e^{\\beta}}{1 + e^{\\beta}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng \\times p − ng \\times (1−p )\\)\n\\(ng\\): the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-vs.-expected-plusminus-1",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-vs.-expected-plusminus-1",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus vs. Expected Plus‑Minus",
+    "text": "Traditional Plus‑Minus vs. Expected Plus‑Minus\n\nObserved vs. Modeled:\n\nPM is a raw, observed measure.\n\nExpected PM leverages model estimates to predict performance.\n\nVariability:\n\nPM may fluctuate due to external factors.\n\nExpected PM attempts to isolate a player’s true impact.\n\nApplications:\n\nExpected PM can help identify under- or over-performing players and guide strategic decisions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#players-impact",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#players-impact",
+    "title": "Lecture 9",
+    "section": "Player’s Impact",
+    "text": "Player’s Impact\n\n\n\n\n\n\n\nHow can we estimate the player effect?\n\nnp.exp(lasso_cv.coef_[0])\n\nWhenever a goal is scored in the season 2002-2003, …\n\nColorado’s odds of having scored (rather than having been scored on) increase by 160% if Peter Forsberg is on the ice."
   }
 ]
