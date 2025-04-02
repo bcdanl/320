@@ -1208,6 +1208,92 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> scale <span class="co"># zero mean &amp; one s.d.</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a>Xpred <span class="op">=</span> scale(nhl_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="omitted-variable-bias" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Omitted Variable Bias</strong></h1>
+
+</section>
+<section id="omitted-variable-bias-1" class="slide level2">
+<h2>Omitted Variable Bias</h2>
+<ul>
+<li><p><strong>Omitted variable bias (OVB)</strong>: bias in the model because of omitting an important predictor that is correlated with existing predictor(s).</p></li>
+<li><p>Let’s use an orange juice (OJ) example to demonstrate the OVB.</p>
+<ul>
+<li>OJ price elasticity estimates vary with models, whether or not taking into account <code>brand</code> or <code>ad_status</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="short--and-long--regressions" class="slide level2">
+<h2>Short- and Long- Regressions</h2>
+<ul>
+<li><p>OVB is the difference in beta estimates between short- and long-form regressions.</p></li>
+<li><p><strong>Short regression</strong>: The regression model with less predictors</p></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\log(\text{sales}_i) = \beta_0 + \beta_1\log(\text{price}_i) + \epsilon_i
+\end{align}
+\]</span></p>
+<ul>
+<li><strong>Long regression</strong>: The regression model that adds additional predictor(s) to the short one.</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\log(\text{sales}_i) =&amp; \beta_0 + \beta_{1}\log(\text{price}_i) \\
+&amp;+ \beta_{2}\text{minute.maid}_i + \beta_{3}\text{tropicana}_i + \epsilon_i
+\end{align}
+\]</span> - OVB for <span class="math inline">\(\beta_1\)</span> is: <span class="math display">\[
+\text{OVB} = \hat{\beta}_{1, short} - \hat{\beta}_{1, long}
+\]</span></p>
+</section>
+<section id="how-does-an-ovb-happen-in-regression" class="slide level2">
+<h2>How does an OVB happen in regression?</h2>
+<ul>
+<li>In the first stage, consider the relationship between <code>price</code> and <code>brand</code>:</li>
+</ul>
+<p><span class="math display">\[
+\log(\text{price}_i) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_i
+\]</span></p>
+<ul>
+<li><p>Then, calculate the residual: <span class="math display">\[
+\hat{\epsilon}_i = \log(\text{price}_i) - \widehat{\log(\text{price}_i)}
+\]</span></p></li>
+<li><p>The residual represents the log of OJ price after its correlation with brand has been removed!</p></li>
+<li><p>In the second stage, regress <span class="math inline">\(\log(\text{sales}_i)\)</span> on residual <span class="math inline">\(\hat{\epsilon}_i\)</span>:</p></li>
+</ul>
+<p><span class="math display">\[
+\log(\text{sales}_i) = \beta_0 + \beta_1\hat{\epsilon}_i  + \epsilon_i
+\]</span></p>
+</section>
+<section id="ovb-formula" class="slide level2">
+<h2>OVB formula</h2>
+<ul>
+<li><p>Consider the following short- and long- regressions:</p>
+<ul>
+<li>Short: <span class="math inline">\(Y_i = \beta_0 + \beta_{1}^{short}X_1 + \epsilon_{short}\)</span><br>
+</li>
+<li>Long: <span class="math inline">\(Y_i = \beta_0 + \beta_{1}^{long}X_1 +\beta_{2}X_2 + \epsilon_{long}\)</span></li>
+</ul></li>
+<li><p>Error in short form can be represented as: <span class="math display">\[
+\hat{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
+\]</span></p></li>
+<li><p>If variable <span class="math inline">\(X_1\)</span> is correlated with <span class="math inline">\(X_2\)</span>, the following assumptions are violated in the short regression model:</p>
+<ul>
+<li>Errors are not correlated with predictor variables.</li>
+<li>Errors have a mean value of 0.</li>
+</ul></li>
+</ul>
+</section>
+<section id="regression-sensitivity-analysis" class="slide level2">
+<h2>Regression Sensitivity Analysis</h2>
+<ul>
+<li><p>Regression finds the coefficients on the part of each predictor that is <strong>independent</strong> from the other predictors.</p></li>
+<li><p>What can we do to deal with OVB problems?</p>
+<ul>
+<li>Because we can never be sure whether a given set of controls is enough to eliminate OVB, it’s important to ask how sensitive regression results are to changes in the list of controls.</li>
+</ul></li>
+</ul>
 
 <div class="footer footer-default">
 

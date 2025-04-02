@@ -894,3 +894,88 @@ from sklearn.preprocessing import scale # zero mean & one s.d.
 Xpred = scale(nhl_train)
 ```
 
+
+
+
+# **Omitted Variable Bias** {background-color="#1c4982"}
+
+
+## Omitted Variable Bias
+
+- **Omitted variable bias (OVB)**: bias in the model because of omitting an important predictor that is
+correlated with existing predictor(s).
+
+
+- Let's use an orange juice (OJ) example to demonstrate the OVB.
+  - OJ price elasticity estimates vary with models, whether or not taking into account `brand` or `ad_status`
+
+
+## Short- and Long- Regressions
+- OVB is the difference in beta estimates between short- and long-form regressions.
+
+- **Short regression**: The regression model with less predictors
+
+$$
+\begin{align}
+\log(\text{sales}_i) = \beta_0 + \beta_1\log(\text{price}_i) + \epsilon_i
+\end{align}
+$$
+
+- **Long regression**: The regression model that adds additional predictor(s) to the short one.
+
+
+$$
+\begin{align}
+\log(\text{sales}_i) =& \beta_0 + \beta_{1}\log(\text{price}_i) \\
+&+ \beta_{2}\text{minute.maid}_i + \beta_{3}\text{tropicana}_i + \epsilon_i
+\end{align}
+$$
+- OVB for $\beta_1$ is:
+$$
+\text{OVB} = \hat{\beta}_{1, short} - \hat{\beta}_{1, long}
+$$
+
+## How does an OVB happen in regression?
+
+- In the first stage, consider the relationship between `price` and `brand`:
+
+$$
+\log(\text{price}_i) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_i
+$$
+
+
+- Then, calculate the residual:
+$$
+\hat{\epsilon}_i = \log(\text{price}_i) - \widehat{\log(\text{price}_i)}
+$$
+- The residual represents the log of OJ price after its correlation with brand has been removed!
+
+- In the second stage, regress $\log(\text{sales}_i)$ on residual $\hat{\epsilon}_i$:
+
+$$
+\log(\text{sales}_i) = \beta_0 + \beta_1\hat{\epsilon}_i  + \epsilon_i
+$$
+
+## OVB formula
+
+- Consider the following short- and long- regressions:
+  - Short: $Y_i = \beta_0 + \beta_{1}^{short}X_1 + \epsilon_{short}$  
+  - Long: $Y_i = \beta_0 + \beta_{1}^{long}X_1 +\beta_{2}X_2 + \epsilon_{long}$
+
+
+- Error in short form can be represented as:
+$$
+\hat{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
+$$
+
+- If variable $X_1$ is correlated with $X_2$, the following assumptions are violated in the short regression model:
+  - Errors are not correlated with predictor variables.
+  - Errors have a mean value of 0.
+
+
+## Regression Sensitivity Analysis
+- Regression finds the coefficients on the part of each predictor that is **independent** from the other predictors.
+
+- What can we do to deal with OVB problems?
+  - Because we can never be sure whether a given set of
+controls is enough to eliminate OVB, it’s important to ask how sensitive regression results are to changes in the list of controls.

@@ -5675,5 +5675,40 @@
     "title": "Lecture 9",
     "section": "Player’s Impact",
     "text": "Player’s Impact\n\n\n\n\n\n\n\nHow can we estimate the player effect?\n\nnp.exp(lasso_cv.coef_[0])\n\nWhenever a goal is scored in the season 2002-2003, …\n\nColorado’s odds of having scored (rather than having been scored on) increase by 160% if Peter Forsberg is on the ice."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#omitted-variable-bias-1",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#omitted-variable-bias-1",
+    "title": "Lecture 9",
+    "section": "Omitted Variable Bias",
+    "text": "Omitted Variable Bias\n\nOmitted variable bias (OVB): bias in the model because of omitting an important predictor that is correlated with existing predictor(s).\nLet’s use an orange juice (OJ) example to demonstrate the OVB.\n\nOJ price elasticity estimates vary with models, whether or not taking into account brand or ad_status"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#short--and-long--regressions",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#short--and-long--regressions",
+    "title": "Lecture 9",
+    "section": "Short- and Long- Regressions",
+    "text": "Short- and Long- Regressions\n\nOVB is the difference in beta estimates between short- and long-form regressions.\nShort regression: The regression model with less predictors\n\n\\[\n\\begin{align}\n\\log(\\text{sales}_i) = \\beta_0 + \\beta_1\\log(\\text{price}_i) + \\epsilon_i\n\\end{align}\n\\]\n\nLong regression: The regression model that adds additional predictor(s) to the short one.\n\n\\[\n\\begin{align}\n\\log(\\text{sales}_i) =& \\beta_0 + \\beta_{1}\\log(\\text{price}_i) \\\\\n&+ \\beta_{2}\\text{minute.maid}_i + \\beta_{3}\\text{tropicana}_i + \\epsilon_i\n\\end{align}\n\\] - OVB for \\(\\beta_1\\) is: \\[\n\\text{OVB} = \\hat{\\beta}_{1, short} - \\hat{\\beta}_{1, long}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#how-does-an-ovb-happen-in-regression",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#how-does-an-ovb-happen-in-regression",
+    "title": "Lecture 9",
+    "section": "How does an OVB happen in regression?",
+    "text": "How does an OVB happen in regression?\n\nIn the first stage, consider the relationship between price and brand:\n\n\\[\n\\log(\\text{price}_i) = \\beta_0 + \\beta_1\\text{minute_maid} + \\beta_2\\text{tropicana} + \\epsilon_i\n\\]\n\nThen, calculate the residual: \\[\n\\hat{\\epsilon}_i = \\log(\\text{price}_i) - \\widehat{\\log(\\text{price}_i)}\n\\]\nThe residual represents the log of OJ price after its correlation with brand has been removed!\nIn the second stage, regress \\(\\log(\\text{sales}_i)\\) on residual \\(\\hat{\\epsilon}_i\\):\n\n\\[\n\\log(\\text{sales}_i) = \\beta_0 + \\beta_1\\hat{\\epsilon}_i  + \\epsilon_i\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#ovb-formula",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#ovb-formula",
+    "title": "Lecture 9",
+    "section": "OVB formula",
+    "text": "OVB formula\n\nConsider the following short- and long- regressions:\n\nShort: \\(Y_i = \\beta_0 + \\beta_{1}^{short}X_1 + \\epsilon_{short}\\)\n\nLong: \\(Y_i = \\beta_0 + \\beta_{1}^{long}X_1 +\\beta_{2}X_2 + \\epsilon_{long}\\)\n\nError in short form can be represented as: \\[\n\\hat{\\epsilon_{short}} = \\beta_{2}X_2 + \\epsilon_{long}\n\\]\nIf variable \\(X_1\\) is correlated with \\(X_2\\), the following assumptions are violated in the short regression model:\n\nErrors are not correlated with predictor variables.\nErrors have a mean value of 0."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#regression-sensitivity-analysis",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#regression-sensitivity-analysis",
+    "title": "Lecture 9",
+    "section": "Regression Sensitivity Analysis",
+    "text": "Regression Sensitivity Analysis\n\nRegression finds the coefficients on the part of each predictor that is independent from the other predictors.\nWhat can we do to deal with OVB problems?\n\nBecause we can never be sure whether a given set of controls is enough to eliminate OVB, it’s important to ask how sensitive regression results are to changes in the list of controls."
   }
 ]
