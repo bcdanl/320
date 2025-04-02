@@ -754,3 +754,109 @@ plt.legend()
 plt.show()
 ```
 
+
+# **Hockey Player Performance via Regularized Logistic Regression** {background-color="#1c4982"}
+
+
+## Background and Motivation
+- The player “plus-minus” (PM) is a common hockey performance metric.
+- The classic PM is a function of goals scored while that player is on the ice: 
+  - the number of goals for his team minus the number against.
+- The limits of this approach are obvious: there is no accounting for teammates or opponents.
+- In hockey, where players tend to be grouped together on “lines” and coaches will “line match” against opponents, a player’s PM can be artificially inflated or deflated by the play of his opponents and peers.
+
+
+## Data
+- The data comprise of play-by-play NHL game data for regular and playoff games during 11 seasons of 2002-2003 through 2013-2014.
+- There were p = 2,439 players involved in n = 69,449 goals.
+- The data contains information that indicates seasons, home & away teams, team configuration such as 5 on 4 powerplay, and which players are on & off the ice when a goal is made, etc.
+
+- Unfortunately, Python `scikit-learn` is not optimized to handle all season's data.
+  - What we can do with Python `scikit-learn` is handling one season each.
+  - I highly recommend R's `glmnet` for regression with cross-validation.
+  
+## Data
+
+```{.python}
+nhl = pd.read_csv('https://bcdanl.github.io/data/NHL_data_2002_2003.csv')
+```
+
+- `homegoal`: an indicator (0 or 1) for the home team scoring
+- `player_name`: entries for who was on the ice for each goal
+- `team`: indicators for each team
+- `config`: Special teams info. E.g., `S5v4` is a 5 on 4 powerplay
+- The value of `config`, `team`, and `player_name` are:
+  - 1 if it is for the home-team
+  - -1 for the away team
+  - 0 otherwise
+
+## Model
+- Consider constructing a binary response for every goal, equal to 1 for home-team goals and 0 for away-team goals:
+
+$$
+\begin{align}
+\log\left(\frac{\text{Prob}(\text{home-goal}_{i})}{\text{Prob}(\text{away-goal}_{i})}\right) &= \beta_0 + \sum_{j=1}^{J} \beta_{\text{team}_{j}}\text{team}_{j, i} + \sum_{k=1}^{K} \beta_{\text{config}_{k}}\text{config}_{k, i}  \\
+&\qquad + \sum_{m=1}^{M} \beta_{\text{home-player}_{m}}\text{home-player}_{m, i}\\
+&\qquad - \sum_{n=1}^{N} \beta_{\text{away-player}_{n}}\text{away-player}_{n, i}
+\end{align}
+$$
+
+## Home-ice Advantage
+
+- How can we estimate the home-team effect?
+
+```{.python}
+np.exp(lasso_cv.intercept_)
+```
+
+- This is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice.
+
+
+
+## Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)
+
+- **Traditional Plus‑Minus (PM):**
+  - **Definition:** Sum of on-ice contributions; +1 for a goal scored for the player's team and -1 for a goal against.
+  - **Data-Driven:** Directly observed outcome.
+  - **Limitations:** Can be noisy due to team context, limited ice time, or random variation.
+
+- **Expected Plus‑Minus (ppm):**
+  - **Definition:** A model-based estimate of a player's impact.
+  - **Calculation:** 
+    - Convert a player's effect ($\beta$) to a probability: $p = \frac{e^{\beta}}{1 + e^{\beta}}$
+    - Compute expected PM as:  $\text{ppm} = ng*p − ng* (1−p ) \)$
+    - Where $ng$ is the total number of goals the player was on the ice.
+  - **Benefits:** Smooths out noise and adjusts for context.
+
+## Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)
+
+- **Key Comparisons:**
+  - **Observed vs. Modeled:**  
+    - PM is a raw, observed measure.  
+    - Expected PM leverages model estimates to predict performance.
+  - **Variability:**  
+    - PM may fluctuate due to external factors.  
+    - Expected PM attempts to isolate a player's true impact.
+  - **Applications:**  
+    - Expected PM can help identify under- or over-performing players and guide strategic decisions.
+
+
+
+
+
+
+## Scaling?
+
+- We do not want to standardize variables here.
+  – The penalty with standardization is $\alpha \times SD(X_{player})$
+  – Players with small SD are those who play little (almost all zeros).
+  – Players with large SD are those who play a lot.
+  – Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.
+
+- Re-do everything with
+
+```{.python}
+from sklearn.preprocessing import scale # zero mean & one s.d.
+Xpred = scale(nhl_train)
+```
+

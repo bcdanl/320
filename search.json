@@ -5577,5 +5577,68 @@
     "title": "Lecture 9",
     "section": "Lasso Path - The Number of Nonzero Betas as a Function of Alpha",
     "text": "Lasso Path - The Number of Nonzero Betas as a Function of Alpha\n# Compute the coefficient path over the alpha grid that LassoCV used\nalphas, coefs, _ = lasso_path(X_train, np.log(y_train),\n                              alphas=lasso_cv.alphas_,\n                              max_iter=100000)\n\n# Count nonzero coefficients for each alpha (coefs shape: (n_features, n_alphas))\nnonzero_counts = np.sum(coefs != 0, axis=0)\n\n# Plot the number of nonzero coefficients versus alpha\nplt.figure(figsize=(8,6))\nplt.plot(alphas, nonzero_counts, marker='o', linestyle='-')\nplt.xscale('log')\nplt.xlabel('Alpha')\nplt.ylabel('Number of nonzero coefficients')\nplt.title('Nonzero Coefficients vs. Alpha')\n#plt.gca().invert_xaxis()  # Lower alphas (less regularization) on the right\nplt.axvline(x=lasso_cv.alpha_, color='red', linestyle='--', label='Best alpha')\nplt.legend()\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#background-and-motivation",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#background-and-motivation",
+    "title": "Lecture 9",
+    "section": "Background and Motivation",
+    "text": "Background and Motivation\n\nThe player “plus-minus” (PM) is a common hockey performance metric.\nThe classic PM is a function of goals scored while that player is on the ice:\n\nthe number of goals for his team minus the number against.\n\nThe limits of this approach are obvious: there is no accounting for teammates or opponents.\nIn hockey, where players tend to be grouped together on “lines” and coaches will “line match” against opponents, a player’s PM can be artificially inflated or deflated by the play of his opponents and peers."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#data",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#data",
+    "title": "Lecture 9",
+    "section": "Data",
+    "text": "Data\n\nThe data comprise of play-by-play NHL game data for regular and playoff games during 11 seasons of 2002-2003 through 2013-2014.\nThere were p = 2,439 players involved in n = 69,449 goals.\nThe data contains information that indicates seasons, home & away teams, team configuration such as 5 on 4 powerplay, and which players are on & off the ice when a goal is made, etc.\nUnfortunately, Python scikit-learn is not optimized to handle all season’s data.\n\nWhat we can do with Python scikit-learn is handling one season each.\nI highly recommend R’s glmnet for regression with cross-validation."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#data-1",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#data-1",
+    "title": "Lecture 9",
+    "section": "Data",
+    "text": "Data\nnhl = pd.read_csv('https://bcdanl.github.io/data/NHL_data_2002_2003.csv')\n\nhomegoal: an indicator (0 or 1) for the home team scoring\nplayer_name: entries for who was on the ice for each goal\nteam: indicators for each team\nconfig: Special teams info. E.g., S5v4 is a 5 on 4 powerplay\nThe value of config, team, and player_name are:\n\n1 if it is for the home-team\n-1 for the away team\n0 otherwise"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#model",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#model",
+    "title": "Lecture 9",
+    "section": "Model",
+    "text": "Model\n\nConsider constructing a binary response for every goal, equal to 1 for home-team goals and 0 for away-team goals:\n\n\\[\n\\begin{align}\n\\log\\left(\\frac{\\text{Prob}(\\text{home-goal}_{i})}{\\text{Prob}(\\text{away-goal}_{i})}\\right) &= \\beta_0 + \\sum_{j=1}^{J} \\beta_{\\text{team}_{j}}\\text{team}_{j, i} + \\sum_{k=1}^{K} \\beta_{\\text{config}_{k}}\\text{config}_{k, i}  \\\\\n&\\qquad + \\sum_{m=1}^{M} \\beta_{\\text{home-player}_{m}}\\text{home-player}_{m, i}\\\\\n&\\qquad - \\sum_{n=1}^{N} \\beta_{\\text{away-player}_{n}}\\text{away-player}_{n, i}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#home-ice-advantage",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#home-ice-advantage",
+    "title": "Lecture 9",
+    "section": "Home-ice Advantage",
+    "text": "Home-ice Advantage\n\nHow can we estimate the home-team effect?\n\nnp.exp(lasso_cv.intercept_)\n\nThis is the effect on odds that a goal is home rather than away, regardless of any information about what teams are playing or who is on ice."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-and-expected-plusminus-ppm",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-and-expected-plusminus-ppm",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus (PM) and Expected Plus‑Minus (ppm)",
+    "text": "Traditional Plus‑Minus (PM) and Expected Plus‑Minus (ppm)\n\nTraditional Plus‑Minus (PM):\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nData-Driven: Directly observed outcome.\nLimitations: Can be noisy due to team context, limited ice time, or random variation.\n\nExpected Plus‑Minus (ppm):\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (betamin) to a probability: \\(p = \\frac{e^{\\text{betamin}}}{1 + e^{\\text{betamin}}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng \\times (2p - 1) \\)\\)\nWhere \\(ng\\) is the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)",
+    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nTraditional Plus‑Minus (PM):\n\nDefinition: Sum of on-ice contributions; +1 for a goal scored for the player’s team and -1 for a goal against.\nData-Driven: Directly observed outcome.\nLimitations: Can be noisy due to team context, limited ice time, or random variation.\n\nExpected Plus‑Minus (ppm):\n\nDefinition: A model-based estimate of a player’s impact.\nCalculation:\n\nConvert a player’s effect (\\(\\beta\\)) to a probability: \\(p = \\frac{e^{\\beta}}{1 + e^{\\beta}}\\)\nCompute expected PM as: \\(\\text{ppm} = ng*p − ng* (1−p ) \\)\\)\nWhere \\(ng\\) is the total number of goals the player was on the ice.\n\nBenefits: Smooths out noise and adjusts for context."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#scaling",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#scaling",
+    "title": "Lecture 9",
+    "section": "Scaling?",
+    "text": "Scaling?\n\nWe do not want to standardize variables here. – The penalty with standardization is \\(\\alpha \\times SD(X_{player})\\) – Players with small SD are those who play little (almost all zeros). – Players with large SD are those who play a lot. – Standardization would up-weight the influence of players who rarely play relative to those who have a lot of ice time.\nRe-do everything with\n\nfrom sklearn.preprocessing import scale # zero mean & one s.d.\nXpred = scale(nhl_train)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm-1",
+    "href": "danl-lec/danl-320-lec-09-2025-0326.html#traditional-plusminus-pm-vs.-expected-plusminus-ppm-1",
+    "title": "Lecture 9",
+    "section": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)",
+    "text": "Traditional Plus‑Minus (PM) vs. Expected Plus‑Minus (ppm)\n\nKey Comparisons:\n\nObserved vs. Modeled:\n\nPM is a raw, observed measure.\n\nExpected PM leverages model estimates to predict performance.\n\nVariability:\n\nPM may fluctuate due to external factors.\n\nExpected PM attempts to isolate a player’s true impact.\n\nApplications:\n\nExpected PM can help identify under- or over-performing players and guide strategic decisions."
   }
 ]
