@@ -971,7 +971,7 @@ $$
 
 - Error in short form can be represented as:
 $$
-\widehat{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
+{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
 $$
 
 - If variable $X_1$ is correlated with $X_2$, the following assumptions are violated in the short regression model:
