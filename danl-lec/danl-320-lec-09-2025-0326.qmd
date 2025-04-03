@@ -915,7 +915,7 @@ correlated with existing predictor(s).
 
 - **Short regression**: The regression model with less predictors
 
-<div style="display:block; margin:-10px;"></div>
+<div style="display:block; margin:-25px;"></div>
 
 $$
 \begin{align}
@@ -925,7 +925,7 @@ $$
 
 - **Long regression**: The regression model that adds additional predictor(s) to the short one.
 
-<div style="display:block; margin:-10px;"></div>
+<div style="display:block; margin:-25px;"></div>
 
 $$
 \begin{align}
@@ -935,10 +935,10 @@ $$
 $$
 - OVB for $\beta_1$ is:
 
-<div style="display:block; margin:-10px;"></div>
+<div style="display:block; margin:-25px;"></div>
 
 $$
-\text{OVB} = \hat{\beta_{1, short}} - \hat{\beta_{1, long}}
+\text{OVB} = \widehat{\beta_{1}^{short}} - \widehat{\beta_{1}^{long}}
 $$
 
 ## How does an OVB happen in regression?
@@ -971,7 +971,7 @@ $$
 
 - Error in short form can be represented as:
 $$
-\hat{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
+\widehat{\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
 $$
 
 - If variable $X_1$ is correlated with $X_2$, the following assumptions are violated in the short regression model:
