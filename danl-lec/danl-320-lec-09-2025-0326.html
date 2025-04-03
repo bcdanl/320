@@ -1257,25 +1257,6 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 \text{OVB} = \widehat{\beta_{1}^{short}} - \widehat{\beta_{1}^{long}}
 \]</span></p>
 </section>
-<section id="how-does-an-ovb-happen-in-regression" class="slide level2">
-<h2>How does an OVB happen in regression?</h2>
-<ul>
-<li>In the first stage, consider the relationship between <code>price</code> and <code>brand</code>:</li>
-</ul>
-<p><span class="math display">\[
-\log(\text{price}) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_{1st}
-\]</span></p>
-<ul>
-<li><p>Then, calculate the residual: <span class="math display">\[
-\hat{\epsilon_{1st}} = \log(\text{price}) - \widehat{\log(\text{price})}
-\]</span></p></li>
-<li><p>The residual represents the log of OJ price after its correlation with brand has been removed!</p></li>
-<li><p>In the second stage, regress <span class="math inline">\(\log(\text{sales}_i)\)</span> on residual <span class="math inline">\(\hat{\epsilon}_i\)</span>:</p></li>
-</ul>
-<p><span class="math display">\[
-\log(\text{sales}) = \beta_0 + \beta_1\hat{\epsilon_{1st}}  + \epsilon_{2nd}
-\]</span></p>
-</section>
 <section id="ovb-formula" class="slide level2">
 <h2>OVB formula</h2>
 <ul>
@@ -1288,12 +1269,31 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <li><p>Error in short form can be represented as: <span class="math display">\[
 {\epsilon_{short}} = \beta_{2}X_2 + \epsilon_{long}
 \]</span></p></li>
-<li><p>If variable <span class="math inline">\(X_1\)</span> is correlated with <span class="math inline">\(X_2\)</span>, the following assumptions are violated in the short regression model:</p>
+<li><p>If variable <span class="math inline">\(X_1\)</span> is <strong>correlated</strong> with <span class="math inline">\(X_2\)</span>, the following assumptions are violated in the <u>short regression</u> model:</p>
 <ul>
-<li>Errors are not correlated with predictor variables.</li>
+<li>Errors are not correlated with predictors.</li>
 <li>Errors have a mean value of 0.</li>
 </ul></li>
 </ul>
+</section>
+<section id="how-does-an-ovb-happen-in-regression" class="slide level2">
+<h2>How does an OVB happen in regression?</h2>
+<ul>
+<li>In the first stage, consider the relationship between <code>price</code> and <code>brand</code>:</li>
+</ul>
+<p><span class="math display">\[
+\log(\text{price}) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_{1st}
+\]</span></p>
+<ul>
+<li><p>Then, calculate the residual: <span class="math display">\[
+\widehat{\epsilon_{1st}} = \log(\text{price}) - \widehat{\log(\text{price})}
+\]</span></p></li>
+<li><p>The residual represents the log of OJ price after its correlation with brand has been removed!</p></li>
+<li><p>In the second stage, regress <span class="math inline">\(\log(\text{sales})\)</span> on residual <span class="math inline">\(\widehat{\epsilon_{1st}}\)</span>:</p></li>
+</ul>
+<p><span class="math display">\[
+\log(\text{sales}) = \beta_0 + \beta_1\widehat{\epsilon_{1st}}  + \epsilon_{2nd}
+\]</span></p>
 </section>
 <section id="regression-sensitivity-analysis" class="slide level2">
 <h2>Regression Sensitivity Analysis</h2>

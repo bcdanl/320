@@ -5695,14 +5695,14 @@
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#how-does-an-ovb-happen-in-regression",
     "title": "Lecture 9",
     "section": "How does an OVB happen in regression?",
-    "text": "How does an OVB happen in regression?\n\nIn the first stage, consider the relationship between price and brand:\n\n\\[\n\\log(\\text{price}) = \\beta_0 + \\beta_1\\text{minute_maid} + \\beta_2\\text{tropicana} + \\epsilon_{1st}\n\\]\n\nThen, calculate the residual: \\[\n\\hat{\\epsilon_{1st}} = \\log(\\text{price}) - \\widehat{\\log(\\text{price})}\n\\]\nThe residual represents the log of OJ price after its correlation with brand has been removed!\nIn the second stage, regress \\(\\log(\\text{sales}_i)\\) on residual \\(\\hat{\\epsilon}_i\\):\n\n\\[\n\\log(\\text{sales}) = \\beta_0 + \\beta_1\\hat{\\epsilon_{1st}}  + \\epsilon_{2nd}\n\\]"
+    "text": "How does an OVB happen in regression?\n\nIn the first stage, consider the relationship between price and brand:\n\n\\[\n\\log(\\text{price}) = \\beta_0 + \\beta_1\\text{minute_maid} + \\beta_2\\text{tropicana} + \\epsilon_{1st}\n\\]\n\nThen, calculate the residual: \\[\n\\widehat{\\epsilon_{1st}} = \\log(\\text{price}) - \\widehat{\\log(\\text{price})}\n\\]\nThe residual represents the log of OJ price after its correlation with brand has been removed!\nIn the second stage, regress \\(\\log(\\text{sales})\\) on residual \\(\\widehat{\\epsilon_{1st}}\\):\n\n\\[\n\\log(\\text{sales}) = \\beta_0 + \\beta_1\\widehat{\\epsilon_{1st}}  + \\epsilon_{2nd}\n\\]"
   },
   {
     "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#ovb-formula",
     "href": "danl-lec/danl-320-lec-09-2025-0326.html#ovb-formula",
     "title": "Lecture 9",
     "section": "OVB formula",
-    "text": "OVB formula\n\nConsider the following short- and long- regressions:\n\nShort: \\(Y_i = \\beta_0 + \\beta_{1}^{short}X_1 + \\epsilon_{short}\\)\n\nLong: \\(Y_i = \\beta_0 + \\beta_{1}^{long}X_1 +\\beta_{2}X_2 + \\epsilon_{long}\\)\n\nError in short form can be represented as: \\[\n{\\epsilon_{short}} = \\beta_{2}X_2 + \\epsilon_{long}\n\\]\nIf variable \\(X_1\\) is correlated with \\(X_2\\), the following assumptions are violated in the short regression model:\n\nErrors are not correlated with predictor variables.\nErrors have a mean value of 0."
+    "text": "OVB formula\n\nConsider the following short- and long- regressions:\n\nShort: \\(Y_i = \\beta_0 + \\beta_{1}^{short}X_1 + \\epsilon_{short}\\)\n\nLong: \\(Y_i = \\beta_0 + \\beta_{1}^{long}X_1 +\\beta_{2}X_2 + \\epsilon_{long}\\)\n\nError in short form can be represented as: \\[\n{\\epsilon_{short}} = \\beta_{2}X_2 + \\epsilon_{long}\n\\]\nIf variable \\(X_1\\) is correlated with \\(X_2\\), the following assumptions are violated in the short regression model:\n\nErrors are not correlated with predictors.\nErrors have a mean value of 0."
   },
   {
     "objectID": "danl-lec/danl-320-lec-09-2025-0326.html#regression-sensitivity-analysis",
