@@ -915,6 +915,8 @@ correlated with existing predictor(s).
 
 - **Short regression**: The regression model with less predictors
 
+<div style="display:block; margin:-10px;"></div>
+
 $$
 \begin{align}
 \log(\text{sales}_i) = \beta_0 + \beta_1\log(\text{price}_i) + \epsilon_i
@@ -923,6 +925,7 @@ $$
 
 - **Long regression**: The regression model that adds additional predictor(s) to the short one.
 
+<div style="display:block; margin:-10px;"></div>
 
 $$
 \begin{align}
@@ -931,8 +934,11 @@ $$
 \end{align}
 $$
 - OVB for $\beta_1$ is:
+
+<div style="display:block; margin:-10px;"></div>
+
 $$
-\text{OVB} = \hat{\beta}_{1, short} - \hat{\beta}_{1, long}
+\text{OVB} = \hat{\beta_{1, short}} - \hat{\beta_{1, long}}
 $$
 
 ## How does an OVB happen in regression?
@@ -940,20 +946,20 @@ $$
 - In the first stage, consider the relationship between `price` and `brand`:
 
 $$
-\log(\text{price}_i) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_i
+\log(\text{price}) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_{1st}
 $$
 
 
 - Then, calculate the residual:
 $$
-\hat{\epsilon}_i = \log(\text{price}_i) - \widehat{\log(\text{price}_i)}
+\hat{\epsilon_{1st}} = \log(\text{price}) - \widehat{\log(\text{price})}
 $$
 - The residual represents the log of OJ price after its correlation with brand has been removed!
 
 - In the second stage, regress $\log(\text{sales}_i)$ on residual $\hat{\epsilon}_i$:
 
 $$
-\log(\text{sales}_i) = \beta_0 + \beta_1\hat{\epsilon}_i  + \epsilon_i
+\log(\text{sales}) = \beta_0 + \beta_1\hat{\epsilon_{1st}}  + \epsilon_{2nd}
 $$
 
 ## OVB formula

@@ -1230,6 +1230,9 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <li><p>OVB is the difference in beta estimates between short- and long-form regressions.</p></li>
 <li><p><strong>Short regression</strong>: The regression model with less predictors</p></li>
 </ul>
+<div style="display:block; margin:-10px;">
+
+</div>
 <p><span class="math display">\[
 \begin{align}
 \log(\text{sales}_i) = \beta_0 + \beta_1\log(\text{price}_i) + \epsilon_i
@@ -1238,13 +1241,20 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <ul>
 <li><strong>Long regression</strong>: The regression model that adds additional predictor(s) to the short one.</li>
 </ul>
+<div style="display:block; margin:-10px;">
+
+</div>
 <p><span class="math display">\[
 \begin{align}
 \log(\text{sales}_i) =&amp; \beta_0 + \beta_{1}\log(\text{price}_i) \\
 &amp;+ \beta_{2}\text{minute.maid}_i + \beta_{3}\text{tropicana}_i + \epsilon_i
 \end{align}
-\]</span> - OVB for <span class="math inline">\(\beta_1\)</span> is: <span class="math display">\[
-\text{OVB} = \hat{\beta}_{1, short} - \hat{\beta}_{1, long}
+\]</span> - OVB for <span class="math inline">\(\beta_1\)</span> is:</p>
+<div style="display:block; margin:-10px;">
+
+</div>
+<p><span class="math display">\[
+\text{OVB} = \hat{\beta_{1, short}} - \hat{\beta_{1, long}}
 \]</span></p>
 </section>
 <section id="how-does-an-ovb-happen-in-regression" class="slide level2">
@@ -1253,17 +1263,17 @@ f(x_i) = b_0 + b_1 x_{1,i} + b_2 x_{2,i} + \,\cdots\, +  b_p x_{p,i}
 <li>In the first stage, consider the relationship between <code>price</code> and <code>brand</code>:</li>
 </ul>
 <p><span class="math display">\[
-\log(\text{price}_i) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_i
+\log(\text{price}) = \beta_0 + \beta_1\text{minute_maid} + \beta_2\text{tropicana} + \epsilon_{1st}
 \]</span></p>
 <ul>
 <li><p>Then, calculate the residual: <span class="math display">\[
-\hat{\epsilon}_i = \log(\text{price}_i) - \widehat{\log(\text{price}_i)}
+\hat{\epsilon_{1st}} = \log(\text{price}) - \widehat{\log(\text{price})}
 \]</span></p></li>
 <li><p>The residual represents the log of OJ price after its correlation with brand has been removed!</p></li>
 <li><p>In the second stage, regress <span class="math inline">\(\log(\text{sales}_i)\)</span> on residual <span class="math inline">\(\hat{\epsilon}_i\)</span>:</p></li>
 </ul>
 <p><span class="math display">\[
-\log(\text{sales}_i) = \beta_0 + \beta_1\hat{\epsilon}_i  + \epsilon_i
+\log(\text{sales}) = \beta_0 + \beta_1\hat{\epsilon_{1st}}  + \epsilon_{2nd}
 \]</span></p>
 </section>
 <section id="ovb-formula" class="slide level2">
