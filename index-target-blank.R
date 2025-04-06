@@ -1,7 +1,7 @@
 # system("quarto render")
-quarto::quarto_render("listing-danl-320-lec.qmd")
-quarto::quarto_render("listing-danl-320-cw.qmd")
-quarto::quarto_render("listing-danl-320-hw.qmd")
+# quarto::quarto_render("listing-danl-320-lec.qmd")
+# quarto::quarto_render("listing-danl-320-cw.qmd")
+# quarto::quarto_render("listing-danl-320-hw.qmd")
 quarto::quarto_render("index.qmd")
 
 library(stringr)

@@ -19,8 +19,8 @@ listing:
     type: table
     fields: [title, date]
     sort: 
-      - "title desc"
-      - "date desc"
+      - "date"
+      - "title"
     sort-ui: false
     filter-ui: false
     page-size: 36
@@ -30,8 +30,8 @@ listing:
     type: table
     fields: [title, date]
     sort: 
-      - "date desc"
-      - "title desc"
+      - "date"
+      - "title"
     sort-ui: false
     filter-ui: false
     page-size: 36
@@ -40,8 +40,8 @@ listing:
     type: table
     fields: [title, date]
     sort: 
-      - "title desc"
-      - "date desc"
+      - "date"
+      - "title"
     sort-ui: false
     filter-ui: false
     page-size: 36
@@ -90,34 +90,21 @@ format:
 
 
 
-:::: {.columns}
-
-::: {.column width="45%"}
 ## $\bullet\,$ Lecture Slides :rocket:
 
-:::{#danl-320-lec}
+:::{#danl-310-lec}
 :::
 
 
-:::
 
-::: {.column width="10%"}
-
-:::
-
-
-::: {.column width="45%"}
 ## $\bullet\,$ Classwork  :keyboard:
 
-:::{#danl-320-cw}
+:::{#danl-310-cw}
 :::
 
 ## $\bullet\,$ Homework  :computer:
 
-:::{#danl-320-hw}
+:::{#danl-310-hw}
 :::
 
-:::
-
-::::
 

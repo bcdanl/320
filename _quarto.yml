@@ -27,38 +27,38 @@ website:
         target: _blank
       - text: " "
     
-  sidebar:
-    title: "Welcome!"
-    logo: img/geneseo-logo-squared.png
-    style: docked
-    search: false
-    # collapse-level: 0
-    # pinned: true
-    # border: true
-    # type: light
-    contents:
-      - text: <a href="./index.html"><font size ="6" ><b>Welcome! </b></font><font size ="5" color="#194493"> <i class="fa fa-sun" aria-hidden="true"></i></font></a>
-      - text: &nbsp;
-      - text: <font size ="5" ><b>- Lecture </b></font><font size ="5" color="#194493">{{< fa solid laptop >}}</font>
-        href: listing-danl-320-lec.qmd
-      - text: &nbsp;
-      # - text: <font size ="5" ><b>- Q & A </b></font><font size ="5" color="#194493">{{< fa solid commenting >}}</font>
-      #   href: listing-danl-320-qa.qmd
-      # - text: &nbsp;
-      - text: <font size ="5" ><b>- Classwork </b></font><font size ="5" color="#194493">{{< fa solid keyboard >}}</font>
-        href: listing-danl-320-cw.qmd
-      - text: &nbsp;
-      - text: <font size ="5" ><b>- Homework </b></font><font size ="5" color="#194493">{{< fa solid level-up >}}</font>
-        href: listing-danl-320-hw.qmd
-      - text: &nbsp;
-      - text: <font size ="5" ><b>- Q & A </b></font><font size ="5" color="#194493">{{< fa solid commenting >}}</font>
-        href: danl-qa/danl-320-qa.qmd
-      # - text: &nbsp;
-      # - text: <font size ="5" ><b>- Project </b></font><font size ="5" color="#194493">{{< fa solid brain >}}</font>
-      #   href: danl-rw/danl-320-project.qmd
-      # - text: &nbsp;
-      # - text: <font size ="5" ><b>- Class Notes </b></font><font size ="5" color="#194493">{{< fa solid pencil >}}</font>
-      #   href: listing-danl-320-class.qmd
+  # sidebar:
+  #   title: "Welcome!"
+  #   logo: img/geneseo-logo-squared.png
+  #   style: docked
+  #   search: false
+  #   # collapse-level: 0
+  #   # pinned: true
+  #   # border: true
+  #   # type: light
+  #   contents:
+  #     - text: <a href="./index.html"><font size ="6" ><b>Welcome! </b></font><font size ="5" color="#194493"> <i class="fa fa-sun" aria-hidden="true"></i></font></a>
+  #     - text: &nbsp;
+  #     - text: <font size ="5" ><b>- Lecture </b></font><font size ="5" color="#194493">{{< fa solid laptop >}}</font>
+  #       href: listing-danl-320-lec.qmd
+  #     - text: &nbsp;
+  #     # - text: <font size ="5" ><b>- Q & A </b></font><font size ="5" color="#194493">{{< fa solid commenting >}}</font>
+  #     #   href: listing-danl-320-qa.qmd
+  #     # - text: &nbsp;
+  #     - text: <font size ="5" ><b>- Classwork </b></font><font size ="5" color="#194493">{{< fa solid keyboard >}}</font>
+  #       href: listing-danl-320-cw.qmd
+  #     - text: &nbsp;
+  #     - text: <font size ="5" ><b>- Homework </b></font><font size ="5" color="#194493">{{< fa solid level-up >}}</font>
+  #       href: listing-danl-320-hw.qmd
+  #     - text: &nbsp;
+  #     - text: <font size ="5" ><b>- Q & A </b></font><font size ="5" color="#194493">{{< fa solid commenting >}}</font>
+  #       href: danl-qa/danl-320-qa.qmd
+  #     # - text: &nbsp;
+  #     # - text: <font size ="5" ><b>- Project </b></font><font size ="5" color="#194493">{{< fa solid brain >}}</font>
+  #     #   href: danl-rw/danl-320-project.qmd
+  #     # - text: &nbsp;
+  #     # - text: <font size ="5" ><b>- Class Notes </b></font><font size ="5" color="#194493">{{< fa solid pencil >}}</font>
+  #     #   href: listing-danl-320-class.qmd
         
   page-footer: 
     border: false
