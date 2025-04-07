@@ -17,7 +17,7 @@ listing:
   - id: danl-320-lec
     contents: "danl-lec/danl-320*.qmd"
     type: table
-    fields: [title, date]
+    fields: [title, subtitle, date]
     sort: 
       - "date"
       - "title"
@@ -28,7 +28,7 @@ listing:
   - id: danl-320-cw
     contents: "danl-cw/danl-320*.qmd"
     type: table
-    fields: [title, date]
+    fields: [title, subtitle, date]
     sort: 
       - "date"
       - "title"
@@ -38,7 +38,7 @@ listing:
   - id: danl-320-hw
     contents: "danl-hw/danl-320*.qmd"
     type: table
-    fields: [title, date]
+    fields: [title, subtitle, date]
     sort: 
       - "date"
       - "title"
