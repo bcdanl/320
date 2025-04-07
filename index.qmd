@@ -92,19 +92,19 @@ format:
 
 ## $\bullet\,$ Lecture Slides :rocket:
 
-:::{#danl-310-lec}
+:::{#danl-320-lec}
 :::
 
 
 
 ## $\bullet\,$ Classwork  :keyboard:
 
-:::{#danl-310-cw}
+:::{#danl-320-cw}
 :::
 
 ## $\bullet\,$ Homework  :computer:
 
-:::{#danl-310-hw}
+:::{#danl-320-hw}
 :::
 
 
