@@ -1,0 +1,473 @@
+---
+title: Lecture 10
+subtitle: Tree-based Models
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: true
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-04-07
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(stargazer)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+# **Classification and Regression Trees** {background-color="#1c4982"}
+
+## Decision Tree
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/tree_rain.png" width="650px">
+</p>
+
+- Tree-logic uses a series of steps to come to a conclusion.
+- The trick is to have mini-decisions combine for good choices.
+- Each decision is a node, and the final prediction is a leaf node.
+
+
+## Decision Tree
+
+- Decision trees partition training data into homogenous nodes/subgroups with similar response values
+  - Decision trees take any type of data, numerical or categorical.
+
+- The subgroups are found recursively using binary partitions
+  - i.e. asking a series of yes-no questions about the predictor variables
+
+- We stop splitting the tree once a stopping criteria has been reached (e.g. maximum depth allowed)
+
+
+## Decision Tree
+
+- For each subgroup/node, predictions are made with:
+  - **Classification tree**: the most popular class in the node
+  - **Regression tree**: the average of the outcome values in the node
+
+- **Classification trees** have class probabilities at the leaves.
+  - Probability I'll be in heavy rain is 0.9 (so take an umbrella).
+
+- **Regression trees** have a mean outcome at the leaves.
+  - The expected amount of rain is 2.2 inches (so take an umbrella).
+
+- Decision trees make fewer assumptions about the relationship between `x` and `y`.
+  - E.g., linear model assumes the linear relationship between `x` and `y`.
+
+- Decision trees naturally express certain kinds of interactions among the predictor variables: those of the form: "IF `x` is true AND `y` is true, THEN...."
+
+
+
+## Decision Tree
+- We need a way to estimate the sequence of decisions.
+  - How many are they?
+  - What is the order?
+
+- CART grows the tree through a sequence of splits:
+  1. Given any set (node) of data, you can find the optimal split (the error minimizing split) and divide into two child sets.
+  2. We then look at each child set, and again find the optimal split to divide it into two homogeneous subsets.
+  3. The children become parents, and we look again for the optimal split on their new children (the grandchildren!).
+
+- You stop splitting and growing when the size of the leaf nodes hits some minimum threshold (e.g., say no less than 10 observations per leaf).
+
+
+## NBC Shows
+
+```{.python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+nbc = pd.read_csv("https://bcdanl.github.io/data/nbc_show.csv")
+nbc_demog = pd.read_csv("https://bcdanl.github.io/data/nbc_demog.csv")
+
+plt.figure(figsize=(8, 6))
+sns.lmplot(data=nbc, x="GRP", y="PE", hue="Genre", ci=None, aspect=1.2, height=6,
+           markers="o", scatter_kws={"s": 50}, line_kws={"linewidth": 2})
+plt.title("Scatter Plot with Linear Fit of GRP vs PE by Genre")
+plt.xlabel("GRP")
+plt.ylabel("PE")
+plt.show()
+```
+
+
+- Consider a classification tree to predict genre from
+demographics.
+- Output from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.
+
+- Data from NBC on response to TV pilots
+  - Gross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.
+  - Projected Engagement (PE): a more subtle measure of audience.
+    - After watching a show, viewer is quizzed on order and detail.
+    - This measures their engagement with the show (and ads!).
+
+
+## Regression Tree with NBC Shows
+- Consider predicting engagement from `GRP` and `genre`.
+
+```{.python}
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
+
+# Prepare the predictor set and target variable.
+# We want to model: PE ~ Genre + GRP using all columns except the first.
+# Here, we select the 'Genre' and 'GRP' columns as predictors and 'PE' as the target.
+X = nbc[['Genre', 'GRP']]
+y = nbc['PE']
+
+# If 'Genre' is categorical, convert it to dummy variables.
+# This is necessary because scikit-learn models require numerical inputs.
+X = pd.get_dummies(X, columns=['Genre'], drop_first=True)
+
+# Build and fit the regression tree.
+reg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)
+reg_tree.fit(X, y)
+
+# Generate predictions for PE and store them in the DataFrame.
+nbc['PEpred'] = reg_tree.predict(X)
+
+# Plot the regression tree.
+plt.figure(figsize=(12, 8))
+plot_tree(reg_tree, feature_names=X.columns, filled=True, rounded=True)
+plt.title("Regression Tree for PE")
+plt.show()
+```
+  
+## Regression Tree with NBC Shows
+```{.python}
+reg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)
+reg_tree.fit(X, y)
+```
+-	`max_depth=3`
+	-	Limits the tree to 3 levels.
+	-	Helps simplify the model and makes the tree easier to interpret, especially with small datasets.
+-	`min_samples_split=2`
+	-	Requires at least 2 samples to consider splitting a node.
+	-	Ensures that the tree can grow even with very few samples in a node.
+-	`reg_tree.fit(X, y)`
+	-	Trains the regression tree model using predictors `X` and outcome variable `y`.
+	-	The model learns to predict the outcome by finding the best splits based on reducing the sum of squared errors.
+
+
+## Regression Tree Outcome Explained
+
+- **Squared Error**:  
+  - The sum of squared differences between the actual outcome values and the predicted value (i.e., the mean of those target values) for all samples in the node.  
+  - It quantifies the "impurity" or error of the node—the lower the value, the more homogeneous the node is with respect to the outcome variable.
+
+- **Samples**:  
+  - The number of observations in the node.  
+  - The root node starts with all samples, decreasing with each split.
+
+
+
+## Regression Tree Outcome Explained
+
+- **Value**:  
+  - In a regression tree, the predicted value for a node is the average of the outcome values for the samples in that node.  
+  - The value shown in the node represents this average.
+
+- **Leaf Node**:  
+  - A terminal node where no further splitting occurs.  
+  - When a new data point falls into that leaf node, the regression tree will predict its output as this value.
+
+## Regression Tree with NBC Shows
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/nbc_nonlinear.png" width="400px">
+</p>
+
+- Green is comedy, blue is drama, red is reality
+- **Nonlinear**: PE increases with GRP, but in jumps
+  - Trees automatically learn non-linear response functions and will discover interactions between variables.
+- Follow how the tree translates into changing the predicted PE.
+
+
+## Classification Tree with NBC Shows
+- Consider a classification tree to predict genre from demographics.
+- Output from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.
+	
+```{.python}
+# Use the demographic variables (excluding the first column) as predictors
+X = demog.iloc[:, 1:]
+
+# Outcome
+y = nbc["Genre"]
+
+# Build the classification tree. 
+clf = DecisionTreeClassifier(min_samples_split=2, random_state=42)
+clf.fit(X, y)
+
+# Generate predictions for the 'Genre' and store them in the nbc DataFrame
+nbc["genrepred"] = clf.predict(X)
+
+# Plot the decision tree
+plt.figure(figsize=(12, 8))
+plot_tree(clf, feature_names=X.columns, class_names=clf.classes_, filled=True, rounded=True)
+plt.title("Classification Tree for Genre")
+plt.show()
+```
+
+
+## Classification Tree Outcome Explained
+Each node in the decision tree plot displays key information:
+
+- **Gini**:
+  - A measure of impurity in the node.
+  - Lower values indicate more homogeneous groups.
+  - The algorithm tries to minimize this value with each split.
+- **Value**:
+  - The distribution of classes (counts) in the node.
+  - Helps determine the majority class for prediction.
+- **Leaf Node**:
+  - The prediction is made based on the majority class of samples in the node.
+	
+	
+# **Prunning** {background-color="#1c4982"}
+
+## Prunning
+
+- The biggest challenge with CART models is avoiding overfit.
+- For CART, the usual solution is to rely on cross validation (CV).
+- The way to cross-validate the fully fitted tree is to prune it by removing split rules from the bottom up:
+  - At each step, remove the split that contributes least to deviance reduction.
+  - This is a reverse to CART’s growth process.
+- Pruning yields candidate tree.
+- Each prune step produces a candidate tree model, and we can compare their out-of-sample prediction performance through CV.
+
+
+## Boston Housing Data
+
+```{.python}
+boston = pd.read_csv("https://bcdanl.github.io/data/boston.csv")
+```
+
+The `boston` DataFrame has 506 observations and 14 variables.
+- per capita income,
+- environmental factors,
+- educational facilities,
+- property size,
+- crime rate,
+- etc.
+
+- The goal is to predict housing values (`medv` in $1,000).
+
+
+## Boston Housing Data
+
+- `min_impurity_decrease=0.005`: The minimum reduction in impurity required for a split to occur.
+-	**Purpose**:
+	-	Ensures that each split meaningfully improves the homogeneity of the node.
+	-	Prevents splitting when the improvement is too small.
+-	**Effect**:
+	-	Only splits that reduce the impurity by at least 0.005 are allowed.
+
+- Do we need all the splits? Is the tree just fitting noise?
+
+```{.python}
+# Set a random seed for reproducibility
+np.random.seed(42120532)
+train, test = train_test_split(boston, test_size=0.20, random_state=42120532)
+X_train = train.drop(columns=["medv"])
+y_train = train["medv"]
+
+# Without max_depth=3
+tree_model = DecisionTreeRegressor(min_impurity_decrease=0.005, random_state=42)
+tree_model.fit(X_train, y_train)
+
+# Plot the initial regression tree
+plt.figure(figsize=(16, 12), dpi=300)
+plot_tree(tree_model, feature_names=X_train.columns, filled=True, rounded=True)
+plt.title("Regression Tree for medv (Initial Fit)")
+plt.show()
+```
+
+
+## Cost-Complexity Pruning Path
+
+```{.python}
+# Obtain the cost-complexity pruning path from the initial tree
+path = tree_model.cost_complexity_pruning_path(X_train, y_train)  # Get candidate ccp_alpha values and corresponding impurities
+ccp_alphas = path.ccp_alphas  # Candidate pruning parameters (alpha values)
+impurities = path.impurities  # Impurity values at each candidate alpha
+
+# Exclude the maximum alpha value to avoid the trivial tree (a tree with only the root)
+ccp_alphas = ccp_alphas[:-1]  # Remove the last alpha value which would prune the tree to a single node
+
+# Set up 10-fold cross-validation
+kf = KFold(n_splits=10, shuffle=True, random_state=42)  # Initialize 10-fold CV with shuffling and fixed random state
+cv_scores = []  # List to store mean cross-validated scores (negative MSE)
+leaf_nodes = []  # List to record the number of leaves for each pruned tree
+
+# Loop over each candidate alpha value to evaluate its performance
+for ccp_alpha in ccp_alphas:
+    # Create a DecisionTreeRegressor with the current ccp_alpha and other specified parameters
+    clf = DecisionTreeRegressor(random_state=42,
+                                ccp_alpha=ccp_alpha,
+                                min_impurity_decrease=0.005)
+    
+    # Perform 10-fold cross-validation and compute negative mean squared error (MSE)
+    scores = cross_val_score(clf, X_train, y_train,
+                             cv=kf, scoring="neg_mean_squared_error")
+    cv_scores.append(np.mean(scores))  # Append the mean CV score for the current alpha
+    
+    # Fit the tree on the training data to record additional metrics
+    clf.fit(X_train, y_train)
+    leaf_nodes.append(clf.get_n_leaves())  # Record the number of leaf nodes in the tree
+
+# Select the best alpha based on the highest (least negative) mean CV score
+best_alpha = ccp_alphas[np.argmax(cv_scores)]  # Identify the alpha with the best CV performance
+print("Best alpha:", best_alpha)  # Print the best alpha value
+
+# Train the final pruned tree using the best alpha found
+final_tree = DecisionTreeRegressor(random_state=42,
+                                   ccp_alpha=best_alpha,
+                                   min_impurity_decrease=0.005)
+final_tree.fit(X_train, y_train)  # Fit the final model on the training data
+```
+
+
+## Cost-Complexity Pruning Path
+```{.python}
+path = tree_model.cost_complexity_pruning_path(X_train, y_train)  # Get candidate ccp_alpha values and corresponding impurities
+ccp_alphas = path.ccp_alphas  # Candidate pruning parameters (alpha values)
+impurities = path.impurities  # Impurity values at each candidate alpha
+
+# Exclude the maximum alpha value to avoid the trivial tree (a tree with only the root)
+  # Remove the last alpha value which would prune the tree to a single node
+ccp_alphas = ccp_alphas[:-1]  
+```
+
+-	The `cost_complexity_pruning_path` method computes a series of effective alpha values (`ccp_alphas`) and the corresponding impurities.
+-	These alpha values control the amount of pruning: higher alphas result in simpler (smaller) trees.
+
+
+## Cross-Validation and Metrics Collection
+
+```{.python}
+kf = KFold(n_splits=10, shuffle=True, random_state=42)
+cv_scores = []  # mean CV scores (negative MSE)
+leaf_nodes = []
+sse = []
+```
+-	A 10-fold cross-validation is set up to evaluate each candidate `ccp_alpha`.
+-	We also prepare lists to store:
+    -	Mean CV scores
+    -	The number of leaf nodes for each pruned tree
+    - SSE on training data
+	
+	
+## Loop Over Alpha Values
+-	For each `ccp_alpha`, a new tree is built:
+-	Cross-validation: cross_val_score computes negative MSE over 10 folds.
+-	Leaf Nodes: After fitting, `clf.get_n_leaves()` records the number of terminal nodes.
+-	SSE on Training: SSE is computed by summing squared errors on training data.
+```{.python}
+# Loop over each candidate alpha value to evaluate its performance
+for ccp_alpha in ccp_alphas:
+    # Create a DecisionTreeRegressor with the current ccp_alpha and other specified parameters
+    clf = DecisionTreeRegressor(random_state=42,
+                                ccp_alpha=ccp_alpha,
+                                min_impurity_decrease=0.005)
+    
+    # Perform 10-fold cross-validation and compute negative mean squared error (MSE)
+    scores = cross_val_score(clf, X_train, y_train,
+                             cv=kf, scoring="neg_mean_squared_error")
+    cv_scores.append(np.mean(scores))  # Append the mean CV score for the current alpha
+    
+    # Fit the tree on the training data to record additional metrics
+    clf.fit(X_train, y_train)
+    leaf_nodes.append(clf.get_n_leaves())  # Record the number of leaf nodes in the tree
+
+    # Compute SSE (sum of squared errors) on the training set
+    preds = clf.predict(X_train)  # Predict target values on training data
+    sse.append(np.sum((y_train - preds) ** 2))  # Calculate and record SSE for training set
+```
+
+
+## Selecting and Training the Final Tree
+```{.python}
+# Select the best alpha based on the highest (least negative) mean CV score
+best_alpha = ccp_alphas[np.argmax(cv_scores)]  # Identify the alpha with the best CV performance
+print("Best alpha:", best_alpha)  # Print the best alpha value
+
+# Train the final pruned tree using the best alpha found
+final_tree = DecisionTreeRegressor(random_state=42,
+                                   ccp_alpha=best_alpha,
+                                   min_impurity_decrease=0.005)
+final_tree.fit(X_train, y_train)  # Fit the final model on the training data
+```
+
+-	The best alpha is chosen as the one with the highest mean CV score (remember: higher negative MSE means lower error).
+
+-	A final tree is trained using the optimal best_alpha, which prunes the tree for better generalization.
+
+
+## Cross-Validated Tree Pruning
+The algorithm does cross-validation across pruning levels.
+```{.python}
+# Plot the average cross-validated MSE against the number of leaf nodes
+negative_cv_scores = -np.array(cv_scores)
+
+plt.figure(figsize=(8, 6), dpi=150)
+plt.plot(leaf_nodes, negative_cv_scores, marker='o', linestyle='-')
+plt.axvline(x=final_tree.get_n_leaves(), color='red', linestyle='--', label='Leaf Nodes = 21')  # Add vertical line at 21 leaf nodes
+plt.xlabel("Number of Leaf Nodes")
+plt.ylabel("Mean CV MSE")
+plt.title("CV Error vs. Number of Leaf Nodes")
+plt.grid(True)
+plt.show()
+```
+
+## Overfitting
+The larger the number of leaf nodes, the smaller SSE on the training data.
+```{.python}
+# Plot the SSE on the training against the number of leaf nodes
+plt.figure(figsize=(8, 6), dpi=150)
+plt.plot(leaf_nodes, sse, marker='o', linestyle='-')
+plt.xlabel("Number of Leaf Nodes")
+plt.ylabel("SSE")
+plt.title("SSE vs. Number of Leaf Nodes")
+plt.grid(True)
+plt.show()
+```
+

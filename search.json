@@ -88,7 +88,7 @@
     "href": "listing-danl-320-lec.html",
     "title": "DANL 320 - Lecture",
     "section": "",
-    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Apache Hadoop and Spark; PySpark\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 6\n\n\nPySpark Basics\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 7\n\n\nLinear Regression\n\n\nFebruary 17, 2025\n\n\n\n\nLecture 8\n\n\nLogistic Regression\n\n\nMarch 10, 2025\n\n\n\n\nLecture 9\n\n\nK-fold Cross-Validation; Regularized Regression\n\n\nMarch 26, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
+    "text": "Title\n\n\nSubtitle\n\n\nDate\n\n\n\n\n\n\nLecture 1\n\n\nSyllabus, Course Outline, and DANL Career\n\n\nJanuary 22, 2025\n\n\n\n\nLecture 2\n\n\nGetting Started with Jupyter Notebook and Quarto\n\n\nJanuary 27, 2025\n\n\n\n\nLecture 3\n\n\nPython Basics\n\n\nJanuary 29, 2025\n\n\n\n\nLecture 4\n\n\nBig Data\n\n\nFebruary 3, 2025\n\n\n\n\nLecture 5\n\n\nDistributed Computing Framework; Apache Hadoop and Spark; PySpark\n\n\nFebruary 5, 2025\n\n\n\n\nLecture 6\n\n\nPySpark Basics\n\n\nFebruary 10, 2025\n\n\n\n\nLecture 7\n\n\nLinear Regression\n\n\nFebruary 17, 2025\n\n\n\n\nLecture 8\n\n\nLogistic Regression\n\n\nMarch 10, 2025\n\n\n\n\nLecture 9\n\n\nK-fold Cross-Validation; Regularized Regression\n\n\nMarch 26, 2025\n\n\n\n\nLecture 10\n\n\nTree-based Models\n\n\nApril 7, 2025\n\n\n\n\n\n\nNo matching items\n\n Back to top"
   },
   {
     "objectID": "listing-danl-320-hw.html",
@@ -3757,5 +3757,180 @@
     "title": "Homework 1",
     "section": "Question 5",
     "text": "Question 5\n\nImport the math library and calculate the square root of 81 using the sqrt() function provided by the math library.\n\n\n\nimport math\nmath.sqrt(81)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree",
+    "title": "Lecture 10",
+    "section": "Decision Tree",
+    "text": "Decision Tree\n\n\n\n\nTree-logic uses a series of steps to come to a conclusion.\nThe trick is to have mini-decisions combine for good choices.\nEach decision is a node, and the final prediction is a leaf node."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-1",
+    "title": "Lecture 10",
+    "section": "Decision Tree",
+    "text": "Decision Tree\n\nDecision trees partition training data into homogenous nodes/subgroups with similar response values\n\nDecision trees take any type of data, numerical or categorical.\n\nThe subgroups are found recursively using binary partitions\n\ni.e. asking a series of yes-no questions about the predictor variables\n\nWe stop splitting the tree once a stopping criteria has been reached (e.g. maximum depth allowed)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#classification-and-regression-trees-cart",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#classification-and-regression-trees-cart",
+    "title": "Lecture 10",
+    "section": "Classification and Regression Trees (CART)",
+    "text": "Classification and Regression Trees (CART)\n\nFor each subgroup/node, predictions are made with:\n\nClassification tree: the most popular class in the node\nRegression tree: the average of the outcome values in the node\n\nClassification trees have class probabilities at the leaves.\n\nProbability I’ll be in heavy rain is 0.9 (so take an umbrella).\n\nRegression trees have a mean outcome at the leaves.\n\nThe expected amount of rain is 2.2 inches (so take an umbrella).\n\nDecision trees make fewer assumptions about the relationship between x and y.\n\nE.g., linear model assumes the linear relationship between x and y.\n\nDecision trees naturally express certain kinds of interactions among the predictor variables: those of the form: “IF x is true AND y is true, THEN….”"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-2",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-2",
+    "title": "Lecture 10",
+    "section": "Decision Tree",
+    "text": "Decision Tree\n\nFor each subgroup/node, predictions are made with:\n\nClassification tree: the most popular class in the node\nRegression tree: the average of the outcome values in the node\n\nClassification trees have class probabilities at the leaves.\n\nProbability I’ll be in heavy rain is 0.9 (so take an umbrella).\n\nRegression trees have a mean outcome at the leaves.\n\nThe expected amount of rain is 2.2 inches (so take an umbrella).\n\nDecision trees make fewer assumptions about the relationship between x and y.\n\nE.g., linear model assumes the linear relationship between x and y.\n\nDecision trees naturally express certain kinds of interactions among the predictor variables: those of the form: “IF x is true AND y is true, THEN….”"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-3",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#decision-tree-3",
+    "title": "Lecture 10",
+    "section": "Decision Tree",
+    "text": "Decision Tree\n\nWe need a way to estimate the sequence of decisions.\n\nHow many are they?\nWhat is the order?\n\nCART grows the tree through a sequence of splits:\n\nGiven any set (node) of data, you can find the optimal split (the error minimizing split) and divide into two child sets.\nWe then look at each child set, and again find the optimal split to divide it into two homogeneous subsets.\nThe children become parents, and we look again for the optimal split on their new children (the grandchildren!).\n\nYou stop splitting and growing when the size of the leaf nodes hits some minimum threshold (e.g., say no less than 10 observations per leaf)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows",
+    "title": "Lecture 10",
+    "section": "NBC Shows",
+    "text": "NBC Shows\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nnbc = pd.read_csv(\"https://bcdanl.github.io/data/nbc_show.csv\")\nnbc_demog = pd.read_csv(\"https://bcdanl.github.io/data/nbc_demog.csv\")\n\nplt.figure(figsize=(8, 6))\nsns.lmplot(data=nbc, x=\"GRP\", y=\"PE\", hue=\"Genre\", ci=None, aspect=1.2, height=6,\n           markers=\"o\", scatter_kws={\"s\": 50}, line_kws={\"linewidth\": 2})\nplt.title(\"Scatter Plot with Linear Fit of GRP vs PE by Genre\")\nplt.xlabel(\"GRP\")\nplt.ylabel(\"PE\")\nplt.show()\n\nConsider a classification tree to predict genre from demographics.\nOutput from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.\nData from NBC on response to TV pilots\n\nGross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.\nProjected Engagement (PE): a more subtle measure of audience.\n\nAfter watching a show, viewer is quizzed on order and detail.\nThis measures their engagement with the show (and ads!)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows-1",
+    "title": "Lecture 10",
+    "section": "NBC Shows",
+    "text": "NBC Shows\n\nModel Training: A DecisionTreeClassifier is instantiated and trained on the predictors (X) and outcome (y).\nPrediction: We generate predictions on the same data and store these in the nbc DataFrame.\nVisualization: The decision tree is plotted using plot_tree, displaying node details and class probabilities.\n\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nimport matplotlib.pyplot as plt\n\n# Use the demographic variables (excluding the first column) as predictors\nX = demog.iloc[:, 1:]\n\n# Outcome\ny = nbc[\"Genre\"]\n\n# Build the classification tree. \nclf = DecisionTreeClassifier(min_samples_split=2, random_state=42)\nclf.fit(X, y)\n\n# Generate predictions for the 'Genre' and store them in the nbc DataFrame\nnbc[\"genrepred\"] = clf.predict(X)\n\n# Plot the decision tree\nplt.figure(figsize=(12, 8))\nplot_tree(clf, feature_names=X.columns, class_names=clf.classes_, filled=True, rounded=True)\nplt.title(\"Classification Tree for Genre\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#classification-tree-outcome-explained",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#classification-tree-outcome-explained",
+    "title": "Lecture 10",
+    "section": "Classification Tree Outcome Explained",
+    "text": "Classification Tree Outcome Explained\nEach node in the decision tree plot displays key information:\n\nGini:\n\nA measure of impurity in the node.\nLower values indicate more homogeneous groups.\nThe algorithm tries to minimize this value with each split.\n\nValue:\n\nThe distribution of classes (counts) in the node.\nHelps determine the majority class for prediction.\n\nLeaf Node:\n\nThe prediction is made based on the majority class of samples in the node."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows",
+    "title": "Lecture 10",
+    "section": "Regression Tree with NBC Shows",
+    "text": "Regression Tree with NBC Shows\n\nConsider predicting engagement from GRP and genre.\n\nfrom sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree\n\n# Prepare the predictor set and target variable.\n# We want to model: PE ~ Genre + GRP using all columns except the first.\n# Here, we select the 'Genre' and 'GRP' columns as predictors and 'PE' as the target.\nX = nbc[['Genre', 'GRP']]\ny = nbc['PE']\n\n# If 'Genre' is categorical, convert it to dummy variables.\n# This is necessary because scikit-learn models require numerical inputs.\nX = pd.get_dummies(X, columns=['Genre'], drop_first=True)\n\n# Build and fit the regression tree.\nreg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)\nreg_tree.fit(X, y)\n\n# Generate predictions for PE and store them in the DataFrame.\nnbc['PEpred'] = reg_tree.predict(X)\n\n# Plot the regression tree.\nplt.figure(figsize=(12, 8))\nplot_tree(reg_tree, feature_names=X.columns, filled=True, rounded=True)\nplt.title(\"Regression Tree for PE\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-1",
+    "title": "Lecture 10",
+    "section": "Regression Tree with NBC Shows",
+    "text": "Regression Tree with NBC Shows\nreg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)\nreg_tree.fit(X, y)\n\nmax_depth=3\n\nLimits the tree to 3 levels.\nHelps simplify the model and makes the tree easier to interpret, especially with small datasets.\n\nmin_samples_split=2\n\nRequires at least 2 samples to consider splitting a node.\nEnsures that the tree can grow even with very few samples in a node.\n\nreg_tree.fit(X, y)\n\nTrains the regression tree model using predictors X and outcome variable y.\nThe model learns to predict the outcome by finding the best splits based on reducing the sum of squared errors."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-outcome-explained",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-outcome-explained",
+    "title": "Lecture 10",
+    "section": "Regression Tree Outcome Explained",
+    "text": "Regression Tree Outcome Explained\n\nSquared Error:\n\nThe sum of squared differences between the actual outcome values and the predicted value (i.e., the mean of those target values) for all samples in the node.\n\nIt quantifies the “impurity” or error of the node—the lower the value, the more homogeneous the node is with respect to the outcome variable.\n\nSamples:\n\nThe number of observations in the node.\n\nThe root node starts with all samples, decreasing with each split."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#classification-tree-with-nbc-shows",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#classification-tree-with-nbc-shows",
+    "title": "Lecture 10",
+    "section": "Classification Tree with NBC Shows",
+    "text": "Classification Tree with NBC Shows\n\nConsider a classification tree to predict genre from demographics.\nOutput from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.\n\n# Use the demographic variables (excluding the first column) as predictors\nX = demog.iloc[:, 1:]\n\n# Outcome\ny = nbc[\"Genre\"]\n\n# Build the classification tree. \nclf = DecisionTreeClassifier(min_samples_split=2, random_state=42)\nclf.fit(X, y)\n\n# Generate predictions for the 'Genre' and store them in the nbc DataFrame\nnbc[\"genrepred\"] = clf.predict(X)\n\n# Plot the decision tree\nplt.figure(figsize=(12, 8))\nplot_tree(clf, feature_names=X.columns, class_names=clf.classes_, filled=True, rounded=True)\nplt.title(\"Classification Tree for Genre\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-outcome-explained-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-outcome-explained-1",
+    "title": "Lecture 10",
+    "section": "Regression Tree Outcome Explained",
+    "text": "Regression Tree Outcome Explained\n\nValue:\n\nIn a regression tree, the predicted value for a node is the average of the outcome values for the samples in that node.\n\nThe value shown in the node represents this average.\n\nLeaf Node:\n\nA terminal node where no further splitting occurs.\n\nWhen a new data point falls into that leaf node, the regression tree will predict its output as this value."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#prunning",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#prunning",
+    "title": "Lecture 10",
+    "section": "Prunning",
+    "text": "Prunning\n\nThe biggest challenge with CART models is avoiding overfit.\nFor CART, the usual solution is to rely on cross validation (CV).\nThe way to cross-validate the fully fitted tree is to prune it by removing split rules from the bottom up:\n\nAt each step, remove the split that contributes least to deviance reduction.\nThis is a reverse to CART’s growth process.\n\nPruning yields candidate tree.\nEach prune step produces a candidate tree model, and we can compare their out-of-sample prediction performance through CV."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#boston-housing-data",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#boston-housing-data",
+    "title": "Lecture 10",
+    "section": "Boston Housing Data",
+    "text": "Boston Housing Data\nboston = pd.read_csv(\"https://bcdanl.github.io/data/boston.csv\")\nThe boston DataFrame has 506 observations and 14 variables. - per capita income, - environmental factors, - educational facilities, - property size, - crime rate, - etc.\n\nThe goal is to predict housing values (medv in $1,000)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#boston-housing-data-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#boston-housing-data-1",
+    "title": "Lecture 10",
+    "section": "Boston Housing Data",
+    "text": "Boston Housing Data\n\nmin_impurity_decrease=0.005: The minimum reduction in impurity required for a split to occur.\nPurpose:\n\nEnsures that each split meaningfully improves the homogeneity of the node.\nPrevents splitting when the improvement is too small.\n\nEffect:\n\nOnly splits that reduce the impurity by at least 0.005 are allowed.\n\nDo we need all the splits? Is the tree just fitting noise?\n\n# Set a random seed for reproducibility\nnp.random.seed(42120532)\ntrain, test = train_test_split(boston, test_size=0.20, random_state=42120532)\nX_train = train.drop(columns=[\"medv\"])\ny_train = train[\"medv\"]\n\n# Without max_depth=3\ntree_model = DecisionTreeRegressor(min_impurity_decrease=0.005, random_state=42)\ntree_model.fit(X_train, y_train)\n\n# Plot the initial regression tree\nplt.figure(figsize=(16, 12), dpi=300)\nplot_tree(tree_model, feature_names=X_train.columns, filled=True, rounded=True)\nplt.title(\"Regression Tree for medv (Initial Fit)\")\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-2",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-2",
+    "title": "Lecture 10",
+    "section": "Regression Tree with NBC Shows",
+    "text": "Regression Tree with NBC Shows\n\n\n\n\nGreen is comedy, blue is drama, red is reality\nNonlinear: PE increases with GRP, but in jumps\n\nTrees automatically learn non-linear response functions and will discover interactions between variables.\n\nFollow how the tree translates into changing the predicted PE."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#prunning-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#prunning-1",
+    "title": "Lecture 10",
+    "section": "Prunning",
+    "text": "Prunning\n\nThe biggest challenge with CART models is avoiding overfit.\nFor CART, the usual solution is to rely on cross validation (CV).\nThe way to cross-validate the fully fitted tree is to prune it by removing split rules from the bottom up:\n\nAt each step, remove the split that contributes least to deviance reduction.\nThis is a reverse to CART’s growth process.\n\nPruning yields candidate tree.\nEach prune step produces a candidate tree model, and we can compare their out-of-sample prediction performance through CV."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#cost-complexity-pruning-path",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#cost-complexity-pruning-path",
+    "title": "Lecture 10",
+    "section": "Cost-Complexity Pruning Path",
+    "text": "Cost-Complexity Pruning Path\n# Obtain the cost-complexity pruning path from the initial tree\npath = tree_model.cost_complexity_pruning_path(X_train, y_train)  # Get candidate ccp_alpha values and corresponding impurities\nccp_alphas = path.ccp_alphas  # Candidate pruning parameters (alpha values)\nimpurities = path.impurities  # Impurity values at each candidate alpha\n\n# Exclude the maximum alpha value to avoid the trivial tree (a tree with only the root)\nccp_alphas = ccp_alphas[:-1]  # Remove the last alpha value which would prune the tree to a single node\n\n# Set up 10-fold cross-validation\nkf = KFold(n_splits=10, shuffle=True, random_state=42)  # Initialize 10-fold CV with shuffling and fixed random state\ncv_scores = []  # List to store mean cross-validated scores (negative MSE)\nleaf_nodes = []  # List to record the number of leaves for each pruned tree\n\n# Loop over each candidate alpha value to evaluate its performance\nfor ccp_alpha in ccp_alphas:\n    # Create a DecisionTreeRegressor with the current ccp_alpha and other specified parameters\n    clf = DecisionTreeRegressor(random_state=42,\n                                ccp_alpha=ccp_alpha,\n                                min_impurity_decrease=0.005)\n    \n    # Perform 10-fold cross-validation and compute negative mean squared error (MSE)\n    scores = cross_val_score(clf, X_train, y_train,\n                             cv=kf, scoring=\"neg_mean_squared_error\")\n    cv_scores.append(np.mean(scores))  # Append the mean CV score for the current alpha\n    \n    # Fit the tree on the training data to record additional metrics\n    clf.fit(X_train, y_train)\n    leaf_nodes.append(clf.get_n_leaves())  # Record the number of leaf nodes in the tree\n\n# Select the best alpha based on the highest (least negative) mean CV score\nbest_alpha = ccp_alphas[np.argmax(cv_scores)]  # Identify the alpha with the best CV performance\nprint(\"Best alpha:\", best_alpha)  # Print the best alpha value\n\n# Train the final pruned tree using the best alpha found\nfinal_tree = DecisionTreeRegressor(random_state=42,\n                                   ccp_alpha=best_alpha,\n                                   min_impurity_decrease=0.005)\nfinal_tree.fit(X_train, y_train)  # Fit the final model on the training data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#cost-complexity-pruning-path-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#cost-complexity-pruning-path-1",
+    "title": "Lecture 10",
+    "section": "Cost-Complexity Pruning Path",
+    "text": "Cost-Complexity Pruning Path\npath = tree_model.cost_complexity_pruning_path(X_train, y_train)  # Get candidate ccp_alpha values and corresponding impurities\nccp_alphas = path.ccp_alphas  # Candidate pruning parameters (alpha values)\nimpurities = path.impurities  # Impurity values at each candidate alpha\n\n# Exclude the maximum alpha value to avoid the trivial tree (a tree with only the root)\n  # Remove the last alpha value which would prune the tree to a single node\nccp_alphas = ccp_alphas[:-1]  \n\nThe cost_complexity_pruning_path method computes a series of effective alpha values (ccp_alphas) and the corresponding impurities.\nThese alpha values control the amount of pruning: higher alphas result in simpler (smaller) trees."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#cross-validation-and-metrics-collection",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#cross-validation-and-metrics-collection",
+    "title": "Lecture 10",
+    "section": "Cross-Validation and Metrics Collection",
+    "text": "Cross-Validation and Metrics Collection\nkf = KFold(n_splits=10, shuffle=True, random_state=42)\ncv_scores = []  # mean CV scores (negative MSE)\nleaf_nodes = []\nsse = []\n\nA 10-fold cross-validation is set up to evaluate each candidate ccp_alpha.\nWe also prepare lists to store:\n\nMean CV scores\nThe number of leaf nodes for each pruned tree\nSSE on training data"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#loop-over-alpha-values",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#loop-over-alpha-values",
+    "title": "Lecture 10",
+    "section": "Loop Over Alpha Values",
+    "text": "Loop Over Alpha Values\n\nFor each ccp_alpha, a new tree is built:\nCross-validation: cross_val_score computes negative MSE over 10 folds.\nLeaf Nodes: After fitting, clf.get_n_leaves() records the number of terminal nodes.\nSSE on Training: SSE is computed by summing squared errors on training data.\n\n# Loop over each candidate alpha value to evaluate its performance\nfor ccp_alpha in ccp_alphas:\n    # Create a DecisionTreeRegressor with the current ccp_alpha and other specified parameters\n    clf = DecisionTreeRegressor(random_state=42,\n                                ccp_alpha=ccp_alpha,\n                                min_impurity_decrease=0.005)\n    \n    # Perform 10-fold cross-validation and compute negative mean squared error (MSE)\n    scores = cross_val_score(clf, X_train, y_train,\n                             cv=kf, scoring=\"neg_mean_squared_error\")\n    cv_scores.append(np.mean(scores))  # Append the mean CV score for the current alpha\n    \n    # Fit the tree on the training data to record additional metrics\n    clf.fit(X_train, y_train)\n    leaf_nodes.append(clf.get_n_leaves())  # Record the number of leaf nodes in the tree\n\n    # Compute SSE (sum of squared errors) on the training set\n    preds = clf.predict(X_train)  # Predict target values on training data\n    sse.append(np.sum((y_train - preds) ** 2))  # Calculate and record SSE for training set"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#selecting-and-training-the-final-tree",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#selecting-and-training-the-final-tree",
+    "title": "Lecture 10",
+    "section": "Selecting and Training the Final Tree",
+    "text": "Selecting and Training the Final Tree\n# Select the best alpha based on the highest (least negative) mean CV score\nbest_alpha = ccp_alphas[np.argmax(cv_scores)]  # Identify the alpha with the best CV performance\nprint(\"Best alpha:\", best_alpha)  # Print the best alpha value\n\n# Train the final pruned tree using the best alpha found\nfinal_tree = DecisionTreeRegressor(random_state=42,\n                                   ccp_alpha=best_alpha,\n                                   min_impurity_decrease=0.005)\nfinal_tree.fit(X_train, y_train)  # Fit the final model on the training data\n\nThe best alpha is chosen as the one with the highest mean CV score (remember: higher negative MSE means lower error).\nA final tree is trained using the optimal best_alpha, which prunes the tree for better generalization."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#cross-validated-tree-pruning",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#cross-validated-tree-pruning",
+    "title": "Lecture 10",
+    "section": "Cross-Validated Tree Pruning",
+    "text": "Cross-Validated Tree Pruning\nThe algorithm does cross-validation across pruning levels.\n# Plot the average cross-validated MSE against the number of leaf nodes\nnegative_cv_scores = -np.array(cv_scores)\n\nplt.figure(figsize=(8, 6), dpi=150)\nplt.plot(leaf_nodes, negative_cv_scores, marker='o', linestyle='-')\nplt.axvline(x=final_tree.get_n_leaves(), color='red', linestyle='--', label='Leaf Nodes = 21')  # Add vertical line at 21 leaf nodes\nplt.xlabel(\"Number of Leaf Nodes\")\nplt.ylabel(\"Mean CV MSE\")\nplt.title(\"CV Error vs. Number of Leaf Nodes\")\nplt.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#overfitting",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#overfitting",
+    "title": "Lecture 10",
+    "section": "Overfitting",
+    "text": "Overfitting\nThe larger the number of leaf nodes, the smaller SSE on the training data.\n# Plot the SSE on the training against the number of leaf nodes\nplt.figure(figsize=(8, 6), dpi=150)\nplt.plot(leaf_nodes, sse, marker='o', linestyle='-')\nplt.xlabel(\"Number of Leaf Nodes\")\nplt.ylabel(\"SSE\")\nplt.title(\"SSE vs. Number of Leaf Nodes\")\nplt.grid(True)\nplt.show()"
   }
 ]
