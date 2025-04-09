@@ -484,6 +484,20 @@ Byeong-Hak Choe
 </section>
 <section id="nbc-shows" class="slide level2">
 <h2>NBC Shows</h2>
+<ul>
+<li class="fragment">Data from NBC on response to TV pilots
+<ul>
+<li class="fragment">Gross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.</li>
+<li class="fragment">Projected Engagement (PE): a more subtle measure of audience.
+<ul>
+<li class="fragment">After watching a show, viewer is quizzed on order and detail.</li>
+<li class="fragment">This measures their engagement with the show (and ads!).</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="nbc-shows-1" class="slide level2">
+<h2>NBC Shows</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -497,19 +511,6 @@ Byeong-Hak Choe
 <span id="cb1-11"><a href="#cb1-11"></a>plt.xlabel(<span class="st">"GRP"</span>)</span>
 <span id="cb1-12"><a href="#cb1-12"></a>plt.ylabel(<span class="st">"PE"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li class="fragment"><p>Consider a classification tree to predict genre from demographics.</p></li>
-<li class="fragment"><p>Output from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.</p></li>
-<li class="fragment"><p>Data from NBC on response to TV pilots</p>
-<ul>
-<li class="fragment">Gross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.</li>
-<li class="fragment">Projected Engagement (PE): a more subtle measure of audience.
-<ul>
-<li class="fragment">After watching a show, viewer is quizzed on order and detail.</li>
-<li class="fragment">This measures their engagement with the show (and ads!).</li>
-</ul></li>
-</ul></li>
-</ul>
 </section>
 <section id="regression-tree-with-nbc-shows" class="slide level2">
 <h2>Regression Tree with NBC Shows</h2>
@@ -546,9 +547,8 @@ Byeong-Hak Choe
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>reg_tree <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">3</span>, min_samples_split<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>reg_tree.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li class="fragment"><code>max_depth=3</code>
+<li class="fragment"><code>max_depth=3</code>: Limits the tree to 3 levels.
 <ul>
-<li class="fragment">Limits the tree to 3 levels.</li>
 <li class="fragment">Helps simplify the model and makes the tree easier to interpret, especially with small datasets.</li>
 </ul></li>
 <li class="fragment"><code>min_samples_split=2</code>
@@ -599,9 +599,17 @@ Byeong-Hak Choe
 </section>
 <section id="regression-tree-with-nbc-shows-2" class="slide level2">
 <h2>Regression Tree with NBC Shows</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <p align="center">
-<img src="https://bcdanl.github.io/lec_figs/nbc_nonlinear.png" width="400px">
+<img src="https://bcdanl.github.io/lec_figs/nbc_linear.png" width="400px"> <!-- <br> --> <!-- <strong>Linear Regression</strong> -->
 </p>
+</div><div class="column" style="width:50%;">
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/nbc_nonlinear.png" width="375px"> <!-- <br> --> <!-- <strong>Decision Tree</strong> -->
+</p>
+</div>
+</div>
 <ul>
 <li class="fragment">Green is comedy, blue is drama, red is reality</li>
 <li class="fragment"><strong>Nonlinear</strong>: PE increases with GRP, but in jumps
@@ -665,15 +673,15 @@ Byeong-Hak Choe
 <section id="prunning-1" class="slide level2">
 <h2>Prunning</h2>
 <ul>
-<li class="fragment">The biggest challenge with CART models is avoiding overfit.</li>
-<li class="fragment">For CART, the usual solution is to rely on cross validation (CV).</li>
-<li class="fragment">The way to cross-validate the fully fitted tree is to prune it by removing split rules from the bottom up:
+<li class="fragment">The biggest challenge with CART models is avoiding <strong>overfit</strong>.</li>
+<li class="fragment">For CART, the usual solution is to rely on <strong>cross validation (CV)</strong>.</li>
+<li class="fragment">The way to cross-validate the fully fitted tree is to <strong>prune</strong> it by removing split rules <u>from the bottom up</u>:
 <ul>
 <li class="fragment">At each step, remove the split that contributes least to deviance reduction.</li>
 <li class="fragment">This is a reverse to CART’s growth process.</li>
 </ul></li>
 <li class="fragment">Pruning yields candidate tree.</li>
-<li class="fragment">Each prune step produces a candidate tree model, and we can compare their out-of-sample prediction performance through CV.</li>
+<li class="fragment">Each prune step produces a candidate tree model, and we can compare their <strong>out-of-sample prediction performance through CV</strong>.</li>
 </ul>
 </section>
 <section id="boston-housing-data" class="slide level2">
@@ -856,6 +864,125 @@ Byeong-Hak Choe
 <span id="cb13-6"><a href="#cb13-6"></a>plt.title(<span class="st">"SSE vs. Number of Leaf Nodes"</span>)</span>
 <span id="cb13-7"><a href="#cb13-7"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb13-8"><a href="#cb13-8"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="random-forest" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Random Forest</strong></h1>
+
+</section>
+<section id="limitation-of-cart" class="slide level2">
+<h2>Limitation of CART</h2>
+<ul>
+<li class="fragment">CART automatically learns non-linear response functions and will discover interactions between variables.</li>
+<li class="fragment">Unfortunately, it is tough to avoid overfit with CART.</li>
+<li class="fragment">Real structure of the tree is not easily chosen via cross validation.</li>
+<li class="fragment">One way to mitigate the shortcomings of CART is bootstrap aggregation, or <strong>bagging</strong>.</li>
+</ul>
+</section>
+<section id="bootstrap" class="slide level2">
+<h2>Bootstrap</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/bootstrap_eg.png" width="900px">
+</p>
+<ul>
+<li class="fragment">Bootstrap is random sampling with replacement.</li>
+<li class="fragment">Bootstrap is a reliable tool for uncertainty quantification.</li>
+</ul>
+</section>
+<section id="bagging" class="slide level2">
+<h2>Bagging</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_5.png" width="650px">
+</p>
+<ul>
+<li class="fragment">Real structure that persists across datasets shows up in the average.</li>
+<li class="fragment">A bagged ensemble of trees is also less likely to overfit the data.</li>
+</ul>
+</section>
+<section id="random-forest-1" class="slide level2">
+<h2>Random Forest</h2>
+<div style="display:block; margin:-15px;">
+
+</div>
+<ul>
+<li class="fragment">Predictions are made the same way as bagging:
+<ul>
+<li class="fragment"><strong>Regression</strong>: take the <strong>average</strong> across the trees</li>
+<li class="fragment"><strong>Classification</strong>: take the <strong>majority vote</strong> across the trees</li>
+</ul></li>
+<li class="fragment"><strong>Split-variable randomization</strong> adds more randomness to make <strong>each tree more independent of each other</strong></li>
+<li class="fragment">Random forest introduces <span class="math inline">\(\texttt{max_features}\)</span> as a tuning parameter:
+<ul>
+<li class="fragment">It controls the diversity of trees in the ensemble:
+<ul>
+<li class="fragment">Smaller <span class="math inline">\(\texttt{max_features}\)</span>: More randomness → more diverse trees → potentially better generalization.</li>
+<li class="fragment">Larger <span class="math inline">\(\texttt{max_features}\)</span>: Less randomness → trees are more similar → can lead to overfitting/underfitting depending on data.</li>
+</ul></li>
+<li class="fragment">Typically use <span class="math inline">\(p / 3\)</span> (regression) or <span class="math inline">\(\sqrt{p}\)</span> (classification)</li>
+<li class="fragment"><span class="math inline">\(\texttt{max_features} = p\)</span> is bagging (use all predictors at every split.)</li>
+</ul></li>
+</ul>
+</section>
+<section id="random-forest-2" class="slide level2">
+<h2>Random Forest</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_6_py.png" width="650px">
+</p>
+<ul>
+<li class="fragment">The final ensemble of trees is bagged to make the random forest predictions.</li>
+</ul>
+</section>
+<section id="examining-variable-importance" class="slide level2">
+<h2>Examining Variable Importance</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_7.png" width="800px"> <br> <strong>Out-of-bag samples for observation x1</strong>
+</p>
+</section>
+<section id="examining-variable-importance-1" class="slide level2">
+<h2>Examining Variable Importance</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_8.png" width="800px"> <br> <strong>Calculating variable importance of variable v1</strong>
+</p>
+</section>
+<section id="examining-variable-importance-2" class="slide level2">
+<h2>Examining Variable Importance</h2>
+<ul>
+<li class="fragment"><p>For classification, accuracy = <span class="math inline">\(\frac{\text{Number of Correct Prediction}}{\text{Total Prediction}}\)</span>.</p></li>
+<li class="fragment"><p>For regression, accuracy means <span class="math inline">\(R^{2}\)</span>.</p>
+<ul>
+<li class="fragment"><span class="math inline">\(R^2 = 1\)</span>: model explains all variability</li>
+<li class="fragment"><span class="math inline">\(R^2 = 0\)</span>: model explains none of it</li>
+</ul></li>
+</ul>
+<!-- $$ -->
+<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
+<!-- $$ -->
+<!-- - It represents the total variation in the outcome variable — i.e., how spread out the values of $y$ are around their mean. -->
+<!-- ## Regression Variability Decomposition -->
+<!-- In a regression context, the total variability in the outcome variable $y$ can be decomposed as follows: -->
+<!-- 1. Total Sum of Squares (TSS) -->
+<!-- $$ -->
+<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
+<!-- $$ -->
+<!-- where $\bar{y}$ is the mean of the observed values. -->
+<!-- 2. Explained Sum of Squares (ESS) -->
+<!-- $$ -->
+<!-- \text{ESS} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 -->
+<!-- $$ -->
+<!-- where $\hat{y}_i$ is the predicted value for observation $i$. -->
+<!-- ## Regression Variability Decomposition -->
+<!-- 3. Residual Sum of Squares (RSS) -->
+<!-- $$ -->
+<!-- \text{RSS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 -->
+<!-- $$ -->
+<!-- 4. Decomposition Relationship -->
+<!-- $$ -->
+<!-- \text{TSS} = \text{ESS} + \text{RSS} -->
+<!-- $$ -->
+<!-- 5. Coefficient of Determination ($R^{2}$)} -->
+<!-- $$ -->
+<!-- R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} -->
+<!-- $$ -->
 
 <div class="footer footer-default">
 

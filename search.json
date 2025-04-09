@@ -3798,14 +3798,14 @@
     "href": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows",
     "title": "Lecture 10",
     "section": "NBC Shows",
-    "text": "NBC Shows\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nnbc = pd.read_csv(\"https://bcdanl.github.io/data/nbc_show.csv\")\nnbc_demog = pd.read_csv(\"https://bcdanl.github.io/data/nbc_demog.csv\")\n\nplt.figure(figsize=(8, 6))\nsns.lmplot(data=nbc, x=\"GRP\", y=\"PE\", hue=\"Genre\", ci=None, aspect=1.2, height=6,\n           markers=\"o\", scatter_kws={\"s\": 50}, line_kws={\"linewidth\": 2})\nplt.title(\"Scatter Plot with Linear Fit of GRP vs PE by Genre\")\nplt.xlabel(\"GRP\")\nplt.ylabel(\"PE\")\nplt.show()\n\nConsider a classification tree to predict genre from demographics.\nOutput from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.\nData from NBC on response to TV pilots\n\nGross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.\nProjected Engagement (PE): a more subtle measure of audience.\n\nAfter watching a show, viewer is quizzed on order and detail.\nThis measures their engagement with the show (and ads!)."
+    "text": "NBC Shows\n\nData from NBC on response to TV pilots\n\nGross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.\nProjected Engagement (PE): a more subtle measure of audience.\n\nAfter watching a show, viewer is quizzed on order and detail.\nThis measures their engagement with the show (and ads!)."
   },
   {
     "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows-1",
     "href": "danl-lec/danl-320-lec-10-2025-0407.html#nbc-shows-1",
     "title": "Lecture 10",
     "section": "NBC Shows",
-    "text": "NBC Shows\n\nModel Training: A DecisionTreeClassifier is instantiated and trained on the predictors (X) and outcome (y).\nPrediction: We generate predictions on the same data and store these in the nbc DataFrame.\nVisualization: The decision tree is plotted using plot_tree, displaying node details and class probabilities.\n\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nimport matplotlib.pyplot as plt\n\n# Use the demographic variables (excluding the first column) as predictors\nX = demog.iloc[:, 1:]\n\n# Outcome\ny = nbc[\"Genre\"]\n\n# Build the classification tree. \nclf = DecisionTreeClassifier(min_samples_split=2, random_state=42)\nclf.fit(X, y)\n\n# Generate predictions for the 'Genre' and store them in the nbc DataFrame\nnbc[\"genrepred\"] = clf.predict(X)\n\n# Plot the decision tree\nplt.figure(figsize=(12, 8))\nplot_tree(clf, feature_names=X.columns, class_names=clf.classes_, filled=True, rounded=True)\nplt.title(\"Classification Tree for Genre\")\nplt.show()"
+    "text": "NBC Shows\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nnbc = pd.read_csv(\"https://bcdanl.github.io/data/nbc_show.csv\")\nnbc_demog = pd.read_csv(\"https://bcdanl.github.io/data/nbc_demog.csv\")\n\nplt.figure(figsize=(8, 6))\nsns.lmplot(data=nbc, x=\"GRP\", y=\"PE\", hue=\"Genre\", ci=None, aspect=1.2, height=6,\n           markers=\"o\", scatter_kws={\"s\": 50}, line_kws={\"linewidth\": 2})\nplt.title(\"Scatter Plot with Linear Fit of GRP vs PE by Genre\")\nplt.xlabel(\"GRP\")\nplt.ylabel(\"PE\")\nplt.show()"
   },
   {
     "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#classification-tree-outcome-explained",
@@ -3826,7 +3826,7 @@
     "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-1",
     "title": "Lecture 10",
     "section": "Regression Tree with NBC Shows",
-    "text": "Regression Tree with NBC Shows\nreg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)\nreg_tree.fit(X, y)\n\nmax_depth=3\n\nLimits the tree to 3 levels.\nHelps simplify the model and makes the tree easier to interpret, especially with small datasets.\n\nmin_samples_split=2\n\nRequires at least 2 samples to consider splitting a node.\nEnsures that the tree can grow even with very few samples in a node.\n\nreg_tree.fit(X, y)\n\nTrains the regression tree model using predictors X and outcome variable y.\nThe model learns to predict the outcome by finding the best splits based on reducing the sum of squared errors."
+    "text": "Regression Tree with NBC Shows\nreg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)\nreg_tree.fit(X, y)\n\nmax_depth=3: Limits the tree to 3 levels.\n\nHelps simplify the model and makes the tree easier to interpret, especially with small datasets.\n\nmin_samples_split=2\n\nRequires at least 2 samples to consider splitting a node.\nEnsures that the tree can grow even with very few samples in a node.\n\nreg_tree.fit(X, y)\n\nTrains the regression tree model using predictors X and outcome variable y.\nThe model learns to predict the outcome by finding the best splits based on reducing the sum of squared errors."
   },
   {
     "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-outcome-explained",
@@ -3875,7 +3875,7 @@
     "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-tree-with-nbc-shows-2",
     "title": "Lecture 10",
     "section": "Regression Tree with NBC Shows",
-    "text": "Regression Tree with NBC Shows\n\n\n\n\nGreen is comedy, blue is drama, red is reality\nNonlinear: PE increases with GRP, but in jumps\n\nTrees automatically learn non-linear response functions and will discover interactions between variables.\n\nFollow how the tree translates into changing the predicted PE."
+    "text": "Regression Tree with NBC Shows\n\n\n\n  \n\n\n\n  \n\n\n\n\nGreen is comedy, blue is drama, red is reality\nNonlinear: PE increases with GRP, but in jumps\n\nTrees automatically learn non-linear response functions and will discover interactions between variables.\n\nFollow how the tree translates into changing the predicted PE."
   },
   {
     "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#prunning-1",
@@ -3932,5 +3932,82 @@
     "title": "Lecture 10",
     "section": "Overfitting",
     "text": "Overfitting\nThe larger the number of leaf nodes, the smaller SSE on the training data.\n# Plot the SSE on the training against the number of leaf nodes\nplt.figure(figsize=(8, 6), dpi=150)\nplt.plot(leaf_nodes, sse, marker='o', linestyle='-')\nplt.xlabel(\"Number of Leaf Nodes\")\nplt.ylabel(\"SSE\")\nplt.title(\"SSE vs. Number of Leaf Nodes\")\nplt.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#limitation-of-cart",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#limitation-of-cart",
+    "title": "Lecture 10",
+    "section": "Limitation of CART",
+    "text": "Limitation of CART\n\nCART automatically learns non-linear response functions and will discover interactions between variables.\nUnfortunately, it is tough to avoid overfit with CART.\nReal structure of the tree is not easily chosen via cross validation.\nOne way to mitigate the shortcomings of CART is bootstrap aggregation, or bagging."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#bootstrap",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#bootstrap",
+    "title": "Lecture 10",
+    "section": "Bootstrap",
+    "text": "Bootstrap\n\n\n\n\nBootstrap is random sampling with replacement.\nBootstrap is a reliable tool for uncertainty quantification."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#bagging",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#bagging",
+    "title": "Lecture 10",
+    "section": "Bagging",
+    "text": "Bagging\n\n\n\n\nReal structure that persists across datasets shows up in the average.\nA bagged ensemble of trees is also less likely to overfit the data."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#bagging-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#bagging-1",
+    "title": "Lecture 10",
+    "section": "Bagging",
+    "text": "Bagging\n\n\n\n\nThe final ensemble of trees is bagged to make the random forest predictions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#random-forest-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#random-forest-1",
+    "title": "Lecture 10",
+    "section": "Random Forest",
+    "text": "Random Forest\n\n\n\n\nPredictions are made the same way as bagging:\n\nRegression: take the average across the trees\nClassification: take the majority vote across the trees\n\nSplit-variable randomization adds more randomness to make each tree more independent of each other\nRandom forest introduces \\(\\texttt{max_features}\\) as a tuning parameter:\n\nIt controls the diversity of trees in the ensemble:\n\nSmaller \\(\\texttt{max_features}\\): More randomness → more diverse trees → potentially better generalization.\nLarger \\(\\texttt{max_features}\\): Less randomness → trees are more similar → can lead to overfitting/underfitting depending on data.\n\nTypically use \\(p / 3\\) (regression) or \\(\\sqrt{p}\\) (classification)\n\\(\\texttt{max_features} = p\\) is bagging (use all predictors at every split.)"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#random-forest-2",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#random-forest-2",
+    "title": "Lecture 10",
+    "section": "Random Forest",
+    "text": "Random Forest\n\n\n\n\nThe final ensemble of trees is bagged to make the random forest predictions."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance",
+    "title": "Lecture 10",
+    "section": "Examining Variable Importance",
+    "text": "Examining Variable Importance\n\n  Out-of-bag samples for observation x1"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance-1",
+    "title": "Lecture 10",
+    "section": "Examining Variable Importance",
+    "text": "Examining Variable Importance\n\n  Calculating variable importance of variable v1"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance-2",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance-2",
+    "title": "Lecture 10",
+    "section": "Examining Variable Importance",
+    "text": "Examining Variable Importance\n\nFor classification, accuracy = \\(\\frac{\\text{Number of Correct Prediction}}{\\text{Total Prediction}}\\).\nFor regression, accuracy means \\(R^{2}\\).\n\n\\(R^2 = 1\\): model explains all variability\n\\(R^2 = 0\\): model explains none of it"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-variability-decomposition",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-variability-decomposition",
+    "title": "Lecture 10",
+    "section": "Regression Variability Decomposition",
+    "text": "Regression Variability Decomposition\nIn a regression context, the total variability in the outcome variable \\(y\\) can be decomposed as follows:\n\nTotal Sum of Squares (TSS) \\[\n\\text{TSS} = \\sum_{i=1}^{n} (y_i - \\bar{y})^2\n\\] where \\(\\bar{y}\\) is the mean of the observed values.\nExplained Sum of Squares (ESS)\n\n\\[\n\\text{ESS} = \\sum_{i=1}^{n} (\\hat{y}_i - \\bar{y})^2\n\\] where \\(\\hat{y}_i\\) is the predicted value for observation \\(i\\)."
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#regression-variability-decomposition-1",
+    "href": "danl-lec/danl-320-lec-10-2025-0407.html#regression-variability-decomposition-1",
+    "title": "Lecture 10",
+    "section": "Regression Variability Decomposition",
+    "text": "Regression Variability Decomposition\n\nResidual Sum of Squares (RSS)\n\n\\[\n\\text{RSS} = \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2\n\\]\n\nDecomposition Relationship\n\n\\[\n\\text{TSS} = \\text{ESS} + \\text{RSS}\n\\]\n\nCoefficient of Determination (\\(R^{2}\\))}\n\n\\[\nR^2 = 1 - \\frac{\\text{RSS}}{\\text{TSS}}\n\\]"
   }
 ]

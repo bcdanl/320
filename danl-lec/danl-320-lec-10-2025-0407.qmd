@@ -112,6 +112,16 @@ theme_set(theme_fivethirtyeight()+
 - You stop splitting and growing when the size of the leaf nodes hits some minimum threshold (e.g., say no less than 10 observations per leaf).
 
 
+
+
+## NBC Shows
+
+- Data from NBC on response to TV pilots
+  - Gross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.
+  - Projected Engagement (PE): a more subtle measure of audience.
+    - After watching a show, viewer is quizzed on order and detail.
+    - This measures their engagement with the show (and ads!).
+    
 ## NBC Shows
 
 ```{.python}
@@ -130,16 +140,6 @@ plt.ylabel("PE")
 plt.show()
 ```
 
-
-- Consider a classification tree to predict genre from
-demographics.
-- Output from tree shows a series of decision nodes and the proportion in each genre at these nodes, down to the leaves.
-
-- Data from NBC on response to TV pilots
-  - Gross Ratings Points (GRP): estimated total viewership, which measures broadcast marketability.
-  - Projected Engagement (PE): a more subtle measure of audience.
-    - After watching a show, viewer is quizzed on order and detail.
-    - This measures their engagement with the show (and ads!).
 
 
 ## Regression Tree with NBC Shows
@@ -177,8 +177,7 @@ plt.show()
 reg_tree = DecisionTreeRegressor(max_depth=3, min_samples_split=2, random_state=42)
 reg_tree.fit(X, y)
 ```
--	`max_depth=3`
-	-	Limits the tree to 3 levels.
+-	`max_depth=3`: Limits the tree to 3 levels.
 	-	Helps simplify the model and makes the tree easier to interpret, especially with small datasets.
 -	`min_samples_split=2`
 	-	Requires at least 2 samples to consider splitting a node.
@@ -212,9 +211,27 @@ reg_tree.fit(X, y)
 
 ## Regression Tree with NBC Shows
 
+
+:::: {.columns}
+::: {.column width="50%"}
+
 <p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/nbc_nonlinear.png" width="400px">
+  <img src="https://bcdanl.github.io/lec_figs/nbc_linear.png" width="400px">
+  <!-- <br> -->
+  <!-- <strong>Linear Regression</strong> -->
 </p>
+
+:::
+::: {.column width="50%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/nbc_nonlinear.png" width="375px">
+  <!-- <br> -->
+  <!-- <strong>Decision Tree</strong> -->
+</p>
+
+:::
+::::
 
 - Green is comedy, blue is drama, red is reality
 - **Nonlinear**: PE increases with GRP, but in jumps
@@ -266,13 +283,13 @@ Each node in the decision tree plot displays key information:
 
 ## Prunning
 
-- The biggest challenge with CART models is avoiding overfit.
-- For CART, the usual solution is to rely on cross validation (CV).
-- The way to cross-validate the fully fitted tree is to prune it by removing split rules from the bottom up:
+- The biggest challenge with CART models is avoiding **overfit**.
+- For CART, the usual solution is to rely on **cross validation (CV)**.
+- The way to cross-validate the fully fitted tree is to **prune** it by removing split rules <u>from the bottom up</u>:
   - At each step, remove the split that contributes least to deviance reduction.
   - This is a reverse to CART’s growth process.
 - Pruning yields candidate tree.
-- Each prune step produces a candidate tree model, and we can compare their out-of-sample prediction performance through CV.
+- Each prune step produces a candidate tree model, and we can compare their **out-of-sample prediction performance through CV**.
 
 
 ## Boston Housing Data
@@ -470,4 +487,144 @@ plt.title("SSE vs. Number of Leaf Nodes")
 plt.grid(True)
 plt.show()
 ```
+
+
+
+# **Random Forest** {background-color="#1c4982"}
+
+
+## Limitation of CART
+- CART automatically learns non-linear response functions and will discover interactions between variables.
+- Unfortunately, it is tough to avoid overfit with CART.
+- Real structure of the tree is not easily chosen via cross validation.
+- One way to mitigate the shortcomings of CART is bootstrap aggregation, or **bagging**.
+
+
+
+## Bootstrap
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/bootstrap_eg.png" width="900px">
+</p>
+
+- Bootstrap is random sampling with replacement.
+- Bootstrap is a reliable tool for uncertainty quantification. 
+
+
+## Bagging
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_5.png" width="650px">
+</p>
+
+- Real structure that persists across datasets shows up in the average. 
+- A bagged ensemble of trees is also less likely to overfit the data.
+
+
+## Random Forest
+<div style="display:block; margin:-15px;"></div>
+
+- Predictions are made the same way as bagging:
+  - __Regression__: take the __average__ across the trees
+  - __Classification__: take the __majority vote__ across the trees 
+
+
+- __Split-variable randomization__ adds more randomness to make __each tree more independent of each other__ 
+- Random forest introduces $\texttt{max_features}$ as a tuning parameter: 
+  - It controls the diversity of trees in the ensemble:
+	  -	Smaller $\texttt{max_features}$: More randomness → more diverse trees → potentially better generalization.
+	  -	Larger $\texttt{max_features}$: Less randomness → trees are more similar → can lead to overfitting/underfitting depending on data.
+  - Typically use $p / 3$ (regression) or $\sqrt{p}$ (classification)
+  - $\texttt{max_features} = p$ is bagging (use all predictors at every split.)
+
+
+
+## Random Forest
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_6_py.png" width="650px">
+</p>
+
+- The final ensemble of trees is bagged to make the random forest predictions.
+
+
+
+
+
+
+## Examining Variable Importance
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_7.png" width="800px">
+  <br>
+  <strong>Out-of-bag samples for observation x1</strong>
+</p>
+
+
+
+
+## Examining Variable Importance
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_8.png" width="800px">
+  <br>
+  <strong>Calculating variable importance of variable v1</strong>
+</p>
+
+## Examining Variable Importance
+
+- For classification, accuracy = $\frac{\text{Number of Correct Prediction}}{\text{Total Prediction}}$.
+
+- For regression, accuracy means $R^{2}$.
+  -	$R^2 = 1$: model explains all variability
+  -	$R^2 = 0$: model explains none of it
+
+<!-- $$ -->
+<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
+<!-- $$ -->
+
+<!-- - It represents the total variation in the outcome variable — i.e., how spread out the values of $y$ are around their mean. -->
+
+
+<!-- ## Regression Variability Decomposition -->
+
+<!-- In a regression context, the total variability in the outcome variable $y$ can be decomposed as follows: -->
+
+<!-- 1. Total Sum of Squares (TSS) -->
+<!-- $$ -->
+<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
+<!-- $$ -->
+<!-- where $\bar{y}$ is the mean of the observed values. -->
+
+<!-- 2. Explained Sum of Squares (ESS) -->
+
+<!-- $$ -->
+<!-- \text{ESS} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 -->
+<!-- $$ -->
+<!-- where $\hat{y}_i$ is the predicted value for observation $i$. -->
+
+
+<!-- ## Regression Variability Decomposition -->
+
+<!-- 3. Residual Sum of Squares (RSS) -->
+
+<!-- $$ -->
+<!-- \text{RSS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 -->
+<!-- $$ -->
+
+<!-- 4. Decomposition Relationship -->
+
+<!-- $$ -->
+<!-- \text{TSS} = \text{ESS} + \text{RSS} -->
+<!-- $$ -->
+
+<!-- 5. Coefficient of Determination ($R^{2}$)} -->
+
+<!-- $$ -->
+<!-- R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} -->
+<!-- $$ -->
 
