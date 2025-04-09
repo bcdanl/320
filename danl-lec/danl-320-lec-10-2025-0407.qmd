@@ -544,8 +544,10 @@ plt.show()
 
 
 <p align="center">
-  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_6_py.png" width="650px">
+  <img src="https://bcdanl.github.io/lec_figs/pds_fig10_6_py.png" width="625px">
 </p>
+
+<div style="display:block; margin:-20px;"></div>
 
 - The final ensemble of trees is bagged to make the random forest predictions.
 

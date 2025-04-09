@@ -3973,7 +3973,7 @@
     "href": "danl-lec/danl-320-lec-10-2025-0407.html#random-forest-2",
     "title": "Lecture 10",
     "section": "Random Forest",
-    "text": "Random Forest\n\n\n\n\nThe final ensemble of trees is bagged to make the random forest predictions."
+    "text": "Random Forest\n\n\n\n\n\n\n\nThe final ensemble of trees is bagged to make the random forest predictions."
   },
   {
     "objectID": "danl-lec/danl-320-lec-10-2025-0407.html#examining-variable-importance",
