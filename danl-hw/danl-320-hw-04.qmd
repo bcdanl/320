@@ -200,10 +200,13 @@ $$
   - Determine the optimal value of the alpha parameter for each model.
   - Compute and report the Mean Squared Error (MSE) for each model.
 
+<br>
+
 ## Question 2
--  Evaluate the relationship between the percentage change in the price of beer and the percentage change in the volume of beer purchases for each brand, using models with extensive demographic controls.
-  - Analyze how sensitive the price change is to volume changes.
+-  Across the three models in this homework, how is the percentage change in the price of beer sensitive to the percentage change in the volume of beer purchases for each brand?
   - How does incorporating a broader demographic design into the model affect this?
+
+<br>
 
 ## Question 3
 -  Using the test dataset, compare the Mean Squared Errors (MSEs) of the models from Homework 2 to those from the current analysis.
