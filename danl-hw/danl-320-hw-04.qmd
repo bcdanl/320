@@ -188,7 +188,7 @@ $$
 \end{aligned}
 $$
 
-- Note that fit one model at a time. 
+- Please fit one model at a time.
   - One Lasso training can take around 3 minutes.
 
 
