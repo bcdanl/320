@@ -211,7 +211,7 @@ $$
 
 <br><br>
 
-# Part 2. Tree-based Model
+# Part 2. Tree-based Models
 
 <p align="center">
   <img src="https://bcdanl.github.io/lec_figs/mlb_shohei_ohtani_dodgers.jpg" width="600px">
