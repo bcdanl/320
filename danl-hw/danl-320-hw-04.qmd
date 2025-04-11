@@ -1,0 +1,310 @@
+---
+title: Homework 4
+subtitle: Lasso; Random Forest
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Direction
+
+- Please submit your **Jupyter Notebook** for **Part 1 and Part 2 in Homework 4** to Brightspace with the name below:
+
+  - `danl-320-hw4-LASTNAME-FIRSTNAME.ipynb`\
+  ( e.g., `danl-320-hw4-choe-byeonghak.ipynb` )
+
+- The due is April 18, 2025, 11:59 P.M.
+
+- Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
+
+<br><br><br>
+
+
+
+
+# Part 1. Lasso Linear Regression
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/beer_markets_brand.png" width="600px">
+</p>
+
+
+Consider the `beer_markets` DataFrame from Homework 2:
+```{.python}
+beer_markets = pd.read_csv(
+  'https://bcdanl.github.io/data/beer_markets_all_cleaned.csv'
+)
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+
+rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/beer_markets_all_cleaned.csv'))
+```
+
+
+<br>
+
+## Variable Description
+
+| Variable Name           | Description |
+|-------------------------|-------------|
+| `household`              | Unique identifier for household |
+| `X_purchase_desc`        | Description of beer purchase |
+| `quantity`               | Number of beer packages purchased |
+| `brand`                  | Brand of beer purchased |
+| `dollar_spent`           | Total amount spent on the purchase |
+| `beer_floz`              | Total volume of beer purchased (in fluid ounces) |
+| `price_floz`             | Price per fluid ounce of beer |
+| `container`              | Type of beer container (e.g., CAN, BOTTLE) |
+| `promo`                  | Indicates if the purchase was part of a promotion (True/False) |
+| `market`                  | Market region of purchase |
+| `marital`                | Marital status of household head |
+| `income`                 | Income level of the household |
+| `age`                    | Age group of household head |
+| `employment`             | Employment status of household head |
+| `degree`                 | Education level of household head |
+| `occupation`             | Occupation category of household head |
+| `ethnic`                 | Ethnicity of household head |
+| `microwave`              | Indicates if the household owns a microwave (True/False) |
+| `dishwasher`             | Indicates if the household owns a dishwasher (True/False) |
+| `tvcable`                | Type of television subscription (e.g., basic, premium) |
+| `singlefamilyhome`       | Indicates if the household is a single-family home (True/False) |
+| `npeople`                | Number of people in the household |
+
+<br>
+
+
+For this homework, please read only one CSV file at a time due to memory limitations in Google Colab. Loading multiple CSV files simultaneously may cause a free-tier Google Colab instance to crash.
+
+```{.python}
+url_1 = "https://bcdanl.github.io/data/beer_markets_xbeer_xdemog.zip"
+url_2 = "https://bcdanl.github.io/data/beer_markets_xbeer_brand_xdemog.zip"
+url_3 = "https://bcdanl.github.io/data/beer_markets_xbeer_brand_promo_xdemog.zip"
+
+## Model 1
+beer = pd.read_csv(url_1)
+
+## Model 2
+beer = pd.read_csv(url_2)
+
+## Model 3
+beer = pd.read_csv(url_3)
+```
+
+
+
+- **Dataset Details:** Each DataFrame specified in `url_1`, `url_2`, and `url_3` contains 2,638 demographic dummy variables. These include:
+  1. **Individual Demographic Dummies:** As described previously.
+  2. **Interaction Terms:** Constructed by interacting the `market` dummies with each of the demographic dummies from the `beer_markets` DataFrame.
+  
+:::: {.columns}
+::: {.column width="50%"}
+
+$$
+\begin{align}
+&\text{market}\\
+&\text{marital}\\
+&\text{age}\\
+&\text{employment}\\
+&\text{degree}\\
+&\text{occupation}\\
+&\text{ethnic}\\
+&\text{microwave}\\
+&\text{dishwasher}\\
+&\text{tvcable}\\
+&\text{singlefamilyhome}\\
+&\text{npeople}
+\end{align}
+$$
+
+:::
+::: {.column width="50%"}
+
+$$
+\begin{align}
+&\text{market}\times \text{marital}\\
+&\text{market}\times \text{income}\\
+&\text{market}\times \text{age}\\
+&\text{market}\times \text{employment}\\
+&\text{market}\times \text{degree}\\
+&\text{market}\times \text{occupation}\\
+&\text{market}\times \text{ethnic}\\
+&\text{market}\times \text{microwave}\\
+&\text{market}\times \text{dishwasher}\\
+&\text{market}\times \text{tvcable}\\
+&\text{market}\times \text{singlefamilyhome}\\
+&\text{market}\times \text{npeople}
+\end{align}
+$$
+:::
+
+::::
+
+
+Consider including all demographic dummy variables from the `beer` DataFrame in each of the models evaluated in Homework 2 Questions 3-8.
+
+
+### Model 1
+
+$$
+\begin{aligned}
+\log(\text{beer\_floz}) = &\ \beta_{0} + \sum_{j=1}^{4} \beta_{j} \,\text{brand}_{j}
++ \beta_{5} \,\text{container\_CAN} \\ 
+&\,+\, \beta_{6} \log(\text{price\_per\_floz})\\ 
+&\,+\, \sum_{k =7}^{2645}\beta_{k}\,\text{demoghics}_{k}\\
+&\,+\, \epsilon
+\end{aligned}
+$$
+
+### Model 2
+
+$$
+\begin{aligned}
+\log(\text{price\_per\_floz}) \,=\, & \beta_{0} \,+\,  \sum_{j=1}^{4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{5}\,\text{container\_CAN} \\
+&\,+\, \beta_{6}\log(\text{beer\_floz})\\
+&\,+\, \sum_{j=1}^{4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\ 
+&\,+\, \sum_{k = 7}^{2645}\beta_{k}\,\text{demoghics}_{k}\\
+&\,+\, \epsilon
+\end{aligned}
+$$
+
+
+### Model 3
+
+$$
+\begin{aligned}
+\log(\text{price\_per\_floz}) \,=\, & \beta_{0} \,+\, \sum_{j=1}^{4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{5}\,\text{container\_CAN} \\
+&\,+\, \beta_{6}\log(\text{beer\_floz})\\
+&\,+\, \beta_{7}\,\text{promo} \times\log(\text{beer\_floz}) \\
+&\,+\, \sum_{j=1}^{4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
+&\,+\, \sum_{j=1}^{4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\\
+&\,+\, \sum_{j=1}^{4}\beta_{j\times\text{promo}\times\text{beer\_floz}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer\_floz})\\ 
+&\,+\, \sum_{k = 7}^{2645}\beta_{k}\,\text{demoghics}_{k}\\
+&\,+\, \epsilon
+\end{aligned}
+$$
+
+- Note that fit one model at a time. 
+  - One Lasso training can take around 3 minutes.
+
+
+<br>
+
+
+## Question 1
+-  Fit a Lasso linear regression model for Models 1, 2, and 3.
+  - Determine the optimal value of the alpha parameter for each model.
+  - Compute and report the Mean Squared Error (MSE) for each model.
+
+## Question 2
+-  Evaluate the relationship between the percentage change in the price of beer and the percentage change in the volume of beer purchases for each brand, using models with extensive demographic controls.
+  - Analyze how sensitive the price change is to volume changes.
+  - How does incorporating a broader demographic design into the model affect this?
+
+## Question 3
+-  Using the test dataset, compare the Mean Squared Errors (MSEs) of the models from Homework 2 to those from the current analysis.
+
+
+<br><br>
+
+# Part 2. Tree-based Model
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/mlb_shohei_ohtani_dodgers.jpg" width="600px">
+</p>
+
+I downloaded MLB 2024 batting statistics leaderboard from [Fangraphs](https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2024&month=0&season1=2022&ind=0), and created the following `mlb_battings_2024` DataFrame:
+
+```{.python}
+mlb_battings_2024 = pd.read_csv("https://bcdanl.github.io/data/mlb_battings_2024.csv")
+```
+
+```{r}
+#| echo: false
+#| eval: true
+
+DT::datatable(readr::read_csv('https://bcdanl.github.io/data/mlb_battings_2024.csv'))
+```
+
+## Variable Description
+
+
+| Variable    | Description                                                                                   |
+|-------------|-----------------------------------------------------------------------------------------------|
+| `g`           | **Games Played:** The number of games in which the player appeared.                           |
+| `pa`          | **Plate Appearances:** Total number of times the player appeared at the plate.                |
+| `hr`          | **Home Runs:** Total number of home runs hit by the player.                                   |
+| `r`           | **Runs:** Total number of runs scored by the player.                                          |
+| `rbi`         | **Runs Batted In (RBI):** Number of runs the player batted in.                                  |
+| `sb`          | **Stolen Bases:** Total number of bases stolen by the player.                                 |
+| `bb_percent`  | **Walk Percentage:** The percentage of plate appearances that result in a base on balls.        |
+| `k_percent`   | **Strikeout Percentage:** The percentage of plate appearances that end in a strikeout.         |
+| `iso`         | **Isolated Power (ISO):** A measure of a player's raw power, calculated as (SLG - AVG).          |
+| `babip`       | **Batting Average on Balls In Play (BABIP):** The average when excluding home runs and strikeouts. |
+| `avg`         | **Batting Average (AVG):** The ratio of hits to official at-bats.                             |
+| `obp`         | **On-Base Percentage (OBP):** The frequency a player reaches base per plate appearance.         |
+| `slg`         | **Slugging Percentage (SLG):** A weighted measure of total bases per at-bat.                    |
+| `w_oba`       | **Weighted On-Base Average (wOBA):** An advanced metric that measures a player’s overall offensive value. |
+| `xw_oba`      | **Expected wOBA (xwOBA):** A metric estimating wOBA based on the quality of contact.            |
+| `w_rc`        | **Weighted Runs Created (wRC):** An advanced statistic that estimates the number of runs a player creates. |
+| `bs_r`        | **Base Running Runs (BsR):** A metric quantifying the value of a player's base running.           |
+| `off`         | **Offensive Value:** A composite metric or rating summarizing the player's offensive contributions. |
+| `def`         | **Defensive Value:** A composite metric or rating summarizing the player's defensive contributions. |
+| `war`         | **Wins Above Replacement (WAR):** An overall measure of a player's total contributions to their team. |
+
+
+<br>
+
+- Consider the tree-based models in Part 2:
+  - **Outcome Variable:** `war`
+  - **Predictors:** All remaining variables
+
+<br>
+
+## Question 4
+-  Fit a regression tree model with a maximum depth of 3 (`max_depth=3`).
+  -  Provide an interpretation of the leaf nodes.
+
+<br>
+
+## Question 5
+-  Fit a regression tree model without imposing a maximum depth constraint.
+
+<br>
+
+## Question 6
+-  Prune regression trees using cross-validation (CV).
+  - Plot the CV error versus the number of leaves.
+  - Plot the pruned tree with the lowest mean CV MSE.
+  - Compare the pruned tree with the tree from Question 4.
+
+<br>
+
+## Question 7
+-  Fit a random forest model.
+  - Plot the variable importance measures.
+
+<br>
+
+
+## Question 8
+-  Fit an XGBoost model.
+  - Plot the variable importance measures.
+
+<br>
+
+## Question 9
+-  Compare the Mean Squared Errors (MSEs) on the test data across the different tree-based models.
+  - Analyze and discuss the differences in predictive performance among these models.
+  
+<br><br>
+
+# Part 3. Jupyter Notebook Blogging
+
+- Write a blog post about **Part 1 of Homework 3 - Housing Markets** using Jupyter Notebook, and add it to your online blog.
+
+<br>
