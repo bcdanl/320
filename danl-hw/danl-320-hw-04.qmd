@@ -1,6 +1,6 @@
 ---
 title: Homework 4
-subtitle: Lasso; Random Forest
+subtitle: Lasso Linear Regression; Tree-based Models
 date: last-modified
 from: markdown+emoji
 execute: 
