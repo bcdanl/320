@@ -9,10 +9,20 @@ execute:
 
 # Direction
 
-- Please submit your **Jupyter Notebook** for **Part 1 and Part 2 in Homework 4** to Brightspace with the name below:
-
-  - `danl-320-hw4-LASTNAME-FIRSTNAME.ipynb`\
-  ( e.g., `danl-320-hw4-choe-byeonghak.ipynb` )
+-	Please submit **four Jupyter Notebooks** for Part 1 and Part 2 of Homework 4 to Brightspace using the following file naming convention:
+    - Part 1 - Model 1
+  	    -	`danl-320-hw4-LASTNAME-FIRSTNAME-pt-1-model-1.ipynb`
+    - Part 1 - Model 2
+  	    -	`danl-320-hw4-LASTNAME-FIRSTNAME-pt-1-model-2.ipynb`
+    - Part 1 - Model 3
+  	    -	`danl-320-hw4-LASTNAME-FIRSTNAME-pt-1-model-3.ipynb`
+    - Part 2
+  	    -	`danl-320-hw4-LASTNAME-FIRSTNAME-pt-2.ipynb`
+    - Examples:
+      	-	`danl-320-hw4-choe-byeonghak-pt-1-model-1.ipynb`
+      	-	`danl-320-hw4-choe-byeonghak-pt-1-model-2.ipynb`
+      	-	`danl-320-hw4-choe-byeonghak-pt-1-model-3.ipynb`
+      	-	`danl-320-hw4-choe-byeonghak-pt-2.ipynb`
 
 - The due is April 18, 2025, 11:59 P.M.
 
@@ -152,9 +162,9 @@ Consider including all demographic dummy variables from the `beer` DataFrame in 
 
 $$
 \begin{aligned}
-\log(\text{beer\_floz}) = &\ \beta_{0} + \sum_{j=1}^{4} \beta_{j} \,\text{brand}_{j}
+\log(\text{price\_per\_floz}) = &\ \beta_{0} + \sum_{j=1}^{4} \beta_{j} \,\text{brand}_{j}
 + \beta_{5} \,\text{container\_CAN} \\ 
-&\,+\, \beta_{6} \log(\text{price\_per\_floz})\\ 
+&\,+\, \beta_{6} \log(\text{beer\_floz})\\ 
 &\,+\, \sum_{k =7}^{2645}\beta_{k}\,\text{demoghics}_{k}\\
 &\,+\, \epsilon
 \end{aligned}
