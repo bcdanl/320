@@ -1,0 +1,500 @@
+---
+title: Classwork 12
+subtitle: Predicting Housing Price in California
+date: last-modified
+from: markdown+emoji
+execute: 
+  eval: false
+---
+
+# Setup for basic libraries, `scikit-learn`, `PySpark`, UDFs
+## Required Libraries and `SparkSession` Entry Point
+```{.python}
+# Below is for an interactive display of Pandas DataFrame in Colab
+from google.colab import data_table
+data_table.enable_dataframe_formatter()
+
+from tabulate import tabulate  # for table summary
+
+# For basic libraries
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import scipy.stats as stats
+from scipy.stats import norm
+import statsmodels.api as sm  # for lowess smoothing
+
+# `scikit-learn`
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import (confusion_matrix, accuracy_score, precision_score, recall_score, roc_curve, roc_auc_score)
+from sklearn.model_selection import train_test_split, KFold, cross_val_score
+from sklearn.inspection import PartialDependenceDisplay, plot_partial_dependence
+
+from sklearn.preprocessing import scale # zero mean & one s.d.
+from sklearn.linear_model import LassoCV, lasso_path
+from sklearn.linear_model import RidgeCV, Ridge
+from sklearn.linear_model import ElasticNetCV
+from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
+
+from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import GridSearchCV
+
+import xgboost as xgb
+from xgboost import XGBRegressor, plot_importance
+
+# PySpark
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import rand, col, pow, mean, avg, when, log, sqrt, exp
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.regression import LinearRegression, GeneralizedLinearRegression
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+```
+
+<br>
+
+
+## UDF for Adding Dummy Variables
+```{.python}
+def add_dummy_variables(var_name, reference_level, category_order=None):
+    """
+    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.
+    Allows manual setting of category order.
+
+    Parameters:
+        var_name (str): The name of the categorical column (e.g., "borough_name").
+        reference_level (int): Index of the category to be used as the reference (dummy omitted).
+        category_order (list, optional): List of categories in the desired order. If None, categories are sorted.
+
+    Returns:
+        dummy_cols (list): List of dummy column names excluding the reference category.
+        ref_category (str): The category chosen as the reference.
+    """
+    global dtrain, dtest
+
+    # Get distinct categories from the training set.
+    categories = dtrain.select(var_name).distinct().rdd.flatMap(lambda x: x).collect()
+
+    # Convert booleans to strings if present.
+    categories = [str(c) if isinstance(c, bool) else c for c in categories]
+
+    # Use manual category order if provided; otherwise, sort categories.
+    if category_order:
+        # Ensure all categories are present in the user-defined order
+        missing = set(categories) - set(category_order)
+        if missing:
+            raise ValueError(f"These categories are missing from your custom order: {missing}")
+        categories = category_order
+    else:
+        categories = sorted(categories)
+
+    # Validate reference_level
+    if reference_level < 0 or reference_level >= len(categories):
+        raise ValueError(f"reference_level must be between 0 and {len(categories) - 1}")
+
+    # Define the reference category
+    ref_category = categories[reference_level]
+    print("Reference category (dummy omitted):", ref_category)
+
+    # Create dummy variables for all categories
+    for cat in categories:
+        dummy_col_name = var_name + "_" + str(cat).replace(" ", "_")
+        dtrain = dtrain.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+        dtest = dtest.withColumn(dummy_col_name, when(col(var_name) == cat, 1).otherwise(0))
+
+    # List of dummy columns, excluding the reference category
+    dummy_cols = [var_name + "_" + str(cat).replace(" ", "_") for cat in categories if cat != ref_category]
+
+    return dummy_cols, ref_category
+
+
+# Example usage without category_order:
+# dummy_cols_year, ref_category_year = add_dummy_variables('year', 0)
+
+# Example usage with category_order:
+# custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+# dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)
+```
+
+
+## UDF for Regression Tables
+```{.python}
+def regression_table(model, assembler):
+    """
+    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler.
+
+    If the model’s labelCol (retrieved using getLabelCol()) starts with "log", an extra column showing np.exp(coeff)
+    is added immediately after the beta estimate column for predictor rows. Additionally, np.exp() of the 95% CI
+    Lower and Upper bounds is also added unless the predictor's name includes "log_". The Intercept row does not
+    include exponentiated values.
+
+    When labelCol starts with "log", the columns are ordered as:
+        y: [label] | Beta | Exp(Beta) | Sig. | Std. Error | p-value | 95% CI Lower | Exp(95% CI Lower) | 95% CI Upper | Exp(95% CI Upper)
+
+    Otherwise, the columns are:
+        y: [label] | Beta | Sig. | Std. Error | p-value | 95% CI Lower | 95% CI Upper
+
+    Parameters:
+        model: A fitted LinearRegression model (with a .summary attribute and a labelCol).
+        assembler: The VectorAssembler used to assemble the features for the model.
+
+    Returns:
+        A formatted string containing the regression table.
+    """
+    # Determine if we should display exponential values for coefficients.
+    is_log = model.getLabelCol().lower().startswith("log")
+
+    # Extract coefficients and standard errors as NumPy arrays.
+    coeffs = model.coefficients.toArray()
+    std_errors_all = np.array(model.summary.coefficientStandardErrors)
+
+    # Check if the intercept's standard error is included (one extra element).
+    if len(std_errors_all) == len(coeffs) + 1:
+        intercept_se = std_errors_all[0]
+        std_errors = std_errors_all[1:]
+    else:
+        intercept_se = None
+        std_errors = std_errors_all
+
+    # Use provided tValues and pValues.
+    df = model.summary.numInstances - len(coeffs) - 1
+    t_critical = stats.t.ppf(0.975, df)
+    p_values = model.summary.pValues
+
+    # Helper: significance stars.
+    def significance_stars(p):
+        if p < 0.01:
+            return "***"
+        elif p < 0.05:
+            return "**"
+        elif p < 0.1:
+            return "*"
+        else:
+            return ""
+
+    # Build table rows for each feature.
+    table = []
+    for feature, beta, se, p in zip(assembler.getInputCols(), coeffs, std_errors, p_values):
+        ci_lower = beta - t_critical * se
+        ci_upper = beta + t_critical * se
+
+        # Check if predictor contains "log_" to determine if exponentiation should be applied
+        apply_exp = is_log and "log_" not in feature.lower()
+
+        exp_beta = np.exp(beta) if apply_exp else ""
+        exp_ci_lower = np.exp(ci_lower) if apply_exp else ""
+        exp_ci_upper = np.exp(ci_upper) if apply_exp else ""
+
+        if is_log:
+            table.append([
+                feature,            # Predictor name
+                beta,               # Beta estimate
+                exp_beta,           # Exponential of beta (or blank)
+                significance_stars(p),
+                se,
+                p,
+                ci_lower,
+                exp_ci_lower,       # Exponential of 95% CI lower bound
+                ci_upper,
+                exp_ci_upper        # Exponential of 95% CI upper bound
+            ])
+        else:
+            table.append([
+                feature,
+                beta,
+                significance_stars(p),
+                se,
+                p,
+                ci_lower,
+                ci_upper
+            ])
+
+    # Process intercept.
+    if intercept_se is not None:
+        intercept_p = model.summary.pValues[0] if model.summary.pValues is not None else None
+        intercept_sig = significance_stars(intercept_p)
+        ci_intercept_lower = model.intercept - t_critical * intercept_se
+        ci_intercept_upper = model.intercept + t_critical * intercept_se
+    else:
+        intercept_sig = ""
+        ci_intercept_lower = ""
+        ci_intercept_upper = ""
+        intercept_se = ""
+
+    if is_log:
+        table.append([
+            "Intercept",
+            model.intercept,
+            "",                    # Removed np.exp(model.intercept)
+            intercept_sig,
+            intercept_se,
+            "",
+            ci_intercept_lower,
+            "",
+            ci_intercept_upper,
+            ""
+        ])
+    else:
+        table.append([
+            "Intercept",
+            model.intercept,
+            intercept_sig,
+            intercept_se,
+            "",
+            ci_intercept_lower,
+            ci_intercept_upper
+        ])
+
+    # Append overall model metrics.
+    if is_log:
+        table.append(["Observations", model.summary.numInstances, "", "", "", "", "", "", "", ""])
+        table.append(["R²", model.summary.r2, "", "", "", "", "", "", "", ""])
+        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", "", "", "", ""])
+    else:
+        table.append(["Observations", model.summary.numInstances, "", "", "", "", ""])
+        table.append(["R²", model.summary.r2, "", "", "", "", ""])
+        table.append(["RMSE", model.summary.rootMeanSquaredError, "", "", "", "", ""])
+
+    # Format the table rows.
+    formatted_table = []
+    for row in table:
+        formatted_row = []
+        for i, item in enumerate(row):
+            # Format Observations as integer with commas.
+            if row[0] == "Observations" and i == 1 and isinstance(item, (int, float, np.floating)) and item != "":
+                formatted_row.append(f"{int(item):,}")
+            elif isinstance(item, (int, float, np.floating)) and item != "":
+                if is_log:
+                    # When is_log, the columns are:
+                    # 0: Metric, 1: Beta, 2: Exp(Beta), 3: Sig, 4: Std. Error, 5: p-value,
+                    # 6: 95% CI Lower, 7: Exp(95% CI Lower), 8: 95% CI Upper, 9: Exp(95% CI Upper).
+                    if i in [1, 2, 4, 6, 7, 8, 9]:
+                        formatted_row.append(f"{item:,.3f}")
+                    elif i == 5:
+                        formatted_row.append(f"{item:.3f}")
+                    else:
+                        formatted_row.append(f"{item:.3f}")
+                else:
+                    # When not is_log, the columns are:
+                    # 0: Metric, 1: Beta, 2: Sig, 3: Std. Error, 4: p-value, 5: 95% CI Lower, 6: 95% CI Upper.
+                    if i in [1, 3, 5, 6]:
+                        formatted_row.append(f"{item:,.3f}")
+                    elif i == 4:
+                        formatted_row.append(f"{item:.3f}")
+                    else:
+                        formatted_row.append(f"{item:.3f}")
+            else:
+                formatted_row.append(item)
+        formatted_table.append(formatted_row)
+
+    # Set header and column alignment based on whether label starts with "log"
+    if is_log:
+        headers = [
+            f"y: {model.getLabelCol()}",
+            "Beta", "Exp(Beta)", "Sig.", "Std. Error", "p-value",
+            "95% CI Lower", "Exp(95% CI Lower)", "95% CI Upper", "Exp(95% CI Upper)"
+        ]
+        colalign = ("left", "right", "right", "center", "right", "right", "right", "right", "right", "right")
+    else:
+        headers = [f"y: {model.getLabelCol()}", "Beta", "Sig.", "Std. Error", "p-value", "95% CI Lower", "95% CI Upper"]
+        colalign = ("left", "right", "center", "right", "right", "right", "right")
+
+    table_str = tabulate(
+        formatted_table,
+        headers=headers,
+        tablefmt="pretty",
+        colalign=colalign
+    )
+
+    # Insert a dashed line after the Intercept row.
+    lines = table_str.split("\n")
+    dash_line = '-' * len(lines[0])
+    for i, line in enumerate(lines):
+        if "Intercept" in line and not line.strip().startswith('+'):
+            lines.insert(i+1, dash_line)
+            break
+
+    return "\n".join(lines)
+
+# Example usage:
+# print(regression_table(model_1, assembler_1))
+```
+
+<br>
+
+
+
+<br><br>
+# Data
+```{.python}
+df = pd.read_csv('https://bcdanl.github.io/data/california_housing_cleaned.csv')
+```
+
+
+```{r}
+#| echo: false
+#| eval: true
+rmarkdown::paged_table(readr::read_csv('https://bcdanl.github.io/data/california_housing_cleaned.csv'))
+```
+
+<br>
+
+- The housing data at **census tract-level** in California include:
+  - Latitude/Longitude of tract centers
+  - Median Home age.
+  - Median Income
+  - Average room/bedroom numbers
+  - Average occupancy
+  - Median home values
+  
+
+- The goal is to **predict the log of median housing value** for census tracts.
+
+<br><br>
+
+
+# Question 1
+- Divide the `df` DataFrame into training and test DataFrames.
+  - Use `dtrain` and `dtest` for training and test DataFrames, respectively.
+  - 70% of observations in the `df` are assigned to `dtrain`; the rest is assigned to `dtest`.
+  
+
+<br><br>
+
+
+
+# Question 2
+
+- Consider the following model:
+
+$$
+\begin{align}
+\log(\text{medianHouseValue})_{i} = &\beta_0 + \beta_1 \text{housingMedianAge}_{i} + \beta_2 \text{medianIncome}_{i}\\
+&+ \beta_3 \text{AveBedrms}_{i} + \beta_4 \text{AveRooms}_{i} + \beta_5 \text{AveOccupancy}_{i}\\
+&+ \beta_{6}\text{longitude}_{i} + \beta_{7}\text{latitude}_{i} + \epsilon_{i}
+\end{align}
+$$
+
+- Provide a rationale behind the model why it includes $\text{longitude}$ and $\text{longitude}$ as predictors for $\log(\text{medianHouseValue})$
+
+<br>
+
+
+# Question 3
+- Fit the linear regression model in Question 2.
+
+<br>
+
+
+
+# Question 4
+- Interpret $\hat{\beta_{2}}$, $\hat{\beta_{4}}$, and $\hat{\beta_{5}}$, obtained from the linear regression model in Question 3.
+
+
+<br>
+
+
+
+# Questions 5-6
+- Suppose the model allow for the relationship between the outcome and each of these predictors---$\text{housingMedianAge}_{i}$, $\text{medianIncome}_{i}$, $\text{AveBedrms}_{i}$, $\text{AveRooms}_{i}$, and $\text{AveOccupancy}_{i}$---varies by location of Census tract.
+
+$$
+\begin{align}
+\log(\text{medianHouseValue})_{i} = &\beta_0 + \beta_1 \text{housingMedianAge}_{i} + \beta_2 \text{medianIncome}_{i}\\
+&+ \beta_3 \text{AveBedrms}_{i} + \beta_4 \text{AveRooms}_{i} + \beta_5 \text{AveOccupancy}_{i}\\
+&+ \beta_6 \text{longitude}_{i} + \beta_7 \text{latitude}_{i}\\
+ &+ (\beta_8 \text{housingMedianAge}_{i} + \beta_9 \text{medianIncome}_{i}\\
+ &\qquad+ \beta_{10} \text{AveBedrms}_{i} + \beta_{11} \text{AveRooms}_{i} + \beta_{12} \text{AveOccupancy}_{i} ) \times \text{longitude}_{i}\\
+ &+ (\beta_{13} \text{housingMedianAge}_{i} + \beta_{14} \text{medianIncome}_{i}\\
+ &\qquad+ \beta_{15} \text{AveBedrms}_{i} + \beta_{16} \text{AveRooms}_{i} + \beta_{17} \text{AveOccupancy}_{i} ) \times \text{latitude}_{i}\\
+  &+ (\beta_{18} \text{housingMedianAge}_{i} + \beta_{19} \text{medianIncome}_{i} \\
+  &\qquad+ \beta_{20} \text{AveBedrms}_{i} + \beta_{21} \text{AveRooms}_{i} + \beta_{22} \text{AveOccupancy}_{i} )\times \text{longitude}_{i} \times \text{latitude}_{i}\\
+&+ \epsilon_{i}
+\end{align}
+$$
+
+### Question 5
+Fit a Lasso linear regression model.
+
+<br>
+
+
+### Question 6
+Fit a Ridge linear regression model.
+
+<br>
+
+
+
+
+## Questions 7-10
+Consider the tree-based model described below:
+
+$$
+\begin{align}
+\log(\text{medianHouseValue})_{i} = f(&\text{housingMedianAge}_{i}, \text{medianIncome}_{i},\\
+&\text{AveBedrms}_{i}, \text{AveRooms}_{i}, \text{AveOccupancy}_{i},\\
+&\text{latitude}_{i}, \text{longitude}_{i})
+\end{align}
+$$
+
+### Question 7
+Fit a regression tree model.
+
+<br>
+
+
+
+### Question 8
+Fit a random forest model.
+
+<br>
+
+
+
+
+### Question 9
+Fit a gradient boosting tree model.
+
+<br>
+
+
+## Question 10
+Compare the prediction performance across the models
+  - Linear regression
+  - Lasso regression
+  - Ridge regression
+  - Regression tree
+  - Random forest
+  - Gradient boosting tree
+
+
+<br>
+
+
+<br><br>
+
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 12 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 12.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 12 materials or need clarification on any points, don't hesitate to ask here. 
+
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
+
+Let's collaborate and learn from each other!
+
+
+
+

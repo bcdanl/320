@@ -236,4 +236,22 @@ Visualize the variation in recall and enrichment across different threshold leve
 - Use `sklearn` to fit a Elastic Net logistic regression.
   - Repeat Questions 3-7.
   
-<br>
+
+<br><br>
+
+
+# Discussion
+
+<font size = "5">Welcome to our Classwork 11 Discussion Board! 👋 </font>
+
+
+This space is designed for you to engage with your classmates about the material covered in Classwork 11.
+
+Whether you are looking to delve deeper into the content, share insights, or have questions about the content, this is the perfect place for you.
+
+If you have any specific questions for Byeong-Hak (**@bcdanl**) regarding the Classwork 11 materials or need clarification on any points, don't hesitate to ask here. 
+
+All comments will be stored [here](https://github.com/bcdanl/320/discussions/).
+
+Let's collaborate and learn from each other!
+

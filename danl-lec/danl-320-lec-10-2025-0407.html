@@ -919,7 +919,7 @@ Byeong-Hak Choe
 <li class="fragment">Larger <span class="math inline">\(\texttt{max_features}\)</span>: Less randomness → trees are more similar → can lead to overfitting/underfitting depending on data.</li>
 </ul></li>
 <li class="fragment">Typically use <span class="math inline">\(p / 3\)</span> (regression) or <span class="math inline">\(\sqrt{p}\)</span> (classification)</li>
-<li class="fragment"><span class="math inline">\(\texttt{max_features} = p\)</span> is bagging (use all predictors at every split.)</li>
+<li class="fragment"><span class="math inline">\(\texttt{max_features} = p\)</span> is <strong>bagging</strong> (use all predictors at every split.)</li>
 </ul></li>
 </ul>
 </section>
@@ -935,57 +935,100 @@ Byeong-Hak Choe
 <li class="fragment">The final ensemble of trees is bagged to make the random forest predictions.</li>
 </ul>
 </section>
-<section id="examining-variable-importance" class="slide level2">
-<h2>Examining Variable Importance</h2>
-<p align="center">
-<img src="https://bcdanl.github.io/lec_figs/pds_fig10_7.png" width="800px"> <br> <strong>Out-of-bag samples for observation x1</strong>
-</p>
-</section>
-<section id="examining-variable-importance-1" class="slide level2">
-<h2>Examining Variable Importance</h2>
-<p align="center">
-<img src="https://bcdanl.github.io/lec_figs/pds_fig10_8.png" width="800px"> <br> <strong>Calculating variable importance of variable v1</strong>
-</p>
-</section>
-<section id="examining-variable-importance-2" class="slide level2">
-<h2>Examining Variable Importance</h2>
+<section id="accuracy-of-the-tree" class="slide level2">
+<h2>Accuracy of the Tree</h2>
 <ul>
-<li class="fragment"><p>For classification, accuracy = <span class="math inline">\(\frac{\text{Number of Correct Prediction}}{\text{Total Prediction}}\)</span>.</p></li>
-<li class="fragment"><p>For regression, accuracy means <span class="math inline">\(R^{2}\)</span>.</p>
+<li class="fragment"><p>For <strong>classification</strong>, accuracy = <span class="math inline">\(\frac{\text{Number of Correct Prediction}}{\text{Total Prediction}}\)</span>.</p></li>
+<li class="fragment"><p>For <strong>regression</strong>, accuracy means <span class="math inline">\(R^{2}\)</span>.</p>
 <ul>
 <li class="fragment"><span class="math inline">\(R^2 = 1\)</span>: model explains all variability</li>
 <li class="fragment"><span class="math inline">\(R^2 = 0\)</span>: model explains none of it</li>
 </ul></li>
 </ul>
-<!-- $$ -->
-<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
-<!-- $$ -->
-<!-- - It represents the total variation in the outcome variable — i.e., how spread out the values of $y$ are around their mean. -->
-<!-- ## Regression Variability Decomposition -->
-<!-- In a regression context, the total variability in the outcome variable $y$ can be decomposed as follows: -->
-<!-- 1. Total Sum of Squares (TSS) -->
-<!-- $$ -->
-<!-- \text{TSS} = \sum_{i=1}^{n} (y_i - \bar{y})^2 -->
-<!-- $$ -->
-<!-- where $\bar{y}$ is the mean of the observed values. -->
-<!-- 2. Explained Sum of Squares (ESS) -->
-<!-- $$ -->
-<!-- \text{ESS} = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 -->
-<!-- $$ -->
-<!-- where $\hat{y}_i$ is the predicted value for observation $i$. -->
-<!-- ## Regression Variability Decomposition -->
-<!-- 3. Residual Sum of Squares (RSS) -->
-<!-- $$ -->
-<!-- \text{RSS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 -->
-<!-- $$ -->
-<!-- 4. Decomposition Relationship -->
-<!-- $$ -->
-<!-- \text{TSS} = \text{ESS} + \text{RSS} -->
-<!-- $$ -->
-<!-- 5. Coefficient of Determination ($R^{2}$)} -->
-<!-- $$ -->
-<!-- R^2 = 1 - \frac{\text{RSS}}{\text{TSS}} -->
-<!-- $$ -->
+</section>
+<section id="out-of-bag-samples-for-estimating-the-accuracy" class="slide level2">
+<h2>Out-of-bag Samples for Estimating the Accuracy</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_7.png" width="800px"> <br> <strong>Out-of-bag samples for observation x1</strong>
+</p>
+<ul>
+<li class="fragment">Since <strong>random forest</strong> uses a large number of bootstrap samples, each data point has a corresponding set of <strong>out-of-bag samples</strong>.</li>
+</ul>
+</section>
+<section id="examining-variable-importance" class="slide level2">
+<h2>Examining Variable Importance</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_8.png" width="800px"> <br> <strong>Calculating variable importance of variable v1</strong>
+</p>
+</section></section>
+<section>
+<section id="gradient-boosted-trees" class="title-slide slide level1 center" data-background-color="#1c4982">
+<h1><strong>Gradient-boosted Trees</strong></h1>
+
+</section>
+<section id="gradient-boosted-trees-1" class="slide level2">
+<h2>Gradient-boosted Trees</h2>
+<ul>
+<li class="fragment">Gradient boosting tries to improve prediction performance by sequentially adding trees to an existing ensemble:</li>
+</ul>
+<ol type="1">
+<li class="fragment">Use the current ensemble <span class="math inline">\(TE\)</span> to make predictions on the training data.</li>
+<li class="fragment">Measure the residuals between the true outcomes and the predictions on the training data.</li>
+<li class="fragment">Fit a new tree <span class="math inline">\(T_i\)</span> to the residuals. Add <span class="math inline">\(T_i\)</span> to the ensemble <span class="math inline">\(TE\)</span>.</li>
+<li class="fragment"><strong>Continue until some stopping criteria</strong> to reach final model as a <strong>sum of trees</strong>.</li>
+</ol>
+<ul>
+<li class="fragment">Each model in the sequence <em>slightly</em> improves upon the predictions of the previous models <strong>by focusing on the observations with the largest errors / residuals</strong></li>
+</ul>
+</section>
+<section id="building-up-a-gradient-boosted-tree-model" class="slide level2">
+<h2>Building Up a Gradient-Boosted Tree Model</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/pds_fig10_10.png" width="800px"> <br> <strong>Building up a gradient-boosted tree model</strong>
+</p>
+</section>
+<section id="visual-example-of-boosting-in-action" class="slide level2">
+<h2>Visual Example of Boosting in Action</h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/boosting-in-action.png" width="800px"> <br> <strong>Boosted regression trees as 0-1024 successive trees are added.</strong>
+</p>
+</section>
+<section id="gradient-boosted-trees-2" class="slide level2">
+<h2>Gradient-Boosted Trees</h2>
+<p>Update the model parameters in the direction of the loss function (e.g., MSE, deviance)’s descending gradient</p>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/gradient-descent.png" width="800px">
+</p>
+</section>
+<section id="tune-the-learning-rate-in-gradient-descent" class="slide level2">
+<h2>Tune the Learning Rate in Gradient Descent</h2>
+<p>We need to control how much we update by in each step - <strong>the learning rate</strong></p>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/gradient-descent-learning-rate.png" width="900px">
+</p>
+</section>
+<section id="extreme-gradient-boosting-with-xgboost" class="slide level2">
+<h2>eXtreme Gradient Boosting with <a href="https://xgboost.readthedocs.io/">XGBoost</a></h2>
+<p align="center">
+<img src="https://bcdanl.github.io/lec_figs/deadpool-x.gif" width="800px">
+</p>
+<ul>
+<li class="fragment"><code>XGBoost</code> is one of the most popular open-source library for the gradient boosting algorithm.</li>
+</ul>
+</section>
+<section id="tuning-hyperparameters-with-xgboost" class="slide level2">
+<h2>Tuning <strong>hyperparameters</strong> with <a href="https://xgboost.readthedocs.io/">XGBoost</a></h2>
+<ul>
+<li class="fragment">What we have to consider tuning (our <strong>hyperparameters</strong>):
+<ul>
+<li class="fragment">number of trees (<code>n_estimators</code>)</li>
+<li class="fragment">learning rate (<code>learning_rate</code>), i.e.&nbsp;how much we update in each step</li>
+<li class="fragment">these two really have to be tuned together</li>
+<li class="fragment">complexity of the trees (<code>max_depth</code>, number of observations in nodes)</li>
+<li class="fragment">XGBoost also provides more <strong>regularization</strong> (via <code>gamma</code>) and early stopping</li>
+</ul></li>
+<li class="fragment"><strong>More work to tune properly as compared to random forests</strong></li>
+</ul>
 
 <div class="footer footer-default">
 
