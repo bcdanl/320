@@ -24,7 +24,7 @@ execute:
       	-	`danl-320-hw4-choe-byeonghak-pt-1-model-3.ipynb`
       	-	`danl-320-hw4-choe-byeonghak-pt-2.ipynb`
 
-- The due is April 18, 2025, 11:59 P.M.
+- The due is April 19, 2025, noon.
 
 - Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
 
