@@ -25,6 +25,9 @@ website:
       - text: Class Code
         href: https://github.com/bcdanl/320-code
         target: _blank
+      - text: ML Notebook
+        href: listing-danl-320-ml.qmd
+        target: _blank
       - text: " "
     
   # sidebar:

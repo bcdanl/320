@@ -53,6 +53,16 @@
       "/danl-lec/danl-320-lec-08-2025-0310.html",
       "/danl-lec/danl-320-lec-09-2025-0326.html",
       "/danl-lec/danl-320-lec-10-2025-0407.html",
+      "/danl-ml/danl_320_linear_regression_bikeshare.html",
+      "/danl-ml/danl_320_linear_regression_OJ.html",
+      "/danl-ml/danl_320_hw2_linear_regression_beer.html",
+      "/danl-ml/danl_320_logistic_regression_newborn_babies_with_deployment.html",
+      "/danl-ml/danl_320_hw3_linear_regression_logistic_regression_housing_markets.html",
+      "/danl-ml/danl_320_logistic_regression_regularization_cars.html",
+      "/danl-ml/danl_320_lasso_linear_regression_online_shopping.html",
+      "/danl-ml/danl_320_lasso_logistic_regression_nhl_player_evaluation.html",
+      "/danl-ml/danl_320_linear_regression_OVB.html",
+      "/danl-ml/danl_320_tree_based_models.html",
       "/danl-cw/danl-320-cw-01.html",
       "/danl-cw/danl-320-cw-02.html",
       "/danl-cw/danl-320-cw-03.html",
@@ -88,6 +98,21 @@
       "/posts/py-basic/blog-python-basics.html",
       "/posts/beer-markets/beer-markets.html",
       "/posts/welcome/index.html"
+    ]
+  },
+  {
+    "listing": "/listing-danl-320-ml.html",
+    "items": [
+      "/danl-ml/danl_320_linear_regression_bikeshare.html",
+      "/danl-ml/danl_320_linear_regression_OJ.html",
+      "/danl-ml/danl_320_hw2_linear_regression_beer.html",
+      "/danl-ml/danl_320_logistic_regression_newborn_babies_with_deployment.html",
+      "/danl-ml/danl_320_hw3_linear_regression_logistic_regression_housing_markets.html",
+      "/danl-ml/danl_320_logistic_regression_regularization_cars.html",
+      "/danl-ml/danl_320_lasso_linear_regression_online_shopping.html",
+      "/danl-ml/danl_320_lasso_logistic_regression_nhl_player_evaluation.html",
+      "/danl-ml/danl_320_linear_regression_OVB.html",
+      "/danl-ml/danl_320_tree_based_models.html"
     ]
   }
 ]

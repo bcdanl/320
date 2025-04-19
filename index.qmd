@@ -25,6 +25,16 @@ listing:
     filter-ui: false
     page-size: 36
     table-striped: false
+  - id: danl-320-ml
+    contents: "danl-ml/danl_320*.ipynb"
+    type: table
+    fields: [title, subtitle, date]
+    sort: 
+      - "date"
+      - "title"
+    sort-ui: false
+    filter-ui: false
+    page-size: 36
   - id: danl-320-cw
     contents: "danl-cw/danl-320*.qmd"
     type: table
@@ -96,6 +106,10 @@ format:
 :::
 
 
+## $\bullet\,$ ML Notebooks  :1234:
+
+:::{#danl-320-ml}
+:::
 
 ## $\bullet\,$ Classwork  :keyboard:
 
