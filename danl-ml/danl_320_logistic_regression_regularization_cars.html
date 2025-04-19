@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak Choe">
-<meta name="dcterms.date" content="2025-04-02">
+<meta name="dcterms.date" content="2025-03-31">
 
 <title>Quasi-Separation and Regularized Logistic Regression | Byeong-Hak Choe</title>
 <style>
@@ -224,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 2, 2025</p>
+      <p class="date">March 31, 2025</p>
     </div>
   </div>
   
@@ -273,6 +273,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="add_dummy_variables" class="level3">
 <h3 class="anchored" data-anchor-id="add_dummy_variables">add_dummy_variables</h3>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_dummy_variables(var_name, reference_level, category_order<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.</span></span>
@@ -331,11 +333,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage with category_order:</span></span>
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co"># custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']</span></span>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="marginal_effects" class="level3">
 <h3 class="anchored" data-anchor-id="marginal_effects">marginal_effects</h3>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> marginal_effects(model, means):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Compute marginal effects for all predictors in a PySpark GeneralizedLinearRegression model (logit)</span></span>
@@ -427,6 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co"># table_output, df_output = marginal_effects(fitted_model, means)</span></span>
 <span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co"># print(table_output)</span></span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="co"># display(df_output)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </section>

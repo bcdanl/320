@@ -286,6 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="regression_table" class="level3">
 <h3 class="anchored" data-anchor-id="regression_table">regression_table</h3>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> regression_table(model, assembler):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Creates a formatted regression table from a fitted LinearRegression model and its VectorAssembler.</span></span>
@@ -485,11 +487,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
 <span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a><span class="co"># print(regression_table(model_1, assembler_1))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="add_dummy_variables" class="level3">
 <h3 class="anchored" data-anchor-id="add_dummy_variables">add_dummy_variables</h3>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_dummy_variables(var_name, reference_level, category_order<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Creates dummy variables for the specified column in the global DataFrames dtrain and dtest.</span></span>
@@ -548,11 +553,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage with category_order:</span></span>
 <span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co"># custom_order_wkday = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']</span></span>
 <span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy_cols_wkday, ref_category_wkday = add_dummy_variables('wkday', reference_level=0, category_order = custom_order_wkday)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="residual_plot" class="level3">
 <h3 class="anchored" data-anchor-id="residual_plot">residual_plot</h3>
 <div class="cell">
+<details>
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> residual_plot(df, label_col, model_name):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Generates a residual plot for a given test dataframe.</span></span>
@@ -590,6 +598,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># residual_plot(dtest_1, "log_sales", "Model 1")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </section>
