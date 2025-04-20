@@ -40,4 +40,13 @@ format:
         border-radius: 5px; /* Rounds the corners */
         }
         </style>
+        
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          document.querySelectorAll('a').forEach(a => {
+            a.setAttribute('target','_blank');
+            a.setAttribute('rel','noopener');
+          });
+        });
+        </script>
 ---
