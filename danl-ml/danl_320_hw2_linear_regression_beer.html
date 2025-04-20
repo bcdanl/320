@@ -1085,23 +1085,34 @@ Reference category (dummy omitted): False</code></pre>
 <section id="question-3---intuition-behind-each-model" class="level1">
 <h1>Question 3 - Intuition behind Each Model</h1>
 <ul>
-<li><p><strong>Model 1</strong> $$ \begin{aligned} () = &amp;&nbsp;<em>{0} + </em>{i=1}^{N} <em>{i} ,</em>{i} + <em>{j=N+1}^{N+4} </em>{j} ,_{j}</p></li>
-<li><p><em>{N+5} , \ &amp;,+, </em>{N+6} () + \end{aligned} $$</p></li>
-<li><p><strong>One-Size-Fits-All Elasticity</strong></p>
+<li><strong>Model 1</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\log(\text{price\_per\_floz}) = &amp;\ \beta_{0} + \sum_{i=1}^{N} \beta_{i} \,\text{market}_{i} + \sum_{j=N+1}^{N+4} \beta_{j} \,\text{brand}_{j}
++ \beta_{N+5} \,\text{container\_{CAN}} \\
+&amp;\,+\, \beta_{N+6} \log(\text{beer\_floz}) + \epsilon
+\end{align}
+\]</span></p>
+<ul>
+<li><strong>One-Size-Fits-All Elasticity</strong>
 <ul>
 <li>Assumes that every beer—whether Budweiser or value-priced Natural—shares an identical inverse price elasticity.</li>
 <li>The entire beer is treated as a homogeneous commodity. A 10 % increase in price invariably yields, for example, a 5 % reduction in sales, regardless of brand identity or promotional activity.</li>
 <li>While straightforward to estimate, this specification overlooks differences in pricing power across brands, positioning, and promotional responsiveness, leading to underpricing of premium favorites (e.g., Bud, Coors, Miller) and overpricing of bargain brands (e.g., Busch, Natural).</li>
 </ul></li>
-<li><p><strong>Model 2</strong> <span class="math display">\[
-\begin{aligned}
-\log(\text{price_per_floz}) \,=\, &amp; \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container_CAN} \\
-&amp;\,+\, \beta_{N+6}\log(\text{beer_floz})\\
-&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer_floz}}\,\text{brand}_{j}\times \log(\text{beer_floz})\\
+<li><strong>Model 2</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\log(\text{price\_per\_floz}) \,=\, &amp; \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container\_{CAN}} \\
+&amp;\,+\, \beta_{N+6}\log(\text{beer\_floz})\\
+&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
 &amp;\,+\, \epsilon
-\end{aligned}
-\]</span></p></li>
-<li><p>Brand-Specific Elasticity (No Promotional Effect)</p>
+\end{align}
+\]</span></p>
+<ul>
+<li>Brand-Specific Elasticity (No Promotional Effect)
 <ul>
 <li>Allows Bud, Coors, Miller, Busch, and Natural each to exhibit its own inverse price elasticity, yet treats promotion and no-promotion identically.</li>
 <li>The model imposes a constant sensitivity irrespective of whether the price is part of a “Happy Hour” or standard offering.
@@ -1109,18 +1120,21 @@ Reference category (dummy omitted): False</code></pre>
 <li>This approach captures variation in the degres of sensitiveness across brands, but it fails to account for the additional demand shifts induced by promotions.</li>
 </ul></li>
 </ul></li>
-<li><p><strong>Model 3</strong> <span class="math display">\[
-\begin{aligned}
-\log(\text{price_per_floz}) \,=\, &amp; \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container_CAN} \\
-&amp;\,+\, \beta_{N+6}\log(\text{beer_floz})\\
-&amp;\,+\, \beta_{N+7}\,\text{promo} \times\log(\text{beer_floz}) \\
-&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer_floz}}\,\text{brand}_{j}\times \log(\text{beer_floz})\\
+<li><strong>Model 3</strong></li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+\log(\text{price\_per\_floz}) \,=\, &amp; \beta_{0} \,+\, \sum_{i=1}^{N}\beta_{i}\,\text{market}_{i} \,+\, \sum_{j=N+1}^{N+4}\beta_{j}\,\text{brand}_{j} \,+\, \beta_{N+5}\,\text{container\_{CAN}} \\
+&amp;\,+\, \beta_{N+6}\log(\text{beer\_floz})\\
+&amp;\,+\, \beta_{N+7}\,\text{promo} \times\log(\text{beer\_floz}) \\
+&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{beer\_floz}}\,\text{brand}_{j}\times \log(\text{beer\_floz})\\
 &amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}}\,\text{brand}_{j}\times \text{promo}\\
-&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}\times\text{beer_floz}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer_floz})\\
+&amp;\,+\, \sum_{j=N+1}^{N+4}\beta_{j\times\text{promo}\times\text{beer\_floz}}\,\text{brand}_{j}\times \text{promo}\times \log(\text{beer\_floz})\\
 &amp;\,+\, \epsilon
-\end{aligned}
-\]</span></p></li>
-<li><p>Brand * Promotion-Specific Elasticity</p>
+\end{align}
+\]</span></p>
+<ul>
+<li>Brand * Promotion-Specific Elasticity
 <ul>
 <li>Estimates a distinct inverse elasticity for each brand and for each brand’s promotional status (discounted vs.&nbsp;full price).
 <ul>
