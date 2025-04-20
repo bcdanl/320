@@ -27,7 +27,6 @@ website:
         target: _blank
       - text: ML Notebook
         href: listing-danl-320-ml.qmd
-        target: _blank
       - text: " "
     
   # sidebar:
