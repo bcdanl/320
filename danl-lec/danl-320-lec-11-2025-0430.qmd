@@ -1,0 +1,579 @@
+---
+title: Lecture 11
+subtitle: Unsupervised Learning
+format:
+  clean-revealjs:
+    self-contained: false
+    chalkboard: true
+    incremental: true
+    code-annotations: hover
+    scrollable: false
+
+    # logo: logo-title-slide.png
+author:
+  - name: Byeong-Hak Choe
+    email: bchoe@geneseo.edu
+    affiliations: SUNY Geneseo
+date: 2025-04-30
+execute: 
+  eval: true
+  echo: true
+callout-icon: false
+
+from: markdown+emoji
+include-after-body: target-hover.html # effect.html
+
+# bibliography: refs.bib
+---
+
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(ggthemes)
+library(hrbrthemes)
+library(stargazer)
+
+
+theme_set(theme_fivethirtyeight()+
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(10,0,0,0)),
+                axis.title.y = 
+                  element_text(angle = 0,
+                               size = rel(1.5),
+                               margin = margin(0,10,0,0)),
+                axis.text.x = element_text(size = rel(1.5)),
+                axis.text.y = element_text(size = rel(1.5)),
+                strip.text = element_text(size = rel(1.5)),
+                legend.position = "top",
+                legend.text = element_text(size = rel(1.5)),
+                legend.title = element_text(size = rel(1.5))
+                )
+          )
+```
+
+# **Unsupervised Learning** {background-color="#1c4982"}
+
+## Unsupervised Learning
+
+- Unsupervised methods discover unknown relationships in data.
+- With unsupervised methods, there’s no outcome that we’re trying to predict; instead, we want to discover patterns in the data that perhaps we hadn’t previously suspected.
+- We look at two classes of unsupervised methods:
+  - Cluster analysis finds groups with similar characteristics.
+  - Principal component analysis turns many variables into a few new ones, called principal components, that still capture most of your data.
+  
+
+## Clustering
+- In cluster analysis, the goal is to group the observations in your data into clusters such that every observation in a cluster is more similar to other observations in the same
+cluster than observations in other clusters.
+  - E.g., a company that offers guided tours might want to cluster its clients by behavior and tastes:
+    - Which countries they like to visit
+    - Whether they prefer adventure tours, luxury tours, or educational tours
+    - What kinds of activities they participate in
+    - What sorts of sites they like to visit
+
+
+## Protein Consumption Data
+
+```{.python}
+import pandas as pd
+import numpy as np
+from pathlib import Path
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import pairwise_distances, calinski_harabasz_score, silhouette_score
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+
+protein = pd.read_csv("https://bcdanl.github.io/data/protein.csv")
+```
+
+
+- To demonstrate clustering, we will use a small dataset from 1973 on protein consumption from nine different food groups in 25 countries in Europe.
+- The goal is to group the countries based on patterns in their protein consumption.
+
+## Units and Scaling
+
+- The units you choose to measure your data can significantly influence the clusters that an algorithm uncovers.
+- One way to try to make the units of each variable more compatible is to transform all the columns to have a mean value of 0 and a standard deviation of 1.
+- You can scale numeric data in Python using the function
+`StandardScaler()`.
+- The `StandardScaler()` function annotates its output with two attributes:
+  - `mean_` returns the mean values of all the columns;
+  - `scale_` returns the standard deviations.
+
+```{.python}
+vars_to_use = protein.columns[1:]
+scaler = StandardScaler()
+
+# computes those means and standard deviations on your selected columns 
+  # and returns a NumPy array (`pmatrix`) 
+  # where each column now has mean 0 and variance 1.
+pmatrix = scaler.fit_transform(protein[vars_to_use])
+
+pcenter, pscale = scaler.mean_, scaler.scale_
+```
+
+## Density Plots - Raw vs. Scaled
+
+```{.python}
+fig, ax = plt.subplots()
+sns.kdeplot(data=protein, x="FrVeg", ax=ax, label="FrVeg")
+sns.kdeplot(data=protein, x="RedMeat", ax=ax, color="red", label="RedMeat")
+ax.set_title("Original scale"); ax.legend(); plt.show()
+
+scaled_df = pd.DataFrame(pmatrix, columns=vars_to_use)
+fig, ax = plt.subplots()
+sns.kdeplot(data=scaled_df, x="FrVeg", ax=ax, linestyle="--", label="FrVeg (scaled)")
+sns.kdeplot(data=scaled_df, x="RedMeat", ax=ax, color="red", linestyle="--",
+            label="RedMeat (scaled)")
+ax.set_title("After StandardScaler"); ax.legend(); plt.show()
+```
+
+
+## Hierarchical Clustering
+
+Hierarchical clustering builds a tree of nested groupings, called a **dendrogram**.
+
+```{.python}
+link = linkage(pmatrix, method="ward")
+plt.figure(figsize=(10, 6))
+dendrogram(link, labels=protein["Country"].values, leaf_font_size=8)
+plt.title("Ward dendrogram"); plt.tight_layout(); plt.show()
+```
+
+- The `linkage()` function takes as input a distance matrix (as an object of class dist).
+- The distance matrix records the distances between all pairs of points in the data.
+- We can compute the distance matrix using the function dist().
+- The `linkage()` uses one of a variety of clustering methods to produce a tree that records the nested cluster structure.
+  - Here we choose the **Ward's method**.
+  
+## Ward's method and Within Sum of Squares (WSS)
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/wss.png" width="500px">
+</p>
+
+
+- **Ward's method** starts out with each data point as an individual cluster and merges clusters iteratively so as to minimize the total **within sum of squares (WSS)** of the clustering
+  
+## Hierarchical Clustering
+To extract the members of each cluster from the `linkage()` object, use `fcluster()`
+```{.python}
+groups_hc = fcluster(link, t=5, criterion="maxclust")      # k = 5
+
+# Convenience: print selected cols by cluster
+def print_clusters(df: pd.DataFrame, labels, cols):
+    for k, sub in df.assign(cluster=labels).groupby("cluster"):
+        print(f"\nCluster {k} ({len(sub)} obs)")
+        print(sub[cols].to_string(index=False))
+
+cols_to_print = ["Country", "RedMeat", "Fish", "FrVeg"]
+print_clusters(protein, groups_hc, cols_to_print)
+```
+
+
+## Principal Component Analysis (PCA)
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/pca.png" width="500px">
+</p>
+
+- How can we visualize the clustering?
+  - We can try to visualize the clustering by projecting the data onto the first two **principal components** of the data.
+  - Ellipsoid is described by three principal components.
+  - The ellipsoid roughly bounds the data.
+  - PC1 & PC2 describe the best 2-D projection of the data.
+
+  
+  <!-- - If **N** is the number of variables that describe the data, then the principal components describe the hyperellipsoid in **N**-space that roughly bounds the data.  -->
+  <!-- - Each principal component is an N-dimensional vector that describes an axis of that hyperellipsoid. -->
+
+## Principal Component Analysis
+### Rotation and interpretation
+- Principal components are unknown but associated with variables in the data.
+  - A principal component can be interpreted in terms of how much each variable in the data is associated with each  principal component.
+- Principal components describe the data by projecting the data into the space of the (independent) principal components, which is called **rotations**.
+- The maximum number of principal components of the data is the number of numeric variables in the data.
+
+## Principal Component Analysis
+We’ll use the `PCA()` function to do the principal components decomposition.
+```{.python}
+pca = PCA().fit(pmatrix)
+proj = pca.transform(pmatrix)[:, :2]                # first 2 PCs
+
+proj_df = (
+    pd.DataFrame(proj, columns=["PC1", "PC2"])
+      .assign(cluster=groups_hc.astype(str), 
+              country=protein["Country"])
+)
+```
+
+## Principal Component - Interpretation
+
+```{.python}
+# print first 3 loading vectors 
+loadings_protein = pd.DataFrame(pca.components_.T, index = protein.drop(columns="Country").columns,
+                                columns=[f"PC{i}" for i in range(1, pca.n_components_+1)])
+print(loadings_protein.iloc[:, :3].round(2))
+```
+
+
+:::: {.columns}
+
+::: {.column width="35%"}
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/frenchman.jpg" width="675px">
+</p>
+
+:::
+
+::: {.column width="65%"}
+
+- $PC_{1}$ is **high nut/grain** and **low meat/dairy**:
+  - $PC_{1}$ increases by 0.42 with 1 S.D. increase in **nuts**.
+  - $PC_{1}$ decreases by 0.30 with 1 S.D. increase in **red meat**.
+- $PC_{2}$ is **Iberian**:
+  - $PC_{2}$ increases by 0.65 with 1 S.D. extra **fish**.
+
+:::
+
+::::
+
+## PCA projection by Ward clusters
+
+```{.python}
+# Global axis limits so every facet is identical
+xlim = proj_df["PC1"].min() - .5, proj_df["PC1"].max() + .5
+ylim = proj_df["PC2"].min() - .5, proj_df["PC2"].max() + .5
+
+# Create FacetGrid with shared axes
+g = sns.FacetGrid(
+        proj_df, col="cluster", col_wrap=3, height=3.5,
+        sharex=True, sharey=True, hue="cluster", palette="tab10"
+    )
+# --------------------------------------------------
+# Helper that draws the full background cloud
+# --------------------------------------------------
+def background_scatter(x, y, **kwargs):
+    """Ignore facet-specific x & y — plot all points instead."""
+    plt.scatter(
+        proj_df["PC1"], proj_df["PC2"],
+        color="lightgray", alpha=.25, s=15, zorder=1
+    )
+
+# Plot the background in every facet
+g.map(background_scatter, "PC1", "PC2")
+
+# Foreground: cluster-specific points
+g.map_dataframe(
+    sns.scatterplot, x="PC1", y="PC2",
+    edgecolor="black", linewidth=.3, s=35, zorder=2
+)
+
+# Text labels for the cluster’s own points
+def annotate(data, **k):
+    for x, y, label in zip(data.PC1, data.PC2, data.country):
+        plt.text(x, y, label, fontsize=7, ha="left", va="top")
+g.map_dataframe(annotate)
+
+# Apply identical limits to every axis
+for ax in g.axes.flat:
+    ax.set_xlim(xlim)
+    ax.set_ylim(ylim)
+
+g.fig.subplots_adjust(top=.9)
+g.fig.suptitle("PCA projection by Ward clusters")
+plt.show()
+```
+
+
+
+## K-means Algorithm
+
+K-means is a popular clustering algorithm when the data is all numeric and the distance metric is squared Euclidean.
+
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/kmeans.png" width="675px">
+</p>
+
+
+## K-means Algorithm
+
+`KMeans()` function implements the k-means algorithm.
+
+```{.python}
+k = 5
+kmeans = KMeans(n_clusters= k, n_init=100, max_iter=100, random_state=1)
+groups_km = kmeans.fit_predict(pmatrix)
+
+print("k-means cluster sizes:", np.bincount(groups_km))
+print_clusters(protein, groups_km + 1, cols_to_print)  
+```
+
+
+## Best Number of Clusters
+
+<div style="display:block; margin:-40px;"></div>
+
+<p align="center">
+  <img src="https://bcdanl.github.io/lec_figs/wss_tss.png" width="625px">
+</p>
+
+<div style="display:block; margin:-20px;"></div>
+
+- **Calinski-Harabasz Index**: the adjusted ratio of between-sum-of-square (BSS) to within-sum-of-square (WSS).
+  - $\text{BSS} = \text{TSS} - \text{WSS}$, where $\text{TSS}$ is total-sum-of-square.
+  - Good clustering: **a small average WSS** & **a large average BSS**.
+- **Average Silhouette Width (ASW) Index**: the mean of individual silhouette scores
+  - Silhouette coefficient quantifies how well a point sits in its cluster by comparing **cohesion** and **separation** metrics.
+
+
+
+## Best Number of Clusters
+
+```{.python}
+krange = range(2, 11)      # k = 2…10  (k=1 undefined for CH/ASW)
+ch_scores, asw_scores = [], []
+
+for k in krange:
+    lbls = KMeans(n_clusters=k, n_init=20, random_state=0).fit_predict(pmatrix)
+    ch_scores.append(calinski_harabasz_score(pmatrix, lbls))
+    asw_scores.append(silhouette_score(pmatrix, lbls))
+
+best_k_ch  = krange[np.argmax(ch_scores)]
+best_k_asw = krange[np.argmax(asw_scores)]
+print(f"Best k by CH : {best_k_ch}")
+print(f"Best k by ASW: {best_k_asw}")
+```
+
+- The $k^{*} = 2$ clustering corresponds to the first split of the protein data dendrogram.
+  - Clustering with $k^{*} = 2$ might not be so informative.
+
+
+## NBC Show
+- Data from NBC on response to TV pilots
+  - **Gross Ratings Points (GRP)**: estimated total viewership, which measures broadcast marketability.
+  - **Projected Engagement (PE)**: a more subtle measure of audience.
+      - After watching a show, viewer is quizzed on order and detail.
+      - This measures their engagement with the show (and ads!).
+
+```{.python}
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+import statsmodels.api as sm
+
+# ---------------------------------------------------------
+# 1.  TV-show metadata
+# ---------------------------------------------------------
+url_shows   = "https://bcdanl.github.io/data/nbc_show.csv"
+shows = (
+    pd.read_csv(url_shows, index_col=0)
+      .assign(Genre=lambda d: d["Genre"].astype("category"))
+)
+# quick glance
+sns.lmplot(
+    data=shows, x="GRP", y="PE",
+    hue="Genre", height=5, aspect=1.2, scatter_kws=dict(s=40, alpha=.8),
+    line_kws=dict(linewidth=1.2), ci=None
+)
+plt.title("Gross Rating Points vs. Projected Engagement")
+plt.show()
+```
+
+## NBC Show Survey
+- After watching a show, viewer is quizzed on order and detail.
+  - The survey data include 6241 views and 20 questions for 40 shows.
+- There are two types of questions in the survey.
+  - For Q1, this statement takes the form of **"This show makes me feel ..."**
+  - For Q2, the statement is **"I find this show feel ..."**
+- To relate survey results to show performance, we first calculate the average survey response by show.
+
+
+```{.python}
+url_survey  = "https://bcdanl.github.io/data/nbc_survey.csv"
+survey = pd.read_csv(url_survey)
+
+# lock survey Show order to match *shows* index
+survey["Show"] = pd.Categorical(
+    survey["Show"], categories=shows.index, ordered=True
+)
+
+# average each question by show (drops first two cols = Show, Viewer)
+pilot_avg = (
+    survey
+      .drop(columns=survey.columns[:2])
+      .join(survey["Show"])
+      .groupby("Show")
+      .mean()
+      .reindex(shows.index)              # make absolutely sure the order matches
+)
+```
+
+
+
+## Scree Plot
+
+The **scree plot** is simply showing us, for each principal component $j$ (on the $x$-axis), what fraction of the total variance in our pilot-survey data that component captures (on the $y$-axis). 
+
+```{.python}
+scaler = StandardScaler()
+X      = scaler.fit_transform(pilot_avg)
+pca    = PCA().fit(X)
+
+# scree plot
+plt.figure(figsize=(5,3))
+plt.plot(np.arange(1, pca.n_components_+1), pca.explained_variance_ratio_, "o-")
+plt.xlabel("Principal component")
+plt.ylabel("Variance explained")
+plt.title("Pilot-Survey PCs")
+plt.show()
+```
+
+$$
+Var(PC_{1}) \geq Var(PC_{2}) \geq Var(PC_{3}) \geq \cdots
+$$
+
+
+## PC Interpretation
+
+```{.python}
+# print first 3 loading vectors 
+loadings = pd.DataFrame(pca.components_.T,
+                        index=pilot_avg.columns,
+                        columns=[f"PC{i}" for i in range(1, pca.n_components_+1)])
+print(loadings.iloc[:, :3].round(1))
+```
+
+- $\text{PC}_{1}$ ("Overall Engagement")
+- $\text{PC}_{2}$ ("Passive/Comfort vs. Active Drama")
+
+
+## PCA Projection of the NBC Show
+
+```{.python}
+# project data into PC space
+Z = pca.transform(X)
+zpilot_df = (
+    pd.DataFrame(Z, columns=[f"PC{i}" for i in range(1, pca.n_components_+1)])
+      .assign(Shows=shows.index)
+      .join(shows.reset_index(drop=True))
+)
+
+zpilot_df["PE_norm"] = (zpilot_df["PE"] - zpilot_df["PE"].min()) \
+                       / (zpilot_df["PE"].max() - zpilot_df["PE"].min())
+
+# ---------- STATIC ----------------------------------------------------------
+plt.figure(figsize=(6, 5))
+sns.scatterplot(
+    data=zpilot_df,
+    x="PC1", y="PC2",
+    hue="Genre",
+    size="PE_norm",          # bigger bubble == bigger PE
+    sizes=(20, 250),         # min & max dot size in points²
+    alpha=0.8,               # one scalar alpha for *all* points
+    legend="brief"
+)
+
+# add labels
+for _, r in zpilot_df.iterrows():
+    plt.text(r["PC1"] + .05, r["PC2"] + .05, r["Shows"], fontsize=7)
+
+plt.title("NBC pilots in survey PC space")
+plt.show()
+
+# ---------- INTERACTIVE -----------------------------------------------------
+fig = px.scatter(
+    zpilot_df, x="PC1", y="PC2",
+    color="Genre",
+    size="PE_norm",              # same visual cue as above
+    size_max=25,
+    hover_name="Shows",
+    opacity=0.85                 # one scalar for the whole trace
+)
+fig.update_layout(title="NBC pilots in survey PC space (interactive)")
+fig.show()
+```
+
+
+## Principal Component Regression (PCR)
+
+- PCR uses a lower-dimension set of principal components as predictors.
+  - PC analysis can reduce dimension, which is usually good.
+  - The PCs are independent.
+- PC analysis will be driven by the dominant sources of variation in $x$.
+  - If the outcome is connected to these dominant sources of variation, PCR works well.
+
+- The AIC (Akaike information criterion) is negatively associated to the probability that the data would be observed from the model.
+  - The lower AIC is, the better model is.
+
+
+```{.python}
+# ---------------------------------------------------------
+# 5a.  Principal-components regression (PE ~ first K PCs)
+# ---------------------------------------------------------
+PE        = shows["PE"].to_numpy()
+max_K     = min(20, Z.shape[1])           # never exceed available PCs
+aic_vals  = []
+
+for k in range(1, max_K+1):
+    Xk   = sm.add_constant(Z[:, :k])
+    res  = sm.GLM(PE, Xk).fit()
+    aic_vals.append(res.aic)
+    # Uncomment for verbose summaries—
+    # print(f"\n### K = {k}\n", res.summary())
+
+best_k = np.argmin(aic_vals) + 1
+print(f"Lowest AIC achieved with K = {best_k} PCs.")
+
+# Optional: plot AIC vs. K
+plt.plot(range(1, max_K+1), aic_vals, "o-")
+plt.xticks(range(1, max_K+1))
+plt.xlabel("Number of principal components (K)")
+plt.ylabel("AIC")
+plt.title("PCR model of PE comparison")
+plt.show()
+
+
+# ---------------------------------------------------------
+# 5b.  Principal-components regression (GRP ~ first K PCs)
+# ---------------------------------------------------------
+GRP        = shows["GRP"].to_numpy()
+max_K     = min(20, Z.shape[1])           # never exceed available PCs
+aic_vals  = []
+
+for k in range(1, max_K+1):
+    Xk   = sm.add_constant(Z[:, :k])
+    res  = sm.GLM(GRP, Xk).fit()
+    aic_vals.append(res.aic)
+    # Uncomment for verbose summaries—
+    # print(f"\n### K = {k}\n", res.summary())
+
+best_k = np.argmin(aic_vals) + 1
+print(f"Lowest AIC achieved with K = {best_k} PCs.")
+
+# Optional: plot AIC vs. K
+plt.plot(range(1, max_K+1), aic_vals, "o-")
+plt.xticks(range(1, max_K+1))
+plt.xlabel("Number of principal components (K)")
+plt.ylabel("AIC")
+plt.title("PCR model comparison")
+plt.show()
+```
+
