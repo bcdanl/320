@@ -66,12 +66,12 @@ theme_set(theme_fivethirtyeight()+
       - **Unsupervised learning: ML + Data Visualization**
 - We look at two classes of unsupervised methods:
   - **Cluster analysis** finds groups with similar characteristics.
-  - **Principal component analysis (PCA)** turns many variables into a few new ones, called **principal components**, that still capture most of your data.
+  - **Principal component analysis (PCA)** turns many variables into a few new ones, called **principal components**, that still capture most of our data.
       - PCA is a popular **dimensionality reduction** method!
   
 
 ## Clustering
-- In cluster analysis, the goal is to *group the observations* in your data into *clusters* such that **every observation in a cluster is more similar to other observations in the same cluster than observations in other clusters**.
+- In cluster analysis, the goal is to *group the observations* in our data into *clusters* such that **every observation in a cluster is more similar to other observations in the same cluster than observations in other clusters**.
   - E.g., a company that offers guided tours might want to cluster its clients by behavior and tastes:
     - Which countries they like to visit
     - Whether they prefer adventure tours, luxury tours, or educational tours
@@ -103,9 +103,9 @@ protein = pd.read_csv("https://bcdanl.github.io/data/protein.csv")
 
 ## Units and Scaling
 
-- The **units** you choose to measure your data can significantly influence the clusters that an algorithm uncovers.
+- The **units** we choose to measure our data can significantly influence the clusters that an algorithm uncovers.
 - One way to try to make the units of each variable more compatible is to **standardize** all the variables to have **a mean value of 0 and a standard deviation of 1**.
-- You can scale numeric data using the function
+- We can scale numeric data using the function
 `StandardScaler()`.
 - The `StandardScaler()` function annotates its output with two attributes:
   - `mean_` returns the mean values of all the columns;

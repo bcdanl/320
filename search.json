@@ -5100,14 +5100,14 @@
     "href": "danl-lec/danl-320-lec-11-2025-0430.html#unsupervised-learning-1",
     "title": "Lecture 11",
     "section": "Unsupervised Learning",
-    "text": "Unsupervised Learning\n\nUnsupervised learning methods discover unknown relationships in data.\nWith unsupervised methods, there’s no outcome that we’re trying to predict.\n\nInstead, we want to discover patterns in the data that perhaps we hadn’t previously suspected.\n\nUnsupervised learning: ML + Data Visualization\n\n\nWe look at two classes of unsupervised methods:\n\nCluster analysis finds groups with similar characteristics.\nPrincipal component analysis (PCA) turns many variables into a few new ones, called principal components, that still capture most of your data.\n\nPCA is a popular dimensionality reduction method!"
+    "text": "Unsupervised Learning\n\nUnsupervised learning methods discover unknown relationships in data.\nWith unsupervised methods, there’s no outcome that we’re trying to predict.\n\nInstead, we want to discover patterns in the data that perhaps we hadn’t previously suspected.\n\nUnsupervised learning: ML + Data Visualization\n\n\nWe look at two classes of unsupervised methods:\n\nCluster analysis finds groups with similar characteristics.\nPrincipal component analysis (PCA) turns many variables into a few new ones, called principal components, that still capture most of our data.\n\nPCA is a popular dimensionality reduction method!"
   },
   {
     "objectID": "danl-lec/danl-320-lec-11-2025-0430.html#clustering",
     "href": "danl-lec/danl-320-lec-11-2025-0430.html#clustering",
     "title": "Lecture 11",
     "section": "Clustering",
-    "text": "Clustering\n\nIn cluster analysis, the goal is to group the observations in your data into clusters such that every observation in a cluster is more similar to other observations in the same cluster than observations in other clusters.\n\nE.g., a company that offers guided tours might want to cluster its clients by behavior and tastes:\n\nWhich countries they like to visit\nWhether they prefer adventure tours, luxury tours, or educational tours\nWhat kinds of activities they participate in\nWhat sorts of sites they like to visit"
+    "text": "Clustering\n\nIn cluster analysis, the goal is to group the observations in our data into clusters such that every observation in a cluster is more similar to other observations in the same cluster than observations in other clusters.\n\nE.g., a company that offers guided tours might want to cluster its clients by behavior and tastes:\n\nWhich countries they like to visit\nWhether they prefer adventure tours, luxury tours, or educational tours\nWhat kinds of activities they participate in\nWhat sorts of sites they like to visit"
   },
   {
     "objectID": "danl-lec/danl-320-lec-11-2025-0430.html#k-means-algorithm",
@@ -5128,7 +5128,7 @@
     "href": "danl-lec/danl-320-lec-11-2025-0430.html#units-and-scaling",
     "title": "Lecture 11",
     "section": "Units and Scaling",
-    "text": "Units and Scaling\n\nThe units you choose to measure your data can significantly influence the clusters that an algorithm uncovers.\nOne way to try to make the units of each variable more compatible is to standardize all the variables to have a mean value of 0 and a standard deviation of 1.\nYou can scale numeric data using the function StandardScaler().\nThe StandardScaler() function annotates its output with two attributes:\n\nmean_ returns the mean values of all the columns;\nscale_ returns the standard deviations.\n\n\nvars_to_use = protein.columns[1:]\nscaler = StandardScaler()\n\n# computes those means and standard deviations on your selected columns \n  # and returns a NumPy array (`pmatrix`) \n  # where each column now has mean 0 and variance 1.\npmatrix = scaler.fit_transform(protein[vars_to_use])\n\npcenter, pscale = scaler.mean_, scaler.scale_"
+    "text": "Units and Scaling\n\nThe units we choose to measure our data can significantly influence the clusters that an algorithm uncovers.\nOne way to try to make the units of each variable more compatible is to standardize all the variables to have a mean value of 0 and a standard deviation of 1.\nWe can scale numeric data using the function StandardScaler().\nThe StandardScaler() function annotates its output with two attributes:\n\nmean_ returns the mean values of all the columns;\nscale_ returns the standard deviations.\n\n\nvars_to_use = protein.columns[1:]\nscaler = StandardScaler()\n\n# computes those means and standard deviations on your selected columns \n  # and returns a NumPy array (`pmatrix`) \n  # where each column now has mean 0 and variance 1.\npmatrix = scaler.fit_transform(protein[vars_to_use])\n\npcenter, pscale = scaler.mean_, scaler.scale_"
   },
   {
     "objectID": "danl-lec/danl-320-lec-11-2025-0430.html#density-plots---raw-vs.-scaled",
