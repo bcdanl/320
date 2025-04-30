@@ -60,16 +60,18 @@ theme_set(theme_fivethirtyeight()+
 
 ## Unsupervised Learning
 
-- Unsupervised methods discover unknown relationships in data.
-- With unsupervised methods, there’s no outcome that we’re trying to predict; instead, we want to discover patterns in the data that perhaps we hadn’t previously suspected.
+- **Unsupervised learning** methods discover unknown relationships in data.
+- With unsupervised methods, there’s **no outcome that we’re trying to predict**.
+  - Instead, we want to discover patterns in the data that perhaps we hadn’t previously suspected.
+      - **Unsupervised learning: ML + Data Visualization**
 - We look at two classes of unsupervised methods:
-  - Cluster analysis finds groups with similar characteristics.
-  - Principal component analysis turns many variables into a few new ones, called principal components, that still capture most of your data.
+  - **Cluster analysis** finds groups with similar characteristics.
+  - **Principal component analysis (PCA)** turns many variables into a few new ones, called **principal components**, that still capture most of your data.
+      - PCA is a popular **dimensionality reduction** method!
   
 
 ## Clustering
-- In cluster analysis, the goal is to group the observations in your data into clusters such that every observation in a cluster is more similar to other observations in the same
-cluster than observations in other clusters.
+- In cluster analysis, the goal is to *group the observations* in your data into *clusters* such that **every observation in a cluster is more similar to other observations in the same cluster than observations in other clusters**.
   - E.g., a company that offers guided tours might want to cluster its clients by behavior and tastes:
     - Which countries they like to visit
     - Whether they prefer adventure tours, luxury tours, or educational tours
@@ -96,14 +98,14 @@ protein = pd.read_csv("https://bcdanl.github.io/data/protein.csv")
 ```
 
 
-- To demonstrate clustering, we will use a small dataset from 1973 on protein consumption from nine different food groups in 25 countries in Europe.
-- The goal is to group the countries based on patterns in their protein consumption.
+- To demonstrate clustering, we will use a small dataset from 1973 on **protein consumption** from 9 different food variables in **25 countries in Europe**.
+- The goal is to **group the countries based on patterns in their protein consumption**.
 
 ## Units and Scaling
 
-- The units you choose to measure your data can significantly influence the clusters that an algorithm uncovers.
-- One way to try to make the units of each variable more compatible is to transform all the columns to have a mean value of 0 and a standard deviation of 1.
-- You can scale numeric data in Python using the function
+- The **units** you choose to measure your data can significantly influence the clusters that an algorithm uncovers.
+- One way to try to make the units of each variable more compatible is to **standardize** all the variables to have **a mean value of 0 and a standard deviation of 1**.
+- You can scale numeric data using the function
 `StandardScaler()`.
 - The `StandardScaler()` function annotates its output with two attributes:
   - `mean_` returns the mean values of all the columns;
@@ -140,7 +142,7 @@ ax.set_title("After StandardScaler"); ax.legend(); plt.show()
 
 ## Hierarchical Clustering
 
-Hierarchical clustering builds a tree of nested groupings, called a **dendrogram**.
+**Hierarchical clustering** builds a tree of nested groupings, called a **dendrogram**.
 
 ```{.python}
 link = linkage(pmatrix, method="ward")
@@ -149,11 +151,10 @@ dendrogram(link, labels=protein["Country"].values, leaf_font_size=8)
 plt.title("Ward dendrogram"); plt.tight_layout(); plt.show()
 ```
 
-- The `linkage()` function takes as input a distance matrix (as an object of class dist).
-- The distance matrix records the distances between all pairs of points in the data.
-- We can compute the distance matrix using the function dist().
 - The `linkage()` uses one of a variety of clustering methods to produce a tree that records the nested cluster structure.
   - Here we choose the **Ward's method**.
+  - The `linkage()` function takes an `Numpy` array, `pmatrix`, as an input.
+  - The `linkage()` compute the **distance matrix** that records the distances between all pairs of points in the data..
   
 ## Ward's method and Within Sum of Squares (WSS)
 <p align="center">
@@ -164,7 +165,7 @@ plt.title("Ward dendrogram"); plt.tight_layout(); plt.show()
 - **Ward's method** starts out with each data point as an individual cluster and merges clusters iteratively so as to minimize the total **within sum of squares (WSS)** of the clustering
   
 ## Hierarchical Clustering
-To extract the members of each cluster from the `linkage()` object, use `fcluster()`
+`fcluster()` extract the members of each cluster from the `linkage()` object.
 ```{.python}
 groups_hc = fcluster(link, t=5, criterion="maxclust")      # k = 5
 
@@ -185,11 +186,13 @@ print_clusters(protein, groups_hc, cols_to_print)
   <img src="https://bcdanl.github.io/lec_figs/pca.png" width="500px">
 </p>
 
-- How can we visualize the clustering?
-  - We can try to visualize the clustering by projecting the data onto the first two **principal components** of the data.
+<!-- - How can we visualize the clustering? -->
+  - We can visualize the clustering by projecting the data onto the first two **principal components** of the data.
   - Ellipsoid is described by three principal components.
   - The ellipsoid roughly bounds the data.
-  - PC1 & PC2 describe the best 2-D projection of the data.
+  - The first two principal components, $\text{PC}_{1}$ & $\text{PC}_{2}$, describe **the best 2-D projection of the data**.
+      - Notice that the principal components are *orthogonal*.
+      - $Cor(\text{PC}_{1}, \text{PC}_{2}) = 0$!
 
   
   <!-- - If **N** is the number of variables that describe the data, then the principal components describe the hyperellipsoid in **N**-space that roughly bounds the data.  -->
@@ -198,12 +201,12 @@ print_clusters(protein, groups_hc, cols_to_print)
 ## Principal Component Analysis
 ### Rotation and interpretation
 - Principal components are unknown but associated with variables in the data.
-  - A principal component can be interpreted in terms of how much each variable in the data is associated with each  principal component.
+  - A principal component can be *interpreted* in terms of **how much each variable in the data is associated with each  principal component.**
 - Principal components describe the data by projecting the data into the space of the (independent) principal components, which is called **rotations**.
 - The maximum number of principal components of the data is the number of numeric variables in the data.
 
 ## Principal Component Analysis
-We’ll use the `PCA()` function to do the principal components decomposition.
+The `PCA()` function does the principal components decomposition.
 ```{.python}
 pca = PCA().fit(pmatrix)
 proj = pca.transform(pmatrix)[:, :2]                # first 2 PCs
@@ -298,7 +301,10 @@ plt.show()
 
 ## K-means Algorithm
 
-K-means is a popular clustering algorithm when the data is all numeric and the distance metric is squared Euclidean.
+<!-- K-means is a popular clustering algorithm when the data is all numeric and the distance metric is squared Euclidean. -->
+
+
+**K-Means** partitions data into $k$ groups by assigning each point to the nearest cluster center and iteratively updating the centers to minimize within-cluster variance.
 
 
 <p align="center">
@@ -333,8 +339,8 @@ print_clusters(protein, groups_km + 1, cols_to_print)
 - **Calinski-Harabasz Index**: the adjusted ratio of between-sum-of-square (BSS) to within-sum-of-square (WSS).
   - $\text{BSS} = \text{TSS} - \text{WSS}$, where $\text{TSS}$ is total-sum-of-square.
   - Good clustering: **a small average WSS** & **a large average BSS**.
-- **Average Silhouette Width (ASW) Index**: the mean of individual silhouette scores
-  - Silhouette coefficient quantifies how well a point sits in its cluster by comparing **cohesion** and **separation** metrics.
+- **Average Silhouette Width (ASW) Index**: the mean of individual *silhouette coefficients*
+  - **Silhouette coefficient** quantifies how well a point sits in its cluster by comparing **cohesion** and **separation** metrics.
 
 
 
@@ -360,12 +366,14 @@ print(f"Best k by ASW: {best_k_asw}")
 
 
 ## NBC Show
+:::{.nonincremental}
 - Data from NBC on response to TV pilots
   - **Gross Ratings Points (GRP)**: estimated total viewership, which measures broadcast marketability.
   - **Projected Engagement (PE)**: a more subtle measure of audience.
       - After watching a show, viewer is quizzed on order and detail.
       - This measures their engagement with the show (and ads!).
 
+:::
 ```{.python}
 import pandas as pd
 import numpy as np
@@ -398,6 +406,8 @@ plt.show()
 ```
 
 ## NBC Show Survey
+:::{.nonincremental}
+
 - After watching a show, viewer is quizzed on order and detail.
   - The survey data include 6241 views and 20 questions for 40 shows.
 - There are two types of questions in the survey.
@@ -405,6 +415,7 @@ plt.show()
   - For Q2, the statement is **"I find this show feel ..."**
 - To relate survey results to show performance, we first calculate the average survey response by show.
 
+:::
 
 ```{.python}
 url_survey  = "https://bcdanl.github.io/data/nbc_survey.csv"
@@ -513,16 +524,18 @@ fig.show()
 
 
 ## Principal Component Regression (PCR)
+:::{.nonincremental}
 
-- PCR uses a lower-dimension set of principal components as predictors.
-  - PC analysis can reduce dimension, which is usually good.
-  - The PCs are independent.
-- PC analysis will be driven by the dominant sources of variation in $x$.
+- **PCR** uses a *lower-dimension set of principal components as predictors*.
+  - *PC analysis can reduce dimension*, which is usually good.
+  - The PCs are **independent** ($Cov(PC_{i}, PC_{j}) = 0$).
+- PC analysis will be driven by *the dominant sources of variation in $x$*.
   - If the outcome is connected to these dominant sources of variation, PCR works well.
 
-- The AIC (Akaike information criterion) is negatively associated to the probability that the data would be observed from the model.
+- The **AIC (Akaike information criterion)** is negatively associated to the probability that the data would be observed from the model.
   - The lower AIC is, the better model is.
 
+:::
 
 ```{.python}
 # ---------------------------------------------------------
