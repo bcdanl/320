@@ -27,6 +27,8 @@ website:
         target: _blank
       - text: ML Notebook
         href: listing-danl-320-ml.qmd
+      - text: Project
+        href: danl-rw/danl-320-team-project.qmd
       - text: " "
     
   # sidebar:

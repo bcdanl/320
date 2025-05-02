@@ -6,13 +6,12 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.29">
 
   <meta name="author" content="Byeong-Hak Choe">
   <meta name="dcterms.date" content="2025-02-10">
-  <title>Home - Lecture 6</title>
+  <title>Home – Lecture 6</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +30,7 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
     pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -71,7 +71,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -85,7 +85,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -96,210 +96,13 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7f9e1a71a62dc5fbf7a8d753f1f01321.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -458,8 +261,8 @@ Byeong-Hak Choe
 </section>
 <section id="the-sparksession-entry-point" class="slide level2">
 <h2>The <code>SparkSession</code> Entry Point</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb1-2"><a href="#cb1-2"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb1-2"><a></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>The <code>SparkSession</code> entry point provides the functionality for data transformation with <strong>data frames</strong> and <strong>SQL</strong>.</p></li>
 <li class="fragment"><p><code>from pyspark.sql import SparkSession</code></p>
@@ -482,11 +285,11 @@ Byeong-Hak Choe
 </section>
 <section id="reading-a-csv-file-into-the-spark-framework" class="slide level2">
 <h2>Reading a CSV file into the Spark Framework</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>path <span class="op">=</span> <span class="st">'/content/drive/MyDrive/lecture-data/cces.csv'</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>df <span class="op">=</span> spark.read.csv(path, </span>
-<span id="cb2-3"><a href="#cb2-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>df.show()  <span class="co"># Displays the first 20 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>path <span class="op">=</span> <span class="st">'/content/drive/MyDrive/lecture-data/cces.csv'</span></span>
+<span id="cb2-2"><a></a>df <span class="op">=</span> spark.read.csv(path, </span>
+<span id="cb2-3"><a></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-4"><a></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-5"><a></a>df.show()  <span class="co"># Displays the first 20 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>spark.read.csv(path, ...)</code>:
 <ul>
@@ -506,11 +309,11 @@ Byeong-Hak Choe
 </section>
 <section id="reading-a-csv-file-into-the-spark-framework-1" class="slide level2">
 <h2>Reading a CSV file into the Spark Framework</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>path <span class="op">=</span> <span class="st">'https://bcdanl.github.io/data/df.csv'</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>df <span class="op">=</span> spark.read.csv(path, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-4"><a href="#cb3-4"></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a>df.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>path <span class="op">=</span> <span class="st">'https://bcdanl.github.io/data/df.csv'</span></span>
+<span id="cb3-2"><a></a>df <span class="op">=</span> spark.read.csv(path, </span>
+<span id="cb3-3"><a></a>                    inferSchema<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-4"><a></a>                    header<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb3-5"><a></a>df.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>Spark’s spark.read.csv()</code> function relies on the Hadoop FileSystem API to access files.</li>
 <li class="fragment">By default, Hadoop does not support reading files directly from HTTPS URLs.
@@ -521,7 +324,6 @@ Byeong-Hak Choe
 </section>
 <section id="reading-a-web-csv-file-into-the-spark-framework" class="slide level2">
 <h2>Reading a Web CSV file into the Spark Framework</h2>
-<div>
 <ul>
 <li>What should we do then?
 <ul>
@@ -529,12 +331,11 @@ Byeong-Hak Choe
 <li><code>df = spark.createDataFrame(df_pd)</code></li>
 </ul></li>
 </ul>
-</div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb4-3"><a href="#cb4-3"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
-<span id="cb4-4"><a href="#cb4-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/nba.csv'</span>)</span>
-<span id="cb4-5"><a href="#cb4-5"></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb4-3"><a></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
+<span id="cb4-4"><a></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">'https://bcdanl.github.io/data/nba.csv'</span>)</span>
+<span id="cb4-5"><a></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="getting-a-summary-of-data" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -554,10 +355,10 @@ Byeong-Hak Choe
 <section id="displaying-the-first-rows-with-df.show" class="slide level2">
 <h2>Displaying the First Rows with <code>df.show()</code></h2>
 <h3 id="three-optional-parameters">Three Optional Parameters</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.show(<span class="dv">5</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>df.show(truncate <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>df.show(truncate <span class="op">=</span> <span class="dv">3</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>df.show(vertical <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a>df.show(<span class="dv">5</span>)</span>
+<span id="cb5-2"><a></a>df.show(truncate <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb5-3"><a></a>df.show(truncate <span class="op">=</span> <span class="dv">3</span>)</span>
+<span id="cb5-4"><a></a>df.show(vertical <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>By default, displays the first 20 rows.</p></li>
 <li class="fragment"><p><code>df.show(n, truncate, vertical)</code> accepts three optional parameters:</p>
@@ -595,9 +396,9 @@ Byeong-Hak Choe
 </section>
 <section id="displaying-variable-information-with-df.printschema-df.dtypes-and-df.columns" class="slide level2">
 <h2>Displaying Variable Information with <code>df.printSchema()</code>, <code>df.dtypes</code>, and <code>df.columns</code></h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>df.printSchema()</span>
-<span id="cb6-2"><a href="#cb6-2"></a>df.dtypes</span>
-<span id="cb6-3"><a href="#cb6-3"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>df.printSchema()</span>
+<span id="cb6-2"><a></a>df.dtypes</span>
+<span id="cb6-3"><a></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p><code>df.printSchema()</code> prints the <code>DataFrame</code> schema in a tree format.</p>
 <ul>
@@ -610,7 +411,7 @@ Byeong-Hak Choe
 </section>
 <section id="generating-descriptive-statistics-with-df.describe.show" class="slide level2">
 <h2>Generating Descriptive Statistics with <code>df.describe().show()</code></h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.describe().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a>df.describe().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>df.describe()</code> computes summary statistics (e.g., count, mean, stddev, min, max) for the DataFrame’s numeric columns.</li>
 <li class="fragment"><code>.show()</code> prints these statistics in a readable table format.</li>
@@ -623,11 +424,11 @@ Byeong-Hak Choe
 </section>
 <section id="selecting-a-column-by-its-name" class="slide level2">
 <h2>Selecting a Column by its Name</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Single column -&gt; returns a DataFrame with one column</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>df.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co"># Multiple columns -&gt; pass a list-like of column names</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Single column -&gt; returns a DataFrame with one column</span></span>
+<span id="cb8-2"><a></a>df.select(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a><span class="co"># Multiple columns -&gt; pass a list-like of column names</span></span>
+<span id="cb8-5"><a></a>df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Salary"</span>).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">In PySpark, we use <code>select()</code> to choose variables.</li>
 <li class="fragment">It returns a new <code>DataFrame</code> projection of the specified variables.</li>
@@ -640,15 +441,15 @@ Byeong-Hak Choe
 </section>
 <section id="counting-observations-distinct-values" class="slide level2">
 <h2>Counting Observations / Distinct Values</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Counting how many total rows</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>nba_count <span class="op">=</span> df.count()</span>
-<span id="cb9-3"><a href="#cb9-3"></a></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co"># Count distinct values in one column</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
-<span id="cb9-6"><a href="#cb9-6"></a>num_teams <span class="op">=</span> df.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb9-7"><a href="#cb9-7"></a></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># GroupBy a column and count occurrences</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>df.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="co"># Counting how many total rows</span></span>
+<span id="cb9-2"><a></a>nba_count <span class="op">=</span> df.count()</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="co"># Count distinct values in one column</span></span>
+<span id="cb9-5"><a></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> countDistinct</span>
+<span id="cb9-6"><a></a>num_teams <span class="op">=</span> df.select(countDistinct(<span class="st">"Team"</span>)).collect()[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb9-7"><a></a></span>
+<span id="cb9-8"><a></a><span class="co"># GroupBy a column and count occurrences</span></span>
+<span id="cb9-9"><a></a>df.groupBy(<span class="st">"Team"</span>).count().show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p><code>df.count()</code> returns the number of rows in <code>df</code>.</p></li>
 <li class="fragment"><p>Unlike Pandas, there is no direct <code>.value_counts()</code> or <code>.nunique()</code> in PySpark.</p>
@@ -668,26 +469,26 @@ Byeong-Hak Choe
 </section>
 <section id="sorting-by-one-or-more-variables" class="slide level2">
 <h2>Sorting by One or More Variables</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Sort by a single column ascending</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>df.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co"># Sort by descending</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> desc</span>
-<span id="cb10-6"><a href="#cb10-6"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co"># Sort by multiple columns</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a>df.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Sort by a single column ascending</span></span>
+<span id="cb10-2"><a></a>df.orderBy(<span class="st">"Name"</span>).show(<span class="dv">5</span>)</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a><span class="co"># Sort by descending</span></span>
+<span id="cb10-5"><a></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> desc</span>
+<span id="cb10-6"><a></a>df.orderBy(desc(<span class="st">"Salary"</span>)).show(<span class="dv">5</span>)</span>
+<span id="cb10-7"><a></a></span>
+<span id="cb10-8"><a></a><span class="co"># Sort by multiple columns</span></span>
+<span id="cb10-9"><a></a>df.orderBy([<span class="st">"Team"</span>, desc(<span class="st">"Salary"</span>)]).show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><code>orderBy()</code> can accept column names and ascending/descending instructions.</li>
 </ul>
 </section>
 <section id="equivalent-of-pandas-nsmallest-or-nlargest" class="slide level2">
 <h2>Equivalent of Pandas <code>nsmallest</code> or <code>nlargest</code></h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># nsmallest example:</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>df.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co"># nlargest example:</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a>df.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="co"># nsmallest example:</span></span>
+<span id="cb11-2"><a></a>df.orderBy(<span class="st">"Salary"</span>).limit(<span class="dv">5</span>).show()</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="co"># nlargest example:</span></span>
+<span id="cb11-5"><a></a>df.orderBy(desc(<span class="st">"Salary"</span>)).limit(<span class="dv">5</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Spark does not have <code>nsmallest()</code> or <code>nlargest()</code>, but we can use <code>limit()</code> after sorting.</li>
 </ul>
@@ -699,17 +500,15 @@ Byeong-Hak Choe
 </section>
 <section id="row-based-access-in-pyspark" class="slide level2">
 <h2>Row-Based Access in PySpark</h2>
-<div>
 <ul>
 <li>Unlike Pandas, PySpark <code>DataFrames</code> do not use a row-based index, so there is no direct <code>.loc[]</code> or <code>.iloc[]</code>.</li>
 <li>We typically filter rows by conditions (using <code>.filter()</code>) or use transformations (<code>limit()</code>, <code>take()</code>, <code>collect()</code>) to access row data.</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Example: filter by condition</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>df.<span class="bu">filter</span>(<span class="st">"Team == 'New York Knicks'"</span>).show()</span>
-<span id="cb12-3"><a href="#cb12-3"></a>df.limit(<span class="dv">5</span>).show()</span>
-<span id="cb12-4"><a href="#cb12-4"></a>df.take(<span class="dv">5</span>)</span>
-<span id="cb12-5"><a href="#cb12-5"></a>df.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="co"># Example: filter by condition</span></span>
+<span id="cb12-2"><a></a>df.<span class="bu">filter</span>(<span class="st">"Team == 'New York Knicks'"</span>).show()</span>
+<span id="cb12-3"><a></a>df.limit(<span class="dv">5</span>).show()</span>
+<span id="cb12-4"><a></a>df.take(<span class="dv">5</span>)</span>
+<span id="cb12-5"><a></a>df.collect()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">To get the first <code>n</code> rows, use <code>df.limit(n)</code> or <code>df.take(n)</code>, which returns a list of <strong>Row</strong> objects.</li>
 <li class="fragment"><code>df.collect()</code>: Returns all the records as a list of <strong>Row</strong>.</li>
@@ -723,15 +522,15 @@ Byeong-Hak Choe
 <section id="adding-removing-renaming-and-relocating-variables-1" class="slide level2">
 <h2>Adding, Removing, Renaming, and Relocating Variables</h2>
 <h4 id="adding-columns-with-withcolumn">Adding Columns with <code>withColumn()</code></h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Add a column "Salary_k" using a column expression col()</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># Add a column "Salary_k" using a column expression col()</span></span>
+<span id="cb13-2"><a></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_k"</span>, col(<span class="st">"Salary"</span>) <span class="op">/</span> <span class="dv">1000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="removing-columns-with-drop">Removing Columns with <code>drop()</code></h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_k"</span>)  <span class="co"># remove a single column</span></span>
+<span id="cb14-2"><a></a>df <span class="op">=</span> df.drop(<span class="st">"Salary_2x"</span>, <span class="st">"Salary_3x"</span>)  <span class="co"># remove multiple columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="renaming-columns-with-withcolumnrenamed">Renaming Columns with <code>withColumnRenamed()</code></h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>df <span class="op">=</span> df.withColumnRenamed(<span class="st">"Birthday"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <h4 id="rearranging-columns">Rearranging Columns</h4>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="op">=</span> df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a></a>df <span class="op">=</span> df.select(<span class="st">"Name"</span>, <span class="st">"Team"</span>, <span class="st">"Position"</span>, <span class="st">"Salary"</span>, <span class="st">"DateOfBirth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="mathematical-vectorized-operations" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -740,33 +539,33 @@ Byeong-Hak Choe
 </section>
 <section id="aggregations-math-methods" class="slide level2">
 <h2>Aggregations &amp; Math Methods</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Summaries for numeric columns</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>df.selectExpr(</span>
-<span id="cb17-3"><a href="#cb17-3"></a>    <span class="st">"mean(Salary) as mean_salary"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>    <span class="st">"min(Salary) as min_salary"</span>,</span>
-<span id="cb17-5"><a href="#cb17-5"></a>    <span class="st">"max(Salary) as max_salary"</span>,</span>
-<span id="cb17-6"><a href="#cb17-6"></a>    <span class="st">"stddev_pop(Salary) as std_salary"</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Summaries for numeric columns</span></span>
+<span id="cb17-2"><a></a>df.selectExpr(</span>
+<span id="cb17-3"><a></a>    <span class="st">"mean(Salary) as mean_salary"</span>,</span>
+<span id="cb17-4"><a></a>    <span class="st">"min(Salary) as min_salary"</span>,</span>
+<span id="cb17-5"><a></a>    <span class="st">"max(Salary) as max_salary"</span>,</span>
+<span id="cb17-6"><a></a>    <span class="st">"stddev_pop(Salary) as std_salary"</span></span>
+<span id="cb17-7"><a></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">Spark has many SQL functions that can be used with <code>selectExpr()</code>.</li>
 </ul>
 </section>
 <section id="creating-or-transforming-columns" class="slide level2">
 <h2>Creating or Transforming Columns</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> functions <span class="im">as</span> F</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># Pre-compute the average salary (pulls it back as a Python float)</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>salary_mean <span class="op">=</span> df.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a>df2 <span class="op">=</span> (</span>
-<span id="cb18-6"><a href="#cb18-6"></a>    df</span>
-<span id="cb18-7"><a href="#cb18-7"></a>    .withColumn(<span class="st">"Salary_2x"</span>, F.col(<span class="st">"Salary"</span>) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># Add Salary_2x</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>    .withColumn(</span>
-<span id="cb18-9"><a href="#cb18-9"></a>        <span class="st">"Name_w_Position"</span>,           <span class="co"># Concatenate Name and Position</span></span>
-<span id="cb18-10"><a href="#cb18-10"></a>        F.concat(F.col(<span class="st">"Name"</span>), F.lit(<span class="st">" ("</span>), F.col(<span class="st">"Position"</span>), F.lit(<span class="st">")"</span>)))</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    .withColumn(</span>
-<span id="cb18-12"><a href="#cb18-12"></a>        <span class="st">"Salary_minus_Mean"</span>,        <span class="co"># Subtract mean salary</span></span>
-<span id="cb18-13"><a href="#cb18-13"></a>        F.col(<span class="st">"Salary"</span>) <span class="op">-</span> F.lit(salary_mean))</span>
-<span id="cb18-14"><a href="#cb18-14"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a><span class="im">from</span> pyspark.sql <span class="im">import</span> functions <span class="im">as</span> F</span>
+<span id="cb18-2"><a></a><span class="co"># Pre-compute the average salary (pulls it back as a Python float)</span></span>
+<span id="cb18-3"><a></a>salary_mean <span class="op">=</span> df.select(F.avg(<span class="st">"Salary"</span>).alias(<span class="st">"mean_salary"</span>)).collect()[<span class="dv">0</span>][<span class="st">"mean_salary"</span>]</span>
+<span id="cb18-4"><a></a></span>
+<span id="cb18-5"><a></a>df2 <span class="op">=</span> (</span>
+<span id="cb18-6"><a></a>    df</span>
+<span id="cb18-7"><a></a>    .withColumn(<span class="st">"Salary_2x"</span>, F.col(<span class="st">"Salary"</span>) <span class="op">*</span> <span class="dv">2</span>)    <span class="co"># Add Salary_2x</span></span>
+<span id="cb18-8"><a></a>    .withColumn(</span>
+<span id="cb18-9"><a></a>        <span class="st">"Name_w_Position"</span>,           <span class="co"># Concatenate Name and Position</span></span>
+<span id="cb18-10"><a></a>        F.concat(F.col(<span class="st">"Name"</span>), F.lit(<span class="st">" ("</span>), F.col(<span class="st">"Position"</span>), F.lit(<span class="st">")"</span>)))</span>
+<span id="cb18-11"><a></a>    .withColumn(</span>
+<span id="cb18-12"><a></a>        <span class="st">"Salary_minus_Mean"</span>,        <span class="co"># Subtract mean salary</span></span>
+<span id="cb18-13"><a></a>        F.col(<span class="st">"Salary"</span>) <span class="op">-</span> F.lit(salary_mean))</span>
+<span id="cb18-14"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">All transformations in Spark are “lazy” until an action (<code>show()</code>, <code>collect()</code>, <code>count()</code>) is called.</li>
 <li class="fragment"><code>.alias()</code> method is a way to give a temporary (or alternate) name to the column.</li>
@@ -779,33 +578,28 @@ Byeong-Hak Choe
 </section>
 <section id="converting-data-types-with-the-cast-method-1" class="slide level2">
 <h2>Converting Data Types with the <code>cast()</code> Method</h2>
-<div>
 <ul>
 <li>Spark columns can be cast to other data types using <code>cast()</code>:</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Convert Salary to integer</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a><span class="co"># Convert Salary to integer</span></span>
+<span id="cb19-2"><a></a>df <span class="op">=</span> df.withColumn(<span class="st">"Salary_int"</span>, col(<span class="st">"Salary"</span>).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="converting-data-types-with-the-to_date-method" class="slide level2">
 <h2>Converting Data Types with the <code>to_date()</code> Method</h2>
-<div>
 <ul>
 <li><code>to_date()</code> can be used with a given string format (e.g., <strong>“M/d/yy”</strong>)</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Convert to date or timestamp</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> to_date</span>
-<span id="cb20-3"><a href="#cb20-3"></a></span>
-<span id="cb20-4"><a href="#cb20-4"></a><span class="co"># To have 19xx years, not 20xx ones.</span></span>
-<span id="cb20-5"><a href="#cb20-5"></a>spark.conf.<span class="bu">set</span>(<span class="st">"spark.sql.legacy.timeParserPolicy"</span>, <span class="st">"LEGACY"</span>) </span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="co"># Casting the "Birthday" column to a date type</span></span>
-<span id="cb20-8"><a href="#cb20-8"></a>df <span class="op">=</span> df.withColumn(<span class="st">"DateOfBirth_ts"</span>, to_date(<span class="st">"Birthday"</span>, <span class="st">"M/d/yy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a><span class="co"># Convert to date or timestamp</span></span>
+<span id="cb20-2"><a></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> to_date</span>
+<span id="cb20-3"><a></a></span>
+<span id="cb20-4"><a></a><span class="co"># To have 19xx years, not 20xx ones.</span></span>
+<span id="cb20-5"><a></a>spark.conf.<span class="bu">set</span>(<span class="st">"spark.sql.legacy.timeParserPolicy"</span>, <span class="st">"LEGACY"</span>) </span>
+<span id="cb20-6"><a></a></span>
+<span id="cb20-7"><a></a><span class="co"># Casting the "Birthday" column to a date type</span></span>
+<span id="cb20-8"><a></a>df <span class="op">=</span> df.withColumn(<span class="st">"DateOfBirth_ts"</span>, to_date(<span class="st">"Birthday"</span>, <span class="st">"M/d/yy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="converting-data-types" class="slide level2">
 <h2>Converting Data Types</h2>
-<div>
 <!-- - Below is a concise list of PySpark data types along with their common short names: -->
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -831,9 +625,7 @@ Byeong-Hak Choe
 <li>DateType — <code>date</code> (Represents a date (year, month, day))</li>
 <li>TimestampType — <code>timestamp</code> (Represents a timestamp (date and time))</li>
 </ul>
-</div>
-</div>
-</div>
+</div></div>
 </section>
 <section id="pyspark-basics-4" class="slide level2">
 <h2>PySpark Basics</h2>
@@ -852,47 +644,46 @@ Byeong-Hak Choe
 </section>
 <section id="filtering-rows-by-a-condition" class="slide level2">
 <h2>Filtering Rows by a Condition</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
-<span id="cb21-3"><a href="#cb21-3"></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
-<span id="cb21-4"><a href="#cb21-4"></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">"https://bcdanl.github.io/data/employment.csv"</span>)</span>
-<span id="cb21-5"><a href="#cb21-5"></a>df_pd <span class="op">=</span> df_pd.where(pd.notnull(df_pd), <span class="va">None</span>)  <span class="co"># Convert NaN to None</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span>
-<span id="cb21-7"><a href="#cb21-7"></a></span>
-<span id="cb21-8"><a href="#cb21-8"></a>df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>) <span class="op">&gt;</span> <span class="dv">100000</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-2"><a></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb21-3"><a></a>spark <span class="op">=</span> SparkSession.builder.master(<span class="st">"local[*]"</span>).getOrCreate()</span>
+<span id="cb21-4"><a></a>df_pd <span class="op">=</span> pd.read_csv(<span class="st">"https://bcdanl.github.io/data/employment.csv"</span>)</span>
+<span id="cb21-5"><a></a>df_pd <span class="op">=</span> df_pd.where(pd.notnull(df_pd), <span class="va">None</span>)  <span class="co"># Convert NaN to None</span></span>
+<span id="cb21-6"><a></a>df <span class="op">=</span> spark.createDataFrame(df_pd)</span>
+<span id="cb21-7"><a></a></span>
+<span id="cb21-8"><a></a>df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>) <span class="op">&gt;</span> <span class="dv">100000</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="filtering-by-a-condition-1" class="slide level2">
 <h2>Filtering by a Condition</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.<span class="bu">filter</span>(</span>
-<span id="cb22-2"><a href="#cb22-2"></a>    ( col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span> ) <span class="op">&amp;</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>    ( col(<span class="st">"Salary"</span>) <span class="op">&gt;=</span> <span class="dv">100000</span> )</span>
-<span id="cb22-4"><a href="#cb22-4"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a></a>df.<span class="bu">filter</span>(</span>
+<span id="cb22-2"><a></a>    ( col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span> ) <span class="op">&amp;</span> </span>
+<span id="cb22-3"><a></a>    ( col(<span class="st">"Salary"</span>) <span class="op">&gt;=</span> <span class="dv">100000</span> )</span>
+<span id="cb22-4"><a></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.<span class="bu">filter</span>(</span>
-<span id="cb23-2"><a href="#cb23-2"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span>) <span class="op">|</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Legal"</span>)   <span class="op">|</span> </span>
-<span id="cb23-4"><a href="#cb23-4"></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Sales"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a>df.<span class="bu">filter</span>(</span>
+<span id="cb23-2"><a></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Finance"</span>) <span class="op">|</span> </span>
+<span id="cb23-3"><a></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Legal"</span>)   <span class="op">|</span> </span>
+<span id="cb23-4"><a></a>    (col(<span class="st">"Team"</span>) <span class="op">==</span> <span class="st">"Sales"</span>)</span>
+<span id="cb23-5"><a></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <ul>
 <li class="fragment">We could combine multiple separate Boolean conditions with logical operators.</li>
 </ul>
 </section>
 <section id="filtering-with-the-isin-method" class="slide level2">
 <h2>Filtering with the <code>isin()</code> method</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Checking membership with "isin"</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isin(<span class="st">"Finance"</span>, <span class="st">"Legal"</span>, <span class="st">"Sales"</span>)).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="co"># Checking membership with "isin"</span></span>
+<span id="cb24-2"><a></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isin(<span class="st">"Finance"</span>, <span class="st">"Legal"</span>, <span class="st">"Sales"</span>)).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">A better solution is the <code>isin()</code> method.</li>
 </ul>
 </section>
 <section id="filtering-with-the-between-method" class="slide level2">
 <h2>Filtering with the <code>between()</code> method</h2>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df_between <span class="op">=</span> df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>).between(<span class="dv">90000</span>, <span class="dv">100000</span>))</span>
-<span id="cb25-2"><a href="#cb25-2"></a>df_between.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a>df_between <span class="op">=</span> df.<span class="bu">filter</span>(col(<span class="st">"Salary"</span>).between(<span class="dv">90000</span>, <span class="dv">100000</span>))</span>
+<span id="cb25-2"><a></a>df_between.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">It returns a Boolean Series where <code>True</code> denotes that an observation’s value falls between the specified interval.</li>
 </ul>
@@ -908,29 +699,27 @@ Byeong-Hak Choe
 </section>
 <section id="checking-for-missing-values-the-isnull-and-isnotnull-methods" class="slide level2">
 <h2>Checking for Missing Values: The <code>isNull()</code> and <code>isNotNull()</code> methods</h2>
-<div>
 <ul>
 <li>In PySpark, missing values often appear as <code>null</code>.</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Count how many null values in a given column</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNull()).count()</span>
-<span id="cb26-3"><a href="#cb26-3"></a></span>
-<span id="cb26-4"><a href="#cb26-4"></a><span class="co"># Similarly, you can filter non-null</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNotNull()).count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># Count how many null values in a given column</span></span>
+<span id="cb26-2"><a></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNull()).count()</span>
+<span id="cb26-3"><a></a></span>
+<span id="cb26-4"><a></a><span class="co"># Similarly, you can filter non-null</span></span>
+<span id="cb26-5"><a></a>df.<span class="bu">filter</span>(col(<span class="st">"Team"</span>).isNotNull()).count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dropping-rows-with-null-values-the-.na.drop-method" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method</h2>
-<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Drop any row that has a null value in any column</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>df_drop_any <span class="op">=</span> df.na.drop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="co"># Drop any row that has a null value in any column</span></span>
+<span id="cb27-2"><a></a>df_drop_any <span class="op">=</span> df.na.drop()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">The <code>.na.drop()</code> method removes observations that hold any <code>NULL</code> values.</li>
 </ul>
 </section>
 <section id="dropping-rows-with-null-values-the-.na.drop-method-with-how" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method with <code>how</code></h2>
-<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Drop rows that have all columns null</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>df_drop_all <span class="op">=</span> df.na.drop(how<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a><span class="co"># Drop rows that have all columns null</span></span>
+<span id="cb28-2"><a></a>df_drop_all <span class="op">=</span> df.na.drop(how<span class="op">=</span><span class="st">"all"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment"><p>We can pass the <code>how</code> parameter an argument of <code>"all"</code> to remove observations in which all values are missing.</p></li>
 <li class="fragment"><p>Note that the <code>how</code> parameter’s default argument is <code>"any"</code>.</p></li>
@@ -938,8 +727,8 @@ Byeong-Hak Choe
 </section>
 <section id="dropping-rows-with-null-values-the-.na.drop-method-with-subset" class="slide level2">
 <h2>Dropping Rows with Null Values: The <code>.na.drop()</code> method with <code>subset</code></h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Drop rows with nulls in specific columns:</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>df_drop_subset <span class="op">=</span> df.na.drop(subset<span class="op">=</span>[<span class="st">"Gender"</span>, <span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="co"># Drop rows with nulls in specific columns:</span></span>
+<span id="cb29-2"><a></a>df_drop_subset <span class="op">=</span> df.na.drop(subset<span class="op">=</span>[<span class="st">"Gender"</span>, <span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can use the <code>subset</code> parameter to target observations with a missing value in a specific variable.
 <ul>
@@ -951,27 +740,26 @@ Byeong-Hak Choe
 <h2>Filling Null Values: The <code>.na.fill()</code> method</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Fill a specific column’s nulls with 0</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>df_fill <span class="op">=</span> (</span>
-<span id="cb30-3"><a href="#cb30-3"></a>  df.na</span>
-<span id="cb30-4"><a href="#cb30-4"></a>  .fill(value <span class="op">=</span> <span class="dv">0</span>, </span>
-<span id="cb30-5"><a href="#cb30-5"></a>        subset <span class="op">=</span> [<span class="st">"Salary"</span>])</span>
-<span id="cb30-6"><a href="#cb30-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a><span class="co"># Fill a specific column’s nulls with 0</span></span>
+<span id="cb30-2"><a></a>df_fill <span class="op">=</span> (</span>
+<span id="cb30-3"><a></a>  df.na</span>
+<span id="cb30-4"><a></a>  .fill(value <span class="op">=</span> <span class="dv">0</span>, </span>
+<span id="cb30-5"><a></a>        subset <span class="op">=</span> [<span class="st">"Salary"</span>])</span>
+<span id="cb30-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can specify <code>value</code> and <code>subset</code> parameters to fill a specific column’s <code>NULL</code>s with a specific value</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Fill multiple columns with a dictionary</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>df_fill_multi <span class="op">=</span> (</span>
-<span id="cb31-3"><a href="#cb31-3"></a>  df.na</span>
-<span id="cb31-4"><a href="#cb31-4"></a>  .fill({<span class="st">"Salary"</span>: <span class="dv">0</span>, </span>
-<span id="cb31-5"><a href="#cb31-5"></a>           <span class="st">"Team"</span>: <span class="st">"Unknown"</span>})</span>
-<span id="cb31-6"><a href="#cb31-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a><span class="co"># Fill multiple columns with a dictionary</span></span>
+<span id="cb31-2"><a></a>df_fill_multi <span class="op">=</span> (</span>
+<span id="cb31-3"><a></a>  df.na</span>
+<span id="cb31-4"><a></a>  .fill({<span class="st">"Salary"</span>: <span class="dv">0</span>, </span>
+<span id="cb31-5"><a></a>           <span class="st">"Team"</span>: <span class="st">"Unknown"</span>})</span>
+<span id="cb31-6"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can fill multiple columns’ <code>NULL</code>s with a dictionary.</li>
 </ul>
-</div>
-</div>
+</div></div>
 </section></section>
 <section>
 <section id="dealing-with-duplicates" class="title-slide slide level1 center" data-background-color="#1c4982">
@@ -980,29 +768,25 @@ Byeong-Hak Choe
 </section>
 <section id="removing-duplicates-with-distinct" class="slide level2">
 <h2>Removing Duplicates with <code>distinct()</code></h2>
-<div>
 <ul>
 <li>In PySpark, the <code>distinct()</code> method returns a new DataFrame with <strong>duplicate rows removed</strong>.</li>
 <li>It is similar to the SQL <code>SELECT DISTINCT</code> command.</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>df.select(<span class="st">"Team"</span>, <span class="st">"Position"</span>).distinct().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a>df.select(<span class="st">"Team"</span>, <span class="st">"Position"</span>).distinct().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">After applying <code>distinct()</code>, only unique observation remain.</li>
 </ul>
 </section>
 <section id="dealing-with-duplicates-with-the-dropduplicates-method" class="slide level2">
 <h2>Dealing with Duplicates with the <code>dropDuplicates()</code> method</h2>
-<div>
 <ul>
 <li>Missing values are a common occurrence in messy data sets, and so are duplicate values.</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Drop all rows that are exact duplicates across all columns</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>df_no_dups <span class="op">=</span> df.dropDuplicates()</span>
-<span id="cb33-3"><a href="#cb33-3"></a></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="co"># Drop duplicates based on subset of columns</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a>df_no_dups_subset <span class="op">=</span> df.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a><span class="co"># Drop all rows that are exact duplicates across all columns</span></span>
+<span id="cb33-2"><a></a>df_no_dups <span class="op">=</span> df.dropDuplicates()</span>
+<span id="cb33-3"><a></a></span>
+<span id="cb33-4"><a></a><span class="co"># Drop duplicates based on subset of columns</span></span>
+<span id="cb33-5"><a></a>df_no_dups_subset <span class="op">=</span> df.dropDuplicates([<span class="st">"Team"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">By default, <code>dropDuplicates()</code> keeps the first occurrence of each distinct combination.</li>
 </ul>
@@ -1025,74 +809,70 @@ Byeong-Hak Choe
 </section>
 <section id="creating-a-groupby-object" class="slide level2">
 <h2>Creating a groupBy Object</h2>
-<div>
 <ul>
 <li>We can create a Spark <code>DataFrame</code> from a list (or other data sources like CSV, Parquet, etc.).</li>
 <li>Then call <code>groupBy("Type")</code> on the <code>DataFrame</code>.</li>
 </ul>
-</div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>food_data <span class="op">=</span> [</span>
-<span id="cb34-2"><a href="#cb34-2"></a>    (<span class="st">"Apple"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.05</span>),</span>
-<span id="cb34-3"><a href="#cb34-3"></a>    (<span class="st">"Onion"</span>, <span class="st">"Vegie"</span>, <span class="fl">1.00</span>),</span>
-<span id="cb34-4"><a href="#cb34-4"></a>    (<span class="st">"Orange"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.25</span>),</span>
-<span id="cb34-5"><a href="#cb34-5"></a>    (<span class="st">"Tomato"</span>, <span class="st">"Vegie"</span>, <span class="fl">0.85</span>),</span>
-<span id="cb34-6"><a href="#cb34-6"></a>    (<span class="st">"Watermelon"</span>, <span class="st">"Fruit"</span>, <span class="fl">4.15</span>)</span>
-<span id="cb34-7"><a href="#cb34-7"></a>]</span>
-<span id="cb34-8"><a href="#cb34-8"></a></span>
-<span id="cb34-9"><a href="#cb34-9"></a>food_df <span class="op">=</span> spark.createDataFrame(food_data, [<span class="st">"Item"</span>, <span class="st">"Type"</span>, <span class="st">"Price"</span>])</span>
-<span id="cb34-10"><a href="#cb34-10"></a></span>
-<span id="cb34-11"><a href="#cb34-11"></a><span class="co"># Group by "Type"</span></span>
-<span id="cb34-12"><a href="#cb34-12"></a>groups <span class="op">=</span> food_df.groupBy(<span class="st">"Type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a>food_data <span class="op">=</span> [</span>
+<span id="cb34-2"><a></a>    (<span class="st">"Apple"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.05</span>),</span>
+<span id="cb34-3"><a></a>    (<span class="st">"Onion"</span>, <span class="st">"Vegie"</span>, <span class="fl">1.00</span>),</span>
+<span id="cb34-4"><a></a>    (<span class="st">"Orange"</span>, <span class="st">"Fruit"</span>, <span class="fl">1.25</span>),</span>
+<span id="cb34-5"><a></a>    (<span class="st">"Tomato"</span>, <span class="st">"Vegie"</span>, <span class="fl">0.85</span>),</span>
+<span id="cb34-6"><a></a>    (<span class="st">"Watermelon"</span>, <span class="st">"Fruit"</span>, <span class="fl">4.15</span>)</span>
+<span id="cb34-7"><a></a>]</span>
+<span id="cb34-8"><a></a></span>
+<span id="cb34-9"><a></a>food_df <span class="op">=</span> spark.createDataFrame(food_data, [<span class="st">"Item"</span>, <span class="st">"Type"</span>, <span class="st">"Price"</span>])</span>
+<span id="cb34-10"><a></a></span>
+<span id="cb34-11"><a></a><span class="co"># Group by "Type"</span></span>
+<span id="cb34-12"><a></a>groups <span class="op">=</span> food_df.groupBy(<span class="st">"Type"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">In this example, there are two types of items: “Fruit” and “Vegie”.</li>
 </ul>
 </section>
 <section id="aggregation-on-groups" class="slide level2">
 <h2>Aggregation on Groups</h2>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Calculate the average Price for each Type</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a>groups.avg(<span class="st">"Price"</span>).show()</span>
-<span id="cb35-3"><a href="#cb35-3"></a></span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="co"># Calculate the sum of the Price for each Type</span></span>
-<span id="cb35-5"><a href="#cb35-5"></a>groups.<span class="bu">sum</span>(<span class="st">"Price"</span>).show()</span>
-<span id="cb35-6"><a href="#cb35-6"></a></span>
-<span id="cb35-7"><a href="#cb35-7"></a><span class="co"># Count how many rows in each Type</span></span>
-<span id="cb35-8"><a href="#cb35-8"></a>groups.count().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a><span class="co"># Calculate the average Price for each Type</span></span>
+<span id="cb35-2"><a></a>groups.avg(<span class="st">"Price"</span>).show()</span>
+<span id="cb35-3"><a></a></span>
+<span id="cb35-4"><a></a><span class="co"># Calculate the sum of the Price for each Type</span></span>
+<span id="cb35-5"><a></a>groups.<span class="bu">sum</span>(<span class="st">"Price"</span>).show()</span>
+<span id="cb35-6"><a></a></span>
+<span id="cb35-7"><a></a><span class="co"># Count how many rows in each Type</span></span>
+<span id="cb35-8"><a></a>groups.count().show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">These group-based operations are executed once an action (like <code>.show()</code>) is called.</li>
 </ul>
 </section>
 <section id="group-aggregation-with-multiple-columns" class="slide level2">
 <h2>Group Aggregation with Multiple Columns</h2>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> <span class="bu">min</span>, <span class="bu">max</span>, mean</span>
-<span id="cb36-2"><a href="#cb36-2"></a></span>
-<span id="cb36-3"><a href="#cb36-3"></a>food_df.groupBy(<span class="st">"Type"</span>).agg(</span>
-<span id="cb36-4"><a href="#cb36-4"></a>    <span class="bu">min</span>(<span class="st">"Price"</span>).alias(<span class="st">"min_price"</span>),</span>
-<span id="cb36-5"><a href="#cb36-5"></a>    <span class="bu">max</span>(<span class="st">"Price"</span>).alias(<span class="st">"max_price"</span>),</span>
-<span id="cb36-6"><a href="#cb36-6"></a>    mean(<span class="st">"Price"</span>).alias(<span class="st">"mean_price"</span>)</span>
-<span id="cb36-7"><a href="#cb36-7"></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> <span class="bu">min</span>, <span class="bu">max</span>, mean</span>
+<span id="cb36-2"><a></a></span>
+<span id="cb36-3"><a></a>food_df.groupBy(<span class="st">"Type"</span>).agg(</span>
+<span id="cb36-4"><a></a>    <span class="bu">min</span>(<span class="st">"Price"</span>).alias(<span class="st">"min_price"</span>),</span>
+<span id="cb36-5"><a></a>    <span class="bu">max</span>(<span class="st">"Price"</span>).alias(<span class="st">"max_price"</span>),</span>
+<span id="cb36-6"><a></a>    mean(<span class="st">"Price"</span>).alias(<span class="st">"mean_price"</span>)</span>
+<span id="cb36-7"><a></a>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">We can pass multiple aggregations to <code>.agg()</code> to get multiple results at once.</li>
 </ul>
 </section>
 <section id="adding-group-level-statistics-to-each-row" class="slide level2">
 <h2>Adding Group-Level Statistics to Each Row</h2>
-<div>
 <ul>
 <li>In Pandas, <code>.transform()</code> is often used to add group-level statistics back onto the original <code>DataFrame</code>.</li>
 <li>In PySpark, we typically use a <code>Window</code> function with the aggregated <code>DataFrame.</code></li>
 </ul>
-</div>
-<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="im">from</span> pyspark.sql.window <span class="im">import</span> Window</span>
-<span id="cb37-2"><a href="#cb37-2"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> avg, col</span>
-<span id="cb37-3"><a href="#cb37-3"></a></span>
-<span id="cb37-4"><a href="#cb37-4"></a><span class="co"># Define a window partitioned by "Type"</span></span>
-<span id="cb37-5"><a href="#cb37-5"></a>w <span class="op">=</span> Window.partitionBy(<span class="st">"Type"</span>)</span>
-<span id="cb37-6"><a href="#cb37-6"></a></span>
-<span id="cb37-7"><a href="#cb37-7"></a>food_df_with_mean <span class="op">=</span> food_df.withColumn(</span>
-<span id="cb37-8"><a href="#cb37-8"></a>    <span class="st">"mean_price_by_type"</span>,</span>
-<span id="cb37-9"><a href="#cb37-9"></a>    avg(col(<span class="st">"Price"</span>)).over(w)</span>
-<span id="cb37-10"><a href="#cb37-10"></a>)</span>
-<span id="cb37-11"><a href="#cb37-11"></a>food_df_with_mean.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a><span class="im">from</span> pyspark.sql.window <span class="im">import</span> Window</span>
+<span id="cb37-2"><a></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> avg, col</span>
+<span id="cb37-3"><a></a></span>
+<span id="cb37-4"><a></a><span class="co"># Define a window partitioned by "Type"</span></span>
+<span id="cb37-5"><a></a>w <span class="op">=</span> Window.partitionBy(<span class="st">"Type"</span>)</span>
+<span id="cb37-6"><a></a></span>
+<span id="cb37-7"><a></a>food_df_with_mean <span class="op">=</span> food_df.withColumn(</span>
+<span id="cb37-8"><a></a>    <span class="st">"mean_price_by_type"</span>,</span>
+<span id="cb37-9"><a></a>    avg(col(<span class="st">"Price"</span>)).over(w)</span>
+<span id="cb37-10"><a></a>)</span>
+<span id="cb37-11"><a></a>food_df_with_mean.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li class="fragment">This keeps each original row, adding the group-level mean price for its corresponding <strong>Type</strong>.</li>
 </ul>
@@ -1101,12 +881,14 @@ Byeong-Hak Choe
 <h2>PySpark Basics</h2>
 <p>Let’s do <a href="https://bcdanl.github.io/320/danl-cw/danl-320-cw-07.html"><strong>Classwork 7</strong></a>!</p>
 
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 
 </div>
-</section></section>
-    </div>
-  </div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="../site_libs/revealjs/dist/reveal.js"></script>
@@ -1132,12 +914,12 @@ Byeong-Hak Choe
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
 'smaller': false,
  
@@ -1292,7 +1074,7 @@ Byeong-Hak Choe
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1401,187 +1183,209 @@ Byeong-Hak Choe
     </script>
 
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      });
-      function tippyHover(el, contentFn) {
-        const config = {
-          allowHTML: true,
-          content: contentFn,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start'
-        };
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          return note.innerHTML;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
         });
-      }
-          let selectedAnnoteEl;
-          const selectorForAnnotation = ( cell, annotation) => {
-            let cellAttr = 'data-code-cell="' + cell + '"';
-            let lineAttr = 'data-code-annotation="' +  annotation + '"';
-            const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-            return selector;
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
-          const selectCodeLines = (annoteEl) => {
-            const doc = window.document;
-            const targetCell = annoteEl.getAttribute("data-target-cell");
-            const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-            const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-            const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-            const lineIds = lines.map((line) => {
-              return targetCell + "-" + line;
-            })
-            let top = null;
-            let height = null;
-            let parent = null;
-            if (lineIds.length > 0) {
-                //compute the position of the single el (top and bottom and make a div)
-                const el = window.document.getElementById(lineIds[0]);
-                top = el.offsetTop;
-                height = el.offsetHeight;
-                parent = el.parentElement.parentElement;
-              if (lineIds.length > 1) {
-                const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-                const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-                height = bottom - top;
-              }
-              if (top !== null && height !== null && parent !== null) {
-                // cook up a div (if necessary) and position it 
-                let div = window.document.getElementById("code-annotation-line-highlight");
-                if (div === null) {
-                  div = window.document.createElement("div");
-                  div.setAttribute("id", "code-annotation-line-highlight");
-                  div.style.position = 'absolute';
-                  parent.appendChild(div);
-                }
-                div.style.top = top - 2 + "px";
-                div.style.height = height + 4 + "px";
-                let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-                if (gutterDiv === null) {
-                  gutterDiv = window.document.createElement("div");
-                  gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                  gutterDiv.style.position = 'absolute';
-                  const codeCell = window.document.getElementById(targetCell);
-                  const gutter = codeCell.querySelector('.code-annotation-gutter');
-                  gutter.appendChild(gutterDiv);
-                }
-                gutterDiv.style.top = top - 2 + "px";
-                gutterDiv.style.height = height + 4 + "px";
-              }
-              selectedAnnoteEl = annoteEl;
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          };
-          const unselectCodeLines = () => {
-            const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-            elementsIds.forEach((elId) => {
-              const div = window.document.getElementById(elId);
-              if (div) {
-                div.remove();
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-            });
-            selectedAnnoteEl = undefined;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
           };
-          // Handle positioning of the toggle
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
           window.addEventListener(
-          "resize",
-          throttle(() => {
-            elRect = undefined;
-            if (selectedAnnoteEl) {
-              selectCodeLines(selectedAnnoteEl);
-            }
-          }, 10)
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
           );
           function throttle(fn, ms) {
           let throttle = false;
@@ -1599,104 +1403,104 @@ Byeong-Hak Choe
               }
             };
           }
-          const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
-          for (let i=0; i<annoteTargets.length; i++) {
-            const annoteTarget = annoteTargets[i];
-            const targetCell = annoteTarget.getAttribute("data-target-cell");
-            const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
-            const contentFn = () => {
-              const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-              if (content) {
-                const tipContent = content.cloneNode(true);
-                tipContent.classList.add("code-annotation-tip-content");
-                return tipContent.outerHTML;
-              }
-            }
-            const config = {
-              allowHTML: true,
-              content: contentFn,
-              onShow: (instance) => {
-                selectCodeLines(instance.reference);
-                instance.reference.classList.add('code-annotation-active');
-                window.tippy.hideAll();
-              },
-              onHide: (instance) => {
-                unselectCodeLines();
-                instance.reference.classList.remove('code-annotation-active');
-              },
-              maxWidth: 300,
-              delay: [50, 0],
-              duration: [200, 0],
-              offset: [5, 10],
-              arrow: true,
-              appendTo: function(el) {
-                return el.parentElement.parentElement.parentElement;
-              },
-              interactive: true,
-              interactiveBorder: 10,
-              theme: 'light-border',
-              placement: 'right',
-              popperOptions: {
-                modifiers: [
-                {
-                  name: 'flip',
-                  options: {
-                    flipVariations: false, // true by default
-                    allowedAutoPlacements: ['right'],
-                    fallbackPlacements: ['right', 'top', 'top-start', 'top-end'],
-                  },
-                },
-                {
-                  name: 'preventOverflow',
-                  options: {
-                    mainAxis: false,
-                    altAxis: false
-                  }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
                 }
-                ]        
-              }      
-            };
-            window.tippy(annoteTarget, config); 
-          }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
               }
-              popup.appendChild(citeDiv);
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
             });
-            return popup.innerHTML;
-          });
+          }
         }
-      }
-    });
-    </script>
+      });
+      </script>
     
 
 </body></html>

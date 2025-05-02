@@ -1,0 +1,152 @@
+---
+title: Team Project - Guideline
+subtitle: What You Should Do for the Team Project
+author: Byeong-Hak Choe
+institute: SUNY Geneseo
+date: last-modified
+
+toc: true
+toc-depth: 2
+toc-expand: true
+toc-title: Contents
+number-sections: false
+number-depth: 3
+
+code-fold: false
+
+execute:
+  echo: true
+  eval: true
+  message: false
+  warning: false
+  fig-width: 9
+  fig-height: 6
+---
+```{r}
+#| include: false
+library(tidyverse)
+library(skimr)
+library(broom)
+library(hrbrthemes)
+
+theme_set(theme_ipsum() +
+          theme(strip.background =element_rect(fill="lightgray"),
+                axis.title.x = element_text(size = rel(1.5) ),
+                axis.title.y = element_text(size = rel(1.5) ))
+          )
+
+# Set global options for color-blind-friendly scales
+# scale_colour_discrete <- function(...) scale_colour_viridis_d(...)
+scale_colour_discrete <- function(...) scale_color_colorblind(...)
+scale_fill_discrete <- function(...) scale_fill_colorblind(...)
+```
+
+
+# Presentation
+
+Each team will deliver a 15-20-minute presentation, followed by a 1–2 minute Q&A session:
+
+- The order of team presentations will be determined by a random draw during the last class.
+  -	If multiple teams choose the same topic, I will try to schedule these teams separately to minimize repetition within a presentation session.
+-	To ensure fairness and equal participation, **each student must contribute evenly** to the presentation. 
+- **New Techniques**: If your presentation content involves data transformation, visualizations, or statistical analysis not covered in class, your team must provide a brief explanation of the code for those contents during the presentation.
+
+
+## Submission
+- Each team must email the **presentation slides** (in _Microsoft PowerPoint_ or _Google Slides_ format) for the project by May 13, 2025, Tuesday, 3:00 P.M. (Eastern Time)
+
+
+## Data Transformation/Visualization Support
+- Feel free to reach out to Byeong-Hak if you need guidance with data transformation/visualization tasks for your team project.
+
+
+
+  
+  
+<br><br>
+
+# Key Components in the Presentation
+
+1. **Title:**
+   - Pick a title that’s clear, catchy, and gives a good sense of what your project is about.
+
+2. **Introduction:**
+   - **Background:** Give some context about your topic and why it matters. Think of this as setting the stage for your data story and explaining what motivated you to dig into this topic.
+   - **Statement of the Project Interest:** Spell out the problem or issue you’re tackling. This will help guide your data analysis and keep things focused.
+
+3. **Data Storytelling:**
+   - **Questions and Objectives:** List the questions you’re trying to answer. Use these to shape your story and show how your data insights relate to real-world problems.
+   - **Data Transformation and Descriptive Statistics:** Walk your audience through your findings, weaving together data transformations and stats to highlight the big takeaways. Explain how your data transformations bring out the important stuff.
+   - **Data Visualization:** Use clear visuals that fit right into your narrative. Each visual should highlight key insights, moving your story forward. Make sure they are easy to interpret and add value to your story.
+   - **Machine Learning Analysis:** Present the results of your machine learning models clearly and concisely. Explain what the results mean in the context of your research questions and how they support (or challenge) your key insights. Focus on interpreting the findings rather than just reporting numbers.
+
+4. **Significance of the Project:**
+   - Talk about why your findings matter. How can they be used in the real world, influence business decisions, or inform public policy? Connect your data analysis to broader themes and show why it’s relevant.
+
+5. **Visual Materials and Slide Quality:**
+   - Keep your slides clean, visually appealing, and easy to follow. Good visuals and a smart layout will make your story more engaging.
+   - Your slides will be judged on how clear and effective they are, and how well they pull everything together.
+
+6. **Team Presentation:**
+   - Make sure your presentation is engaging and flows well. Everyone on the team should contribute, showing a solid grasp of the project while keeping the audience interested.
+   - We’ll be looking at how well you deliver, how organized your presentation is, and how clearly you explain your ideas.
+
+7. **References:**
+   - List all your sources properly and make sure your citations are consistent and complete. Give credit where it’s due!
+
+
+<br>
+
+
+
+# Rubric
+## Presentation
+
+
+
+| **Attribute**                                   | **Very Deficient (1)**                                             | **Somewhat Deficient (2)**                                             | **Acceptable (3)**                                                      | **Very Good (4)**                                                       | **Outstanding (5)**                                                    |
+|-------------------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| **1. Quality of Data Transformation and Descriptive Statistics** | - No transformation or cleaning applied<br>- Very poor data transformation<br>- Contains significant errors | - Minimal transformation or cleaning<br>- Basic data transformation with errors<br>- Contains several errors | - Basic transformation applied<br>- Adequate data transformation<br>- Contains minor errors | - Effective transformation<br>- Thorough data transformation<br>- Data is accurate | - Advanced transformation<br>- Exceptional data transformation<br>- Data is impeccable |
+| **2. Quality of Data Visualization**       | - Visualizations are missing or unclear<br>- Misrepresents data | - Visualizations are basic and lack clarity<br>- Some misrepresentation | - Visualizations are clear and accurate<br>- Data is appropriately represented | - Visualizations are insightful and enhance understanding<br>- Data is accurately represented | - Visualizations are highly creative and compelling<br>- Data representation is impeccable |
+| **3. Quality of Machine Learning Models**            | - No model used or entirely inappropriate<br>- No explanation of choice or results | - Basic model used with minimal justification<br>- Limited understanding of model performance | - Appropriate model applied<br>- Adequate explanation of choice and basic interpretation of results | - Well-chosen model with thoughtful justification<br>- Good interpretation of results and performance | - Highly appropriate and sophisticated model<br>- Excellent justification and deep insight into results and implications |
+| **4. Effectiveness of Data Storytelling**       | - No narrative or storyline<br>- Insights are absent or irrelevant<br>- Fails to engage the audience | - Weak narrative structure<br>- Insights are superficial<br>- Minimal audience engagement | - Clear narrative present<br>- Insights are relevant<br>- Audience is adequately engaged | - Compelling narrative<br>- Insights are significant<br>- Engages audience effectively | - Exceptional and captivating narrative<br>- Insights are profound and impactful<br>- Audience is highly engaged |
+| **5. Quality of Slides and Visual Materials**   | - Very poorly organized<br>- Difficult to read and understand<br>- Numerous errors present | - Somewhat disorganized<br>- Some slides are unclear<br>- Several errors present | - Well organized<br>- Mostly clear and understandable<br>- Few errors present | - Very well organized<br>- Clear and visually appealing<br>- Very few errors | - Exceptionally well organized<br>- Highly clear and visually compelling<br>- No errors |
+| **6. Quality of Team Presentation**             | - Presentation is disjointed<br>- Poor team coordination<br>- Unable to address questions | - Lacks flow<br>- Some coordination issues<br>- Difficulty with several questions | - Cohesive presentation<br>- Team works well together<br>- Addresses most questions adequately | - Engaging presentation<br>- Team is well-coordinated<br>- Addresses almost all questions professionally | - Highly engaging and polished presentation<br>- Excellent team coordination<br>- Addresses all questions expertly |
+
+
+<br>
+
+
+
+## Write-up
+
+<div style="font-size: 73.33%; max-width: 8.33in;">
+
+| Attribute                           | Very Deficient (1)                                                                                                                                                         | Somewhat Deficient (2)                                                                                                                                                                  | Acceptable (3)                                                                                                                                                                           | Very Good (4)                                                                                                                                                                   | Outstanding (5)                                                                                                                                                                    |
+|-------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **1. Quality of research question** | Not stated, or very unclear  <br> Entirely derivative  <br> Anticipate no contribution                                                                                   | Stated somewhat confusingly  <br> Slightly interesting, but largely derivative  <br> Anticipate minor contributions                                                                      | Stated explicitly  <br> Somewhat interesting and creative  <br> Anticipate limited contributions                                                                                        | Stated explicitly and clearly  <br> Clearly interesting and creative  <br> Anticipate at least one good contribution                                                           | Articulated very clearly  <br> Highly interesting and creative  <br> Anticipate several important contributions                                                                |
+| **2. Quality of data visualization** | Very poorly visualized  <br> Unclear  <br> Was unable to interpret figures                                                                                               | Somewhat visualized  <br> Somewhat unclear  <br> Had difficulty in interpreting figures                                                                                                   | Mostly well visualized  <br> Mostly clear visualization  <br> Acceptably interpretable                                                                                                 | Well organized  <br> Well thought-out visualization  <br> Almost all figures are clearly interpretable                                                                        | Very well visualized  <br> Outstanding visualization  <br> All figures are clearly interpretable                                                                               |
+| **3. Quality of proposed business/economic analysis** | Demonstrates little or no critical thinking  <br> Little/no understanding of business/economic concepts  <br> Proposes inappropriate tools                                  | Rudimentary critical thinking  <br> Somewhat shaky understanding of business/economic concepts  <br> Misses some important tools                                                           | Average critical thinking  <br> Understanding of business/economic concepts  <br> Proposes appropriate tools                                                                          | Mature critical thinking  <br> Clear understanding of business/economic concepts  <br> Proposes advanced tools                                                                | Sophisticated critical thinking  <br> Superior understanding of business/economic concepts  <br> Proposes highly advanced tools                                               |
+| **4. Quality of proposed modeling analysis ** | Little or no critical thinking  <br> Little/no understanding of theoretical concepts  <br> Proposes inappropriate tools                                                      | Rudimentary critical thinking  <br> Somewhat shaky understanding of theoretical concepts  <br> Misses some important tools                                                                 | Average critical thinking  <br> Understanding of theoretical concepts  <br> Proposes appropriate tools                                                                              | Mature critical thinking  <br> Clear understanding of theoretical concepts  <br> Proposes advanced tools                                                                     | Sophisticated critical thinking  <br> Superior understanding of theoretical concepts  <br> Proposes highly advanced tools                                                    |
+| **5. Quality of writing**           | Very poorly organized  <br> Very difficult to read and understand  <br> Teems with typos and grammatical errors                                                           | Somewhat disorganized  <br> Somewhat difficult to read and understand  <br> Numerous typos and grammatical errors                                                                          | Mostly well organized  <br> Mostly easy to read and understand  <br> Some typos and grammatical errors                                                                               | Well organized  <br> Easy to read and understand  <br> Very few typos or grammatical errors                                                                                    | Very well organized  <br> Very easy to read and understand  <br> No typos or grammatical errors                                                                               |
+| **6. Quality of Jupyter Notebook/Quarto usages**    | Very poorly organized  <br> Teems with redundant messages of warning/error from running Python/R code  <br> Provides inappropriate programming codes                              | Somewhat disorganized  <br> Numerous messages of warning/error from running Python/R code  <br> Misses some important programming codes                                                           | Mostly well organized  <br> Some messages of warning/error from running Python/R code  <br> Provides appropriate programming codes                                                         | Well organized  <br> Very few messages of warning/error from running Python code  <br> Provides advanced programming codes                                                        | Very well organized  <br> No messages of warning/error from running Python/R code  <br> Proposes highly advanced programming codes                                                  |
+
+</div>
+
+<br>
+
+
+
+
+# Peer Evaluation
+
+-	You are required to evaluate **your peers’ presentations** (excluding your own team members). Peer evaluations will account for 10% of the total project score.
+  - An Excel spreadsheet for the peer evaluation will be provided. Make sure to save the spreadsheet and submit it to Brightspace.
+  - Failure to complete the peer evaluation will result in a reduction of your class participation score.
+  - **Score Calculation**: For each category of **Presentation Rubric 1-6**, the highest and lowest scores will be dropped to ensure fairness when calculating the peer evaluation score.
+
+
+<br><br>
+
+
+
