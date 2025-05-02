@@ -56,16 +56,7 @@ Each team will deliver a 15-20-minute presentation, followed by a 1–2 minute Q
 - Each team must email the **presentation slides** (in _Microsoft PowerPoint_ or _Google Slides_ format) for the project by May 13, 2025, Tuesday, 3:00 P.M. (Eastern Time)
 
 
-## Data Transformation/Visualization Support
-- Feel free to reach out to Byeong-Hak if you need guidance with data transformation/visualization tasks for your team project.
-
-
-
-  
-  
-<br><br>
-
-# Key Components in the Presentation
+## Key Components in the Presentation
 
 1. **Title:**
    - Pick a title that’s clear, catchy, and gives a good sense of what your project is about.
@@ -95,9 +86,13 @@ Each team will deliver a 15-20-minute presentation, followed by a 1–2 minute Q
    - List all your sources properly and make sure your citations are consistent and complete. Give credit where it’s due!
 
 
-<br>
+<br><br>
 
 
+# Write-up
+The **project write-up** should be available in each student's website and GitHub repo by May 16, 2025, Friday, 3:00 P.M. (Eastern Time).
+
+<br><br>
 
 # Rubric
 ## Presentation
