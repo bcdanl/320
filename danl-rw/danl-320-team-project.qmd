@@ -49,7 +49,7 @@ Each team will deliver a 15-20-minute presentation, followed by a 1–2 minute Q
 - The order of team presentations will be determined by a random draw during the last class.
   -	If multiple teams choose the same topic, I will try to schedule these teams separately to minimize repetition within a presentation session.
 -	To ensure fairness and equal participation, **each student must contribute evenly** to the presentation. 
-- **New Techniques**: If your presentation content involves data transformation, visualizations, or statistical analysis not covered in class, your team must provide a brief explanation of the code for those contents during the presentation.
+- **New Techniques**: If your presentation content involves machine learning methods not covered in class, your team must provide a brief explanation of the method along with the accompanying code during the presentation.
 
 
 ## Submission
