@@ -1,5 +1,5 @@
 ---
-title: '<font style="font-family:Optima"><b>DANL 320 - Project</b></font>'
+title: 'DANL 320 - Project'
 date-modified: ""
 listing:
   contents: "danl-rw/*.qmd"
@@ -38,3 +38,13 @@ format:
         }
         </style>
 ---
+
+
+<style>
+/* Apply to .title only when it does NOT also have .listing-title */
+.title:not(.listing-title) {
+    font-family: Optima, sans-serif;
+    font-weight: bold;
+    font-size: 2em;  /* adjust as needed */
+}
+</style>

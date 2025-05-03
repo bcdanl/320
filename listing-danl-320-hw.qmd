@@ -1,5 +1,5 @@
 ---
-title: '<font style="font-family:Optima"><b>DANL 320 - Homework</b></font>'
+title: 'DANL 320 - Homework'
 date-modified: ""
 listing:
   contents: "danl-hw/*.qmd"
