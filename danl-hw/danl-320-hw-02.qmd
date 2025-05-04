@@ -19,7 +19,21 @@ execute:
 
 - Please send Byeong-Hak an email (`bchoe@geneseo.edu`) if you have any questions.
 
+
 <br><br><br>
+
+# Descriptive Statistics
+
+The following provides the descriptive statistics for each part of Homework 2:
+
+```{r}
+#| echo: false
+#| eval: true
+sum <- readr::read_csv("https://bcdanl.github.io/data/spring-2025-danl-320-hw2-stat.csv")
+DT::datatable(sum, options = list(pageLength = nrow(sum)))
+```
+
+<br>
 
 
 
