@@ -5703,5 +5703,19 @@
     "title": "Exam",
     "section": "Question 21",
     "text": "Question 21\nConsider the following linear regression models:\n\nModel 1 \\[\n\\text{yield}_{i} = \\beta_0 + \\beta_{\\text{fertilizer}}\\text{fertilizer}_i + \\epsilon_i\n\\]\nModel 2 \\[\n\\text{yield}_{i} = \\beta_0 + \\beta_{\\text{fertilizer}}\\text{fertilizer}_i + \\beta_{\\text{height}}\\text{height}_i + \\epsilon_i\n\\]\nModel 3 \\[\n\\text{yield}_{i} = \\beta_0 + \\beta_{\\text{fertilizer}}\\text{fertilizer}_i + \\beta_{\\text{height}}\\text{height}_i + \\beta_{\\text{soil\\_quality}}\\text{soil\\_quality}_i + \\epsilon_i\n\\]\nfertilizer: Indicator equal to 1 if the plot received fertilizer, 0 otherwise.\nheight: Plant height (in centimeters), which itself depends on fertilizer and soil quality.\nsoil_quality: Underlying soil fertility (standardized index), unobserved by the researcher.\nyield: Crop yield (in bushels) for each plot.\n\n\nIt is known that the true value of beta coefficients are as follows:\n\n\\(\\beta_{\\text{fertilizer}} = 10\\); \\(\\beta_{\\text{height}} = 0.5\\); \\(\\beta_{\\text{soil\\_quality}} = 7.5\\)\n\n\n\n\nRMSE_1\nRMSE_2\nRMSE_3\n\n\n\n\n1232.779\n88.69368\n57.42429\n\n\n\n\n\nQ21a\n\nCalculate the magnitude of bias in the estimated \\(\\text{fertilizer}\\) coefficient for Model 1 and for Model 2.\n\n\n\n\nQ21b\n\nWhy does including \\(\\text{height}\\) (Model 2) worsen the bias in \\(\\hat\\beta_{\\text{fertilizer}}\\) and decrease the test‑set RMSE?\nGiven what regression finds about the coefficient, explain how partialling out \\(\\text{height}\\) change the “independent” part of \\(\\text{fertilizer}\\)?\nWhen does adding a predictor make things worse, and when does it help?\n\n\nUnder what circumstances will including an extra predictor increase both coefficient bias and RMSE?\nUnder what circumstances will it instead reduce bias and improve predictive accuracy?"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-11-2025-0430.html#what-we-learned-this-semester",
+    "href": "danl-lec/danl-320-lec-11-2025-0430.html#what-we-learned-this-semester",
+    "title": "Lecture 11",
+    "section": "What We Learned This Semester",
+    "text": "What We Learned This Semester\n\n\n\n\nBig Data with PySpark\n\nWorked with the Spark DataFrame using PySpark\n\nSupervised Machine Learning with PySpark and scikit-learn\n\nApplied models including linear regression, logistic regression, classification, regularization, and tree-based methods\nExplored high-dimensional data using scalable tools\n\nUnsupervised Machine Learning with scikit-learn\n\nPerformed clustering and principal component analysis (PCA) for pattern discovery\n\nStorytelling & Communication\n\nCraft compelling narratives through advanced machine learning analysis\nPublish your work on a personal website using git and GitHub"
+  },
+  {
+    "objectID": "danl-lec/danl-320-lec-11-2025-0430.html#student-course-evaluation-sce",
+    "href": "danl-lec/danl-320-lec-11-2025-0430.html#student-course-evaluation-sce",
+    "title": "Lecture 11",
+    "section": "Student Course Evaluation (SCE)",
+    "text": "Student Course Evaluation (SCE)\n\nI have tried to improve your learning experience in this course.\nI value your feedback immensely.\nI request for your participation in the Student Course Evaluation (SCE).\n\n\n\nTake 10 minutes right now to complete the SCE.\nOn your laptop, access the SCE form for DANL 320 as follows:\n\nLog in to Knightweb\nClick on the “Surveys” option\nChoose DANL 320 and then complete the SCE survey."
   }
 ]

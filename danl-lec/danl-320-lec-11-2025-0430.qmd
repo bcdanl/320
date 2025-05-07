@@ -590,3 +590,47 @@ plt.title("PCR model comparison")
 plt.show()
 ```
 
+
+
+# **Course Summary** {background-color="#1c4982"}
+
+## What We Learned This Semester
+
+<div style="display:block; margin:-10px;"></div>
+
+
+- **Big Data with PySpark**
+  - Worked with the **Spark DataFrame** using **PySpark**
+
+- **Supervised Machine Learning with `PySpark` and `scikit-learn`**
+  - Applied models including **linear regression**, **logistic regression**, **classification**, **regularization**, and **tree-based methods**
+  - Explored **high-dimensional data** using scalable tools
+
+- **Unsupervised Machine Learning with `scikit-learn`**
+  - Performed **clustering** and **principal component analysis (PCA)** for pattern discovery
+
+- **Storytelling & Communication**
+  - Craft compelling narratives through **advanced machine learning analysis**
+  - Publish your work on a **personal website** using **git** and **GitHub**
+
+
+
+
+
+
+## Student Course Evaluation (SCE)
+
+:::{.nonincremental}
+- I have tried to improve your learning experience in this course.
+- I value your feedback immensely.
+- I request for your participation in the [**Student Course Evaluation (SCE)**](https://www.geneseo.edu/sce).
+
+:::
+
+<!-- <div style="display:block; margin:20px;"></div> -->
+
+- Take 10 minutes right now to complete the SCE.
+- On your laptop, access the SCE form for **DANL 320** as follows:
+  1. Log in to [**Knightweb**](https://my.geneseo.edu/dashboard)
+  2. Click on the "**Surveys**" option
+  3. Choose **DANL 320** and then complete the SCE survey.
