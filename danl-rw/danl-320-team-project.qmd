@@ -109,17 +109,16 @@ The term paper should be submitted as a Jupyter Notebook (.ipynb) and be publish
 	-	Where the data come from (API, public repository, survey, Kaggle, etc.)
 	-	Time period, frequency (daily, quarterly, …), geographic scope
 2. **Variables**
-	-	List and define each field/column you will use (e.g. Date, Close, Sector, Total_ESG, …).
+	-	List and define each variable you will use (e.g. `Date`, `Close`, `Sector`, `Total_ESG`, …).
 3. **Cleaning & Processing**
 	-	Handling of missing values or outliers
-	-	Any transformations (normalization, encoding, filtering)
+	-	Any transformations (filtering, encoding, normalization)
 4. **Descriptive Summary**
 	-	Key summary statistics (mean, median, sd, counts)
-	-	At least two visualizations (histogram, boxplot, time series plot, etc.)
-5. **Visualization**
-	-	Distribution of key variables
-	- Relationship between outcome and key predictor variables
-6. **Model Motivation**
+	-	At least three **visualizations** (heatmap, histogram, boxplot, time series plot, etc.)
+	  -	Distribution of key variables
+	  - Relationship between outcome and key predictor variables
+5. **Model Motivation**
 	-	Why these data are suited to your ML/economic model
 
 ## 4. Machine Learning Model (≈ 1250–2000 words)
@@ -136,14 +135,14 @@ The term paper should be submitted as a Jupyter Notebook (.ipynb) and be publish
 -	Reflect on limitations and suggest directions for future work.
 
 ## 7. References
--	Use a consistent citation style (APA, Chicago, etc.).
+-	Use a **consistent** citation style (APA, Chicago, etc.).
 -	List all works you cited; no word-count limit here.
 
 
 ## General Requirements
 -	**Format**: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.
 -	**Length**:
-	-	Total (excluding References): ≈ 3500–6000 words
+	-	Total (excluding References): ≈ 3000–5550 words
 -	Section-by-section guidance is above, but focus on clarity and completeness.
 -	**Styling**:
 	-	Use headings (##, ###) to organize.

@@ -5737,7 +5737,7 @@
     "href": "danl-rw/danl-320-team-project.html#data-5001000-words",
     "title": "Team Project - Guideline",
     "section": "3. Data (≈ 500–1000 words)",
-    "text": "3. Data (≈ 500–1000 words)\n\nSource & Scope\n\nWhere the data come from (API, public repository, survey, Kaggle, etc.)\nTime period, frequency (daily, quarterly, …), geographic scope\n\nVariables\n\nList and define each field/column you will use (e.g. Date, Close, Sector, Total_ESG, …).\n\nCleaning & Processing\n\nHandling of missing values or outliers\nAny transformations (normalization, encoding, filtering)\n\nDescriptive Summary\n\nKey summary statistics (mean, median, sd, counts)\nAt least two visualizations (histogram, boxplot, time series plot, etc.)\n\nVisualization\n\nDistribution of key variables\nRelationship between outcome and key predictor variables\n\nModel Motivation\n\nWhy these data are suited to your ML/economic model"
+    "text": "3. Data (≈ 500–1000 words)\n\nSource & Scope\n\nWhere the data come from (API, public repository, survey, Kaggle, etc.)\nTime period, frequency (daily, quarterly, …), geographic scope\n\nVariables\n\nList and define each variable you will use (e.g. Date, Close, Sector, Total_ESG, …).\n\nCleaning & Processing\n\nHandling of missing values or outliers\nAny transformations (filtering, encoding, normalization)\n\nDescriptive Summary\n\nKey summary statistics (mean, median, sd, counts)\nAt least three visualizations (heatmap, histogram, boxplot, time series plot, etc.)\nDistribution of key variables\nRelationship between outcome and key predictor variables\n\nModel Motivation\n\nWhy these data are suited to your ML/economic model"
   },
   {
     "objectID": "danl-rw/danl-320-team-project.html#machine-learning-model-12502000-words",
@@ -5772,6 +5772,6 @@
     "href": "danl-rw/danl-320-team-project.html#general-requirements",
     "title": "Team Project - Guideline",
     "section": "General Requirements",
-    "text": "General Requirements\n\nFormat: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.\nLength:\n\nTotal (excluding References): ≈ 3500–6000 words\n\nSection-by-section guidance is above, but focus on clarity and completeness.\nStyling:\n\nUse headings (##, ###) to organize.\nEmbed figures and tables appropriately.\nEnsure all code runs without errors.\n\nSubmission: Upload your .ipynb file to Brightspace and publish its HTML on your website by the deadline."
+    "text": "General Requirements\n\nFormat: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.\nLength:\n\nTotal (excluding References): ≈ 3000–5550 words\n\nSection-by-section guidance is above, but focus on clarity and completeness.\nStyling:\n\nUse headings (##, ###) to organize.\nEmbed figures and tables appropriately.\nEnsure all code runs without errors.\n\nSubmission: Upload your .ipynb file to Brightspace and publish its HTML on your website by the deadline."
   }
 ]
