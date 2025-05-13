@@ -5156,7 +5156,7 @@
     "href": "listing-danl-320-rw.html",
     "title": "DANL 320 - Project",
     "section": "",
-    "text": "Title\n\n\n\nDate\n\n\n\n\n\n\n\n\nTeam Project - Guideline\n\n\nMay 2, 2025\n\n\n\n\n\n\nNo matching items\n Back to top"
+    "text": "Title\n\n\n\nDate\n\n\n\n\n\n\n\n\nTeam Project - Guideline\n\n\nMay 13, 2025\n\n\n\n\n\n\nNo matching items\n Back to top"
   },
   {
     "objectID": "danl-qa/danl-320-qa.html",
@@ -5717,5 +5717,61 @@
     "title": "Lecture 11",
     "section": "Student Course Evaluation (SCE)",
     "text": "Student Course Evaluation (SCE)\n\nI have tried to improve your learning experience in this course.\nI value your feedback immensely.\nI request for your participation in the Student Course Evaluation (SCE).\n\n\n\nTake 10 minutes right now to complete the SCE.\nOn your laptop, access the SCE form for DANL 320 as follows:\n\nLog in to Knightweb\nClick on the “Surveys” option\nChoose DANL 320 and then complete the SCE survey."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#introduction-500750-words",
+    "href": "danl-rw/danl-320-team-project.html#introduction-500750-words",
+    "title": "Team Project - Guideline",
+    "section": "1. Introduction (≈ 500–750 words)",
+    "text": "1. Introduction (≈ 500–750 words)\n\nBackground: Explore your topic and explain why it matters.\nProblem Statement: Define precisely what issue you’re addressing.\nObjectives / Research Questions: List the main goals or questions you will answer."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#literature-review-optional-250750-words",
+    "href": "danl-rw/danl-320-team-project.html#literature-review-optional-250750-words",
+    "title": "Team Project - Guideline",
+    "section": "2. Literature Review (Optional) (≈ 250–750 words)",
+    "text": "2. Literature Review (Optional) (≈ 250–750 words)\n\nSummarize and critically evaluate key references (including those on the reading list).\nExplain how each informs or motivates your approach."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#data-5001000-words",
+    "href": "danl-rw/danl-320-team-project.html#data-5001000-words",
+    "title": "Team Project - Guideline",
+    "section": "3. Data (≈ 500–1000 words)",
+    "text": "3. Data (≈ 500–1000 words)\n\nSource & Scope\n\nWhere the data come from (API, public repository, survey, Kaggle, etc.)\nTime period, frequency (daily, quarterly, …), geographic scope\n\nVariables\n\nList and define each field/column you will use (e.g. Date, Close, Sector, Total_ESG, …).\n\nCleaning & Processing\n\nHandling of missing values or outliers\nAny transformations (normalization, encoding, filtering)\n\nDescriptive Summary\n\nKey summary statistics (mean, median, sd, counts)\nAt least two visualizations (histogram, boxplot, time series plot, etc.)\n\nVisualization\n\nDistribution of key variables\nRelationship between outcome and key predictor variables\n\nModel Motivation\n\nWhy these data are suited to your ML/economic model"
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#machine-learning-model-12502000-words",
+    "href": "danl-rw/danl-320-team-project.html#machine-learning-model-12502000-words",
+    "title": "Team Project - Guideline",
+    "section": "4. Machine Learning Model (≈ 1250–2000 words)",
+    "text": "4. Machine Learning Model (≈ 1250–2000 words)\n\nClearly specify your model framework (e.g. regression, classification, regularization, tree-based models, time-series forecasting).\nDefine variables, parameters, and assumptions.\nInclude the code for fitting the model, the model results, and performance metrics—and then interpret what those results tell you."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#policy-applications-business-implications-500750-words",
+    "href": "danl-rw/danl-320-team-project.html#policy-applications-business-implications-500750-words",
+    "title": "Team Project - Guideline",
+    "section": "5. Policy Applications / Business Implications (≈ 500–750 words)",
+    "text": "5. Policy Applications / Business Implications (≈ 500–750 words)\n\nDiscuss practical or policy/business implications of your findings.\nProvide concrete examples or scenarios where decision-makers could apply your results."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#conclusion-250300-words",
+    "href": "danl-rw/danl-320-team-project.html#conclusion-250300-words",
+    "title": "Team Project - Guideline",
+    "section": "6. Conclusion (≈ 250–300 words)",
+    "text": "6. Conclusion (≈ 250–300 words)\n\nRecap your main findings and contributions.\nReflect on limitations and suggest directions for future work."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#references",
+    "href": "danl-rw/danl-320-team-project.html#references",
+    "title": "Team Project - Guideline",
+    "section": "7. References",
+    "text": "7. References\n\nUse a consistent citation style (APA, Chicago, etc.).\nList all works you cited; no word-count limit here."
+  },
+  {
+    "objectID": "danl-rw/danl-320-team-project.html#general-requirements",
+    "href": "danl-rw/danl-320-team-project.html#general-requirements",
+    "title": "Team Project - Guideline",
+    "section": "General Requirements",
+    "text": "General Requirements\n\nFormat: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.\nLength:\n\nTotal (excluding References): ≈ 3500–6000 words\n\nSection-by-section guidance is above, but focus on clarity and completeness.\nStyling:\n\nUse headings (##, ###) to organize.\nEmbed figures and tables appropriately.\nEnsure all code runs without errors.\n\nSubmission: Upload your .ipynb file to Brightspace and publish its HTML on your website by the deadline."
   }
 ]

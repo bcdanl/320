@@ -89,6 +89,71 @@ Each team will deliver a 15-20-minute presentation, followed by a 1–2 minute Q
 <br><br>
 
 
+
+# Structure of the Project Write-Up
+
+The term paper should be submitted as a Jupyter Notebook (.ipynb) and be published as an HTML in your personal website. 
+
+
+## 1. Introduction (≈ 500–750 words)
+-	**Background**: Explore your topic and explain why it matters.
+-	**Problem Statement**: Define precisely what issue you’re addressing.
+-	**Objectives / Research Questions**: List the main goals or questions you will answer.
+
+## 2. Literature Review (Optional) (≈ 250–750 words)
+-	Summarize and critically evaluate key references (including those on the reading list).
+-	Explain how each informs or motivates your approach.
+
+## 3. Data (≈ 500–1000 words)
+1. **Source & Scope**
+	-	Where the data come from (API, public repository, survey, Kaggle, etc.)
+	-	Time period, frequency (daily, quarterly, …), geographic scope
+2. **Variables**
+	-	List and define each field/column you will use (e.g. Date, Close, Sector, Total_ESG, …).
+3. **Cleaning & Processing**
+	-	Handling of missing values or outliers
+	-	Any transformations (normalization, encoding, filtering)
+4. **Descriptive Summary**
+	-	Key summary statistics (mean, median, sd, counts)
+	-	At least two visualizations (histogram, boxplot, time series plot, etc.)
+5. **Visualization**
+	-	Distribution of key variables
+	- Relationship between outcome and key predictor variables
+6. **Model Motivation**
+	-	Why these data are suited to your ML/economic model
+
+## 4. Machine Learning Model (≈ 1250–2000 words)
+-	Clearly specify your model framework (e.g. regression, classification, regularization, tree-based models, time-series forecasting).
+-	Define variables, parameters, and assumptions.
+-	Include the code for fitting the model, the model results, and performance metrics—and then interpret what those results tell you.
+
+## 5. Policy Applications / Business Implications (≈ 500–750 words)
+-	Discuss practical or policy/business implications of your findings.
+-	Provide concrete examples or scenarios where decision-makers could apply your results.
+
+## 6. Conclusion (≈ 250–300 words)
+-	Recap your main findings and contributions.
+-	Reflect on limitations and suggest directions for future work.
+
+## 7. References
+-	Use a consistent citation style (APA, Chicago, etc.).
+-	List all works you cited; no word-count limit here.
+
+
+## General Requirements
+-	**Format**: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.
+-	**Length**:
+	-	Total (excluding References): ≈ 3500–6000 words
+-	Section-by-section guidance is above, but focus on clarity and completeness.
+-	**Styling**:
+	-	Use headings (##, ###) to organize.
+	-	Embed figures and tables appropriately.
+	-	Ensure all code runs without errors.
+-	**Submission**: Upload your .ipynb file to Brightspace and publish its HTML on your website by the deadline.
+
+
+<br><br>
+
 # Write-up
 The **project write-up** should be available in each student's website and GitHub repo by May 16, 2025, Friday, 3:00 P.M. (Eastern Time).
 

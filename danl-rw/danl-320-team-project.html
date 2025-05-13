@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Byeong-Hak Choe">
-<meta name="dcterms.date" content="2025-05-02">
+<meta name="dcterms.date" content="2025-05-13">
 
 <title>Team Project - Guideline – Home</title>
 <style>
@@ -302,6 +302,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   <li><a href="#key-components-in-the-presentation" id="toc-key-components-in-the-presentation" class="nav-link" data-scroll-target="#key-components-in-the-presentation">Key Components in the Presentation</a></li>
   </ul></li>
+  <li><a href="#structure-of-the-project-write-up" id="toc-structure-of-the-project-write-up" class="nav-link" data-scroll-target="#structure-of-the-project-write-up">Structure of the Project Write-Up</a>
+  <ul class="collapse">
+  <li><a href="#introduction-500750-words" id="toc-introduction-500750-words" class="nav-link" data-scroll-target="#introduction-500750-words">1. Introduction (≈ 500–750 words)</a></li>
+  <li><a href="#literature-review-optional-250750-words" id="toc-literature-review-optional-250750-words" class="nav-link" data-scroll-target="#literature-review-optional-250750-words">2. Literature Review (Optional) (≈ 250–750 words)</a></li>
+  <li><a href="#data-5001000-words" id="toc-data-5001000-words" class="nav-link" data-scroll-target="#data-5001000-words">3. Data (≈ 500–1000 words)</a></li>
+  <li><a href="#machine-learning-model-12502000-words" id="toc-machine-learning-model-12502000-words" class="nav-link" data-scroll-target="#machine-learning-model-12502000-words">4. Machine Learning Model (≈ 1250–2000 words)</a></li>
+  <li><a href="#policy-applications-business-implications-500750-words" id="toc-policy-applications-business-implications-500750-words" class="nav-link" data-scroll-target="#policy-applications-business-implications-500750-words">5. Policy Applications / Business Implications (≈ 500–750 words)</a></li>
+  <li><a href="#conclusion-250300-words" id="toc-conclusion-250300-words" class="nav-link" data-scroll-target="#conclusion-250300-words">6. Conclusion (≈ 250–300 words)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">7. References</a></li>
+  <li><a href="#general-requirements" id="toc-general-requirements" class="nav-link" data-scroll-target="#general-requirements">General Requirements</a></li>
+  </ul></li>
   <li><a href="#write-up" id="toc-write-up" class="nav-link" data-scroll-target="#write-up">Write-up</a></li>
   <li><a href="#rubric" id="toc-rubric" class="nav-link" data-scroll-target="#rubric">Rubric</a>
   <ul class="collapse">
@@ -343,7 +354,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 2, 2025</p>
+      <p class="date">May 13, 2025</p>
     </div>
   </div>
   
@@ -410,6 +421,106 @@ ul.task-list li input[type="checkbox"] {
 <li>List all your sources properly and make sure your citations are consistent and complete. Give credit where it’s due!</li>
 </ul></li>
 </ol>
+<p><br><br></p>
+</section>
+</section>
+<section id="structure-of-the-project-write-up" class="level1">
+<h1>Structure of the Project Write-Up</h1>
+<p>The term paper should be submitted as a Jupyter Notebook (.ipynb) and be published as an HTML in your personal website.</p>
+<section id="introduction-500750-words" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-500750-words">1. Introduction (≈ 500–750 words)</h2>
+<ul>
+<li><strong>Background</strong>: Explore your topic and explain why it matters.</li>
+<li><strong>Problem Statement</strong>: Define precisely what issue you’re addressing.</li>
+<li><strong>Objectives / Research Questions</strong>: List the main goals or questions you will answer.</li>
+</ul>
+</section>
+<section id="literature-review-optional-250750-words" class="level2">
+<h2 class="anchored" data-anchor-id="literature-review-optional-250750-words">2. Literature Review (Optional) (≈ 250–750 words)</h2>
+<ul>
+<li>Summarize and critically evaluate key references (including those on the reading list).</li>
+<li>Explain how each informs or motivates your approach.</li>
+</ul>
+</section>
+<section id="data-5001000-words" class="level2">
+<h2 class="anchored" data-anchor-id="data-5001000-words">3. Data (≈ 500–1000 words)</h2>
+<ol type="1">
+<li><strong>Source &amp; Scope</strong>
+<ul>
+<li>Where the data come from (API, public repository, survey, Kaggle, etc.)</li>
+<li>Time period, frequency (daily, quarterly, …), geographic scope</li>
+</ul></li>
+<li><strong>Variables</strong>
+<ul>
+<li>List and define each field/column you will use (e.g.&nbsp;Date, Close, Sector, Total_ESG, …).</li>
+</ul></li>
+<li><strong>Cleaning &amp; Processing</strong>
+<ul>
+<li>Handling of missing values or outliers</li>
+<li>Any transformations (normalization, encoding, filtering)</li>
+</ul></li>
+<li><strong>Descriptive Summary</strong>
+<ul>
+<li>Key summary statistics (mean, median, sd, counts)</li>
+<li>At least two visualizations (histogram, boxplot, time series plot, etc.)</li>
+</ul></li>
+<li><strong>Visualization</strong>
+<ul>
+<li>Distribution of key variables</li>
+<li>Relationship between outcome and key predictor variables</li>
+</ul></li>
+<li><strong>Model Motivation</strong>
+<ul>
+<li>Why these data are suited to your ML/economic model</li>
+</ul></li>
+</ol>
+</section>
+<section id="machine-learning-model-12502000-words" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-model-12502000-words">4. Machine Learning Model (≈ 1250–2000 words)</h2>
+<ul>
+<li>Clearly specify your model framework (e.g.&nbsp;regression, classification, regularization, tree-based models, time-series forecasting).</li>
+<li>Define variables, parameters, and assumptions.</li>
+<li>Include the code for fitting the model, the model results, and performance metrics—and then interpret what those results tell you.</li>
+</ul>
+</section>
+<section id="policy-applications-business-implications-500750-words" class="level2">
+<h2 class="anchored" data-anchor-id="policy-applications-business-implications-500750-words">5. Policy Applications / Business Implications (≈ 500–750 words)</h2>
+<ul>
+<li>Discuss practical or policy/business implications of your findings.</li>
+<li>Provide concrete examples or scenarios where decision-makers could apply your results.</li>
+</ul>
+</section>
+<section id="conclusion-250300-words" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-250300-words">6. Conclusion (≈ 250–300 words)</h2>
+<ul>
+<li>Recap your main findings and contributions.</li>
+<li>Reflect on limitations and suggest directions for future work.</li>
+</ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">7. References</h2>
+<ul>
+<li>Use a consistent citation style (APA, Chicago, etc.).</li>
+<li>List all works you cited; no word-count limit here.</li>
+</ul>
+</section>
+<section id="general-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="general-requirements">General Requirements</h2>
+<ul>
+<li><strong>Format</strong>: Jupyter Notebook (.ipynb) with narrative in text cells and all code in code cells.</li>
+<li><strong>Length</strong>:
+<ul>
+<li>Total (excluding References): ≈ 3500–6000 words</li>
+</ul></li>
+<li>Section-by-section guidance is above, but focus on clarity and completeness.</li>
+<li><strong>Styling</strong>:
+<ul>
+<li>Use headings (##, ###) to organize.</li>
+<li>Embed figures and tables appropriately.</li>
+<li>Ensure all code runs without errors.</li>
+</ul></li>
+<li><strong>Submission</strong>: Upload your .ipynb file to Brightspace and publish its HTML on your website by the deadline.</li>
+</ul>
 <p><br><br></p>
 </section>
 </section>
